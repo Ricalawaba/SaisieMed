@@ -1,5 +1,5 @@
 //
-//  saisieTableViewCell.swift
+//  questionOuiNonTableViewCell.swift
 //  FoodTracker
 //
 //  Created by Eric Ricalens on 13/06/2016.
@@ -8,11 +8,10 @@
 
 import UIKit
 
-class saisieTableViewCell: UITableViewCell {
-    @IBOutlet weak var imageCategorie: UIImageView!
-    @IBOutlet weak var nomCategorie: UILabel!
-    @IBOutlet weak var detailCategorie: UILabel!
+class questionOuiNonTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var texteQuestion: UILabel!
+    @IBOutlet weak var reponseSegmentedControl: UISegmentedControl!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
