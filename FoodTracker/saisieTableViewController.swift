@@ -1,5 +1,5 @@
 //
-//  patientTableViewController.swift
+//  saisieTableViewController.swift
 //  FoodTracker
 //
 //  Created by Eric Ricalens on 13/06/2016.
@@ -8,106 +8,79 @@
 
 import UIKit
 
-class patientTableViewController: UITableViewController {
-    
-    
+class saisieTableViewController: UITableViewController {
+
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
+
         // Uncomment the following line to preserve selection between presentations
-         self.clearsSelectionOnViewWillAppear = false
+        // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-         self.navigationItem.rightBarButtonItem = self.editButtonItem()
-       // self.tableView.registerClass(patientTableViewCell.self, forCellReuseIdentifier: "MenuCell")
-
-        
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        if (segue.identifier == "editPatient") {
-            let svc = segue!.destinationViewController as! AjoutPatientViewController
-           
-            //  svc.listePatients = Donnees.listePatient
-            
-        }
-    }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-      
-        return 1
+        // #warning Incomplete implementation, return the number of sections
+        return 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Donnees.listePatient.patients.count
+        return 0
     }
 
-    
+    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MenuCell", forIndexPath: indexPath) as! patientTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
         // Configure the cell...
-        let patient = Donnees.listePatient.patients[indexPath.row]
-        cell.localisation?.text = patient.localisation
-        cell.nomage?.text = "Mr \(patient.nomPrenom) , \(patient.age) ans"
-        cell.motif?.text = patient.motif
-        var imagesymbol: UIImage
-        if patient.masculin {
-             imagesymbol = UIImage(named:  "hommesymbol.png")!
-        } else
-        {
-            imagesymbol = UIImage(named:  "femmesymbol.png")!
-        }
-        
-        cell.imageSex.image=imagesymbol
+
         return cell
     }
-    
+    */
 
-    
+    /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
- 
+    */
 
-    
+    /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            Donnees.listePatient.patients.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    
+    */
 
-    
+    /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
 
     }
-    
+    */
 
-    
+    /*
     // Override to support conditional rearranging of the table view.
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
-    
+    */
 
     /*
     // MARK: - Navigation
