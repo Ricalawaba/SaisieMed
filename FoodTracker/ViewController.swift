@@ -14,7 +14,7 @@ class ViewController: UIViewController, UITextFieldDelegate,
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var mealNameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
-    
+  //   var listePatients = patients()
 /*      @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var mealNameLabel: UILabel! */
 
@@ -27,6 +27,14 @@ class ViewController: UIViewController, UITextFieldDelegate,
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        if (segue.identifier == "affichePatients") {
+            let svc = segue!.destinationViewController as! patientTableViewController;
+            
+          //  svc.listePatients = Donnees.listePatient
+            
+        }
     }
     // MARK: UIImagePickerControllerDelegate
 

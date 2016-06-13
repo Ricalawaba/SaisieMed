@@ -8,7 +8,7 @@
 
 import Foundation
 
-class clinicalItem {
+/*class clinicalItem {
     var description : String = ""
     var identifier : String = ""
     var parent : clinicalItem?
@@ -20,4 +20,21 @@ class clinicalItem {
     }
     
     
+}*/
+
+class Examen {
+    var intitule : String
+    enum typeenum {
+        case ouinon
+        case reponsecourte
+        case donnee
+    }
+    var type:typeenum
+    var value: String
+    init (intitule: String,type: typeenum, value:String){
+            self.type=type
+            self.intitule=intitule
+        self.value=value
+        
+    }
 }

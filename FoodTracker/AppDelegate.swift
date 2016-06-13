@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct Donnees {
+    static var listePatient = patients()
+    static var listeCategorie = categorieExamen()
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
