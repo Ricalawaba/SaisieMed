@@ -21,6 +21,10 @@ class saisieTableViewController: UITableViewController {
         //self.tableView.registerClass(patientTableViewCell.self, forCellReuseIdentifier: "CategorieExamen")
     }
 
+    @IBAction func LongPush(sender: UILongPressGestureRecognizer) {
+        tableView.reloadData()
+        //print("refresh long push")
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -38,6 +42,7 @@ class saisieTableViewController: UITableViewController {
         }
 
     }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -49,7 +54,8 @@ class saisieTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return patient.examen.categories.count
     }
-
+    
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CategorieExamen", forIndexPath: indexPath) as! saisieTableViewCell
@@ -58,7 +64,7 @@ class saisieTableViewController: UITableViewController {
         let categorie=patient.examen.categories[indexPath.row]
         cell.imageCategorie.image = UIImage(named: categorie.namedImage)
         cell.nomCategorie.text = categorie.nom
-        cell.detailCategorie.text = "Vide"
+        cell.detailCategorie.text = categorie.detailString()
         cell.tag=indexPath.row
         return cell
     }

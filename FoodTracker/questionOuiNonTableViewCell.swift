@@ -9,9 +9,16 @@
 import UIKit
 
 class questionOuiNonTableViewCell: UITableViewCell {
-
+    var examen:Examen! = nil
+    
     @IBOutlet weak var texteQuestion: UILabel!
     @IBOutlet weak var reponseSegmentedControl: UISegmentedControl!
+    @IBAction func Changed(sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex==2 {examen.value=""}
+        else {
+            examen.value="\(sender.selectedSegmentIndex)"
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

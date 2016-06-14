@@ -9,7 +9,16 @@
 import UIKit
 
 class patientTableViewController: UITableViewController {
+    var longpushPatient = patients.patient()
     
+    @IBAction func showRapport(sender: UILongPressGestureRecognizer) {
+        let location : CGPoint = sender.locationInView(self.tableView)
+        let swipedIndexPath:NSIndexPath = self.tableView.indexPathForRowAtPoint(location)!
+        //let swipedcell:patientTableViewCell = self.tableView.cellForRowAtIndexPath(swipedIndexPath)!
+        //do your stuff here
+        longpushPatient = Donnees.listePatient.patients[swipedIndexPath.row]
+        performSegueWithIdentifier("showrapportSegue", sender: self)
+    }
     
     override func viewDidLoad() {
         
@@ -22,6 +31,7 @@ class patientTableViewController: UITableViewController {
          self.navigationItem.rightBarButtonItem = self.editButtonItem()
        // self.tableView.registerClass(patientTableViewCell.self, forCellReuseIdentifier: "MenuCell")
 
+        self.tableView.remembersLastFocusedIndexPath=true
         
     }
 
@@ -46,7 +56,12 @@ class patientTableViewController: UITableViewController {
                 //  svc.listePatients = Donnees.listePatient
                 
             }
+        if segue.identifier == "showrapportSegue" {
+            let svc = segue.destinationViewController as! rapportViewController
             
+                       svc.patient = longpushPatient
+            
+        }
 
     }
 

@@ -9,7 +9,16 @@
 import UIKit
 
 class reponsecourteTableViewCell: UITableViewCell, UITextFieldDelegate {
-
+    var examen: Examen! = nil
+    
+    @IBAction func reponsecourteEditEnd(sender: UITextField) {
+        if (valeurReponseCourte.text != nil) {
+            examen.value = valeurReponseCourte.text!
+         
+        }else {
+            examen.value=""
+        }
+    }
     @IBOutlet weak var texteReponsecourte: UILabel!
     @IBOutlet weak var valeurReponseCourte: UITextField!
     override func awakeFromNib() {

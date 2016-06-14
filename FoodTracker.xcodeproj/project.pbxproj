@@ -16,6 +16,7 @@
 		301825FE1D0F06E000592CE9 /* reponsecourteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301825FD1D0F06E000592CE9 /* reponsecourteTableViewCell.swift */; };
 		301826001D0F085700592CE9 /* examensTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301825FF1D0F085700592CE9 /* examensTableViewController.swift */; };
 		301826031D0F834500592CE9 /* pancarte_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 301826021D0F834500592CE9 /* pancarte_icon.png */; };
+		301826051D10580000592CE9 /* rapportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301826041D10580000592CE9 /* rapportViewController.swift */; };
 		30F43EE81D077C3B005E3BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43EE71D077C3B005E3BEB /* AppDelegate.swift */; };
 		30F43EEA1D077C3B005E3BEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43EE91D077C3B005E3BEB /* ViewController.swift */; };
 		30F43EED1D077C3B005E3BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30F43EEB1D077C3B005E3BEB /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 		301825FD1D0F06E000592CE9 /* reponsecourteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = reponsecourteTableViewCell.swift; sourceTree = "<group>"; };
 		301825FF1D0F085700592CE9 /* examensTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = examensTableViewController.swift; sourceTree = "<group>"; };
 		301826021D0F834500592CE9 /* pancarte_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pancarte_icon.png; sourceTree = "<group>"; };
+		301826041D10580000592CE9 /* rapportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rapportViewController.swift; sourceTree = "<group>"; };
 		30F43EE41D077C3B005E3BEB /* FoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F43EE71D077C3B005E3BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30F43EE91D077C3B005E3BEB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				30F43EE71D077C3B005E3BEB /* AppDelegate.swift */,
 				30F43EE91D077C3B005E3BEB /* ViewController.swift */,
 				30F43EEB1D077C3B005E3BEB /* Main.storyboard */,
+				301826041D10580000592CE9 /* rapportViewController.swift */,
 				301826011D0F0B2A00592CE9 /* Examens */,
 				30F43EEE1D077C3B005E3BEB /* Assets.xcassets */,
 				30F43EF01D077C3B005E3BEB /* LaunchScreen.storyboard */,
@@ -330,6 +333,7 @@
 				30F43F271D0ED1DC005E3BEB /* AjoutPatientViewController.swift in Sources */,
 				30F43F081D0DB58A005E3BEB /* clinicalItem.swift in Sources */,
 				30F43F291D0EE751005E3BEB /* saisieTableViewController.swift in Sources */,
+				301826051D10580000592CE9 /* rapportViewController.swift in Sources */,
 				30F43F2B1D0EE789005E3BEB /* saisieTableViewCell.swift in Sources */,
 				30F43F2D1D0EE938005E3BEB /* categorieExamen.swift in Sources */,
 			);

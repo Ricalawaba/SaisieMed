@@ -44,50 +44,49 @@ class examensTableViewController: UITableViewController {
 
     @IBAction func EnregistrerModif(sender: UIBarButtonItem) {
         
-        //get section of interest i.e: first section (0)
-        for row in 0 ..< tableView.numberOfRowsInSection(0)
-        {
-            
-            let indexPath = NSIndexPath(forRow: row, inSection: 0)
-            
-           
-            //following line of code is for invisible cells
-            self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: false)
-            
-            
-            //get cell for current row as my custom cell i.e :roomCell
-            let examen = categorie.examens[row]
-            if examen.type == Examen.typeenum.donnee {
-                let cell  = self.tableView.cellForRowAtIndexPath(indexPath)! as! reponsecourteTableViewCell
-                if cell.texteReponsecourte.text != examen.value {
-                    examen.value = cell.valeurReponseCourte.text!
-                }
-                
-            }else if examen.type == Examen.typeenum.ouinon {
-                let cell  = self.tableView.cellForRowAtIndexPath(indexPath)! as! questionOuiNonTableViewCell
-                if cell.reponseSegmentedControl.selectedSegmentIndex==0 {
-                    examen.value="0"
-                    
-                } else if cell.reponseSegmentedControl.selectedSegmentIndex==1 {
-                    examen.value="1"
-                } else {
-                    examen.value=""
-                    
-                }
-            
-            }
-            else if examen.type == Examen.typeenum.reponsecourte {
-                let cell  = self.tableView.cellForRowAtIndexPath(indexPath)! as! reponsecourteTableViewCell
-                if cell.texteReponsecourte.text != examen.value {
-                    examen.value = cell.valeurReponseCourte.text!
-                }
-            
-            
-            
-            
-                }
-    }
+//        //get section of interest i.e: first section (0)
+//        for row in 0 ..< tableView.numberOfRowsInSection(0)
+//        {
+//            
+//            let indexPath = NSIndexPath(forRow: row, inSection: 0)
+//            
+//            
+//            //following line of code is for invisible cells
+//            self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: false)
+//            
+//            
+//            //get cell for current row as my custom cell i.e :roomCell
+//            let examen = categorie.examens[row]
+//            if examen.type == Examen.typeenum.donnee {
+//                let cell  = self.tableView.cellForRowAtIndexPath(indexPath)! as! reponsecourteTableViewCell
+//                if cell.texteReponsecourte.text != examen.value {
+//                    examen.value = cell.valeurReponseCourte.text!
+//                }
+//                
+//            }else if examen.type == Examen.typeenum.ouinon {
+//                let cell  = self.tableView.cellForRowAtIndexPath(indexPath)! as! questionOuiNonTableViewCell
+//                if cell.reponseSegmentedControl.selectedSegmentIndex==0 {
+//                    examen.value="0"
+//                    
+//                } else if cell.reponseSegmentedControl.selectedSegmentIndex==1 {
+//                    examen.value="1"
+//                } else {
+//                    examen.value=""
+//                    
+//                }
+//                
+//            }
+//            else if examen.type == Examen.typeenum.reponsecourte {
+//                let cell  = self.tableView.cellForRowAtIndexPath(indexPath)! as! reponsecourteTableViewCell
+//                if cell.texteReponsecourte.text != examen.value {
+//                    examen.value = cell.valeurReponseCourte.text!
+//                }
+//            }
+//        }
          self.navigationController?.popViewControllerAnimated(true)
+       /* let parent = self.parentViewController as! saisieTableViewController
+        parent.tableView.reloadData()*/
+        
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -96,12 +95,13 @@ class examensTableViewController: UITableViewController {
         //var cell :UITableViewCell = tableView.dequeueReusableCellWithIdentifier("reponsecourteCell", forIndexPath: indexPath) as! reponsecourteTableViewCell
         //cell.textequestion
         let cell = UITableViewCell()
-        if examen1.type==Examen.typeenum.reponsecourte {
+        if examen1.type==Examen.typeenum.reponsecourte || examen1.type==Examen.typeenum.donnee{
          let cell2 = tableView.dequeueReusableCellWithIdentifier("reponsecourteCell", forIndexPath: indexPath) as! reponsecourteTableViewCell
             cell2.texteReponsecourte.text=examen1.intitule
             if examen1.value != "" {
                 cell2.valeurReponseCourte.text = examen1.value
             }
+            cell2.examen=examen1
             return cell2
         } else
         if examen1.type==Examen.typeenum.ouinon {
@@ -113,6 +113,7 @@ class examensTableViewController: UITableViewController {
                 cell3.reponseSegmentedControl.selectedSegmentIndex=1
                 
             }
+            cell3.examen=examen1
             return cell3
         }
         // Configure the cell...

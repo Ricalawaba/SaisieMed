@@ -22,19 +22,3 @@ import Foundation
     
 }*/
 
-class Examen {
-    var intitule : String
-    enum typeenum {
-        case ouinon
-        case reponsecourte
-        case donnee
-    }
-    var type:typeenum
-    var value: String
-    init (intitule: String,type: typeenum, value:String){
-            self.type=type
-            self.intitule=intitule
-        self.value=value
-        
-    }
-}
