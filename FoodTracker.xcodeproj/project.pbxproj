@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		301825F41D0EFFB400592CE9 /* administratif_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 301825F11D0EFFB400592CE9 /* administratif_icon.png */; };
+		301825F51D0EFFB400592CE9 /* digestif_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 301825F21D0EFFB400592CE9 /* digestif_icon.png */; };
+		301825F61D0EFFB400592CE9 /* tete_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 301825F31D0EFFB400592CE9 /* tete_icon.png */; };
+		301825F81D0F005000592CE9 /* nurse_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 301825F71D0F005000592CE9 /* nurse_icon.png */; };
+		301825FA1D0F009F00592CE9 /* os_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 301825F91D0F009F00592CE9 /* os_icon.png */; };
+		301825FC1D0F057A00592CE9 /* questionOuiNonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301825FB1D0F057A00592CE9 /* questionOuiNonTableViewCell.swift */; };
+		301825FE1D0F06E000592CE9 /* reponsecourteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301825FD1D0F06E000592CE9 /* reponsecourteTableViewCell.swift */; };
+		301826001D0F085700592CE9 /* examensTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301825FF1D0F085700592CE9 /* examensTableViewController.swift */; };
+		301826031D0F834500592CE9 /* pancarte_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 301826021D0F834500592CE9 /* pancarte_icon.png */; };
 		30F43EE81D077C3B005E3BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43EE71D077C3B005E3BEB /* AppDelegate.swift */; };
 		30F43EEA1D077C3B005E3BEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43EE91D077C3B005E3BEB /* ViewController.swift */; };
 		30F43EED1D077C3B005E3BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30F43EEB1D077C3B005E3BEB /* Main.storyboard */; };
@@ -25,6 +34,10 @@
 		30F43F201D0EA248005E3BEB /* hommesymbol.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F43F181D0EA248005E3BEB /* hommesymbol.png */; };
 		30F43F211D0EA248005E3BEB /* neuro_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F43F191D0EA248005E3BEB /* neuro_icon.png */; };
 		30F43F221D0EA248005E3BEB /* pneumo_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F43F1A1D0EA248005E3BEB /* pneumo_icon.png */; };
+		30F43F271D0ED1DC005E3BEB /* AjoutPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43F261D0ED1DC005E3BEB /* AjoutPatientViewController.swift */; };
+		30F43F291D0EE751005E3BEB /* saisieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43F281D0EE751005E3BEB /* saisieTableViewController.swift */; };
+		30F43F2B1D0EE789005E3BEB /* saisieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43F2A1D0EE789005E3BEB /* saisieTableViewCell.swift */; };
+		30F43F2D1D0EE938005E3BEB /* categorieExamen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43F2C1D0EE938005E3BEB /* categorieExamen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +51,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		301825F11D0EFFB400592CE9 /* administratif_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = administratif_icon.png; sourceTree = "<group>"; };
+		301825F21D0EFFB400592CE9 /* digestif_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = digestif_icon.png; sourceTree = "<group>"; };
+		301825F31D0EFFB400592CE9 /* tete_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tete_icon.png; sourceTree = "<group>"; };
+		301825F71D0F005000592CE9 /* nurse_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nurse_icon.png; sourceTree = "<group>"; };
+		301825F91D0F009F00592CE9 /* os_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = os_icon.png; sourceTree = "<group>"; };
+		301825FB1D0F057A00592CE9 /* questionOuiNonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = questionOuiNonTableViewCell.swift; sourceTree = "<group>"; };
+		301825FD1D0F06E000592CE9 /* reponsecourteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = reponsecourteTableViewCell.swift; sourceTree = "<group>"; };
+		301825FF1D0F085700592CE9 /* examensTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = examensTableViewController.swift; sourceTree = "<group>"; };
+		301826021D0F834500592CE9 /* pancarte_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pancarte_icon.png; sourceTree = "<group>"; };
 		30F43EE41D077C3B005E3BEB /* FoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F43EE71D077C3B005E3BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30F43EE91D077C3B005E3BEB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +82,10 @@
 		30F43F181D0EA248005E3BEB /* hommesymbol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hommesymbol.png; path = ../../../image/hommesymbol.png; sourceTree = "<group>"; };
 		30F43F191D0EA248005E3BEB /* neuro_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = neuro_icon.png; path = ../../../image/neuro_icon.png; sourceTree = "<group>"; };
 		30F43F1A1D0EA248005E3BEB /* pneumo_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pneumo_icon.png; path = ../../../image/pneumo_icon.png; sourceTree = "<group>"; };
+		30F43F261D0ED1DC005E3BEB /* AjoutPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AjoutPatientViewController.swift; path = ../AjoutPatientViewController.swift; sourceTree = "<group>"; };
+		30F43F281D0EE751005E3BEB /* saisieTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = saisieTableViewController.swift; sourceTree = "<group>"; };
+		30F43F2A1D0EE789005E3BEB /* saisieTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = saisieTableViewCell.swift; sourceTree = "<group>"; };
+		30F43F2C1D0EE938005E3BEB /* categorieExamen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = categorieExamen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +106,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		301826011D0F0B2A00592CE9 /* Examens */ = {
+			isa = PBXGroup;
+			children = (
+				301825FF1D0F085700592CE9 /* examensTableViewController.swift */,
+				301825FD1D0F06E000592CE9 /* reponsecourteTableViewCell.swift */,
+				301825FB1D0F057A00592CE9 /* questionOuiNonTableViewCell.swift */,
+			);
+			name = Examens;
+			sourceTree = "<group>";
+		};
 		30F43EDB1D077C3B005E3BEB = {
 			isa = PBXGroup;
 			children = (
@@ -101,13 +137,13 @@
 		30F43EE61D077C3B005E3BEB /* FoodTracker */ = {
 			isa = PBXGroup;
 			children = (
+				30F43F2F1D0EF7DE005E3BEB /* Liste patient */,
+				30F43F2E1D0EF7BE005E3BEB /* Menu Saisie */,
 				30F43F231D0EA255005E3BEB /* images */,
 				30F43EE71D077C3B005E3BEB /* AppDelegate.swift */,
 				30F43EE91D077C3B005E3BEB /* ViewController.swift */,
-				30F43F0D1D0E26D6005E3BEB /* patientTableViewController.swift */,
-				30F43F111D0E508F005E3BEB /* patientInfo.swift */,
-				30F43F0F1D0E27FE005E3BEB /* patientTableViewCell.swift */,
 				30F43EEB1D077C3B005E3BEB /* Main.storyboard */,
+				301826011D0F0B2A00592CE9 /* Examens */,
 				30F43EEE1D077C3B005E3BEB /* Assets.xcassets */,
 				30F43EF01D077C3B005E3BEB /* LaunchScreen.storyboard */,
 				30F43EF31D077C3B005E3BEB /* Info.plist */,
@@ -128,16 +164,43 @@
 		30F43F231D0EA255005E3BEB /* images */ = {
 			isa = PBXGroup;
 			children = (
+				301825F91D0F009F00592CE9 /* os_icon.png */,
+				301826021D0F834500592CE9 /* pancarte_icon.png */,
+				301825F11D0EFFB400592CE9 /* administratif_icon.png */,
+				301825F21D0EFFB400592CE9 /* digestif_icon.png */,
+				301825F31D0EFFB400592CE9 /* tete_icon.png */,
 				30F43F131D0EA248005E3BEB /* cardio_icon.png */,
 				30F43F141D0EA248005E3BEB /* cardio2_icon.png */,
 				30F43F151D0EA248005E3BEB /* femme.png */,
 				30F43F161D0EA248005E3BEB /* femmesymbol.png */,
 				30F43F171D0EA248005E3BEB /* Homme.png */,
 				30F43F181D0EA248005E3BEB /* hommesymbol.png */,
+				301825F71D0F005000592CE9 /* nurse_icon.png */,
 				30F43F191D0EA248005E3BEB /* neuro_icon.png */,
 				30F43F1A1D0EA248005E3BEB /* pneumo_icon.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		30F43F2E1D0EF7BE005E3BEB /* Menu Saisie */ = {
+			isa = PBXGroup;
+			children = (
+				30F43F2C1D0EE938005E3BEB /* categorieExamen.swift */,
+				30F43F2A1D0EE789005E3BEB /* saisieTableViewCell.swift */,
+				30F43F281D0EE751005E3BEB /* saisieTableViewController.swift */,
+			);
+			name = "Menu Saisie";
+			sourceTree = "<group>";
+		};
+		30F43F2F1D0EF7DE005E3BEB /* Liste patient */ = {
+			isa = PBXGroup;
+			children = (
+				30F43F261D0ED1DC005E3BEB /* AjoutPatientViewController.swift */,
+				30F43F0D1D0E26D6005E3BEB /* patientTableViewController.swift */,
+				30F43F111D0E508F005E3BEB /* patientInfo.swift */,
+				30F43F0F1D0E27FE005E3BEB /* patientTableViewCell.swift */,
+			);
+			name = "Liste patient";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,12 +285,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				301826031D0F834500592CE9 /* pancarte_icon.png in Resources */,
 				30F43F211D0EA248005E3BEB /* neuro_icon.png in Resources */,
 				30F43F1D1D0EA248005E3BEB /* femme.png in Resources */,
 				30F43F201D0EA248005E3BEB /* hommesymbol.png in Resources */,
 				30F43F1B1D0EA248005E3BEB /* cardio_icon.png in Resources */,
+				301825F81D0F005000592CE9 /* nurse_icon.png in Resources */,
+				301825F41D0EFFB400592CE9 /* administratif_icon.png in Resources */,
 				30F43F221D0EA248005E3BEB /* pneumo_icon.png in Resources */,
+				301825F61D0EFFB400592CE9 /* tete_icon.png in Resources */,
+				301825FA1D0F009F00592CE9 /* os_icon.png in Resources */,
 				30F43F1F1D0EA248005E3BEB /* Homme.png in Resources */,
+				301825F51D0EFFB400592CE9 /* digestif_icon.png in Resources */,
 				30F43F1E1D0EA248005E3BEB /* femmesymbol.png in Resources */,
 				30F43EF21D077C3B005E3BEB /* LaunchScreen.storyboard in Resources */,
 				30F43F1C1D0EA248005E3BEB /* cardio2_icon.png in Resources */,
@@ -250,12 +319,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				301825FE1D0F06E000592CE9 /* reponsecourteTableViewCell.swift in Sources */,
+				301826001D0F085700592CE9 /* examensTableViewController.swift in Sources */,
 				30F43EEA1D077C3B005E3BEB /* ViewController.swift in Sources */,
 				30F43EE81D077C3B005E3BEB /* AppDelegate.swift in Sources */,
+				301825FC1D0F057A00592CE9 /* questionOuiNonTableViewCell.swift in Sources */,
 				30F43F0E1D0E26D6005E3BEB /* patientTableViewController.swift in Sources */,
 				30F43F121D0E5090005E3BEB /* patientInfo.swift in Sources */,
 				30F43F101D0E27FE005E3BEB /* patientTableViewCell.swift in Sources */,
+				30F43F271D0ED1DC005E3BEB /* AjoutPatientViewController.swift in Sources */,
 				30F43F081D0DB58A005E3BEB /* clinicalItem.swift in Sources */,
+				30F43F291D0EE751005E3BEB /* saisieTableViewController.swift in Sources */,
+				30F43F2B1D0EE789005E3BEB /* saisieTableViewCell.swift in Sources */,
+				30F43F2D1D0EE938005E3BEB /* categorieExamen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +529,7 @@
 				30F43F031D077C3B005E3BEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		30F43F041D077C3B005E3BEB /* Build configuration list for PBXNativeTarget "FoodTrackerTests" */ = {
 			isa = XCConfigurationList;
@@ -461,6 +538,7 @@
 				30F43F061D077C3B005E3BEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

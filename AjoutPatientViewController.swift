@@ -32,15 +32,21 @@ class AjoutPatientViewController: UIViewController , UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+   
 
     @IBAction func AjoutPatientAction(sender: UIButton) {
-        let patient1 =  patients.patient()
-        patient1.age = Int(age.text!)!
+        var val = false
+        if hommeFemme.selectedSegmentIndex==1 {val = true}
+        let patient1 =  patients.patient(nomPrenom: "\(nomFamille.text!.uppercaseString) \(prenom.text!.capitalizedString)",
+                                         age: Int(age.text!)!,
+                                         localisation: localisation.text!,
+                                         motif: motif.text!, masculin: val )
+        
+        /*patient1.age = Int(age.text!)!
         patient1.nomPrenom = "\(nomFamille.text!.uppercaseString) \(prenom.text!.capitalizedString)"
         patient1.localisation=localisation.text!
         if hommeFemme.selectedSegmentIndex==0 {patient1.masculin=true}
-        patient1.motif=motif.text!
+        patient1.motif=motif.text!*/
         Donnees.listePatient.patients.append(patient1)
         self.navigationController?.popViewControllerAnimated(true)
         

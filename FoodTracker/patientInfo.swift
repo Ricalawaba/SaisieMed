@@ -15,7 +15,7 @@ class patients {
         var localisation : String
         var motif : String
         var masculin: Bool
-        
+        var examen=categorieExamen()
         init() {
             nomPrenom=""
             age=0
@@ -24,11 +24,21 @@ class patients {
             masculin=false
         }
         init (nomPrenom : String,age:Int,localisation:String,motif:String, masculin:Bool){
+            
             self.nomPrenom=nomPrenom
             self.age=age
             self.localisation=localisation
             self.motif=motif
             self.masculin=masculin
+            examen.categories[0].examens[0].value=nomPrenom
+            if masculin == true {
+                examen.categories[0].examens[1].value="0"
+            } else {
+                examen.categories[0].examens[1].value="1"
+            }
+            examen.categories[0].examens[2].value="\(age)"
+            examen.categories[0].examens[3].value=localisation
+            examen.categories[0].examens[4].value=motif
         }
     }
     var patients = [patient]()

@@ -8,13 +8,14 @@
 
 import UIKit
 
-class reponsecourteTableViewCell: UITableViewCell {
+class reponsecourteTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var texteReponsecourte: UILabel!
     @IBOutlet weak var valeurReponseCourte: UITextField!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        valeurReponseCourte.delegate=self
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -22,5 +23,8 @@ class reponsecourteTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.endEditing(true)
+        return false
+    }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class saisieTableViewController: UITableViewController {
-
+    var patient = patients.patient()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,9 +26,13 @@ class saisieTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "examens") {
-    //        let svc = segue.destinationViewController as! examensTableViewController
-          //  sender?.row
+        if (segue.identifier == "showexamen") {
+            
+            let svc = segue.destinationViewController as! examensTableViewController
+            let selectedIndex = self.tableView.indexPathForCell(sender as! UITableViewCell)
+            svc.categorie = patient.examen.categories[selectedIndex!.row]
+            print("Patient \(patient.nomPrenom) , row \(selectedIndex!.row)")
+            //  sender?.row
             //  svc.listePatients = Donnees.listePatient
             
         }
@@ -43,7 +47,7 @@ class saisieTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Donnees.listeCategorie.categories.count
+        return patient.examen.categories.count
     }
 
     
@@ -51,7 +55,7 @@ class saisieTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("CategorieExamen", forIndexPath: indexPath) as! saisieTableViewCell
 
         // Configure the cell...
-        let categorie=Donnees.listeCategorie.categories[indexPath.row]
+        let categorie=patient.examen.categories[indexPath.row]
         cell.imageCategorie.image = UIImage(named: categorie.namedImage)
         cell.nomCategorie.text = categorie.nom
         cell.detailCategorie.text = "Vide"

@@ -9,7 +9,9 @@
 import UIKit
 
 class examensTableViewController: UITableViewController {
-    var examen = [Examen]()
+    var categorie = categorieExamen.Categorie()
+    
+    //var examen = [Examen]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,8 +20,9 @@ class examensTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        examen=Donnees.listeCategorie.categories.first!.examens
-        print(examen.count)
+        //examen=Donnees.listeCategorie.categories.first!.examens
+        self.navigationController?.title=categorie.nom
+        // print(examen.count)
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,12 +39,60 @@ class examensTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return examen.count
+        return categorie.examens.count
     }
 
+    @IBAction func EnregistrerModif(sender: UIBarButtonItem) {
+        
+        //get section of interest i.e: first section (0)
+        for row in 0 ..< tableView.numberOfRowsInSection(0)
+        {
+            
+            let indexPath = NSIndexPath(forRow: row, inSection: 0)
+            
+           
+            //following line of code is for invisible cells
+            self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: false)
+            
+            
+            //get cell for current row as my custom cell i.e :roomCell
+            let examen = categorie.examens[row]
+            if examen.type == Examen.typeenum.donnee {
+                let cell  = self.tableView.cellForRowAtIndexPath(indexPath)! as! reponsecourteTableViewCell
+                if cell.texteReponsecourte.text != examen.value {
+                    examen.value = cell.texteReponsecourte.text!
+                }
+                
+            }else if examen.type == Examen.typeenum.ouinon {
+                let cell  = self.tableView.cellForRowAtIndexPath(indexPath)! as! questionOuiNonTableViewCell
+                if cell.reponseSegmentedControl.selectedSegmentIndex==0 {
+                    examen.value="0"
+                    
+                } else if cell.reponseSegmentedControl.selectedSegmentIndex==1 {
+                    examen.value="1"
+                } else {
+                    examen.value=""
+                    
+                }
+            
+            }
+            else if examen.type == Examen.typeenum.reponsecourte {
+                let cell  = self.tableView.cellForRowAtIndexPath(indexPath)! as! reponsecourteTableViewCell
+                if cell.texteReponsecourte.text != examen.value {
+                    examen.value = cell.texteReponsecourte.text!
+                }
+            
+            
+            
+            
+                }
+    }
+         self.navigationController?.popViewControllerAnimated(true)
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let examen1=examen[indexPath.row]
+        let examen1 = categorie.examens[indexPath.row]
+        
         //var cell :UITableViewCell = tableView.dequeueReusableCellWithIdentifier("reponsecourteCell", forIndexPath: indexPath) as! reponsecourteTableViewCell
         //cell.textequestion
         let cell = UITableViewCell()

@@ -36,6 +36,18 @@ class patientTableViewController: UITableViewController {
             //  svc.listePatients = Donnees.listePatient
             
         }
+        if (segue.identifier == "showsaisie") {
+                
+                let svc = segue.destinationViewController as! saisieTableViewController
+                let selectedIndex = self.tableView.indexPathForCell(sender as! UITableViewCell)
+                svc.patient = Donnees.listePatient.patients[selectedIndex!.row]
+          //  print("\(), \(), row \(selectedIndex!.row)")
+                //  sender?.row
+                //  svc.listePatients = Donnees.listePatient
+                
+            }
+            
+
     }
 
     // MARK: - Table view data source
