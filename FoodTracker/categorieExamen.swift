@@ -32,7 +32,8 @@ class categorieExamen {
                          Examen(intitule: "Masculin", type: Examen.typeenum.ouinon,value: ""),
                          Examen(intitule: "Age", type: Examen.typeenum.reponsecourte,value: ""),
                          Examen(intitule: "Localisation", type: Examen.typeenum.reponsecourte,value: ""),
-                         Examen(intitule: "Motif", type: Examen.typeenum.reponsecourte,value: "")
+                         Examen(intitule: "Motif", type: Examen.typeenum.reponsecourte,value: ""),
+                         Examen(intitule: "Médecin Traitant", type: Examen.typeenum.reponsecourte,value: "")
                          ]
         Categorie1.examens = examcat1
         
@@ -47,6 +48,17 @@ class categorieExamen {
         
         let Categorie3 = Categorie(nom: "Plaintes",namedImage: "tete_icon.png")
         let Categorie31 = Categorie(nom: "Pancarte",namedImage: "pancarte_icon.png")
+        let examcat31 = [ Examen(intitule: "TA", type: Examen.typeenum.reponsecourte,value: ""),
+                          Examen(intitule: "TA bras droit", type: Examen.typeenum.reponsecourte,value: ""),
+                          Examen(intitule: "TA bras gauche", type: Examen.typeenum.reponsecourte,value: ""),
+                          Examen(intitule: "Fréquence cardiaque", type: Examen.typeenum.reponsecourte,value: ""),
+                          Examen(intitule: "Température", type: Examen.typeenum.reponsecourte,value: ""),
+                          Examen(intitule: "Fréquence respiratoire", type: Examen.typeenum.reponsecourte,value: ""),
+                          Examen(intitule: "SaO2", type: Examen.typeenum.reponsecourte,value: ""),
+                          Examen(intitule: "EVA", type: Examen.typeenum.reponsecourte,value: "")
+                        ]
+        Categorie31.examens=examcat31
+                          
         // Examen(intitule: "Motif", type: Examen.typeenum.reponsecourte,value: "")
         let Categorie4 = Categorie(nom: "Neurologie",namedImage: "neuro_icon.png")
         let Categorie5 = Categorie(nom: "Cardiovasculaire",namedImage: "cardio2_icon.png")

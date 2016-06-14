@@ -21,7 +21,7 @@ class examensTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         //examen=Donnees.listeCategorie.categories.first!.examens
-        self.navigationController?.title=categorie.nom
+        self.title=categorie.nom
         // print(examen.count)
     }
 
@@ -60,7 +60,7 @@ class examensTableViewController: UITableViewController {
             if examen.type == Examen.typeenum.donnee {
                 let cell  = self.tableView.cellForRowAtIndexPath(indexPath)! as! reponsecourteTableViewCell
                 if cell.texteReponsecourte.text != examen.value {
-                    examen.value = cell.texteReponsecourte.text!
+                    examen.value = cell.valeurReponseCourte.text!
                 }
                 
             }else if examen.type == Examen.typeenum.ouinon {
@@ -79,7 +79,7 @@ class examensTableViewController: UITableViewController {
             else if examen.type == Examen.typeenum.reponsecourte {
                 let cell  = self.tableView.cellForRowAtIndexPath(indexPath)! as! reponsecourteTableViewCell
                 if cell.texteReponsecourte.text != examen.value {
-                    examen.value = cell.texteReponsecourte.text!
+                    examen.value = cell.valeurReponseCourte.text!
                 }
             
             

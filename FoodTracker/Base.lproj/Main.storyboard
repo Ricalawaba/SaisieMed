@@ -205,7 +205,7 @@
                                     <outlet property="localisation" destination="B5m-yE-gP9" id="exT-vP-S6v"/>
                                     <outlet property="motif" destination="sTQ-Tp-8W2" id="hAm-02-tP3"/>
                                     <outlet property="nomage" destination="fL0-Hh-wL1" id="SfX-WX-yba"/>
-                                    <segue destination="ffe-hV-O8B" kind="show" id="Lm0-MO-r3S"/>
+                                    <segue destination="ffe-hV-O8B" kind="show" identifier="showsaisie" id="Lm0-MO-r3S"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -257,7 +257,7 @@
                                     <outlet property="detailCategorie" destination="k5w-yK-Avv" id="39o-BQ-Q68"/>
                                     <outlet property="imageCategorie" destination="TWX-FD-80i" id="C6D-mO-Mkc"/>
                                     <outlet property="nomCategorie" destination="alo-yT-gIa" id="dSJ-ug-QbA"/>
-                                    <segue destination="6p3-rv-hQ4" kind="show" id="xRR-2X-R7L"/>
+                                    <segue destination="6p3-rv-hQ4" kind="show" identifier="showexamen" id="xRR-2X-R7L"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -349,9 +349,13 @@
                             <outlet property="delegate" destination="6p3-rv-hQ4" id="Yuy-0y-1tL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Questions" prompt="Validate" id="v4A-0B-NRH">
+                    <navigationItem key="navigationItem" title="Questions" id="v4A-0B-NRH">
                         <barButtonItem key="backBarButtonItem" title="&lt;-" id="17M-Qm-g3G"/>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="u4g-kk-p9j"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="u4g-kk-p9j">
+                            <connections>
+                                <action selector="EnregistrerModif:" destination="6p3-rv-hQ4" id="Vcl-7V-s9g"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bFp-Gh-QjC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -486,6 +490,6 @@
         <image name="defaultPhoto" width="180" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="b6z-8T-zVE"/>
+        <segue reference="Ngk-Yr-hx1"/>
     </inferredMetricsTieBreakers>
 </document>
