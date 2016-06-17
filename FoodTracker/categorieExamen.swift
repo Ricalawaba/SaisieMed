@@ -8,45 +8,6 @@
 
 import Foundation
 
-class Examen {
-    var intitule : String
-    var info : String = ""
-    var categorie: categorieExamen.Categorie?
-    
-    enum  examenEnum {
-        case ouinon
-        case reponsecourte
-        case donnee
-        case ouinonreponse
-        case group
-        case check
-        case selection
-    }
-    var type: examenEnum
-    var value: String=""
-    init(categorie:categorieExamen.Categorie) {
-        self.categorie=categorie
-        self.intitule=categorie.nom
-        self.type = .group
-        
-    }
-    init(intitule: String,type:  examenEnum) {
-        self.type=type
-        self.intitule=intitule
-    }
-    init(intitule: String,type:  examenEnum, info:String) {
-        self.type=type
-        self.intitule=intitule
-        self.info=info
-    }
-    init (intitule: String,type:  examenEnum, value:String){
-        
-        self.type=type
-        self.intitule=intitule
-        self.value=value
-        
-    }
-}
 
 class categorieExamen {
     var categories = [ Categorie]()
@@ -96,8 +57,11 @@ class categorieExamen {
                         if examen.type ==  .donnee {
                             str += "\(examen.intitule)=\(examen.value), "
                         }
-                        if examen.type ==  .group {
-                            str += "\(examen.intitule): \(examen.categorie?.detailString()), "
+                        
+                    }else if examen.type ==  .group {
+                        let str2=examen.categorie?.detailString()
+                        if !(str2?.isEmpty)! {
+                        str += "\(examen.intitule): \(examen.categorie!.detailString()), "
                         }
                     }
                 }
@@ -113,9 +77,9 @@ class categorieExamen {
             Examen(intitule: "Nom Prénom", type:  .reponsecourte),
             Examen(intitule: "Masculin", type:  .ouinon),
             Examen(intitule: "Age", type:  .donnee),
-            Examen(intitule: "Localisation", type:  .reponsecourte),
+            Examen(intitule: "Localisation", type:  .reponsecourte, tag: "localisation"),
             Examen(intitule: "Motif", type:  .reponsecourte),
-            Examen(intitule: "Méd.Trait.", type:  .donnee),
+            Examen(intitule: "Méd.Trait.", type:  .donnee,tag: "medecin"),
             Examen(intitule: "Vit en institution", type:  .check ),
             Examen(intitule: "Célibataire", type:  .check ),
             Examen(intitule: "En couple", type:  .check ),
@@ -131,11 +95,11 @@ class categorieExamen {
             ]
         Categorie1.examens = examcat1
         
-        let Categorie2 = Categorie(nom: "Contexte/Antécédent",namedImage: "nurse_icon.png")
+        let Categorie2 = Categorie(nom: "Comorbidité/Antécédent",namedImage: "nurse_icon.png")
         let examcat2 = [
             Examen(intitule: "Pas d'atcds notables", type:  .check ),
             Examen(intitule: "atcd1", type: .selection ),
-            Examen(intitule: "atcd2", type:  .reponsecourte ),
+            Examen(intitule: "atcd2", type:  .reponsecourte,tag: "atcd" ),
             Examen(intitule: "atcd3", type:  .reponsecourte ),
             Examen(intitule: "atcd4", type:  .reponsecourte ),
             Examen(intitule: "atcd5", type:  .reponsecourte ),
@@ -157,7 +121,7 @@ class categorieExamen {
         
         let Categorie21 = Categorie(nom: "Traitement",namedImage: "medoc_icon.png")
         let examcat21 = [
-            Examen(intitule: "Pas de traitement", type:  .check ),
+            Examen(intitule: "Pas de traitement au long cours", type:  .check ),
             Examen(intitule: "Sous anti-coaguluant", type:  .check ),
             Examen(intitule: "Sous anti-agrégant", type:  .check ),
             Examen(intitule: "ttt1", type:  .reponsecourte ),
@@ -195,17 +159,18 @@ class categorieExamen {
         let Categorie31 = Categorie(nom: "Pancarte",namedImage: "pancarte_icon.png")
         let examcat31 = [
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(intitule: "Poids", type:  .donnee ),
-            Examen(intitule: "Variation pondérale significative", type:  .ouinon ),
-            Examen(intitule: "Détail", type:  .reponsecourte ),
             Examen(intitule: "TA", type:  .donnee ),
             Examen(intitule: "TA bras droit", type:  .donnee ),
             Examen(intitule: "TA bras gauche", type:  .donnee ),
             Examen(intitule: "FC", type:  .donnee ),
             Examen(intitule: "T°", type:  .donnee ),
-            Examen(intitule: "Fr. Resp", type:  .donnee ),
-            Examen(intitule: "SaO2%", type:  .donnee ),
             Examen(intitule: "EVA", type:  .donnee ),
+            Examen(intitule: "SaO2%", type:  .donnee ),
+            Examen(intitule: "Fr. Resp", type:  .donnee ),
+            Examen(intitule: "Poids", type:  .donnee ),
+            Examen(intitule: "Variation pondérale récente significative", type:  .ouinon ),
+            Examen(intitule: "Détail", type:  .reponsecourte ),
+            Examen(intitule: "Fr. Resp", type:  .donnee ),
             Examen(intitule: "Libre", type:  .reponsecourte )
         ]
         Categorie31.examens=examcat31
@@ -252,6 +217,7 @@ class categorieExamen {
             Examen(intitule: "Toux", type:  .ouinon ),
             Examen(intitule: "Expectorations aérées", type:  .check ),
             Examen(intitule: "O.M.I.", type:  .ouinon ),
+            Examen(intitule: "Mollets souples", type:  .check ),
            
             Examen(intitule: "Libre", type:  .reponsecourte )
         ]
@@ -280,16 +246,22 @@ class categorieExamen {
         let examcat7 = [
             Examen(intitule: "Examen Normal", type:  .ouinon ),
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(intitule: "Anorexie", type:  .ouinon ),
+            Examen(intitule: "Trouble de l'apétit", type:  .ouinon ),
             Examen(intitule: "Nausée/Vomissements", type:  .ouinon ),
             Examen(intitule: "Diarrhée", type:  .ouinon ),
             Examen(intitule: "Constipation", type:  .ouinon ),
             Examen(intitule: "Douleur abdominale", type:  .ouinon ),
-            Examen(intitule: "Douleur epigastrique", type:  .ouinon ),
-            Examen(intitule: "Douleur flanc gauche", type:  .ouinon ),
-            Examen(intitule: "Douleur flanc droit", type:  .ouinon ),
-            Examen(intitule: "Douleur hypochondre gauche", type:  .ouinon ),
-            Examen(intitule: "Douleur hypochondre droit", type:  .ouinon ),
+            Examen(intitule: "epigastrique", type:  .check ),
+            Examen(intitule: "Irradiation dans le dos", type:  .ouinon ),
+            Examen(intitule: "hypochondre droit", type:  .check ),
+            Examen(intitule: "flanc droit", type:  .check ),
+            Examen(intitule: "FI droite", type:  .check ),
+            Examen(intitule: "hypochondre gauche", type:  .check ),
+            Examen(intitule: "flanc gauche", type:  .check ),
+            Examen(intitule: "FI gauche", type:  .check ),
+            Examen(intitule: "FI gauche", type:  .check ),
+            Examen(intitule: "hypogastrique", type:  .check ),
+            
             Examen(intitule: "Selles", type:  .donnee ),
             Examen(intitule: "Selles molles", type:  .ouinon ),
             Examen(intitule: "Méléna", type:  .ouinon ),
@@ -304,18 +276,18 @@ class categorieExamen {
             Examen(intitule: "Examen Normal", type:  .ouinon ),
             
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(intitule: "BU Normale", type:  .ouinon ),
+            Examen(intitule: "BU Normale", type:  .check ),
             Examen(intitule: "BU Positive", type:  .donnee ),
             Examen(intitule: "Troubles fonctionnels urinaires", type:  .ouinon ),
             Examen(intitule: "Pollakiurie", type:  .ouinon ),
             Examen(intitule: "Brulure mictionnelle", type:  .ouinon ),
             Examen(intitule: "Hématurie", type:  .ouinon ),
             Examen(intitule: "Douleur lombaire", type:  .ouinon ),
-            Examen(intitule: "Douleur fosse lombaire gauche", type:  .ouinon ),
-            Examen(intitule: "Douleur fosse lombaire droite", type:  .ouinon ),
-            Examen(intitule: "Douleur flanc gauche", type:  .ouinon ),
-            Examen(intitule: "Douleur flanc droit", type:  .ouinon ),
-            Examen(intitule: "Testicules normaux", type:  .ouinon ),
+            Examen(intitule: "Douleur fosse lombaire gauche", type:  .check ),
+            Examen(intitule: "Douleur fosse lombaire droite", type:  .check ),
+            Examen(intitule: "Douleur flanc gauche", type:  .check ),
+            Examen(intitule: "Douleur flanc droit", type:  .check ),
+            Examen(intitule: "Testicules normaux", type:  .check ),
             Examen(intitule: "Libre", type:  .reponsecourte )
         ]
         Categorie8.examens = examcat8
@@ -351,7 +323,7 @@ class categorieExamen {
         let catECG1 = Categorie(nom: "Paramètres Tracé",namedImage: "cardio_icon.png")
         let examcatECG1 = [
              Examen(intitule: "Libre", type:  .reponsecourte ),
-             Examen(intitule: "Tracé parasité", type:  .ouinon ),
+             Examen(intitule: "Tracé parasité", type:  .check ),
              Examen(intitule: "FC", type:  .donnee ),
              Examen(intitule: "P (mm)", type:  .donnee ),
              Examen(intitule: "P (ms)", type:  .donnee ),

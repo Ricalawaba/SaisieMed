@@ -1,15 +1,20 @@
 //
-//  saisieTableViewController.swift
+//  selectionTexteTableViewController.swift
 //  FoodTracker
 //
-//  Created by Eric Ricalens on 13/06/2016.
+//  Created by Eric Ricalens on 17/06/2016.
 //  Copyright © 2016 Eric Ricalens. All rights reserved.
 //
 
 import UIKit
 
-class saisieTableViewController: UITableViewController {
-    var patient = patients.patient()
+class selectionTexteTableViewController: UITableViewController, UISearchBarDelegate {
+    var textes = [String]()
+    var searchActive : Bool = false
+    var filtered: [String] = []
+    
+    @IBOutlet weak var Cell: UITableViewCell!
+    @IBOutlet weak var searchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,32 +22,54 @@ class saisieTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-         //self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        //self.tableView.registerClass(patientTableViewCell.self, forCellReuseIdentifier: "CategorieExamen")
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        searchBar.delegate=self
+        //searchBar.
+    }
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        
+//        let cell = tableView.dequeueReusableCellWithIdentifier("selectionTextCell", forIndexPath: indexPath)
+//        searchBar.text=cell.textLabel?.text
+//    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    func searchBarBookmarkButtonClicked(searchBar: UISearchBar) {
+        searchActive=false
+    }
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filtered = textes.filter({ (text) -> Bool in
+            let tmp: NSString = text
+            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            return range.location != NSNotFound
+        })
+        if(filtered.count == 0){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        self.tableView.reloadData()
     }
 
-    @IBAction func LongPush(sender: UILongPressGestureRecognizer) {
-        tableView.reloadData()
-        //print("refresh long push")
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "showexamen") {
-            
-            let svc = segue.destinationViewController as! examensTableViewController
-            let selectedIndex = self.tableView.indexPathForCell(sender as! UITableViewCell)
-            svc.categorie = patient.examen.categories[selectedIndex!.row]
-            svc.navigationController?.title = svc.categorie.nom
-            //  sender?.row
-            //  svc.listePatients = Donnees.listePatient
-            
-        }
 
-    }
-    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -52,23 +79,22 @@ class saisieTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return patient.examen.categories.count
+        if(searchActive) {
+            return filtered.count
+        }
+        return textes.count
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        tableView.reloadData()
-        
-    }
+
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CategorieExamen", forIndexPath: indexPath) as! saisieTableViewCell
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("selectionTextCell", forIndexPath: indexPath)
+        if(searchActive){
+            cell.textLabel?.text = filtered[indexPath.row]
+        } else {
+        cell.textLabel?.text=textes[indexPath.row]
+        }
         // Configure the cell...
-        let categorie=patient.examen.categories[indexPath.row]
-        cell.imageCategorie.image = UIImage(named: categorie.namedImage)
-        cell.nomCategorie.text = categorie.nom
-        cell.detailCategorie.text = categorie.detailString()
-        cell.tag=indexPath.row
+
         return cell
     }
     

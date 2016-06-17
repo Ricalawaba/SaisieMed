@@ -34,6 +34,7 @@ class AjoutPatientViewController: UIViewController , UITextFieldDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name:UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name:UIKeyboardWillHideNotification, object: nil)
     }
+   
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -59,6 +60,7 @@ class AjoutPatientViewController: UIViewController , UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+     // MARK: - Ajout patient par delegation
     var delegate: ajoutPatientDelegate?
     func ajoutPatient() {
         if let del = delegate {

@@ -42,6 +42,18 @@ class examensTableViewController: UITableViewController {
             //  svc.listePatients = Donnees.listePatient
             
         }
+        if (segue.identifier == "selectionSegue") {
+            
+            let svc = segue.destinationViewController as! selectionTexteTableViewController
+            let mycell = (sender as! selectionTableViewCell)
+            
+            svc.textes = ["Cholecystectomie","Appendicectomie","IDM"
+            ]
+            //  sender?.row
+            //  svc.listePatients = Donnees.listePatient
+            
+        }
+
         
     }
 
