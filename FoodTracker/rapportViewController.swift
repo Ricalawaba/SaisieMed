@@ -18,7 +18,7 @@ class rapportViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         var myHTMLString:String
-        myHTMLString = "<H2>\(patient.nomPrenom), \(patient.age)</H2>"
+        myHTMLString = "<H2>\(patient.nomPrenom), \(patient.age) ans</H2>"
         
         for  cat in patient.examen.categories
         {

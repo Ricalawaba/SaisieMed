@@ -31,6 +31,19 @@ class examensTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "autoshow") {
+            
+            let svc = segue.destinationViewController as! examensTableViewController
+            let mycell = (sender as! examgroupTableViewCell)
+            svc.categorie = mycell.examen!.categorie!
+            svc.navigationController?.title = svc.categorie.nom
+            //  sender?.row
+            //  svc.listePatients = Donnees.listePatient
+            
+        }
+        
+    }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
@@ -44,45 +57,7 @@ class examensTableViewController: UITableViewController {
 
     @IBAction func EnregistrerModif(sender: UIBarButtonItem) {
         
-//        //get section of interest i.e: first section (0)
-//        for row in 0 ..< tableView.numberOfRowsInSection(0)
-//        {
-//            
-//            let indexPath = NSIndexPath(forRow: row, inSection: 0)
-//            
-//            
-//            //following line of code is for invisible cells
-//            self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: false)
-//            
-//            
-//            //get cell for current row as my custom cell i.e :roomCell
-//            let examen = categorie.examens[row]
-//            if examen.type == Examen.typeenum.donnee {
-//                let cell  = self.tableView.cellForRowAtIndexPath(indexPath)! as! reponsecourteTableViewCell
-//                if cell.texteReponsecourte.text != examen.value {
-//                    examen.value = cell.valeurReponseCourte.text!
-//                }
-//                
-//            }else if examen.type == Examen.typeenum.ouinon {
-//                let cell  = self.tableView.cellForRowAtIndexPath(indexPath)! as! questionOuiNonTableViewCell
-//                if cell.reponseSegmentedControl.selectedSegmentIndex==0 {
-//                    examen.value="0"
-//                    
-//                } else if cell.reponseSegmentedControl.selectedSegmentIndex==1 {
-//                    examen.value="1"
-//                } else {
-//                    examen.value=""
-//                    
-//                }
-//                
-//            }
-//            else if examen.type == Examen.typeenum.reponsecourte {
-//                let cell  = self.tableView.cellForRowAtIndexPath(indexPath)! as! reponsecourteTableViewCell
-//                if cell.texteReponsecourte.text != examen.value {
-//                    examen.value = cell.valeurReponseCourte.text!
-//                }
-//            }
-//        }
+
          self.navigationController?.popViewControllerAnimated(true)
        /* let parent = self.parentViewController as! saisieTableViewController
         parent.tableView.reloadData()*/
@@ -95,7 +70,7 @@ class examensTableViewController: UITableViewController {
         //var cell :UITableViewCell = tableView.dequeueReusableCellWithIdentifier("reponsecourteCell", forIndexPath: indexPath) as! reponsecourteTableViewCell
         //cell.textequestion
         let cell = UITableViewCell()
-        if examen1.type==Examen.typeenum.reponsecourte || examen1.type==Examen.typeenum.donnee{
+        if examen1.type==Examen.examenEnum.reponsecourte || examen1.type==Examen.examenEnum.donnee{
          let cell2 = tableView.dequeueReusableCellWithIdentifier("reponsecourteCell", forIndexPath: indexPath) as! reponsecourteTableViewCell
             cell2.texteReponsecourte.text=examen1.intitule
             if examen1.value != "" {
@@ -104,7 +79,7 @@ class examensTableViewController: UITableViewController {
             cell2.examen=examen1
             return cell2
         } else
-        if examen1.type==Examen.typeenum.ouinon {
+        if examen1.type==Examen.examenEnum.ouinon {
             let cell3 = tableView.dequeueReusableCellWithIdentifier("questionOuiNonCell", forIndexPath: indexPath) as! questionOuiNonTableViewCell
             cell3.texteQuestion.text = examen1.intitule
             if examen1.value == "0" {
@@ -116,6 +91,41 @@ class examensTableViewController: UITableViewController {
             cell3.examen=examen1
             return cell3
         }
+        if examen1.type==Examen.examenEnum.check {
+            let cell3 = tableView.dequeueReusableCellWithIdentifier("checkCell", forIndexPath: indexPath) as! checkTableViewCell
+            cell3.questionCheckLabel.text = examen1.intitule
+            if examen1.value == "0" {
+                cell3.checkSegment.selectedSegmentIndex=0
+            } else  {
+                cell3.checkSegment.selectedSegmentIndex=1
+                
+            }
+            cell3.examen=examen1
+            return cell3
+        }
+
+        if examen1.type==Examen.examenEnum.group {
+            let cell3 = tableView.dequeueReusableCellWithIdentifier("examgroup", forIndexPath: indexPath) as! examgroupTableViewCell
+            cell3.intitule.text = examen1.intitule
+                        cell3.examen=examen1
+            if let namedImage = examen1.categorie?.namedImage
+            {
+                cell3.monImage.image=UIImage(named: namedImage)
+            }
+            
+            cell3.details.text=examen1.categorie?.detailString()
+            return cell3
+        }
+        if examen1.type==Examen.examenEnum.selection {
+            let cell3 = tableView.dequeueReusableCellWithIdentifier("selectionCell", forIndexPath: indexPath) as! selectionTableViewCell
+            cell3.questionSelection.text = examen1.intitule
+            cell3.examen=examen1
+
+            
+
+            return cell3
+        }
+
         // Configure the cell...
         return cell
          }

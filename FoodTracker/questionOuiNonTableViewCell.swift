@@ -16,7 +16,7 @@ class questionOuiNonTableViewCell: UITableViewCell {
     @IBAction func Changed(sender: UISegmentedControl) {
         if sender.selectedSegmentIndex==2 {examen.value=""}
         else {
-            examen.value="\(sender.selectedSegmentIndex)"
+            self.examen.value="\(sender.selectedSegmentIndex)"
         }
     }
     override func awakeFromNib() {

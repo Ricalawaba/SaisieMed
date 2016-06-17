@@ -10,15 +10,37 @@ import Foundation
 
 class Examen {
     var intitule : String
-    enum typeenum {
+    var info : String = ""
+    var categorie: categorieExamen.Categorie?
+    
+    enum  examenEnum {
         case ouinon
         case reponsecourte
         case donnee
         case ouinonreponse
+        case group
+        case check
+        case selection
     }
-    var type:typeenum
-    var value: String
-    init (intitule: String,type: typeenum, value:String){
+    var type: examenEnum
+    var value: String=""
+    init(categorie:categorieExamen.Categorie) {
+        self.categorie=categorie
+        self.intitule=categorie.nom
+        self.type = .group
+        
+    }
+    init(intitule: String,type:  examenEnum) {
+        self.type=type
+        self.intitule=intitule
+    }
+    init(intitule: String,type:  examenEnum, info:String) {
+        self.type=type
+        self.intitule=intitule
+        self.info=info
+    }
+    init (intitule: String,type:  examenEnum, value:String){
+        
         self.type=type
         self.intitule=intitule
         self.value=value
@@ -33,191 +55,328 @@ class categorieExamen {
         var examens = [ Examen]()
         var nom: String
         var namedImage : String
+//        var childs=[Categorie]()
+//        var haveChild : Bool {
+//            get {
+//                if childs.count == 0 { return false }
+//                return true
+//            }
+//        }
         init(){
             nom=""
             namedImage=""
             
         }
+        
         init(nom:String, namedImage:String){
             self.nom=nom
             self.namedImage=namedImage
         }
         func detailString() -> String {
-            var str: String = ""
-            for var index in 0..<examens.count {
-                let examen=examens[index]
-                if !examen.value.isEmpty {
-                    if examen.type == Examen.typeenum.ouinon {
-                        if examen.value == "0" {
-                            str += "\(examen.intitule), "
-                        } else if examen.value == "1" {
-                            str += "\(examen.intitule)=0, "
+                var str: String = ""
+                for  index in 0..<examens.count {
+                    let examen=examens[index]
+                    if !examen.value.isEmpty {
+                        if examen.type ==  .ouinon || examen.type == .check {
+                            if examen.value == "0" {
+                                str += "\(examen.intitule), "
+                            } else if examen.value == "1" {
+                                let vowels: [Character] = ["a","e","i","o","u"]
+                                if vowels.contains(examen.intitule.lowercaseString.characters.first!) {
+                                    
+                                    str += "Pas d'\(examen.intitule), "}
+                                else {
+                                    str += "Pas de \(examen.intitule), "}
+                            }
                         }
                         
-                        
-                    }
-                    if  examen.type == Examen.typeenum.reponsecourte {
-                        str += "\(examen.value), "
-                    }
-                    if examen.type == Examen.typeenum.donnee {
-                        str += "\(examen.intitule)=\(examen.value), "
+                        if  examen.type ==  .reponsecourte {
+                            str += "\(examen.value), "
+                        }
+                        if examen.type ==  .donnee {
+                            str += "\(examen.intitule)=\(examen.value), "
+                        }
+                        if examen.type ==  .group {
+                            str += "\(examen.intitule): \(examen.categorie?.detailString()), "
+                        }
                     }
                 }
-                
-            }
-            if !str.isEmpty {str.removeAtIndex(str.endIndex.predecessor())
+                if !str.isEmpty {str.removeAtIndex(str.endIndex.predecessor())
                 str.removeAtIndex(str.endIndex.predecessor())}
-            return str
-     
-        }
+                return str
+            }
     }
-    
+
     init(){
         let Categorie1 = Categorie(nom: "Administratif",namedImage: "administratif_icon.png")
         let examcat1 = [
-            Examen(intitule: "Nom Prénom", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "Masculin", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Age", type: Examen.typeenum.donnee,value: ""),
-            Examen(intitule: "Localisation", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "Motif", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "Médecin Traitant", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "Vit en institution", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Célibataire", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "En couple", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Veuf(ve)", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Dirigé par le centre 15", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "adressé par", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Médecin envoyeur", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "Transport SMUR", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Transport Pompiers", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Transport Famille", type: Examen.typeenum.ouinon,value: "")
+            Examen(intitule: "Nom Prénom", type:  .reponsecourte),
+            Examen(intitule: "Masculin", type:  .ouinon),
+            Examen(intitule: "Age", type:  .donnee),
+            Examen(intitule: "Localisation", type:  .reponsecourte),
+            Examen(intitule: "Motif", type:  .reponsecourte),
+            Examen(intitule: "Méd.Trait.", type:  .donnee),
+            Examen(intitule: "Vit en institution", type:  .check ),
+            Examen(intitule: "Célibataire", type:  .check ),
+            Examen(intitule: "En couple", type:  .check ),
+            Examen(intitule: "Veuf(ve)", type:  .check ),
+            Examen(intitule: "Dirigé par le centre 15", type:  .check ),
+            Examen(intitule: "adressé par", type:  .donnee ),
+            Examen(intitule: "se présente spontanément", type:  .check ),
+            Examen(intitule: "Transport SMUR", type:  .check ),
+            Examen(intitule: "Transport Pompiers", type:  .check ),
+            Examen(intitule: "Transport Famille", type:  .ouinon ),
+            Examen(intitule: "Libre", type:  .reponsecourte )
             
             ]
         Categorie1.examens = examcat1
         
         let Categorie2 = Categorie(nom: "Contexte/Antécédent",namedImage: "nurse_icon.png")
         let examcat2 = [
-            Examen(intitule: "Pas d'antécédents notables", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "atcd1", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "atcd2", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "atcd3", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "atcd4", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "atcd5", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "atcd6", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "atcd7", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "Commentaire", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "HTA", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Dyslipémie", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Diabète", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Obesité", type: Examen.typeenum.ouinon,value: ""),
-             Examen(intitule: "Surcharge pondérale", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Tabagisme", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Tabagisme sevré", type: Examen.typeenum.ouinon,value: "")
+            Examen(intitule: "Pas d'atcds notables", type:  .check ),
+            Examen(intitule: "atcd1", type: .selection ),
+            Examen(intitule: "atcd2", type:  .reponsecourte ),
+            Examen(intitule: "atcd3", type:  .reponsecourte ),
+            Examen(intitule: "atcd4", type:  .reponsecourte ),
+            Examen(intitule: "atcd5", type:  .reponsecourte ),
+            Examen(intitule: "atcd6", type:  .reponsecourte ),
+            Examen(intitule: "atcd7", type:  .reponsecourte ),
+            Examen(intitule: "Commentaire", type:  .reponsecourte ),
+            Examen(intitule: "HTA", type:  .ouinon ),
+            Examen(intitule: "Dyslipémie", type:  .ouinon ),
+            Examen(intitule: "Diabète", type:  .ouinon ),
+            Examen(intitule: "Obesité", type:  .ouinon ),
+             Examen(intitule: "Surcharge pondérale", type:  .ouinon ),
+            Examen(intitule: "Tabagisme", type:  .ouinon ),
+            Examen(intitule: "Tabagisme sevré", type:  .check ),
+            Examen(intitule: "Allergie", type:  .ouinon ),
+            Examen(intitule: "Detail", type:  .reponsecourte ),
+            Examen(intitule: "Libre", type:  .reponsecourte )
         ]
         Categorie2.examens = examcat2
         
+        let Categorie21 = Categorie(nom: "Traitement",namedImage: "medoc_icon.png")
+        let examcat21 = [
+            Examen(intitule: "Pas de traitement", type:  .check ),
+            Examen(intitule: "Sous anti-coaguluant", type:  .check ),
+            Examen(intitule: "Sous anti-agrégant", type:  .check ),
+            Examen(intitule: "ttt1", type:  .reponsecourte ),
+            Examen(intitule: "ttt2", type:  .reponsecourte ),
+            Examen(intitule: "ttt3", type:  .reponsecourte ),
+            Examen(intitule: "ttt4", type:  .reponsecourte ),
+            Examen(intitule: "ttt5", type:  .reponsecourte ),
+            Examen(intitule: "ttt6", type:  .reponsecourte ),
+            Examen(intitule: "ttt7", type:  .reponsecourte ),
+            Examen(intitule: "Commentaire", type:  .reponsecourte ),
+    
+            Examen(intitule: "Libre", type:  .reponsecourte )
+        ]
+        Categorie21.examens = examcat21
+        
         let Categorie3 = Categorie(nom: "Plaintes/Anamnèse",namedImage: "tete_icon.png")
         let examcat3 = [
-            Examen(intitule: "Commentaire", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "Douleur abdominale", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Asthénie", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Douleur thoracique", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Bilan de traumatisme", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Fièvre", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Symptomes respiratoires", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Troubles digestifs", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Malaise", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Vertige", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Anxiété", type: Examen.typeenum.ouinon,value: "")
+        //   Examen(categorie: Categorie21 ),
+            Examen(intitule: "Commentaire", type:  .reponsecourte ),
+            Examen(intitule: "Douleur abdominale", type:  .check ),
+            Examen(intitule: "Asthénie", type:  .ouinon ),
+            Examen(intitule: "Douleur thoracique", type:  .ouinon ),
+            Examen(intitule: "Bilan de traumatisme", type:  .ouinon ),
+            Examen(intitule: "Fièvre", type:  .ouinon ),
+            Examen(intitule: "Symptomes respiratoires", type:  .ouinon ),
+            Examen(intitule: "Troubles digestifs", type:  .ouinon ),
+            Examen(intitule: "Malaise", type:  .ouinon ),
+            Examen(intitule: "Vertige", type:  .ouinon ),
+            Examen(intitule: "Anxiété", type:  .ouinon ),
+            Examen(intitule: "Pas d'autres plaintes somatiques", type:  .ouinon ),
+            Examen(intitule: "Libre", type:  .reponsecourte )
         ]
         Categorie3.examens=examcat3
+        
         let Categorie31 = Categorie(nom: "Pancarte",namedImage: "pancarte_icon.png")
         let examcat31 = [
-            Examen(intitule: "Commentaire", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "Poids", type: Examen.typeenum.donnee,value: ""),
-            Examen(intitule: "TA", type: Examen.typeenum.donnee,value: ""),
-            Examen(intitule: "TA bras droit", type: Examen.typeenum.donnee,value: ""),
-            Examen(intitule: "TA bras gauche", type: Examen.typeenum.donnee,value: ""),
-            Examen(intitule: "FC", type: Examen.typeenum.donnee,value: ""),
-            Examen(intitule: "T°", type: Examen.typeenum.donnee,value: ""),
-            Examen(intitule: "Fr. Resp", type: Examen.typeenum.donnee,value: ""),
-            Examen(intitule: "SaO2%", type: Examen.typeenum.donnee,value: ""),
-            Examen(intitule: "EVA", type: Examen.typeenum.donnee,value: "")
+            Examen(intitule: "Commentaire", type:  .reponsecourte ),
+            Examen(intitule: "Poids", type:  .donnee ),
+            Examen(intitule: "Variation pondérale significative", type:  .ouinon ),
+            Examen(intitule: "Détail", type:  .reponsecourte ),
+            Examen(intitule: "TA", type:  .donnee ),
+            Examen(intitule: "TA bras droit", type:  .donnee ),
+            Examen(intitule: "TA bras gauche", type:  .donnee ),
+            Examen(intitule: "FC", type:  .donnee ),
+            Examen(intitule: "T°", type:  .donnee ),
+            Examen(intitule: "Fr. Resp", type:  .donnee ),
+            Examen(intitule: "SaO2%", type:  .donnee ),
+            Examen(intitule: "EVA", type:  .donnee ),
+            Examen(intitule: "Libre", type:  .reponsecourte )
         ]
         Categorie31.examens=examcat31
         
-        // Examen(intitule: "Motif", type: Examen.typeenum.reponsecourte,value: "")
+        // Examen(intitule: "Motif", type:  .reponsecourte )
         let Categorie4 = Categorie(nom: "Neurologie",namedImage: "neuro_icon.png")
         let examcat4 = [
-            Examen(intitule: "Examen Normal", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Commentaire", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "Glasgow", type: Examen.typeenum.donnee,value: ""),
-            Examen(intitule: "D.T.S.", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Céphallée", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "ROT symétriques", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "RCP en flexion", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Occulomotricité normale", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "RPM positifs", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Troubles Cognitifs", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Photophobie", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Troubles visuels", type: Examen.typeenum.ouinon,value: "")
+            Examen(intitule: "Examen Normal", type:  .check ),
+            Examen(intitule: "Commentaire", type:  .reponsecourte ),
+            Examen(intitule: "Glasgow", type:  .donnee ),
+            Examen(intitule: "D.T.S.", type:  .ouinon ),
+            Examen(intitule: "Céphallée", type:  .ouinon ),
+            Examen(intitule: "ROT symétriques", type:  .check ),
+            Examen(intitule: "RCP en flexion", type:  .check ),
+            Examen(intitule: "Babinski", type:  .donnee ),
+            Examen(intitule: "Occulomotricité normale", type:  .check ),
+            Examen(intitule: "RPM présents", type:  .check ),
+            Examen(intitule: "Pas de signe de localisation", type:  .check ),
+            Examen(intitule: "Troubles Cognitifs", type:  .ouinon ),
+            Examen(intitule: "Photophobie", type:  .ouinon ),
+            Examen(intitule: "Troubles visuels", type:  .ouinon ),
+            Examen(intitule: "Libre", type:  .reponsecourte )
         ]
         Categorie4.examens = examcat4
+        
         let Categorie5 = Categorie(nom: "Cardiovasculaire",namedImage: "cardio2_icon.png")
         let examcat5 = [
-            Examen(intitule: "Examen Normal", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Commentaire", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "Douleur thoracique", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Détail", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "Dyspnée", type: Examen.typeenum.ouinon,value: ""),
-             Examen(intitule: "Détail", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "BDC regulier", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "BDC irregulier", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Souffle cardiaque", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Pouls fémoraux présents", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Pouls pédieux présents", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Souffle carotidien", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Pas de crépitants", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Rales crépitants aux bases", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Rales crépitants étendues", type: Examen.typeenum.ouinon,value: "")
+            Examen(intitule: "Examen Normal", type:  .check ),
+            Examen(intitule: "Commentaire", type:  .reponsecourte ),
+            Examen(intitule: "Douleur thoracique", type:  .ouinon ),
+            Examen(intitule: "Détail", type:  .reponsecourte ),
+            Examen(intitule: "Dyspnée", type:  .ouinon ),
+             Examen(intitule: "Détail", type:  .reponsecourte ),
+            Examen(intitule: "BDC regulier", type:  .check ),
+            Examen(intitule: "BDC irregulier", type:  .check ),
+            Examen(intitule: "Pas de souffle cardiaque", type:  .check ),
+            Examen(intitule: "Souffle cardiaque", type:  .donnee ),
+            Examen(intitule: "Pouls fémoraux présents", type:  .check ),
+            Examen(intitule: "Pouls pédieux présents", type:  .check ),
+            Examen(intitule: "Souffle carotidien", type:  .ouinon ),
+            Examen(intitule: "Pas de crépitants", type:  .check ),
+            Examen(intitule: "Rales crépitants aux bases", type:  .check ),
+             Examen(intitule: "Rales crépitants étendues", type:  .check ),
+            Examen(intitule: "Toux", type:  .ouinon ),
+            Examen(intitule: "Expectorations aérées", type:  .check ),
+            Examen(intitule: "O.M.I.", type:  .ouinon ),
+           
+            Examen(intitule: "Libre", type:  .reponsecourte )
         ]
         Categorie5.examens = examcat5
         
         let Categorie6 = Categorie(nom: "Respiratoire",namedImage: "pneumo_icon.png")
         let examcat6 = [
-            Examen(intitule: "Examen Normal", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Commentaire", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "Sibilants", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Dyspnée", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Cyanose labiale", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Tirage", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Difficulté à l'élocution", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Oxygenothérapie à domicile", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Ronchopathie", type: Examen.typeenum.ouinon,value: "")
+            Examen(intitule: "Examen Normal", type:  .check ),
+            Examen(intitule: "Commentaire", type:  .reponsecourte ),
+            Examen(intitule: "Dyspnée", type:  .ouinon ),
+            Examen(intitule: "MV + symétrique", type:  .check ),
+            Examen(intitule: "Sibilants", type:  .ouinon ),
+            Examen(intitule: "Crépitants", type:  .ouinon ),
+            Examen(intitule: "Foyer auscultatoire", type:  .ouinon ),
+            Examen(intitule: "Cyanose labiale", type:  .ouinon ),
+            Examen(intitule: "Tirage", type:  .ouinon ),
+            Examen(intitule: "Difficulté à l'élocution", type:  .ouinon ),
+            Examen(intitule: "Oxygenothérapie à domicile", type:  .check ),
+            Examen(intitule: "Ronchopathie", type:  .ouinon ),
+            Examen(intitule: "SaO2%", type:  .donnee ),
+            Examen(intitule: "Libre", type:  .reponsecourte )
         ]
         Categorie6.examens = examcat6
         
         let Categorie7 = Categorie(nom: "Digestif",namedImage: "digestif_icon.png")
         let examcat7 = [
-            Examen(intitule: "Examen Normal", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Commentaire", type: Examen.typeenum.reponsecourte,value: ""),
-            Examen(intitule: "Anorexie", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Nausée/Vomissements", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Diarrhée", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Constipation", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Douleur epigastrique", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Douleur flanc gauche", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Douleur flanc droit", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Douleur hypochondre gauche", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Douleur hypochondre droit", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Selles", type: Examen.typeenum.donnee,value: ""),
-            Examen(intitule: "Selles molles", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Méléna", type: Examen.typeenum.ouinon,value: ""),
-            Examen(intitule: "Rectorragie", type: Examen.typeenum.ouinon,value: "")
+            Examen(intitule: "Examen Normal", type:  .ouinon ),
+            Examen(intitule: "Commentaire", type:  .reponsecourte ),
+            Examen(intitule: "Anorexie", type:  .ouinon ),
+            Examen(intitule: "Nausée/Vomissements", type:  .ouinon ),
+            Examen(intitule: "Diarrhée", type:  .ouinon ),
+            Examen(intitule: "Constipation", type:  .ouinon ),
+            Examen(intitule: "Douleur abdominale", type:  .ouinon ),
+            Examen(intitule: "Douleur epigastrique", type:  .ouinon ),
+            Examen(intitule: "Douleur flanc gauche", type:  .ouinon ),
+            Examen(intitule: "Douleur flanc droit", type:  .ouinon ),
+            Examen(intitule: "Douleur hypochondre gauche", type:  .ouinon ),
+            Examen(intitule: "Douleur hypochondre droit", type:  .ouinon ),
+            Examen(intitule: "Selles", type:  .donnee ),
+            Examen(intitule: "Selles molles", type:  .ouinon ),
+            Examen(intitule: "Méléna", type:  .ouinon ),
+            Examen(intitule: "Rectorragie", type:  .ouinon ),
+            Examen(intitule: "Orifices herniaires libre", type:  .ouinon ),
+            Examen(intitule: "Libre", type:  .reponsecourte )
         ]
         Categorie7.examens = examcat7
-        let Categorie8 = Categorie(nom: "Locomoteur",namedImage: "os_icon.png")
-        categories += [Categorie1,Categorie2,Categorie3,Categorie31,Categorie4,Categorie5,Categorie6,Categorie7,Categorie8]
+        
+        let Categorie8 = Categorie(nom: "Urologie",namedImage: "rein_icon.png")
+        let examcat8 = [
+            Examen(intitule: "Examen Normal", type:  .ouinon ),
+            
+            Examen(intitule: "Commentaire", type:  .reponsecourte ),
+            Examen(intitule: "BU Normale", type:  .ouinon ),
+            Examen(intitule: "BU Positive", type:  .donnee ),
+            Examen(intitule: "Troubles fonctionnels urinaires", type:  .ouinon ),
+            Examen(intitule: "Pollakiurie", type:  .ouinon ),
+            Examen(intitule: "Brulure mictionnelle", type:  .ouinon ),
+            Examen(intitule: "Hématurie", type:  .ouinon ),
+            Examen(intitule: "Douleur lombaire", type:  .ouinon ),
+            Examen(intitule: "Douleur fosse lombaire gauche", type:  .ouinon ),
+            Examen(intitule: "Douleur fosse lombaire droite", type:  .ouinon ),
+            Examen(intitule: "Douleur flanc gauche", type:  .ouinon ),
+            Examen(intitule: "Douleur flanc droit", type:  .ouinon ),
+            Examen(intitule: "Testicules normaux", type:  .ouinon ),
+            Examen(intitule: "Libre", type:  .reponsecourte )
+        ]
+        Categorie8.examens = examcat8
+
+        let Categorie9 = Categorie(nom: "O.R.L.",namedImage: "nez_icon.png")
+        let examcat9 = [
+            Examen(intitule: "Examen Normal", type:  .ouinon ),
+            
+            Examen(intitule: "Commentaire", type:  .reponsecourte ),
+            Examen(intitule: "Dysphagie", type:  .ouinon ),
+            Examen(intitule: "Amygdales normales", type:  .ouinon ),
+            Examen(intitule: "Rhinorhée", type:  .ouinon ),
+            Examen(intitule: "Hypoaccousie", type:  .ouinon ),
+            Examen(intitule: "Acouphènes", type:  .ouinon ),
+            Examen(intitule: "Vertige", type:  .ouinon ),
+            Examen(intitule: "Amygdalite", type:  .ouinon ),
+            Examen(intitule: "Erythème pharyngé", type:  .ouinon ),
+            Examen(intitule: "Adénopathie cervicale", type:  .ouinon ),
+            Examen(intitule: "Adénopathie sous-maxillaire", type:  .ouinon ),
+            Examen(intitule: "Epistaxis", type:  .donnee ),
+            Examen(intitule: "Pas d'otalgie", type:  .ouinon ),
+            Examen(intitule: "Otalgie droite", type:  .check ),
+            Examen(intitule: "Otalgie gauche", type:  .check ),
+
+            Examen(intitule: "Libre", type:  .reponsecourte )
+        ]
+        Categorie9.examens = examcat9
+        
+        
+        let Categorie20 = Categorie(nom: "Locomoteur",namedImage: "os_icon.png")
+        let CatECG = Categorie(nom: "ECG",namedImage: "cardio_icon.png")
+        let catECGConclusion = Categorie(nom: "ECG",namedImage: "cardio_icon.png")
+        let catECG1 = Categorie(nom: "Paramètres Tracé",namedImage: "cardio_icon.png")
+        let examcatECG1 = [
+             Examen(intitule: "Libre", type:  .reponsecourte ),
+             Examen(intitule: "Tracé parasité", type:  .ouinon ),
+             Examen(intitule: "FC", type:  .donnee ),
+             Examen(intitule: "P (mm)", type:  .donnee ),
+             Examen(intitule: "P (ms)", type:  .donnee ),
+             Examen(intitule: "PR (ms)", type:  .donnee ),
+             Examen(intitule: "QRS (ms)", type:  .donnee ),
+             Examen(intitule: "aQRS", type:  .donnee ),
+             Examen(intitule: "QT", type:  .donnee ),
+             Examen(intitule: "QTc", type:  .donnee )
+        ]
+        catECG1.examens = examcatECG1
+        
+        
+        let CatECG2 = Categorie(nom: "P-PR",namedImage: "cardio_icon.png")
+        
+        
+        let CatECG3 = Categorie(nom: "QRS",namedImage: "cardio_icon.png")
+        let CatECG4 = Categorie(nom: "ST",namedImage: "cardio_icon.png")
+        let CatECG5 = Categorie(nom: "ECG",namedImage: "cardio_icon.png")
+        
+        CatECG.examens = [
+            Examen(intitule: "libre", type: .reponsecourte),
+            Examen(categorie: catECG1)
+        ]
+        
+        categories += [Categorie1,Categorie2,Categorie21, Categorie3,Categorie31,Categorie4,Categorie5,Categorie6,Categorie7,Categorie8, Categorie9, Categorie20, CatECG]
     }
     
     

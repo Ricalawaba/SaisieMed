@@ -8,7 +8,7 @@
 
 import UIKit
 
-class patientTableViewController: UITableViewController {
+class patientTableViewController: UITableViewController,ajoutPatientDelegate {
     var longpushPatient = patients.patient()
     
     @IBAction func showRapport(sender: UILongPressGestureRecognizer) {
@@ -34,15 +34,20 @@ class patientTableViewController: UITableViewController {
         self.tableView.remembersLastFocusedIndexPath=true
         
     }
-
+    func patientAdded(sender: AjoutPatientViewController, patient: patients.patient) {
+        Donnees.listePatient.patients.append(patient)
+        tableView.reloadData()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        if (segue.identifier == "editPatient") {
+        
+     
+        if (segue.identifier == "ajoutPatient") {
             let svc = segue!.destinationViewController as! AjoutPatientViewController
-           
+             svc.delegate=self
             //  svc.listePatients = Donnees.listePatient
             
         }
