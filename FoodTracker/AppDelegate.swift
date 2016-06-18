@@ -8,18 +8,52 @@
 
 import UIKit
 
+extension String {
+    
+    func stringByAppendingPathComponent(path: String) -> String {
+        
+        let nsSt = self as NSString
+        
+        return nsSt.stringByAppendingPathComponent(path)
+    }
+}
+
 struct Donnees {
     static var listePatient = patients()
     static var listeCategorie = categorieExamen()
     static var selectiontextDict = [String: ([String]) ]()
 }
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    func getDocumentsDirectory() -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    var filePathAtcd : String {
+               let filename = getDocumentsDirectory().stringByAppendingPathComponent("atcd.txt")
+        return filename
+  
+    }
+    var filePathMedicament : String {
+        let filename = getDocumentsDirectory().stringByAppendingPathComponent("medicament.txt")
+        return filename
+        
+    }
+    var filePathLocalisation : String {
+        let filename = getDocumentsDirectory().stringByAppendingPathComponent("localisation.txt")
+        return filename
+        
+    }
+    var filePathMedecin : String {
+        let filename = getDocumentsDirectory().stringByAppendingPathComponent("medecin.txt")
+        return filename
+        
+    }
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Donnees.selectiontextDict["atcd"] = ["RGO","Néoplasie colique","Asthme","Pneumopathie"].sort()
@@ -27,6 +61,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Donnees.selectiontextDict["glasgow"] = ["3","4","5","6","7","8","9","10","11","12","13","14","15"]
         Donnees.selectiontextDict["localisation"] = ["Salle d'attente","Box 1","Box 2","Box 3","Box 4","Box 5","Box 6","Box 7","Box A","Box B","Box C","Box D","Box E", "Box F", "Bureau", "I.O.A","Degrav", "Suture"]
         Donnees.selectiontextDict["medecin"] = ["Pas de médecin traitant"]
+//        let writePath = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("instagram.igo")
+//        let data = NSKeyedArchiver.archivedDataWithRootObject(self)
+//        let filename = getDocumentsDirectory().stringByAppendingPathComponent("atcd.txt")
+//        if let names = NSKeyedUnarchiver.unarchiveObjectWithFile(filename) as? [String] {
+//            Donnees.selectiontextDict["atcd"] = names
+//        }
+        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathAtcd) as? [String] {
+            Donnees.selectiontextDict["atcd"] = array
+        }
+        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMedecin) as? [String] {
+            Donnees.selectiontextDict["medecin"] = array
+        }
+        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMedicament) as? [String] {
+            Donnees.selectiontextDict["medicament"] = array
+        }
+        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathLocalisation) as? [String] {
+            Donnees.selectiontextDict["localisation"] = array
+        }
         return true
     }
 
@@ -36,8 +88,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
+        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["atcd"]!, toFile: filePathAtcd)
+        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["medecin"]!, toFile: filePathMedecin)
+        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["medicament"]!, toFile: filePathMedicament)
+        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["localisation"]!, toFile: filePathLocalisation)
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
