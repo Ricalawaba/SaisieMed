@@ -65,9 +65,11 @@ class AjoutPatientViewController: UIViewController , UITextFieldDelegate {
     func ajoutPatient() {
         if let del = delegate {
             var val = false
+            var unAge = Int(age.text!)
+            if unAge==nil {unAge=0}
             if hommeFemme.selectedSegmentIndex==0 {val = true}
             let patient1 =  patients.patient(nomPrenom: "\(nomFamille.text!.uppercaseString) \(prenom.text!.capitalizedString)",
-                                             age: Int(age.text!)!,
+                                             age: unAge!,
                                              localisation: localisation.text!,
                                              motif: motif.text!, masculin: val )
             del.patientAdded(self, patient: patient1)

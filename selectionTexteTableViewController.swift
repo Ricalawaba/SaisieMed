@@ -7,12 +7,17 @@
 //
 
 import UIKit
-
+protocol textSelectedDelegate {
+    func textSelected(sender:selectionTexteTableViewController, text:String)
+}
 class selectionTexteTableViewController: UITableViewController, UISearchBarDelegate {
+    // MARK: Properties
     var textes = [String]()
     var searchActive : Bool = false
     var filtered: [String] = []
+    var delegate:textSelectedDelegate?
     
+    // MARK; IBOutlet
     @IBOutlet weak var Cell: UITableViewCell!
     @IBOutlet weak var searchBar: UISearchBar!
     override func viewDidLoad() {
@@ -24,6 +29,7 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         searchBar.delegate=self
+        
         //searchBar.
     }
 //    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -31,7 +37,16 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
 //        let cell = tableView.dequeueReusableCellWithIdentifier("selectionTextCell", forIndexPath: indexPath)
 //        searchBar.text=cell.textLabel?.text
 //    }
-    
+    // MARK: Selection Delegate
+    func returnText(text: String?){
+        if let del=delegate  {
+            if (text != nil) {del.textSelected(self, text: text!)}
+            
+        }
+        self.navigationController?.popViewControllerAnimated(true)
+
+    }
+    // MARK: UISearchBarDelegate
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         searchActive = true;
     }
@@ -41,13 +56,23 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        returnText("")
         searchActive = false;
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        if searchBar.text != nil {
+            returnText(searchBar.text!)
+            
+        }
+
         searchActive = false;
     }
     func searchBarBookmarkButtonClicked(searchBar: UISearchBar) {
+        if searchBar.text != nil {
+            returnText(searchBar.text!)
+            
+        }
         searchActive=false
     }
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
@@ -71,7 +96,18 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
     }
 
     // MARK: - Table view data source
-
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("selectionTextCell", forIndexPath: indexPath)
+        let mytext:String!
+      
+        if(searchActive){
+            mytext = filtered[indexPath.row]
+        } else {
+            mytext=textes[indexPath.row]
+        }
+        returnText(mytext)
+    }
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -88,6 +124,8 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("selectionTextCell", forIndexPath: indexPath)
+          cell.textLabel?.adjustsFontSizeToFitWidth = true
+        cell.textLabel?.font = UIFont(name: "System", size: 10)
         if(searchActive){
             cell.textLabel?.text = filtered[indexPath.row]
         } else {

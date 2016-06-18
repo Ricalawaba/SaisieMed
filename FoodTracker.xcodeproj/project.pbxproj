@@ -184,9 +184,9 @@
 			children = (
 				30F43F2C1D0EE938005E3BEB /* categorieExamen.swift */,
 				304B19FA1D1413540006DB4A /* Examen.swift */,
-				304B19FE1D14191E0006DB4A /* selectionTexte */,
 				301826011D0F0B2A00592CE9 /* Examens */,
 				30F43F2E1D0EF7BE005E3BEB /* Menu Saisie */,
+				304B19FE1D14191E0006DB4A /* selectionTexte */,
 				30F43F2F1D0EF7DE005E3BEB /* Liste patient */,
 				30F43F231D0EA255005E3BEB /* images */,
 				30F43EE71D077C3B005E3BEB /* AppDelegate.swift */,

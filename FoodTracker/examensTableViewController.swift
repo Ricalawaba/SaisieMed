@@ -8,9 +8,9 @@
 
 import UIKit
 
-class examensTableViewController: UITableViewController {
+class examensTableViewController: UITableViewController,textSelectedDelegate {
     var categorie = categorieExamen.Categorie()
-    
+    var examenSelected: Examen?
     //var examen = [Examen]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +46,11 @@ class examensTableViewController: UITableViewController {
             
             let svc = segue.destinationViewController as! selectionTexteTableViewController
             let mycell = (sender as! selectionTableViewCell)
+           // let tab:[String]=(["Cholecystectomie","Appendicectomie","IDM"]).sort()
+            examenSelected=mycell.examen
+            svc.textes = Donnees.selectiontextDict[examenSelected!.tag]!
+            svc.delegate=self
             
-            svc.textes = ["Cholecystectomie","Appendicectomie","IDM"
-            ]
             //  sender?.row
             //  svc.listePatients = Donnees.listePatient
             
@@ -56,7 +58,24 @@ class examensTableViewController: UITableViewController {
 
         
     }
-
+    // MARK: Retour selection texte
+    func textSelected(sender:selectionTexteTableViewController, text:String) {
+        if (examenSelected != nil) {
+            if  Donnees.selectiontextDict[examenSelected!.tag]!.indexOf(text) == nil {
+                Donnees.selectiontextDict[examenSelected!.tag]!.append(String(text))
+                Donnees.selectiontextDict[examenSelected!.tag] = Donnees.selectiontextDict[examenSelected!.tag]?.sort()
+            }
+//            if examenSelected?.selectionnableText.indexOf(text) == nil {
+//               examenSelected?.selectionnableText.append(String(text))
+//               examenSelected?.selectionnableText=(examenSelected?.selectionnableText.sort())!
+//                
+//            }
+            examenSelected?.value=text
+        }
+        
+        tableView.reloadData()
+    }
+    // MARK: Tableview datasource et delegate
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         return 1
@@ -130,7 +149,15 @@ class examensTableViewController: UITableViewController {
         }
         if examen1.type==Examen.examenEnum.selection {
             let cell3 = tableView.dequeueReusableCellWithIdentifier("selectionCell", forIndexPath: indexPath) as! selectionTableViewCell
+            
+            if examen1.value.isEmpty {
             cell3.questionSelection.text = examen1.intitule
+                cell3.questionSelection.enabled=false
+            } else {
+                cell3.questionSelection.text=examen1.value
+                cell3.questionSelection.enabled=true
+            }
+            
             cell3.examen=examen1
 
             
@@ -142,7 +169,16 @@ class examensTableViewController: UITableViewController {
         return cell
          }
     
-
+//    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
+//    {
+//        var title = UILabel()
+//        title.font = UIFont(name: "Futura", size: 38)!
+//        title.textColor = UIColor.lightGrayColor()
+//        
+//        let header = view as! UITableViewHeaderFooterView
+//        header.textLabel?.font=title.font
+//        header.textLabel?.textColor=title.textColor
+//    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

@@ -12,6 +12,7 @@ class Examen {
     var intitule : String
     var info : String = ""
     var tag : String = ""
+  //  var selectionnableText: [String] = []
     
     var categorie: categorieExamen.Categorie?
     

@@ -16,13 +16,7 @@ class categorieExamen {
         var examens = [ Examen]()
         var nom: String
         var namedImage : String
-//        var childs=[Categorie]()
-//        var haveChild : Bool {
-//            get {
-//                if childs.count == 0 { return false }
-//                return true
-//            }
-//        }
+
         init(){
             nom=""
             namedImage=""
@@ -51,7 +45,7 @@ class categorieExamen {
                             }
                         }
                         
-                        if  examen.type ==  .reponsecourte {
+                        if  examen.type ==  .reponsecourte || examen.type == .selection{
                             str += "\(examen.value), "
                         }
                         if examen.type ==  .donnee {
@@ -72,15 +66,17 @@ class categorieExamen {
     }
 
     init(){
+        // MARK: Administratif
         let Categorie1 = Categorie(nom: "Administratif",namedImage: "administratif_icon.png")
         let examcat1 = [
             Examen(intitule: "Nom Prénom", type:  .reponsecourte),
             Examen(intitule: "Masculin", type:  .ouinon),
             Examen(intitule: "Age", type:  .donnee),
-            Examen(intitule: "Localisation", type:  .reponsecourte, tag: "localisation"),
+            Examen(intitule: "Localisation", type:  .selection, tag: "localisation"),
             Examen(intitule: "Motif", type:  .reponsecourte),
-            Examen(intitule: "Méd.Trait.", type:  .donnee,tag: "medecin"),
+            Examen(intitule: "Méd.Trait.", type:  .selection ,tag: "medecin"),
             Examen(intitule: "Vit en institution", type:  .check ),
+            Examen(intitule: "Vit seul", type:  .check ),
             Examen(intitule: "Célibataire", type:  .check ),
             Examen(intitule: "En couple", type:  .check ),
             Examen(intitule: "Veuf(ve)", type:  .check ),
@@ -94,49 +90,63 @@ class categorieExamen {
             
             ]
         Categorie1.examens = examcat1
-        
+        // MARK: Comorbidité
         let Categorie2 = Categorie(nom: "Comorbidité/Antécédent",namedImage: "nurse_icon.png")
+        
         let examcat2 = [
             Examen(intitule: "Pas d'atcds notables", type:  .check ),
-            Examen(intitule: "atcd1", type: .selection ),
-            Examen(intitule: "atcd2", type:  .reponsecourte,tag: "atcd" ),
-            Examen(intitule: "atcd3", type:  .reponsecourte ),
-            Examen(intitule: "atcd4", type:  .reponsecourte ),
-            Examen(intitule: "atcd5", type:  .reponsecourte ),
-            Examen(intitule: "atcd6", type:  .reponsecourte ),
-            Examen(intitule: "atcd7", type:  .reponsecourte ),
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
             Examen(intitule: "HTA", type:  .ouinon ),
             Examen(intitule: "Dyslipémie", type:  .ouinon ),
             Examen(intitule: "Diabète", type:  .ouinon ),
             Examen(intitule: "Obesité", type:  .ouinon ),
-             Examen(intitule: "Surcharge pondérale", type:  .ouinon ),
+            Examen(intitule: "Surcharge pondérale", type:  .ouinon ),
             Examen(intitule: "Tabagisme", type:  .ouinon ),
             Examen(intitule: "Tabagisme sevré", type:  .check ),
             Examen(intitule: "Allergie", type:  .ouinon ),
             Examen(intitule: "Detail", type:  .reponsecourte ),
-            Examen(intitule: "Libre", type:  .reponsecourte )
-        ]
+            
+            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
+            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
+            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
+            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
+            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
+            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
+            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
+            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
+            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
+            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
+            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
+            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
+            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
+            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
+            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
+            ]
         Categorie2.examens = examcat2
-        
+        // MARK: Traitement
         let Categorie21 = Categorie(nom: "Traitement",namedImage: "medoc_icon.png")
         let examcat21 = [
             Examen(intitule: "Pas de traitement au long cours", type:  .check ),
-            Examen(intitule: "Sous anti-coaguluant", type:  .check ),
-            Examen(intitule: "Sous anti-agrégant", type:  .check ),
-            Examen(intitule: "ttt1", type:  .reponsecourte ),
-            Examen(intitule: "ttt2", type:  .reponsecourte ),
-            Examen(intitule: "ttt3", type:  .reponsecourte ),
-            Examen(intitule: "ttt4", type:  .reponsecourte ),
-            Examen(intitule: "ttt5", type:  .reponsecourte ),
-            Examen(intitule: "ttt6", type:  .reponsecourte ),
-            Examen(intitule: "ttt7", type:  .reponsecourte ),
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
-    
-            Examen(intitule: "Libre", type:  .reponsecourte )
-        ]
-        Categorie21.examens = examcat21
+            Examen(intitule: "Sous anti-coagulant", type:  .check ),
+            Examen(intitule: "Sous anti-agrégant", type:  .check ),
+            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
+            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
+            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
+            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
+            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
+            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
+            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
+            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
+            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
+            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
+            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
+            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
+            Examen(intitule: "médicament", type:  .selection,tag: "medicament" )
+            ]
         
+        Categorie21.examens = examcat21
+        // MARK: Plaintes/Anamnese
         let Categorie3 = Categorie(nom: "Plaintes/Anamnèse",namedImage: "tete_icon.png")
         let examcat3 = [
         //   Examen(categorie: Categorie21 ),
@@ -156,6 +166,7 @@ class categorieExamen {
         ]
         Categorie3.examens=examcat3
         
+        // MARK: Pancarte
         let Categorie31 = Categorie(nom: "Pancarte",namedImage: "pancarte_icon.png")
         let examcat31 = [
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
@@ -167,20 +178,22 @@ class categorieExamen {
             Examen(intitule: "EVA", type:  .donnee ),
             Examen(intitule: "SaO2%", type:  .donnee ),
             Examen(intitule: "Fr. Resp", type:  .donnee ),
-            Examen(intitule: "Poids", type:  .donnee ),
+            
+            Examen(intitule: "Poids (mesuré)", type:  .donnee ),
+            Examen(intitule: "Poids (indiqué par le patient)", type:  .donnee ),
             Examen(intitule: "Variation pondérale récente significative", type:  .ouinon ),
             Examen(intitule: "Détail", type:  .reponsecourte ),
-            Examen(intitule: "Fr. Resp", type:  .donnee ),
-            Examen(intitule: "Libre", type:  .reponsecourte )
+            Examen(intitule: "Taille", type:  .donnee )
         ]
         Categorie31.examens=examcat31
         
         // Examen(intitule: "Motif", type:  .reponsecourte )
+        // MARK: Neurologie
         let Categorie4 = Categorie(nom: "Neurologie",namedImage: "neuro_icon.png")
         let examcat4 = [
             Examen(intitule: "Examen Normal", type:  .check ),
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(intitule: "Glasgow", type:  .donnee ),
+            Examen(intitule: "Glasgow", type:  .selection,tag: "glasgow" ),
             Examen(intitule: "D.T.S.", type:  .ouinon ),
             Examen(intitule: "Céphallée", type:  .ouinon ),
             Examen(intitule: "ROT symétriques", type:  .check ),
@@ -196,6 +209,7 @@ class categorieExamen {
         ]
         Categorie4.examens = examcat4
         
+        // MARK: Cardiovasculaire
         let Categorie5 = Categorie(nom: "Cardiovasculaire",namedImage: "cardio2_icon.png")
         let examcat5 = [
             Examen(intitule: "Examen Normal", type:  .check ),
@@ -204,11 +218,12 @@ class categorieExamen {
             Examen(intitule: "Détail", type:  .reponsecourte ),
             Examen(intitule: "Dyspnée", type:  .ouinon ),
              Examen(intitule: "Détail", type:  .reponsecourte ),
-            Examen(intitule: "BDC regulier", type:  .check ),
-            Examen(intitule: "BDC irregulier", type:  .check ),
+            Examen(intitule: "BDC régulier", type:  .check ),
+            Examen(intitule: "BDC irrégulier", type:  .check ),
             Examen(intitule: "Pas de souffle cardiaque", type:  .check ),
             Examen(intitule: "Souffle cardiaque", type:  .donnee ),
             Examen(intitule: "Pouls fémoraux présents", type:  .check ),
+            Examen(intitule: "Souffle fémoral", type:  .ouinon ),
             Examen(intitule: "Pouls pédieux présents", type:  .check ),
             Examen(intitule: "Souffle carotidien", type:  .ouinon ),
             Examen(intitule: "Pas de crépitants", type:  .check ),
@@ -217,12 +232,13 @@ class categorieExamen {
             Examen(intitule: "Toux", type:  .ouinon ),
             Examen(intitule: "Expectorations aérées", type:  .check ),
             Examen(intitule: "O.M.I.", type:  .ouinon ),
-            Examen(intitule: "Mollets souples", type:  .check ),
+            Examen(intitule: "Mollets souples et indolore", type:  .check ),
            
             Examen(intitule: "Libre", type:  .reponsecourte )
         ]
         Categorie5.examens = examcat5
         
+        // MARK: Respiratoire
         let Categorie6 = Categorie(nom: "Respiratoire",namedImage: "pneumo_icon.png")
         let examcat6 = [
             Examen(intitule: "Examen Normal", type:  .check ),
@@ -242,6 +258,7 @@ class categorieExamen {
         ]
         Categorie6.examens = examcat6
         
+        // MARK: Digestif
         let Categorie7 = Categorie(nom: "Digestif",namedImage: "digestif_icon.png")
         let examcat7 = [
             Examen(intitule: "Examen Normal", type:  .ouinon ),
@@ -250,8 +267,9 @@ class categorieExamen {
             Examen(intitule: "Nausée/Vomissements", type:  .ouinon ),
             Examen(intitule: "Diarrhée", type:  .ouinon ),
             Examen(intitule: "Constipation", type:  .ouinon ),
+            Examen(intitule: "Ballonement", type:  .ouinon ),
             Examen(intitule: "Douleur abdominale", type:  .ouinon ),
-            Examen(intitule: "epigastrique", type:  .check ),
+            Examen(intitule: "épigastrique", type:  .check ),
             Examen(intitule: "Irradiation dans le dos", type:  .ouinon ),
             Examen(intitule: "hypochondre droit", type:  .check ),
             Examen(intitule: "flanc droit", type:  .check ),
@@ -259,18 +277,20 @@ class categorieExamen {
             Examen(intitule: "hypochondre gauche", type:  .check ),
             Examen(intitule: "flanc gauche", type:  .check ),
             Examen(intitule: "FI gauche", type:  .check ),
-            Examen(intitule: "FI gauche", type:  .check ),
+            Examen(intitule: "périombilicale", type:  .check ),
             Examen(intitule: "hypogastrique", type:  .check ),
             
             Examen(intitule: "Selles", type:  .donnee ),
             Examen(intitule: "Selles molles", type:  .ouinon ),
             Examen(intitule: "Méléna", type:  .ouinon ),
             Examen(intitule: "Rectorragie", type:  .ouinon ),
-            Examen(intitule: "Orifices herniaires libre", type:  .ouinon ),
+            Examen(intitule: "Ictère", type:  .ouinon ),
+            Examen(intitule: "Orifices herniaires libres", type:  .ouinon ),
             Examen(intitule: "Libre", type:  .reponsecourte )
         ]
         Categorie7.examens = examcat7
         
+        // MARK: Urologie
         let Categorie8 = Categorie(nom: "Urologie",namedImage: "rein_icon.png")
         let examcat8 = [
             Examen(intitule: "Examen Normal", type:  .ouinon ),
@@ -291,7 +311,7 @@ class categorieExamen {
             Examen(intitule: "Libre", type:  .reponsecourte )
         ]
         Categorie8.examens = examcat8
-
+        // MARK: ORL
         let Categorie9 = Categorie(nom: "O.R.L.",namedImage: "nez_icon.png")
         let examcat9 = [
             Examen(intitule: "Examen Normal", type:  .ouinon ),
@@ -316,13 +336,16 @@ class categorieExamen {
         ]
         Categorie9.examens = examcat9
         
-        
+        // MARK: Locomoteur
         let Categorie20 = Categorie(nom: "Locomoteur",namedImage: "os_icon.png")
+        
+        // MARK: Electrocardiogramme
         let CatECG = Categorie(nom: "ECG",namedImage: "cardio_icon.png")
-        let catECGConclusion = Categorie(nom: "ECG",namedImage: "cardio_icon.png")
+        let catECGConclusion = Categorie(nom: "Conclusion",namedImage: "cardio_icon.png")
         let catECG1 = Categorie(nom: "Paramètres Tracé",namedImage: "cardio_icon.png")
         let examcatECG1 = [
              Examen(intitule: "Libre", type:  .reponsecourte ),
+             Examen(intitule: "Qualité du tracé correcte", type:  .check ),
              Examen(intitule: "Tracé parasité", type:  .check ),
              Examen(intitule: "FC", type:  .donnee ),
              Examen(intitule: "P (mm)", type:  .donnee ),
@@ -341,13 +364,20 @@ class categorieExamen {
         
         let CatECG3 = Categorie(nom: "QRS",namedImage: "cardio_icon.png")
         let CatECG4 = Categorie(nom: "ST",namedImage: "cardio_icon.png")
-        let CatECG5 = Categorie(nom: "ECG",namedImage: "cardio_icon.png")
+        let CatECG5 = Categorie(nom: "Autre",namedImage: "cardio_icon.png")
         
         CatECG.examens = [
             Examen(intitule: "libre", type: .reponsecourte),
-            Examen(categorie: catECG1)
+            Examen(categorie: catECG1),
+            Examen(categorie: CatECG2),
+            Examen(categorie: CatECG3),
+            Examen(categorie: CatECG4),
+            Examen(categorie: CatECG5),
+            Examen(categorie: catECGConclusion)
+            
         ]
         
+        // MARK: Categories
         categories += [Categorie1,Categorie2,Categorie21, Categorie3,Categorie31,Categorie4,Categorie5,Categorie6,Categorie7,Categorie8, Categorie9, Categorie20, CatECG]
     }
     
