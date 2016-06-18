@@ -73,7 +73,7 @@ class categorieExamen {
             Examen(intitule: "Masculin", type:  .ouinon),
             Examen(intitule: "Age", type:  .donnee),
             Examen(intitule: "Localisation", type:  .selection, tag: "localisation"),
-            Examen(intitule: "Motif", type:  .reponsecourte),
+            Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
             Examen(intitule: "Méd.Trait.", type:  .selection ,tag: "medecin"),
             Examen(intitule: "Vit en institution", type:  .check ),
             Examen(intitule: "Vit seul", type:  .check ),
@@ -151,6 +151,7 @@ class categorieExamen {
         let examcat3 = [
         //   Examen(categorie: Categorie21 ),
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
+            Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
             Examen(intitule: "Douleur abdominale", type:  .check ),
             Examen(intitule: "Asthénie", type:  .ouinon ),
             Examen(intitule: "Douleur thoracique", type:  .ouinon ),

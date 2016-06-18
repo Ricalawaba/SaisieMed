@@ -54,11 +54,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return filename
         
     }
+    var filePathMotif : String {
+        let filename = getDocumentsDirectory().stringByAppendingPathComponent("motif.txt")
+        return filename
+        
+    }
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Donnees.selectiontextDict["atcd"] = ["RGO","Néoplasie colique","Asthme","Pneumopathie"].sort()
         Donnees.selectiontextDict["medicament"] = ["AVLOCARDYL 40: 1/2x2/j","KARDEGIC 75: 1/j","KARDEGIC 160: 1/j", "AMLOR 5: 1/j","AMIODARONE 200: 1/j","AMIODARONE 200: 1/j 5/7j"].sort()
-        Donnees.selectiontextDict["glasgow"] = ["3","4","5","6","7","8","9","10","11","12","13","14","15"]
+        Donnees.selectiontextDict["motif"] = ["Aucun"]
         Donnees.selectiontextDict["localisation"] = ["Salle d'attente","Box 1","Box 2","Box 3","Box 4","Box 5","Box 6","Box 7","Box A","Box B","Box C","Box D","Box E", "Box F", "Bureau", "I.O.A","Degrav", "Suture"]
         Donnees.selectiontextDict["medecin"] = ["Pas de médecin traitant"]
 //        let writePath = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("instagram.igo")
@@ -79,6 +84,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathLocalisation) as? [String] {
             Donnees.selectiontextDict["localisation"] = array
         }
+        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMotif) as? [String] {
+            Donnees.selectiontextDict["motif"] = array
+        }
         return true
     }
 
@@ -93,6 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["medecin"]!, toFile: filePathMedecin)
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["medicament"]!, toFile: filePathMedicament)
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["localisation"]!, toFile: filePathLocalisation)
+         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["motif"]!, toFile: filePathMotif)
     }
 
     func applicationWillEnterForeground(application: UIApplication) {

@@ -65,15 +65,18 @@ class examensTableViewController: UITableViewController,textSelectedDelegate {
                 Donnees.selectiontextDict[examenSelected!.tag]!.append(String(text))
                 Donnees.selectiontextDict[examenSelected!.tag] = Donnees.selectiontextDict[examenSelected!.tag]?.sort()
             }
-//            if examenSelected?.selectionnableText.indexOf(text) == nil {
-//               examenSelected?.selectionnableText.append(String(text))
-//               examenSelected?.selectionnableText=(examenSelected?.selectionnableText.sort())!
-//                
-//            }
+
             examenSelected?.value=text
         }
         
         tableView.reloadData()
+    }
+    func textDeleted(sender: selectionTexteTableViewController, text: String) {
+        if (examenSelected != nil) {
+            if Donnees.selectiontextDict[examenSelected!.tag]!.indexOf(text) != nil{
+               Donnees.selectiontextDict[examenSelected!.tag]!.removeAtIndex(Donnees.selectiontextDict[examenSelected!.tag]!.indexOf(text)!)
+            }
+        }
     }
     // MARK: Tableview datasource et delegate
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

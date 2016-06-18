@@ -9,6 +9,7 @@
 import UIKit
 protocol textSelectedDelegate {
     func textSelected(sender:selectionTexteTableViewController, text:String)
+    func textDeleted(sender:selectionTexteTableViewController, text:String)
 }
 class selectionTexteTableViewController: UITableViewController, UISearchBarDelegate {
     // MARK: Properties
@@ -137,25 +138,28 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
     }
     
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+   
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            
+            delegate?.textDeleted(self,text: textes[indexPath.row])
+            textes.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
