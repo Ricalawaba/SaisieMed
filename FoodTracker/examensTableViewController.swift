@@ -8,10 +8,12 @@
 
 import UIKit
 
-class examensTableViewController: UITableViewController,textSelectedDelegate {
+class examensTableViewController: UITableViewController,textSelectedDelegate, UITextFieldDelegate {
     var categorie : categorieExamen.Categorie!
     var examenSelected: Examen?
     //var examen = [Examen]()
+    var activeField: UITextField?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,7 +31,42 @@ class examensTableViewController: UITableViewController,textSelectedDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    // MARK/ Textfield delegate
+    func textFieldDidBeginEditing(textField: UITextField) {
+        self.activeField = textField
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        self.activeField = nil
+    }
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(examensTableViewController.keyboardWasShown(_:)), name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(examensTableViewController.keyboardWillBeHidden(_:)), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func keyboardWasShown(aNotification: NSNotification) {
+        let info = aNotification.userInfo as! [String: AnyObject],
+        kbSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue().size,
+        contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
+        
+        self.tableView.contentInset = contentInsets
+        self.tableView.scrollIndicatorInsets = contentInsets
+        
+        // If active text field is hidden by keyboard, scroll it so it's visible
+        // Your app might not need or want this behavior.
+        var aRect = self.view.frame
+        aRect.size.height -= kbSize.height
+        
+        if !CGRectContainsPoint(aRect, activeField!.frame.origin) {
+            self.tableView.scrollRectToVisible(activeField!.frame, animated: true)
+        }
+    }
+    
+    func keyboardWillBeHidden(aNotification: NSNotification) {
+        let contentInsets = UIEdgeInsetsZero
+        self.tableView.contentInset = contentInsets
+        self.tableView.scrollIndicatorInsets = contentInsets
+    }
     // MARK: - Table view data source
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "autoshow") {
@@ -172,6 +209,10 @@ class examensTableViewController: UITableViewController,textSelectedDelegate {
         return cell
          }
     
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+        
+    }
 //    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
 //    {
 //        var title = UILabel()

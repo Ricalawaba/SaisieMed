@@ -10,62 +10,81 @@ import Foundation
 class patients :  NSObject,NSCoding {
     
     class patient :  NSObject,NSCoding {
-        var nomPrenom : String
-        var age : Int
-        var localisation : String
-        var motif : String
-        var masculin: Bool
+        var nomPrenom : String {
+            get {
+                return examen.categories[0].examens[0].value
+            }
+            set {
+               examen.categories[0].examens[0].value=newValue
+            }
+        }
+        var age : Int {
+            get {
+                return Int(examen.categories[0].examens[2].value)!
+            }
+            set {
+                examen.categories[0].examens[2].value="\(newValue)"
+            }
+        }
+        var localisation : String {
+            get {
+                return examen.categories[0].examens[3].value
+            }
+            set {
+                examen.categories[0].examens[3].value=newValue
+            }
+        }
+        var motif : String {
+            get {
+                return examen.categories[0].examens[4].value
+            }
+            set {
+               examen.categories[0].examens[4].value=newValue
+            }
+        }
+        var masculin: Bool {
+            get {
+                if examen.categories[0].examens[1].value == "0"
+                { return true }
+                return false
+            }
+            set {
+                if newValue {examen.categories[0].examens[1].value = "0"}
+                else { examen.categories[0].examens[1].value = "1" }
+            }
+        }
         var examen=categorieExamen()
         
         // MARK: NSCoding
         required convenience init?(coder decoder: NSCoder) {
-            guard let nomPrenom = decoder.decodeObjectForKey("nomprenom") as? String,
-                let age = decoder.decodeObjectForKey("age") as? Int,
-                let localisation = decoder.decodeObjectForKey("localisation") as? String,
-                let motif = decoder.decodeObjectForKey("motif") as? String
+            guard let examen = decoder.decodeObjectForKey("examen") as? categorieExamen
                                 else { return nil }
-            
-            //let masculin = decoder.decodeBoolForKey("masculin")
-            let examen = decoder.decodeObjectForKey("examen") as? categorieExamen
-            let masc=false
-
-            self.init(nomPrenom: nomPrenom,age: age,localisation: localisation,motif: motif, masculin: masc)
-            self.examen=examen!
-            
+            self.init(examen1: examen)
+           
         }
         func encodeWithCoder(coder: NSCoder) {
             coder.encodeObject(self.nomPrenom, forKey: "nomprenom")
             coder.encodeObject(self.age, forKey: "age")
             coder.encodeObject(self.localisation, forKey: "localisation")
-            coder.encodeObject(self.motif, forKey: "motif")
-            //coder.encodeObject(self.masculin, forKey: "masculin")
+            //coder.encodeObject(self.motif, forKey: "motif")
             coder.encodeObject(self.examen, forKey: "examen")
-
-            
         }
 
         override init() {
-            
-            nomPrenom=""
-            age=0
-            localisation=""
-            motif=""
-            masculin=false
             super.init()
         }
-        init (nomPrenom : String,age:Int,localisation:String,motif:String, masculin:Bool){
+        
+        init (examen1:categorieExamen) {
+            examen = examen1
+            //self.nomPrenom=examen1.categories[0].examens[0].value
+            //self.age = Int(examen1.categories[0].examens[2].value)!
+            super.init()
             
-            self.nomPrenom=nomPrenom
-            self.age=age
-            self.localisation=localisation
-            self.motif=motif
-            self.masculin=masculin
+        }
+        init (nomPrenom : String,age:Int,localisation:String,motif:String, masculin:Bool){
+            super.init()        
             self.examen.categories[0].examens[0].value=nomPrenom
-            if masculin == true {
-                examen.categories[0].examens[1].value="0"
-            } else {
-                examen.categories[0].examens[1].value="1"
-            }
+            self.masculin=masculin
             examen.categories[0].examens[2].value="\(age)"
             examen.categories[0].examens[3].value=localisation
             examen.categories[0].examens[4].value=motif

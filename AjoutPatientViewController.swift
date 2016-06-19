@@ -31,8 +31,8 @@ class AjoutPatientViewController: UIViewController , UITextFieldDelegate {
         prenom.delegate=self
         localisation.delegate=self
         age.delegate=self
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name:UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name:UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AjoutPatientViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AjoutPatientViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
     }
    
     func textFieldShouldReturn(textField: UITextField) -> Bool {

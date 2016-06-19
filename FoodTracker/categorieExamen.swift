@@ -103,6 +103,31 @@ class categorieExamen : NSObject , NSCoding {
     override init(){
         // MARK: Administratif
         let Categorie1 = Categorie(nom: "Administratif",namedImage: "administratif_icon.png")
+        let catModeVie = Categorie(nom: "Mode de vie",namedImage: "administratif_icon.png")
+        let excamCatModeVie = [
+            Examen(intitule: "à son domicile", type:  .check ),
+            Examen(intitule: "en institution", type:  .check ),
+            Examen(intitule: "en maison de retraite", type:  .check ),
+            Examen(intitule: "en maison médicalisée", type:  .check ),
+            Examen(intitule: "seul", type:  .check ),
+            Examen(intitule: "en couple", type:  .check ),
+            Examen(intitule: "Veuf(ve)", type:  .check ),
+            Examen(intitule: "Pas d'enfants", type:  .check ),
+            Examen(intitule: "enfants:", type:  .donnee ),
+             Examen(intitule: "Libre", type:  .reponsecourte )
+            ]
+        catModeVie.examens=excamCatModeVie
+        let catModeEntree = Categorie(nom: "Mode d'entrée",namedImage: "administratif_icon.png")
+        let excamCatModeEntree = [
+            Examen(intitule: "Dirigé par le centre 15", type:  .check ),
+            Examen(intitule: "adressé par", type:  .donnee ),
+            Examen(intitule: "se présente spontanément", type:  .check ),
+            Examen(intitule: "Transport SMUR", type:  .check ),
+            Examen(intitule: "Transport Pompiers", type:  .check ),
+            Examen(intitule: "Transport Famille", type:  .ouinon ),
+            ]
+        catModeEntree.examens=excamCatModeEntree
+        
         let examcat1 = [
             Examen(intitule: "Nom Prénom", type:  .reponsecourte),
             Examen(intitule: "Masculin", type:  .ouinon),
@@ -110,28 +135,44 @@ class categorieExamen : NSObject , NSCoding {
             Examen(intitule: "Localisation", type:  .selection, tag: "localisation"),
             Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
             Examen(intitule: "Méd.Trait.", type:  .selection ,tag: "medecin"),
-            Examen(intitule: "Vit en institution", type:  .check ),
-            Examen(intitule: "Vit seul", type:  .check ),
-            Examen(intitule: "Célibataire", type:  .check ),
-            Examen(intitule: "En couple", type:  .check ),
-            Examen(intitule: "Veuf(ve)", type:  .check ),
-            Examen(intitule: "Dirigé par le centre 15", type:  .check ),
-            Examen(intitule: "adressé par", type:  .donnee ),
-            Examen(intitule: "se présente spontanément", type:  .check ),
-            Examen(intitule: "Transport SMUR", type:  .check ),
-            Examen(intitule: "Transport Pompiers", type:  .check ),
-            Examen(intitule: "Transport Famille", type:  .ouinon ),
+            Examen(categorie: catModeVie),
+            Examen(categorie: catModeEntree),
             Examen(intitule: "Libre", type:  .reponsecourte )
             
             ]
-        Categorie1.examens = examcat1
-        // MARK: Comorbidité
-        let Categorie2 = Categorie(nom: "Comorbidité/Antécédent",namedImage: "nurse_icon.png")
+                Categorie1.examens = examcat1
+        // MARK: Comorbidité / antécédent
+        let Categorie2 = Categorie(nom: "Comorbidité/Antécédents",namedImage: "nurse_icon.png")
         
-        let examcat2 = [
+        var examcat2 = [
             Examen(intitule: "Pas d'atcds notables", type:  .check ),
-            Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(intitule: "HTA", type:  .ouinon ),
+            Examen(intitule: "Commentaire", type:  .reponsecourte )
+            ]
+        // MARK:  - Catégorie antécédent
+        for _ in 0..<10 {
+            let catATCD = Categorie(nom:"atcd",namedImage: "nurse_icon.png")
+            let examCatATCD = [
+                Examen(intitule: "Xie", type:  .check ),
+                Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
+                Examen(intitule: "bilatéral(e)", type:  .check ),
+                Examen(intitule: "droit(e)", type:  .check ),
+                Examen(intitule: "gauche", type:  .check ),
+                Examen(intitule: "récidivant(e)s", type:  .check ),
+                Examen(intitule: "quand ?", type:  .reponsecourte ),
+                Examen(intitule: "ou ?", type:  .selection,tag: "etablissement" ),
+                Examen(intitule: "pas de suivi spécialisé", type:  .check ),
+                Examen(intitule: "qui ?", type:  .selection,tag: "medecin" ),
+                Examen(intitule: "ou ?", type:  .selection,tag: "etablissement" ),
+               
+              
+                Examen(intitule: "Commentaire", type:  .reponsecourte )
+                
+            ]
+            catATCD.examens=examCatATCD
+            examcat2 += [Examen(categorie: catATCD)]
+        }
+ 
+        examcat2 += [   Examen(intitule: "HTA", type:  .ouinon ),
             Examen(intitule: "Dyslipémie", type:  .ouinon ),
             Examen(intitule: "Diabète", type:  .ouinon ),
             Examen(intitule: "Obesité", type:  .ouinon ),
@@ -142,44 +183,33 @@ class categorieExamen : NSObject , NSCoding {
             Examen(intitule: "Detail", type:  .reponsecourte ),
             
             Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
-            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
-            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
-            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
-            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
-            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
-            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
-            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
-            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
-            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
-            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
-            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
-            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
-            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
-            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
+
             ]
-        Categorie2.examens = examcat2
+                Categorie2.examens = examcat2
         // MARK: Traitement
         let Categorie21 = Categorie(nom: "Traitement",namedImage: "medoc_icon.png")
-        let examcat21 = [
+        
+        var examcat21 = [
             Examen(intitule: "Pas de traitement au long cours", type:  .check ),
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
             Examen(intitule: "Sous anti-coagulant", type:  .check ),
             Examen(intitule: "Sous anti-agrégant", type:  .check ),
-            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
-            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
-            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
-            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
-            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
-            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
-            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
-            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
-            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
-            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
-            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
-            Examen(intitule: "médicament", type:  .selection,tag: "medicament" ),
             Examen(intitule: "médicament", type:  .selection,tag: "medicament" )
             ]
-        
+        for _ in 0..<10 {
+            let catTTT = Categorie(nom:"ttt",namedImage: "medoc_icon.png")
+            let examCatTTT = [
+                Examen(intitule: "nom", type:  .selection,tag: "medicament" ),
+                Examen(intitule: "posologie", type:  .selection,tag: "posologie" ),
+                Examen(intitule: "depuis quand ?", type:  .reponsecourte ),
+                Examen(intitule: "par qui ?", type:  .selection,tag: "medecin" ),
+                Examen(intitule: "pour", type:  .selection,tag: "atcd" ),
+                Examen(intitule: "Commentaire", type:  .reponsecourte )
+            ]
+            catTTT.examens=examCatTTT
+            examcat21 += [Examen(categorie: catTTT)]
+        }
+
         Categorie21.examens = examcat21
         // MARK: Plaintes/Anamnese
         let Categorie3 = Categorie(nom: "Plaintes/Anamnèse",namedImage: "tete_icon.png")
@@ -187,7 +217,12 @@ class categorieExamen : NSObject , NSCoding {
         //   Examen(categorie: Categorie21 ),
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
             Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Douleur abdominale", type:  .check ),
+            Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
+            Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
+            Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
+            Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
+            Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
+  /*          Examen(intitule: "Douleur abdominale", type:  .check ),
             Examen(intitule: "Asthénie", type:  .ouinon ),
             Examen(intitule: "Douleur thoracique", type:  .ouinon ),
             Examen(intitule: "Bilan de traumatisme", type:  .ouinon ),
@@ -196,8 +231,8 @@ class categorieExamen : NSObject , NSCoding {
             Examen(intitule: "Troubles digestifs", type:  .ouinon ),
             Examen(intitule: "Malaise", type:  .ouinon ),
             Examen(intitule: "Vertige", type:  .ouinon ),
-            Examen(intitule: "Anxiété", type:  .ouinon ),
-            Examen(intitule: "Pas d'autres plaintes somatiques", type:  .ouinon ),
+            Examen(intitule: "Anxiété", type:  .ouinon ),*/
+            Examen(intitule: "Pas d'autres plaintes somatiques", type:  .check ),
             Examen(intitule: "Libre", type:  .reponsecourte )
         ]
         Categorie3.examens=examcat3
@@ -214,7 +249,7 @@ class categorieExamen : NSObject , NSCoding {
             Examen(intitule: "EVA", type:  .donnee ),
             Examen(intitule: "SaO2%", type:  .donnee ),
             Examen(intitule: "Fr. Resp", type:  .donnee ),
-            
+            Examen(intitule: "Poids (estimé)", type:  .donnee ),
             Examen(intitule: "Poids (mesuré)", type:  .donnee ),
             Examen(intitule: "Poids (indiqué par le patient)", type:  .donnee ),
             Examen(intitule: "Variation pondérale récente significative", type:  .ouinon ),
@@ -229,7 +264,7 @@ class categorieExamen : NSObject , NSCoding {
         let examcat4 = [
             Examen(intitule: "Examen Normal", type:  .check ),
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(intitule: "Glasgow", type:  .selection,tag: "glasgow" ),
+            Examen(intitule: "Glasgow", type:  .donnee ),
             Examen(intitule: "D.T.S.", type:  .ouinon ),
             Examen(intitule: "Céphallée", type:  .ouinon ),
             Examen(intitule: "ROT symétriques", type:  .check ),
@@ -253,7 +288,9 @@ class categorieExamen : NSObject , NSCoding {
             Examen(intitule: "Douleur thoracique", type:  .ouinon ),
             Examen(intitule: "Détail", type:  .reponsecourte ),
             Examen(intitule: "Dyspnée", type:  .ouinon ),
-             Examen(intitule: "Détail", type:  .reponsecourte ),
+            Examen(intitule: "Détail", type:  .reponsecourte ),
+            Examen(intitule: "Palpitations", type:  .ouinon ),
+            Examen(intitule: "Détail", type:  .reponsecourte ),
             Examen(intitule: "BDC régulier", type:  .check ),
             Examen(intitule: "BDC irrégulier", type:  .check ),
             Examen(intitule: "Pas de souffle cardiaque", type:  .check ),
@@ -264,12 +301,12 @@ class categorieExamen : NSObject , NSCoding {
             Examen(intitule: "Souffle carotidien", type:  .ouinon ),
             Examen(intitule: "Pas de crépitants", type:  .check ),
             Examen(intitule: "Rales crépitants aux bases", type:  .check ),
-             Examen(intitule: "Rales crépitants étendues", type:  .check ),
+            Examen(intitule: "Rales crépitants étendues", type:  .check ),
             Examen(intitule: "Toux", type:  .ouinon ),
             Examen(intitule: "Expectorations aérées", type:  .check ),
             Examen(intitule: "O.M.I.", type:  .ouinon ),
             Examen(intitule: "Mollets souples et indolore", type:  .check ),
-           
+            
             Examen(intitule: "Libre", type:  .reponsecourte )
         ]
         Categorie5.examens = examcat5

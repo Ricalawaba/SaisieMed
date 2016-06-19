@@ -11,6 +11,7 @@ import UIKit
 class patientTableViewController: UITableViewController,ajoutPatientDelegate {
     var longpushPatient = patients.patient()
     
+    @IBOutlet weak var configMenuItem: UIBarButtonItem!
     @IBAction func showRapport(sender: UILongPressGestureRecognizer) {
         let location : CGPoint = sender.locationInView(self.tableView)
         let swipedIndexPath:NSIndexPath = self.tableView.indexPathForRowAtPoint(location)!
@@ -32,6 +33,8 @@ class patientTableViewController: UITableViewController,ajoutPatientDelegate {
        // self.tableView.registerClass(patientTableViewCell.self, forCellReuseIdentifier: "MenuCell")
 
         self.tableView.remembersLastFocusedIndexPath=true
+        configMenuItem.title = "\u{2699}\u{0000FE0E}"
+        
         
     }
     func patientAdded(sender: AjoutPatientViewController, patient: patients.patient) {
