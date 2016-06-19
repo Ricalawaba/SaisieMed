@@ -99,7 +99,7 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
     // MARK: - Table view data source
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("selectionTextCell", forIndexPath: indexPath)
+        //let cell = tableView.dequeueReusableCellWithIdentifier("selectionTextCell", forIndexPath: indexPath)
         let mytext:String!
       
         if(searchActive){

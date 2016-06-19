@@ -9,17 +9,37 @@
 import Foundation
 
 
-class categorieExamen {
+class categorieExamen : NSObject , NSCoding {
     var categories = [ Categorie]()
     
-    class Categorie {
+    class Categorie : NSObject,NSCoding{
         var examens = [ Examen]()
         var nom: String
         var namedImage : String
+        required convenience init?(coder decoder: NSCoder) {
+            guard let nom = decoder.decodeObjectForKey("nom") as? String,
+                let namedImage = decoder.decodeObjectForKey("namedImage") as? String,
+                let examens = decoder.decodeObjectForKey("examens") as? [Examen]
+                else { return nil }
+            
+            self.init(nom: nom, namedImage: namedImage)
+            self.examens=examens
+            
+            }
+            
+        func encodeWithCoder(coder: NSCoder) {
+            coder.encodeObject(self.nom, forKey: "nom")
+            coder.encodeObject(self.namedImage, forKey: "namedImage")
+            coder.encodeObject(self.examens, forKey: "examens")
+            
+        }
+        
 
-        init(){
+      override init(){
+        
             nom=""
             namedImage=""
+        super.init()
             
         }
         
@@ -36,7 +56,7 @@ class categorieExamen {
                             if examen.value == "0" {
                                 str += "\(examen.intitule), "
                             } else if examen.value == "1" {
-                                let vowels: [Character] = ["a","e","i","o","u"]
+                                let vowels: [Character] = ["a","e","i","o","u","h"]
                                 if vowels.contains(examen.intitule.lowercaseString.characters.first!) {
                                     
                                     str += "Pas d'\(examen.intitule), "}
@@ -65,7 +85,22 @@ class categorieExamen {
             }
     }
 
-    init(){
+    required convenience init?(coder decoder: NSCoder) {
+        guard let categories = decoder.decodeObjectForKey("categories") as? [Categorie]
+            else { return nil }
+        
+        
+        self.init(categories: categories)
+        
+    }
+    func encodeWithCoder(coder: NSCoder) {
+        coder.encodeObject(self.categories, forKey: "categories")
+    }
+
+    init (categories: [Categorie]){
+        self.categories=categories
+    }
+    override init(){
         // MARK: Administratif
         let Categorie1 = Categorie(nom: "Administratif",namedImage: "administratif_icon.png")
         let examcat1 = [

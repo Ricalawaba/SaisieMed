@@ -86,13 +86,13 @@
 		304B19F81D13F3490006DB4A /* selectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectionTableViewCell.swift; sourceTree = "<group>"; };
 		304B19FA1D1413540006DB4A /* Examen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Examen.swift; sourceTree = "<group>"; };
 		304B19FC1D14174C0006DB4A /* selectionTexteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectionTexteTableViewController.swift; sourceTree = "<group>"; };
-		30F43EE41D077C3B005E3BEB /* FoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		30F43EE41D077C3B005E3BEB /* SaisieMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaisieMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F43EE71D077C3B005E3BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30F43EEC1D077C3B005E3BEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		30F43EEE1D077C3B005E3BEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30F43EF11D077C3B005E3BEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30F43EF31D077C3B005E3BEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		30F43EF81D077C3B005E3BEB /* FoodTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		30F43EF81D077C3B005E3BEB /* SaisieMed.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaisieMed.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F43EFC1D077C3B005E3BEB /* FoodTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTrackerTests.swift; sourceTree = "<group>"; };
 		30F43EFE1D077C3B005E3BEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30F43F0D1D0E26D6005E3BEB /* patientTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = patientTableViewController.swift; sourceTree = "<group>"; };
@@ -164,8 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				30F43EEB1D077C3B005E3BEB /* Main.storyboard */,
-				30F43EE61D077C3B005E3BEB /* FoodTracker */,
-				30F43EFB1D077C3B005E3BEB /* FoodTrackerTests */,
+				30F43EE61D077C3B005E3BEB /* SaisieMed */,
+				30F43EFB1D077C3B005E3BEB /* SaisieMedTests */,
 				30F43EE51D077C3B005E3BEB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -173,13 +173,13 @@
 		30F43EE51D077C3B005E3BEB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				30F43EE41D077C3B005E3BEB /* FoodTracker.app */,
-				30F43EF81D077C3B005E3BEB /* FoodTrackerTests.xctest */,
+				30F43EE41D077C3B005E3BEB /* SaisieMed.app */,
+				30F43EF81D077C3B005E3BEB /* SaisieMed.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		30F43EE61D077C3B005E3BEB /* FoodTracker */ = {
+		30F43EE61D077C3B005E3BEB /* SaisieMed */ = {
 			isa = PBXGroup;
 			children = (
 				30F43F2C1D0EE938005E3BEB /* categorieExamen.swift */,
@@ -195,15 +195,17 @@
 				30F43EF01D077C3B005E3BEB /* LaunchScreen.storyboard */,
 				30F43EF31D077C3B005E3BEB /* Info.plist */,
 			);
+			name = SaisieMed;
 			path = FoodTracker;
 			sourceTree = "<group>";
 		};
-		30F43EFB1D077C3B005E3BEB /* FoodTrackerTests */ = {
+		30F43EFB1D077C3B005E3BEB /* SaisieMedTests */ = {
 			isa = PBXGroup;
 			children = (
 				30F43EFC1D077C3B005E3BEB /* FoodTrackerTests.swift */,
 				30F43EFE1D077C3B005E3BEB /* Info.plist */,
 			);
+			name = SaisieMedTests;
 			path = FoodTrackerTests;
 			sourceTree = "<group>";
 		};
@@ -259,9 +261,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		30F43EE31D077C3B005E3BEB /* FoodTracker */ = {
+		30F43EE31D077C3B005E3BEB /* SaisieMed */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 30F43F011D077C3B005E3BEB /* Build configuration list for PBXNativeTarget "FoodTracker" */;
+			buildConfigurationList = 30F43F011D077C3B005E3BEB /* Build configuration list for PBXNativeTarget "SaisieMed" */;
 			buildPhases = (
 				30F43EE01D077C3B005E3BEB /* Sources */,
 				30F43EE11D077C3B005E3BEB /* Frameworks */,
@@ -271,14 +273,14 @@
 			);
 			dependencies = (
 			);
-			name = FoodTracker;
+			name = SaisieMed;
 			productName = FoodTracker;
-			productReference = 30F43EE41D077C3B005E3BEB /* FoodTracker.app */;
+			productReference = 30F43EE41D077C3B005E3BEB /* SaisieMed.app */;
 			productType = "com.apple.product-type.application";
 		};
-		30F43EF71D077C3B005E3BEB /* FoodTrackerTests */ = {
+		30F43EF71D077C3B005E3BEB /* SaisieMedTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 30F43F041D077C3B005E3BEB /* Build configuration list for PBXNativeTarget "FoodTrackerTests" */;
+			buildConfigurationList = 30F43F041D077C3B005E3BEB /* Build configuration list for PBXNativeTarget "SaisieMedTests" */;
 			buildPhases = (
 				30F43EF41D077C3B005E3BEB /* Sources */,
 				30F43EF51D077C3B005E3BEB /* Frameworks */,
@@ -289,9 +291,9 @@
 			dependencies = (
 				30F43EFA1D077C3B005E3BEB /* PBXTargetDependency */,
 			);
-			name = FoodTrackerTests;
+			name = SaisieMedTests;
 			productName = FoodTrackerTests;
-			productReference = 30F43EF81D077C3B005E3BEB /* FoodTrackerTests.xctest */;
+			productReference = 30F43EF81D077C3B005E3BEB /* SaisieMed.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -314,7 +316,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 30F43EDF1D077C3B005E3BEB /* Build configuration list for PBXProject "FoodTracker" */;
+			buildConfigurationList = 30F43EDF1D077C3B005E3BEB /* Build configuration list for PBXProject "SaisieMed" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -327,8 +329,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				30F43EE31D077C3B005E3BEB /* FoodTracker */,
-				30F43EF71D077C3B005E3BEB /* FoodTrackerTests */,
+				30F43EE31D077C3B005E3BEB /* SaisieMed */,
+				30F43EF71D077C3B005E3BEB /* SaisieMedTests */,
 			);
 		};
 /* End PBXProject section */
@@ -413,7 +415,7 @@
 /* Begin PBXTargetDependency section */
 		30F43EFA1D077C3B005E3BEB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 30F43EE31D077C3B005E3BEB /* FoodTracker */;
+			target = 30F43EE31D077C3B005E3BEB /* SaisieMed */;
 			targetProxy = 30F43EF91D077C3B005E3BEB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -533,7 +535,7 @@
 				INFOPLIST_FILE = FoodTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ricacaa.SaisieMed;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SaisieMed;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -547,7 +549,7 @@
 				INFOPLIST_FILE = FoodTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ricacaa.SaisieMed;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SaisieMed;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -559,8 +561,8 @@
 				INFOPLIST_FILE = FoodTrackerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.FoodTrackerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodTracker.app/FoodTracker";
+				PRODUCT_NAME = SaisieMed;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SaisieMed.app/SaisieMed";
 			};
 			name = Debug;
 		};
@@ -571,15 +573,15 @@
 				INFOPLIST_FILE = FoodTrackerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.FoodTrackerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodTracker.app/FoodTracker";
+				PRODUCT_NAME = SaisieMed;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SaisieMed.app/SaisieMed";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		30F43EDF1D077C3B005E3BEB /* Build configuration list for PBXProject "FoodTracker" */ = {
+		30F43EDF1D077C3B005E3BEB /* Build configuration list for PBXProject "SaisieMed" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				30F43EFF1D077C3B005E3BEB /* Debug */,
@@ -588,7 +590,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		30F43F011D077C3B005E3BEB /* Build configuration list for PBXNativeTarget "FoodTracker" */ = {
+		30F43F011D077C3B005E3BEB /* Build configuration list for PBXNativeTarget "SaisieMed" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				30F43F021D077C3B005E3BEB /* Debug */,
@@ -597,7 +599,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		30F43F041D077C3B005E3BEB /* Build configuration list for PBXNativeTarget "FoodTrackerTests" */ = {
+		30F43F041D077C3B005E3BEB /* Build configuration list for PBXNativeTarget "SaisieMedTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				30F43F051D077C3B005E3BEB /* Debug */,

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "30F43EE31D077C3B005E3BEB"
-               BuildableName = "FoodTracker.app"
-               BlueprintName = "FoodTracker"
-               ReferencedContainer = "container:FoodTracker.xcodeproj">
+               BuildableName = "SaisieMed.app"
+               BlueprintName = "SaisieMed"
+               ReferencedContainer = "container:SaisieMed.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "30F43EF71D077C3B005E3BEB"
-               BuildableName = "FoodTrackerTests.xctest"
-               BlueprintName = "FoodTrackerTests"
-               ReferencedContainer = "container:FoodTracker.xcodeproj">
+               BuildableName = "SaisieMed.xctest"
+               BlueprintName = "SaisieMedTests"
+               ReferencedContainer = "container:SaisieMed.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "30F43EE31D077C3B005E3BEB"
-            BuildableName = "FoodTracker.app"
-            BlueprintName = "FoodTracker"
-            ReferencedContainer = "container:FoodTracker.xcodeproj">
+            BuildableName = "SaisieMed.app"
+            BlueprintName = "SaisieMed"
+            ReferencedContainer = "container:SaisieMed.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "30F43EE31D077C3B005E3BEB"
-            BuildableName = "FoodTracker.app"
-            BlueprintName = "FoodTracker"
-            ReferencedContainer = "container:FoodTracker.xcodeproj">
+            BuildableName = "SaisieMed.app"
+            BlueprintName = "SaisieMed"
+            ReferencedContainer = "container:SaisieMed.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -85,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "30F43EE31D077C3B005E3BEB"
-            BuildableName = "FoodTracker.app"
-            BlueprintName = "FoodTracker"
-            ReferencedContainer = "container:FoodTracker.xcodeproj">
+            BuildableName = "SaisieMed.app"
+            BlueprintName = "SaisieMed"
+            ReferencedContainer = "container:SaisieMed.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

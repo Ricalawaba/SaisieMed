@@ -35,7 +35,7 @@ class saisieTableViewController: UITableViewController {
             let svc = segue.destinationViewController as! examensTableViewController
             let selectedIndex = self.tableView.indexPathForCell(sender as! UITableViewCell)
             svc.categorie = patient.examen.categories[selectedIndex!.row]
-            svc.navigationController?.title = svc.categorie.nom
+            svc.navigationController?.title = svc.categorie!.nom
             //  sender?.row
             //  svc.listePatients = Donnees.listePatient
             

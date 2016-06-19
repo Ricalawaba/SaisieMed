@@ -9,7 +9,7 @@
 import UIKit
 
 class examensTableViewController: UITableViewController,textSelectedDelegate {
-    var categorie = categorieExamen.Categorie()
+    var categorie : categorieExamen.Categorie!
     var examenSelected: Examen?
     //var examen = [Examen]()
     override func viewDidLoad() {
@@ -21,7 +21,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         //examen=Donnees.listeCategorie.categories.first!.examens
-        self.title=categorie.nom
+        self.title=categorie!.nom
         // print(examen.count)
     }
 
@@ -37,7 +37,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate {
             let svc = segue.destinationViewController as! examensTableViewController
             let mycell = (sender as! examgroupTableViewCell)
             svc.categorie = mycell.examen!.categorie!
-            svc.navigationController?.title = svc.categorie.nom
+            svc.navigationController?.title = svc.categorie!.nom
             //  sender?.row
             //  svc.listePatients = Donnees.listePatient
             

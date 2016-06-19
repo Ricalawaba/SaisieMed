@@ -59,6 +59,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return filename
         
     }
+    var filePathPatients : String {
+        let filename = getDocumentsDirectory().stringByAppendingPathComponent("test3.txt")
+        return filename
+        
+    }
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Donnees.selectiontextDict["atcd"] = ["RGO","Néoplasie colique","Asthme","Pneumopathie"].sort()
@@ -87,6 +92,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMotif) as? [String] {
             Donnees.selectiontextDict["motif"] = array
         }
+        if let listpatient=NSKeyedUnarchiver.unarchiveObjectWithFile(filePathPatients) as? patients{
+            Donnees.listePatient=listpatient
+        }
         return true
     }
 
@@ -101,7 +109,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["medecin"]!, toFile: filePathMedecin)
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["medicament"]!, toFile: filePathMedicament)
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["localisation"]!, toFile: filePathLocalisation)
-         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["motif"]!, toFile: filePathMotif)
+        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["motif"]!, toFile: filePathMotif)
+        NSKeyedArchiver.archiveRootObject(Donnees.listePatient, toFile: filePathPatients)
     }
 
     func applicationWillEnterForeground(application: UIApplication) {

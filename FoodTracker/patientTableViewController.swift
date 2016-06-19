@@ -42,11 +42,11 @@ class patientTableViewController: UITableViewController,ajoutPatientDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
      
         if (segue.identifier == "ajoutPatient") {
-            let svc = segue!.destinationViewController as! AjoutPatientViewController
+            let svc = segue.destinationViewController as! AjoutPatientViewController
              svc.delegate=self
             //  svc.listePatients = Donnees.listePatient
             
