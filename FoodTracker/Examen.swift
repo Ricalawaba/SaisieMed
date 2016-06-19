@@ -14,7 +14,7 @@ extension NSCoder {func encodeEnum( e:Examen.examenEnum, forKey:String) {self.en
 
 class Examen : NSObject,NSCoding{
     var intitule : String
-    var info : String = ""
+    var info : String = ","
     var tag : String = ""
   //  var selectionnableText: [String] = []
     
@@ -93,6 +93,12 @@ class Examen : NSObject,NSCoding{
         self.type=type
         self.intitule=intitule
         self.info=info
+    }
+    init(intitule: String,type:  examenEnum, tag: String , info:String) {
+        self.type=type
+        self.intitule=intitule
+        self.info=info
+        self.tag=tag
     }
     init (intitule: String,type:  examenEnum, value:String){
         

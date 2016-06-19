@@ -128,12 +128,18 @@
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Cfg" id="oJe-gp-1ZJ"/>
+                            <barButtonItem systemItem="save" id="8Xa-Vk-TIm">
+                                <connections>
+                                    <action selector="savePatients:" destination="4uv-RX-JfC" id="Zpd-uh-TrT"/>
+                                </connections>
+                            </barButtonItem>
                         </leftBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="configMenuItem" destination="oJe-gp-1ZJ" id="2bR-fe-5eO"/>
+                        <outlet property="saveMenuItem" destination="8Xa-Vk-TIm" id="OEH-Tc-VmX"/>
                         <segue destination="wtD-GT-n0l" kind="show" identifier="showrapportSegue" id="kpV-VU-GAy"/>
                     </connections>
                 </tableViewController>
@@ -251,7 +257,6 @@
                                             <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                             <connections>
                                                 <action selector="reponsecourteEditEnd:" destination="zHd-pW-sFP" eventType="editingDidEnd" id="0hY-6P-Rjk"/>
-                                                <outlet property="delegate" destination="6p3-rv-hQ4" id="QaU-kr-TX5"/>
                                             </connections>
                                         </textField>
                                     </subviews>
@@ -621,7 +626,7 @@
         <!--Rapport View Controller-->
         <scene sceneID="x8P-YQ-1Qh">
             <objects>
-                <viewController id="wtD-GT-n0l" customClass="rapportViewController" customModule="SaisieMed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="rapportControlerID" id="wtD-GT-n0l" customClass="rapportViewController" customModule="SaisieMed" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="a8F-ne-gDi"/>
                         <viewControllerLayoutGuide type="bottom" id="4th-CV-ShG"/>
@@ -679,7 +684,7 @@
         <!--Selection Texte Table View Controller-->
         <scene sceneID="NPz-6g-r2N">
             <objects>
-                <tableViewController id="IkB-4k-wdC" customClass="selectionTexteTableViewController" customModule="SaisieMed" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="selectionViewID" id="IkB-4k-wdC" customClass="selectionTexteTableViewController" customModule="SaisieMed" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="25" sectionHeaderHeight="28" sectionFooterHeight="28" id="jM8-TE-hiy">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -25,8 +25,28 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         //examen=Donnees.listeCategorie.categories.first!.examens
         self.title=categorie!.nom
         // print(examen.count)
+        registerForKeyboardNotifications()
+     
+            autoshowFirstGroup()
+        
+    
     }
+    
+    func autoshowFirstGroup () {
+        if categorie.examens.count==0 { return }
+        let aExam = categorie.examens[0]
+        if !aExam.value.isEmpty { return }
+        if aExam.type == .selection {
+        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectionViewID") as! selectionTexteTableViewController
+        examenSelected=categorie.examens[0]
+        svc.textes = Donnees.selectiontextDict[examenSelected!.tag]!
+        svc.delegate=self
 
+        //self.presentViewController(svc, animated: true, completion: nil)
+            self.navigationController!.pushViewController(svc,animated: true)
+            
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -45,19 +65,21 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     }
     
     func keyboardWasShown(aNotification: NSNotification) {
+        if activeField == nil {return}
         let info = aNotification.userInfo as! [String: AnyObject],
         kbSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue().size,
-        contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
-        
+        contentInsets = UIEdgeInsets(top: 90, left: 0, bottom: kbSize.height, right: 0)
         self.tableView.contentInset = contentInsets
         self.tableView.scrollIndicatorInsets = contentInsets
-        
+
         // If active text field is hidden by keyboard, scroll it so it's visible
         // Your app might not need or want this behavior.
         var aRect = self.view.frame
         aRect.size.height -= kbSize.height
         
         if !CGRectContainsPoint(aRect, activeField!.frame.origin) {
+           
+            
             self.tableView.scrollRectToVisible(activeField!.frame, animated: true)
         }
     }
@@ -148,6 +170,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
                 cell2.valeurReponseCourte.text = examen1.value
             }
             cell2.examen=examen1
+            cell2.valeurReponseCourte.delegate=self
             return cell2
         } else
         if examen1.type==Examen.examenEnum.ouinon {

@@ -11,6 +11,7 @@ import UIKit
 class patientTableViewController: UITableViewController,ajoutPatientDelegate {
     var longpushPatient = patients.patient()
     
+    @IBOutlet weak var saveMenuItem: UIBarButtonItem!
     @IBOutlet weak var configMenuItem: UIBarButtonItem!
     @IBAction func showRapport(sender: UILongPressGestureRecognizer) {
         let location : CGPoint = sender.locationInView(self.tableView)
@@ -21,6 +22,9 @@ class patientTableViewController: UITableViewController,ajoutPatientDelegate {
         performSegueWithIdentifier("showrapportSegue", sender: self)
     }
     
+    @IBAction func savePatients(sender: UIBarButtonItem) {
+       // UIApplication.sharedApplication().dele
+    }
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -59,6 +63,8 @@ class patientTableViewController: UITableViewController,ajoutPatientDelegate {
                 let svc = segue.destinationViewController as! saisieTableViewController
                 let selectedIndex = self.tableView.indexPathForCell(sender as! UITableViewCell)
                 svc.patient = Donnees.listePatient.patients[selectedIndex!.row]
+                svc.title=svc.patient.nomPrenom
+                //svc.
           //  print("\(), \(), row \(selectedIndex!.row)")
                 //  sender?.row
                 //  svc.listePatients = Donnees.listePatient
@@ -92,7 +98,7 @@ class patientTableViewController: UITableViewController,ajoutPatientDelegate {
         // Configure the cell...
         let patient = Donnees.listePatient.patients[indexPath.row]
         cell.localisation?.text = patient.localisation
-        cell.nomage?.text = "Mr \(patient.nomPrenom) , \(patient.age) ans"
+        cell.nomage?.text = "\(patient.nomPrenom) , \(patient.age) ans"
         cell.motif?.text = patient.motif
         var imagesymbol: UIImage
         if patient.masculin {

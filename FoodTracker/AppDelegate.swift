@@ -118,71 +118,123 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return filename
         
     }
+    // MARK: - Antécédents : liste initiale
+    func setDefaultAtcd() {
+        Donnees.selectiontextDict["atcd"] = [
+            "RGO","Néoplasie colique","Asthme","Pneumopathie","Infacrtus myocardique","Syndrome anxio-depressif","Occlusion","Appendicectomie",
+            "Cholécystectomie","Colique néphrétique","Ulcère gastrique","Gastrite","Angor","Hypercholestérolémie","DNID","Diabète insulino requérant",
+            "Diabète type I","Epilepsie","Bronchopneumopathie obstructive","Splénectomie","Prothèse de hanche","Prothèse de genou","Amygdalectomie","Thrombose veineuse profonde",
+            "Embolie pulmonaire","Artérite", "Oedeme aigue du poumon", "Urticaire","Eczéma","Péritonite","Hypertension artérielle","Insufisance veineuse des membres inférieurs","Coxarthrose","Gonarthrose","Arthrose cervicale","Arthrose lombaire","Rhizarthrose","Insufisance mitrale",
+            "Retrécissement aortique","Rétrécissement mitral","Insufisance aortique","Néoplasie mammaire","Néoplasie rénale","Néphrectomie","Cholecystite",
+            "",
+            "Fibrillation auriculaire paroxystique","Fibrillation auriculaire permanente","Insuffisance cardiaque","Valvulopathie","Pace-Maker","Néoplasie pulmonaire","Néoplasique colique"
+        ]
+        Donnees.selectiontextDict["atcd"]=Donnees.selectiontextDict["atcd"]?.sort()
+    }
+    // MARK: - Médicaments : liste initiale
+    func setDefaultMedicament() {
+        Donnees.selectiontextDict["medicament"] = [
+            "AVLOCARDYL 40","KARDEGIC 75","KARDEGIC 160", "AMLOR 5","AMIODARONE 200",
+            "ESOMEPRAZOLE 20","ESOMEPRAZOLE 40","OMEPRAZOLE 20", "OMEPRAZOLE 10","CO-APROVEL 150/12.5",
+            "DOLIPRANE 500","DOLIPRANE 1000","PLAVIX 75", "FUROSEMIDE 20","FUROSEMIDE 40",
+            "PROPRANOLOL 40","AVLOCARDYL 40","AMLODIPINE 5","AMLODIPINE 10","BACLOFENE 10","ABILIFY 5","CYMBALTA 60",
+            "METFORMINE 500","METFORMINE 850","METFORMINE 1000","LANTUS 100UI/ml","DIGOXINE 0,25",
+            "PREVISCAN","COUMADINE 2","COUMADINE 5","IRBESARTAN 150","IRBESARTAN 300","PARACETAMOL 500","PARACETAMOL 1000",
+            "TRAMADOL 50","TRAMADOL 100 LP","FLECAINE 100","LEVOTHYROXINE 25","LEVOTHYROXINE 50","LEVOTHYROXINE 75",
+            "LEVOTHYROXINE 100","LEVOTHYROXINE 125","LEVOTHYROXINE 150",
+            ].sort()
+
+    }
+        // MARK: - Motifs : liste initiale
+    func setDefaultMotif() {
+        Donnees.selectiontextDict["motif"] = [
+            "Aucun",
+            "Douleur thoracique",
+            "Malaise",
+            "Douleur abdominale",
+            "Dyspnée",
+            "Vomissements",
+            "Diarrhée",
+            "Désorientation temporospatiale","Aphasie","Troubles du langage",
+            "Brulures urinaires","Brulures occulaires",
+            "Brulures cutanées",
+            "Hyperthermie",
+            "Céphallée",
+            "Sciatalgie",
+            "Palpitations",
+            "Vertiges",
+            "Nausées",
+            "Toux",
+            "Hématurie",
+            "Rétention urinaire",
+            "Trauma main","Trauma epaule",
+            "Eruption cutanée",
+            "Surdité brusque","Acouphènes","Altération de l'état général","Anorexie","Troubles de l'appétit",
+            "Perte de connaissance","Sans perte de connaissance",
+            "Lombalgie","Rachialgie","Cervicalgie","Gonalgie","Coxalgie","Cruralgie","Otalgie","Douleur pharyngée",
+            "Syndrome rhinopharyngée",
+            "Douleur mollet","Douleur cuisse","Douleur bras","Douleur epaule","Douleur pelvienne","Douleur dentaire",
+            "Adénopathies",
+            "Plaie de la face","Plaie de la main", "Plaie du crane", "Plaie avant-bras",
+            "Plaie abdominale","Plaie cuisse","Plaie arcade",
+            "Début brutal","d'apparition progressive","d'aggravation progressive",
+            "Chute par maladresse","Chute de sa hauteur","Chute en 2R", "Accident de la voie publique"
+            ].sort()
+    }
+        // MARK: - Localisation : liste initiale
+    func setDefaultLocalisation() {
+        Donnees.selectiontextDict["localisation"] = [
+            "Salle d'attente",
+            "Box 1","Box 2","Box 3","Box 4","Box 5","Box 6","Box 7",
+            "Box A","Box B","Box C","Box D","Box E", "Box F",
+            "Bureau",
+            "I.O.A",
+            "Degrav",
+            "Suture"]
+    }
     
+    // MARK: - Etablissement : liste initiale
+    func setDefaultEtablissement() {
+        Donnees.selectiontextDict["etablissement"] = [
+            "Clin. Claude Bernard (Albi)","CH Albi","Clin. Sidobre (Castres)","CHU Rangueuil (Toulouse)","Clin. Toulouse-Lautrec (Albi)",
+            "Clin. Union (Toulouse)","Clin. St-Jean Languedoc (Toulouse)","Clin. des Cèdres (Toulouse)", "CH Castres","CHU Toulouse",
+            ].sort()
+    }
+    // MARK: - Medecin : liste initiale
+    func setDefaultMedecin() {
+        Donnees.selectiontextDict["medecin"] = [
+            " Pas de médecin traitant","Dr Chatillon B.", "Dr Paquié C.", "Dr Mariambourg G.", "Dr Moruzi M.", "Dr Moruzi S.",
+            "Dr De la porte C.","Dr Fargues P.","Dr Bensoussan L-C.","Dr Arhire Andréi.","Dr Arhire Anca","Dr Louis C.",
+            "Médecin traitant"
+            ].sort()
+    }
+     // MARK: - Posologie : liste initiale
+    func setDefaultPosologie() {
+        Donnees.selectiontextDict["posologie"] = [
+            "à la demande","au besoin", "par cure",
+            "1/j","1x2/j", "1x3/j",
+            "2x3/j",
+            "½/j","½x2/j","½x3/j",
+            "¼/j","¼x2/j","¼x3/j",
+            "¾/j","¾x2/j","¾x3/j",
+            "1/j 5/7j"
+        ]
+    }
+
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        Donnees.selectiontextDict["atcd"] = [
-                "RGO","Néoplasie colique","Asthme","Pneumopathie","Infacrtus myocardique","Syndrome anxio-depressif","Occlusion","Appendicectomie",
-                "Cholécystectomie","Colique néphrétique","Ulcère gastrique","Gastrite","Angor","Hypercholestérolémie","DNID","Diabète insulino requérant",
-                "Diabète type I","Epilepsie","Bronchopneumopathie obstructive","Splénectomie","Prothèse de hanche","Prothèse de genou","Amygdalectomie","Thrombose veineuse profonde",
-                "Embolie pulmonaire","Artérite", "Oedeme aigue du poumon", "Urticaire","Eczéma","Péritonite","Hypertension artérielle","Insufisance veineuse des membres inférieurs",
-                "Fibrillation auriculaire","Insufisance cardiaque","Valvulopathie","Pace-Maker","Néoplasie pulmonaire","Néoplasique colique"
-                ]
-        Donnees.selectiontextDict["atcd"]=Donnees.selectiontextDict["atcd"]?.sort()
-        Donnees.selectiontextDict["medicament"] = [
-                "AVLOCARDYL 40","KARDEGIC 75","KARDEGIC 160", "AMLOR 5","AMIODARONE 200",
-                "ESOMEPRAZOLE 20","ESOMEPRAZOLE 40","OMEPRAZOLE 20", "OMEPRAZOLE 10","CO-APROVEL 150/12.5",
-                "DOLIPRANE 500","DOLIPRANE 1000","PLAVIX 75", "FUROSEMIDE 20","FUROSEMIDE 40",
-                "PROPRANOLOL 40","AVLOCARDYL 40","AMLODIPINE 5","AMLODIPINE 10","BACLOFENE 10","ABILIFY 5","CYMBALTA 60",
-                "METFORMINE 500","METFORMINE 850","METFORMINE 1000","LANTUS 100UI/ml","DIGOXINE 0,25",
-                "PREVISCAN","COUMADINE 2","COUMADINE 5","IRBESARTAN 150","IRBESARTAN 300","PARACETAMOL 500","PARACETAMOL 1000",
-                "TRAMADOL 50","TRAMADOL 100 LP","FLECAINE 100","LEVOTHYROXINE 25","LEVOTHYROXINE 50","LEVOTHYROXINE 75",
-                "LEVOTHYROXINE 100","LEVOTHYROXINE 125","LEVOTHYROXINE 150",
-                ].sort()
-        Donnees.selectiontextDict["motif"] = [
-                "Aucun","Douleur thoracique","Malaise","Douleur abdominale","Dyspnée","Vomissements","Diarrhée","Brulures urinaires","Hyperthermie","Céphallée","Sciatalgie",
-                "Trauma main","Trauma epaule","Eruption cutanée","Chute par maladresse"
-                ].sort()
-        Donnees.selectiontextDict["localisation"] = ["Salle d'attente","Box 1","Box 2","Box 3","Box 4","Box 5","Box 6","Box 7","Box A","Box B","Box C","Box D","Box E", "Box F", "Bureau", "I.O.A","Degrav", "Suture"]
-        Donnees.selectiontextDict["etablissement"] = [
-                "Clin. Claude Bernard (Albi)","CH Albi","Clin. Sidobre (Castres)","CHU Rangueuil (Toulouse)","Clin. Toulouse-Lautrec (Albi)",
-                "Clin. Union (Toulouse)","Clin. St-Jean Languedoc (Toulouse)","Clin. des Cèdres (Toulouse)", "CH Castres","CHU Toulouse",
-                ].sort()
-        Donnees.selectiontextDict["medecin"] = [
-                " Pas de médecin traitant","Dr Chatillon B.", "Dr Paquié C.", "Dr Mariambourg G.", "Dr Moruzi M.", "Dr Moruzi S.",
-                "Dr De la porte C.","Dr Fargues P.","Dr Bensoussan L-C.","Dr Arhire Andréi.","Dr Arhire Anca","Dr Louis C.",
-                ""
-                ].sort()
-        Donnees.selectiontextDict["posologie"] = ["1/j","1x2/j", "1x3/j", "2x3/j", "½/j","½x2/j","½x3/j", "¼/j","¼x2/j","¼x3/j","1/j 5/7j"]
+        setDefaultAtcd()
+        setDefaultMedicament()
+        setDefaultMotif()
+        setDefaultLocalisation()
+        setDefaultEtablissement()
+        setDefaultMedecin()
+        setDefaultPosologie()
+
         // MARK: Uncomment to read data files
         
-       //  self.loadDataFiles()
-    /*
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathAtcd) as? [String] {
-            Donnees.selectiontextDict["atcd"] = array
-        }
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMedecin) as? [String] {
-            Donnees.selectiontextDict["medecin"] = array
-        }
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMedicament) as? [String] {
-            Donnees.selectiontextDict["medicament"] = array
-        }
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathLocalisation) as? [String] {
-            Donnees.selectiontextDict["localisation"] = array
-        }
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMotif) as? [String] {
-            Donnees.selectiontextDict["motif"] = array
-        }
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathetablissement) as? [String] {
-            Donnees.selectiontextDict["etablissement"] = array
-        }
-    */
-        /*
-        if let listpatient=NSKeyedUnarchiver.unarchiveObjectWithFile(filePathPatients) as? patients{
-            Donnees.listePatient=listpatient
-        }
-    */
+         self.loadDataFiles()
         
         /*var filemgr = NSFileManager.defaultManager()
         if filemgr.fileExistsAtPath(filePathPatients) {
@@ -195,6 +247,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Error: \(error)")  
             }  
         }*/
+        
         return true
     }
 

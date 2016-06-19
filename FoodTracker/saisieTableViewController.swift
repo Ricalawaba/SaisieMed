@@ -20,9 +20,25 @@ class saisieTableViewController: UITableViewController {
          //self.navigationItem.rightBarButtonItem = self.editButtonItem()
         //self.tableView.registerClass(patientTableViewCell.self, forCellReuseIdentifier: "CategorieExamen")
     }
-
+    var rapportCat: categorieExamen.Categorie?
+    
     @IBAction func LongPush(sender: UILongPressGestureRecognizer) {
-        tableView.reloadData()
+        let location : CGPoint = sender.locationInView(self.tableView)
+        let swipedIndexPath:NSIndexPath = self.tableView.indexPathForRowAtPoint(location)!
+        rapportCat = patient.examen.categories[swipedIndexPath.row]
+        //let swipedcell:patientTableViewCell = self.tableView.cellForRowAtIndexPath(swipedIndexPath)!
+        //do your stuff here
+//        longpushPatient = Donnees.listePatient.patients[swipedIndexPath.row]
+//        performSegueWithIdentifier("showrapportSegue", sender: self)
+//
+        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("rapportControlerID") as! rapportViewController
+        svc.uneCategorie=rapportCat
+
+        
+        //self.presentViewController(svc, animated: true, completion: nil)
+        self.navigationController!.pushViewController(svc,animated: true)
+
+        
         //print("refresh long push")
     }
     override func didReceiveMemoryWarning() {

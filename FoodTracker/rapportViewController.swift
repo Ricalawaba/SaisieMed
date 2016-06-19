@@ -15,18 +15,51 @@ class rapportViewController: UIViewController {
     }
     @IBOutlet weak var webView: UIWebView!
     var patient=patients.patient()
+    var uneCategorie: categorieExamen.Categorie?=nil
     
     override func viewDidAppear(animated: Bool) {
-        var myHTMLString:String
-        myHTMLString = "<H2>\(patient.nomPrenom), \(patient.age) ans</H2>"
+        var myHTMLString:String=""
         
-        for  cat in patient.examen.categories
-        {
-            let detailstr=cat.detailString()
+        
+        if uneCategorie == nil {
+            myHTMLString = "<H2>\(patient.nomPrenom), \(patient.age) ans</H2>"
+            for  cat in patient.examen.categories
+            {
+                if cat.nom == "Administratif" {
+                    var AdminStr=""
+                    var sexe:String!
+                    var nom:String = cat.examens[0].value
+                    if cat.examens[1].value=="0" {
+                        sexe="Homme"
+                    }else {sexe="Femme"}
+                    
+                    AdminStr += "<h2>Synthèse médicale</h2><p>\(nom), \(sexe),\(cat.examens[2].value) ans"
+                    AdminStr += "<p>Motif: \(cat.examens[4].value)"
+                    AdminStr += "<p>Médecin traitant: \(cat.examens[5].value)"
+                    let modevie=cat.examens[6].categorie!.detailString()
+                    if !modevie.isEmpty {
+                        AdminStr += "<p> \(modevie)"
+                    }
+                    let modeentree=cat.examens[7].categorie!.detailString()
+                    if !modeentree.isEmpty {
+                        AdminStr += "<p>\(modeentree)"
+                    }
+                    myHTMLString += AdminStr
+                } else {
+                    let detailstr=cat.formattedDetaiString()
+                    if !detailstr.isEmpty {
+                        myHTMLString += "<h2>\(cat.nom)</h2><p>\(detailstr)</p>"
+                    }
+                }
+            }
+        } else {
+            myHTMLString = "<H2>\(uneCategorie!.nom)</H2>"
+            let detailstr=uneCategorie!.formattedDetaiString()
             if !detailstr.isEmpty {
-                myHTMLString += "<h2>\(cat.nom)</h2><p>\(detailstr)</p>"
+                myHTMLString += "<h2>\(uneCategorie!.nom)</h2><p>\(detailstr)</p>"
             }
         }
+        
         webView.loadHTMLString(myHTMLString, baseURL: nil)
     }
     override func viewDidLoad() {

@@ -16,6 +16,7 @@ class categorieExamen : NSObject , NSCoding {
         var examens = [ Examen]()
         var nom: String
         var namedImage : String
+        var showNom : Bool = true
         required convenience init?(coder decoder: NSCoder) {
             guard let nom = decoder.decodeObjectForKey("nom") as? String,
                 let namedImage = decoder.decodeObjectForKey("namedImage") as? String,
@@ -24,6 +25,7 @@ class categorieExamen : NSObject , NSCoding {
             
             self.init(nom: nom, namedImage: namedImage)
             self.examens=examens
+            self.showNom = decoder.decodeBoolForKey("shownom")
             
             }
             
@@ -31,7 +33,7 @@ class categorieExamen : NSObject , NSCoding {
             coder.encodeObject(self.nom, forKey: "nom")
             coder.encodeObject(self.namedImage, forKey: "namedImage")
             coder.encodeObject(self.examens, forKey: "examens")
-            
+            coder.encodeBool(self.showNom, forKey: "shownom")
         }
         
 
@@ -43,9 +45,58 @@ class categorieExamen : NSObject , NSCoding {
             
         }
         
+        init(nom:String, namedImage:String, showNom: Bool){
+            self.nom=nom
+            self.namedImage=namedImage
+            self.showNom=showNom
+        }
         init(nom:String, namedImage:String){
             self.nom=nom
             self.namedImage=namedImage
+            
+        }
+
+        func formattedDetaiString() -> String {
+            var str: String = ""
+            for  index in 0..<examens.count {
+                let examen=examens[index]
+                if !examen.value.isEmpty {
+                    if examen.type ==  .ouinon || examen.type == .check {
+                        if examen.value == "0" {
+                            str += "\(examen.intitule), "
+                        } else if examen.value == "1" {
+                            let vowels: [Character] = ["a","e","i","o","u","h"]
+                            if vowels.contains(examen.intitule.lowercaseString.characters.first!) {
+                                
+                                str += "Pas d'\(examen.intitule), "}
+                            else {
+                                str += "Pas de \(examen.intitule), "}
+                        }
+                    }
+                    
+                    if  examen.type ==  .reponsecourte || examen.type == .selection{
+                        str += "\(examen.value), "
+                    }
+                    if examen.type ==  .donnee {
+                        str += "\(examen.intitule)=\(examen.value), "
+                    }
+                    
+                }else if examen.type ==  .group {
+                    let str2=examen.categorie?.detailString()
+                    if !(str2?.isEmpty)! {
+                        str += "<p>"
+                        if ((examen.categorie!.showNom) ) {
+                            str += "\(examen.intitule): "
+                        }
+                        str += "\(examen.categorie!.detailString())\(examen.info) "
+                    }
+                }
+            }
+            if !str.isEmpty {str.removeAtIndex(str.endIndex.predecessor())
+            //    str.removeAtIndex(str.endIndex.predecessor())
+            }
+            return str
+
         }
         func detailString() -> String {
                 var str: String = ""
@@ -75,7 +126,10 @@ class categorieExamen : NSObject , NSCoding {
                     }else if examen.type ==  .group {
                         let str2=examen.categorie?.detailString()
                         if !(str2?.isEmpty)! {
-                        str += "\(examen.intitule): \(examen.categorie!.detailString()), "
+                            if ((examen.categorie!.showNom) ) {
+                                str += "\(examen.intitule):"
+                            }
+                        str += "\(examen.categorie!.detailString())\(examen.info) "
                         }
                     }
                 }
@@ -150,14 +204,15 @@ class categorieExamen : NSObject , NSCoding {
             ]
         // MARK:  - Catégorie antécédent
         for _ in 0..<10 {
-            let catATCD = Categorie(nom:"atcd",namedImage: "nurse_icon.png")
+            let catATCD = Categorie(nom:"atcd",namedImage: "nurse_icon.png",showNom: false)
             let examCatATCD = [
-                Examen(intitule: "Xie", type:  .check ),
+               // Examen(intitule: "Xie", type:  .check ,info: " "),
                 Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
                 Examen(intitule: "bilatéral(e)", type:  .check ),
                 Examen(intitule: "droit(e)", type:  .check ),
                 Examen(intitule: "gauche", type:  .check ),
                 Examen(intitule: "récidivant(e)s", type:  .check ),
+                Examen(intitule: "probable", type:  .check ),
                 Examen(intitule: "quand ?", type:  .reponsecourte ),
                 Examen(intitule: "ou ?", type:  .selection,tag: "etablissement" ),
                 Examen(intitule: "pas de suivi spécialisé", type:  .check ),
@@ -193,11 +248,10 @@ class categorieExamen : NSObject , NSCoding {
             Examen(intitule: "Pas de traitement au long cours", type:  .check ),
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
             Examen(intitule: "Sous anti-coagulant", type:  .check ),
-            Examen(intitule: "Sous anti-agrégant", type:  .check ),
-            Examen(intitule: "médicament", type:  .selection,tag: "medicament" )
+            Examen(intitule: "Sous anti-agrégant", type:  .check )
             ]
         for _ in 0..<10 {
-            let catTTT = Categorie(nom:"ttt",namedImage: "medoc_icon.png")
+            let catTTT = Categorie(nom:"ttt",namedImage: "medoc_icon.png",showNom: false)
             let examCatTTT = [
                 Examen(intitule: "nom", type:  .selection,tag: "medicament" ),
                 Examen(intitule: "posologie", type:  .selection,tag: "posologie" ),
@@ -264,6 +318,7 @@ class categorieExamen : NSObject , NSCoding {
         let examcat4 = [
             Examen(intitule: "Examen Normal", type:  .check ),
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
+            Examen(intitule: "Déficit sensitivomoteur", type:  .ouinon ),
             Examen(intitule: "Glasgow", type:  .donnee ),
             Examen(intitule: "D.T.S.", type:  .ouinon ),
             Examen(intitule: "Céphallée", type:  .ouinon ),
@@ -420,7 +475,9 @@ class categorieExamen : NSObject , NSCoding {
              Examen(intitule: "Libre", type:  .reponsecourte ),
              Examen(intitule: "Qualité du tracé correcte", type:  .check ),
              Examen(intitule: "Tracé parasité", type:  .check ),
+             Examen(intitule: "Ligne de base instable", type:  .check ),
              Examen(intitule: "FC", type:  .donnee ),
+             
              Examen(intitule: "P (mm)", type:  .donnee ),
              Examen(intitule: "P (ms)", type:  .donnee ),
              Examen(intitule: "PR (ms)", type:  .donnee ),
@@ -451,7 +508,7 @@ class categorieExamen : NSObject , NSCoding {
         ]
         
         // MARK: Categories
-        categories += [Categorie1,Categorie2,Categorie21, Categorie3,Categorie31,Categorie4,Categorie5,Categorie6,Categorie7,Categorie8, Categorie9, Categorie20, CatECG]
+        categories += [Categorie1, Categorie3,Categorie2,Categorie21,Categorie31,Categorie4,Categorie5,Categorie6,Categorie7,Categorie8, Categorie9, Categorie20, CatECG]
     }
     
     
