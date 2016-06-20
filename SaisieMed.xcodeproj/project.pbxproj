@@ -30,6 +30,7 @@
 		304B19F91D13F3490006DB4A /* selectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304B19F81D13F3490006DB4A /* selectionTableViewCell.swift */; };
 		304B19FB1D1413540006DB4A /* Examen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304B19FA1D1413540006DB4A /* Examen.swift */; };
 		304B19FD1D14174C0006DB4A /* selectionTexteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304B19FC1D14174C0006DB4A /* selectionTexteTableViewController.swift */; };
+		30D0288F1D174F870050231C /* dataSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D0288E1D174F870050231C /* dataSave.swift */; };
 		30F43EE81D077C3B005E3BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43EE71D077C3B005E3BEB /* AppDelegate.swift */; };
 		30F43EED1D077C3B005E3BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30F43EEB1D077C3B005E3BEB /* Main.storyboard */; };
 		30F43EEF1D077C3B005E3BEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30F43EEE1D077C3B005E3BEB /* Assets.xcassets */; };
@@ -86,6 +87,7 @@
 		304B19F81D13F3490006DB4A /* selectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectionTableViewCell.swift; sourceTree = "<group>"; };
 		304B19FA1D1413540006DB4A /* Examen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Examen.swift; sourceTree = "<group>"; };
 		304B19FC1D14174C0006DB4A /* selectionTexteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectionTexteTableViewController.swift; sourceTree = "<group>"; };
+		30D0288E1D174F870050231C /* dataSave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataSave.swift; sourceTree = "<group>"; };
 		30F43EE41D077C3B005E3BEB /* SaisieMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaisieMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F43EE71D077C3B005E3BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30F43EEC1D077C3B005E3BEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -182,6 +184,8 @@
 		30F43EE61D077C3B005E3BEB /* SaisieMed */ = {
 			isa = PBXGroup;
 			children = (
+				30F43EE71D077C3B005E3BEB /* AppDelegate.swift */,
+				30D0288E1D174F870050231C /* dataSave.swift */,
 				30F43F2C1D0EE938005E3BEB /* categorieExamen.swift */,
 				304B19FA1D1413540006DB4A /* Examen.swift */,
 				301826011D0F0B2A00592CE9 /* Examens */,
@@ -189,7 +193,6 @@
 				304B19FE1D14191E0006DB4A /* selectionTexte */,
 				30F43F2F1D0EF7DE005E3BEB /* Liste patient */,
 				30F43F231D0EA255005E3BEB /* images */,
-				30F43EE71D077C3B005E3BEB /* AppDelegate.swift */,
 				304B19F51D10D5370006DB4A /* Rapport */,
 				30F43EEE1D077C3B005E3BEB /* Assets.xcassets */,
 				30F43EF01D077C3B005E3BEB /* LaunchScreen.storyboard */,
@@ -386,6 +389,7 @@
 				304B19F91D13F3490006DB4A /* selectionTableViewCell.swift in Sources */,
 				301826001D0F085700592CE9 /* examensTableViewController.swift in Sources */,
 				30F43EE81D077C3B005E3BEB /* AppDelegate.swift in Sources */,
+				30D0288F1D174F870050231C /* dataSave.swift in Sources */,
 				301825FC1D0F057A00592CE9 /* questionOuiNonTableViewCell.swift in Sources */,
 				304B19FD1D14174C0006DB4A /* selectionTexteTableViewController.swift in Sources */,
 				304B19FB1D1413540006DB4A /* Examen.swift in Sources */,

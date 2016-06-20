@@ -38,11 +38,11 @@ class rapportViewController: UIViewController {
                     AdminStr += "<p>Médecin traitant: \(cat.examens[5].value)"
                     let modevie=cat.examens[6].categorie!.detailString()
                     if !modevie.isEmpty {
-                        AdminStr += "<p> \(modevie)"
+                        AdminStr += "<p>Mode de vie: \(modevie)"
                     }
                     let modeentree=cat.examens[7].categorie!.detailString()
                     if !modeentree.isEmpty {
-                        AdminStr += "<p>\(modeentree)"
+                        AdminStr += "<p>Mode d'entrée \(modeentree)"
                     }
                     myHTMLString += AdminStr
                 } else {

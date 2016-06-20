@@ -8,126 +8,20 @@
 
 import UIKit
 
-extension String {
-    
-    func stringByAppendingPathComponent(path: String) -> String {
-        
-        let nsSt = self as NSString
-        
-        return nsSt.stringByAppendingPathComponent(path)
-    }
-}
-
-struct Donnees {
-    static var listePatient = patients()
-    static var listeCategorie = categorieExamen()
-    static var selectiontextDict = [String: ([String]) ]()
-}
-
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    func saveDataFiles(){
-        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["atcd"]!, toFile: filePathAtcd)
-        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["medecin"]!, toFile: filePathMedecin)
-        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["medicament"]!, toFile: filePathMedicament)
-        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["localisation"]!, toFile: filePathLocalisation)
-        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["motif"]!, toFile: filePathMotif)
-        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["etablissement"]!, toFile: filePathetablissement)
-        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["posologie"]!, toFile: filePathetablissement)
-        NSKeyedArchiver.archiveRootObject(Donnees.listePatient, toFile: filePathPatients)
-    }
-    func loadDataFiles(){
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathAtcd) as? [String] {
-            Donnees.selectiontextDict["atcd"] = array
-        }
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMedecin) as? [String] {
-            Donnees.selectiontextDict["medecin"] = array
-        }
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMedicament) as? [String] {
-            Donnees.selectiontextDict["medicament"] = array
-        }
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathLocalisation) as? [String] {
-            Donnees.selectiontextDict["localisation"] = array
-        }
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMotif) as? [String] {
-            Donnees.selectiontextDict["motif"] = array
-        }
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathetablissement) as? [String] {
-            Donnees.selectiontextDict["etablissement"] = array
-        }
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathPosologie) as? [String] {
-            Donnees.selectiontextDict["posologie"] = array
-        }
-
-        // MARK: Uncomment to read patient data
-
-//        /*
-        if let listpatient=NSKeyedUnarchiver.unarchiveObjectWithFile(filePathPatients) as? patients{
-            Donnees.listePatient=listpatient
-        }
-// */
-    }
-    func getDocumentsDirectory() -> String {
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        let documentsDirectory = paths[0]
-        return documentsDirectory
-    }
-    
-    var filePathAtcd : String {
-               let filename = getDocumentsDirectory().stringByAppendingPathComponent("atcd.dat")
-        return filename
-  
-    }
-    var filePathMedicament : String {
-        let filename = getDocumentsDirectory().stringByAppendingPathComponent("medicament.dat")
-        return filename
-        
-    }
-    var filePathLocalisation : String {
-        let filename = getDocumentsDirectory().stringByAppendingPathComponent("localisation.dat")
-        return filename
-        
-    }
-    var filePathMedecin : String {
-        let filename = getDocumentsDirectory().stringByAppendingPathComponent("medecin.dat")
-        return filename
-        
-    }
-    var filePathMotif : String {
-        let filename = getDocumentsDirectory().stringByAppendingPathComponent("motif.dat")
-        return filename
-        
-    }
-    var filePathetablissement : String {
-        let filename = getDocumentsDirectory().stringByAppendingPathComponent("etablissements.dat")
-        return filename
-        
-    }
-
-    var filePathPatients : String {
-        let filename = getDocumentsDirectory().stringByAppendingPathComponent("patients.dat")
-        return filename
-        
-    }
-    var filePathPosologie : String {
-        let filename = getDocumentsDirectory().stringByAppendingPathComponent("posologie.dat")
-        return filename
-        
-    }
     // MARK: - Antécédents : liste initiale
     func setDefaultAtcd() {
         Donnees.selectiontextDict["atcd"] = [
-            "RGO","Néoplasie colique","Asthme","Pneumopathie","Infacrtus myocardique","Syndrome anxio-depressif","Occlusion","Appendicectomie",
+            "RGO","Néoplasie colique","Asthme","Pneumopathie","Infarctus myocardique","Syndrome anxio-depressif","Occlusion","Appendicectomie",
             "Cholécystectomie","Colique néphrétique","Ulcère gastrique","Gastrite","Angor","Hypercholestérolémie","DNID","Diabète insulino requérant",
             "Diabète type I","Epilepsie","Bronchopneumopathie obstructive","Splénectomie","Prothèse de hanche","Prothèse de genou","Amygdalectomie","Thrombose veineuse profonde",
             "Embolie pulmonaire","Artérite", "Oedeme aigue du poumon", "Urticaire","Eczéma","Péritonite","Hypertension artérielle","Insufisance veineuse des membres inférieurs","Coxarthrose","Gonarthrose","Arthrose cervicale","Arthrose lombaire","Rhizarthrose","Insufisance mitrale",
             "Retrécissement aortique","Rétrécissement mitral","Insufisance aortique","Néoplasie mammaire","Néoplasie rénale","Néphrectomie","Cholecystite",
             "",
-            "Fibrillation auriculaire paroxystique","Fibrillation auriculaire permanente","Insuffisance cardiaque","Valvulopathie","Pace-Maker","Néoplasie pulmonaire","Néoplasique colique"
+            "Fibrillation auriculaire paroxystique","Fibrillation auriculaire permanente","Insuffisance cardiaque","Valvulopathie","Pace-Maker","Néoplasie pulmonaire","Néoplasique colique","Tabagisme","Alcool","Accident Ischémique Transitoire (AIT)","Accident vasculaire cérébral (AVC)"
         ]
         Donnees.selectiontextDict["atcd"]=Donnees.selectiontextDict["atcd"]?.sort()
     }
@@ -149,6 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setDefaultMotif() {
         Donnees.selectiontextDict["motif"] = [
             "Aucun",
+            "Agression/Rixe",
+            "Certificat médical",
+            "Amaurose transitoire",
             "Douleur thoracique",
             "Malaise",
             "Douleur abdominale",
@@ -234,7 +131,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // MARK: Uncomment to read data files
         
-         self.loadDataFiles()
+        DataSave.loadDataFiles()
         
         /*var filemgr = NSFileManager.defaultManager()
         if filemgr.fileExistsAtPath(filePathPatients) {
@@ -258,7 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(application: UIApplication) {
 
-        saveDataFiles()
+       DataSave.saveDataFiles()
         
     }
 

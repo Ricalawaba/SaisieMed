@@ -24,6 +24,7 @@ class patientTableViewController: UITableViewController,ajoutPatientDelegate {
     
     @IBAction func savePatients(sender: UIBarButtonItem) {
        // UIApplication.sharedApplication().dele
+        DataSave.saveDataFiles()
     }
     override func viewDidLoad() {
         
@@ -138,7 +139,7 @@ class patientTableViewController: UITableViewController,ajoutPatientDelegate {
     
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+        swap(&Donnees.listePatient.patients[fromIndexPath.row],&Donnees.listePatient.patients[toIndexPath.row])
     }
     
 
