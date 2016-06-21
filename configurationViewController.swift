@@ -8,8 +8,19 @@
 
 import UIKit
 
-class configurationViewController: UIViewController {
+class configurationViewController: UIViewController,dateSelectedDelegate {
 
+    func dateSelected(sender: selectDateViewController, text: String, date: NSDate) {
+        self.title=text
+        // create the alert
+        let alert = UIAlertController(title: "Selection date", message: text, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        
+        // show the alert
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
     @IBAction func exportSwift(sender: UIButton) {
         let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("rapportControlerID") as! rapportViewController
         svc.directHTML="<H3>Export Swift<H3><p>"
@@ -65,6 +76,7 @@ class configurationViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,14 +85,21 @@ class configurationViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier=="selectDateFromConfig"
+        {
+            let svc = segue.destinationViewController as! selectDateViewController
+            svc.delegate=self
+
+        }
+        
     }
-    */
+    
 
 }

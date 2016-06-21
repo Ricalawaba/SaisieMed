@@ -7,9 +7,18 @@
 //
 
 import UIKit
+import MessageUI
+class rapportViewController: UIViewController ,MFMailComposeViewControllerDelegate  {
 
-class rapportViewController: UIViewController {
+    @IBAction func MailData(sender: UIBarButtonItem) {
+        let email = MFMailComposeViewController()
+        email.mailComposeDelegate = self
+        email.setToRecipients(["drricalens@gmail.com"])
 
+        email.setSubject("My subject")
+        email.setMessageBody("Some example text", isHTML: false) // or true, if you prefer
+        presentViewController(email, animated: true, completion: nil)
+    }
     @IBAction func done(sender: UIBarButtonItem) {
        self.navigationController?.popViewControllerAnimated(true)  
     }
@@ -17,7 +26,11 @@ class rapportViewController: UIViewController {
     var patient=patients.patient()
     var uneCategorie: categorieExamen.Categorie?=nil
     var directHTML : String?
-    
+
+    // Delegate requirement
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     override func viewDidAppear(animated: Bool) {
         var myHTMLString:String=""
         if directHTML != nil {
@@ -30,7 +43,7 @@ class rapportViewController: UIViewController {
                 if cat.nom == "Administratif" {
                     var AdminStr=""
                     var sexe:String!
-                    var nom:String = cat.examens[0].value
+                    let nom:String = cat.examens[0].value
                     if cat.examens[1].value=="0" {
                         sexe="Homme"
                     }else {sexe="Femme"}

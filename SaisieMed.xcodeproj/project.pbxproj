@@ -32,6 +32,8 @@
 		304B19FD1D14174C0006DB4A /* selectionTexteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304B19FC1D14174C0006DB4A /* selectionTexteTableViewController.swift */; };
 		30D0288F1D174F870050231C /* dataSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D0288E1D174F870050231C /* dataSave.swift */; };
 		30D028911D18AA470050231C /* configurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D028901D18AA470050231C /* configurationViewController.swift */; };
+		30D028931D195A9D0050231C /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D028921D195A9D0050231C /* MonthYearPickerView.swift */; };
+		30D028951D196E430050231C /* selectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D028941D196E430050231C /* selectDateViewController.swift */; };
 		30F43EE81D077C3B005E3BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43EE71D077C3B005E3BEB /* AppDelegate.swift */; };
 		30F43EED1D077C3B005E3BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30F43EEB1D077C3B005E3BEB /* Main.storyboard */; };
 		30F43EEF1D077C3B005E3BEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30F43EEE1D077C3B005E3BEB /* Assets.xcassets */; };
@@ -90,6 +92,8 @@
 		304B19FC1D14174C0006DB4A /* selectionTexteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectionTexteTableViewController.swift; sourceTree = "<group>"; };
 		30D0288E1D174F870050231C /* dataSave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataSave.swift; sourceTree = "<group>"; };
 		30D028901D18AA470050231C /* configurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = configurationViewController.swift; sourceTree = "<group>"; };
+		30D028921D195A9D0050231C /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
+		30D028941D196E430050231C /* selectDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectDateViewController.swift; sourceTree = "<group>"; };
 		30F43EE41D077C3B005E3BEB /* SaisieMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaisieMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F43EE71D077C3B005E3BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30F43EEC1D077C3B005E3BEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -164,6 +168,16 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		30D028981D19BC810050231C /* Dates */ = {
+			isa = PBXGroup;
+			children = (
+				30D028941D196E430050231C /* selectDateViewController.swift */,
+				30D028921D195A9D0050231C /* MonthYearPickerView.swift */,
+			);
+			name = Dates;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		30F43EDB1D077C3B005E3BEB = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +212,7 @@
 				30F43F231D0EA255005E3BEB /* images */,
 				304B19F51D10D5370006DB4A /* Rapport */,
 				30F43EEE1D077C3B005E3BEB /* Assets.xcassets */,
+				30D028981D19BC810050231C /* Dates */,
 				30F43EF01D077C3B005E3BEB /* LaunchScreen.storyboard */,
 				30F43EF31D077C3B005E3BEB /* Info.plist */,
 			);
@@ -404,6 +419,8 @@
 				304B19F41D10C3D30006DB4A /* examgroupTableViewCell.swift in Sources */,
 				30F43F291D0EE751005E3BEB /* saisieTableViewController.swift in Sources */,
 				301826051D10580000592CE9 /* rapportViewController.swift in Sources */,
+				30D028931D195A9D0050231C /* MonthYearPickerView.swift in Sources */,
+				30D028951D196E430050231C /* selectDateViewController.swift in Sources */,
 				30F43F2B1D0EE789005E3BEB /* saisieTableViewCell.swift in Sources */,
 				30F43F2D1D0EE938005E3BEB /* categorieExamen.swift in Sources */,
 				304B19F71D13E0DD0006DB4A /* checkTableViewCell.swift in Sources */,

@@ -1,0 +1,147 @@
+
+/* Class = "UIBarButtonItem"; title = "<-"; ObjectID = "17M-Qm-g3G"; */
+"17M-Qm-g3G.title" = "<-";
+
+/* Class = "UILabel"; text = "Question à réponse oui / non ?"; ObjectID = "18j-6B-IPh"; */
+"18j-6B-IPh.text" = "Question à réponse oui / non ?";
+
+/* Class = "UITableViewController"; title = "Liste Patients"; ObjectID = "4uv-RX-JfC"; */
+"4uv-RX-JfC.title" = "Liste Patients";
+
+/* Class = "UILabel"; text = "Sexe"; ObjectID = "58m-mJ-CNu"; */
+"58m-mJ-CNu.text" = "Sexe";
+
+/* Class = "UITextField"; placeholder = "Eric"; ObjectID = "5eb-b8-ShJ"; */
+"5eb-b8-ShJ.placeholder" = "Eric";
+
+/* Class = "UILabel"; text = "Fichiers de données"; ObjectID = "96F-qr-MMA"; */
+"96F-qr-MMA.text" = "Fichiers de données";
+
+/* Class = "UILabel"; text = "Localisation"; ObjectID = "B5m-yE-gP9"; */
+"B5m-yE-gP9.text" = "Localisation";
+
+/* Class = "UISegmentedControl"; EIo-pE-g9W.segmentTitles[0] = "Oui"; ObjectID = "EIo-pE-g9W"; */
+"EIo-pE-g9W.segmentTitles[0]" = "Oui";
+
+/* Class = "UISegmentedControl"; EIo-pE-g9W.segmentTitles[1] = "?"; ObjectID = "EIo-pE-g9W"; */
+"EIo-pE-g9W.segmentTitles[1]" = "?";
+
+/* Class = "UILabel"; text = "Nom"; ObjectID = "Erv-Xd-cJE"; */
+"Erv-Xd-cJE.text" = "Nom";
+
+/* Class = "UILabel"; text = "Local"; ObjectID = "Gpu-fi-wjd"; */
+"Gpu-fi-wjd.text" = "Local";
+
+/* Class = "UISegmentedControl"; KRT-IK-Q1E.segmentTitles[0] = "Médical"; ObjectID = "KRT-IK-Q1E"; */
+"KRT-IK-Q1E.segmentTitles[0]" = "Médical";
+
+/* Class = "UISegmentedControl"; KRT-IK-Q1E.segmentTitles[1] = "Traumato"; ObjectID = "KRT-IK-Q1E"; */
+"KRT-IK-Q1E.segmentTitles[1]" = "Traumato";
+
+/* Class = "UITextField"; placeholder = "60"; ObjectID = "KgQ-uT-0Kz"; */
+"KgQ-uT-0Kz.placeholder" = "60";
+
+/* Class = "UILabel"; text = "Synthèse : Nom du patient"; ObjectID = "KwL-Oe-zFj"; */
+"KwL-Oe-zFj.text" = "Synthèse : Nom du patient";
+
+/* Class = "UISearchBar"; placeholder = "Rechercher"; ObjectID = "Nt6-As-zjR"; */
+"Nt6-As-zjR.placeholder" = "Rechercher";
+
+/* Class = "UISearchBar"; Nt6-As-zjR.scopeButtonTitles[0] = "Title"; ObjectID = "Nt6-As-zjR"; */
+"Nt6-As-zjR.scopeButtonTitles[0]" = "Title";
+
+/* Class = "UISearchBar"; Nt6-As-zjR.scopeButtonTitles[1] = "Title"; ObjectID = "Nt6-As-zjR"; */
+"Nt6-As-zjR.scopeButtonTitles[1]" = "Title";
+
+/* Class = "UILabel"; text = "Question selection"; ObjectID = "WX0-RJ-8UR"; */
+"WX0-RJ-8UR.text" = "Question selection";
+
+/* Class = "UILabel"; text = "Age"; ObjectID = "XDo-sR-YqE"; */
+"XDo-sR-YqE.text" = "Age";
+
+/* Class = "UITextField"; placeholder = "Ricalens"; ObjectID = "XtI-ea-73K"; */
+"XtI-ea-73K.placeholder" = "Ricalens";
+
+/* Class = "UIBarButtonItem"; title = "Add"; ObjectID = "YM2-Fe-cB6"; */
+"YM2-Fe-cB6.title" = "Add";
+
+/* Class = "UIButton"; normalTitle = "Exporter en swift"; ObjectID = "aHP-mf-UmI"; */
+"aHP-mf-UmI.normalTitle" = "Exporter en swift";
+
+/* Class = "UILabel"; text = "Prenom"; ObjectID = "aLM-kU-pn7"; */
+"aLM-kU-pn7.text" = "Prenom";
+
+/* Class = "UILabel"; text = "CategorieExamen"; ObjectID = "alo-yT-gIa"; */
+"alo-yT-gIa.text" = "CategorieExamen";
+
+/* Class = "UILabel"; text = "Mr Prenom NOM, xx ans"; ObjectID = "fL0-Hh-wL1"; */
+"fL0-Hh-wL1.text" = "Mr Prenom NOM, xx ans";
+
+/* Class = "UITableViewController"; title = "Saisie Examens"; ObjectID = "ffe-hV-O8B"; */
+"ffe-hV-O8B.title" = "Saisie Examens";
+
+/* Class = "UISegmentedControl"; hH5-wn-7Nh.segmentTitles[0] = "Oui"; ObjectID = "hH5-wn-7Nh"; */
+"hH5-wn-7Nh.segmentTitles[0]" = "Oui";
+
+/* Class = "UISegmentedControl"; hH5-wn-7Nh.segmentTitles[1] = "Non"; ObjectID = "hH5-wn-7Nh"; */
+"hH5-wn-7Nh.segmentTitles[1]" = "Non";
+
+/* Class = "UISegmentedControl"; hH5-wn-7Nh.segmentTitles[2] = "?"; ObjectID = "hH5-wn-7Nh"; */
+"hH5-wn-7Nh.segmentTitles[2]" = "?";
+
+/* Class = "UILabel"; text = "Groupe"; ObjectID = "jJZ-DK-ftB"; */
+"jJZ-DK-ftB.text" = "Groupe";
+
+/* Class = "UITextField"; placeholder = "Salle d'attente"; ObjectID = "jfX-N3-gFO"; */
+"jfX-N3-gFO.placeholder" = "Salle d'attente";
+
+/* Class = "UISegmentedControl"; jt8-MD-X8F.segmentTitles[0] = "Homme"; ObjectID = "jt8-MD-X8F"; */
+"jt8-MD-X8F.segmentTitles[0]" = "Homme";
+
+/* Class = "UISegmentedControl"; jt8-MD-X8F.segmentTitles[1] = "Femme"; ObjectID = "jt8-MD-X8F"; */
+"jt8-MD-X8F.segmentTitles[1]" = "Femme";
+
+/* Class = "UILabel"; text = "Détail"; ObjectID = "k5w-yK-Avv"; */
+"k5w-yK-Avv.text" = "Détail";
+
+/* Class = "UILabel"; text = "Nouveau patient"; ObjectID = "kAX-lP-n6C"; */
+"kAX-lP-n6C.text" = "Nouveau patient";
+
+/* Class = "UILabel"; text = "Question à réponse courte"; ObjectID = "lA1-Kv-Sg3"; */
+"lA1-Kv-Sg3.text" = "Question à réponse courte";
+
+/* Class = "UITextField"; placeholder = "Douleur thoracique"; ObjectID = "mz4-Wt-s4H"; */
+"mz4-Wt-s4H.placeholder" = "Douleur thoracique";
+
+/* Class = "UIButton"; normalTitle = "Année"; ObjectID = "o6V-xV-UJF"; */
+"o6V-xV-UJF.normalTitle" = "Année";
+
+/* Class = "UIBarButtonItem"; title = "Cfg"; ObjectID = "oJe-gp-1ZJ"; */
+"oJe-gp-1ZJ.title" = "Cfg";
+
+/* Class = "UIBarButtonItem"; title = "Mail"; ObjectID = "oz8-fW-lXu"; */
+"oz8-fW-lXu.title" = "Mail";
+
+/* Class = "UIButton"; normalTitle = "Changer de fichier patients"; ObjectID = "p5T-NZ-LZn"; */
+"p5T-NZ-LZn.normalTitle" = "Changer de fichier patients";
+
+/* Class = "UILabel"; text = "Question Check"; ObjectID = "rEZ-oE-gIA"; */
+"rEZ-oE-gIA.text" = "Question Check";
+
+/* Class = "UILabel"; text = "Motif"; ObjectID = "sTQ-Tp-8W2"; */
+"sTQ-Tp-8W2.text" = "Motif";
+
+/* Class = "UIButton"; normalTitle = "Mois/Année"; ObjectID = "tGR-OP-Xs9"; */
+"tGR-OP-Xs9.normalTitle" = "Mois/Année";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "u4g-kk-p9j"; */
+"u4g-kk-p9j.title" = "Done";
+
+/* Class = "UINavigationItem"; title = "Questions"; ObjectID = "v4A-0B-NRH"; */
+"v4A-0B-NRH.title" = "Questions";
+
+/* Class = "UILabel"; text = "Motif"; ObjectID = "wch-WJ-jP5"; */
+"wch-WJ-jP5.text" = "Motif";
+
+/* Class = "UILabel"; text = "Details"; ObjectID = "z4z-Z9-X7Y"; */
+"z4z-Z9-X7Y.text" = "Details";

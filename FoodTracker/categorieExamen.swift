@@ -204,6 +204,27 @@ class categorieExamen : NSObject , NSCoding {
             Examen(intitule: "Pas d'atcds notables", type:  .check ),
             Examen(intitule: "Commentaire", type:  .reponsecourte )
             ]
+        let catFRCV = Categorie(nom: "Facteur de risques",namedImage: "cardio_icon.png")
+        let examCatFRCV = [
+            Examen(intitule: "HTA", type:  .ouinon ),
+            Examen(intitule: "Dyslipémie", type:  .ouinon ),
+            Examen(intitule: "Diabète", type:  .ouinon ),
+            Examen(intitule: "Obesité", type:  .ouinon ),
+            Examen(intitule: "Surcharge pondérale", type:  .ouinon ),
+            Examen(intitule: "Tabagisme", type:  .ouinon ),
+            Examen(intitule: "Tabagisme sevré", type:  .check ),
+            Examen(intitule: "Morbidité cardiovasculaire familiale", type:  .ouinon ),
+            Examen(intitule: "Detail", type:  .reponsecourte ),
+            ]
+        catFRCV.examens=examCatFRCV
+        
+        examcat2 += [
+            Examen(categorie: catFRCV),
+            Examen(intitule: "Allergie connue", type:  .ouinon ),
+            Examen(intitule: "Detail", type:  .reponsecourte ),
+            
+        ]
+
         // MARK:  - Catégorie antécédent
         for _ in 0..<10 {
             let catATCD = Categorie(nom:"atcd",namedImage: "nurse_icon.png",showNom: false)
@@ -215,7 +236,7 @@ class categorieExamen : NSObject , NSCoding {
                 Examen(intitule: "gauche", type:  .check ),
                 Examen(intitule: "récidivant(e)s", type:  .check ),
                 Examen(intitule: "probable", type:  .check ),
-                Examen(intitule: "quand ?", type:  .reponsecourte ),
+                Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
                 Examen(intitule: "ou ?", type:  .selection,tag: "etablissement" ),
                 Examen(intitule: "pas de suivi spécialisé", type:  .check ),
                 Examen(intitule: "qui ?", type:  .selection,tag: "medecin" ),
@@ -228,27 +249,7 @@ class categorieExamen : NSObject , NSCoding {
             catATCD.examens=examCatATCD
             examcat2 += [Examen(categorie: catATCD)]
         }
-        let catFRCV = Categorie(nom: "Facteur de risques",namedImage: "cardio_icon.png")
-        let examCatFRCV = [
-            Examen(intitule: "HTA", type:  .ouinon ),
-            Examen(intitule: "Dyslipémie", type:  .ouinon ),
-            Examen(intitule: "Diabète", type:  .ouinon ),
-            Examen(intitule: "Obesité", type:  .ouinon ),
-            Examen(intitule: "Surcharge pondérale", type:  .ouinon ),
-            Examen(intitule: "Tabagisme", type:  .ouinon ),
-            Examen(intitule: "Tabagisme sevré", type:  .check ),
-            Examen(intitule: "Morbidité cardiovasculaire familiale", type:  .check ),
-            Examen(intitule: "Detail", type:  .reponsecourte ),
-                    ]
-        catFRCV.examens=examCatFRCV
-        
-        examcat2 += [
-                Examen(categorie: catFRCV),
-                Examen(intitule: "Allergie connue", type:  .ouinon ),
-                Examen(intitule: "Detail", type:  .reponsecourte ),
-          
-            ]
-                Categorie2.examens = examcat2
+                        Categorie2.examens = examcat2
         // MARK: Traitement
         let Categorie21 = Categorie(nom: "Traitement",namedImage: "medoc_icon.png")
         
@@ -263,7 +264,7 @@ class categorieExamen : NSObject , NSCoding {
             let examCatTTT = [
                 Examen(intitule: "nom", type:  .selection,tag: "medicament" ),
                 Examen(intitule: "posologie", type:  .selection,tag: "posologie" ),
-                Examen(intitule: "depuis quand ?", type:  .reponsecourte ),
+                Examen(intitule: "depuis quand ?", type:  .reponsecourte,tag: "date" ),
                 Examen(intitule: "par qui ?", type:  .selection,tag: "medecin" ),
                 Examen(intitule: "pour", type:  .selection,tag: "atcd" ),
                 Examen(intitule: "Commentaire", type:  .reponsecourte )

@@ -35,13 +35,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // MARK: - Localisation : liste initiale
     func setDefaultLocalisation() {
         Donnees.selectiontextDict["localisation"] = [
-            "Salle d'attente",
-            "Box 1","Box 2","Box 3","Box 4","Box 5","Box 6","Box 7",
-            "Box A","Box B","Box C","Box D","Box E", "Box F",
             "Bureau",
             "I.O.A",
             "Degrav",
-            "Suture"]
+            "Suture",
+            "Salle d'attente",
+            "Box 1","Box 2","Box 3","Box 4","Box 5","Box 6","Box 7",
+            "Box A","Box B","Box C","Box D","Box E", "Box F",
+            "Ch 1F",
+            "Ch 1P",
+            "Ch 3",
+            "Couloir"]
     }
     
     // MARK: - Etablissement : liste initiale
