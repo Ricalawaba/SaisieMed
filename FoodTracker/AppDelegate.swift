@@ -15,67 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Antécédents : liste initiale
     func setDefaultAtcd() {
         Donnees.selectiontextDict["atcd"] = [
-            "RGO","Néoplasie colique","Asthme","Pneumopathie","Infarctus myocardique","Syndrome anxio-depressif","Occlusion","Appendicectomie",
-            "Cholécystectomie","Colique néphrétique","Ulcère gastrique","Gastrite","Angor","Hypercholestérolémie","DNID","Diabète insulino requérant",
-            "Diabète type I","Epilepsie","Bronchopneumopathie obstructive","Splénectomie","Prothèse de hanche","Prothèse de genou","Amygdalectomie","Thrombose veineuse profonde",
-            "Embolie pulmonaire","Artérite", "Oedeme aigue du poumon", "Urticaire","Eczéma","Péritonite","Hypertension artérielle","Insufisance veineuse des membres inférieurs","Coxarthrose","Gonarthrose","Arthrose cervicale","Arthrose lombaire","Rhizarthrose","Insufisance mitrale",
-            "Retrécissement aortique","Rétrécissement mitral","Insufisance aortique","Néoplasie mammaire","Néoplasie rénale","Néphrectomie","Cholecystite",
-            "",
-            "Fibrillation auriculaire paroxystique","Fibrillation auriculaire permanente","Insuffisance cardiaque","Valvulopathie","Pace-Maker","Néoplasie pulmonaire","Néoplasique colique","Tabagisme","Alcool","Accident Ischémique Transitoire (AIT)","Accident vasculaire cérébral (AVC)"
+            "", "Accident Ischémique Transitoire (AIT)", "Accident vasculaire cérébral (AVC)", "Alcool", "Amygdalectomie", "Angor", "Appendicectomie", "Artérite", "Arthrose cervicale", "Arthrose lombaire", "Asthme", "Bronchopneumopathie obstructive", "Cholecystite", "Cholécystectomie", "Colique néphrétique", "Coxarthrose", "DNID", "Dents de sagesse", "Diabète insulino requérant", "Diabète type I", "Eczéma", "Embolie pulmonaire", "Epilepsie", "Fibrillation auriculaire", "Fibrillation auriculaire paroxystique", "Fibrillation auriculaire permanente", "Fibroscopie gastrique", "Gastrite", "Gonarthrose", "Hypercholestérolémie", "Hypertension artérielle", "Infarctus myocardique", "Insuffisance cardiaque", "Insuffisance aortique", "Insuffisance mitrale", "Insufisance veineuse des membres inférieurs", "Interruption volontaire grossesse", "Kyste ovarien", "Néoplasie colique", "Néoplasie mammaire", "Néoplasie prostatique ", "Néoplasie pulmonaire", "Néoplasie rénale", "Néoplasique colique", "Néphrectomie", "Occlusion", "Oedeme aigue du poumon", "Pace-Maker", "Péritonite", "Pneumopathie", "Polypes coliques", "Polypes utérins", "Prothèse de genou", "Prothèse de hanche", "RGO", "Rectite hémorragique", "Retrécissement aortique", "Réduction mammaire", "Rétrécissement mitral", "Rhizarthrose", "Splénectomie", "Stérilet", "Syndrome anxio-depressif", "Tabagisme", "Tablier abdominal", "Thrombose veineuse profonde", "Traumatisme crânien grave", "Ulcère gastrique", "Urticaire", "Valvulopathie", "Varicectomie",
         ]
         Donnees.selectiontextDict["atcd"]=Donnees.selectiontextDict["atcd"]?.sort()
     }
     // MARK: - Médicaments : liste initiale
     func setDefaultMedicament() {
         Donnees.selectiontextDict["medicament"] = [
-            "AVLOCARDYL 40","KARDEGIC 75","KARDEGIC 160", "AMLOR 5","AMIODARONE 200",
-            "ESOMEPRAZOLE 20","ESOMEPRAZOLE 40","OMEPRAZOLE 20", "OMEPRAZOLE 10","CO-APROVEL 150/12.5",
-            "DOLIPRANE 500","DOLIPRANE 1000","PLAVIX 75", "FUROSEMIDE 20","FUROSEMIDE 40",
-            "PROPRANOLOL 40","AVLOCARDYL 40","AMLODIPINE 5","AMLODIPINE 10","BACLOFENE 10","ABILIFY 5","CYMBALTA 60",
-            "METFORMINE 500","METFORMINE 850","METFORMINE 1000","LANTUS 100UI/ml","DIGOXINE 0,25",
-            "PREVISCAN","COUMADINE 2","COUMADINE 5","IRBESARTAN 150","IRBESARTAN 300","PARACETAMOL 500","PARACETAMOL 1000",
-            "TRAMADOL 50","TRAMADOL 100 LP","FLECAINE 100","LEVOTHYROXINE 25","LEVOTHYROXINE 50","LEVOTHYROXINE 75",
-            "LEVOTHYROXINE 100","LEVOTHYROXINE 125","LEVOTHYROXINE 150",
+            "ABILIFY 5", "AMIODARONE 200", "AMLODIPINE 10", "AMLODIPINE 5", "AMLOR 5", "AVLOCARDYL 40", "AVLOCARDYL 40", "BACLOFENE 10", "CLONAZEPAM 2,5", "CO-APROVEL 150/12.5", "COUMADINE 2", "COUMADINE 5", "CYMBALTA 60", "DEPAKINE CHRONO 500", "DIGOXINE 0,25", "DOLIPRANE 1000", "DOLIPRANE 500", "ESOMEPRAZOLE 20", "ESOMEPRAZOLE 40", "FLECAINE 100", "FLECAINE 100 LP", "FUROSEMIDE 20", "FUROSEMIDE 40", "IRBESARTAN 150", "IRBESARTAN 300", "KARDEGIC 160", "KARDEGIC 75", "KEPRA 500", "LANTUS 100UI/ml", "LEVOTHYROXINE 100", "LEVOTHYROXINE 125", "LEVOTHYROXINE 150", "LEVOTHYROXINE 25", "LEVOTHYROXINE 50", "LEVOTHYROXINE 75", "METFORMINE 1000", "METFORMINE 500", "METFORMINE 850", "METOPROLOL 25", "OMEPRAZOLE 10", "OMEPRAZOLE 20", "PARACETAMOL 1000", "PARACETAMOL 500", "PAROXETINE 20", "PLAVIX 75", "PREVISCAN", "PROPRANOLOL 40", "RAMIPRIL 5", "SERESTA 10", "SEROPLEX 20", "SIMVASTATINE 20", "STILNOX", "TRAMADOL 100 LP", "TRAMADOL 50"
             ].sort()
 
     }
         // MARK: - Motifs : liste initiale
     func setDefaultMotif() {
         Donnees.selectiontextDict["motif"] = [
-            "Aucun",
-            "Agression/Rixe",
-            "Certificat médical",
-            "Amaurose transitoire",
-            "Douleur thoracique",
-            "Malaise",
-            "Douleur abdominale",
-            "Dyspnée",
-            "Vomissements",
-            "Diarrhée",
-            "Désorientation temporospatiale","Aphasie","Troubles du langage",
-            "Brulures urinaires","Brulures occulaires",
-            "Brulures cutanées",
-            "Hyperthermie",
-            "Céphallée",
-            "Sciatalgie",
-            "Palpitations",
-            "Vertiges",
-            "Nausées",
-            "Toux",
-            "Hématurie",
-            "Rétention urinaire",
-            "Trauma main","Trauma epaule",
-            "Eruption cutanée",
-            "Surdité brusque","Acouphènes","Altération de l'état général","Anorexie","Troubles de l'appétit",
-            "Perte de connaissance","Sans perte de connaissance",
-            "Lombalgie","Rachialgie","Cervicalgie","Gonalgie","Coxalgie","Cruralgie","Otalgie","Douleur pharyngée",
-            "Syndrome rhinopharyngée",
-            "Douleur mollet","Douleur cuisse","Douleur bras","Douleur epaule","Douleur pelvienne","Douleur dentaire",
-            "Adénopathies",
-            "Plaie de la face","Plaie de la main", "Plaie du crane", "Plaie avant-bras",
-            "Plaie abdominale","Plaie cuisse","Plaie arcade",
-            "Début brutal","d'apparition progressive","d'aggravation progressive",
-            "Chute par maladresse","Chute de sa hauteur","Chute en 2R", "Accident de la voie publique"
+             "", "Accident de la voie publique", "Acouphènes", "Adénopathies", "Agression/Rixe", "Altération de l'état général", "Amaurose transitoire", "Anorexie", "Aphasie", "Aucun", "Brulures cutanées", "Brulures occulaires", "Brulures urinaires", "Certificat médical", "Cervicalgie", "Céphallée", "Chute de sa hauteur", "Chute en 2R", "Chute par maladresse", "Coxalgie", "Cruralgie", "Début brutal", "Désorientation temporospatiale", "Diarrhée", "Douleur abdominale", "Douleur bras", "Douleur cuisse", "Douleur dentaire", "Douleur epaule", "Douleur épigastrique", "Douleur fesse", "Douleur généralisée", "Douleur lombaire", "Douleur mollet", "Douleur pelvienne", "Douleur pharyngée", "Douleur thoracique", "Dyspnée", "Eruption cutanée", "Gonalgie", "Hématurie", "Hyperthermie", "Lombalgie", "Malaise", "Nausées", "Otalgie", "Palpitations", "Perte de connaissance", "Plaie abdominale", "Plaie arcade", "Plaie avant-bras", "Plaie cuisse", "Plaie de la face", "Plaie de la main", "Plaie du crane", "Rachialgie", "Rétention urinaire", "Sans perte de connaissance", "Sciatalgie", "Surdité brusque", "Syndrome rhinopharyngée", "Toux", "Trauma crânien", "Trauma epaule", "Trauma main", "Troubles de l'appétit", "Troubles du langage", "Vertiges", "Vomissements", "d'aggravation progressive"
             ].sort()
     }
         // MARK: - Localisation : liste initiale
@@ -93,8 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Etablissement : liste initiale
     func setDefaultEtablissement() {
         Donnees.selectiontextDict["etablissement"] = [
-            "Clin. Claude Bernard (Albi)","CH Albi","Clin. Sidobre (Castres)","CHU Rangueuil (Toulouse)","Clin. Toulouse-Lautrec (Albi)",
-            "Clin. Union (Toulouse)","Clin. St-Jean Languedoc (Toulouse)","Clin. des Cèdres (Toulouse)", "CH Castres","CHU Toulouse",
+            "CH Albi", "CH Castres", "CHU Purpan ( Toulouse)", "CHU Rangueuil (Toulouse)", "CHU Toulouse", "Canada", "Clin. Carrié (Auch)", "Clin. Claude Bernard (Albi)", "Clin. Escudié", "Clin. Sidobre (Castres)", "Clin. St-Jean Languedoc (Toulouse)", "Clin. Toulouse-Lautrec (Albi)", "Clin. Union (Toulouse)", "Clin. des Cèdres (Toulouse)"
             ].sort()
     }
     // MARK: - Medecin : liste initiale
@@ -108,13 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      // MARK: - Posologie : liste initiale
     func setDefaultPosologie() {
         Donnees.selectiontextDict["posologie"] = [
-            "à la demande","au besoin", "par cure",
-            "1/j","1x2/j", "1x3/j",
-            "2x3/j",
-            "½/j","½x2/j","½x3/j",
-            "¼/j","¼x2/j","¼x3/j",
-            "¾/j","¾x2/j","¾x3/j",
-            "1/j 5/7j"
+             "au besoin", "à la demande", "par cure","1/j", "1/j 5/7j", "1x2/j", "1x3/j", "2x2/j", "2x3/j", "X/X/XV",  "¼/j", "¼x2/j", "¼x3/j", "½/j", "½x2/j", "½x3/j", "¾/j", "¾x2/j", "¾x3/j"
         ]
     }
 
@@ -131,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // MARK: Uncomment to read data files
         
-        DataSave.loadDataFiles()
+       // DataSave.loadDataFiles()
         
         /*var filemgr = NSFileManager.defaultManager()
         if filemgr.fileExistsAtPath(filePathPatients) {
@@ -169,6 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
     }
 
 

@@ -18,10 +18,10 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+         self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         //examen=Donnees.listeCategorie.categories.first!.examens
         self.title=categorie!.nom
         // print(examen.count)
@@ -31,18 +31,18 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         
     
     }
-    
+    // MARK: Affiche le premier element du tabview si c'est type "selection"
     func autoshowFirstGroup () {
         if categorie.examens.count==0 { return }
         let aExam = categorie.examens[0]
         if !aExam.value.isEmpty { return }
         if aExam.type == .selection {
-        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectionViewID") as! selectionTexteTableViewController
-        examenSelected=categorie.examens[0]
-        svc.textes = Donnees.selectiontextDict[examenSelected!.tag]!
-        svc.delegate=self
-
-        //self.presentViewController(svc, animated: true, completion: nil)
+            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectionViewID") as! selectionTexteTableViewController
+            examenSelected=categorie.examens[0]
+            svc.textes = Donnees.selectiontextDict[examenSelected!.tag]!
+            svc.delegate=self
+            
+            //self.presentViewController(svc, animated: true, completion: nil)
             self.navigationController!.pushViewController(svc,animated: true)
             
         }
@@ -85,6 +85,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     }
     
     func keyboardWillBeHidden(aNotification: NSNotification) {
+        if activeField == nil {return}
         let contentInsets = UIEdgeInsetsZero
         self.tableView.contentInset = contentInsets
         self.tableView.scrollIndicatorInsets = contentInsets
@@ -130,6 +131,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         
         tableView.reloadData()
     }
+    // MARK: Suppression selection texte
     func textDeleted(sender: selectionTexteTableViewController, text: String) {
         if (examenSelected != nil) {
             if Donnees.selectiontextDict[examenSelected!.tag]!.indexOf(text) != nil{
@@ -163,7 +165,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         //var cell :UITableViewCell = tableView.dequeueReusableCellWithIdentifier("reponsecourteCell", forIndexPath: indexPath) as! reponsecourteTableViewCell
         //cell.textequestion
         let cell = UITableViewCell()
-        if examen1.type==Examen.examenEnum.reponsecourte || examen1.type==Examen.examenEnum.donnee{
+        if examen1.type==Examen.ExamenEnum.reponsecourte || examen1.type==Examen.ExamenEnum.donnee{
          let cell2 = tableView.dequeueReusableCellWithIdentifier("reponsecourteCell", forIndexPath: indexPath) as! reponsecourteTableViewCell
             cell2.texteReponsecourte.text=examen1.intitule
             if examen1.value != "" {
@@ -173,24 +175,29 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             cell2.valeurReponseCourte.delegate=self
             return cell2
         } else
-        if examen1.type==Examen.examenEnum.ouinon {
+        if examen1.type==Examen.ExamenEnum.ouinon {
             let cell3 = tableView.dequeueReusableCellWithIdentifier("questionOuiNonCell", forIndexPath: indexPath) as! questionOuiNonTableViewCell
             cell3.texteQuestion.text = examen1.intitule
+            cell3.texteQuestion.enabled=true
             if examen1.value == "0" {
                 cell3.reponseSegmentedControl.selectedSegmentIndex=0
             } else if examen1.value == "1" {
                 cell3.reponseSegmentedControl.selectedSegmentIndex=1
                 
+            }else if examen1.value == "" {
+                cell3.texteQuestion.enabled=false
             }
             cell3.examen=examen1
             return cell3
         }
-        if examen1.type==Examen.examenEnum.check {
+        if examen1.type==Examen.ExamenEnum.check {
             let cell3 = tableView.dequeueReusableCellWithIdentifier("checkCell", forIndexPath: indexPath) as! checkTableViewCell
             cell3.questionCheckLabel.text = examen1.intitule
             if examen1.value == "0" {
+                cell3.questionCheckLabel.enabled=true
                 cell3.checkSegment.selectedSegmentIndex=0
             } else  {
+                cell3.questionCheckLabel.enabled=false
                 cell3.checkSegment.selectedSegmentIndex=1
                 
             }
@@ -198,7 +205,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             return cell3
         }
 
-        if examen1.type==Examen.examenEnum.group {
+        if examen1.type==Examen.ExamenEnum.group {
             let cell3 = tableView.dequeueReusableCellWithIdentifier("examgroup", forIndexPath: indexPath) as! examgroupTableViewCell
             cell3.intitule.text = examen1.intitule
                         cell3.examen=examen1
@@ -208,9 +215,10 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             }
             
             cell3.details.text=examen1.categorie?.detailString()
+            cell3.intitule.enabled = !(cell3.details.text?.isEmpty)!
             return cell3
         }
-        if examen1.type==Examen.examenEnum.selection {
+        if examen1.type==Examen.ExamenEnum.selection {
             let cell3 = tableView.dequeueReusableCellWithIdentifier("selectionCell", forIndexPath: indexPath) as! selectionTableViewCell
             
             if examen1.value.isEmpty {
@@ -231,8 +239,9 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         // Configure the cell...
         return cell
          }
-    
+
     override func viewWillAppear(animated: Bool) {
+        
         tableView.reloadData()
         
     }
@@ -266,20 +275,19 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     }
     */
 
-    /*
+    
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+        swap(&categorie.examens[fromIndexPath.row],&categorie.examens[toIndexPath.row])
 
     }
-    */
-
-    /*
+    
     // Override to support conditional rearranging of the table view.
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
-    */
+    
 
     /*
     // MARK: - Navigation

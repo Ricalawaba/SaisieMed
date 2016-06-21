@@ -20,6 +20,7 @@ class checkTableViewCell: UITableViewCell {
         if sender.selectedSegmentIndex == 1 {
             examen.value = ""
         } else { examen.value = "0" }
+        self.questionCheckLabel.enabled = (examen.value=="0")
     }
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -18,6 +18,7 @@ class questionOuiNonTableViewCell: UITableViewCell {
         else {
             self.examen.value="\(sender.selectedSegmentIndex)"
         }
+        self.texteQuestion.enabled = (examen.value != "")
     }
     override func awakeFromNib() {
         super.awakeFromNib()

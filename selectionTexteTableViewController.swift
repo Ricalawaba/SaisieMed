@@ -18,9 +18,15 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
     var filtered: [String] = []
     var delegate:textSelectedDelegate?
     
-    // MARK; IBOutlet
+    // MARK: IBOutlet
     @IBOutlet weak var Cell: UITableViewCell!
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    // MARK: UIView override
+    override func viewDidAppear(animated: Bool) {
+        searchBar.becomeFirstResponder()
+        searchActive=false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,9 +36,11 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         searchBar.delegate=self
-        
+       // searchBar.becomeFirstResponder()
+    //    tableView!.reloadData()
         //searchBar.
     }
+    //override func view
 //    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 //        
 //        let cell = tableView.dequeueReusableCellWithIdentifier("selectionTextCell", forIndexPath: indexPath)
@@ -77,7 +85,11 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
         searchActive=false
     }
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        if searchText.isEmpty {
+            searchActive=false
+            self.tableView.reloadData()
+            return
+        }
         filtered = textes.filter({ (text) -> Bool in
             let tmp: NSString = text
             let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
@@ -124,11 +136,14 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("selectionTextCell", forIndexPath: indexPath)
           cell.textLabel?.adjustsFontSizeToFitWidth = true
         cell.textLabel?.font = UIFont(name: "System", size: 10)
         if(searchActive){
+            if filtered.count>0 {
             cell.textLabel?.text = filtered[indexPath.row]
+            } 
         } else {
         cell.textLabel?.text=textes[indexPath.row]
         }

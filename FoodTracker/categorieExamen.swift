@@ -228,19 +228,25 @@ class categorieExamen : NSObject , NSCoding {
             catATCD.examens=examCatATCD
             examcat2 += [Examen(categorie: catATCD)]
         }
- 
-        examcat2 += [   Examen(intitule: "HTA", type:  .ouinon ),
+        let catFRCV = Categorie(nom: "Facteur de risques",namedImage: "cardio_icon.png")
+        let examCatFRCV = [
+            Examen(intitule: "HTA", type:  .ouinon ),
             Examen(intitule: "Dyslipémie", type:  .ouinon ),
             Examen(intitule: "Diabète", type:  .ouinon ),
             Examen(intitule: "Obesité", type:  .ouinon ),
             Examen(intitule: "Surcharge pondérale", type:  .ouinon ),
             Examen(intitule: "Tabagisme", type:  .ouinon ),
             Examen(intitule: "Tabagisme sevré", type:  .check ),
-            Examen(intitule: "Allergie", type:  .ouinon ),
+            Examen(intitule: "Morbidité cardiovasculaire familiale", type:  .check ),
             Examen(intitule: "Detail", type:  .reponsecourte ),
-            
-            Examen(intitule: "atcd", type:  .selection,tag: "atcd" ),
-
+                    ]
+        catFRCV.examens=examCatFRCV
+        
+        examcat2 += [
+                Examen(categorie: catFRCV),
+                Examen(intitule: "Allergie connue", type:  .ouinon ),
+                Examen(intitule: "Detail", type:  .reponsecourte ),
+          
             ]
                 Categorie2.examens = examcat2
         // MARK: Traitement
@@ -314,6 +320,7 @@ class categorieExamen : NSObject , NSCoding {
             Examen(intitule: "Poids (indiqué par le patient)", type:  .donnee ),
             Examen(intitule: "Variation pondérale récente significative", type:  .ouinon ),
             Examen(intitule: "Détail", type:  .reponsecourte ),
+            Examen(intitule: "Dernier repas", type:  .donnee ),
             Examen(intitule: "Taille", type:  .donnee )
         ]
         Categorie31.examens=examcat31

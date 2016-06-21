@@ -22,13 +22,38 @@ struct Donnees {
     static var listeCategorie = categorieExamen()
     static var selectiontextDict = [String: ([String]) ]()
 }
+// MARK: Structure statiques d'accès aux fichiers de données
 struct DataSave {
+    
+    static func saveDataFiles(){
+        saveFileatcd()
+        saveFilemedecin()
+        saveFilemedicament()
+        saveFilelocalisation()
+        saveFilemotif()
+        saveFileetablissement()
+        saveFileposologie()
+        saveFilePatients()
+        
+    }
+    static func loadDataFiles(){
+        loadFileatcd()
+        loadFilemedecin()
+        loadFilemedicament()
+        loadFilelocalisation()
+        loadFilemotif()
+        loadFileetablissement()
+        loadFileposologie()
+        // MARK: Uncomment to read patient data
+        loadFilePatients()
+    }
+    
     static func getDocumentsDirectory() -> String {
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentsDirectory = paths[0]
         return documentsDirectory
     }
-    
+    // MARK: Construction des noms de fichiers de données
     static var filePathAtcd : String {
         let filename = getDocumentsDirectory().stringByAppendingPathComponent("atcd.dat")
         return filename
@@ -70,47 +95,74 @@ struct DataSave {
         return filename
         
     }
-    static func saveDataFiles(){
+    // MARK: Sauvegarde des fichiers de données
+
+    static func saveFileatcd() {
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["atcd"]!, toFile: filePathAtcd)
+    }
+    static func saveFilemedecin() {
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["medecin"]!, toFile: filePathMedecin)
+    }
+    static func saveFilemedicament() {
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["medicament"]!, toFile: filePathMedicament)
+    }
+    static func saveFilelocalisation() {
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["localisation"]!, toFile: filePathLocalisation)
+    }
+    static func saveFilemotif() {
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["motif"]!, toFile: filePathMotif)
+    }
+    static func saveFileetablissement() {
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["etablissement"]!, toFile: filePathetablissement)
+    }
+    static func saveFileposologie() {
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["posologie"]!, toFile: filePathPosologie)
+    }
+    static func saveFilePatients() {
         NSKeyedArchiver.archiveRootObject(Donnees.listePatient, toFile: filePathPatients)
     }
-    static func loadDataFiles(){
+    // MARK: Chargement des fichiers de données
+    static func loadFileatcd() {
         if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathAtcd) as? [String] {
             Donnees.selectiontextDict["atcd"] = array
-        }
+        }    }
+    static func loadFilemedecin() {
         if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMedecin) as? [String] {
             Donnees.selectiontextDict["medecin"] = array
         }
+    }
+    static func loadFilemedicament() {
         if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMedicament) as? [String] {
             Donnees.selectiontextDict["medicament"] = array
         }
+    }
+    static func loadFilelocalisation() {
         if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathLocalisation) as? [String] {
             Donnees.selectiontextDict["localisation"] = array
         }
+    }
+    static func loadFilemotif() {
         if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMotif) as? [String] {
             Donnees.selectiontextDict["motif"] = array
         }
+    }
+    static func loadFileetablissement() {
         if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathetablissement) as? [String] {
             Donnees.selectiontextDict["etablissement"] = array
         }
+    }
+    static func loadFileposologie() {
         if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathPosologie) as? [String] {
             Donnees.selectiontextDict["posologie"] = array
         }
-        
-        // MARK: Uncomment to read patient data
-        
-//               /*
+    }
+    static func loadFilePatients() {
         if let listpatient=NSKeyedUnarchiver.unarchiveObjectWithFile(filePathPatients) as? patients{
             Donnees.listePatient=listpatient
         }
-        // */
     }
+
+
     
 }
 

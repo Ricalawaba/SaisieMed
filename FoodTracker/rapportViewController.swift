@@ -16,12 +16,14 @@ class rapportViewController: UIViewController {
     @IBOutlet weak var webView: UIWebView!
     var patient=patients.patient()
     var uneCategorie: categorieExamen.Categorie?=nil
+    var directHTML : String?
     
     override func viewDidAppear(animated: Bool) {
         var myHTMLString:String=""
-        
-        
-        if uneCategorie == nil {
+        if directHTML != nil {
+            myHTMLString=directHTML!
+        }
+        else if uneCategorie == nil {
             myHTMLString = "<H2>\(patient.nomPrenom), \(patient.age) ans</H2>"
             for  cat in patient.examen.categories
             {

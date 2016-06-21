@@ -25,6 +25,57 @@
             </objects>
             <point key="canvasLocation" x="433" y="360"/>
         </scene>
+        <!--Configuration View Controller-->
+        <scene sceneID="RHr-LK-PUp">
+            <objects>
+                <viewController id="J7c-gS-fbg" customClass="configurationViewController" customModule="SaisieMed" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Grq-Az-Ujp"/>
+                        <viewControllerLayoutGuide type="bottom" id="ka3-Ln-tRf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mDD-rP-AFq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5za-r9-KC6">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fichiers de données" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96F-qr-MMA">
+                                        <rect key="frame" x="8" y="8" width="154" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHP-mf-UmI">
+                                        <rect key="frame" x="27" y="37" width="117" height="30"/>
+                                        <state key="normal" title="Exporter en swift"/>
+                                        <connections>
+                                            <action selector="exportSwift:" destination="J7c-gS-fbg" eventType="touchUpInside" id="5Tc-HF-tLJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5T-NZ-LZn">
+                                        <rect key="frame" x="27" y="75" width="186" height="30"/>
+                                        <state key="normal" title="Changer de fichier patients"/>
+                                        <connections>
+                                            <action selector="changerFichierPatient:" destination="J7c-gS-fbg" eventType="touchUpInside" id="TyS-sk-8Na"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5za-r9-KC6" firstAttribute="leading" secondItem="mDD-rP-AFq" secondAttribute="leading" id="fUe-LO-QVu"/>
+                            <constraint firstItem="ka3-Ln-tRf" firstAttribute="top" secondItem="5za-r9-KC6" secondAttribute="bottom" id="jxs-MP-otX"/>
+                            <constraint firstItem="5za-r9-KC6" firstAttribute="top" secondItem="Grq-Az-Ujp" secondAttribute="bottom" id="stF-tN-rQJ"/>
+                            <constraint firstAttribute="trailing" secondItem="5za-r9-KC6" secondAttribute="trailing" id="tm5-eV-Nbh"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CeF-gQ-aip" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1171" y="-359"/>
+        </scene>
         <!--Liste Patients-->
         <scene sceneID="c19-Fv-jOw">
             <objects>
@@ -34,6 +85,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MenuCell" rowHeight="90" id="Yh1-eQ-TWo" customClass="patientTableViewCell" customModule="SaisieMed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="90"/>
@@ -127,7 +179,11 @@
                                     <segue destination="nwM-eu-nwT" kind="show" identifier="ajoutPatient" id="Qgp-qg-X5K"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Cfg" id="oJe-gp-1ZJ"/>
+                            <barButtonItem title="Cfg" id="oJe-gp-1ZJ">
+                                <connections>
+                                    <segue destination="J7c-gS-fbg" kind="show" id="y2y-o9-I3G"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem systemItem="save" id="8Xa-Vk-TIm">
                                 <connections>
                                     <action selector="savePatients:" destination="4uv-RX-JfC" id="Zpd-uh-TrT"/>
