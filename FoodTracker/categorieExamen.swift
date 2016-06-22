@@ -745,7 +745,19 @@ catTA.examens=examCatTA
         catBiologie.examens=examCatBiologie
         
         examCatParaclinique += [ Examen(categorie: catBiologie) ]
-        
+        let catBandelette = Categorie(nom: "Bandelette Urinaire",namedImage: "nurse_icon.png")
+        let examCatBandelette = [
+            Examen(intitule: "normale", type: .check),
+            Examen(intitule: "Sang", type: .donnee),
+            Examen(intitule: "Leucocytes", type: .donnee),
+            Examen(intitule: "Nitrites", type: .donnee),
+            Examen(intitule: "Corps cétoniques", type: .donnee),
+            Examen(intitule: "ECBU demandé", type: .check),
+            Examen(intitule: "Libre", type:  .reponsecourte ),
+            
+            ]
+        catBandelette.examens=examCatBandelette
+        examCatParaclinique += [ Examen(categorie: catBandelette) ]
         // MARK: Imagerie
         for _ in 0..<5 {
             let catImagerie = Categorie(nom: "Imagerie",namedImage: "imagerie_icon.png",showNom: false)
