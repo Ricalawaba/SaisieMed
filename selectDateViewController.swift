@@ -15,7 +15,17 @@ protocol dateSelectedDelegate {
 class selectDateViewController: UIViewController {
     
     @IBOutlet weak var dateMYPickerView: MonthYearPickerView!
+    @IBOutlet weak var jourmoisanneeDatePicker: UIDatePicker!
+    @IBOutlet weak var dateComplete: UIDatePicker!
     
+    @IBAction func returnDateComplète(sender: UIButton) {
+        self.date=dateComplete.date
+        returnDate("le dd MMM yyyy à HH:mm")
+    }
+    @IBAction func returnJourMoisAnnee(sender: UIButton) {
+        self.date=jourmoisanneeDatePicker.date
+        returnDate("dd/MM/yyyy")
+    }
     @IBAction func returnMoisAnnee(sender: UIButton) {
             returnDate()
     }

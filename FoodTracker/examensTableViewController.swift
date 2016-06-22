@@ -14,19 +14,48 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     //var examen = [Examen]()
     var activeField: UITextField?
     func dateSelected(sender: selectDateViewController, text: String, date: NSDate) {
-//        self.title=text
-//        // create the alert
-//        let alert = UIAlertController(title: "Selection date", message: text, preferredStyle: UIAlertControllerStyle.Alert)
-//        
-//        // add an action (button)
-//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-//        
-//        // show the alert
-//        self.presentViewController(alert, animated: true, completion: nil)
+
         ExamTaped!.value=text
         tableView.reloadData()
     }
+    // TODO: tap non reconnu sur certaines celules dates
+    var ExamTaped:Examen?
+    
+    @IBAction func tapRepCourte(sender: UITapGestureRecognizer) {
+        
+        let location : CGPoint = sender.locationInView(self.tableView)
+        let indexPath:NSIndexPath = self.tableView.indexPathForRowAtPoint(location)!
+        ExamTaped = categorie.examens[indexPath.row]
+        if (ExamTaped!.type == .group ){
+            // performSegueWithIdentifier("autoshow", sender: self)
+            //examensTableViewController
+            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("examensTVID") as! examensTableViewController
+            //svc.delegate=self
+            svc.categorie = ExamTaped!.categorie
+            svc.navigationController?.title = svc.categorie!.nom
+            self.navigationController!.pushViewController(svc,animated: true)
+            
+        }
+        /*if !(ExamTaped!.type == Examen.ExamenEnum.donnee || ExamTaped!.type == Examen.ExamenEnum.reponsecourte) {
+         return
+         }*/
+        if (ExamTaped!.type == .selection ){
+            let svc = self.storyboard?.instantiateViewControllerWithIdentifier("selectionViewID") as! selectionTexteTableViewController
+                       svc.textes = Donnees.selectiontextDict[ ExamTaped!.tag ]!
+            examenSelected=ExamTaped
+            svc.delegate=self
+            self.navigationController!.pushViewController(svc,animated: true)
+        }
+        //  sender?.row
+        //  svc.listePatients = Donnees.listePatient
+        
 
+        if ExamTaped!.tag == "date" {
+            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectDateViewControler") as! selectDateViewController
+            svc.delegate=self
+            self.navigationController!.pushViewController(svc,animated: true)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -228,7 +257,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             }
             
             cell3.details.text=examen1.categorie?.detailString()
-            cell3.intitule.enabled = !(cell3.details.text?.isEmpty)!
+            cell3.intitule.hidden = !examen1.categorie!.showNom && !(cell3.details.text?.isEmpty)!
             return cell3
         }
         if examen1.type==Examen.ExamenEnum.selection {
@@ -252,31 +281,8 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         // Configure the cell...
         return cell
          }
-    var ExamTaped:Examen?
     
-    @IBAction func tapRepCourte(sender: UITapGestureRecognizer) {
-        
-        let location : CGPoint = sender.locationInView(self.tableView)
-        let indexPath:NSIndexPath = self.tableView.indexPathForRowAtPoint(location)!
-         ExamTaped = categorie.examens[indexPath.row]
-        if !(ExamTaped!.type == Examen.ExamenEnum.donnee || ExamTaped!.type == Examen.ExamenEnum.reponsecourte) {
-            return
-        }
-        
-        if ExamTaped!.tag == "date" {
-            //let swipedcell:patientTableViewCell = self.tableView.cellForRowAtIndexPath(swipedIndexPath)!
-            //do your stuff here
-            //        longpushPatient = Donnees.listePatient.patients[swipedIndexPath.row]
-            //        performSegueWithIdentifier("showrapportSegue", sender: self)
-            //
-            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectDateViewControler") as! selectDateViewController
-            //       svc.uneCategorie=rapportCat
-            
-            svc.delegate=self
-            //self.presentViewController(svc, animated: true, completion: nil)
-            self.navigationController!.pushViewController(svc,animated: true)
-        }
-    }
+
     override func viewWillAppear(animated: Bool) {
         
         tableView.reloadData()

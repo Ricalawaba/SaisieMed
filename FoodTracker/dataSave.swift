@@ -34,6 +34,7 @@ struct DataSave {
         saveFileetablissement()
         saveFileposologie()
         saveFilePatients()
+        saveFileprofession()
         
     }
     static func loadDataFiles(){
@@ -46,6 +47,7 @@ struct DataSave {
         loadFileposologie()
         // MARK: Uncomment to read patient data
         loadFilePatients()
+        loadFileprofession()
     }
     
     static func getDocumentsDirectory() -> String {
@@ -54,6 +56,11 @@ struct DataSave {
         return documentsDirectory
     }
     // MARK: Construction des noms de fichiers de données
+    static var filePathProfession : String {
+        let filename = getDocumentsDirectory().stringByAppendingPathComponent("profession.dat")
+        return filename
+        
+    }
     static var filePathAtcd : String {
         let filename = getDocumentsDirectory().stringByAppendingPathComponent("atcd.dat")
         return filename
@@ -96,7 +103,9 @@ struct DataSave {
         
     }
     // MARK: Sauvegarde des fichiers de données
-
+    static func saveFileprofession() {
+        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["profession"]!, toFile: filePathProfession)
+    }
     static func saveFileatcd() {
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["atcd"]!, toFile: filePathAtcd)
     }
@@ -122,6 +131,10 @@ struct DataSave {
         NSKeyedArchiver.archiveRootObject(Donnees.listePatient, toFile: filePathPatients)
     }
     // MARK: Chargement des fichiers de données
+    static func loadFileprofession() {
+        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathProfession) as? [String] {
+            Donnees.selectiontextDict["profession"] = array
+        }    }
     static func loadFileatcd() {
         if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathAtcd) as? [String] {
             Donnees.selectiontextDict["atcd"] = array
@@ -156,6 +169,7 @@ struct DataSave {
             Donnees.selectiontextDict["posologie"] = array
         }
     }
+    // MARK: - Lecture fichier patient
     static func loadFilePatients() {
         if let listpatient=NSKeyedUnarchiver.unarchiveObjectWithFile(filePathPatients) as? patients{
             Donnees.listePatient=listpatient

@@ -15,12 +15,12 @@ class rapportViewController: UIViewController ,MFMailComposeViewControllerDelega
         email.mailComposeDelegate = self
         email.setToRecipients(["drricalens@gmail.com"])
 
-        email.setSubject("My subject")
-        email.setMessageBody("Some example text", isHTML: false) // or true, if you prefer
+        email.setSubject("Synthèse clinique de \(patient.nomPrenom), \(patient.age) ans")
+        email.setMessageBody(webView.stringByEvaluatingJavaScriptFromString("document.body.innerHTML")!, isHTML: true) // or true, if you prefer
         presentViewController(email, animated: true, completion: nil)
     }
     @IBAction func done(sender: UIBarButtonItem) {
-       self.navigationController?.popViewControllerAnimated(true)  
+       self.navigationController?.popViewControllerAnimated(true)
     }
     @IBOutlet weak var webView: UIWebView!
     var patient=patients.patient()
@@ -32,7 +32,7 @@ class rapportViewController: UIViewController ,MFMailComposeViewControllerDelega
         dismissViewControllerAnimated(true, completion: nil)
     }
     override func viewDidAppear(animated: Bool) {
-        var myHTMLString:String=""
+        var myHTMLString:String="<head><meta name=\"viewport\" content=\"width=device-width;initial-scale=1.0\"></head>"
         if directHTML != nil {
             myHTMLString=directHTML!
         }
@@ -49,21 +49,34 @@ class rapportViewController: UIViewController ,MFMailComposeViewControllerDelega
                     }else {sexe="Femme"}
                     
                     AdminStr += "<h2>Synthèse médicale</h2><p>\(nom), \(sexe),\(cat.examens[2].value) ans"
-                    AdminStr += "<p>Motif: \(cat.examens[4].value)"
-                    AdminStr += "<p>Médecin traitant: \(cat.examens[5].value)"
-                    let modevie=cat.examens[6].categorie!.detailString()
+                    let motif=cat.examens[4].categorie!.detailString()
+                    if !motif.isEmpty { AdminStr += "<li><b><u>Motif:</u></b> <b>\(motif)</b>" }
+                    
+                    let medTraitant=cat.examens[5].value
+                    if !medTraitant.isEmpty { AdminStr += "<li><u>Médecin traitant:</u> \(medTraitant)" }
+                    
+                    let modevie=cat.examens[7].categorie!.detailString()
                     if !modevie.isEmpty {
-                        AdminStr += "<p>Mode de vie: \(modevie)"
+                        AdminStr += "<li><u>Mode de vie:</u> \(modevie)"
                     }
-                    let modeentree=cat.examens[7].categorie!.detailString()
+                    let modeentree=cat.examens[6].categorie!.detailString()
                     if !modeentree.isEmpty {
-                        AdminStr += "<p>Mode d'entrée \(modeentree)"
+                        AdminStr += "<li><u>Mode d'entrée:</u> \(modeentree)"
                     }
+                    let connuProfession=cat.examens[8].value
+                    if !connuProfession.isEmpty {
+                        AdminStr += "<li><u>Profession:</u> \(connuProfession)"
+                    }
+                    let connuClinique=cat.examens[9].categorie!.detailString()
+                    if !connuClinique.isEmpty {
+                        AdminStr += "<li><u>Connu de la clinique:</u> \(connuClinique)"
+                    }
+
                     myHTMLString += AdminStr
                 } else {
                     let detailstr=cat.formattedDetaiString()
                     if !detailstr.isEmpty {
-                        myHTMLString += "<h2>\(cat.nom)</h2><p>\(detailstr)</p>"
+                        myHTMLString += "<p><b><u>\(cat.nom)</u></b><br>\(detailstr)</p>"
                     }
                 }
             }

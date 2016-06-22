@@ -36,7 +36,8 @@ class patients :  NSObject,NSCoding {
         }
         var motif : String {
             get {
-                return examen.categories[0].examens[4].value
+                return examen.categories[0].examens[4].categorie!.detailString()
+
             }
             set {
                examen.categories[0].examens[4].value=newValue

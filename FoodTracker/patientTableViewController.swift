@@ -143,7 +143,9 @@ class patientTableViewController: UITableViewController,ajoutPatientDelegate {
     
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-        swap(&Donnees.listePatient.patients[fromIndexPath.row],&Donnees.listePatient.patients[toIndexPath.row])
+        
+        try! swap(&Donnees.listePatient.patients[fromIndexPath.row],&Donnees.listePatient.patients[toIndexPath.row])
+        
     }
     
 

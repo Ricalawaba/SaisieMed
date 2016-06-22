@@ -15,7 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Antécédents : liste initiale
     func setDefaultAtcd() {
         Donnees.selectiontextDict["atcd"] = [
-            "", "Accident Ischémique Transitoire (AIT)", "Accident vasculaire cérébral (AVC)", "Alcool", "Amygdalectomie", "Angor", "Appendicectomie", "Artérite", "Arthrose cervicale", "Arthrose lombaire", "Asthme", "Bronchopneumopathie obstructive", "Cholecystite", "Cholécystectomie", "Colique néphrétique", "Coxarthrose", "DNID", "Dents de sagesse", "Diabète insulino requérant", "Diabète type I", "Eczéma", "Embolie pulmonaire", "Epilepsie", "Fibrillation auriculaire", "Fibrillation auriculaire paroxystique", "Fibrillation auriculaire permanente", "Fibroscopie gastrique", "Gastrite", "Gonarthrose", "Hypercholestérolémie", "Hypertension artérielle", "Infarctus myocardique", "Insuffisance cardiaque", "Insuffisance aortique", "Insuffisance mitrale", "Insufisance veineuse des membres inférieurs", "Interruption volontaire grossesse", "Kyste ovarien", "Néoplasie colique", "Néoplasie mammaire", "Néoplasie prostatique ", "Néoplasie pulmonaire", "Néoplasie rénale", "Néoplasique colique", "Néphrectomie", "Occlusion", "Oedeme aigue du poumon", "Pace-Maker", "Péritonite", "Pneumopathie", "Polypes coliques", "Polypes utérins", "Prothèse de genou", "Prothèse de hanche", "RGO", "Rectite hémorragique", "Retrécissement aortique", "Réduction mammaire", "Rétrécissement mitral", "Rhizarthrose", "Splénectomie", "Stérilet", "Syndrome anxio-depressif", "Tabagisme", "Tablier abdominal", "Thrombose veineuse profonde", "Traumatisme crânien grave", "Ulcère gastrique", "Urticaire", "Valvulopathie", "Varicectomie",
+            "", "Accident Ischémique Transitoire (AIT)", "Accident vasculaire cérébral (AVC)", "Alcool", "Amygdalectomie", "Angor", "Appendicectomie", "Artérite", "Arthrose cervicale", "Arthrose lombaire", "Asthme", "Bronchopneumopathie obstructive", "Cholecystite", "Cholécystectomie", "Colique néphrétique", "Coxarthrose", "DNID", "Dents de sagesse", "Diabète insulino requérant", "Diabète type I", "Eczéma", "Embolie pulmonaire", "Epilepsie", "Fibrillation auriculaire", "Fibrillation auriculaire paroxystique", "Fibrillation auriculaire permanente", "Fibroscopie gastrique", "Gastrite", "Gonarthrose", "Hypercholestérolémie", "Hypertension artérielle", "Infarctus myocardique", "Insuffisance cardiaque", "Insuffisance aortique", "Insuffisance mitrale", "Insufisance veineuse des membres inférieurs", "Interruption volontaire grossesse", "Kyste ovarien","Pyélonéphrite", "Néoplasie colique", "Néoplasie mammaire", "Néoplasie prostatique ", "Néoplasie pulmonaire", "Néoplasie rénale", "Néoplasique colique", "Néphrectomie", "Occlusion", "Oedeme aigue du poumon", "Pace-Maker", "Péritonite", "Pneumopathie", "Polypes coliques", "Polypes utérins", "Prothèse de genou", "Prothèse de hanche", "RGO", "Rectite hémorragique", "Retrécissement aortique", "Réduction mammaire", "Rétrécissement mitral", "Rhizarthrose", "Splénectomie", "Stérilet", "Syndrome anxio-depressif", "Tabagisme", "Tablier abdominal", "Thrombose veineuse profonde", "Traumatisme crânien grave", "Ulcère gastrique", "Urticaire", "Valvulopathie", "Varicectomie","Infection urinaire","Emphysème bronchique","Insuffisance respiratoire","Insuffisance rénale",
+                "Mélanome","Colites","Colique hépatique","Phlegmon","Choc anaphylactique","Arret cardio-respiratoire","Trauma cranien grave","Ischémie aigue des membres inférieurs",
+                "Artéropâthie oblitérante des membres inférieurs","Maladie de parkinson","Maladie d'alzheimer","Syndrome confusionnel","Tentative d'autolyse","Méningite",
+                
         ]
         Donnees.selectiontextDict["atcd"]=Donnees.selectiontextDict["atcd"]?.sort()
     }
@@ -29,7 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // MARK: - Motifs : liste initiale
     func setDefaultMotif() {
         Donnees.selectiontextDict["motif"] = [
-             "", "Accident de la voie publique", "Acouphènes", "Adénopathies", "Agression/Rixe", "Altération de l'état général", "Amaurose transitoire", "Anorexie", "Aphasie", "Aucun", "Brulures cutanées", "Brulures occulaires", "Brulures urinaires", "Certificat médical", "Cervicalgie", "Céphallée", "Chute de sa hauteur", "Chute en 2R", "Chute par maladresse", "Coxalgie", "Cruralgie", "Début brutal", "Désorientation temporospatiale", "Diarrhée", "Douleur abdominale", "Douleur bras", "Douleur cuisse", "Douleur dentaire", "Douleur epaule", "Douleur épigastrique", "Douleur fesse", "Douleur généralisée", "Douleur lombaire", "Douleur mollet", "Douleur pelvienne", "Douleur pharyngée", "Douleur thoracique", "Dyspnée", "Eruption cutanée", "Gonalgie", "Hématurie", "Hyperthermie", "Lombalgie", "Malaise", "Nausées", "Otalgie", "Palpitations", "Perte de connaissance", "Plaie abdominale", "Plaie arcade", "Plaie avant-bras", "Plaie cuisse", "Plaie de la face", "Plaie de la main", "Plaie du crane", "Rachialgie", "Rétention urinaire", "Sans perte de connaissance", "Sciatalgie", "Surdité brusque", "Syndrome rhinopharyngée", "Toux", "Trauma crânien", "Trauma epaule", "Trauma main", "Troubles de l'appétit", "Troubles du langage", "Vertiges", "Vomissements", "d'aggravation progressive"
+             "", "Accident de la voie publique", "Acouphènes", "Adénopathies", "Agression/Rixe", "Altération de l'état général", "Amaurose transitoire", "Anorexie", "Aphasie", "Aucun", "Brulures cutanées", "Brulures occulaires", "Brulures urinaires", "Certificat médical", "Cervicalgie", "Céphallée", "Chute de sa hauteur", "Chute en 2R", "Chute par maladresse", "Coxalgie", "Cruralgie", "Début brutal", "Désorientation temporospatiale", "Diarrhée", "Douleur abdominale", "Douleur bras", "Douleur cuisse", "Douleur dentaire", "Douleur epaule", "Douleur épigastrique", "Douleur fesse", "Douleur généralisée", "Douleur lombaire", "Douleur mollet", "Douleur pelvienne", "Douleur pharyngée", "Douleur thoracique", "Dyspnée", "Eruption cutanée", "Gonalgie", "Hématurie", "Hyperthermie", "Lombalgie", "Malaise", "Nausées", "Otalgie", "Palpitations", "Perte de connaissance", "Infection urinaire", "Plaie abdominale", "Plaie arcade", "Plaie avant-bras", "Plaie cuisse", "Plaie de la face", "Plaie de la main", "Plaie du crane", "Rachialgie", "Rétention urinaire", "Sans perte de connaissance", "Sciatalgie", "Surdité brusque", "Syndrome rhinopharyngée", "Toux", "Trauma crânien", "Trauma epaule", "Trauma main", "Troubles de l'appétit", "Troubles du langage", "Vertiges", "Vomissements", "d'aggravation progressive",
+                 "Douleur cheville", "Douleur poignet","Trauma cheville","Trauma poignet","Dorsalgie","Scapulalgie","Arret des matières et des gaz","Piqures d'insectes",
+                 "Morsure de chien","Morsure de chat","Morsure de serpent","Gonalgie","Douleur genou","Douleur cervicale","Rachialgie","Etat de faiblesse","Perte de poids",
+                 "Talalgie","Douleur talon","Crise convulsive","Anurie","Epigastralgie","Crise d'angoisse"
             ].sort()
     }
         // MARK: - Localisation : liste initiale
@@ -59,7 +65,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Donnees.selectiontextDict["medecin"] = [
             " Pas de médecin traitant","Dr Chatillon B.", "Dr Paquié C.", "Dr Mariambourg G.", "Dr Moruzi M.", "Dr Moruzi S.",
             "Dr De la porte C.","Dr Fargues P.","Dr Bensoussan L-C.","Dr Arhire Andréi.","Dr Arhire Anca","Dr Louis C.",
-            "Médecin traitant"
+            " Médecin traitant","Dr Olivier C.","Dr Hacker", "Dr Villacreces B.","Dr Marolda S.","Dr Baux D.","Dr Laur D.", "Dr Mylonas P.",
+            "Dr Charles X.","Dr Lafon-Cantié", "Dr Boulanger", "Dr Peltier J.p","Dr Fargues P.","Dr Mezières J.", "Dr Gorostis","Dr Rouzaud",
+            "Dr Pages P.", "Dr Prudhomme L.", "Dr Cuinat", "Dr Dary", "Dr Guiraud-Chaumeil", "Dr Pascal","Dr Adad","Dr Avram","Dr Eleftérion P.",
+            "Dr Gipoulou","Dr Mullens"
             ].sort()
     }
      // MARK: - Posologie : liste initiale
@@ -67,6 +76,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Donnees.selectiontextDict["posologie"] = [
              "au besoin", "à la demande", "par cure","1/j", "1/j 5/7j", "1x2/j", "1x3/j", "2x2/j", "2x3/j", "X/X/XV",  "¼/j", "¼x2/j", "¼x3/j", "½/j", "½x2/j", "½x3/j", "¾/j", "¾x2/j", "¾x3/j"
         ]
+    }
+    // MARK: - Posologie : liste initiale
+    func setDefaultProfession() {
+        Donnees.selectiontextDict["profession"] = [
+            "sans emploi","Etudiant","Lycéen","Agent technique","Infimier(e)","Médecin","Boulanger","Batiments","Agriculteur"]
+        
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -79,10 +94,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setDefaultEtablissement()
         setDefaultMedecin()
         setDefaultPosologie()
+        setDefaultProfession()
 
         // MARK: Uncomment to read data files
         
-       // DataSave.loadDataFiles()
+  //      DataSave.loadDataFiles()
         
         /*var filemgr = NSFileManager.defaultManager()
         if filemgr.fileExistsAtPath(filePathPatients) {
