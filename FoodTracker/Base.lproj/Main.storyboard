@@ -351,7 +351,7 @@
                                                 <action selector="Changed:" destination="9P4-Dd-jwK" eventType="valueChanged" id="Vn6-8U-ovd"/>
                                             </connections>
                                         </segmentedControl>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Question à réponse oui / non ?" textAlignment="natural" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="18j-6B-IPh">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Question à réponse oui / non ?" textAlignment="natural" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="18j-6B-IPh">
                                             <rect key="frame" x="8" y="-1" width="461" height="43.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -362,6 +362,7 @@
                                         <constraint firstItem="18j-6B-IPh" firstAttribute="leading" secondItem="F0x-Kj-s9b" secondAttribute="leading" constant="8" id="20y-vo-WSf"/>
                                         <constraint firstItem="hH5-wn-7Nh" firstAttribute="trailing" secondItem="F0x-Kj-s9b" secondAttribute="trailingMargin" id="8tt-P2-fVX"/>
                                         <constraint firstItem="hH5-wn-7Nh" firstAttribute="leading" secondItem="18j-6B-IPh" secondAttribute="trailing" constant="2" id="Amh-CC-qrW"/>
+                                        <constraint firstItem="18j-6B-IPh" firstAttribute="top" secondItem="F0x-Kj-s9b" secondAttribute="top" constant="1" id="gzI-QW-BJS"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

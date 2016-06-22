@@ -34,6 +34,9 @@
 		30D028911D18AA470050231C /* configurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D028901D18AA470050231C /* configurationViewController.swift */; };
 		30D028931D195A9D0050231C /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D028921D195A9D0050231C /* MonthYearPickerView.swift */; };
 		30D028951D196E430050231C /* selectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D028941D196E430050231C /* selectDateViewController.swift */; };
+		30D0289C1D1AECD40050231C /* imagerie_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D028991D1AECD40050231C /* imagerie_icon.png */; };
+		30D0289D1D1AECD40050231C /* piqure_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D0289A1D1AECD40050231C /* piqure_icon.png */; };
+		30D0289E1D1AECD40050231C /* stetho_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D0289B1D1AECD40050231C /* stetho_icon.png */; };
 		30F43EE81D077C3B005E3BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43EE71D077C3B005E3BEB /* AppDelegate.swift */; };
 		30F43EED1D077C3B005E3BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30F43EEB1D077C3B005E3BEB /* Main.storyboard */; };
 		30F43EEF1D077C3B005E3BEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30F43EEE1D077C3B005E3BEB /* Assets.xcassets */; };
@@ -94,6 +97,9 @@
 		30D028901D18AA470050231C /* configurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = configurationViewController.swift; sourceTree = "<group>"; };
 		30D028921D195A9D0050231C /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		30D028941D196E430050231C /* selectDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectDateViewController.swift; sourceTree = "<group>"; };
+		30D028991D1AECD40050231C /* imagerie_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagerie_icon.png; sourceTree = "<group>"; };
+		30D0289A1D1AECD40050231C /* piqure_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piqure_icon.png; sourceTree = "<group>"; };
+		30D0289B1D1AECD40050231C /* stetho_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stetho_icon.png; sourceTree = "<group>"; };
 		30F43EE41D077C3B005E3BEB /* SaisieMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaisieMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F43EE71D077C3B005E3BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30F43EEC1D077C3B005E3BEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -233,6 +239,9 @@
 		30F43F231D0EA255005E3BEB /* images */ = {
 			isa = PBXGroup;
 			children = (
+				30D028991D1AECD40050231C /* imagerie_icon.png */,
+				30D0289A1D1AECD40050231C /* piqure_icon.png */,
+				30D0289B1D1AECD40050231C /* stetho_icon.png */,
 				301826061D10ABA900592CE9 /* rein_icon.png */,
 				301826071D10ABA900592CE9 /* medoc_icon.png */,
 				301826081D10ABA900592CE9 /* nez_icon.png */,
@@ -374,9 +383,11 @@
 				301825F81D0F005000592CE9 /* nurse_icon.png in Resources */,
 				3018260F1D10ABAA00592CE9 /* medoc_icon.png in Resources */,
 				301825F41D0EFFB400592CE9 /* administratif_icon.png in Resources */,
+				30D0289C1D1AECD40050231C /* imagerie_icon.png in Resources */,
 				301826151D10ABAA00592CE9 /* uro_icon.png in Resources */,
 				30F43F221D0EA248005E3BEB /* pneumo_icon.png in Resources */,
 				301825F61D0EFFB400592CE9 /* tete_icon.png in Resources */,
+				30D0289E1D1AECD40050231C /* stetho_icon.png in Resources */,
 				301825FA1D0F009F00592CE9 /* os_icon.png in Resources */,
 				30F43F1F1D0EA248005E3BEB /* Homme.png in Resources */,
 				301825F51D0EFFB400592CE9 /* digestif_icon.png in Resources */,
@@ -386,6 +397,7 @@
 				30F43EEF1D077C3B005E3BEB /* Assets.xcassets in Resources */,
 				30F43EED1D077C3B005E3BEB /* Main.storyboard in Resources */,
 				301826141D10ABAA00592CE9 /* gyneco_icon.png in Resources */,
+				30D0289D1D1AECD40050231C /* piqure_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

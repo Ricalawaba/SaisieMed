@@ -49,7 +49,7 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
     // MARK: Selection Delegate
     func returnText(text: String?){
         if let del=delegate  {
-            if (text != nil) {del.textSelected(self, text: text!)}
+            if (text != nil) {del.textSelected(self, text: text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()))}
             
         }
         self.navigationController?.popViewControllerAnimated(true)

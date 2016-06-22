@@ -35,6 +35,7 @@ struct DataSave {
         saveFileposologie()
         saveFilePatients()
         saveFileprofession()
+        saveFileConclusionRx()
         
     }
     static func loadDataFiles(){
@@ -45,10 +46,12 @@ struct DataSave {
         loadFilemotif()
         loadFileetablissement()
         loadFileposologie()
+        loadFileConclusionRx()
+        loadFileprofession()
+
         // MARK: Uncomment to read patient data
         loadFilePatients()
-        loadFileprofession()
-    }
+            }
     
     static func getDocumentsDirectory() -> String {
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
@@ -56,6 +59,12 @@ struct DataSave {
         return documentsDirectory
     }
     // MARK: Construction des noms de fichiers de données
+    
+    static var filePathConclusionRx : String {
+        let filename = getDocumentsDirectory().stringByAppendingPathComponent("ConclusionRx.dat")
+        return filename
+        
+    }
     static var filePathProfession : String {
         let filename = getDocumentsDirectory().stringByAppendingPathComponent("profession.dat")
         return filename
@@ -103,6 +112,10 @@ struct DataSave {
         
     }
     // MARK: Sauvegarde des fichiers de données
+    
+    static func saveFileConclusionRx() {
+        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["ConclusionRx"]!, toFile: filePathProfession)
+    }
     static func saveFileprofession() {
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["profession"]!, toFile: filePathProfession)
     }
@@ -131,6 +144,10 @@ struct DataSave {
         NSKeyedArchiver.archiveRootObject(Donnees.listePatient, toFile: filePathPatients)
     }
     // MARK: Chargement des fichiers de données
+    static func loadFileConclusionRx() {
+        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathProfession) as? [String] {
+            Donnees.selectiontextDict["ConclusionRx"] = array
+        }    }
     static func loadFileprofession() {
         if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathProfession) as? [String] {
             Donnees.selectiontextDict["profession"] = array

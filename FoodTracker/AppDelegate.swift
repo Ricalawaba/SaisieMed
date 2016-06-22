@@ -84,6 +84,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
 
+
+    // MARK: - Posologie : liste initiale
+    func setDefaultConclusionRx() {
+        Donnees.selectiontextDict["ConclusionRx"] = [
+            "Examen normal","Fracture","Epanchement","Encombrement"]
+        
+    }
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -95,10 +102,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setDefaultMedecin()
         setDefaultPosologie()
         setDefaultProfession()
+        setDefaultConclusionRx()
 
         // MARK: Uncomment to read data files
         
-  //      DataSave.loadDataFiles()
+        DataSave.loadDataFiles()
         
         /*var filemgr = NSFileManager.defaultManager()
         if filemgr.fileExistsAtPath(filePathPatients) {

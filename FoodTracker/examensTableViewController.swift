@@ -22,7 +22,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     var ExamTaped:Examen?
     
     @IBAction func tapRepCourte(sender: UITapGestureRecognizer) {
-        
+        if tableView.editing {return}
         let location : CGPoint = sender.locationInView(self.tableView)
         let indexPath:NSIndexPath = self.tableView.indexPathForRowAtPoint(location)!
         ExamTaped = categorie.examens[indexPath.row]
@@ -321,6 +321,8 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+        if fromIndexPath == toIndexPath {return }
+        
         swap(&categorie.examens[fromIndexPath.row],&categorie.examens[toIndexPath.row])
 
     }

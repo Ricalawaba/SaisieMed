@@ -20,7 +20,7 @@ class selectDateViewController: UIViewController {
     
     @IBAction func returnDateComplète(sender: UIButton) {
         self.date=dateComplete.date
-        returnDate("le dd MMM yyyy à HH:mm")
+        returnDate("dd MMM yyyy à HH:mm")
     }
     @IBAction func returnJourMoisAnnee(sender: UIButton) {
         self.date=jourmoisanneeDatePicker.date
@@ -38,9 +38,9 @@ class selectDateViewController: UIViewController {
     func returnDate(format: String="MMMM yyyy"){
         if let del=delegate  {
             let dateFormatter=NSDateFormatter()
-            dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
-            dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
-            dateFormatter.locale = NSLocale.currentLocale()
+            //dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+            //dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+           // dateFormatter.locale = NSLocale.currentLocale()
             dateFormatter.dateFormat=format
             let strDate = dateFormatter.stringFromDate(self.date).capitalizedString
             del.dateSelected(self, text: strDate, date: self.date)

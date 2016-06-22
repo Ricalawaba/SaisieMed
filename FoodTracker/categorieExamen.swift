@@ -86,7 +86,7 @@ class categorieExamen : NSObject , NSCoding {
                     if !(str2?.isEmpty)! {
                         str += "<p>"
                         if ((examen.categorie!.showNom) ) {
-                            str += "\(examen.intitule): "
+                            str += "<u>\(examen.intitule)</u>:<br>"
                         }
                         str += "\(examen.categorie!.detailString())\(examen.info) "
                     }
@@ -163,6 +163,7 @@ class categorieExamen : NSObject , NSCoding {
             Examen(intitule: "en institution", type:  .check ),
             Examen(intitule: "en maison de retraite", type:  .check ),
             Examen(intitule: "en maison médicalisée", type:  .check ),
+            Examen(intitule: "avec sa famille", type:  .check ),
             Examen(intitule: "seul", type:  .check ),
             Examen(intitule: "en couple", type:  .check ),
             Examen(intitule: "Veuf(ve)", type:  .check ),
@@ -177,6 +178,8 @@ class categorieExamen : NSObject , NSCoding {
             Examen(intitule: "adressé par", type:  .check ),
             Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"),
             Examen(intitule: "se présente spontanément", type:  .check ),
+             Examen(intitule: "n'a pas vu de médecin avant sa venue aux urgences", type:  .check ),
+             Examen(intitule: "a contacté son médecin avant sa venue aux urgences", type:  .check ),
             Examen(intitule: "médicalisé par le SMUR", type:  .check ),
             Examen(intitule: "Médecin SMUR", type:  .selection ,tag: "medecin"),
             Examen(intitule: "Transporté par les Pompiers", type:  .check ),
@@ -238,7 +241,9 @@ class categorieExamen : NSObject , NSCoding {
         
         var examcat2 = [
             Examen(intitule: "Pas d'atcds notables", type:  .check ),
-            Examen(intitule: "Commentaire", type:  .reponsecourte )
+            Examen(intitule: "Commentaire", type:  .reponsecourte ),
+            Examen(intitule: "Pas sous anti-coagulant", type:  .check ),
+            Examen(intitule: "Pas sous anti-agrégant", type:  .check )
             ]
         let catFRCV = Categorie(nom: "Facteur de risques",namedImage: "cardio_icon.png")
         let examCatFRCV = [
@@ -289,8 +294,7 @@ class categorieExamen : NSObject , NSCoding {
         var examcat21 = [
             Examen(intitule: "Pas de traitement au long cours", type:  .check ),
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(intitule: "Sous anti-coagulant", type:  .check ),
-            Examen(intitule: "Sous anti-agrégant", type:  .check )
+            
             ]
         for _ in 0..<10 {
             let catTTT = Categorie(nom:"ttt",namedImage: "medoc_icon.png",showNom: false)
@@ -310,51 +314,39 @@ class categorieExamen : NSObject , NSCoding {
         // MARK: Plaintes/Anamnese
               let Categorie3 = Categorie(nom: "Plaintes/Anamnèse",namedImage: "tete_icon.png")
         var examcat3:[Examen]=[]
-        for _ in 0..<10 {
+        for _ in 0..<8 {
+            let catLocAnat = Categorie(nom: "Localisation Anatomique",namedImage: "tete_icon.png",showNom: false)
+            let examCatLocAnat = [
+                Examen(intitule: "inférieur", type:  .check ),
+                Examen(intitule: "supérieur", type:  .check ),
+                Examen(intitule: "droit(e)", type:  .check ),
+                Examen(intitule: "gauche", type:  .check ),
+                Examen(intitule: "bilatéral(e)", type:  .check ),
+                
+                
+                ]
+            catLocAnat.examens=examCatLocAnat
             let catMotif = Categorie(nom: "Signe", namedImage: "tete_icon.png",showNom: false)
             let examCatMotif = [
                 Examen(intitule: "Signe", type:  .selection,tag: "motif" ),
                 Examen(intitule: "Commentaire", type:  .reponsecourte ),
-                Examen(intitule: "droit(e)", type:  .check ),
-                Examen(intitule: "gauche", type:  .check ),
-                Examen(intitule: "bilatéral(e)", type:  .check ),
+                Examen(categorie: catLocAnat),
                 Examen(intitule: "aigüe", type:  .check ),
+                Examen(intitule: "sub-aigüe", type:  .check ),
+                
+                Examen(intitule: "intense", type:  .check ),
+                Examen(intitule: "persistante", type:  .check ),
+                Examen(intitule: "d'évolution progressive", type:  .check ),
+                Examen(intitule: "avec crises paroxystiques", type:  .check ),
                 Examen(intitule: "début le", type:  .donnee,tag: "date" ),
                 Examen(intitule: "Libre", type:  .reponsecourte ),
-                Examen(intitule: "Pas d'autres plaintes somatiques", type:  .check ),
-                
                 ]
+            
+        
             catMotif.examens=examCatMotif
             examcat3 += [Examen(categorie: catMotif)]
         }
-/*
-        let examcat3 = [
-        //   Examen(categorie: Categorie21 ),
-            
-            Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
-  /*          Examen(intitule: "Douleur abdominale", type:  .check ),
-            Examen(intitule: "Asthénie", type:  .ouinon ),
-            Examen(intitule: "Douleur thoracique", type:  .ouinon ),
-            Examen(intitule: "Bilan de traumatisme", type:  .ouinon ),
-            Examen(intitule: "Fièvre", type:  .ouinon ),
-            Examen(intitule: "Symptomes respiratoires", type:  .ouinon ),
-            Examen(intitule: "Troubles digestifs", type:  .ouinon ),
-            Examen(intitule: "Malaise", type:  .ouinon ),
-            Examen(intitule: "Vertige", type:  .ouinon ),
-            Examen(intitule: "Anxiété", type:  .ouinon ),*/
-            Examen(intitule: "Libre", type:  .reponsecourte ),
-            Examen(intitule: "Pas d'autres plaintes somatiques", type:  .check ),
-            
-        ]*/
+        examcat3 += [Examen(intitule: "Pas d'autres plaintes somatiques", type:  .check )]
         Categorie3.examens=examcat3
         let catPoids = Categorie(nom: "Poids",namedImage: "pancarte_icon.png")
         let examCatPoids = [
@@ -571,8 +563,13 @@ catTA.examens=examCatTA
         let examCatConclusion = [
             Examen(intitule: "Libre", type:  .reponsecourte ),
             Examen(intitule: "ECG Normal", type: .check),
+            Examen(intitule: "Pas de troubles de la conduction ou de repolarisation", type: .check),
+            Examen(intitule: "Pas de troubles du rythme", type: .check),
             Examen(intitule: "AC/FA", type: .check),
+            Examen(intitule: "Extrasystolie ventriculaire", type: .check),
+            Examen(intitule: "Extrasystolie auriculaire", type: .check),
             Examen(intitule: "Tachycardie sinusale", type: .check),
+            Examen(intitule: "Tachycardie supraventriculaire", type: .check),
             Examen(intitule: "Bradycardie", type: .check),
             Examen(intitule: "BBG", type: .check),
             Examen(intitule: "BBD", type: .check),
@@ -581,7 +578,7 @@ catTA.examens=examCatTA
             Examen(intitule: "HBPG", type: .check),
             Examen(intitule: "Courant de lésion", type: .donnee),
             Examen(intitule: "Ischémie", type: .donnee),
-            Examen(intitule: "Pas de troubles de la conduction ou de repolarisation", type: .check),
+            
             ]
         catECGConclusion.examens=examCatConclusion
         
@@ -608,8 +605,9 @@ catTA.examens=examCatTA
         let CatECG2 = Categorie(nom: "Rythme/P/PR",namedImage: "cardio_icon.png")
         let examCatECG2=[
                 Examen(intitule: "Libre", type:  .reponsecourte ),
-                Examen(intitule: "Rythme regulier sinusal", type: .check),
+                Examen(intitule: "Rythme régulier sinusal", type: .check),
                 Examen(intitule: "Rythme irrégulier", type: .check),
+                Examen(intitule: "non sinusal", type: .check),
                 Examen(intitule: "FA (P=0)", type: .check),
                 Examen(intitule: "Axe Normal (aVF et D1>0)", type: .check),
                 Examen(intitule: "Axe Gauche (aVF<0 et D1>0)", type: .check),
@@ -622,8 +620,7 @@ catTA.examens=examCatTA
                 Examen(intitule: "BAV1", type: .check),
                 Examen(intitule: "BAV2", type: .check),
                 Examen(intitule: "BAV3", type: .check),
-                Examen(intitule: "Pas de troubles de la conduction", type: .check),
-                Examen(intitule: "Pas de troubles de la repolarisation", type: .check),
+
                 
                 
         ]
@@ -631,7 +628,9 @@ catTA.examens=examCatTA
         let CatECG3 = Categorie(nom: "QRS",namedImage: "cardio_icon.png")
         let examCatECG3 = [
             Examen(intitule: "Libre", type:  .reponsecourte ),
-            Examen(intitule: "QRS Larges", type: .donnee),
+            Examen(intitule: "QRS fins", type: .check),
+
+            Examen(intitule: "QRS Larges", type: .check),
             Examen(intitule: "HVG  (RD1+SD3>25)", type: .check),
             Examen(intitule: "HVG Cornell (RV1+SV3>28H,21F)", type: .check),
             Examen(intitule: "Pas d'hypertrophie ventriculaire", type: .check),
@@ -678,7 +677,7 @@ catTA.examens=examCatTA
             
             
         ]
-        let catExamClinique = Categorie(nom: "Examen Clinique",namedImage: "Homme.png")
+        let catExamClinique = Categorie(nom: "Examen Clinique",namedImage: "stetho_icon.png")
         let examCatExamClinique = [
             Examen(categorie: Categorie4),
             Examen(categorie: CategorieCardiovasculaire),
@@ -691,8 +690,94 @@ catTA.examens=examCatTA
             ]
         catExamClinique.examens=examCatExamClinique
         
+        
+        // MARK: Examens paracliniques
+        let catParaclinique = Categorie(nom: "Examens Paracliniques",namedImage: "imagerie_icon.png")
+        var examCatParaclinique = [
+            Examen(categorie: CatECG)]
+        
+        
+        
+        
+        //MARK: Biologie
+        
+        let catBiologie = Categorie(nom: "Biologie",namedImage: "piqure_icon.png")
+        let examCatBiologie = [
+            Examen(intitule: "Bilan normal", type: .check),
+            Examen(intitule: "Hémogramme normal", type: .check),
+            Examen(intitule: "Hémoglobine", type: .donnee),
+            Examen(intitule: "Leucocytes", type: .donnee),
+            Examen(intitule: "Plaquettes", type: .donnee),
+            Examen(intitule: "Insuffisance rénale", type: .ouinon),
+            Examen(intitule: "Créatinémie", type: .donnee),
+            Examen(intitule: "Clairance", type: .donnee),
+            Examen(intitule: "Sodium (Na)", type: .donnee),
+            Examen(intitule: "Potassium (K)", type: .donnee),
+            Examen(intitule: "Syndrome inflammatoire", type: .ouinon),
+            Examen(intitule: "Proteine C Réactive (CRP)", type: .donnee),
+            Examen(intitule: "Fibrinogène", type: .donnee),
+            Examen(intitule: "Procalcitonine", type: .donnee),
+            Examen(intitule: "Bilan hépatique normal", type: .check),
+            Examen(intitule: "Cytolyse", type: .ouinon),
+            Examen(intitule: "ASAT (TGO)", type: .donnee),
+            Examen(intitule: "ALAT (TGP)", type: .donnee),
+            
+            Examen(intitule: "Cholestase", type: .ouinon),
+            Examen(intitule: "Bilirubine", type: .donnee),
+            Examen(intitule: "Phosphatases Alcalines", type: .donnee),
+            Examen(intitule: "ɣGT", type: .donnee),
+            
+            Examen(intitule: "Enzymes cardiaques normales", type: .check),
+            Examen(intitule: "Troponine", type: .donnee),
+            Examen(intitule: "Pro-BNP", type: .donnee),
+            Examen(intitule: "BNP", type: .donnee),
+            Examen(intitule: "D-Dimères", type: .donnee),
+            Examen(intitule: "Myoglobine", type: .donnee),
+            
+            Examen(intitule: "Euthyroïdie", type: .check),
+            Examen(intitule: "TSH", type: .donnee),
+            Examen(intitule: "T4L", type: .donnee),
+            Examen(intitule: "T3", type: .donnee),
+            Examen(intitule: "Libre", type:  .reponsecourte ),
+            Examen(intitule: "Libre", type:  .reponsecourte ),
+            
+            ]
+        catBiologie.examens=examCatBiologie
+        
+        examCatParaclinique += [ Examen(categorie: catBiologie) ]
+        
+        // MARK: Imagerie
+        for _ in 0..<5 {
+            let catImagerie = Categorie(nom: "Imagerie",namedImage: "imagerie_icon.png",showNom: false)
+            let examCatImagerie = [
+                Examen(intitule: "Radiographie", type: .check),
+                Examen(intitule: "Rx pulmonaire", type: .check),
+                Examen(intitule: "Rx Hanche", type: .check),
+                Examen(intitule: "Echographie abdominale", type: .check),
+                Examen(intitule: "Echographie doppler", type: .check),
+                Examen(intitule: "Scanner", type: .check),
+                Examen(intitule: "IRM", type: .check),
+                Examen(intitule: "E.E.G.", type: .check),
+                Examen(intitule: "EMG", type: .check),
+                Examen(intitule: "(précision)", type: .reponsecourte),
+                Examen(intitule: "en cours", type: .check),
+                
+                Examen(intitule: "(Interprétation radiologue)", type: .check),
+                Examen(intitule: "conclusion:", type: .selection,tag: "ConclusionRx"),
+                
+                Examen(intitule: "sous reserve de confirmation par le radiologue", type: .check),
+                Examen(intitule: "libre", type: .reponsecourte),
+                ]
+            
+            catImagerie.examens=examCatImagerie
+            examCatParaclinique += [ Examen(categorie: catImagerie) ]
+        }
+
+        catParaclinique.examens=examCatParaclinique
+        
+        
         // MARK: Categories
-        categories += [Categorie1, Categorie3,Categorie2,Categorie21,Categorie31,catExamClinique,CatECG]
+        categories += [Categorie1, Categorie3,Categorie2,Categorie21,Categorie31,catExamClinique,catParaclinique]
     }
     
     
