@@ -114,7 +114,7 @@ struct DataSave {
     // MARK: Sauvegarde des fichiers de données
     
     static func saveFileConclusionRx() {
-        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["ConclusionRx"]!, toFile: filePathProfession)
+        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["ConclusionRx"]!, toFile: filePathConclusionRx)
     }
     static func saveFileprofession() {
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["profession"]!, toFile: filePathProfession)
@@ -145,7 +145,7 @@ struct DataSave {
     }
     // MARK: Chargement des fichiers de données
     static func loadFileConclusionRx() {
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathProfession) as? [String] {
+        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathConclusionRx) as? [String] {
             Donnees.selectiontextDict["ConclusionRx"] = array
         }    }
     static func loadFileprofession() {

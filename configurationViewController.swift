@@ -66,6 +66,24 @@ class configurationViewController: UIViewController,dateSelectedDelegate {
         }
         addStr += "\r\n]<p>"
         
+        addStr += "selectiontextDict[\"profession\"] = ["
+        for anStr in Donnees.selectiontextDict["profession"]! {
+            addStr += "\r\n\"\(anStr)\","
+        }
+        addStr += "\r\n]<p>"
+
+        addStr += "selectiontextDict[\"ConclusionRx\"] = ["
+        for anStr in Donnees.selectiontextDict["ConclusionRx"]! {
+            addStr += "\r\n\"\(anStr)\","
+        }
+        addStr += "\r\n]<p>"
+
+        addStr += "selectiontextDict[\"Evenement\"] = ["
+        for anStr in Donnees.selectiontextDict["Evenement"]! {
+            addStr += "\r\n\"\(anStr)\","
+        }
+        addStr += "\r\n]<p>"
+
         svc.directHTML="<H3>Export Swift<H3><p>\(addStr)"
         //self.presentViewController(svc, animated: true, completion: nil)
         self.navigationController!.pushViewController(svc,animated: true)
