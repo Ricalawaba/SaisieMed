@@ -462,6 +462,8 @@ catTA.examens=examCatTA
             Examen(intitule: "Sibilants", type:  .ouinon ),
             Examen(intitule: "Crépitants", type:  .ouinon ),
             Examen(intitule: "Ronchis", type:  .ouinon ),
+            Examen(intitule: "Stridor", type:  .ouinon ),
+            Examen(intitule: "Frottement pleural", type:  .ouinon ),
             Examen(intitule: "Foyer auscultatoire", type:  .ouinon ),
             Examen(intitule: "Cyanose labiale", type:  .ouinon ),
             Examen(intitule: "Tirage", type:  .ouinon ),
@@ -784,12 +786,54 @@ catTA.examens=examCatTA
             catImagerie.examens=examCatImagerie
             examCatParaclinique += [ Examen(categorie: catImagerie) ]
         }
-
+        
         catParaclinique.examens=examCatParaclinique
+        let catEvolution = Categorie(nom: "Suivi et Evolution",namedImage: "Homme.png")
+        let examCatEvolution = [
+            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
+            Examen(intitule: "Evenement", type: .reponsecourte, tag:"Evenement"),
+            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
+            Examen(intitule: "Evenement", type: .reponsecourte),
+            
+            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
+            Examen(intitule: "Evenement", type: .reponsecourte),
+            
+            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
+            Examen(intitule: "Evenement", type: .reponsecourte),
+            
+            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
+            Examen(intitule: "Evenement", type: .reponsecourte),
+            
+            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
+            Examen(intitule: "Evenement", type: .reponsecourte),
+            
+            ]
+        catEvolution.examens=examCatEvolution
+        
+        let catConclusion = Categorie(nom: "Conclusion",namedImage: "stetho_icon.png")
+        let examCatConclusionGenerale = [
+            Examen(intitule: "Diagnostic", type: .selection,tag: "atcd"),
+            Examen(intitule: "Libre", type: .reponsecourte),
+            Examen(intitule: "hospitalisation", type: .check),
+            Examen(intitule: "pris en charge par", type: .check),
+            Examen(intitule: "médecin", type: .selection, tag: "medecin"),
+            Examen(intitule: "Retour à domicile", type: .check),
+            Examen(intitule: "Surveillance par le médecin traitant", type: .check),
+            Examen(intitule: "Consultation spécialisé prévu", type: .check),
+            Examen(intitule: "date", type: .reponsecourte,tag: "date"),
+            Examen(intitule: "médecin", type: .selection, tag: "medecin"),
+            Examen(intitule: "Consultation spécialisé à prévoir", type: .check),
+            Examen(intitule: "sous", type: .reponsecourte),
+            Examen(intitule: "Nouvelle consultation nécessaire si évolution péjorative", type: .check),
+            Examen(intitule: "Libre", type: .reponsecourte),
+            
+            ]
+        catConclusion.examens=examCatConclusionGenerale
+        
         
         
         // MARK: Categories
-        categories += [Categorie1, Categorie3,Categorie2,Categorie21,Categorie31,catExamClinique,catParaclinique]
+        categories += [Categorie1, Categorie3,Categorie2,Categorie21,Categorie31,catExamClinique,catParaclinique,catEvolution,catConclusion]
     }
     
     

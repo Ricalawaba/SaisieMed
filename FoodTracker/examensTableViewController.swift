@@ -18,8 +18,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         ExamTaped!.value=text
         tableView.reloadData()
     }
-    // TODO: tap non reconnu sur certaines celules dates
-    var ExamTaped:Examen?
+      var ExamTaped:Examen?
     
     @IBAction func tapRepCourte(sender: UITapGestureRecognizer) {
         if tableView.editing {return}
