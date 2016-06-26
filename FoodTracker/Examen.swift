@@ -73,6 +73,7 @@ class Examen : NSObject,NSCoding{
         }
   
     }
+    
     // MARK: Initialisations
     init(categorie:categorieExamen.Categorie) {
         self.categorie=categorie

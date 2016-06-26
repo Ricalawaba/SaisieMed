@@ -16,22 +16,28 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     func ajoutInformation(sender:AjoutInformationTableViewCell, examen: Examen) {
         let indextoInsert = categorie.examens.indexOf(examen)!
         
-            if examen.tag=="atcd" {
+        if examen.tag=="atcd" {
             categorie.examens.insert(Examen(categorie: ExamTree.atcd), atIndex: indextoInsert)
-            }
-            if examen.tag=="TTT" {
-                categorie.examens.insert(Examen(categorie: ExamTree.TTT), atIndex: indextoInsert)
-            }
-            if examen.tag=="Plainte" {
-                categorie.examens.insert(Examen(categorie: ExamTree.Plainte), atIndex: indextoInsert)
-            }
-            if examen.tag=="motif" {
-                categorie.examens.insert(Examen(categorie: ExamTree.motif), atIndex: indextoInsert)
-            }
-           if examen.tag=="medecin" {
+        }
+        if examen.tag=="TTT" {
+            categorie.examens.insert(Examen(categorie: ExamTree.TTT), atIndex: indextoInsert)
+        }
+        if examen.tag=="Plainte" {
+            categorie.examens.insert(Examen(categorie: ExamTree.Plainte), atIndex: indextoInsert)
+        }
+        if examen.tag=="motif" {
+            categorie.examens.insert(Examen(categorie: ExamTree.motif), atIndex: indextoInsert)
+        }
+        if examen.tag=="medecin" {
             categorie.examens.insert( Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"), atIndex: indextoInsert)
         }
-            //tableView.sel
+        if examen.tag=="pancarte" {
+            categorie.examens.insert(Examen(categorie: ExamTree.Pancarte), atIndex: indextoInsert)
+        }
+        if examen.tag=="evenementSuivi" {
+            categorie.examens.insert( ExamTree.evenement.asExamen(), atIndex: indextoInsert)
+        }
+        //tableView.sel
         
         
         tableView.reloadData()
@@ -42,9 +48,9 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             self.performSegueWithIdentifier("autoshow", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
         } else {
             self.performSegueWithIdentifier("selectionSegue", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
-        
+            
         }
-
+        
     }
     func numberSelected(sender:selectNumberViewController, number:String) {
         ExamTaped!.value=number
@@ -203,9 +209,39 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             svc.minNumber=145
             svc.maxNumber=210
             svc.step=1
-            svc.Information = "Taile (cm)"
+            svc.Information = "Taille (cm)"
             if ExamTaped!.value.isEmpty {
                 svc.value="165"
+            } else {
+                svc.value=ExamTaped!.value
+            }
+            let aview = svc.view
+            svc.delegate=self
+            self.navigationController!.pushViewController(svc,animated: true)
+        }
+        if ExamTaped!.tag == "age" {
+            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+            svc.minNumber=2
+            svc.maxNumber=100
+            svc.step=1
+            svc.Information = "Age (ans)"
+            if ExamTaped!.value.isEmpty {
+                svc.value="30"
+            } else {
+                svc.value=ExamTaped!.value
+            }
+            let aview = svc.view
+            svc.delegate=self
+            self.navigationController!.pushViewController(svc,animated: true)
+        }
+        if ExamTaped!.tag == "glasgow" {
+            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+            svc.minNumber=3
+            svc.maxNumber=16
+            svc.step=1
+            svc.Information = "Score de Glasgow"
+            if ExamTaped!.value.isEmpty {
+                svc.value="15"
             } else {
                 svc.value=ExamTaped!.value
             }
@@ -369,6 +405,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         if examen1.type==Examen.ExamenEnum.reponsecourte || examen1.type==Examen.ExamenEnum.donnee{
          let cell2 = tableView.dequeueReusableCellWithIdentifier("reponsecourteCell", forIndexPath: indexPath) as! reponsecourteTableViewCell
             cell2.texteReponsecourte.text=examen1.intitule
+            if !examen1.tag.isEmpty {cell2.texteReponsecourte.textColor=UIColor.blueColor()}
             if examen1.value != "" {
                 cell2.valeurReponseCourte.text = examen1.value
             }

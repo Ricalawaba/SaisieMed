@@ -75,27 +75,14 @@ class AjoutPatientViewController: UIViewController , UITextFieldDelegate {
             del.patientAdded(self, patient: patient1)
         }
     }
+    @IBAction func ajoutPatientViewButtonAction(sender: UIButton) {
+        ajoutPatient()
+        self.navigationController?.popViewControllerAnimated(true)
+
+    }
 
     @IBAction func AjoutPatientAction(sender: UIButton) {
-//        var val = false
-//        if hommeFemme.selectedSegmentIndex==1 {val = true}
-//        let patient1 =  patients.patient(nomPrenom: "\(nomFamille.text!.uppercaseString) \(prenom.text!.capitalizedString)",
-//                                         age: Int(age.text!)!,
-//                                         localisation: localisation.text!,
-//                                         motif: motif.text!, masculin: val )
-        
-        /*patient1.age = Int(age.text!)!
-        patient1.nomPrenom = "\(nomFamille.text!.uppercaseString) \(prenom.text!.capitalizedString)"
-        patient1.localisation=localisation.text!
-        if hommeFemme.selectedSegmentIndex==0 {patient1.masculin=true}
-        patient1.motif=motif.text!*/
         ajoutPatient()
-        //Donnees.listePatient.patients.append(patient1)
-        
-//        
-//        let parentview = self.parentViewController as! patientTableViewController
-//        
-//        parentview.tableView.reloadData()
         self.navigationController?.popViewControllerAnimated(true)
     }
     /*

@@ -55,7 +55,9 @@ class categorieExamen : NSObject , NSCoding {
             self.namedImage=namedImage
             
         }
-
+        func asExamen() -> Examen {
+            return Examen(categorie: self)
+        }
         func formattedDetaiString(catSeparator:String="<p>") -> String {
             var str: String = ""
             for  index in 0..<examens.count {
@@ -181,7 +183,7 @@ class categorieExamen : NSObject , NSCoding {
         
         
         // MARK: Pancarte
-        let Categorie31 = ExamTree.Pancarte
+        let Categorie31 = ExamTree.Pancartes
         
         // Examen(intitule: "Motif", type:  .reponsecourte )
         
@@ -190,28 +192,9 @@ class categorieExamen : NSObject , NSCoding {
         let examcat4 = [
             Examen(intitule: "Examen Normal", type:  .check ),
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(intitule: "Conscient", type:  .check ),
-            Examen(intitule: "Glasgow", type:  .donnee ),
-           
-            Examen(intitule: "D.T.S.", type:  .ouinon ),
-            Examen(intitule: "Céphallée", type:  .ouinon ),
-            Examen(intitule: "Troubles du langage", type:  .ouinon ),
-            Examen(intitule: "Confusion", type:  .ouinon ),
-            Examen(intitule: "ROT symétriques", type:  .check ),
-            Examen(intitule: "RCP en flexion", type:  .check ),
-            Examen(intitule: "Babinski", type:  .donnee ),
-            Examen(intitule: "Occulomotricité normale", type:  .check ),
-            Examen(intitule: "RPM présents", type:  .check ),
-            Examen(intitule: "Photophobie", type:  .ouinon ),
-            Examen(intitule: "Troubles visuels", type:  .ouinon ),
-            Examen(intitule: "Ataxie", type:  .ouinon ),
-            Examen(intitule: "Romberg positif", type:  .check ),
-            Examen(intitule: "Anomalies de l'epreuve doigt-nez ", type:  .ouinon ),
-            Examen(intitule: "Anomalies de la marche yeux fermés", type:  .ouinon ),
-            Examen(intitule: "Déficit sensitivomoteur", type:  .ouinon ),
+            ExamTree.neuroFonctionnel.asExamen(),
+            ExamTree.neuroReflexes.asExamen(),
             Examen(intitule: "Pas de signe de localisation", type:  .check ),
-            Examen(intitule: "Troubles Cognitifs", type:  .ouinon ),
-           
             Examen(intitule: "Libre", type:  .reponsecourte )
         ]
         Categorie4.examens = examcat4
@@ -592,27 +575,28 @@ class categorieExamen : NSObject , NSCoding {
         }
         
         catParaclinique.examens=examCatParaclinique
-        let catEvolution = Categorie(nom: "Suivi et Evolution",namedImage: "Homme.png")
-        let examCatEvolution = [
-            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
-            Examen(intitule: "Evenement", type: .reponsecourte, tag:"Evenement"),
-            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
-            Examen(intitule: "Evenement", type: .reponsecourte),
-            
-            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
-            Examen(intitule: "Evenement", type: .reponsecourte),
-            
-            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
-            Examen(intitule: "Evenement", type: .reponsecourte),
-            
-            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
-            Examen(intitule: "Evenement", type: .reponsecourte),
-            
-            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
-            Examen(intitule: "Evenement", type: .reponsecourte),
-            
-            ]
-        catEvolution.examens=examCatEvolution
+//        let catEvolution = Categorie(nom: "Suivi et Evolution",namedImage: "Homme.png")
+//        let examCatEvolution = [
+//            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
+//            Examen(intitule: "Evenement", type: .reponsecourte, tag:"Evenement"),
+//            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
+//            Examen(intitule: "Evenement", type: .reponsecourte),
+//            
+//            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
+//            Examen(intitule: "Evenement", type: .reponsecourte),
+//            
+//            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
+//            Examen(intitule: "Evenement", type: .reponsecourte),
+//            
+//            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
+//            Examen(intitule: "Evenement", type: .reponsecourte),
+//            
+//            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
+//            Examen(intitule: "Evenement", type: .reponsecourte),
+//            
+//            ]
+//        catEvolution.examens=examCatEvolution
+        let catEvolution=ExamTree.SuiviEvolution
         
         let catConclusion = Categorie(nom: "Conclusion",namedImage: "stetho_icon.png")
         let examCatConclusionGenerale = [
