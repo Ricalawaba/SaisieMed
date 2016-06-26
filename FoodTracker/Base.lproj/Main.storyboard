@@ -606,6 +606,7 @@
                             <outlet property="dataSource" destination="6p3-rv-hQ4" id="gDF-dH-M5z"/>
                             <outlet property="delegate" destination="6p3-rv-hQ4" id="Yuy-0y-1tL"/>
                             <outletCollection property="gestureRecognizers" destination="l0S-Ph-0Hm" appends="YES" id="cf3-e7-Rlc"/>
+                            <outletCollection property="gestureRecognizers" destination="K96-80-pIU" appends="YES" id="W3E-dK-Jab"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Questions" id="v4A-0B-NRH">
@@ -616,11 +617,20 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="doubleTap" destination="K96-80-pIU" id="Od6-Tb-dNE"/>
+                        <outlet property="singleTap" destination="l0S-Ph-0Hm" id="rDD-iy-6gm"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bFp-Gh-QjC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="l0S-Ph-0Hm">
                     <connections>
                         <action selector="tapRepCourte:" destination="6p3-rv-hQ4" id="Ymo-rR-x31"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer delaysTouchesBegan="YES" numberOfTapsRequired="2" id="K96-80-pIU">
+                    <connections>
+                        <action selector="doubletapRepCourteAction:" destination="6p3-rv-hQ4" id="OIt-Od-iC8"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

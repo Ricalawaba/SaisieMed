@@ -70,11 +70,23 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
 
       var ExamTaped:Examen?
     
-    @IBAction func tapRepCourte(sender: UITapGestureRecognizer) {
+    @IBOutlet var doubleTap: UITapGestureRecognizer!
+    @IBOutlet var singleTap: UITapGestureRecognizer!
+    @IBAction func doubletapRepCourteAction(sender: UITapGestureRecognizer) {
         if tableView.editing {return}
         let location : CGPoint = sender.locationInView(self.tableView)
         let indexPath:NSIndexPath = self.tableView.indexPathForRowAtPoint(location)!
         ExamTaped = categorie.examens[indexPath.row]
+        NSLog("Double tap sur \(ExamTaped?.intitule)")
+    }
+    @IBAction func tapRepCourte(sender: UITapGestureRecognizer) {
+        if tableView.editing {return}
+        
+        let location : CGPoint = sender.locationInView(self.tableView)
+        let indexPath:NSIndexPath? = self.tableView.indexPathForRowAtPoint(location)
+        if indexPath == nil {return }
+        ExamTaped = categorie.examens[indexPath!.row]
+        
         if (ExamTaped!.type == .group ){
             // performSegueWithIdentifier("autoshow", sender: self)
             //examensTableViewController
@@ -252,6 +264,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
 
     }
     override func viewDidLoad() {
+        singleTap.requireGestureRecognizerToFail(doubleTap)
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -266,7 +279,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
      
             autoshowFirstGroup()
         
-    
+        
     }
     // MARK: Affiche le premier element du tabview si c'est type "selection"
     func autoshowFirstGroup () {
@@ -386,7 +399,10 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         // #warning Incomplete implementation, return the number of rows
         return categorie.examens.count
     }
-
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        doubleTap.delaysTouchesBegan = !editing
+    }
     @IBAction func EnregistrerModif(sender: UIBarButtonItem) {
         
 
