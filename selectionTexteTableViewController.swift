@@ -34,7 +34,7 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         searchBar.delegate=self
        // searchBar.becomeFirstResponder()
     //    tableView!.reloadData()
@@ -158,12 +158,14 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
+        
     }
    
 
     
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if filtered.count>0 { return }
         if editingStyle == .Delete {
             // Delete the row from the data source
             
@@ -176,20 +178,25 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
     }
     
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
+//    
+//    // Override to support rearranging the table view.
+//    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+//        if filtered.count>0
+//        || fromIndexPath.row == toIndexPath.row
+//            {return }
+//        
+//        swap(&textes[fromIndexPath.row],&textes[toIndexPath.row])
+//    }
+//    
+//
+//    
+//    // Override to support conditional rearranging of the table view.
+//    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+//        // Return false if you do not want the item to be re-orderable.
+//        return (filtered.count == 0 )
+//        //return true
+//    }
+//    
 
     /*
     // MARK: - Navigation

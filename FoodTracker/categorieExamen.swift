@@ -490,48 +490,8 @@ class categorieExamen : NSObject , NSCoding {
         
         //MARK: Biologie
         
-        let catBiologie = Categorie(nom: "Biologie",namedImage: "piqure_icon.png")
-        let examCatBiologie = [
-            Examen(intitule: "Bilan normal", type: .check),
-            Examen(intitule: "Hémogramme normal", type: .check),
-            Examen(intitule: "Hémoglobine", type: .donnee),
-            Examen(intitule: "Leucocytes", type: .donnee),
-            Examen(intitule: "Plaquettes", type: .donnee),
-            Examen(intitule: "Insuffisance rénale", type: .ouinon),
-            Examen(intitule: "Créatinémie", type: .donnee),
-            Examen(intitule: "Clairance", type: .donnee),
-            Examen(intitule: "Sodium (Na)", type: .donnee),
-            Examen(intitule: "Potassium (K)", type: .donnee),
-            Examen(intitule: "Syndrome inflammatoire", type: .ouinon),
-            Examen(intitule: "Proteine C Réactive (CRP)", type: .donnee),
-            Examen(intitule: "Fibrinogène", type: .donnee),
-            Examen(intitule: "Procalcitonine", type: .donnee),
-            Examen(intitule: "Bilan hépatique normal", type: .check),
-            Examen(intitule: "Cytolyse", type: .ouinon),
-            Examen(intitule: "ASAT (TGO)", type: .donnee),
-            Examen(intitule: "ALAT (TGP)", type: .donnee),
-            
-            Examen(intitule: "Cholestase", type: .ouinon),
-            Examen(intitule: "Bilirubine", type: .donnee),
-            Examen(intitule: "Phosphatases Alcalines", type: .donnee),
-            Examen(intitule: "ɣGT", type: .donnee),
-            
-            Examen(intitule: "Enzymes cardiaques normales", type: .check),
-            Examen(intitule: "Troponine", type: .donnee),
-            Examen(intitule: "Pro-BNP", type: .donnee),
-            Examen(intitule: "BNP", type: .donnee),
-            Examen(intitule: "D-Dimères", type: .donnee),
-            Examen(intitule: "Myoglobine", type: .donnee),
-            
-            Examen(intitule: "Euthyroïdie", type: .check),
-            Examen(intitule: "TSH", type: .donnee),
-            Examen(intitule: "T4L", type: .donnee),
-            Examen(intitule: "T3", type: .donnee),
-            Examen(intitule: "Libre", type:  .reponsecourte ),
-            Examen(intitule: "Libre", type:  .reponsecourte ),
-            
-            ]
-        catBiologie.examens=examCatBiologie
+        let catBiologie = ExamTree.Biologie
+        
         
         examCatParaclinique += [ Examen(categorie: catBiologie) ]
         let catBandelette = Categorie(nom: "Bandelette Urinaire",namedImage: "nurse_icon.png")
@@ -546,56 +506,15 @@ class categorieExamen : NSObject , NSCoding {
             
             ]
         catBandelette.examens=examCatBandelette
-        examCatParaclinique += [ Examen(categorie: catBandelette) ]
-        // MARK: Imagerie
-        for _ in 0..<5 {
-            let catImagerie = Categorie(nom: "Imagerie",namedImage: "imagerie_icon.png",showNom: false)
-            let examCatImagerie = [
-                Examen(intitule: "Radiographie", type: .check),
-                Examen(intitule: "Rx pulmonaire", type: .check),
-                Examen(intitule: "Rx Hanche", type: .check),
-                Examen(intitule: "Echographie abdominale", type: .check),
-                Examen(intitule: "Echographie doppler", type: .check),
-                Examen(intitule: "Scanner", type: .check),
-                Examen(intitule: "IRM", type: .check),
-                Examen(intitule: "E.E.G.", type: .check),
-                Examen(intitule: "EMG", type: .check),
-                Examen(intitule: "(précision)", type: .reponsecourte),
-                Examen(intitule: "en cours", type: .check),
-                
-                Examen(intitule: "(Interprétation radiologue)", type: .check),
-                Examen(intitule: "conclusion:", type: .selection,tag: "ConclusionRx"),
-                
-                Examen(intitule: "sous reserve de confirmation par le radiologue", type: .check),
-                Examen(intitule: "libre", type: .reponsecourte),
-                ]
-            
-            catImagerie.examens=examCatImagerie
-            examCatParaclinique += [ Examen(categorie: catImagerie) ]
-        }
+        examCatParaclinique += [ Examen(categorie: catBandelette),
+            ExamTree.Imagerie.asExamen(),
+            Examen(intitule: "Ajout Radiologie",type: .addinfo,tag: "radiologie")
+            ]
         
+        // MARK: Imagerie
+
         catParaclinique.examens=examCatParaclinique
-//        let catEvolution = Categorie(nom: "Suivi et Evolution",namedImage: "Homme.png")
-//        let examCatEvolution = [
-//            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
-//            Examen(intitule: "Evenement", type: .reponsecourte, tag:"Evenement"),
-//            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
-//            Examen(intitule: "Evenement", type: .reponsecourte),
-//            
-//            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
-//            Examen(intitule: "Evenement", type: .reponsecourte),
-//            
-//            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
-//            Examen(intitule: "Evenement", type: .reponsecourte),
-//            
-//            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
-//            Examen(intitule: "Evenement", type: .reponsecourte),
-//            
-//            Examen(intitule: "Heure", type: .reponsecourte,tag: "date"),
-//            Examen(intitule: "Evenement", type: .reponsecourte),
-//            
-//            ]
-//        catEvolution.examens=examCatEvolution
+
         let catEvolution=ExamTree.SuiviEvolution
         
         let catConclusion = Categorie(nom: "Conclusion",namedImage: "stetho_icon.png")

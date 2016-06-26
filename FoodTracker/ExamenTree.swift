@@ -359,6 +359,113 @@ struct ExamTree {
         catSuiviEvolution.examens=examCatSuiviEvolution
         return catSuiviEvolution
     }
+ static var Radiographie:categorieExamen.Categorie {
+        let catRadiographie = categorieExamen.Categorie(nom:"Radiographies",namedImage: "imagerie_icon.png",showNom: true)
+        let examCatRadiographie = [
+            Examen(intitule: "Crane", type:  .check ),
+            Examen(intitule: "Thoracique", type:  .check ),
+            Examen(intitule: "Gril costal gauche", type:  .check ),
+            Examen(intitule: "Gril costal droit", type:  .check ),
+            Examen(intitule: "Cervicales", type:  .check ),
+            Examen(intitule: "Dorsales", type:  .check ),
+            Examen(intitule: "Lombaires", type:  .check ),
+            Examen(intitule: "Bassin", type:  .check ),
+            Examen(intitule: "Hanche gauche", type:  .check ),
+            Examen(intitule: "Hanche droite", type:  .check ),
+            Examen(intitule: "Femur gauche", type:  .check ),
+            Examen(intitule: "Fémur droit", type:  .check ),
+
+            Examen(intitule: "Genou gauche", type:  .check ),
+            Examen(intitule: "Genou droit", type:  .check ),
+            Examen(intitule: "Jambe gauche", type:  .check ),
+            Examen(intitule: "Jambe droite", type:  .check ),
+            Examen(intitule: "Epaule gauche", type:  .check ),
+            Examen(intitule: "Epaule droit", type:  .check ),
+            Examen(intitule: "Bras gauche", type:  .check ),
+            Examen(intitule: "Bras droit", type:  .check ),
+            Examen(intitule: "Coude gauche", type:  .check ),
+            Examen(intitule: "Coude droit", type:  .check ),
+            Examen(intitule: "Avant-bras gauche", type:  .check ),
+            Examen(intitule: "Avant-bras droit", type:  .check ),
+            Examen(intitule: "Poignet gauche", type:  .check ),
+            Examen(intitule: "Poignet droit", type:  .check ),
+            Examen(intitule: "Main gauche", type:  .check ),
+            Examen(intitule: "Main droite", type:  .check ),
+
+            //Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
+            //Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
+            //Examen(intitule: "libre", type:  .reponsecourte )
+        ]
+        catRadiographie.examens=examCatRadiographie
+        return catRadiographie
+    }
+ static var Imagerie:categorieExamen.Categorie {
+        let catImagerie = categorieExamen.Categorie(nom:"Imagerie",namedImage: "imagerie_icon.png",showNom: true)
+        let examCatImagerie = [
+            ExamTree.Radiographie.asExamen(),
+            Examen(intitule: "Echographie abdominale", type: .check),
+            Examen(intitule: "Echographie doppler", type: .check),
+            Examen(intitule: "Scanner", type: .check),
+            Examen(intitule: "IRM", type: .check),
+            Examen(intitule: "E.E.G.", type: .check),
+            Examen(intitule: "EMG", type: .check),
+            Examen(intitule: "(précision)", type: .reponsecourte),
+            Examen(intitule: "en cours", type: .check),
+            
+            Examen(intitule: "(Interprétation radiologue)", type: .check),
+            Examen(intitule: "conclusion:", type: .selection,tag: "ConclusionRx"),
+            
+            Examen(intitule: "sous reserve de confirmation par le radiologue", type: .check),
+            Examen(intitule: "libre", type: .reponsecourte),
+
+        ]
+        catImagerie.examens=examCatImagerie
+        return catImagerie
+    }
+ static var Biologie:categorieExamen.Categorie {
+        let catBiologie = categorieExamen.Categorie(nom:"Biologie",namedImage: "piqure_icon.png",showNom: true)
+        let examCatBiologie = [
+            Examen(intitule: "Bilan normal", type: .check),
+            Examen(intitule: "Hémogramme normal", type: .check),
+            Examen(intitule: "Hémoglobine", type: .donnee),
+            Examen(intitule: "Leucocytes", type: .donnee),
+            Examen(intitule: "Plaquettes", type: .donnee),
+            Examen(intitule: "Insuffisance rénale", type: .ouinon),
+            Examen(intitule: "Créatinémie", type: .donnee),
+            Examen(intitule: "Clairance", type: .donnee),
+            Examen(intitule: "Sodium (Na)", type: .donnee),
+            Examen(intitule: "Potassium (K)", type: .donnee),
+            Examen(intitule: "Syndrome inflammatoire", type: .ouinon),
+            Examen(intitule: "Proteine C Réactive (CRP)", type: .donnee),
+            Examen(intitule: "Fibrinogène", type: .donnee),
+            Examen(intitule: "Procalcitonine", type: .donnee),
+            Examen(intitule: "Bilan hépatique normal", type: .check),
+            Examen(intitule: "Cytolyse", type: .ouinon),
+            Examen(intitule: "ASAT (TGO)", type: .donnee),
+            Examen(intitule: "ALAT (TGP)", type: .donnee),
+            
+            Examen(intitule: "Cholestase", type: .ouinon),
+            Examen(intitule: "Bilirubine", type: .donnee),
+            Examen(intitule: "Phosphatases Alcalines", type: .donnee),
+            Examen(intitule: "ɣGT", type: .donnee),
+            
+            Examen(intitule: "Enzymes cardiaques normales", type: .check),
+            Examen(intitule: "Troponine", type: .donnee),
+            Examen(intitule: "Pro-BNP", type: .donnee),
+            Examen(intitule: "BNP", type: .donnee),
+            Examen(intitule: "D-Dimères", type: .donnee),
+            Examen(intitule: "Myoglobine", type: .donnee),
+            
+            Examen(intitule: "Euthyroïdie", type: .check),
+            Examen(intitule: "TSH", type: .donnee),
+            Examen(intitule: "T4L", type: .donnee),
+            Examen(intitule: "T3", type: .donnee),
+            Examen(intitule: "Libre", type:  .reponsecourte ),
+            Examen(intitule: "Libre", type:  .reponsecourte ),
+        ]
+        catBiologie.examens=examCatBiologie
+        return catBiologie
+    }
 
 
 }

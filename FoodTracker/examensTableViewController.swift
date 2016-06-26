@@ -37,6 +37,10 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         if examen.tag=="evenementSuivi" {
             categorie.examens.insert( ExamTree.evenement.asExamen(), atIndex: indextoInsert)
         }
+        
+        if examen.tag=="radiologie" {
+            categorie.examens.insert( ExamTree.Imagerie.asExamen(), atIndex: indextoInsert)
+        }
         //tableView.sel
         
         
