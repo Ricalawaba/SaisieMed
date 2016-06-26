@@ -29,6 +29,7 @@ class Examen : NSObject,NSCoding{
         case group
         case check
         case selection
+        case addinfo
         func int()->Int {
             return self.rawValue
         }

@@ -37,49 +37,8 @@ class rapportViewController: UIViewController ,MFMailComposeViewControllerDelega
             myHTMLString=directHTML!
         }
         else if uneCategorie == nil {
-            myHTMLString = "<H2>\(patient.nomPrenom), \(patient.age) ans</H2>"
-            for  cat in patient.examen.categories
-            {
-                if cat.nom == "Administratif" {
-                    var AdminStr=""
-                    var sexe:String!
-                    let nom:String = cat.examens[0].value
-                    if cat.examens[1].value=="0" {
-                        sexe="Homme"
-                    }else {sexe="Femme"}
-                    
-                    AdminStr += "<h2>Synthèse médicale</h2><p>\(nom), \(sexe),\(cat.examens[2].value) ans"
-                    let motif=cat.examens[4].categorie!.detailString()
-                    if !motif.isEmpty { AdminStr += "<li><b><u>Motif:</u></b> <b>\(motif)</b>" }
-                    
-                    let medTraitant=cat.examens[5].value
-                    if !medTraitant.isEmpty { AdminStr += "<li><u>Médecin traitant:</u> \(medTraitant)" }
-                    
-                    let modevie=cat.examens[7].categorie!.detailString()
-                    if !modevie.isEmpty {
-                        AdminStr += "<li><u>Mode de vie:</u> \(modevie)"
-                    }
-                    let modeentree=cat.examens[6].categorie!.detailString()
-                    if !modeentree.isEmpty {
-                        AdminStr += "<li><u>Mode d'entrée:</u> \(modeentree)"
-                    }
-                    let connuProfession=cat.examens[8].value
-                    if !connuProfession.isEmpty {
-                        AdminStr += "<li><u>Profession:</u> \(connuProfession)"
-                    }
-                    let connuClinique=cat.examens[9].categorie!.detailString()
-                    if !connuClinique.isEmpty {
-                        AdminStr += "<li><u>Connu de la clinique:</u> \(connuClinique)"
-                    }
-
-                    myHTMLString += AdminStr
-                } else {
-                    let detailstr=cat.formattedDetaiString()
-                    if !detailstr.isEmpty {
-                        myHTMLString += "<p><b><u>\(cat.nom)</u></b><br>\(detailstr)</p>"
-                    }
-                }
-            }
+            myHTMLString = patient.DetailedString()
+            
         } else {
             myHTMLString = "<H2>\(uneCategorie!.nom)</H2>"
             let detailstr=uneCategorie!.formattedDetaiString()

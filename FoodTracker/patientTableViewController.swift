@@ -10,10 +10,11 @@ import UIKit
 
 class patientTableViewController: UITableViewController,ajoutPatientDelegate {
     var longpushPatient = patients.patient()
-    
+    let backColors = RedColors()
     @IBOutlet weak var saveMenuItem: UIBarButtonItem!
     @IBOutlet weak var configMenuItem: UIBarButtonItem!
     @IBAction func showRapport(sender: UILongPressGestureRecognizer) {
+        if tableView.editing {return}
         let location : CGPoint = sender.locationInView(self.tableView)
         let swipedIndexPath:NSIndexPath = self.tableView.indexPathForRowAtPoint(location)!
         //let swipedcell:patientTableViewCell = self.tableView.cellForRowAtIndexPath(swipedIndexPath)!
@@ -42,12 +43,23 @@ class patientTableViewController: UITableViewController,ajoutPatientDelegate {
         
         
     }
+    private var havepatient: Bool = false
     func patientAdded(sender: AjoutPatientViewController, patient: patients.patient) {
         Donnees.listePatient.patients.append(patient)
-        tableView.reloadData()
+         tableView.reloadData()
+        havepatient=true
+        
     }
     override func viewWillAppear(animated: Bool) {
         tableView.reloadData()
+        if havepatient {
+            let rowToSelect:NSIndexPath = NSIndexPath(forRow: Donnees.listePatient.patients.count-1, inSection: 0)
+            // NSIndexPath(
+            self.tableView.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.Middle)
+            havepatient=false
+            //self.tableView(self.tableView, didSelectRowAtIndexPath: rowToSelect)
+            self.performSegueWithIdentifier("showsaisie", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
+        }
         
     }
     override func didReceiveMemoryWarning() {
@@ -104,7 +116,7 @@ class patientTableViewController: UITableViewController,ajoutPatientDelegate {
         let patient = Donnees.listePatient.patients[indexPath.row]
         cell.localisation?.text = patient.localisation
         cell.nomage?.text = "\(patient.nomPrenom) , \(patient.age) ans"
-        cell.motif?.text = patient.motif
+        cell.motif?.text = "\(patient.motif) [\(patient.DetailedString().characters.count)]"
         var imagesymbol: UIImage
         if patient.masculin {
              imagesymbol = UIImage(named:  "hommesymbol.png")!
@@ -114,6 +126,35 @@ class patientTableViewController: UITableViewController,ajoutPatientDelegate {
         }
         
         cell.imageSex.image=imagesymbol
+        switch patient.DetailedString().characters.count {
+        case 0..<300:
+            cell.image2.backgroundColor = backColors.colors[0]
+        case 300..<500:
+            cell.image2.backgroundColor =  backColors.colors[1]
+        case 500..<700:
+            cell.image2.backgroundColor =  backColors.colors[2]
+
+        case 700..<900:
+            cell.image2.backgroundColor =  backColors.colors[3]
+
+        case 900..<1100:
+            cell.image2.backgroundColor =  backColors.colors[4]
+
+        case 1100..<1400:
+            cell.image2.backgroundColor =  backColors.colors[5]
+
+        case 1400..<1600:
+            cell.image2.backgroundColor =  backColors.colors[6]
+
+        case 1600..<1800:
+            cell.image2.backgroundColor =  backColors.colors[7]
+
+        case 1800..<2000:
+            cell.image2.backgroundColor =  backColors.colors[8]
+
+        default:
+            cell.image2.backgroundColor = UIColor.greenColor()
+        }
         return cell
     }
     
@@ -143,8 +184,8 @@ class patientTableViewController: UITableViewController,ajoutPatientDelegate {
     
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-        
-        try! swap(&Donnees.listePatient.patients[fromIndexPath.row],&Donnees.listePatient.patients[toIndexPath.row])
+        if fromIndexPath.row == toIndexPath.row {return }
+        swap(&Donnees.listePatient.patients[fromIndexPath.row],&Donnees.listePatient.patients[toIndexPath.row])
         
     }
     

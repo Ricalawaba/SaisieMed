@@ -8,16 +8,60 @@
 
 import UIKit
 
-class examensTableViewController: UITableViewController,textSelectedDelegate, UITextFieldDelegate,dateSelectedDelegate {
+class examensTableViewController: UITableViewController,textSelectedDelegate, UITextFieldDelegate,dateSelectedDelegate, AjoutInformationDelegate,numberSelectedDelegate, saisieNombreDelegate {
     var categorie : categorieExamen.Categorie!
     var examenSelected: Examen?
     //var examen = [Examen]()
     var activeField: UITextField?
+    func ajoutInformation(sender:AjoutInformationTableViewCell, examen: Examen) {
+        let indextoInsert = categorie.examens.indexOf(examen)!
+        
+            if examen.tag=="atcd" {
+            categorie.examens.insert(Examen(categorie: ExamTree.atcd), atIndex: indextoInsert)
+            }
+            if examen.tag=="TTT" {
+                categorie.examens.insert(Examen(categorie: ExamTree.TTT), atIndex: indextoInsert)
+            }
+            if examen.tag=="Plainte" {
+                categorie.examens.insert(Examen(categorie: ExamTree.Plainte), atIndex: indextoInsert)
+            }
+            if examen.tag=="motif" {
+                categorie.examens.insert(Examen(categorie: ExamTree.motif), atIndex: indextoInsert)
+            }
+           if examen.tag=="medecin" {
+            categorie.examens.insert( Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"), atIndex: indextoInsert)
+        }
+            //tableView.sel
+        
+        
+        tableView.reloadData()
+        let rowToSelect:NSIndexPath = NSIndexPath(forRow: indextoInsert, inSection: 0)
+        // NSIndexPath(
+        self.tableView.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.None)
+        if examen.tag != "medecin" {
+            self.performSegueWithIdentifier("autoshow", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
+        } else {
+            self.performSegueWithIdentifier("selectionSegue", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
+        
+        }
+
+    }
+    func numberSelected(sender:selectNumberViewController, number:String) {
+        ExamTaped!.value=number
+        tableView.reloadData()
+    }
     func dateSelected(sender: selectDateViewController, text: String, date: NSDate) {
 
         ExamTaped!.value=text
         tableView.reloadData()
     }
+    func nombreSelected(sender:SaisieNombreViewController, numberStr:String) {
+        ExamTaped!.value=numberStr
+        tableView.reloadData()
+
+        
+    }
+
       var ExamTaped:Examen?
     
     @IBAction func tapRepCourte(sender: UITapGestureRecognizer) {
@@ -54,6 +98,122 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
         }
+        if ExamTaped!.tag == "tension" {
+            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectNumberID") as! selectNumberViewController
+            let aview = svc.view
+            svc.numberPickView.type = .tensionarterielle
+            
+            svc.delegate=self
+            self.navigationController!.pushViewController(svc,animated: true)
+        }
+        if ExamTaped!.tag == "EVA" {
+            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+            svc.minNumber=0
+            svc.maxNumber=11
+            svc.step=1
+            svc.Information = "EVA"
+            if ExamTaped!.value.isEmpty {
+                svc.value="0"
+            } else {
+                
+                svc.value=ExamTaped!.value
+            }
+
+            let aview = svc.view
+           
+            
+            
+            svc.delegate=self
+            self.navigationController!.pushViewController(svc,animated: true)
+        }
+        if ExamTaped!.tag == "FC" {
+            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+            svc.minNumber=25
+            svc.maxNumber=310
+            svc.step=5
+            svc.Information = "Freq. Cardiaque"
+            if ExamTaped!.value.isEmpty {
+                 svc.value="80"
+            } else {
+            
+                svc.value=ExamTaped!.value
+            }
+                let aview = svc.view
+            
+            
+            
+            svc.delegate=self
+            self.navigationController!.pushViewController(svc,animated: true)
+        }
+        if ExamTaped!.tag == "sao2" {
+            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+            svc.minNumber=75
+            svc.maxNumber=101
+            svc.step=1
+            svc.Information = "SaO2%"
+            if ExamTaped!.value.isEmpty {
+                svc.value="95"
+            } else {
+                
+                svc.value=ExamTaped!.value
+            }
+            let aview = svc.view
+            
+            
+            
+            svc.delegate=self
+            self.navigationController!.pushViewController(svc,animated: true)
+        }
+        if ExamTaped!.tag == "fresp" {
+            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+            svc.minNumber=5
+            svc.maxNumber=35
+            svc.step=1
+            svc.Information = "Freq. respiratoire"
+            if ExamTaped!.value.isEmpty {
+                svc.value="95"
+            } else {
+                
+                svc.value=ExamTaped!.value
+            }
+            let aview = svc.view
+            
+            
+            
+            svc.delegate=self
+            self.navigationController!.pushViewController(svc,animated: true)
+        }
+        if ExamTaped!.tag == "poids" {
+            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+            svc.minNumber=10
+            svc.maxNumber=140
+            svc.step=1
+            svc.Information = "Poids (kg)"
+            if ExamTaped!.value.isEmpty {
+                svc.value="65"
+            } else {
+                svc.value=ExamTaped!.value
+            }
+            let aview = svc.view
+            svc.delegate=self
+            self.navigationController!.pushViewController(svc,animated: true)
+        }
+        if ExamTaped!.tag == "taille" {
+            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+            svc.minNumber=145
+            svc.maxNumber=210
+            svc.step=1
+            svc.Information = "Taile (cm)"
+            if ExamTaped!.value.isEmpty {
+                svc.value="165"
+            } else {
+                svc.value=ExamTaped!.value
+            }
+            let aview = svc.view
+            svc.delegate=self
+            self.navigationController!.pushViewController(svc,animated: true)
+        }
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -244,7 +404,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             }
             cell3.examen=examen1
             return cell3
-        }
+        } else
 
         if examen1.type==Examen.ExamenEnum.group {
             let cell3 = tableView.dequeueReusableCellWithIdentifier("examgroup", forIndexPath: indexPath) as! examgroupTableViewCell
@@ -258,7 +418,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             cell3.details.text=examen1.categorie?.detailString()
             cell3.intitule.hidden = !examen1.categorie!.showNom && !(cell3.details.text?.isEmpty)!
             return cell3
-        }
+        } else
         if examen1.type==Examen.ExamenEnum.selection {
             let cell3 = tableView.dequeueReusableCellWithIdentifier("selectionCell", forIndexPath: indexPath) as! selectionTableViewCell
             
@@ -275,6 +435,13 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             
 
             return cell3
+        } else
+            if examen1.type==Examen.ExamenEnum.addinfo {
+            let cell3 = tableView.dequeueReusableCellWithIdentifier("addCell", forIndexPath: indexPath) as! AjoutInformationTableViewCell
+                cell3.delegate=self
+                cell3.ajoutInfoBtn.titleLabel?.text="Ajouter \(examen1.tag)"
+                cell3.examen=examen1
+                return cell3
         }
 
         // Configure the cell...
@@ -283,7 +450,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     
 
     override func viewWillAppear(animated: Bool) {
-        
+        super.viewWillAppear(animated)
         tableView.reloadData()
         
     }
@@ -297,25 +464,28 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
 //        header.textLabel?.font=title.font
 //        header.textLabel?.textColor=title.textColor
 //    }
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+    
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    //    super.tableView(<#T##tableView: UITableView##UITableView#>, commitEditingStyle: <#T##UITableViewCellEditingStyle#>, forRowAtIndexPath: <#T##NSIndexPath#>)
         if editingStyle == .Delete {
+            
             // Delete the row from the data source
+            categorie.examens.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     
     // Override to support rearranging the table view.

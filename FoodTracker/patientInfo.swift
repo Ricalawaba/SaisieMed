@@ -10,6 +10,7 @@ import Foundation
 class patients :  NSObject,NSCoding {
     
     class patient :  NSObject,NSCoding {
+        // MARK: Properties
         var nomPrenom : String {
             get {
                 return examen.categories[0].examens[0].value
@@ -20,7 +21,7 @@ class patients :  NSObject,NSCoding {
         }
         var age : Int {
             get {
-                return Int(examen.categories[0].examens[2].value)!
+                return Int(examen.categories[0].examens[2].value) ?? 0
             }
             set {
                 examen.categories[0].examens[2].value="\(newValue)"
@@ -56,6 +57,60 @@ class patients :  NSObject,NSCoding {
         }
         var examen=categorieExamen()
         
+        // MARK: Autodescription
+        func DetailedString()-> String {
+            var retStr = ""
+            retStr = "<H2>\(self.nomPrenom), \(self.age) ans</H2>"
+            for  cat in self.examen.categories
+            {
+                if cat.nom == "Administratif" {
+                    var AdminStr=""
+                    var sexe:String!
+                    let nom:String = cat.examens[0].value
+                    if self.masculin { sexe="Homme" }
+                                else {sexe="Femme"}
+                    
+                    AdminStr += "<h2>Synthèse médicale</h2><p>\(nom), \(sexe),\(self.age) ans"
+                    //let motif=cat.examens[4].categorie!.detailString()
+                    if !motif.isEmpty { AdminStr += "<li><b><u>Motif:</u></b> <b>\(motif)</b>" }
+                    
+                    let medTraitant=cat.examens[5].value
+                    if !medTraitant.isEmpty { AdminStr += "<li><u>Médecin traitant:</u> \(medTraitant)" }
+                    
+                    let modevie=cat.examens[7].categorie!.detailString()
+                    if !modevie.isEmpty {
+                        AdminStr += "<li><u>Mode de vie:</u> \(modevie)"
+                    }
+                    let modeentree=cat.examens[6].categorie!.detailString()
+                    if !modeentree.isEmpty {
+                        AdminStr += "<li><u>Mode d'entrée:</u> \(modeentree)"
+                    }
+                    let connuProfession=cat.examens[8].value
+                    if !connuProfession.isEmpty {
+                        AdminStr += "<li><u>Profession:</u> \(connuProfession)"
+                    }
+                    let connuClinique=cat.examens[9].categorie!.detailString()
+                    if !connuClinique.isEmpty {
+                        AdminStr += "<li><u>Connu de la clinique:</u> \(connuClinique)"
+                    }
+                    
+                    retStr += AdminStr
+                } else {
+                    var detailstr = ""
+                    if cat.nom == "Traitement" {
+                        detailstr=cat.formattedDetaiString("<br>- ")
+                    } else if cat.nom.containsString("Plaintes") {
+                        detailstr=cat.formattedDetaiString("<br>➮ ")
+                    } else
+                    { detailstr=cat.formattedDetaiString() }
+                    if !detailstr.isEmpty {
+                        retStr += "<p><b><u>\(cat.nom)</u></b><br>\(detailstr)</p>"
+                    }
+                }
+            }
+          
+            return retStr
+        }
         // MARK: NSCoding
         required convenience init?(coder decoder: NSCoder) {
             guard let examen = decoder.decodeObjectForKey("examen") as? categorieExamen
@@ -109,10 +164,10 @@ class patients :  NSObject,NSCoding {
 
     override init() {
         let patient1 = patient(nomPrenom: "RICALENS Eric",age: 46, localisation: "Salle d'attente",motif: "Douleur thoracique",masculin: true)
-        let patient2 = patient(nomPrenom: "SALAS Karine",age: 38, localisation: "Box2",motif: "Cervicalgie",masculin: false)
+ //       let patient2 = patient(nomPrenom: "SALAS Karine",age: 38, localisation: "Box2",motif: "Cervicalgie",masculin: false)
 //        let patient3 = patient(nomPrenom: "RICALENS Tom",age: 13, localisation: "Suture",motif: "Plaie lèvre",masculin: true)
-//        let patient4 = patient(nomPrenom: "Fructus fabrice",age: 47, localisation: "Degrav",motif: "Douleur Epaule",masculin: true)
-        patients += [patient1,patient2]//,patient3,patient4]
+        let patient4 = patient(nomPrenom: "Fructus fabrice",age: 47, localisation: "Degrav",motif: "Douleur Epaule",masculin: true)
+        patients += [patient1,patient4]//,patient3,patient4]
     }
 }
 

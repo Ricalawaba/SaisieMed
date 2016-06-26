@@ -8,6 +8,25 @@
 
 import UIKit
 
+
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        let newRed = CGFloat(red)/255
+        let newGreen = CGFloat(green)/255
+        let newBlue = CGFloat(blue)/255
+        
+        self.init(red: newRed, green: newGreen, blue: newBlue, alpha: 1.0)
+    }
+}
+struct RedColors {
+    var colors:[UIColor] = []
+    init() {
+        for x in 0..<10 {
+            colors += [UIColor(red: (80+x*15),green: 50,blue: 50)]
+        }
+        
+    }
+}
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -49,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     // MARK: - Medecin : liste initiale
     func setDefaultMedecin() {
-        Donnees.selectiontextDict["medecin"] = [ " Médecin traitant", " Pas de médecin traitant", "Dr Adad", "Dr Alzieu (CCB)", "Dr Arhire Anca (Sidobre)", "Dr Arhire Andréi (Sidobre)", "Dr Avram", "Dr BERTHOUMIEU", "Dr Baux D.", "Dr Bensoussan L-C.", "Dr Boige-Martin (Aussillon)", "Dr Boulanger-Rayssac (Sidobre)", "Dr Bouyssou", "Dr Castex B. (Roquecourbe)", "Dr Charles X.", "Dr Chatillon B.", "Dr Cuinat L. (CCB)", "Dr Dary (CCB)", "Dr De Germay (Union)", "Dr De la porte C. (Sidobre)", "Dr Eleftérion P. (Revel)", "Dr Farge P.", "Dr Fargues P. (Sidobre)", "Dr Gipoulou", "Dr Gorostis", "Dr Guiraud-Chaumeil (CCB)", "Dr Hacker (Sidobre)", "Dr Lafon-Cantié (Sidobre)", "Dr Laur D.", "Dr Lefèvre D.", "Dr Louis C.", "Dr Mariambourg G.", "Dr Marolda S.", "Dr Mezières J.", "Dr Moruzi M.", "Dr Moruzi S.", "Dr Mullens", "Dr Mylonas P.", "Dr Novas", "Dr Olivier C.", "Dr Pages F. (La crouzette)", "Dr Pages P. (CCB)", "Dr Paquié C.", "Dr Pascal", "Dr Peltier J.p", "Dr Pistre (Vabre)", "Dr Prudhomme L.", "Dr Puech C", "Dr Ramon J.p (Castres)", "Dr Rouzaud", "Dr Villacreces B.", "Dr Goutner", "Dr siget Martinez", ].sort()
+        Donnees.selectiontextDict["medecin"] = [ " Médecin traitant", " Pas de médecin traitant", "Dr Adad", "Dr Alzieu (CCB)", "Dr Arhire Anca (Sidobre)", "Dr Arhire Andréi (Sidobre)", "Dr Avram", "Dr Berthoumieu", "Dr Baux D.", "Dr Bensoussan L-C.", "Dr Boige-Martin (Aussillon)", "Dr Boulanger-Rayssac (Sidobre)", "Dr Bouyssou", "Dr Castex B. (Roquecourbe)", "Dr Charles X.", "Dr Chatillon B.", "Dr Cuinat L. (CCB)", "Dr Dary (CCB)", "Dr De Germay (Union)", "Dr De la porte C. (Sidobre)", "Dr Eleftérion P. (Revel)", "Dr Farge P.", "Dr Fargues P. (Sidobre)", "Dr Gipoulou", "Dr Gorostis", "Dr Guiraud-Chaumeil (CCB)", "Dr Hacker (Sidobre)", "Dr Lafon-Cantié (Sidobre)", "Dr Laur D.", "Dr Lefèvre D.", "Dr Louis C.", "Dr Mariambourg G.", "Dr Marolda S.", "Dr Mezières J.", "Dr Moruzi M.", "Dr Moruzi S.", "Dr Mullens", "Dr Mylonas P.", "Dr Novas", "Dr Olivier C.", "Dr Pages F. (La crouzette)", "Dr Pages P. (CCB)", "Dr Paquié C.", "Dr Pascal", "Dr Peltier J.p", "Dr Pistre (Vabre)", "Dr Prudhomme L.", "Dr Puech C", "Dr Ramon J.p (Castres)", "Dr Rouzaud", "Dr Villacreces B.", "Dr Goutner", "Dr siget Martinez", ].sort()
     }
      // MARK: - Posologie : liste initiale
     func setDefaultPosologie() {

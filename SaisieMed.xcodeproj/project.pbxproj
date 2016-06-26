@@ -30,6 +30,11 @@
 		304B19F91D13F3490006DB4A /* selectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304B19F81D13F3490006DB4A /* selectionTableViewCell.swift */; };
 		304B19FB1D1413540006DB4A /* Examen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304B19FA1D1413540006DB4A /* Examen.swift */; };
 		304B19FD1D14174C0006DB4A /* selectionTexteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304B19FC1D14174C0006DB4A /* selectionTexteTableViewController.swift */; };
+		308E7FCA1D1D924800AF225D /* ExamenTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E7FC91D1D924800AF225D /* ExamenTree.swift */; };
+		308E7FCC1D1DA3F000AF225D /* AjoutInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E7FCB1D1DA3F000AF225D /* AjoutInformationTableViewCell.swift */; };
+		308E7FCE1D1E8F8E00AF225D /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E7FCD1D1E8F8E00AF225D /* Numbers.swift */; };
+		308E7FD01D1EA26700AF225D /* selectNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E7FCF1D1EA26700AF225D /* selectNumberViewController.swift */; };
+		308E7FD21D1F5A2300AF225D /* SaisieNombreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E7FD11D1F5A2300AF225D /* SaisieNombreViewController.swift */; };
 		30D0288F1D174F870050231C /* dataSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D0288E1D174F870050231C /* dataSave.swift */; };
 		30D028911D18AA470050231C /* configurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D028901D18AA470050231C /* configurationViewController.swift */; };
 		30D028931D195A9D0050231C /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D028921D195A9D0050231C /* MonthYearPickerView.swift */; };
@@ -93,6 +98,11 @@
 		304B19F81D13F3490006DB4A /* selectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectionTableViewCell.swift; sourceTree = "<group>"; };
 		304B19FA1D1413540006DB4A /* Examen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Examen.swift; sourceTree = "<group>"; };
 		304B19FC1D14174C0006DB4A /* selectionTexteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectionTexteTableViewController.swift; sourceTree = "<group>"; };
+		308E7FC91D1D924800AF225D /* ExamenTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamenTree.swift; sourceTree = "<group>"; };
+		308E7FCB1D1DA3F000AF225D /* AjoutInformationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AjoutInformationTableViewCell.swift; path = ../AjoutInformationTableViewCell.swift; sourceTree = "<group>"; };
+		308E7FCD1D1E8F8E00AF225D /* Numbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
+		308E7FCF1D1EA26700AF225D /* selectNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectNumberViewController.swift; sourceTree = "<group>"; };
+		308E7FD11D1F5A2300AF225D /* SaisieNombreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaisieNombreViewController.swift; sourceTree = "<group>"; };
 		30D0288E1D174F870050231C /* dataSave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataSave.swift; sourceTree = "<group>"; };
 		30D028901D18AA470050231C /* configurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = configurationViewController.swift; sourceTree = "<group>"; };
 		30D028921D195A9D0050231C /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
@@ -148,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				301825FF1D0F085700592CE9 /* examensTableViewController.swift */,
+				308E7FCB1D1DA3F000AF225D /* AjoutInformationTableViewCell.swift */,
 				304B19F81D13F3490006DB4A /* selectionTableViewCell.swift */,
 				304B19F61D13E0DD0006DB4A /* checkTableViewCell.swift */,
 				304B19F31D10C3D30006DB4A /* examgroupTableViewCell.swift */,
@@ -174,13 +185,25 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		30D028981D19BC810050231C /* Dates */ = {
+		308E7FD31D1FC60100AF225D /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				30D028901D18AA470050231C /* configurationViewController.swift */,
+			);
+			name = Configuration;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		30D028981D19BC810050231C /* Dates et autres saisies */ = {
+			isa = PBXGroup;
+			children = (
+				308E7FD11D1F5A2300AF225D /* SaisieNombreViewController.swift */,
 				30D028941D196E430050231C /* selectDateViewController.swift */,
 				30D028921D195A9D0050231C /* MonthYearPickerView.swift */,
+				308E7FCF1D1EA26700AF225D /* selectNumberViewController.swift */,
+				308E7FCD1D1E8F8E00AF225D /* Numbers.swift */,
 			);
-			name = Dates;
+			name = "Dates et autres saisies";
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -188,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				30F43EEB1D077C3B005E3BEB /* Main.storyboard */,
-				30D028901D18AA470050231C /* configurationViewController.swift */,
 				30F43EE61D077C3B005E3BEB /* SaisieMed */,
 				30F43EFB1D077C3B005E3BEB /* SaisieMedTests */,
 				30F43EE51D077C3B005E3BEB /* Products */,
@@ -210,15 +232,17 @@
 				30F43EE71D077C3B005E3BEB /* AppDelegate.swift */,
 				30D0288E1D174F870050231C /* dataSave.swift */,
 				30F43F2C1D0EE938005E3BEB /* categorieExamen.swift */,
+				308E7FC91D1D924800AF225D /* ExamenTree.swift */,
 				304B19FA1D1413540006DB4A /* Examen.swift */,
+				308E7FD31D1FC60100AF225D /* Configuration */,
+				30F43F2F1D0EF7DE005E3BEB /* Liste patient */,
 				301826011D0F0B2A00592CE9 /* Examens */,
 				30F43F2E1D0EF7BE005E3BEB /* Menu Saisie */,
 				304B19FE1D14191E0006DB4A /* selectionTexte */,
-				30F43F2F1D0EF7DE005E3BEB /* Liste patient */,
 				30F43F231D0EA255005E3BEB /* images */,
 				304B19F51D10D5370006DB4A /* Rapport */,
 				30F43EEE1D077C3B005E3BEB /* Assets.xcassets */,
-				30D028981D19BC810050231C /* Dates */,
+				30D028981D19BC810050231C /* Dates et autres saisies */,
 				30F43EF01D077C3B005E3BEB /* LaunchScreen.storyboard */,
 				30F43EF31D077C3B005E3BEB /* Info.plist */,
 			);
@@ -435,10 +459,14 @@
 				301825FE1D0F06E000592CE9 /* reponsecourteTableViewCell.swift in Sources */,
 				304B19F91D13F3490006DB4A /* selectionTableViewCell.swift in Sources */,
 				301826001D0F085700592CE9 /* examensTableViewController.swift in Sources */,
+				308E7FD01D1EA26700AF225D /* selectNumberViewController.swift in Sources */,
 				30F43EE81D077C3B005E3BEB /* AppDelegate.swift in Sources */,
 				30D0288F1D174F870050231C /* dataSave.swift in Sources */,
+				308E7FCA1D1D924800AF225D /* ExamenTree.swift in Sources */,
 				30D028911D18AA470050231C /* configurationViewController.swift in Sources */,
+				308E7FD21D1F5A2300AF225D /* SaisieNombreViewController.swift in Sources */,
 				301825FC1D0F057A00592CE9 /* questionOuiNonTableViewCell.swift in Sources */,
+				308E7FCC1D1DA3F000AF225D /* AjoutInformationTableViewCell.swift in Sources */,
 				304B19FD1D14174C0006DB4A /* selectionTexteTableViewController.swift in Sources */,
 				304B19FB1D1413540006DB4A /* Examen.swift in Sources */,
 				30F43F0E1D0E26D6005E3BEB /* patientTableViewController.swift in Sources */,
@@ -450,6 +478,7 @@
 				301826051D10580000592CE9 /* rapportViewController.swift in Sources */,
 				30D028931D195A9D0050231C /* MonthYearPickerView.swift in Sources */,
 				30D028951D196E430050231C /* selectDateViewController.swift in Sources */,
+				308E7FCE1D1E8F8E00AF225D /* Numbers.swift in Sources */,
 				30F43F2B1D0EE789005E3BEB /* saisieTableViewCell.swift in Sources */,
 				30F43F2D1D0EE938005E3BEB /* categorieExamen.swift in Sources */,
 				304B19F71D13E0DD0006DB4A /* checkTableViewCell.swift in Sources */,

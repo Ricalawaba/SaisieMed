@@ -21,6 +21,33 @@ class configurationViewController: UIViewController,dateSelectedDelegate {
         // show the alert
         self.presentViewController(alert, animated: true, completion: nil)
     }
+    @IBAction func effaceObservation(sender: UIButton) {
+        Donnees.listePatient.patients.removeAll()
+        
+    }
+    
+    @IBAction func testSelectionNombreAction(sender: UIButton) {
+        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+        svc.minNumber=40
+        svc.maxNumber=330
+        svc.step=5
+        svc.value="120"
+//       let aview = svc.view
+        svc.Information = "TA Systolique"
+        self.navigationController!.pushViewController(svc,animated: true)
+        
+    }
+    
+    @IBAction func mailObservationsAction(sender: UIButton) {
+        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("rapportControlerID") as! rapportViewController
+        var  html : String = ""
+        for patient in Donnees.listePatient.patients {
+            html += patient.DetailedString()
+        }
+        svc.directHTML=html
+        self.navigationController!.pushViewController(svc,animated: true)
+        
+    }
     @IBAction func exportSwift(sender: UIButton) {
         let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("rapportControlerID") as! rapportViewController
         svc.directHTML="<H3>Export Swift<H3><p>"

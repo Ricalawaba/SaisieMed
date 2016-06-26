@@ -56,7 +56,7 @@ class categorieExamen : NSObject , NSCoding {
             
         }
 
-        func formattedDetaiString() -> String {
+        func formattedDetaiString(catSeparator:String="<p>") -> String {
             var str: String = ""
             for  index in 0..<examens.count {
                 let examen=examens[index]
@@ -84,7 +84,7 @@ class categorieExamen : NSObject , NSCoding {
                 }else if examen.type ==  .group {
                     let str2=examen.categorie?.detailString()
                     if !(str2?.isEmpty)! {
-                        str += "<p>"
+                        str += catSeparator
                         if ((examen.categorie!.showNom) ) {
                             str += "<u>\(examen.intitule)</u>:<br>"
                         }
@@ -156,232 +156,32 @@ class categorieExamen : NSObject , NSCoding {
     }
     override init(){
         // MARK: Administratif
-        let Categorie1 = Categorie(nom: "Administratif",namedImage: "administratif_icon.png")
-        let catModeVie = Categorie(nom: "Mode de vie",namedImage: "administratif_icon.png")
-        let excamCatModeVie = [
-            Examen(intitule: "à son domicile", type:  .check ),
-            Examen(intitule: "en institution", type:  .check ),
-            Examen(intitule: "en maison de retraite", type:  .check ),
-            Examen(intitule: "en maison médicalisée", type:  .check ),
-            Examen(intitule: "avec sa famille", type:  .check ),
-            Examen(intitule: "seul", type:  .check ),
-            Examen(intitule: "en couple", type:  .check ),
-            Examen(intitule: "Veuf(ve)", type:  .check ),
-            Examen(intitule: "Pas d'enfants", type:  .check ),
-            Examen(intitule: "enfants:", type:  .donnee ),
-            Examen(intitule: "Libre", type:  .reponsecourte )
-            ]
-        catModeVie.examens=excamCatModeVie
-        let catModeEntree = Categorie(nom: "Mode d'entrée",namedImage: "administratif_icon.png")
-        let excamCatModeEntree = [
-            Examen(intitule: "adressé par le centre 15", type:  .check ),
-            Examen(intitule: "adressé par", type:  .check ),
-            Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"),
-            Examen(intitule: "se présente spontanément", type:  .check ),
-             Examen(intitule: "n'a pas vu de médecin avant sa venue aux urgences", type:  .check ),
-             Examen(intitule: "a contacté son médecin avant sa venue aux urgences", type:  .check ),
-            Examen(intitule: "médicalisé par le SMUR", type:  .check ),
-            Examen(intitule: "Médecin SMUR", type:  .selection ,tag: "medecin"),
-            Examen(intitule: "Transporté par les Pompiers", type:  .check ),
-            Examen(intitule: "Transporté par ambulance", type:  .check ),
-            Examen(intitule: "Amené par la Famille", type:  .ouinon ),
-            ]
-        catModeEntree.examens=excamCatModeEntree
+        let Categorie1 = ExamTree.administratif
         
-       
-        let CategorieMotif = Categorie(nom: "Motif(s)",namedImage: "tete_icon.png")
-        let examCategorieMotif = [
-            Examen(intitule: "Plainte/Symptomes", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Plainte/Symptomes", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Plainte/Symptomes", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Plainte/Symptomes", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Plainte/Symptomes", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Plainte/Symptomes", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Plainte/Symptomes", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Plainte/Symptomes", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Plainte/Symptomes", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Libre", type: .reponsecourte)
-           
-        ]
-        CategorieMotif.examens=examCategorieMotif
-        let catConnu = Categorie(nom: "Connu de la clinique:",namedImage: "Homme.png")
-        let examCatConnu = [
-            Examen(intitule: "Non", type:  .check ),
-            Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"),
-            Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"),
-            Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"),
-            Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"),
-            Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"),
-            Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"),
-            Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"),
-            Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"),
-            Examen(intitule: "Libre", type:  .reponsecourte )
-        ]
-        catConnu.examens=examCatConnu
-
-        
-        let examcat1 = [
-            Examen(intitule: "Nom Prénom", type:  .reponsecourte),
-            Examen(intitule: "Masculin", type:  .ouinon),
-            Examen(intitule: "Age", type:  .donnee),
-            Examen(intitule: "Localisation", type:  .selection, tag: "localisation"),
-            Examen(categorie: CategorieMotif),
-           // Examen(intitule: "Motif", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Méd.Trait.", type:  .selection ,tag: "medecin"),
-            Examen(categorie: catModeEntree),
-            Examen(categorie: catModeVie),
-            Examen(intitule: "Profession", type:  .selection ,tag: "profession"),
-            Examen(categorie: catConnu),
-            Examen(intitule: "Libre", type:  .reponsecourte )
-            
-        ]
-        Categorie1.examens = examcat1
         // MARK: Comorbidité / antécédent
-        let Categorie2 = Categorie(nom: "Comorbidité/Antécédents",namedImage: "nurse_icon.png")
+        let Categorie2 = ExamTree.Comorbidite
         
-        var examcat2 = [
-            Examen(intitule: "Pas d'atcds notables", type:  .check ),
-            Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(intitule: "Pas sous anti-coagulant", type:  .check ),
-            Examen(intitule: "Pas sous anti-agrégant", type:  .check )
-            ]
-        let catFRCV = Categorie(nom: "Facteur de risques",namedImage: "cardio_icon.png")
-        let examCatFRCV = [
-            Examen(intitule: "HTA", type:  .ouinon ),
-            Examen(intitule: "Dyslipémie", type:  .ouinon ),
-            Examen(intitule: "Diabète", type:  .ouinon ),
-            Examen(intitule: "Obesité", type:  .ouinon ),
-            Examen(intitule: "Surcharge pondérale", type:  .ouinon ),
-            Examen(intitule: "Tabagisme", type:  .ouinon ),
-            Examen(intitule: "Tabagisme sevré", type:  .check ),
-            Examen(intitule: "Morbidité cardiovasculaire familiale", type:  .ouinon ),
-            Examen(intitule: "Detail", type:  .reponsecourte ),
-            ]
-        catFRCV.examens=examCatFRCV
-        
-        examcat2 += [
-            Examen(categorie: catFRCV),
-            Examen(intitule: "Allergie connue", type:  .ouinon ),
-            Examen(intitule: "Detail", type:  .reponsecourte ),
-            
-        ]
 
-        // MARK:  - Catégorie antécédent
-        for _ in 0..<10 {
-            let catATCD = Categorie(nom:"atcd",namedImage: "nurse_icon.png",showNom: false)
-            let examCatATCD = [
-               // Examen(intitule: "Xie", type:  .check ,info: " "),
-                Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
-                Examen(intitule: "bilatéral(e)", type:  .check ),
-                Examen(intitule: "droit(e)", type:  .check ),
-                Examen(intitule: "gauche", type:  .check ),
-                Examen(intitule: "récidivant(e)s", type:  .check ),
-                Examen(intitule: "probable", type:  .check ),
-                Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
-                Examen(intitule: "ou ?", type:  .selection,tag: "etablissement" ),
-                Examen(intitule: "pas de suivi spécialisé", type:  .check ),
-                Examen(intitule: "qui ?", type:  .selection,tag: "medecin" ),
-                Examen(intitule: "Commentaire", type:  .reponsecourte )
-                
-            ]
-            catATCD.examens=examCatATCD
-            examcat2 += [Examen(categorie: catATCD)]
-        }
-                        Categorie2.examens = examcat2
         // MARK: Traitement
-        let Categorie21 = Categorie(nom: "Traitement",namedImage: "medoc_icon.png")
         
-        var examcat21 = [
-            Examen(intitule: "Pas de traitement au long cours", type:  .check ),
-            Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            
-            ]
-        for _ in 0..<10 {
-            let catTTT = Categorie(nom:"ttt",namedImage: "medoc_icon.png",showNom: false)
-            let examCatTTT = [
-                Examen(intitule: "Nom", type:  .selection,tag: "medicament" ),
-                Examen(intitule: "Posologie", type:  .selection,tag: "posologie" ),
-                Examen(intitule: "depuis quand ?", type:  .reponsecourte,tag: "date" ),
-                Examen(intitule: "par qui ?", type:  .selection,tag: "medecin" ),
-                Examen(intitule: "pour", type:  .selection,tag: "atcd" ),
-                Examen(intitule: "Commentaire", type:  .reponsecourte )
-            ]
-            catTTT.examens=examCatTTT
-            examcat21 += [Examen(categorie: catTTT)]
-        }
-
-        Categorie21.examens = examcat21
+        
+        let Categorie21 = ExamTree.Traitement
         // MARK: Plaintes/Anamnese
               let Categorie3 = Categorie(nom: "Plaintes/Anamnèse",namedImage: "tete_icon.png")
         var examcat3:[Examen]=[]
-        for _ in 0..<8 {
-            let catLocAnat = Categorie(nom: "Localisation Anatomique",namedImage: "tete_icon.png",showNom: false)
-            let examCatLocAnat = [
-                Examen(intitule: "inférieur", type:  .check ),
-                Examen(intitule: "supérieur", type:  .check ),
-                Examen(intitule: "droit(e)", type:  .check ),
-                Examen(intitule: "gauche", type:  .check ),
-                Examen(intitule: "bilatéral(e)", type:  .check ),
-                
-                
-                ]
-            catLocAnat.examens=examCatLocAnat
-            let catMotif = Categorie(nom: "Signe", namedImage: "tete_icon.png",showNom: false)
-            let examCatMotif = [
-                Examen(intitule: "Signe", type:  .selection,tag: "motif" ),
-                Examen(intitule: "Commentaire", type:  .reponsecourte ),
-                Examen(categorie: catLocAnat),
-                Examen(intitule: "aigüe", type:  .check ),
-                Examen(intitule: "sub-aigüe", type:  .check ),
-                
-                Examen(intitule: "intense", type:  .check ),
-                Examen(intitule: "persistante", type:  .check ),
-                Examen(intitule: "d'évolution progressive", type:  .check ),
-                Examen(intitule: "avec crises paroxystiques", type:  .check ),
-                Examen(intitule: "début le", type:  .donnee,tag: "date" ),
-                Examen(intitule: "Libre", type:  .reponsecourte ),
-                ]
-            
-        
-            catMotif.examens=examCatMotif
-            examcat3 += [Examen(categorie: catMotif)]
+        for _ in 0..<1 {
+               examcat3 += [Examen(categorie: ExamTree.Plainte)]
         }
+         examcat3 += [Examen(intitule: "Ajout plainte",type: .addinfo,tag: "Plainte")]
         examcat3 += [Examen(intitule: "Pas d'autres plaintes somatiques", type:  .check )]
         Categorie3.examens=examcat3
-        let catPoids = Categorie(nom: "Poids",namedImage: "pancarte_icon.png")
-        let examCatPoids = [
-            Examen(intitule: "Taille", type:  .donnee ),
-            Examen(intitule: "Poids (estimé)", type:  .donnee ),
-            Examen(intitule: "Poids (mesuré)", type:  .donnee ),
-            Examen(intitule: "Poids (indiqué par le patient)", type:  .donnee ),
-            Examen(intitule: "Variation pondérale récente significative", type:  .ouinon ),
-            Examen(intitule: "Détail", type:  .reponsecourte ),
-            ]
-        catPoids.examens = examCatPoids
-        let catTA = Categorie(nom: "Tenstion artérielle",namedImage: "nurse_icon.png",showNom: false)
-let examCatTA = [
-    Examen(intitule: "TA", type:  .donnee ),
-    Examen(intitule: "TA bras droit", type:  .donnee ),
-    Examen(intitule: "TA bras gauche", type:  .donnee ),
-    ]
-catTA.examens=examCatTA
+       
+        
 
         
         
         // MARK: Pancarte
-        let Categorie31 = Categorie(nom: "Pancarte",namedImage: "pancarte_icon.png")
-        let examcat31 = [
-            Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(categorie: catTA),
-            Examen(intitule: "FC", type:  .donnee ),
-            Examen(intitule: "T°", type:  .donnee ),
-            Examen(intitule: "EVA", type:  .donnee ),
-            Examen(intitule: "SaO2%", type:  .donnee ),
-            Examen(intitule: "Fr. Resp", type:  .donnee ),
-            Examen( categorie: catPoids ),
-            Examen(intitule: "Dernier repas", type:  .reponsecourte, tag: "date" ),
-            ]
-        Categorie31.examens=examcat31
+        let Categorie31 = ExamTree.Pancarte
         
         // Examen(intitule: "Motif", type:  .reponsecourte )
         
@@ -431,11 +231,14 @@ catTA.examens=examCatTA
             Examen(intitule: "BDC irrégulier", type:  .check ),
             Examen(intitule: "Pas de souffle cardiaque", type:  .check ),
             Examen(intitule: "Souffle cardiaque", type:  .donnee ),
+            Examen(intitule: "Souffle carotidien", type:  .ouinon ),
+            Examen(intitule: "Souffle abdominal", type:  .ouinon ),
+
             Examen(intitule: "Pouls fémoraux présents", type:  .check ),
             Examen(intitule: "Souffle fémoral", type:  .ouinon ),
             Examen(intitule: "Pouls pédieux présents", type:  .check ),
             Examen(intitule: "Pouls tibial postérieur", type:  .check ),
-             Examen(intitule: "Turgescence jugulaire", type:  .ouinon ),
+            Examen(intitule: "Turgescence jugulaire", type:  .ouinon ),
             Examen(intitule: "Souffle carotidien", type:  .ouinon ),
             Examen(intitule: "Pas de crépitants", type:  .check ),
             Examen(intitule: "Rales crépitants aux bases", type:  .check ),
@@ -681,6 +484,7 @@ catTA.examens=examCatTA
         ]
         let catExamClinique = Categorie(nom: "Examen Clinique",namedImage: "stetho_icon.png")
         let examCatExamClinique = [
+            Examen(intitule: "horodatage", type:  .reponsecourte,tag: "date" ),
             Examen(categorie: Categorie4),
             Examen(categorie: CategorieCardiovasculaire),
             Examen(categorie: Categorie6),
