@@ -344,6 +344,7 @@ class categorieExamen : NSObject , NSCoding {
         
         // MARK: Locomoteur
         let Categorie20 = Categorie(nom: "Locomoteur",namedImage: "os_icon.png")
+        Categorie20.examens=[ExamTree.Cheville.asExamen()]
         
         // MARK: Electrocardiogramme
         let CatECG = Categorie(nom: "ECG",namedImage: "cardio_icon.png")
@@ -519,6 +520,7 @@ class categorieExamen : NSObject , NSCoding {
         
         let catConclusion = Categorie(nom: "Conclusion",namedImage: "stetho_icon.png")
         let examCatConclusionGenerale = [
+            Examen(intitule: "Suspicion ", type: .check),
             Examen(intitule: "Diagnostic", type: .selection,tag: "atcd"),
             Examen(intitule: "Libre", type: .reponsecourte),
             Examen(intitule: "hospitalisation", type: .check),

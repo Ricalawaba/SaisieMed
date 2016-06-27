@@ -111,7 +111,16 @@ struct DataSave {
         return filename
         
     }
+    static var filePathAllergie : String {
+        let filename = getDocumentsDirectory().stringByAppendingPathComponent("Allergie.dat")
+        return filename
+        
+    }
+
     // MARK: Sauvegarde des fichiers de données
+    static func saveFileAllergie() {
+        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["Allergie"]!, toFile: filePathAllergie)
+    }
     
     static func saveFileConclusionRx() {
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["ConclusionRx"]!, toFile: filePathConclusionRx)
@@ -186,6 +195,15 @@ struct DataSave {
             Donnees.selectiontextDict["posologie"] = array
         }
     }
+    
+    
+    static func loadFileAllergie() {
+        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathAllergie) as? [String] {
+            Donnees.selectiontextDict["Allergie"] = array
+        }
+    }
+
+    
     // MARK: - Lecture fichier patient
     static func loadFilePatients() {
         if let listpatient=NSKeyedUnarchiver.unarchiveObjectWithFile(filePathPatients) as? patients{

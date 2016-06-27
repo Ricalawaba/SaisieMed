@@ -10,6 +10,16 @@ import UIKit
 
 class saisieTableViewController: UITableViewController {
     var patient = patients.patient()
+    @IBAction func compteRenduAction(sender: UIBarButtonItem) {
+         let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("rapportControlerID") as! rapportViewController
+        svc.patient=self.patient
+        self.navigationController!.pushViewController(svc,animated: true)
+    }
+    
+    @IBAction func saveTabBarButtonAction(sender: UIBarButtonItem) {
+        DataSave.saveDataFiles()
+        sender.enabled=false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

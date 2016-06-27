@@ -41,6 +41,11 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         if examen.tag=="radiologie" {
             categorie.examens.insert( ExamTree.Imagerie.asExamen(), atIndex: indextoInsert)
         }
+        
+        if examen.tag=="libre" {
+            categorie.examens.insert(Examen(intitule: "Libre", type:  .reponsecourte ), atIndex: indextoInsert)
+        }
+
         //tableView.sel
         
         
@@ -48,10 +53,11 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         let rowToSelect:NSIndexPath = NSIndexPath(forRow: indextoInsert, inSection: 0)
         // NSIndexPath(
         self.tableView.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.None)
-        if examen.tag != "medecin" {
-            self.performSegueWithIdentifier("autoshow", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
-        } else {
+        if examen.tag == "medecin" {
             self.performSegueWithIdentifier("selectionSegue", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
+        } else if examen.tag != "libre" {
+            
+            self.performSegueWithIdentifier("autoshow", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
             
         }
         
@@ -59,6 +65,12 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     func numberSelected(sender:selectNumberViewController, number:String) {
         ExamTaped!.value=number
         tableView.reloadData()
+    }
+
+    @IBAction func apercuBarButtonAction(sender: UIBarButtonItem) {
+        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("rapportControlerID") as! rapportViewController
+        svc.uneCategorie=self.categorie
+        self.navigationController!.pushViewController(svc,animated: true)
     }
     func dateSelected(sender: selectDateViewController, text: String, date: NSDate) {
 
@@ -105,12 +117,22 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
          return
          }*/
         if (ExamTaped!.type == .selection ){
+            if ExamTaped!.tag.isEmpty {return}
             let svc = self.storyboard?.instantiateViewControllerWithIdentifier("selectionViewID") as! selectionTexteTableViewController
                        svc.textes = Donnees.selectiontextDict[ ExamTaped!.tag ]!
             examenSelected=ExamTaped
             svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
         }
+        if (ExamTaped!.tag == "Evenement" ){
+            
+            let svc = self.storyboard?.instantiateViewControllerWithIdentifier("selectionViewID") as! selectionTexteTableViewController
+            svc.textes = Donnees.selectiontextDict[ ExamTaped!.tag ]!
+            examenSelected=ExamTaped
+            svc.delegate=self
+            self.navigationController!.pushViewController(svc,animated: true)
+        }
+
         //  sender?.row
         //  svc.listePatients = Donnees.listePatient
         
@@ -288,8 +310,21 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     // MARK: Affiche le premier element du tabview si c'est type "selection"
     func autoshowFirstGroup () {
         if categorie.examens.count==0 { return }
-        let aExam = categorie.examens[0]
+       
+                let aExam = categorie.examens[0]
         if !aExam.value.isEmpty { return }
+        if aExam.intitule == "horodatage" || aExam.intitule == "timestamp"{
+            
+                let dateFormatter=NSDateFormatter()
+                //dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+                //dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+                // dateFormatter.locale = NSLocale.currentLocale()
+                dateFormatter.dateFormat="dd/MM/yyyy - HH:mm"
+                let strDate = dateFormatter.stringFromDate(NSDate())
+                aExam.value=strDate
+            
+        }
+
         if aExam.type == .selection {
             let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectionViewID") as! selectionTexteTableViewController
             examenSelected=categorie.examens[0]
@@ -347,7 +382,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     // MARK: - Table view data source
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "autoshow") {
-            
+            // FIXME: Erreur segue
             let svc = segue.destinationViewController as! examensTableViewController
             let mycell = (sender as! examgroupTableViewCell)
             svc.categorie = mycell.examen!.categorie!
@@ -496,7 +531,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             if examen1.type==Examen.ExamenEnum.addinfo {
             let cell3 = tableView.dequeueReusableCellWithIdentifier("addCell", forIndexPath: indexPath) as! AjoutInformationTableViewCell
                 cell3.delegate=self
-                cell3.ajoutInfoBtn.titleLabel?.text="Ajouter \(examen1.tag)"
+                //cell3.ajoutInfoBtn.titleLabel?.text="Ajouter \(examen1.tag)"
                 cell3.examen=examen1
                 return cell3
         }

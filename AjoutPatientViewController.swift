@@ -80,6 +80,11 @@ class AjoutPatientViewController: UIViewController , UITextFieldDelegate {
         self.navigationController?.popViewControllerAnimated(true)
 
     }
+    @IBAction func ajoutPatientTabBarButtonAction(sender: UIBarButtonItem) {
+        ajoutPatient()
+        self.navigationController?.popViewControllerAnimated(true)
+
+    }
 
     @IBAction func AjoutPatientAction(sender: UIButton) {
         ajoutPatient()

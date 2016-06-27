@@ -11,8 +11,20 @@ import UIKit
 class patientTableViewController: UITableViewController,ajoutPatientDelegate {
     var longpushPatient = patients.patient()
     let backColors = RedColors()
+    
+    
     @IBOutlet weak var saveMenuItem: UIBarButtonItem!
+    
+    
     @IBOutlet weak var configMenuItem: UIBarButtonItem!
+    
+    @IBAction func ajoutPatientButtonAction(sender: UIBarButtonItem) {
+        performSegueWithIdentifier("ajoutPatient", sender: self)
+    }
+    @IBAction func refreshButtonAction(sender: UIBarButtonItem) {
+        tableView.reloadData()
+    }
+    
     @IBAction func showRapport(sender: UILongPressGestureRecognizer) {
         if tableView.editing {return}
         let location : CGPoint = sender.locationInView(self.tableView)

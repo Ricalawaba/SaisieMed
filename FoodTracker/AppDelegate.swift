@@ -97,6 +97,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
 
+    func setDefaultAllergie() {
+        Donnees.selectiontextDict["Allergie"] = [
+            "aspirine","pénicilline","iode","amoxicilline","tramadol","codéine","\"antibiotique\"","connerie humaine","acariens","graminés","poils de chiens","poils de chat","piqure d'hyménoptère","piqure de guèpe",
+            "piqure d'abeille",
+        
+        ]
+        
+    }
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -110,6 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setDefaultProfession()
         setDefaultConclusionRx()
         setDefaultEvenement()
+        setDefaultAllergie()
 
         // MARK: Uncomment to read data files
         

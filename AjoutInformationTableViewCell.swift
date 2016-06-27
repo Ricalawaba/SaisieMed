@@ -12,7 +12,11 @@ protocol AjoutInformationDelegate {
     
 }
 class AjoutInformationTableViewCell: UITableViewCell {
-    var examen:Examen! = nil
+    var examen:Examen! = nil {
+        didSet {
+            ajoutInfoBtn.setTitle("Ajouter \(examen.tag)", forState: .Normal)
+        }
+    }
     var delegate:AjoutInformationDelegate!
     
     @IBOutlet weak var ajoutInfoBtn: UIButton!

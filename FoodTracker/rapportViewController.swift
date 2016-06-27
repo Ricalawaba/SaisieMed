@@ -16,7 +16,8 @@ class rapportViewController: UIViewController ,MFMailComposeViewControllerDelega
         email.setToRecipients(["drricalens@gmail.com"])
 
         email.setSubject("Synthèse clinique de \(patient.nomPrenom), \(patient.age) ans")
-        email.setMessageBody(webView.stringByEvaluatingJavaScriptFromString("document.body.innerHTML")!, isHTML: true) // or true, if you prefer
+        let messageBody=webView.stringByEvaluatingJavaScriptFromString("document.body.innerHTML")!
+        email.setMessageBody(messageBody, isHTML: true) // or true, if you prefer
         presentViewController(email, animated: true, completion: nil)
     }
     @IBAction func done(sender: UIBarButtonItem) {
