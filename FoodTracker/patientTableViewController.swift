@@ -114,7 +114,7 @@ class patientTableViewController: UITableViewController,ajoutPatientDelegate {
 
         // Configure the cell...
         let patient = Donnees.listePatient.patients[indexPath.row]
-        cell.localisation?.text = patient.localisation
+        cell.localisation?.text = "\(patient.localisation) , \(patient.waitingStr)"
         cell.nomage?.text = "\(patient.nomPrenom) , \(patient.age) ans"
         cell.motif?.text = "\(patient.motif) [\(patient.DetailedString().characters.count)]"
         var imagesymbol: UIImage
@@ -128,29 +128,31 @@ class patientTableViewController: UITableViewController,ajoutPatientDelegate {
         cell.imageSex.image=imagesymbol
         switch patient.DetailedString().characters.count {
         case 0..<300:
-            cell.image2.backgroundColor = backColors.colors[0]
+            cell.image2.backgroundColor = backColors.colors[9]
         case 300..<500:
-            cell.image2.backgroundColor =  backColors.colors[1]
+            cell.image2.backgroundColor =  backColors.colors[8]
         case 500..<700:
-            cell.image2.backgroundColor =  backColors.colors[2]
-
-        case 700..<900:
-            cell.image2.backgroundColor =  backColors.colors[3]
-
-        case 900..<1100:
-            cell.image2.backgroundColor =  backColors.colors[4]
-
-        case 1100..<1400:
-            cell.image2.backgroundColor =  backColors.colors[5]
-
-        case 1400..<1600:
-            cell.image2.backgroundColor =  backColors.colors[6]
-
-        case 1600..<1800:
             cell.image2.backgroundColor =  backColors.colors[7]
 
+        case 700..<900:
+            cell.image2.backgroundColor =  backColors.colors[6]
+
+        case 900..<1100:
+            cell.image2.backgroundColor =  backColors.colors[5]
+
+        case 1100..<1400:
+            cell.image2.backgroundColor =  backColors.colors[4]
+
+        case 1400..<1600:
+            cell.image2.backgroundColor =  backColors.colors[3]
+
+        case 1600..<1800:
+            cell.image2.backgroundColor =  backColors.colors[2]
+
         case 1800..<2000:
-            cell.image2.backgroundColor =  backColors.colors[8]
+            cell.image2.backgroundColor =  backColors.colors[1]
+        case 2000..<2200:
+            cell.image2.backgroundColor =  backColors.colors[1]
 
         default:
             cell.image2.backgroundColor = UIColor.greenColor()

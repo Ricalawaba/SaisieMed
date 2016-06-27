@@ -338,9 +338,9 @@ struct ExamTree {
         let catevenement = categorieExamen.Categorie(nom:"evenement",namedImage: "stetho_icon.png",showNom: false)
         let examCatevenement = [
             Examen(intitule: "horodatage", type: .reponsecourte,tag: "date"),
-            Examen(intitule: "Antalgie acquise", type: .check),
-            Examen(intitule: "Antalgie insuffisante", type: .check),
-            Examen(intitule: "Amélioration franche", type: .ouinon),
+            EvolutionClinique.asExamen(),
+            Examen(intitule: "Contact famille", type: .check),
+
             Examen(intitule: "Avis spécialisé demandé", type: .check),
             Examen(intitule: "Vu par", type: .check),
             Examen(intitule: "qui ?", type:  .selection,tag: "medecin" ),
@@ -350,6 +350,20 @@ struct ExamTree {
         catevenement.examens=examCatevenement
         return catevenement
     }
+    
+     static var EvolutionClinique:categorieExamen.Categorie {
+        let catEvolutionClinique = categorieExamen.Categorie(nom:"Evolution Clinique",namedImage: "tete_icon.png",showNom: false)
+        let examCatEvolutionClinique = [
+            Examen(intitule: "Antalgie acquise", type: .check),
+            Examen(intitule: "Antalgie insuffisante", type: .check),
+            Examen(intitule: "Amélioration franche", type: .ouinon),
+            Examen(intitule: "Etat clinique stable", type: .ouinon),
+            Examen(intitule: "Nouvelle plainte", type: .donnee),
+        ]
+        catEvolutionClinique.examens=examCatEvolutionClinique
+        return catEvolutionClinique
+    }
+
  static var SuiviEvolution:categorieExamen.Categorie {
         let catSuiviEvolution = categorieExamen.Categorie(nom:"Suivi/Evènements",namedImage: "stetho_icon.png",showNom: true)
         let examCatSuiviEvolution = [

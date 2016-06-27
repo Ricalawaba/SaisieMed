@@ -59,7 +59,7 @@ struct DataSave {
         return documentsDirectory
     }
     // MARK: Construction des noms de fichiers de données
-    
+    // TODO: Evenement (suivi/evolution/selection)
     static var filePathConclusionRx : String {
         let filename = getDocumentsDirectory().stringByAppendingPathComponent("ConclusionRx.dat")
         return filename

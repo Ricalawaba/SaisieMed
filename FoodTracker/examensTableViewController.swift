@@ -481,10 +481,10 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             
             if examen1.value.isEmpty {
             cell3.questionSelection.text = examen1.intitule
-                cell3.questionSelection.enabled=false
+                //cell3.questionSelection.enabled=false
             } else {
                 cell3.questionSelection.text=examen1.value
-                cell3.questionSelection.enabled=true
+               // cell3.questionSelection.enabled=true
             }
             
             cell3.examen=examen1

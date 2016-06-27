@@ -22,7 +22,7 @@ struct RedColors {
     var colors:[UIColor] = []
     init() {
         for x in 0..<10 {
-            colors += [UIColor(red: (80+x*15),green: 50,blue: 50)]
+            colors += [UIColor(red: 50,green: (80+x*15),blue: 50)]
         }
         
     }

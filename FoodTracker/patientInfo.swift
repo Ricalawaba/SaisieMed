@@ -7,10 +7,26 @@
 //
 
 import Foundation
+
+func stringFromTimeInterval(interval: NSTimeInterval) -> String {
+    let interval = Int(interval)
+    let seconds = interval % 60
+    let minutes = (interval / 60) % 60
+    let hours = (interval / 3600)
+    return String(format: "%02d:%02d", hours, minutes)
+}
+
 class patients :  NSObject,NSCoding {
     
     class patient :  NSObject,NSCoding {
         // MARK: Properties
+        var timestamp=NSDate()
+        var waitingStr: String {
+            get {
+                return stringFromTimeInterval(NSDate().timeIntervalSinceDate(timestamp))
+                
+            }
+        }
         var nomPrenom : String {
             get {
                 return examen.categories[0].examens[0].value
@@ -113,17 +129,21 @@ class patients :  NSObject,NSCoding {
         }
         // MARK: NSCoding
         required convenience init?(coder decoder: NSCoder) {
-            guard let examen = decoder.decodeObjectForKey("examen") as? categorieExamen
+            guard let examen = decoder.decodeObjectForKey("examen") as? categorieExamen,
+                    aDate=decoder.decodeObjectForKey("timestamp") as? NSDate
                                 else { return nil }
             self.init(examen1: examen)
-           
+            self.timestamp=aDate
         }
         func encodeWithCoder(coder: NSCoder) {
             coder.encodeObject(self.nomPrenom, forKey: "nomprenom")
             coder.encodeObject(self.age, forKey: "age")
             coder.encodeObject(self.localisation, forKey: "localisation")
+            coder.encodeObject(self.timestamp, forKey: "timestamp")
+            
             //coder.encodeObject(self.motif, forKey: "motif")
             coder.encodeObject(self.examen, forKey: "examen")
+            
         }
 
         override init() {
