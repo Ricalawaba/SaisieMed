@@ -71,7 +71,18 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         ExamTaped!.value=number
         tableView.reloadData()
     }
+    @IBAction func GoAccueil(sender: UIBarButtonItem) {
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
+        for aViewController in viewControllers {
+            if(aViewController is patientTableViewController){
+                self.navigationController!.popToViewController(aViewController, animated: true);
+            }
+        }
+    }
 
+    @IBAction func goPatient(sender: UIBarButtonItem) {
+        self.navigationController!.popToViewController(DataSave.lastPatientVC!,animated: true)
+    }
     @IBAction func apercuBarButtonAction(sender: UIBarButtonItem) {
         let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("rapportControlerID") as! rapportViewController
         svc.uneCategorie=self.categorie

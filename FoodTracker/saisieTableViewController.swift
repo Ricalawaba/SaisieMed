@@ -55,13 +55,17 @@ class saisieTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+         //DataSave.lastPatientVC=segue.de
         if (segue.identifier == "showexamen") {
             
             let svc = segue.destinationViewController as! examensTableViewController
             let selectedIndex = self.tableView.indexPathForCell(sender as! UITableViewCell)
             svc.categorie = patient.examen.categories[selectedIndex!.row]
             svc.navigationController?.title = svc.categorie!.nom
+           
+            
             //  sender?.row
             //  svc.listePatients = Donnees.listePatient
             

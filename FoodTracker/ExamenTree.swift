@@ -11,7 +11,7 @@ import Foundation
 struct ExamTree {
     
      static var ConnuClinique:categorieExamen.Categorie {
-        let catConnuClinique = categorieExamen.Categorie(nom:"Connu Clinique",namedImage: "Homme.png",showNom: false)
+        let catConnuClinique = categorieExamen.Categorie(nom:"Connu Clinique",namedImage: "medecin_icon.png",showNom: false)
         let examCatConnuClinique = [
             // Examen(intitule: "Xie", type:  .check ,info: " "),
             //Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
@@ -39,7 +39,7 @@ struct ExamTree {
     static var administratif: categorieExamen.Categorie {
         let Categorie1 = categorieExamen.Categorie(nom: "Administratif",namedImage: "administratif_icon.png")
         
-        let catModeVie = categorieExamen.Categorie(nom: "Mode de vie",namedImage: "administratif_icon.png")
+        let catModeVie = categorieExamen.Categorie(nom: "Mode de vie",namedImage: "femme.png")
         let excamCatModeVie = [
             Examen(intitule: "à son domicile", type:  .check ),
             Examen(intitule: "en institution", type:  .check ),
@@ -54,7 +54,7 @@ struct ExamTree {
             Examen(intitule: "Libre", type:  .reponsecourte )
         ]
         catModeVie.examens=excamCatModeVie
-        let catModeEntree = categorieExamen.Categorie(nom: "Mode d'entrée",namedImage: "administratif_icon.png")
+        let catModeEntree = categorieExamen.Categorie(nom: "Mode d'entrée",namedImage: "ambulance_icon.png")
         let excamCatModeEntree = [
             Examen(intitule: "adressé par le centre 15", type:  .check ),
             Examen(intitule: "adressé par", type:  .check ),
@@ -69,12 +69,12 @@ struct ExamTree {
             Examen(intitule: "Transporté par les Pompiers", type:  .check ),
             Examen(intitule: "Transporté par ambulance", type:  .check ),
             Examen(intitule: "non médicalisé", type:  .check ),
-            Examen(intitule: "Amené par la Famille", type:  .ouinon ),
+            Examen(intitule: "Amené par la Famille", type:  .check ),
             ]
         catModeEntree.examens=excamCatModeEntree
         
         
-        let catConnu = categorieExamen.Categorie(nom: "Connu de la clinique:",namedImage: "Homme.png")
+        let catConnu = categorieExamen.Categorie(nom: "Connu de la clinique:",namedImage: "medecin_icon.png")
         let examCatConnu = [
             Examen(intitule: "Pas de suivi dans l'établissement", type:  .check ),
             Examen(intitule: "Non", type:  .check ),
@@ -585,6 +585,7 @@ struct ExamTree {
             Examen(intitule: "Compte rendu des examens reçus", type: .check),
             Examen(intitule: "Discussion sur les hypothèses diagnostiques", type: .check),
             Examen(intitule: "Discussion sur le devenir", type: .check),
+            Examen(intitule: "Demande d'examens complémentaires", type: .check),
             Examen(intitule: "souhaiterait une hospitalisation", type: .check),
             Examen(intitule: "agacé par l'attente", type: .check),
             Examen(intitule: "ne souhaite pas être hospitalisé(e)", type: .check),
@@ -785,7 +786,7 @@ struct ExamTree {
         return catNeurologie
     }
     static var PlainteAnamnèse:categorieExamen.Categorie {
-        let catPlainteAnamnèse = categorieExamen.Categorie(nom:"Plaintes/Anamnèse",namedImage: "<#image#>",showNom: true)
+        let catPlainteAnamnèse = categorieExamen.Categorie(nom:"Plaintes/Anamnèse",namedImage: "tete_icon.png",showNom: true)
         let examCatPlainteAnamnèse = [
             
             Examen(intitule: "libre", type:  .reponsecourte ),
@@ -1014,7 +1015,7 @@ struct ExamTree {
             self.Respiratoire.asExamen(),
             self.Digestif.asExamen(),
             self.Urologie.asExamen(),
-            self.Urologie.asExamen(),
+          //  self.Urologie.asExamen(),
             self.ORL.asExamen(),
             self.Locomoteur.asExamen(),
             Examen(intitule: "libre", type:  .reponsecourte )

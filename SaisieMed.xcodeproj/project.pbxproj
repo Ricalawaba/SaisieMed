@@ -35,6 +35,15 @@
 		308E7FCE1D1E8F8E00AF225D /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E7FCD1D1E8F8E00AF225D /* Numbers.swift */; };
 		308E7FD01D1EA26700AF225D /* selectNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E7FCF1D1EA26700AF225D /* selectNumberViewController.swift */; };
 		308E7FD21D1F5A2300AF225D /* SaisieNombreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E7FD11D1F5A2300AF225D /* SaisieNombreViewController.swift */; };
+		308E7FDD1D2486E500AF225D /* tablets_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 308E7FD41D2486E500AF225D /* tablets_icon.png */; };
+		308E7FDE1D2486E500AF225D /* lit_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 308E7FD51D2486E500AF225D /* lit_icon.png */; };
+		308E7FDF1D2486E500AF225D /* thermo_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 308E7FD61D2486E500AF225D /* thermo_icon.png */; };
+		308E7FE01D2486E500AF225D /* ambulance_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 308E7FD71D2486E500AF225D /* ambulance_icon.png */; };
+		308E7FE11D2486E500AF225D /* medecin_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 308E7FD81D2486E500AF225D /* medecin_icon.png */; };
+		308E7FE21D2486E500AF225D /* chirurgien_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 308E7FD91D2486E500AF225D /* chirurgien_icon.png */; };
+		308E7FE31D2486E500AF225D /* peau_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 308E7FDA1D2486E500AF225D /* peau_icon.png */; };
+		308E7FE41D2486E500AF225D /* bouche_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 308E7FDB1D2486E500AF225D /* bouche_icon.png */; };
+		308E7FE51D2486E500AF225D /* oeil_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 308E7FDC1D2486E500AF225D /* oeil_icon.png */; };
 		30D0288F1D174F870050231C /* dataSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D0288E1D174F870050231C /* dataSave.swift */; };
 		30D028911D18AA470050231C /* configurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D028901D18AA470050231C /* configurationViewController.swift */; };
 		30D028931D195A9D0050231C /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D028921D195A9D0050231C /* MonthYearPickerView.swift */; };
@@ -103,6 +112,15 @@
 		308E7FCD1D1E8F8E00AF225D /* Numbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
 		308E7FCF1D1EA26700AF225D /* selectNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectNumberViewController.swift; sourceTree = "<group>"; };
 		308E7FD11D1F5A2300AF225D /* SaisieNombreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaisieNombreViewController.swift; sourceTree = "<group>"; };
+		308E7FD41D2486E500AF225D /* tablets_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tablets_icon.png; sourceTree = "<group>"; };
+		308E7FD51D2486E500AF225D /* lit_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lit_icon.png; sourceTree = "<group>"; };
+		308E7FD61D2486E500AF225D /* thermo_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thermo_icon.png; sourceTree = "<group>"; };
+		308E7FD71D2486E500AF225D /* ambulance_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ambulance_icon.png; sourceTree = "<group>"; };
+		308E7FD81D2486E500AF225D /* medecin_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = medecin_icon.png; sourceTree = "<group>"; };
+		308E7FD91D2486E500AF225D /* chirurgien_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chirurgien_icon.png; sourceTree = "<group>"; };
+		308E7FDA1D2486E500AF225D /* peau_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = peau_icon.png; sourceTree = "<group>"; };
+		308E7FDB1D2486E500AF225D /* bouche_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bouche_icon.png; sourceTree = "<group>"; };
+		308E7FDC1D2486E500AF225D /* oeil_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oeil_icon.png; sourceTree = "<group>"; };
 		30D0288E1D174F870050231C /* dataSave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataSave.swift; sourceTree = "<group>"; };
 		30D028901D18AA470050231C /* configurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = configurationViewController.swift; sourceTree = "<group>"; };
 		30D028921D195A9D0050231C /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
@@ -263,6 +281,15 @@
 		30F43F231D0EA255005E3BEB /* images */ = {
 			isa = PBXGroup;
 			children = (
+				308E7FD41D2486E500AF225D /* tablets_icon.png */,
+				308E7FD51D2486E500AF225D /* lit_icon.png */,
+				308E7FD61D2486E500AF225D /* thermo_icon.png */,
+				308E7FD71D2486E500AF225D /* ambulance_icon.png */,
+				308E7FD81D2486E500AF225D /* medecin_icon.png */,
+				308E7FD91D2486E500AF225D /* chirurgien_icon.png */,
+				308E7FDA1D2486E500AF225D /* peau_icon.png */,
+				308E7FDB1D2486E500AF225D /* bouche_icon.png */,
+				308E7FDC1D2486E500AF225D /* oeil_icon.png */,
 				30D028991D1AECD40050231C /* imagerie_icon.png */,
 				30D0289A1D1AECD40050231C /* piqure_icon.png */,
 				30D0289B1D1AECD40050231C /* stetho_icon.png */,
@@ -399,11 +426,15 @@
 				30F43F211D0EA248005E3BEB /* neuro_icon.png in Resources */,
 				301826131D10ABAA00592CE9 /* main_icon.png in Resources */,
 				30F43F1D1D0EA248005E3BEB /* femme.png in Resources */,
+				308E7FE21D2486E500AF225D /* chirurgien_icon.png in Resources */,
 				30F43F201D0EA248005E3BEB /* hommesymbol.png in Resources */,
+				308E7FE31D2486E500AF225D /* peau_icon.png in Resources */,
 				301826101D10ABAA00592CE9 /* nez_icon.png in Resources */,
 				3018260E1D10ABAA00592CE9 /* rein_icon.png in Resources */,
 				301826121D10ABAA00592CE9 /* pied_icon.png in Resources */,
 				30F43F1B1D0EA248005E3BEB /* cardio_icon.png in Resources */,
+				308E7FDF1D2486E500AF225D /* thermo_icon.png in Resources */,
+				308E7FDD1D2486E500AF225D /* tablets_icon.png in Resources */,
 				301826111D10ABAA00592CE9 /* oreille_icon.png in Resources */,
 				301825F81D0F005000592CE9 /* nurse_icon.png in Resources */,
 				3018260F1D10ABAA00592CE9 /* medoc_icon.png in Resources */,
@@ -411,17 +442,22 @@
 				30D0289C1D1AECD40050231C /* imagerie_icon.png in Resources */,
 				301826151D10ABAA00592CE9 /* uro_icon.png in Resources */,
 				30F43F221D0EA248005E3BEB /* pneumo_icon.png in Resources */,
+				308E7FE41D2486E500AF225D /* bouche_icon.png in Resources */,
 				301825F61D0EFFB400592CE9 /* tete_icon.png in Resources */,
 				30D0289E1D1AECD40050231C /* stetho_icon.png in Resources */,
 				301825FA1D0F009F00592CE9 /* os_icon.png in Resources */,
+				308E7FE11D2486E500AF225D /* medecin_icon.png in Resources */,
+				308E7FE01D2486E500AF225D /* ambulance_icon.png in Resources */,
 				30F43F1F1D0EA248005E3BEB /* Homme.png in Resources */,
 				301825F51D0EFFB400592CE9 /* digestif_icon.png in Resources */,
+				308E7FDE1D2486E500AF225D /* lit_icon.png in Resources */,
 				30F43F1E1D0EA248005E3BEB /* femmesymbol.png in Resources */,
 				30F43EF21D077C3B005E3BEB /* LaunchScreen.storyboard in Resources */,
 				30F43F1C1D0EA248005E3BEB /* cardio2_icon.png in Resources */,
 				30F43EEF1D077C3B005E3BEB /* Assets.xcassets in Resources */,
 				30F43EED1D077C3B005E3BEB /* Main.storyboard in Resources */,
 				301826141D10ABAA00592CE9 /* gyneco_icon.png in Resources */,
+				308E7FE51D2486E500AF225D /* oeil_icon.png in Resources */,
 				30D0289D1D1AECD40050231C /* piqure_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

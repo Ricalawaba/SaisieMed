@@ -93,6 +93,7 @@ class patientTableViewController: UITableViewController,ajoutPatientDelegate {
                 let selectedIndex = self.tableView.indexPathForCell(sender as! UITableViewCell)
                 svc.patient = Donnees.listePatient.patients[selectedIndex!.row]
                 svc.title=svc.patient.nomPrenom
+                DataSave.lastPatientVC = svc
                 //svc.
           //  print("\(), \(), row \(selectedIndex!.row)")
                 //  sender?.row

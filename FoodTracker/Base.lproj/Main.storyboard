@@ -640,6 +640,16 @@
                                 <action selector="apercuBarButtonAction:" destination="6p3-rv-hQ4" id="gDK-TY-SP6"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem title="Patient" id="wBa-v7-Fce">
+                            <connections>
+                                <action selector="goPatient:" destination="6p3-rv-hQ4" id="TIQ-CJ-dw9"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Accueil" id="b51-AW-Dg9">
+                            <connections>
+                                <action selector="GoAccueil:" destination="6p3-rv-hQ4" id="PDP-FY-Nh6"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Questions" id="v4A-0B-NRH">
                         <barButtonItem key="backBarButtonItem" title="&lt;-" width="8" id="17M-Qm-g3G"/>

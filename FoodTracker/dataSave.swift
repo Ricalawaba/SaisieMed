@@ -24,6 +24,7 @@ struct Donnees {
 }
 // MARK: Structure statiques d'accès aux fichiers de données
 struct DataSave {
+    static var lastPatientVC: saisieTableViewController!
     
     static func saveDataFiles(){
         saveFileatcd()
