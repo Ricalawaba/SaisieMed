@@ -41,7 +41,12 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         if examen.tag=="radiologie" {
             categorie.examens.insert( ExamTree.Imagerie.asExamen(), atIndex: indextoInsert)
         }
-        
+        if examen.tag=="clinique" {
+            categorie.examens.insert( ExamTree.ExamenClinique.asExamen(), atIndex: indextoInsert)
+        }
+        if examen.tag=="connuClinique" {
+            categorie.examens.insert( ExamTree.ConnuClinique.asExamen(), atIndex: indextoInsert)
+        }
         if examen.tag=="libre" {
             categorie.examens.insert(Examen(intitule: "Libre", type:  .reponsecourte ), atIndex: indextoInsert)
         }

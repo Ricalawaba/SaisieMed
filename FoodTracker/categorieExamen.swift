@@ -132,6 +132,7 @@ class categorieExamen : NSObject , NSCoding {
                                 str += "\(examen.intitule):"
                             }
                         str += "\(examen.categorie!.detailString())\(examen.info) "
+                       // str = "<br>\(str)"
                         }
                     }
                 }
@@ -169,183 +170,31 @@ class categorieExamen : NSObject , NSCoding {
         
         let Categorie21 = ExamTree.Traitement
         // MARK: Plaintes/Anamnese
-              let Categorie3 = Categorie(nom: "Plaintes/Anamnèse",namedImage: "tete_icon.png")
-        var examcat3:[Examen]=[]
-        for _ in 0..<1 {
-               examcat3 += [Examen(categorie: ExamTree.Plainte)]
-        }
-         examcat3 += [Examen(intitule: "Ajout plainte",type: .addinfo,tag: "Plainte")]
-        examcat3 += [Examen(intitule: "Pas d'autres plaintes somatiques", type:  .check )]
-        Categorie3.examens=examcat3
-       
-        
-
-        
-        
+        let Categorie3 =  ExamTree.PlainteAnamnèse
         // MARK: Pancarte
         let Categorie31 = ExamTree.Pancartes
         
         // Examen(intitule: "Motif", type:  .reponsecourte )
-        
-        // MARK: Neurologie
-        let Categorie4 = Categorie(nom: "Examen neurologique",namedImage: "neuro_icon.png")
-        let examcat4 = [
-            Examen(intitule: "Examen Normal", type:  .check ),
-            Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            ExamTree.neuroFonctionnel.asExamen(),
-            ExamTree.neuroReflexes.asExamen(),
-            Examen(intitule: "Pas de signe de localisation", type:  .check ),
-            Examen(intitule: "Libre", type:  .reponsecourte )
-        ]
-        Categorie4.examens = examcat4
-        
-        // MARK: Cardiovasculaire
-        let CategorieCardiovasculaire = Categorie(nom: "Appareil cardiovasculaire",namedImage: "cardio2_icon.png")
-        let examcat5 = [
-            Examen(intitule: "Examen Normal", type:  .check ),
-            Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(intitule: "Douleur thoracique", type:  .ouinon ),
-            Examen(intitule: "Détail", type:  .reponsecourte ),
-            Examen(intitule: "Dyspnée", type:  .ouinon ),
-            Examen(intitule: "Détail", type:  .reponsecourte ),
-            Examen(intitule: "Palpitations", type:  .ouinon ),
-            Examen(intitule: "Détail", type:  .reponsecourte ),
-            Examen(intitule: "BDC régulier", type:  .check ),
-            Examen(intitule: "BDC irrégulier", type:  .check ),
-            Examen(intitule: "Pas de souffle cardiaque", type:  .check ),
-            Examen(intitule: "Souffle cardiaque", type:  .donnee ),
-            Examen(intitule: "Souffle carotidien", type:  .ouinon ),
-            Examen(intitule: "Souffle abdominal", type:  .ouinon ),
-
-            Examen(intitule: "Pouls fémoraux présents", type:  .check ),
-            Examen(intitule: "Souffle fémoral", type:  .ouinon ),
-            Examen(intitule: "Pouls pédieux présents", type:  .check ),
-            Examen(intitule: "Pouls tibial postérieur", type:  .check ),
-            Examen(intitule: "Turgescence jugulaire", type:  .ouinon ),
-            Examen(intitule: "Souffle carotidien", type:  .ouinon ),
-            Examen(intitule: "Pas de crépitants", type:  .check ),
-            Examen(intitule: "Rales crépitants aux bases", type:  .check ),
-            Examen(intitule: "Rales crépitants étendues", type:  .check ),
-            Examen(intitule: "Toux", type:  .ouinon ),
-            Examen(intitule: "Expectorations aérées", type:  .check ),
-            Examen(intitule: "O.M.I.", type:  .ouinon ),
-            Examen(intitule: "Mollets souples et indolore", type:  .check ),
-            
-            Examen(intitule: "Libre", type:  .reponsecourte )
-        ]
-        CategorieCardiovasculaire.examens = examcat5
-        
-        // MARK: Respiratoire
-        let Categorie6 = Categorie(nom: "Appareil respiratoire",namedImage: "pneumo_icon.png")
-        let examcat6 = [
-            Examen(intitule: "Examen Normal", type:  .check ),
-            Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(intitule: "Dyspnée", type:  .ouinon ),
-            Examen(intitule: "Toux", type:  .ouinon ),
-            Examen(intitule: "Expectorations", type:  .ouinon ),
-            Examen(intitule: "Hippocratisme digital", type:  .ouinon ),
-            Examen(intitule: "MV + symétrique", type:  .check ),
-            Examen(intitule: "Sibilants", type:  .ouinon ),
-            Examen(intitule: "Crépitants", type:  .ouinon ),
-            Examen(intitule: "Ronchis", type:  .ouinon ),
-            Examen(intitule: "Stridor", type:  .ouinon ),
-            Examen(intitule: "Frottement pleural", type:  .ouinon ),
-            Examen(intitule: "Foyer auscultatoire", type:  .ouinon ),
-            Examen(intitule: "Cyanose labiale", type:  .ouinon ),
-            Examen(intitule: "Tirage", type:  .ouinon ),
-            Examen(intitule: "Difficulté à l'élocution", type:  .ouinon ),
-            Examen(intitule: "Oxygenothérapie à domicile", type:  .check ),
-            Examen(intitule: "Ronchopathie", type:  .ouinon ),
-            Examen(intitule: "SaO2%", type:  .donnee ),
-            Examen(intitule: "Libre", type:  .reponsecourte )
-        ]
-        Categorie6.examens = examcat6
-        
-        // MARK: Digestif
-        let Categorie7 = Categorie(nom: "Appareil Digestif",namedImage: "digestif_icon.png")
-        let examcat7 = [
-            Examen(intitule: "Examen Normal", type:  .ouinon ),
-            Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(intitule: "Trouble de l'apétit", type:  .ouinon ),
-            Examen(intitule: "Nausée/Vomissements", type:  .ouinon ),
-            Examen(intitule: "Diarrhée", type:  .ouinon ),
-            Examen(intitule: "Constipation", type:  .ouinon ),
-            Examen(intitule: "Bruits hydroaériques", type:  .ouinon ),
-            Examen(intitule: "Abdomen souple et depressible", type:  .check ),
-            Examen(intitule: "Ballonement", type:  .ouinon ),
-            Examen(intitule: "Douleur abdominale", type:  .ouinon ),
-            Examen(intitule: "épigastrique", type:  .check ),
-            Examen(intitule: "Irradiation dans le dos", type:  .ouinon ),
-            Examen(intitule: "hypochondre droit", type:  .check ),
-            Examen(intitule: "flanc droit", type:  .check ),
-            Examen(intitule: "FI droite", type:  .check ),
-            Examen(intitule: "hypochondre gauche", type:  .check ),
-            Examen(intitule: "flanc gauche", type:  .check ),
-            Examen(intitule: "FI gauche", type:  .check ),
-            Examen(intitule: "périombilicale", type:  .check ),
-            Examen(intitule: "hypogastrique", type:  .check ),
-            Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(intitule: "Pas de défense", type:  .check ),
-            Examen(intitule: "Selles", type:  .donnee ),
-            Examen(intitule: "Selles molles", type:  .ouinon ),
-            Examen(intitule: "Méléna", type:  .ouinon ),
-            Examen(intitule: "Rectorragie", type:  .ouinon ),
-            Examen(intitule: "Ictère", type:  .ouinon ),
-            Examen(intitule: "Orifices herniaires libres", type:  .ouinon ),
-            Examen(intitule: "Libre", type:  .reponsecourte )
-        ]
-        Categorie7.examens = examcat7
-        
-        // MARK: Urologie
-        let Categorie8 = Categorie(nom: "Appareil Urologique",namedImage: "rein_icon.png")
-        let examcat8 = [
-            Examen(intitule: "Examen Normal", type:  .ouinon ),
-            
-            Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(intitule: "BU Normale", type:  .check ),
-            Examen(intitule: "BU Positive", type:  .donnee ),
-            Examen(intitule: "Troubles fonctionnels urinaires", type:  .ouinon ),
-            Examen(intitule: "Pollakiurie", type:  .ouinon ),
-            Examen(intitule: "Brulure mictionnelle", type:  .ouinon ),
-            Examen(intitule: "Hématurie", type:  .ouinon ),
-            Examen(intitule: "Douleur lombaire", type:  .ouinon ),
-            Examen(intitule: "Douleur fosse lombaire gauche", type:  .check ),
-            Examen(intitule: "Douleur fosse lombaire droite", type:  .check ),
-            Examen(intitule: "Douleur flanc gauche", type:  .check ),
-            Examen(intitule: "Douleur flanc droit", type:  .check ),
-            Examen(intitule: "Testicules normaux", type:  .check ),
-            Examen(intitule: "Libre", type:  .reponsecourte )
-        ]
-        Categorie8.examens = examcat8
-        // MARK: ORL
-        let Categorie9 = Categorie(nom: "O.R.L.",namedImage: "nez_icon.png")
-        let examcat9 = [
-            Examen(intitule: "Examen Normal", type:  .ouinon ),
-            
-            Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(intitule: "Dysphagie", type:  .ouinon ),
-            Examen(intitule: "Amygdales normales", type:  .ouinon ),
-            Examen(intitule: "Rhinorhée", type:  .ouinon ),
-            Examen(intitule: "Hypoaccousie", type:  .ouinon ),
-            Examen(intitule: "Acouphènes", type:  .ouinon ),
-            Examen(intitule: "Vertige", type:  .ouinon ),
-            Examen(intitule: "Amygdalite", type:  .ouinon ),
-            Examen(intitule: "Erythème pharyngé", type:  .ouinon ),
-            Examen(intitule: "Adénopathie cervicale", type:  .ouinon ),
-            Examen(intitule: "Adénopathie sous-maxillaire", type:  .ouinon ),
-            Examen(intitule: "Epistaxis", type:  .donnee ),
-            Examen(intitule: "Pas d'otalgie", type:  .ouinon ),
-            Examen(intitule: "Otalgie droite", type:  .check ),
-            Examen(intitule: "Otalgie gauche", type:  .check ),
-
-            Examen(intitule: "Libre", type:  .reponsecourte )
-        ]
-        Categorie9.examens = examcat9
-        
-        // MARK: Locomoteur
-        let Categorie20 = Categorie(nom: "Locomoteur",namedImage: "os_icon.png")
-        Categorie20.examens=[ExamTree.Cheville.asExamen()]
-        
+//        
+//        // MARK: Neurologie
+//        let Categorie4 = ExamTree.Neurologie
+//        
+//        // MARK: Cardiovasculaire
+//        let CategorieCardiovasculaire = ExamTree.Cardiovasculaire
+//        
+//        // MARK: Respiratoire
+//        let Categorie6 = ExamTree.Respiratoire
+//        
+//        // MARK: Digestif
+//        let Categorie7 = ExamTree.Digestif
+//        
+//        // MARK: Urologie
+//        let Categorie8 = ExamTree.Urologie
+//        // MARK: ORL
+//        let Categorie9 = ExamTree.ORL
+//        
+//        // MARK: Locomoteur
+//        let Categorie20 = ExamTree.Locomoteur
         // MARK: Electrocardiogramme
         let CatECG = Categorie(nom: "ECG",namedImage: "cardio_icon.png")
         let catECGConclusion = Categorie(nom: "Conclusion",namedImage: "cardio_icon.png")
@@ -466,19 +315,7 @@ class categorieExamen : NSObject , NSCoding {
             
             
         ]
-        let catExamClinique = Categorie(nom: "Examen Clinique",namedImage: "stetho_icon.png")
-        let examCatExamClinique = [
-            Examen(intitule: "horodatage", type:  .reponsecourte,tag: "date" ),
-            Examen(categorie: Categorie4),
-            Examen(categorie: CategorieCardiovasculaire),
-            Examen(categorie: Categorie6),
-            Examen(categorie: Categorie7),
-            Examen(categorie: Categorie8),
-            Examen(categorie: Categorie9),
-            Examen(categorie: Categorie20),
-            
-            ]
-        catExamClinique.examens=examCatExamClinique
+
         
         
         // MARK: Examens paracliniques
@@ -494,7 +331,9 @@ class categorieExamen : NSObject , NSCoding {
         let catBiologie = ExamTree.Biologie
         
         
-        examCatParaclinique += [ Examen(categorie: catBiologie) ]
+        examCatParaclinique += [ Examen(categorie: catBiologie),
+                    ExamTree.Gazometrie.asExamen(),
+            ]
         let catBandelette = Categorie(nom: "Bandelette Urinaire",namedImage: "nurse_icon.png")
         let examCatBandelette = [
             Examen(intitule: "normale", type: .check),
@@ -542,7 +381,7 @@ class categorieExamen : NSObject , NSCoding {
         
         
         // MARK: Categories
-        categories += [Categorie1, Categorie3,Categorie2,Categorie21,Categorie31,catExamClinique,catParaclinique,catEvolution,catConclusion]
+        categories += [Categorie1, Categorie3,Categorie2,Categorie21,Categorie31,ExamTree.ExamenClinique,catParaclinique,catEvolution,catConclusion]
     }
     
     

@@ -115,7 +115,7 @@ class patients :  NSObject,NSCoding {
                     var detailstr = ""
                     if cat.nom == "Traitement" {
                         detailstr=cat.formattedDetaiString("<br>- ")
-                    } else if cat.nom.containsString("Plaintes") {
+                    } else if cat.nom.containsString("Plaintes") || cat.nom.containsString("Connu Clinique"){
                         detailstr=cat.formattedDetaiString("<br>➮ ")
                     } else
                     { detailstr=cat.formattedDetaiString() }
