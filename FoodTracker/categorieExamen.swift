@@ -305,6 +305,7 @@ class categorieExamen : NSObject , NSCoding {
         CatECG5.examens=examCatECG5
 
         CatECG.examens = [
+            Examen(intitule: "horodatage", type:  .reponsecourte,tag: "date" ),
             Examen(categorie: catECGConclusion),
             Examen(intitule: "libre", type: .reponsecourte),
             Examen(categorie: catECG1),
@@ -357,31 +358,12 @@ class categorieExamen : NSObject , NSCoding {
 
         let catEvolution=ExamTree.SuiviEvolution
         
-        let catConclusion = Categorie(nom: "Conclusion",namedImage: "stetho_icon.png")
-        let examCatConclusionGenerale = [
-            Examen(intitule: "Suspicion ", type: .check),
-            Examen(intitule: "Diagnostic", type: .selection,tag: "atcd"),
-            Examen(intitule: "Libre", type: .reponsecourte),
-            Examen(intitule: "hospitalisation", type: .check),
-            Examen(intitule: "pris en charge par", type: .check),
-            Examen(intitule: "médecin", type: .selection, tag: "medecin"),
-            Examen(intitule: "Retour à domicile", type: .check),
-            Examen(intitule: "Surveillance par le médecin traitant", type: .check),
-            Examen(intitule: "Consultation spécialisé prévu", type: .check),
-            Examen(intitule: "date", type: .reponsecourte,tag: "date"),
-            Examen(intitule: "médecin", type: .selection, tag: "medecin"),
-            Examen(intitule: "Consultation spécialisé à prévoir", type: .check),
-            Examen(intitule: "sous", type: .reponsecourte),
-            Examen(intitule: "Nouvelle consultation nécessaire si évolution péjorative", type: .check),
-            Examen(intitule: "Libre", type: .reponsecourte),
-            
-            ]
-        catConclusion.examens=examCatConclusionGenerale
+       
         
         
         
         // MARK: Categories
-        categories += [Categorie1, Categorie3,Categorie2,Categorie21,Categorie31,ExamTree.ExamenClinique,catParaclinique,catEvolution,catConclusion]
+        categories += [Categorie1, Categorie3,Categorie2,Categorie21,Categorie31,ExamTree.ExamenClinique,catParaclinique,catEvolution,ExamTree.Conclusion]
     }
     
     

@@ -10,7 +10,7 @@ import Foundation
 
 struct ExamTree {
     
-     static var ConnuClinique:categorieExamen.Categorie {
+    static var ConnuClinique:categorieExamen.Categorie {
         let catConnuClinique = categorieExamen.Categorie(nom:"Connu Clinique",namedImage: "medecin_icon.png",showNom: false)
         let examCatConnuClinique = [
             // Examen(intitule: "Xie", type:  .check ,info: " "),
@@ -23,17 +23,17 @@ struct ExamTree {
             Examen(intitule: "Suivi urologique", type:  .check ),
             Examen(intitule: "Intervention orthopédique", type:  .check ),
             Examen(intitule: "Déja vu en consultation", type:  .check ),
-
+            
             Examen(intitule: "libre", type:  .reponsecourte ),
             Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"),
             Examen(intitule: "dernier contact", type:  .donnee ,tag: "date"),
-        //    Examen(intitule: "Ajout médecin",type: .addinfo,tag: "medecin"),
+            //    Examen(intitule: "Ajout médecin",type: .addinfo,tag: "medecin"),
             Examen(intitule: "libre", type:  .reponsecourte )
         ]
         catConnuClinique.examens=examCatConnuClinique
         return catConnuClinique
     }
-
+    
     
     // MARK: administratif
     static var administratif: categorieExamen.Categorie {
@@ -79,7 +79,7 @@ struct ExamTree {
             Examen(intitule: "Pas de suivi dans l'établissement", type:  .check ),
             Examen(intitule: "Non", type:  .check ),
             self.ConnuClinique.asExamen(),
-           
+            
             Examen(intitule: "Ajout connu clinique",type: .addinfo,tag: "connuClinique"),
             Examen(intitule: "Libre", type:  .reponsecourte )
         ]
@@ -104,7 +104,7 @@ struct ExamTree {
         return Categorie1
     }
     
-
+    
     static var atcd:categorieExamen.Categorie {
         let catATCD = categorieExamen.Categorie(nom:"atcd",namedImage: "nurse_icon.png",showNom: false)
         let examCatATCD = [
@@ -141,6 +141,9 @@ struct ExamTree {
     static var LocAnat:categorieExamen.Categorie {
         let catLocAnat = categorieExamen.Categorie(nom:"Loc.  anatomique",namedImage: "os_icon.png",showNom: false)
         let examCatLocAnat = [
+            Examen(intitule: "droit(e)", type:  .check ),
+            Examen(intitule: "gauche", type:  .check ),
+
             Examen(intitule: "Bord", type:  .check, info: " "  ),
             Examen(intitule: "Extrémité", type:  .check, info: " "  ),
             Examen(intitule: "face", type:  .check, info: " "  ),
@@ -237,7 +240,7 @@ struct ExamTree {
     }
     
     static var Comorbidite:categorieExamen.Categorie {
-        let catComorbidite = categorieExamen.Categorie(nom:"Comorbidité/Antécédents",namedImage: "nurse_icon.png",showNom: true)
+        let catComorbidite = categorieExamen.Categorie(nom:"Comorbidité/Antécédents",namedImage: "dossier.png",showNom: true)
         let examCatComorbidite = [
             Examen(intitule: "Pas d'atcds notables", type:  .check ),
             Examen(intitule: "Pas sous anti-coagulant", type:  .check ),
@@ -250,6 +253,7 @@ struct ExamTree {
             Examen(intitule: "Detail", type:  .reponsecourte, tag: "Allergie" ),
             ExamTree.atcd.asExamen(),
             Examen(intitule: "Ajout atcd",type: .addinfo,tag: "atcd"),
+            Examen(intitule: "Usager de médecine alternative", type:  .check ),
             Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
         ]
         catComorbidite.examens=examCatComorbidite
@@ -262,10 +266,12 @@ struct ExamTree {
             Examen(intitule: "Date dernier VAT inconnue", type:  .check ),
             Examen(intitule: "VAT à jour selon le patient", type:  .check ),
             Examen(intitule: "Date dernier VAT", type:  .donnee, tag: "date" ),
+            Examen(intitule: "Date dernier DTP", type:  .donnee, tag: "date" ),
             Examen(intitule: "Voir avec médecin traitant", type:  .check ),
             Examen(intitule: "Couverture pneumoccocique", type:  .ouinon ),
             Examen(intitule: "Date Pneumo 23", type:  .donnee, tag: "date" ),
             Examen(intitule: "Vaccin hépatite B", type:  .ouinon ),
+            Examen(intitule: "Vaccin anti-grippal annuel", type:  .check ),
             Examen(intitule: "libre", type:  .reponsecourte ),
             Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
         ]
@@ -277,7 +283,12 @@ struct ExamTree {
         let catTraitement = categorieExamen.Categorie(nom:"Traitement",namedImage: "medoc_icon.png",showNom: true)
         let examCatTraitement = [
             Examen(intitule: "Pas de traitement au long cours", type:  .check ),
+            Examen(intitule: "(Traitement vu sur ordonnance)", type:  .check ),
+            Examen(intitule: "(Traitement indiqué par le patient)", type:  .check ),
+            Examen(intitule: "(Traitement indiqué par l'entourage)", type:  .check ),
+            Examen(intitule: "(Traitement non connu par le patient)", type:  .check ),
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
+            
             Examen(categorie: ExamTree.TTT),
             Examen(intitule: "Ajout traitement",type: .addinfo,tag: "TTT"),
             Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
@@ -287,7 +298,7 @@ struct ExamTree {
     }
     
     static var Poids:categorieExamen.Categorie {
-        let catPoids = categorieExamen.Categorie(nom:"Poids/Taille",namedImage: "nurse_icon.png",showNom: false)
+        let catPoids = categorieExamen.Categorie(nom:"Poids/Taille",namedImage: "homme.png",showNom: false)
         let examCatPoids = [
             Examen(intitule: "Taille (estimée)", type:  .donnee, tag: "taille" ),
             Examen(intitule: "Taille (mesurée)", type:  .donnee, tag: "taille" ),
@@ -303,7 +314,7 @@ struct ExamTree {
     }
     
     static var TA:categorieExamen.Categorie {
-        let catTA = categorieExamen.Categorie(nom:"Tension artérielle",namedImage: "nurse_icon.png",showNom: false)
+        let catTA = categorieExamen.Categorie(nom:"Tension artérielle",namedImage: "tension.png",showNom: false)
         let examCatTA = [
             Examen(intitule: "TA", type:  .donnee ,tag :"tension"),
             Examen(intitule: "TA bras droit", type:  .donnee ,tag :"tension"),
@@ -314,7 +325,7 @@ struct ExamTree {
         return catTA
     }
     static var Pancartes:categorieExamen.Categorie {
-        let catPancartes = categorieExamen.Categorie(nom:"Pancartes",namedImage: "pancarte_icon.png",showNom: true)
+        let catPancartes = categorieExamen.Categorie(nom:"Pancartes",namedImage: "thermo_icon.png",showNom: true)
         let examCatPancartes = [
             Pancarte.asExamen(),
             Examen(intitule: "Ajout pancarte",type: .addinfo,tag: "pancarte"),
@@ -379,18 +390,26 @@ struct ExamTree {
         let catPlaie = categorieExamen.Categorie(nom:"Plaie",namedImage: "nurse_icon.png",showNom: true)
         let examCatPlaie = [
             Examen(intitule: "situation", type:  .donnee ),
+            
             Examen(intitule: "contexte", type:  .donnee ),
             Examen(intitule: "libre", type:  .reponsecourte ),
             self.LocAnat.asExamen(),
+            Examen(intitule: "par écrasement", type:  .check ),
+            Examen(intitule: "par lacération", type:  .check ),
+            Examen(intitule: "par morsure", type:  .check ),
             Examen(intitule: "taille", type:  .donnee ),
             Examen(intitule: "bords nets", type:  .check ),
             Examen(intitule: "bords contus", type:  .check ),
+            Examen(intitule: "plaie souillée", type:  .check ),
             Examen(intitule: "perte de substance", type:  .check ),
+            Examen(intitule: "présence de zones tissulaires dévitalisées", type:  .check ),
             Examen(intitule: "Désinfection bétadine", type:  .check ),
-            Examen(intitule: "Anesthésie locale xylocaine", type:  .check ),
+            Examen(intitule: "Anesthésie locale", type:  .check ),
+            Examen(intitule: "Anesthésie Intra-thecale", type:  .check ),
+            Examen(intitule: "Xylocaine non adrénalinée", type:  .check ),
             Examen(intitule: "Exploration", type:  .check ),
             Examen(intitule: "Corps étrangers", type:  .check ),
-            
+             Examen(intitule: "Nettoyage et brossage", type:  .check ),
             Examen(intitule: "Exérèse des tissus nécrotiques ou contus", type:  .check ),
             Examen(intitule: "Suture en 2 plans", type:  .check ),
             
@@ -402,6 +421,10 @@ struct ExamTree {
             Examen(intitule: "Résorbable 3/0", type:  .donnee ),
             Examen(intitule: "Résorbable 4/0", type:  .donnee ),
             Examen(intitule: "Résorbable 5/0", type: .donnee),
+            Examen(intitule: "Test d'immunité anti-tétanique", type:  .donnee ),
+            Examen(intitule: "Antibioprophylaxie", type:  .donnee ),
+            Examen(intitule: "Surveillance journalière", type:  .check ),
+            
             Examen(intitule: "Ablation des points par IDE ou MT sous 5-8 jours selon cicatrisation", type:  .check ),
             
             Examen(intitule: "Ablation des points par IDE ou MT sous 8-10 jours selon cicatrisation", type:  .check ),
@@ -483,27 +506,71 @@ struct ExamTree {
     static var LocoFonctionnel:categorieExamen.Categorie {
         let catLocoFonctionnel = categorieExamen.Categorie(nom:"LocoFonctionnel",namedImage: "os_icon.png",showNom: false)
         let examCatLocoFonctionnel = [
-            Examen(intitule: "Impotence fonctionnelle complète", type:  .check ),
-            Examen(intitule: "Déformation", type:  .check ),
-            Examen(intitule: "Tuméfaction", type:  .check ),
+            Examen(intitule: "Gène significative de la mobilité active", type:  .ouinon ),
+            Examen(intitule: "Gène significative de la mobilité passive", type:  .ouinon ),
+            Examen(intitule: "Impotence fonctionnelle", type:  .ouinon ),
+            Examen(intitule: "Impotence fonctionnelle partielle", type:  .check ),
+            Examen(intitule: "Examen des mobilités limité par la douleur", type:  .check ),
+            Examen(intitule: "Examen des mobilités limité par la douleur et l'oedeme", type:  .check ),
+            Examen(intitule: "Déformation", type:  .ouinon ),
+            Examen(intitule: "Tuméfaction", type:  .ouinon ),
             Examen(intitule: "Contusion", type:  .check ),
             Examen(intitule: "Oedeme péri-articulaire", type:  .ouinon ),
             Examen(intitule: "Oedeme péri-lésionel", type:  .ouinon ),
             Examen(intitule: "Gène à la mobilité articulaire", type:  .ouinon ),
-            Examen(intitule: "Flexion limitée", type: .donnee),
-            Examen(intitule: "Extension limitée", type: .donnee),
-            Examen(intitule: "Adduction limitée", type: .donnee),
-            Examen(intitule: "Abduction limitée", type: .donnee),
+            Examen(intitule: "Flexion limitée", type: .check),
+            Examen(intitule: "Extension limitée", type: .check),
+            Examen(intitule: "Adduction limitée", type: .check),
+            Examen(intitule: "Abduction limitée", type: .check),
             Examen(intitule: "Position antalgique", type: .check),
             Examen(intitule: "Position vicieuse", type: .check),
             Examen(intitule: "déficit sensitif", type: .ouinon),
             Examen(intitule: "déficit moteur", type: .ouinon),
+            Examen(intitule: "Amyotrophie", type: .ouinon),
             Examen(intitule: "libre", type:  .reponsecourte ),
             ]
         catLocoFonctionnel.examens=examCatLocoFonctionnel
         return catLocoFonctionnel
     }
-    
+     static var Main:categorieExamen.Categorie {
+        let catMain = categorieExamen.Categorie(nom:"Main",namedImage: "main_icon.png",showNom: true)
+        let examCatMain = [
+            self.LocAnat.asExamen(),
+            self.TypeTrauma.asExamen(),
+            self.LocoFonctionnel.asExamen(),
+            Examen(intitule: "libre", type:  .reponsecourte ),
+            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
+        ]
+        catMain.examens=examCatMain
+        return catMain
+    }
+
+    static var Doigt:categorieExamen.Categorie {
+        let catDoigt = categorieExamen.Categorie(nom:"Doigt",namedImage: "main_icon.png",showNom: true)
+        let examCatDoigt = [
+            self.LocAnat.asExamen(),
+            self.TypeTrauma.asExamen(),
+            self.LocoFonctionnel.asExamen(),
+            Examen(intitule: "libre", type:  .reponsecourte ),
+            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
+        ]
+        catDoigt.examens=examCatDoigt
+        return catDoigt
+    }
+   
+     static var Coude:categorieExamen.Categorie {
+        let catCoude = categorieExamen.Categorie(nom:"Coude",namedImage: "os_icon.png",showNom: true)
+        let examCatCoude = [
+            self.LocAnat.asExamen(),
+            self.TypeTrauma.asExamen(),
+            self.LocoFonctionnel.asExamen(),
+            Examen(intitule: "libre", type:  .reponsecourte ),
+            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
+        ]
+        catCoude.examens=examCatCoude
+        return catCoude
+    }
+
     static var Genou:categorieExamen.Categorie {
         let catGenou = categorieExamen.Categorie(nom:"Genou",namedImage: "os_icon.png",showNom: true)
         let examCatGenou = [
@@ -512,15 +579,18 @@ struct ExamTree {
             self.LocoFonctionnel.asExamen(),
             Examen(intitule: "différence de circonférence", type:  .donnee ),
             Examen(intitule: "Choc rotulien", type:  .ouinon ),
+            Examen(intitule: "lésion LCA au test de Lachman", type:  .ouinon ),
+            Examen(intitule: "lésion LCA au test de Lemaire (subuluxation du tibia à 15° de flexxion + RI du pied)", type:  .ouinon ),
             Examen(intitule: "Tirroir antéro-postérieur", type:  .ouinon ),
-            Examen(intitule: "Baillement latéral", type:  .ouinon ),
+            Examen(intitule: "Baillement/laxité latérale", type:  .ouinon ),
             Examen(intitule: "LLI douloureux à la palpation", type:  .ouinon ),
             Examen(intitule: "augmenté en valgus forcé", type:  .ouinon ),
             Examen(intitule: "LLE douloureux à la palpation", type:  .ouinon ),
             Examen(intitule: "augmenté en varus forcé", type:  .ouinon ),
             Examen(intitule: "Sensation de blocage", type:  .ouinon ),
             Examen(intitule: "Sensation d'instabilité", type:  .ouinon ),
-            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
+            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre"),
+            
             //Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
             //Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
             //Examen(intitule: "libre", type:  .reponsecourte )
@@ -528,6 +598,29 @@ struct ExamTree {
         catGenou.examens=examCatGenou
         return catGenou
     }
+     static var Epaule:categorieExamen.Categorie {
+        let catEpaule = categorieExamen.Categorie(nom:"Epaule",namedImage: "<#image#>",showNom: true)
+        let examCatEpaule = [
+            self.LocAnat.asExamen(),
+            self.TypeTrauma.asExamen(),
+            self.LocoFonctionnel.asExamen(),
+            Examen(intitule: "Douleur acromio-clavulaire", type:  .ouinon ),
+            Examen(intitule: "\"touche de piano\"", type:  .check ),
+            Examen(intitule: "Instabilité acromio-clavulaire", type:  .ouinon ),
+            Examen(intitule: "Douleur sterno-clavulaire", type:  .ouinon ),
+            Examen(intitule: "Rotation externe passive (0-90°)", type:  .donnee ),
+            Examen(intitule: "Rotation Interne (pouce)", type:  .donnee ),
+            Examen(intitule: "douleur au Palm-Up test (long biceps)", type:  .ouinon ),
+            Examen(intitule: "douleur au test de Jobe (sus épineux)", type:  .ouinon ),
+            Examen(intitule: "douleur au test de Yocum (Coiffe)", type:  .ouinon ),
+            Examen(intitule: "Evaluation Yocum passif \"C Test\" (N=130°)", type:  .donnee ),
+            Examen(intitule: "libre", type:  .reponsecourte ),
+            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
+        ]
+        catEpaule.examens=examCatEpaule
+        return catEpaule
+    }
+
     
     static var neuroFonctionnel:categorieExamen.Categorie {
         let catneuroFonctionnel = categorieExamen.Categorie(nom:"fonctionnels",namedImage: "tete_icon.png",showNom: true)
@@ -576,8 +669,8 @@ struct ExamTree {
         catneuroReflexes.examens=examCatneuroReflexes
         return catneuroReflexes
     }
-     static var EntretienPatient:categorieExamen.Categorie {
-        let catEntretienPatient = categorieExamen.Categorie(nom:"Entretien",namedImage: "<#image#>",showNom: false)
+    static var EntretienPatient:categorieExamen.Categorie {
+        let catEntretienPatient = categorieExamen.Categorie(nom:"Entretien",namedImage: "tete_icon.png",showNom: false)
         let examCatEntretienPatient = [
             Examen(intitule: "Entretien avec le patient", type: .check),
             Examen(intitule: "Entretien avec le patient et son entourage", type: .check),
@@ -585,36 +678,71 @@ struct ExamTree {
             Examen(intitule: "Compte rendu des examens reçus", type: .check),
             Examen(intitule: "Discussion sur les hypothèses diagnostiques", type: .check),
             Examen(intitule: "Discussion sur le devenir", type: .check),
-            Examen(intitule: "Demande d'examens complémentaires", type: .check),
+            Examen(intitule: "souhaite des examens complémentaires", type: .check),
+            Examen(intitule: "souhaite un avis spécialisé", type: .check),
+            Examen(intitule: "difficulté pour le maintien à domicile", type: .check),
+            Examen(intitule: "ne souhaite pas d'investigations supplémentaires", type: .check),
             Examen(intitule: "souhaiterait une hospitalisation", type: .check),
             Examen(intitule: "agacé par l'attente", type: .check),
-            Examen(intitule: "ne souhaite pas être hospitalisé(e)", type: .check),
+            Examen(intitule: "ne souhaite pas l'hospitalisation", type: .check),
             Examen(intitule: "ne souhaite pas quitter le service", type: .check),
-
-            Examen(intitule: "souhaiterait un retour à domicile", type: .check),
+            
+            Examen(intitule: "souhaiterait si possible un retour à domicile", type: .check),
             Examen(intitule: "souhaite un retour à domicile", type: .check),
             Examen(intitule: "sortie contre avis médical", type: .check),
-
+            
             Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
-
+            
         ]
         catEntretienPatient.examens=examCatEntretienPatient
         return catEntretienPatient
     }
-
     
+    static var AvisSpecialiste:categorieExamen.Categorie {
+        let catAvisSpecialiste = categorieExamen.Categorie(nom:"Avis Specialiste",namedImage: "medecin_icon.png",showNom: true)
+        let examCatAvisSpecialiste = [
+            Examen(intitule: "demandé", type: .check),
+            Examen(intitule: "Vu par", type: .check),
+            Examen(intitule: "qui ?", type:  .selection,tag: "medecin" ),
+            Examen(intitule: "libre", type:  .reponsecourte ),
+            Examen(intitule: "Evenement", type: .reponsecourte, tag:"Evenement"),
+            Examen(intitule: "Indisponible pour l'instant", type: .check),
+            Examen(intitule: "passera voir le patient", type: .check),
+            Examen(intitule: "demande un avis", type: .check),
+            Examen(intitule: "de qui ?", type:  .selection,tag: "medecin" ),
+            Examen(intitule: "demande investigation", type: .donnee),
+            
+            Examen(intitule: "libre", type:  .reponsecourte ),
+            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
+        ]
+        catAvisSpecialiste.examens=examCatAvisSpecialiste
+        return catAvisSpecialiste
+    }
+   static var ActeTherapeuthique:categorieExamen.Categorie {
+        let catActeTherapeuthique = categorieExamen.Categorie(nom:"Acte Thérapeutique",namedImage: "piqure_icon.png",showNom: false)
+        let examCatActeTherapeuthique = [
+            Examen(intitule: "Voie veineuse", type:  .check ),
+            Examen(intitule: "Oxygénothérapie lunettes", type:  .donnee ),
+            Examen(intitule: "Oxygénothérapie masque", type:  .donnee ),
+            Examen(intitule: "Administration", type:  .check ,info: " "),
+            Examen(intitule: "produit", type:  .selection,tag: "medicament" ),
+            //Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
+            //Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
+            Examen(intitule: "libre", type:  .reponsecourte ),
+            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
+        ]
+        catActeTherapeuthique.examens=examCatActeTherapeuthique
+        return catActeTherapeuthique
+    }
+  
     static var evenement:categorieExamen.Categorie {
         let catevenement = categorieExamen.Categorie(nom:"Evenement",namedImage: "stetho_icon.png",showNom: false)
         let examCatevenement = [
             Examen(intitule: "horodatage", type: .reponsecourte,tag: "date"),
             EvolutionClinique.asExamen(),
             EntretienPatient.asExamen(),
-            Examen(intitule: "Avis spécialisé demandé", type: .check),
-            Examen(intitule: "Vu par", type: .check),
-            Examen(intitule: "qui ?", type:  .selection,tag: "medecin" ),
-            Examen(intitule: "libre", type:  .reponsecourte ),
-            
-            Examen(intitule: "Evenement", type: .reponsecourte, tag:"Evenement"),
+            AvisSpecialiste.asExamen(),
+            ActeTherapeuthique.asExamen(),
             Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre"),
             ]
         catevenement.examens=examCatevenement
@@ -625,14 +753,24 @@ struct ExamTree {
         let examCatDigestifFonctionnel = [
             Examen(intitule: "Trouble de l'apétit", type:  .ouinon ),
             Examen(intitule: "Nausée/Vomissements", type:  .ouinon ),
+            Examen(intitule: "Ballonement", type:  .ouinon ),
             Examen(intitule: "Diarrhée", type:  .ouinon ),
-            
-            Examen(intitule: "Selles", type:  .donnee ),
-            Examen(intitule: "Selles molles", type:  .ouinon ),
-            Examen(intitule: "Selles glaireuses", type:  .ouinon ),
+            Examen(intitule: "Constipation", type:  .ouinon ),
+            Examen(intitule: "Alternance diarrhée / constipation", type:  .check ),
+            Examen(intitule: "dernier repas", type:  .donnee,tag: "date" ),
+            Examen(intitule: "dernières selles", type:  .donnee,tag: "date" ),
+            Examen(intitule: "\"normale\"", type:  .check ),
+            Examen(intitule: "Selles moulées", type:  .check ),
+            Examen(intitule: "Selles dures", type:  .check ),
+            Examen(intitule: "Selles liquides", type:  .check ),
+            Examen(intitule: "Selles molles", type:  .check ),
+            Examen(intitule: "Selles glaireuses", type:  .check ),
+            Examen(intitule: "Méléna", type:  .ouinon ),
+            Examen(intitule: "Rectorragie", type:  .ouinon ),
             Examen(intitule: "décoloration des selles", type:  .ouinon ),
             Examen(intitule: "Constipation", type:  .ouinon ),
-            Examen(intitule: "Ballonement", type:  .ouinon ),
+            Examen(intitule: "Odeur inhabituelle", type:  .ouinon ),
+            
             
             ]
         catDigestifFonctionnel.examens=examCatDigestifFonctionnel
@@ -661,7 +799,7 @@ struct ExamTree {
     }
     
     static var EvolutionClinique:categorieExamen.Categorie {
-        let catEvolutionClinique = categorieExamen.Categorie(nom:"Evolution Clinique",namedImage: "tete_icon.png",showNom: false)
+        let catEvolutionClinique = categorieExamen.Categorie(nom:"Evolution Clinique",namedImage: "examenclinique.png",showNom: false)
         let examCatEvolutionClinique = [
             Examen(intitule: "Diagnostic incertain", type: .check),
             Examen(intitule: "nécessité d'une surveillance hémodynamique", type: .check),
@@ -672,7 +810,9 @@ struct ExamTree {
             Examen(intitule: "Amélioration franche", type: .ouinon),
             Examen(intitule: "Etat clinique stable", type: .ouinon),
             Examen(intitule: "Détériotation", type: .ouinon),
-            Examen(intitule: "Nouvelle plainte", type: .donnee),
+            Examen(categorie: ExamTree.Plainte),
+            Examen(intitule: "Ajout plainte",type: .addinfo,tag: "Plainte"),
+            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre"),
             ]
         catEvolutionClinique.examens=examCatEvolutionClinique
         return catEvolutionClinique
@@ -682,6 +822,7 @@ struct ExamTree {
         let catSuiviEvolution = categorieExamen.Categorie(nom:"Suivi/Evènements",namedImage: "stetho_icon.png",showNom: true)
         let examCatSuiviEvolution = [
             evenement.asExamen(),
+            
             Examen(intitule: "Ajout clinique",type: .addinfo,tag: "clinique"),
             Examen(intitule: "Ajout pancarte",type: .addinfo,tag: "pancarte"),
             Examen(intitule: "Ajout évènement",type: .addinfo,tag: "evenementSuivi"),
@@ -879,8 +1020,7 @@ struct ExamTree {
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
             Examen(intitule: "Pas de défense", type:  .check ),
             
-            Examen(intitule: "Méléna", type:  .ouinon ),
-            Examen(intitule: "Rectorragie", type:  .ouinon ),
+            
             Examen(intitule: "Ictère", type:  .ouinon ),
             Examen(intitule: "Orifices herniaires libres", type:  .ouinon ),
             Examen(intitule: "Libre", type:  .reponsecourte ),
@@ -905,13 +1045,18 @@ struct ExamTree {
             Examen(intitule: "Pollakiurie", type:  .ouinon ),
             Examen(intitule: "Ecoulement urethral", type:  .ouinon ),
             Examen(intitule: "Brulure mictionnelle", type:  .ouinon ),
+            Examen(intitule: "Urines foncées", type:  .check ),
             Examen(intitule: "Dyspareunie", type:  .ouinon ),
             Examen(intitule: "Hématurie", type:  .ouinon ),
+            Examen(intitule: "Pyurie", type:  .ouinon ),
+            Examen(intitule: "Odeur forte des urines", type:  .check ),
             Examen(intitule: "Douleur lombaire", type:  .ouinon ),
             Examen(intitule: "Douleur fosse lombaire gauche", type:  .check ),
             Examen(intitule: "Douleur fosse lombaire droite", type:  .check ),
+            Examen(intitule: "à la pression hypogastrique/vésicale", type:  .check ),
             Examen(intitule: "Douleur flanc gauche", type:  .check ),
             Examen(intitule: "Douleur flanc droit", type:  .check ),
+            Examen(intitule: "Douleur testiculaire", type:  .ouinon ),
             Examen(intitule: "Testicules normaux", type:  .check ),
             Examen(intitule: "Induration testiculaire", type:  .ouinon ),
             Examen(intitule: "Hydrocèle", type:  .ouinon ),
@@ -925,6 +1070,10 @@ struct ExamTree {
         let catLocomoteur = categorieExamen.Categorie(nom:"Locomoteur",namedImage: "os_icon.png",showNom: true)
         let examCatLocomoteur = [
             ExamTree.Plaie.asExamen(),
+            ExamTree.Epaule.asExamen(),
+            ExamTree.Coude.asExamen(),
+            ExamTree.Main.asExamen(),
+            ExamTree.Doigt.asExamen(),
             ExamTree.Cheville.asExamen(),
             ExamTree.Genou.asExamen(),
             Examen(intitule: "libre", type:  .reponsecourte )
@@ -942,7 +1091,8 @@ struct ExamTree {
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
             Examen(intitule: "Dysphagie", type:  .ouinon ),
             Examen(intitule: "Amygdales normales", type:  .ouinon ),
-            Examen(intitule: "Rhinorhée", type:  .ouinon ),
+            Examen(intitule: "Rhinorrhée", type:  .ouinon ),
+            Examen(intitule: "Anosmie", type:  .ouinon ),
             Examen(intitule: "Hypoaccousie", type:  .ouinon ),
             Examen(intitule: "Acouphènes", type:  .ouinon ),
             Examen(intitule: "Vertige", type:  .ouinon ),
@@ -954,8 +1104,11 @@ struct ExamTree {
             Examen(intitule: "Pas d'otalgie", type:  .ouinon ),
             Examen(intitule: "Otalgie droite", type:  .check ),
             Examen(intitule: "Otalgie gauche", type:  .check ),
-            
-            Examen(intitule: "Libre", type:  .reponsecourte )
+            Examen(intitule: "Otorrhée gauche", type:  .check ),
+            Examen(intitule: "Otorrhée droite", type:  .check ),
+            Examen(intitule: "Otorragie gauche", type:  .check ),
+            Examen(intitule: "Otorragie droite", type:  .check ),
+            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
         ]
         catORL.examens=examCatORL
         return catORL
@@ -1006,8 +1159,8 @@ struct ExamTree {
         catBiologie.examens=examCatBiologie
         return catBiologie
     }
-     static var ExamenClinique:categorieExamen.Categorie {
-        let catExamenClinique = categorieExamen.Categorie(nom:"Examen Clinique",namedImage: "stetho_icon.png",showNom: true)
+    static var ExamenClinique:categorieExamen.Categorie {
+        let catExamenClinique = categorieExamen.Categorie(nom:"Examen Clinique",namedImage: "examenclinique.png",showNom: true)
         let examCatExamenClinique = [
             Examen(intitule: "horodatage", type:  .reponsecourte,tag: "date" ),
             self.Neurologie.asExamen(),
@@ -1015,7 +1168,7 @@ struct ExamTree {
             self.Respiratoire.asExamen(),
             self.Digestif.asExamen(),
             self.Urologie.asExamen(),
-          //  self.Urologie.asExamen(),
+            //  self.Urologie.asExamen(),
             self.ORL.asExamen(),
             self.Locomoteur.asExamen(),
             Examen(intitule: "libre", type:  .reponsecourte )
@@ -1023,6 +1176,32 @@ struct ExamTree {
         catExamenClinique.examens=examCatExamenClinique
         return catExamenClinique
     }
-
+    static var Conclusion:categorieExamen.Categorie {
+        let catConclusion = categorieExamen.Categorie(nom:"Conclusion",namedImage: "medecin_icon.png",showNom: true)
+        let examCatConclusion = [
+            Examen(intitule: "Suspicion ", type: .check),
+            Examen(intitule: "Diagnostic", type: .selection,tag: "atcd"),
+            ExamTree.LocAnat.asExamen(),
+            Examen(intitule: "Libre", type: .reponsecourte),
+            Examen(intitule: "hospitalisation", type: .check),
+            Examen(intitule: "pris en charge par", type: .check),
+            Examen(intitule: "médecin", type: .selection, tag: "medecin"),
+            Examen(intitule: "Retour à domicile", type: .check),
+            Examen(intitule: "Surveillance par le médecin traitant", type: .check),
+            Examen(intitule: "Consultation spécialisé prévu", type: .check),
+            Examen(intitule: "Consultation spécialisé à prévoir", type: .check),
+            Examen(intitule: "date", type: .reponsecourte,tag: "date"),
+            Examen(intitule: "médecin", type: .selection, tag: "medecin"),
+            Examen(intitule: "sous", type: .reponsecourte),
+            Examen(intitule: "Nouvelle consultation nécessaire si évolution péjorative", type: .check),
+            Examen(intitule: "Prendre nouvel avis médical si aggravation ou évolution insatisfaisante", type: .check),
+            Examen(intitule: "Prendre nouvel avis médical si récidive", type: .check),
+            Examen(intitule: "Libre", type: .reponsecourte),
+            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
+        ]
+        catConclusion.examens=examCatConclusion
+        return catConclusion
+    }
+    
     
 }

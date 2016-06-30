@@ -25,6 +25,11 @@
 		301826131D10ABAA00592CE9 /* main_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3018260B1D10ABA900592CE9 /* main_icon.png */; };
 		301826141D10ABAA00592CE9 /* gyneco_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3018260C1D10ABA900592CE9 /* gyneco_icon.png */; };
 		301826151D10ABAA00592CE9 /* uro_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3018260D1D10ABA900592CE9 /* uro_icon.png */; };
+		301C08651D25877200E79763 /* examenclinique.png in Resources */ = {isa = PBXBuildFile; fileRef = 301C08601D25877200E79763 /* examenclinique.png */; };
+		301C08661D25877200E79763 /* scan.png in Resources */ = {isa = PBXBuildFile; fileRef = 301C08611D25877200E79763 /* scan.png */; };
+		301C08671D25877200E79763 /* laboratoire.png in Resources */ = {isa = PBXBuildFile; fileRef = 301C08621D25877200E79763 /* laboratoire.png */; };
+		301C08681D25877200E79763 /* dossier.png in Resources */ = {isa = PBXBuildFile; fileRef = 301C08631D25877200E79763 /* dossier.png */; };
+		301C08691D25877200E79763 /* tension.png in Resources */ = {isa = PBXBuildFile; fileRef = 301C08641D25877200E79763 /* tension.png */; };
 		304B19F41D10C3D30006DB4A /* examgroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304B19F31D10C3D30006DB4A /* examgroupTableViewCell.swift */; };
 		304B19F71D13E0DD0006DB4A /* checkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304B19F61D13E0DD0006DB4A /* checkTableViewCell.swift */; };
 		304B19F91D13F3490006DB4A /* selectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304B19F81D13F3490006DB4A /* selectionTableViewCell.swift */; };
@@ -102,6 +107,11 @@
 		3018260B1D10ABA900592CE9 /* main_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_icon.png; sourceTree = "<group>"; };
 		3018260C1D10ABA900592CE9 /* gyneco_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gyneco_icon.png; sourceTree = "<group>"; };
 		3018260D1D10ABA900592CE9 /* uro_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uro_icon.png; sourceTree = "<group>"; };
+		301C08601D25877200E79763 /* examenclinique.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = examenclinique.png; sourceTree = "<group>"; };
+		301C08611D25877200E79763 /* scan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scan.png; sourceTree = "<group>"; };
+		301C08621D25877200E79763 /* laboratoire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laboratoire.png; sourceTree = "<group>"; };
+		301C08631D25877200E79763 /* dossier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dossier.png; sourceTree = "<group>"; };
+		301C08641D25877200E79763 /* tension.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tension.png; sourceTree = "<group>"; };
 		304B19F31D10C3D30006DB4A /* examgroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = examgroupTableViewCell.swift; sourceTree = "<group>"; };
 		304B19F61D13E0DD0006DB4A /* checkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkTableViewCell.swift; sourceTree = "<group>"; };
 		304B19F81D13F3490006DB4A /* selectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -281,6 +291,11 @@
 		30F43F231D0EA255005E3BEB /* images */ = {
 			isa = PBXGroup;
 			children = (
+				301C08601D25877200E79763 /* examenclinique.png */,
+				301C08611D25877200E79763 /* scan.png */,
+				301C08621D25877200E79763 /* laboratoire.png */,
+				301C08631D25877200E79763 /* dossier.png */,
+				301C08641D25877200E79763 /* tension.png */,
 				308E7FD41D2486E500AF225D /* tablets_icon.png */,
 				308E7FD51D2486E500AF225D /* lit_icon.png */,
 				308E7FD61D2486E500AF225D /* thermo_icon.png */,
@@ -427,6 +442,7 @@
 				301826131D10ABAA00592CE9 /* main_icon.png in Resources */,
 				30F43F1D1D0EA248005E3BEB /* femme.png in Resources */,
 				308E7FE21D2486E500AF225D /* chirurgien_icon.png in Resources */,
+				301C08681D25877200E79763 /* dossier.png in Resources */,
 				30F43F201D0EA248005E3BEB /* hommesymbol.png in Resources */,
 				308E7FE31D2486E500AF225D /* peau_icon.png in Resources */,
 				301826101D10ABAA00592CE9 /* nez_icon.png in Resources */,
@@ -439,10 +455,12 @@
 				301825F81D0F005000592CE9 /* nurse_icon.png in Resources */,
 				3018260F1D10ABAA00592CE9 /* medoc_icon.png in Resources */,
 				301825F41D0EFFB400592CE9 /* administratif_icon.png in Resources */,
+				301C08661D25877200E79763 /* scan.png in Resources */,
 				30D0289C1D1AECD40050231C /* imagerie_icon.png in Resources */,
 				301826151D10ABAA00592CE9 /* uro_icon.png in Resources */,
 				30F43F221D0EA248005E3BEB /* pneumo_icon.png in Resources */,
 				308E7FE41D2486E500AF225D /* bouche_icon.png in Resources */,
+				301C08671D25877200E79763 /* laboratoire.png in Resources */,
 				301825F61D0EFFB400592CE9 /* tete_icon.png in Resources */,
 				30D0289E1D1AECD40050231C /* stetho_icon.png in Resources */,
 				301825FA1D0F009F00592CE9 /* os_icon.png in Resources */,
@@ -453,8 +471,10 @@
 				308E7FDE1D2486E500AF225D /* lit_icon.png in Resources */,
 				30F43F1E1D0EA248005E3BEB /* femmesymbol.png in Resources */,
 				30F43EF21D077C3B005E3BEB /* LaunchScreen.storyboard in Resources */,
+				301C08691D25877200E79763 /* tension.png in Resources */,
 				30F43F1C1D0EA248005E3BEB /* cardio2_icon.png in Resources */,
 				30F43EEF1D077C3B005E3BEB /* Assets.xcassets in Resources */,
+				301C08651D25877200E79763 /* examenclinique.png in Resources */,
 				30F43EED1D077C3B005E3BEB /* Main.storyboard in Resources */,
 				301826141D10ABAA00592CE9 /* gyneco_icon.png in Resources */,
 				308E7FE51D2486E500AF225D /* oeil_icon.png in Resources */,

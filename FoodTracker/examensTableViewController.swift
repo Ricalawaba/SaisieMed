@@ -576,6 +576,8 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
+        let examen1 = categorie.examens[indexPath.row]
+        if examen1.type == Examen.ExamenEnum.addinfo {return false}
         return true
     }
     

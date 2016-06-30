@@ -82,10 +82,17 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0g-la-pEm">
-                                        <rect key="frame" x="26" y="301" width="154" height="30"/>
+                                        <rect key="frame" x="21" y="269" width="154" height="30"/>
                                         <state key="normal" title="Test Selection nombre"/>
                                         <connections>
                                             <action selector="testSelectionNombreAction:" destination="J7c-gS-fbg" eventType="touchUpInside" id="hDm-Iu-mVx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lqq-RK-ksb">
+                                        <rect key="frame" x="21" y="307" width="132" height="30"/>
+                                        <state key="normal" title="Test Selection date"/>
+                                        <connections>
+                                            <segue destination="nSv-17-Mdl" kind="show" id="Gqb-f7-qn5"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -907,6 +914,126 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c5x-J0-vTB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="802" y="2804"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="haP-Zc-wmC">
+            <objects>
+                <viewController id="nSv-17-Mdl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xRC-gV-5YP"/>
+                        <viewControllerLayoutGuide type="bottom" id="GAY-Qb-tCi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="co1-jt-v92">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6S5-0w-P6J">
+                                <rect key="frame" x="20" y="47" width="560" height="203"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOE-1a-Xj7">
+                                        <rect key="frame" x="264" y="20" width="33" height="30"/>
+                                        <state key="normal" title="Mois"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0g-73-yWO">
+                                        <rect key="frame" x="7" y="20" width="31" height="30"/>
+                                        <state key="normal" title="Jour"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjm-G2-mg8">
+                                        <rect key="frame" x="509" y="20" width="44" height="30"/>
+                                        <state key="normal" title="Année"/>
+                                    </button>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="boN-oV-PRp">
+                                        <rect key="frame" x="0.0" y="50" width="560" height="142"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="488979664.37724">
+                                            <!--2016-06-30 11:41:04 +0000-->
+                                        </date>
+                                    </datePicker>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="cOE-1a-Xj7" firstAttribute="centerX" secondItem="boN-oV-PRp" secondAttribute="centerX" id="CCu-px-Hrb"/>
+                                    <constraint firstItem="Y0g-73-yWO" firstAttribute="top" secondItem="cOE-1a-Xj7" secondAttribute="top" id="Chn-Uu-ufO"/>
+                                    <constraint firstAttribute="trailing" secondItem="cjm-G2-mg8" secondAttribute="trailing" constant="7" id="G2E-kg-ifF"/>
+                                    <constraint firstItem="Y0g-73-yWO" firstAttribute="baseline" secondItem="cOE-1a-Xj7" secondAttribute="baseline" id="Klu-dj-KWe"/>
+                                    <constraint firstItem="cOE-1a-Xj7" firstAttribute="baseline" secondItem="cjm-G2-mg8" secondAttribute="baseline" id="QDt-E2-GEH"/>
+                                    <constraint firstAttribute="bottom" secondItem="boN-oV-PRp" secondAttribute="bottom" constant="11" id="eBJ-m2-9Qb"/>
+                                    <constraint firstItem="boN-oV-PRp" firstAttribute="top" secondItem="Y0g-73-yWO" secondAttribute="bottom" id="iur-iX-eTF"/>
+                                    <constraint firstItem="boN-oV-PRp" firstAttribute="leading" secondItem="6S5-0w-P6J" secondAttribute="leading" id="o4T-OB-CUg"/>
+                                    <constraint firstItem="Y0g-73-yWO" firstAttribute="top" secondItem="6S5-0w-P6J" secondAttribute="top" constant="20" id="tyb-2e-8Lt"/>
+                                    <constraint firstAttribute="trailing" secondItem="boN-oV-PRp" secondAttribute="trailing" id="vI0-yO-5Se"/>
+                                    <constraint firstItem="Y0g-73-yWO" firstAttribute="leading" secondItem="6S5-0w-P6J" secondAttribute="leading" constant="7" id="zdQ-6i-DSR"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXG-CP-LIk">
+                                <rect key="frame" x="20" y="249" width="560" height="173"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ub-Ob-vaM">
+                                        <rect key="frame" x="232" y="8" width="96" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="SUL-sY-aeY"/>
+                                        </constraints>
+                                        <state key="normal" title="Date et Heure"/>
+                                    </button>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="KX1-AA-5fk">
+                                        <rect key="frame" x="0.0" y="38" width="560" height="129"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="488979800.06919801">
+                                            <!--2016-06-30 11:43:20 +0000-->
+                                        </date>
+                                    </datePicker>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="KX1-AA-5fk" secondAttribute="trailing" id="66J-6Y-hZa"/>
+                                    <constraint firstItem="KX1-AA-5fk" firstAttribute="top" secondItem="8Ub-Ob-vaM" secondAttribute="bottom" id="7r5-fA-Yfp"/>
+                                    <constraint firstAttribute="bottom" secondItem="KX1-AA-5fk" secondAttribute="bottom" constant="6" id="D1b-mJ-aVr"/>
+                                    <constraint firstItem="8Ub-Ob-vaM" firstAttribute="top" secondItem="rXG-CP-LIk" secondAttribute="topMargin" id="D7a-Nm-RxJ"/>
+                                    <constraint firstItem="KX1-AA-5fk" firstAttribute="leading" secondItem="rXG-CP-LIk" secondAttribute="leading" id="LEa-b3-PWd"/>
+                                    <constraint firstItem="8Ub-Ob-vaM" firstAttribute="centerX" secondItem="KX1-AA-5fk" secondAttribute="centerX" id="M28-73-PLz"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TzJ-lq-uXm">
+                                <rect key="frame" x="26" y="430" width="124" height="30"/>
+                                <state key="normal" title="Quelques minutes"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7FE-lN-ZWe">
+                                <rect key="frame" x="162" y="430" width="116" height="30"/>
+                                <state key="normal" title="Quelques heures"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Geb-bW-k2d">
+                                <rect key="frame" x="26" y="462" width="103" height="30"/>
+                                <state key="normal" title="Quelques jours"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKG-87-CZP">
+                                <rect key="frame" x="162" y="462" width="134" height="30"/>
+                                <state key="normal" title="Quelques semaines"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6S5-0w-P6J" firstAttribute="trailing" secondItem="rXG-CP-LIk" secondAttribute="trailing" id="0rx-sz-Cvo"/>
+                            <constraint firstItem="Geb-bW-k2d" firstAttribute="top" secondItem="bKG-87-CZP" secondAttribute="top" id="2o1-PJ-vfr"/>
+                            <constraint firstItem="6S5-0w-P6J" firstAttribute="leading" secondItem="co1-jt-v92" secondAttribute="leadingMargin" id="C7n-hl-cd2"/>
+                            <constraint firstItem="GAY-Qb-tCi" firstAttribute="top" secondItem="Geb-bW-k2d" secondAttribute="bottom" constant="64" id="Fnv-A5-pnY"/>
+                            <constraint firstItem="7FE-lN-ZWe" firstAttribute="leading" secondItem="bKG-87-CZP" secondAttribute="leading" id="Kyj-ab-ddN"/>
+                            <constraint firstItem="Geb-bW-k2d" firstAttribute="baseline" secondItem="bKG-87-CZP" secondAttribute="baseline" id="NdP-HY-TRU"/>
+                            <constraint firstItem="TzJ-lq-uXm" firstAttribute="leading" secondItem="Geb-bW-k2d" secondAttribute="leading" id="Smw-A1-KaY"/>
+                            <constraint firstItem="TzJ-lq-uXm" firstAttribute="leading" secondItem="co1-jt-v92" secondAttribute="leadingMargin" constant="6" id="Yud-a5-dT9"/>
+                            <constraint firstItem="6S5-0w-P6J" firstAttribute="leading" secondItem="rXG-CP-LIk" secondAttribute="leading" id="ZwU-7j-xEM"/>
+                            <constraint firstItem="TzJ-lq-uXm" firstAttribute="top" secondItem="7FE-lN-ZWe" secondAttribute="top" id="bNH-6I-nAj"/>
+                            <constraint firstItem="TzJ-lq-uXm" firstAttribute="top" secondItem="rXG-CP-LIk" secondAttribute="bottom" constant="8" symbolic="YES" id="bX5-XH-0qx"/>
+                            <constraint firstItem="Geb-bW-k2d" firstAttribute="top" secondItem="TzJ-lq-uXm" secondAttribute="bottom" constant="2" id="cox-Z4-akk"/>
+                            <constraint firstItem="rXG-CP-LIk" firstAttribute="top" secondItem="xRC-gV-5YP" secondAttribute="bottom" constant="185" id="dgc-OV-YVF"/>
+                            <constraint firstItem="TzJ-lq-uXm" firstAttribute="baseline" secondItem="7FE-lN-ZWe" secondAttribute="baseline" id="dp3-iv-mn3"/>
+                            <constraint firstAttribute="bottom" secondItem="6S5-0w-P6J" secondAttribute="bottom" constant="350" id="gss-7a-Gwo"/>
+                            <constraint firstItem="6S5-0w-P6J" firstAttribute="trailing" secondItem="co1-jt-v92" secondAttribute="trailingMargin" id="hbc-Q8-gqB"/>
+                            <constraint firstItem="7FE-lN-ZWe" firstAttribute="leading" secondItem="TzJ-lq-uXm" secondAttribute="trailing" constant="12" id="ivM-bL-bC1"/>
+                            <constraint firstItem="6S5-0w-P6J" firstAttribute="top" secondItem="co1-jt-v92" secondAttribute="topMargin" constant="47" id="yGY-4h-LkM"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rBK-82-2dZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1490" y="2808"/>
         </scene>
         <!--Ajout Patient View Controller-->
         <scene sceneID="Sxt-mt-Yn5">
