@@ -56,6 +56,7 @@
 		30D0289C1D1AECD40050231C /* imagerie_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D028991D1AECD40050231C /* imagerie_icon.png */; };
 		30D0289D1D1AECD40050231C /* piqure_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D0289A1D1AECD40050231C /* piqure_icon.png */; };
 		30D0289E1D1AECD40050231C /* stetho_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D0289B1D1AECD40050231C /* stetho_icon.png */; };
+		30D526791D281EBE0016A38B /* pickSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D526781D281EBE0016A38B /* pickSelectTableViewCell.swift */; };
 		30F43EE81D077C3B005E3BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43EE71D077C3B005E3BEB /* AppDelegate.swift */; };
 		30F43EED1D077C3B005E3BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30F43EEB1D077C3B005E3BEB /* Main.storyboard */; };
 		30F43EEF1D077C3B005E3BEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30F43EEE1D077C3B005E3BEB /* Assets.xcassets */; };
@@ -138,6 +139,7 @@
 		30D028991D1AECD40050231C /* imagerie_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagerie_icon.png; sourceTree = "<group>"; };
 		30D0289A1D1AECD40050231C /* piqure_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piqure_icon.png; sourceTree = "<group>"; };
 		30D0289B1D1AECD40050231C /* stetho_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stetho_icon.png; sourceTree = "<group>"; };
+		30D526781D281EBE0016A38B /* pickSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = pickSelectTableViewCell.swift; path = ../pickSelectTableViewCell.swift; sourceTree = "<group>"; };
 		30F43EE41D077C3B005E3BEB /* SaisieMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaisieMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F43EE71D077C3B005E3BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30F43EEC1D077C3B005E3BEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				301825FF1D0F085700592CE9 /* examensTableViewController.swift */,
+				30D526781D281EBE0016A38B /* pickSelectTableViewCell.swift */,
 				308E7FCB1D1DA3F000AF225D /* AjoutInformationTableViewCell.swift */,
 				304B19F81D13F3490006DB4A /* selectionTableViewCell.swift */,
 				304B19F61D13E0DD0006DB4A /* checkTableViewCell.swift */,
@@ -520,6 +523,7 @@
 				30D0288F1D174F870050231C /* dataSave.swift in Sources */,
 				308E7FCA1D1D924800AF225D /* ExamenTree.swift in Sources */,
 				30D028911D18AA470050231C /* configurationViewController.swift in Sources */,
+				30D526791D281EBE0016A38B /* pickSelectTableViewCell.swift in Sources */,
 				308E7FD21D1F5A2300AF225D /* SaisieNombreViewController.swift in Sources */,
 				301825FC1D0F057A00592CE9 /* questionOuiNonTableViewCell.swift in Sources */,
 				308E7FCC1D1DA3F000AF225D /* AjoutInformationTableViewCell.swift in Sources */,

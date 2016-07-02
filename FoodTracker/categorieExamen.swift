@@ -79,11 +79,11 @@ class categorieExamen : NSObject , NSCoding {
                     if  examen.type ==  .reponsecourte || examen.type == .selection{
                         str += "\(examen.value), "
                     }
-                    if examen.type ==  .donnee {
-                        str += "\(examen.intitule)=\(examen.value), "
+                    if examen.type ==  .donnee  || examen.type == .datastr{
+                        str += "\(examen.intitule): \(examen.value), "
                     }
                     
-                }else if examen.type ==  .group {
+                }else if examen.type ==  .group  {
                     let str2=examen.categorie?.detailString()
                     if !(str2?.isEmpty)! {
                         str += catSeparator
@@ -123,7 +123,7 @@ class categorieExamen : NSObject , NSCoding {
                         if  examen.type ==  .reponsecourte || examen.type == .selection{
                             str += "\(examen.value), "
                         }
-                        if examen.type ==  .donnee {
+                        if examen.type ==  .donnee || examen.type == .datastr{
                             str += "\(examen.intitule)=\(examen.value), "
                         }
                         
