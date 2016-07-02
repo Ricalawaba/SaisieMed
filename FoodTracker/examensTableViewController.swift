@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import EasyTipView
 
 class examensTableViewController: UITableViewController,textSelectedDelegate, UITextFieldDelegate,dateSelectedDelegate, AjoutInformationDelegate,numberSelectedDelegate, saisieNombreDelegate {
     var categorie : categorieExamen.Categorie!
@@ -16,6 +17,24 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     func ajoutInformation(sender:AjoutInformationTableViewCell, examen: Examen) {
         let indextoInsert = categorie.examens.indexOf(examen)!
         
+        if examen.tag=="dupliquer" {
+            let prevExamen=categorie.examens[indextoInsert-1]
+            if prevExamen.intitule.containsString("Main") {
+                categorie.examens.insert(Examen(categorie: ExamTree.Main), atIndex: indextoInsert)
+            } else if prevExamen.intitule.containsString("Doigt") {
+                categorie.examens.insert(Examen(categorie: ExamTree.Doigt), atIndex: indextoInsert)
+            } else if prevExamen.intitule.containsString("Hanche") {
+                categorie.examens.insert(Examen(categorie: ExamTree.Hanche), atIndex: indextoInsert)
+            } else if prevExamen.intitule.containsString("Coude") {
+                categorie.examens.insert(Examen(categorie: ExamTree.Coude), atIndex: indextoInsert)
+            } else if prevExamen.intitule.containsString("Genou") {
+                categorie.examens.insert(Examen(categorie: ExamTree.Genou), atIndex: indextoInsert)
+            } else if prevExamen.intitule.containsString("Epaule") {
+                categorie.examens.insert(Examen(categorie: ExamTree.Epaule), atIndex: indextoInsert)
+            } else if prevExamen.intitule.containsString("Cheville") {
+                categorie.examens.insert(Examen(categorie: ExamTree.Cheville), atIndex: indextoInsert)
+            }
+        }
         if examen.tag=="atcd" {
             categorie.examens.insert(Examen(categorie: ExamTree.atcd), atIndex: indextoInsert)
         }
@@ -48,7 +67,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             categorie.examens.insert( ExamTree.ConnuClinique.asExamen(), atIndex: indextoInsert)
         }
         if examen.tag=="libre" {
-            categorie.examens.insert(Examen(intitule: "Libre", type:  .reponsecourte ), atIndex: indextoInsert)
+            categorie.examens.insert(Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre" ), atIndex: indextoInsert)
         }
 
         //tableView.sel
@@ -80,6 +99,11 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         }
     }
 
+    @IBAction func ajouterChampLibre(sender: UIBarButtonItem) {
+        //var categorie : categorieExamen.Categorie!
+        categorie.examens.append(ExamTree.libre)
+         tableView.reloadData()
+    }
     @IBAction func goPatient(sender: UIBarButtonItem) {
         self.navigationController!.popToViewController(DataSave.lastPatientVC!,animated: true)
     }
@@ -110,6 +134,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         let indexPath:NSIndexPath = self.tableView.indexPathForRowAtPoint(location)!
         ExamTaped = categorie.examens[indexPath.row]
         NSLog("Double tap sur \(ExamTaped?.intitule)")
+       // EasyTipView.Pref
     }
     @IBAction func tapRepCourte(sender: UITapGestureRecognizer) {
         if tableView.editing {return}
@@ -139,14 +164,19 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             examenSelected=ExamTaped
             svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
+            return
         }
-        if (ExamTaped!.tag == "Evenement" ){
+        let idfkey=Donnees.selectiontextDict.indexForKey((ExamTaped?.tag)!)
+        print(idfkey)
+        if ExamTaped?.type != .addinfo &&  (Donnees.selectiontextDict.indexForKey((ExamTaped?.tag)!) != nil) {
+      //  if (ExamTaped!.tag == "Evenement" ){
             
             let svc = self.storyboard?.instantiateViewControllerWithIdentifier("selectionViewID") as! selectionTexteTableViewController
             svc.textes = Donnees.selectiontextDict[ ExamTaped!.tag ]!
             examenSelected=ExamTaped
             svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
+            return
         }
 
         //  sender?.row

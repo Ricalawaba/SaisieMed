@@ -27,29 +27,31 @@ struct DataSave {
     static var lastPatientVC: saisieTableViewController!
     
     static func saveDataFiles(){
-        saveFileatcd()
-        saveFilemedecin()
-        saveFilemedicament()
-        saveFilelocalisation()
-        saveFilemotif()
-        saveFileetablissement()
-        saveFileposologie()
+//        saveFileatcd()
+//        saveFilemedecin()
+//        saveFilemedicament()
+//        saveFilelocalisation()
+//        saveFilemotif()
+//        saveFileetablissement()
+//        saveFileposologie()
+//        
+//        saveFileprofession()
+//        saveFileConclusionRx()
+        saveSelectionDictionary()
         saveFilePatients()
-        saveFileprofession()
-        saveFileConclusionRx()
         
     }
     static func loadDataFiles(){
-        loadFileatcd()
-        loadFilemedecin()
-        loadFilemedicament()
-        loadFilelocalisation()
-        loadFilemotif()
-        loadFileetablissement()
-        loadFileposologie()
-        loadFileConclusionRx()
-        loadFileprofession()
-
+//        loadFileatcd()
+//        loadFilemedecin()
+//        loadFilemedicament()
+//        loadFilelocalisation()
+//        loadFilemotif()
+//        loadFileetablissement()
+//        loadFileposologie()
+//        loadFileConclusionRx()
+//        loadFileprofession()
+        loadFileSelectionDictionary()
         // MARK: Uncomment to read patient data
         loadFilePatients()
             }
@@ -117,8 +119,17 @@ struct DataSave {
         return filename
         
     }
+    static var filePathSelectionDictionary : String {
+        let filename = getDocumentsDirectory().stringByAppendingPathComponent("saisiemed-dynamic.dat")
+        return filename
+        
+    }
 
     // MARK: Sauvegarde des fichiers de données
+    
+    static func saveSelectionDictionary() {
+        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict, toFile: filePathSelectionDictionary)
+    }
     static func saveFileAllergie() {
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["Allergie"]!, toFile: filePathAllergie)
     }
@@ -154,6 +165,14 @@ struct DataSave {
         NSKeyedArchiver.archiveRootObject(Donnees.listePatient, toFile: filePathPatients)
     }
     // MARK: Chargement des fichiers de données
+    
+    
+    static func loadFileSelectionDictionary() {
+        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathSelectionDictionary) as? [String :([String]) ]{
+            Donnees.selectiontextDict  = array
+        }    }
+
+    
     static func loadFileConclusionRx() {
         if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathConclusionRx) as? [String] {
             Donnees.selectiontextDict["ConclusionRx"] = array

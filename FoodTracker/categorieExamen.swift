@@ -102,7 +102,9 @@ class categorieExamen : NSObject , NSCoding {
         }
         func detailString() -> String {
                 var str: String = ""
+            var str2: String = ""
                 for  index in 0..<examens.count {
+                    str2=str
                     let examen=examens[index]
                     if !examen.value.isEmpty {
                         if examen.type ==  .ouinon || examen.type == .check {
@@ -131,10 +133,15 @@ class categorieExamen : NSObject , NSCoding {
                             if ((examen.categorie!.showNom) ) {
                                 str += "\(examen.intitule):"
                             }
+                           
                         str += "\(examen.categorie!.detailString())\(examen.info) "
                        // str = "<br>\(str)"
                         }
                     }
+                    // if !str.isEmpty
+                     if str2 != str  &&
+                     ( self.nom.containsString("de la clinique") || self.nom.containsString("comoteur")
+                     ){str = "<br>\(str)" }
                 }
                 if !str.isEmpty {str.removeAtIndex(str.endIndex.predecessor())
                 str.removeAtIndex(str.endIndex.predecessor())}
@@ -199,7 +206,7 @@ class categorieExamen : NSObject , NSCoding {
         let CatECG = Categorie(nom: "ECG",namedImage: "cardio_icon.png")
         let catECGConclusion = Categorie(nom: "Conclusion",namedImage: "cardio_icon.png")
         let examCatConclusion = [
-            Examen(intitule: "Libre", type:  .reponsecourte ),
+            Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre"),
             Examen(intitule: "ECG Normal", type: .check),
             Examen(intitule: "Pas de troubles de la conduction ou de repolarisation", type: .check),
             Examen(intitule: "Pas de troubles du rythme", type: .check),
@@ -222,7 +229,7 @@ class categorieExamen : NSObject , NSCoding {
         
         let catECG1 = Categorie(nom: "Paramètres Tracé",namedImage: "cardio_icon.png")
         let examcatECG1 = [
-             Examen(intitule: "Libre", type:  .reponsecourte ),
+             Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre"),
              Examen(intitule: "Qualité correcte", type:  .check ),
              Examen(intitule: "Tracé parasité", type:  .check ),
              Examen(intitule: "Microvoltage", type:  .check ),
@@ -242,7 +249,7 @@ class categorieExamen : NSObject , NSCoding {
         
         let CatECG2 = Categorie(nom: "Rythme/P/PR",namedImage: "cardio_icon.png")
         let examCatECG2=[
-                Examen(intitule: "Libre", type:  .reponsecourte ),
+                Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre"),
                 Examen(intitule: "Rythme régulier sinusal", type: .check),
                 Examen(intitule: "Rythme irrégulier", type: .check),
                 Examen(intitule: "non sinusal", type: .check),
@@ -265,7 +272,7 @@ class categorieExamen : NSObject , NSCoding {
         CatECG2.examens=examCatECG2
         let CatECG3 = Categorie(nom: "QRS",namedImage: "cardio_icon.png")
         let examCatECG3 = [
-            Examen(intitule: "Libre", type:  .reponsecourte ),
+            Examen(intitule: "Libre", type:  .reponsecourte,tag: "libre" ),
             Examen(intitule: "QRS fins", type: .check),
 
             Examen(intitule: "QRS Larges", type: .check),
@@ -285,7 +292,7 @@ class categorieExamen : NSObject , NSCoding {
         
         let CatECG4 = Categorie(nom: "ST",namedImage: "cardio_icon.png")
         let examCatECG4 = [
-            Examen(intitule: "Libre", type:  .reponsecourte ),
+            Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre"),
             Examen(intitule: "ST isoélectrique", type: .check),
             Examen(intitule: "ST sus-décalé", type: .donnee),
             Examen(intitule: "ST sous-decalé", type: .donnee),
@@ -295,7 +302,7 @@ class categorieExamen : NSObject , NSCoding {
         
         let CatECG5 = Categorie(nom: "T/U ",namedImage: "cardio_icon.png")
         let examCatECG5 = [
-            Examen(intitule: "Libre", type:  .reponsecourte ),
+            Examen(intitule: "Libre", type:  .reponsecourte,tag: "libre" ),
             Examen(intitule: "Ondes T normales", type: .check),
             Examen(intitule: "Ondes T aplatis", type: .donnee),
             Examen(intitule: "Ondes T pointues assymétriques", type: .donnee),
@@ -306,8 +313,10 @@ class categorieExamen : NSObject , NSCoding {
 
         CatECG.examens = [
             Examen(intitule: "horodatage", type:  .reponsecourte,tag: "date" ),
+            Examen(intitule: "Douleur thoracique au moment de l'examen", type: .ouinon),
+            Examen(intitule: "ECG de contrôle", type: .check),
             Examen(categorie: catECGConclusion),
-            Examen(intitule: "libre", type: .reponsecourte),
+            Examen(intitule: "libre", type: .reponsecourte,tag: "libre"),
             Examen(categorie: catECG1),
             Examen(categorie: CatECG2),
             Examen(categorie: CatECG3),
@@ -343,7 +352,7 @@ class categorieExamen : NSObject , NSCoding {
             Examen(intitule: "Nitrites", type: .donnee),
             Examen(intitule: "Corps cétoniques", type: .donnee),
             Examen(intitule: "ECBU demandé", type: .check),
-            Examen(intitule: "Libre", type:  .reponsecourte ),
+            Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre"),
             
             ]
         catBandelette.examens=examCatBandelette

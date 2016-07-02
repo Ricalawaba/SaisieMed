@@ -119,11 +119,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setDefaultConclusionRx()
         setDefaultEvenement()
         setDefaultAllergie()
-
+        Donnees.selectiontextDict["libre"]=["test"]
+        
         // MARK: Uncomment to read data files
         
         DataSave.loadDataFiles()
         
+        if Donnees.selectiontextDict["libre"] == nil { Donnees.selectiontextDict["libre"] = [] }
+        if Donnees.selectiontextDict["conclusionrx"] == nil { Donnees.selectiontextDict["conclusionrx"] = [] }
         /*var filemgr = NSFileManager.defaultManager()
         if filemgr.fileExistsAtPath(filePathPatients) {
             print("File exists")

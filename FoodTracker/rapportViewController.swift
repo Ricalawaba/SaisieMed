@@ -9,7 +9,19 @@
 import UIKit
 import MessageUI
 class rapportViewController: UIViewController ,MFMailComposeViewControllerDelegate  {
+    @IBAction func patientButtonAction(sender: UIBarButtonItem) {
+        self.navigationController!.popToViewController(DataSave.lastPatientVC!,animated: true)
+    }
 
+    @IBAction func accueilButtonAction(sender: UIBarButtonItem) {
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
+        for aViewController in viewControllers {
+            if(aViewController is patientTableViewController){
+                self.navigationController!.popToViewController(aViewController, animated: true);
+            }
+        }
+
+    }
     @IBAction func MailData(sender: UIBarButtonItem) {
         let email = MFMailComposeViewController()
         email.mailComposeDelegate = self
@@ -37,8 +49,8 @@ class rapportViewController: UIViewController ,MFMailComposeViewControllerDelega
         if directHTML != nil {
             myHTMLString=directHTML!
         }
-        else if uneCategorie == nil {
-            myHTMLString = patient.DetailedString()
+        else if uneCategorie == nil  {
+            myHTMLString += patient.DetailedString()
             
         } else {
             myHTMLString = "<H2>\(uneCategorie!.nom)</H2>"
