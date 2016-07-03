@@ -25,6 +25,10 @@ class configurationViewController: UIViewController,dateSelectedDelegate {
         Donnees.listePatient.patients.removeAll()
         
     }
+    @IBAction func pluginFormButtonAction(sender: UIButton) {
+        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
+         self.navigationController!.pushViewController(svc,animated: true)
+    }
     
     @IBAction func testSelectionNombreAction(sender: UIButton) {
         let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController

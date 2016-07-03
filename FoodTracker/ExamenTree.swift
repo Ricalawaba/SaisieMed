@@ -319,12 +319,16 @@ struct ExamTree {
     }
     
     static var TA:categorieExamen.Categorie {
+        setTensionMultiRow()
         let catTA = categorieExamen.Categorie(nom:"Tension artérielle",namedImage: "tension.png",showNom: false)
         let examCatTA = [
             tensionMultirow,
-            Examen(intitule: "TA", type:  .donnee ,tag :"tension"),
-            Examen(intitule: "TA bras droit", type:  .donnee ,tag :"tension"),
-            Examen(intitule: "TA bras gauche", type:  .donnee ,tag :"tension"),
+            Examen(intitule: "Tension bras droit", type: .multirowdatastr , tag: "tensionMultirow"),
+            Examen(intitule: "Tension bras gauche", type: .multirowdatastr , tag: "tensionMultirow"),
+            Examen(intitule: "Tension cheville droite", type: .multirowdatastr , tag: "tensionMultirow"),
+            Examen(intitule: "Tension cheville gauche", type: .multirowdatastr , tag: "tensionMultirow"),
+            
+            Examen(intitule: "Index Pression Cheville (0,9<1,3)", type:  .donnee ,tag :"tension"),
             
             ]
         catTA.examens=examCatTA
@@ -738,6 +742,8 @@ static var Face:categorieExamen.Categorie {
             Examen(intitule: "Communication altérée", type:  .check ),
             Examen(intitule: "Compréhension difficile", type:  .check ),
             Examen(intitule: "Conscient", type:  .check ),
+            Examen(intitule: "Orienté", type:  .check ),
+            Examen(intitule: "Ralentissement psychomoteur", type:  .check ),
             Examen(intitule: "Glasgow", type:  .donnee , tag: "glasgow"),
             Examen(intitule: "D.T.S.", type:  .ouinon ),
             Examen(intitule: "Confusion", type:  .ouinon ),
@@ -1364,9 +1370,7 @@ static var Face:categorieExamen.Categorie {
         return Examen(intitule: "Temp.", type: .multirowdatastr , tag: "temperatureMultirow")
         // return catOMS
     }
-
-    static var tensionMultirow:Examen {
-        
+    private static func setTensionMultiRow() {
         if  Donnees.multiColumnPickerDataStr["tensionMultirow"] == nil {
             var degre=[String]()
             for x in 5..<30 {
@@ -1382,7 +1386,11 @@ static var Face:categorieExamen.Categorie {
             Donnees.multiColumnPickerDataStr["tensionMultirow"] = [degre,dixieme,["/"],degre,dixieme]
             
         }
+ 
+    }
+    static var tensionMultirow:Examen {
         
+        setTensionMultiRow()
         return Examen(intitule: "Tension ", type: .multirowdatastr , tag: "tensionMultirow")
         // return catOMS
     }
@@ -1395,6 +1403,7 @@ static var Face:categorieExamen.Categorie {
             Examen(intitule: "Adénopathie inguinale", type: .ouinon),
             Examen(intitule: "Adénopathie axillaire", type: .ouinon),
             Examen(intitule: "Adénopathie cervicale", type: .ouinon),
+            Examen(intitule: "Adénopathie sus-claviculaire", type: .ouinon),
             LocAnat.asExamen(),
             
             // Examen(intitule: "Xie", type:  .check ,info: " "),

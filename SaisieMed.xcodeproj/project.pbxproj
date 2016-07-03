@@ -58,6 +58,7 @@
 		30D0289E1D1AECD40050231C /* stetho_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D0289B1D1AECD40050231C /* stetho_icon.png */; };
 		30D526791D281EBE0016A38B /* pickSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D526781D281EBE0016A38B /* pickSelectTableViewCell.swift */; };
 		30D5267B1D2863260016A38B /* fracture_femur.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D5267A1D2863260016A38B /* fracture_femur.png */; };
+		30D5267D1D29233B0016A38B /* pluginFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D5267C1D29233B0016A38B /* pluginFormViewController.swift */; };
 		30F43EE81D077C3B005E3BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43EE71D077C3B005E3BEB /* AppDelegate.swift */; };
 		30F43EED1D077C3B005E3BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30F43EEB1D077C3B005E3BEB /* Main.storyboard */; };
 		30F43EEF1D077C3B005E3BEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30F43EEE1D077C3B005E3BEB /* Assets.xcassets */; };
@@ -142,6 +143,7 @@
 		30D0289B1D1AECD40050231C /* stetho_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stetho_icon.png; sourceTree = "<group>"; };
 		30D526781D281EBE0016A38B /* pickSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = pickSelectTableViewCell.swift; path = ../pickSelectTableViewCell.swift; sourceTree = "<group>"; };
 		30D5267A1D2863260016A38B /* fracture_femur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fracture_femur.png; sourceTree = "<group>"; };
+		30D5267C1D29233B0016A38B /* pluginFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pluginFormViewController.swift; sourceTree = "<group>"; };
 		30F43EE41D077C3B005E3BEB /* SaisieMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaisieMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F43EE71D077C3B005E3BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30F43EEC1D077C3B005E3BEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				30F43EEB1D077C3B005E3BEB /* Main.storyboard */,
+				30D5267C1D29233B0016A38B /* pluginFormViewController.swift */,
 				30F43EE61D077C3B005E3BEB /* SaisieMed */,
 				30F43EFB1D077C3B005E3BEB /* SaisieMedTests */,
 				30F43EE51D077C3B005E3BEB /* Products */,
@@ -530,6 +533,7 @@
 				30D526791D281EBE0016A38B /* pickSelectTableViewCell.swift in Sources */,
 				308E7FD21D1F5A2300AF225D /* SaisieNombreViewController.swift in Sources */,
 				301825FC1D0F057A00592CE9 /* questionOuiNonTableViewCell.swift in Sources */,
+				30D5267D1D29233B0016A38B /* pluginFormViewController.swift in Sources */,
 				308E7FCC1D1DA3F000AF225D /* AjoutInformationTableViewCell.swift in Sources */,
 				304B19FD1D14174C0006DB4A /* selectionTexteTableViewController.swift in Sources */,
 				304B19FB1D1413540006DB4A /* Examen.swift in Sources */,
