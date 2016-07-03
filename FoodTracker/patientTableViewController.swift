@@ -132,10 +132,10 @@ class patientTableViewController: UITableViewController,ajoutPatientDelegate {
         cell.motif?.text = "\(patient.motif) [\(patient.DetailedString().characters.count)]"
         var imagesymbol: UIImage
         if patient.masculin {
-             imagesymbol = UIImage(named:  "hommesymbol.png")!
+             imagesymbol = UIImage(named:  "tete_icon.png")!
         } else
         {
-            imagesymbol = UIImage(named:  "femmesymbol.png")!
+            imagesymbol = UIImage(named:  "gyneco_icon.png")!
         }
         
         cell.imageSex.image=imagesymbol

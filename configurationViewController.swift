@@ -10,7 +10,7 @@ import UIKit
 
 class configurationViewController: UIViewController,dateSelectedDelegate {
 
-    func dateSelected(sender: selectDateViewController, text: String, date: NSDate) {
+    func dateSelected(sender: UIViewController, text: String, date: NSDate) {
         self.title=text
         // create the alert
         let alert = UIAlertController(title: "Selection date", message: text, preferredStyle: UIAlertControllerStyle.Alert)

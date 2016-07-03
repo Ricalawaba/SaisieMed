@@ -112,7 +112,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         svc.uneCategorie=self.categorie
         self.navigationController!.pushViewController(svc,animated: true)
     }
-    func dateSelected(sender: selectDateViewController, text: String, date: NSDate) {
+    func dateSelected(sender: UIViewController, text: String, date: NSDate) {
 
         ExamTaped!.value=text
         tableView.reloadData()
@@ -184,7 +184,10 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         
 
         if ExamTaped!.tag == "date" {
-            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectDateViewControler") as! selectDateViewController
+            //let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectDateViewControler") as! selectDateViewController
+            
+                let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("dateDureeViewID") as! dateDureeViewController
+            
             svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
         }

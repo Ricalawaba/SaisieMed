@@ -49,6 +49,16 @@
 		308E7FE31D2486E500AF225D /* peau_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 308E7FDA1D2486E500AF225D /* peau_icon.png */; };
 		308E7FE41D2486E500AF225D /* bouche_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 308E7FDB1D2486E500AF225D /* bouche_icon.png */; };
 		308E7FE51D2486E500AF225D /* oeil_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 308E7FDC1D2486E500AF225D /* oeil_icon.png */; };
+		30905F7F1D297736002F023D /* femmesymbol.png in Resources */ = {isa = PBXBuildFile; fileRef = 30905F7D1D297736002F023D /* femmesymbol.png */; };
+		30905F801D297736002F023D /* hommesymbol.png in Resources */ = {isa = PBXBuildFile; fileRef = 30905F7E1D297736002F023D /* hommesymbol.png */; };
+		30905F871D29777B002F023D /* cardio2_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30905F811D29777B002F023D /* cardio2_icon.png */; };
+		30905F881D29777B002F023D /* cardio_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30905F821D29777B002F023D /* cardio_icon.png */; };
+		30905F891D29777B002F023D /* pneumo_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30905F831D29777B002F023D /* pneumo_icon.png */; };
+		30905F8A1D29777B002F023D /* neuro_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30905F841D29777B002F023D /* neuro_icon.png */; };
+		30905F8B1D29777B002F023D /* femme.png in Resources */ = {isa = PBXBuildFile; fileRef = 30905F851D29777B002F023D /* femme.png */; };
+		30905F8C1D29777B002F023D /* Homme.png in Resources */ = {isa = PBXBuildFile; fileRef = 30905F861D29777B002F023D /* Homme.png */; };
+		30905F8E1D29788A002F023D /* dateDureeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30905F8D1D29788A002F023D /* dateDureeViewController.swift */; };
+		30A1900C1D2974E6001690C1 /* medecin-icone.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A1900B1D2974E6001690C1 /* medecin-icone.png */; };
 		30D0288F1D174F870050231C /* dataSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D0288E1D174F870050231C /* dataSave.swift */; };
 		30D028911D18AA470050231C /* configurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D028901D18AA470050231C /* configurationViewController.swift */; };
 		30D028931D195A9D0050231C /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D028921D195A9D0050231C /* MonthYearPickerView.swift */; };
@@ -67,14 +77,6 @@
 		30F43F0E1D0E26D6005E3BEB /* patientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43F0D1D0E26D6005E3BEB /* patientTableViewController.swift */; };
 		30F43F101D0E27FE005E3BEB /* patientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43F0F1D0E27FE005E3BEB /* patientTableViewCell.swift */; };
 		30F43F121D0E5090005E3BEB /* patientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43F111D0E508F005E3BEB /* patientInfo.swift */; };
-		30F43F1B1D0EA248005E3BEB /* cardio_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F43F131D0EA248005E3BEB /* cardio_icon.png */; };
-		30F43F1C1D0EA248005E3BEB /* cardio2_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F43F141D0EA248005E3BEB /* cardio2_icon.png */; };
-		30F43F1D1D0EA248005E3BEB /* femme.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F43F151D0EA248005E3BEB /* femme.png */; };
-		30F43F1E1D0EA248005E3BEB /* femmesymbol.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F43F161D0EA248005E3BEB /* femmesymbol.png */; };
-		30F43F1F1D0EA248005E3BEB /* Homme.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F43F171D0EA248005E3BEB /* Homme.png */; };
-		30F43F201D0EA248005E3BEB /* hommesymbol.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F43F181D0EA248005E3BEB /* hommesymbol.png */; };
-		30F43F211D0EA248005E3BEB /* neuro_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F43F191D0EA248005E3BEB /* neuro_icon.png */; };
-		30F43F221D0EA248005E3BEB /* pneumo_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F43F1A1D0EA248005E3BEB /* pneumo_icon.png */; };
 		30F43F271D0ED1DC005E3BEB /* AjoutPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43F261D0ED1DC005E3BEB /* AjoutPatientViewController.swift */; };
 		30F43F291D0EE751005E3BEB /* saisieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43F281D0EE751005E3BEB /* saisieTableViewController.swift */; };
 		30F43F2B1D0EE789005E3BEB /* saisieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43F2A1D0EE789005E3BEB /* saisieTableViewCell.swift */; };
@@ -134,6 +136,16 @@
 		308E7FDA1D2486E500AF225D /* peau_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = peau_icon.png; sourceTree = "<group>"; };
 		308E7FDB1D2486E500AF225D /* bouche_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bouche_icon.png; sourceTree = "<group>"; };
 		308E7FDC1D2486E500AF225D /* oeil_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oeil_icon.png; sourceTree = "<group>"; };
+		30905F7D1D297736002F023D /* femmesymbol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = femmesymbol.png; sourceTree = "<group>"; };
+		30905F7E1D297736002F023D /* hommesymbol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hommesymbol.png; sourceTree = "<group>"; };
+		30905F811D29777B002F023D /* cardio2_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cardio2_icon.png; sourceTree = "<group>"; };
+		30905F821D29777B002F023D /* cardio_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cardio_icon.png; sourceTree = "<group>"; };
+		30905F831D29777B002F023D /* pneumo_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pneumo_icon.png; sourceTree = "<group>"; };
+		30905F841D29777B002F023D /* neuro_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = neuro_icon.png; sourceTree = "<group>"; };
+		30905F851D29777B002F023D /* femme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = femme.png; sourceTree = "<group>"; };
+		30905F861D29777B002F023D /* Homme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Homme.png; sourceTree = "<group>"; };
+		30905F8D1D29788A002F023D /* dateDureeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dateDureeViewController.swift; sourceTree = "<group>"; };
+		30A1900B1D2974E6001690C1 /* medecin-icone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "medecin-icone.png"; sourceTree = "<group>"; };
 		30D0288E1D174F870050231C /* dataSave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataSave.swift; sourceTree = "<group>"; };
 		30D028901D18AA470050231C /* configurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = configurationViewController.swift; sourceTree = "<group>"; };
 		30D028921D195A9D0050231C /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
@@ -156,14 +168,6 @@
 		30F43F0D1D0E26D6005E3BEB /* patientTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = patientTableViewController.swift; sourceTree = "<group>"; };
 		30F43F0F1D0E27FE005E3BEB /* patientTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = patientTableViewCell.swift; sourceTree = "<group>"; };
 		30F43F111D0E508F005E3BEB /* patientInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = patientInfo.swift; sourceTree = "<group>"; };
-		30F43F131D0EA248005E3BEB /* cardio_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cardio_icon.png; path = ../../../image/cardio_icon.png; sourceTree = "<group>"; };
-		30F43F141D0EA248005E3BEB /* cardio2_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cardio2_icon.png; path = ../../../image/cardio2_icon.png; sourceTree = "<group>"; };
-		30F43F151D0EA248005E3BEB /* femme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = femme.png; path = ../../../image/femme.png; sourceTree = "<group>"; };
-		30F43F161D0EA248005E3BEB /* femmesymbol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = femmesymbol.png; path = ../../../image/femmesymbol.png; sourceTree = "<group>"; };
-		30F43F171D0EA248005E3BEB /* Homme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Homme.png; path = ../../../image/Homme.png; sourceTree = "<group>"; };
-		30F43F181D0EA248005E3BEB /* hommesymbol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hommesymbol.png; path = ../../../image/hommesymbol.png; sourceTree = "<group>"; };
-		30F43F191D0EA248005E3BEB /* neuro_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = neuro_icon.png; path = ../../../image/neuro_icon.png; sourceTree = "<group>"; };
-		30F43F1A1D0EA248005E3BEB /* pneumo_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pneumo_icon.png; path = ../../../image/pneumo_icon.png; sourceTree = "<group>"; };
 		30F43F261D0ED1DC005E3BEB /* AjoutPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AjoutPatientViewController.swift; path = ../AjoutPatientViewController.swift; sourceTree = "<group>"; };
 		30F43F281D0EE751005E3BEB /* saisieTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = saisieTableViewController.swift; sourceTree = "<group>"; };
 		30F43F2A1D0EE789005E3BEB /* saisieTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = saisieTableViewCell.swift; sourceTree = "<group>"; };
@@ -246,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				30F43EEB1D077C3B005E3BEB /* Main.storyboard */,
+				30905F8D1D29788A002F023D /* dateDureeViewController.swift */,
 				30D5267C1D29233B0016A38B /* pluginFormViewController.swift */,
 				30F43EE61D077C3B005E3BEB /* SaisieMed */,
 				30F43EFB1D077C3B005E3BEB /* SaisieMedTests */,
@@ -300,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				301C08601D25877200E79763 /* examenclinique.png */,
+				30A1900B1D2974E6001690C1 /* medecin-icone.png */,
 				301C08611D25877200E79763 /* scan.png */,
 				301C08621D25877200E79763 /* laboratoire.png */,
 				301C08631D25877200E79763 /* dossier.png */,
@@ -325,20 +331,20 @@
 				3018260B1D10ABA900592CE9 /* main_icon.png */,
 				3018260C1D10ABA900592CE9 /* gyneco_icon.png */,
 				3018260D1D10ABA900592CE9 /* uro_icon.png */,
+				30905F7D1D297736002F023D /* femmesymbol.png */,
+				30905F7E1D297736002F023D /* hommesymbol.png */,
 				301825F91D0F009F00592CE9 /* os_icon.png */,
 				301826021D0F834500592CE9 /* pancarte_icon.png */,
 				301825F11D0EFFB400592CE9 /* administratif_icon.png */,
 				301825F21D0EFFB400592CE9 /* digestif_icon.png */,
+				30905F811D29777B002F023D /* cardio2_icon.png */,
+				30905F821D29777B002F023D /* cardio_icon.png */,
+				30905F831D29777B002F023D /* pneumo_icon.png */,
+				30905F841D29777B002F023D /* neuro_icon.png */,
+				30905F851D29777B002F023D /* femme.png */,
+				30905F861D29777B002F023D /* Homme.png */,
 				301825F31D0EFFB400592CE9 /* tete_icon.png */,
-				30F43F131D0EA248005E3BEB /* cardio_icon.png */,
-				30F43F141D0EA248005E3BEB /* cardio2_icon.png */,
-				30F43F151D0EA248005E3BEB /* femme.png */,
-				30F43F161D0EA248005E3BEB /* femmesymbol.png */,
-				30F43F171D0EA248005E3BEB /* Homme.png */,
-				30F43F181D0EA248005E3BEB /* hommesymbol.png */,
 				301825F71D0F005000592CE9 /* nurse_icon.png */,
-				30F43F191D0EA248005E3BEB /* neuro_icon.png */,
-				30F43F1A1D0EA248005E3BEB /* pneumo_icon.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -447,42 +453,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				301826031D0F834500592CE9 /* pancarte_icon.png in Resources */,
-				30F43F211D0EA248005E3BEB /* neuro_icon.png in Resources */,
+				30905F871D29777B002F023D /* cardio2_icon.png in Resources */,
 				301826131D10ABAA00592CE9 /* main_icon.png in Resources */,
 				30D5267B1D2863260016A38B /* fracture_femur.png in Resources */,
-				30F43F1D1D0EA248005E3BEB /* femme.png in Resources */,
 				308E7FE21D2486E500AF225D /* chirurgien_icon.png in Resources */,
 				301C08681D25877200E79763 /* dossier.png in Resources */,
-				30F43F201D0EA248005E3BEB /* hommesymbol.png in Resources */,
 				308E7FE31D2486E500AF225D /* peau_icon.png in Resources */,
 				301826101D10ABAA00592CE9 /* nez_icon.png in Resources */,
 				3018260E1D10ABAA00592CE9 /* rein_icon.png in Resources */,
 				301826121D10ABAA00592CE9 /* pied_icon.png in Resources */,
-				30F43F1B1D0EA248005E3BEB /* cardio_icon.png in Resources */,
+				30905F8C1D29777B002F023D /* Homme.png in Resources */,
 				308E7FDF1D2486E500AF225D /* thermo_icon.png in Resources */,
 				308E7FDD1D2486E500AF225D /* tablets_icon.png in Resources */,
 				301826111D10ABAA00592CE9 /* oreille_icon.png in Resources */,
 				301825F81D0F005000592CE9 /* nurse_icon.png in Resources */,
+				30905F8A1D29777B002F023D /* neuro_icon.png in Resources */,
 				3018260F1D10ABAA00592CE9 /* medoc_icon.png in Resources */,
 				301825F41D0EFFB400592CE9 /* administratif_icon.png in Resources */,
 				301C08661D25877200E79763 /* scan.png in Resources */,
 				30D0289C1D1AECD40050231C /* imagerie_icon.png in Resources */,
 				301826151D10ABAA00592CE9 /* uro_icon.png in Resources */,
-				30F43F221D0EA248005E3BEB /* pneumo_icon.png in Resources */,
 				308E7FE41D2486E500AF225D /* bouche_icon.png in Resources */,
+				30905F881D29777B002F023D /* cardio_icon.png in Resources */,
 				301C08671D25877200E79763 /* laboratoire.png in Resources */,
 				301825F61D0EFFB400592CE9 /* tete_icon.png in Resources */,
 				30D0289E1D1AECD40050231C /* stetho_icon.png in Resources */,
 				301825FA1D0F009F00592CE9 /* os_icon.png in Resources */,
 				308E7FE11D2486E500AF225D /* medecin_icon.png in Resources */,
+				30905F891D29777B002F023D /* pneumo_icon.png in Resources */,
+				30A1900C1D2974E6001690C1 /* medecin-icone.png in Resources */,
 				308E7FE01D2486E500AF225D /* ambulance_icon.png in Resources */,
-				30F43F1F1D0EA248005E3BEB /* Homme.png in Resources */,
+				30905F801D297736002F023D /* hommesymbol.png in Resources */,
 				301825F51D0EFFB400592CE9 /* digestif_icon.png in Resources */,
 				308E7FDE1D2486E500AF225D /* lit_icon.png in Resources */,
-				30F43F1E1D0EA248005E3BEB /* femmesymbol.png in Resources */,
+				30905F8B1D29777B002F023D /* femme.png in Resources */,
+				30905F7F1D297736002F023D /* femmesymbol.png in Resources */,
 				30F43EF21D077C3B005E3BEB /* LaunchScreen.storyboard in Resources */,
 				301C08691D25877200E79763 /* tension.png in Resources */,
-				30F43F1C1D0EA248005E3BEB /* cardio2_icon.png in Resources */,
 				30F43EEF1D077C3B005E3BEB /* Assets.xcassets in Resources */,
 				301C08651D25877200E79763 /* examenclinique.png in Resources */,
 				30F43EED1D077C3B005E3BEB /* Main.storyboard in Resources */,
@@ -524,6 +531,7 @@
 			files = (
 				301825FE1D0F06E000592CE9 /* reponsecourteTableViewCell.swift in Sources */,
 				304B19F91D13F3490006DB4A /* selectionTableViewCell.swift in Sources */,
+				30905F8E1D29788A002F023D /* dateDureeViewController.swift in Sources */,
 				301826001D0F085700592CE9 /* examensTableViewController.swift in Sources */,
 				308E7FD01D1EA26700AF225D /* selectNumberViewController.swift in Sources */,
 				30F43EE81D077C3B005E3BEB /* AppDelegate.swift in Sources */,

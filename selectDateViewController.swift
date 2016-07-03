@@ -8,7 +8,7 @@
 
 import UIKit
 protocol dateSelectedDelegate {
-    func dateSelected(sender:selectDateViewController, text:String,date:NSDate)
+    func dateSelected(sender:UIViewController, text:String,date:NSDate)
     
 }
 
