@@ -57,6 +57,7 @@
 		30D0289D1D1AECD40050231C /* piqure_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D0289A1D1AECD40050231C /* piqure_icon.png */; };
 		30D0289E1D1AECD40050231C /* stetho_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D0289B1D1AECD40050231C /* stetho_icon.png */; };
 		30D526791D281EBE0016A38B /* pickSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D526781D281EBE0016A38B /* pickSelectTableViewCell.swift */; };
+		30D5267B1D2863260016A38B /* fracture_femur.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D5267A1D2863260016A38B /* fracture_femur.png */; };
 		30F43EE81D077C3B005E3BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43EE71D077C3B005E3BEB /* AppDelegate.swift */; };
 		30F43EED1D077C3B005E3BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30F43EEB1D077C3B005E3BEB /* Main.storyboard */; };
 		30F43EEF1D077C3B005E3BEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30F43EEE1D077C3B005E3BEB /* Assets.xcassets */; };
@@ -140,6 +141,7 @@
 		30D0289A1D1AECD40050231C /* piqure_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piqure_icon.png; sourceTree = "<group>"; };
 		30D0289B1D1AECD40050231C /* stetho_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stetho_icon.png; sourceTree = "<group>"; };
 		30D526781D281EBE0016A38B /* pickSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = pickSelectTableViewCell.swift; path = ../pickSelectTableViewCell.swift; sourceTree = "<group>"; };
+		30D5267A1D2863260016A38B /* fracture_femur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fracture_femur.png; sourceTree = "<group>"; };
 		30F43EE41D077C3B005E3BEB /* SaisieMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaisieMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F43EE71D077C3B005E3BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30F43EEC1D077C3B005E3BEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				301C08611D25877200E79763 /* scan.png */,
 				301C08621D25877200E79763 /* laboratoire.png */,
 				301C08631D25877200E79763 /* dossier.png */,
+				30D5267A1D2863260016A38B /* fracture_femur.png */,
 				301C08641D25877200E79763 /* tension.png */,
 				308E7FD41D2486E500AF225D /* tablets_icon.png */,
 				308E7FD51D2486E500AF225D /* lit_icon.png */,
@@ -443,6 +446,7 @@
 				301826031D0F834500592CE9 /* pancarte_icon.png in Resources */,
 				30F43F211D0EA248005E3BEB /* neuro_icon.png in Resources */,
 				301826131D10ABAA00592CE9 /* main_icon.png in Resources */,
+				30D5267B1D2863260016A38B /* fracture_femur.png in Resources */,
 				30F43F1D1D0EA248005E3BEB /* femme.png in Resources */,
 				308E7FE21D2486E500AF225D /* chirurgien_icon.png in Resources */,
 				301C08681D25877200E79763 /* dossier.png in Resources */,

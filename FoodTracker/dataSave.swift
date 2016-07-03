@@ -21,6 +21,7 @@ struct Donnees {
     static var listePatient = patients()
     static var listeCategorie = categorieExamen()
     static var selectiontextDict = [String: ([String]) ]()
+    static var multiColumnPickerDataStr = [String: [([String])] ]()
     
 }
 // MARK: Structure statiques d'accès aux fichiers de données

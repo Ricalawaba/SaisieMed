@@ -79,18 +79,18 @@ class categorieExamen : NSObject , NSCoding {
                     if  examen.type ==  .reponsecourte || examen.type == .selection{
                         str += "\(examen.value), "
                     }
-                    if examen.type ==  .donnee  || examen.type == .datastr{
-                        str += "\(examen.intitule): \(examen.value), "
+                    if examen.type ==  .donnee  || examen.type == .datastr || examen.type == Examen.ExamenEnum.multirowdatastr {
+                        str += "\(examen.intitule): \(examen.value)\(examen.info) "
                     }
                     
                 }else if examen.type ==  .group  {
-                    let str2=examen.categorie?.detailString()
+                    let str2=examen.categorie?.formattedDetaiString()
                     if !(str2?.isEmpty)! {
                         str += catSeparator
                         if ((examen.categorie!.showNom) ) {
                             str += "<u>\(examen.intitule)</u>:<br>"
                         }
-                        str += "\(examen.categorie!.detailString())\(examen.info) "
+                        str += "\(str2!)\(examen.info) "
                     }
                 }
             }
@@ -123,7 +123,7 @@ class categorieExamen : NSObject , NSCoding {
                         if  examen.type ==  .reponsecourte || examen.type == .selection{
                             str += "\(examen.value), "
                         }
-                        if examen.type ==  .donnee || examen.type == .datastr{
+                        if examen.type ==  .donnee || examen.type == .datastr || examen.type == Examen.ExamenEnum.multirowdatastr{
                             str += "\(examen.intitule)=\(examen.value), "
                         }
                         

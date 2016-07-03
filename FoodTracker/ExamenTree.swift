@@ -321,6 +321,7 @@ struct ExamTree {
     static var TA:categorieExamen.Categorie {
         let catTA = categorieExamen.Categorie(nom:"Tension artérielle",namedImage: "tension.png",showNom: false)
         let examCatTA = [
+            tensionMultirow,
             Examen(intitule: "TA", type:  .donnee ,tag :"tension"),
             Examen(intitule: "TA bras droit", type:  .donnee ,tag :"tension"),
             Examen(intitule: "TA bras gauche", type:  .donnee ,tag :"tension"),
@@ -348,6 +349,7 @@ struct ExamTree {
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
             Examen(categorie: self.TA),
             Examen(intitule: "FC", type:  .donnee,tag: "FC" ),
+            self.temperatureMultirow,
             Examen(intitule: "T°", type:  .donnee ),
             Examen(intitule: "EVA", type:  .donnee,tag: "EVA" ),
             Examen(intitule: "SaO2% Air Ambiant", type:  .donnee, tag: "sao2" ),
@@ -983,6 +985,7 @@ static var Face:categorieExamen.Categorie {
         catSuiviEvolution.examens=examCatSuiviEvolution
         return catSuiviEvolution
     }
+
     static var Radiographie:categorieExamen.Categorie {
         let catRadiographie = categorieExamen.Categorie(nom:"Radiographies",namedImage: "imagerie_icon.png",showNom: true)
         let examCatRadiographie = [
@@ -1333,10 +1336,58 @@ static var Face:categorieExamen.Categorie {
             "Zubrod/OMS 3: Capable seulement de quelques activités ou en chaise plus de 50% du temps",
             "Zubrod/OMS 4: Incapable de prendre soin de soi-même. Alité ou en chaise en permanence",
             ]
-        return Examen(intitule: "Echelle Zubrod/OMS", type: .datastr, tag: "dataStrZubrodOMS")
+        return Examen(intitule: "Echelle Zubrod/OMS", type: .datastr, tag: "dataStrZubrodOMS",info: "<br>")
                // return catOMS
     }
+    
+    
+//    static var Organe:Examen{
+//        Donnees.selectiontextDict["dataStrOrgane"]=[
+//            " 0: capable d'une activité identique à celle précédant la maladie",
+//            " 1: activité physique diminuée, mais ambulatoire et capable de mener un travail",
+//            " 2: ambulatoire et capable de prendre soin de soi-même. Incapable de travailler et alité moins de 50% du temps",
+//            " 3: Capable seulement de quelques activités ou en chaise plus de 50% du temps",
+//            " 4: Incapable de prendre soin de soi-même. Alité ou en chaise en permanence",
+//        ]
+//        return Examen(intitule: "Echelle Zubrod/OMS", type: .datastr, tag: "dataStrZubrodOMS",info: "<br>")
+//    }
+    static var temperatureMultirow:Examen {
+        
+        if  Donnees.multiColumnPickerDataStr["temperatureMultirow"] == nil {
+            
+            let  degre = ["34","35","36","37","38","39","40","41","42","43"]
+            let dixieme = [",0°C",",1°C",",2°C",",3°C",",4°C",",5°C",",6°C",",7°C",",8°C",",9°C"]
+            Donnees.multiColumnPickerDataStr["temperatureMultirow"] = [degre,dixieme]
+            
+        }
 
+        return Examen(intitule: "Temp.", type: .multirowdatastr , tag: "temperatureMultirow")
+        // return catOMS
+    }
+
+    static var tensionMultirow:Examen {
+        
+        if  Donnees.multiColumnPickerDataStr["tensionMultirow"] == nil {
+            var degre=[String]()
+            for x in 5..<30 {
+                degre.append(String(x))
+            }
+            var dixieme = [String]()
+            for x in 0..<10 {
+                dixieme.append(String(x))
+            }
+            
+            //let  degre = ["34","35","36","37","38","39","40","41","42","43"]
+            //let dixieme = [",0°C",",1°C",",2°C",",3°C",",4°C",",5°C",",6°C",",7°C",",8°C",",9°C"]
+            Donnees.multiColumnPickerDataStr["tensionMultirow"] = [degre,dixieme,["/"],degre,dixieme]
+            
+        }
+        
+        return Examen(intitule: "Tension ", type: .multirowdatastr , tag: "tensionMultirow")
+        // return catOMS
+    }
+
+    
    static var Adenopathies:categorieExamen.Categorie {
         let catAdenopathies = categorieExamen.Categorie(nom:"(adénopathies)",namedImage: "examenclinique.png",showNom: false)
         let examCatAdenopathies = [
@@ -1389,7 +1440,7 @@ static var Face:categorieExamen.Categorie {
 //            //self.libre,            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
 //        ]
 //        catKarnofsky.examens=examCatKarnofsky
-        return Examen(intitule: "Echelle Karnofsky", type: .datastr, tag: "dataStrKarnofksy")
+        return Examen(intitule: "Echelle Karnofsky", type: .datastr, tag: "dataStrKarnofksy",info: "<br>")
     }
 
      static var ExamenGeneral:categorieExamen.Categorie {

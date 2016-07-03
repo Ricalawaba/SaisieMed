@@ -581,10 +581,11 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
                 cell3.examen=examen1
                 return cell3
             } else
-                if examen1.type == Examen.ExamenEnum.datastr {
+                if examen1.type == Examen.ExamenEnum.datastr || examen1.type == Examen.ExamenEnum.multirowdatastr {
                 let cell3 = tableView.dequeueReusableCellWithIdentifier("pickSelectCell", forIndexPath: indexPath) as! pickSelectTableViewCell
                     cell3.intituleLabel.text=examen1.intitule
                     cell3.valueTextField.text=examen1.value
+                    cell3.intituleLabel.textColor=UIColor.redColor()
                 cell3.examen=examen1
                 return cell3
         }

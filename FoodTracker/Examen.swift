@@ -32,6 +32,7 @@ class Examen : NSObject,NSCoding{
         
         case addinfo
         case datastr
+        case multirowdatastr
         func int()->Int {
             return self.rawValue
         }

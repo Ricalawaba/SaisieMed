@@ -120,7 +120,7 @@ class patients :  NSObject,NSCoding {
                     } else
                     { detailstr=cat.formattedDetaiString() }
                     if !detailstr.isEmpty {
-                        retStr += "<p><b><u>\(cat.nom)</u></b><br>\(detailstr)</p>"
+                        retStr += "<p><b><u>\(cat.nom)</u></b><br>\(detailstr)"
                     }
                 }
             }
