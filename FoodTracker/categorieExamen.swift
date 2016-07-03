@@ -88,7 +88,7 @@ class categorieExamen : NSObject , NSCoding {
                     if !(str2?.isEmpty)! {
                         str += catSeparator
                         if ((examen.categorie!.showNom) ) {
-                            str += "<u>\(examen.intitule)</u>:<br>"
+                            str += "<u>\(examen.intitule)</u>: "
                         }
                         str += "\(str2!)\(examen.info) "
                     }
