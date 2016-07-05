@@ -58,6 +58,7 @@
 		30905F8B1D29777B002F023D /* femme.png in Resources */ = {isa = PBXBuildFile; fileRef = 30905F851D29777B002F023D /* femme.png */; };
 		30905F8C1D29777B002F023D /* Homme.png in Resources */ = {isa = PBXBuildFile; fileRef = 30905F861D29777B002F023D /* Homme.png */; };
 		30905F8E1D29788A002F023D /* dateDureeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30905F8D1D29788A002F023D /* dateDureeViewController.swift */; };
+		30987AB31D2BBB7D000B73F8 /* imageSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30987AB21D2BBB7D000B73F8 /* imageSelectTableViewCell.swift */; };
 		30A1900C1D2974E6001690C1 /* medecin-icone.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A1900B1D2974E6001690C1 /* medecin-icone.png */; };
 		30D0288F1D174F870050231C /* dataSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D0288E1D174F870050231C /* dataSave.swift */; };
 		30D028911D18AA470050231C /* configurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D028901D18AA470050231C /* configurationViewController.swift */; };
@@ -145,6 +146,7 @@
 		30905F851D29777B002F023D /* femme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = femme.png; sourceTree = "<group>"; };
 		30905F861D29777B002F023D /* Homme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Homme.png; sourceTree = "<group>"; };
 		30905F8D1D29788A002F023D /* dateDureeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dateDureeViewController.swift; sourceTree = "<group>"; };
+		30987AB21D2BBB7D000B73F8 /* imageSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = imageSelectTableViewCell.swift; path = ../imageSelectTableViewCell.swift; sourceTree = "<group>"; };
 		30A1900B1D2974E6001690C1 /* medecin-icone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "medecin-icone.png"; sourceTree = "<group>"; };
 		30D0288E1D174F870050231C /* dataSave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataSave.swift; sourceTree = "<group>"; };
 		30D028901D18AA470050231C /* configurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = configurationViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			children = (
 				301825FF1D0F085700592CE9 /* examensTableViewController.swift */,
 				30D526781D281EBE0016A38B /* pickSelectTableViewCell.swift */,
+				30987AB21D2BBB7D000B73F8 /* imageSelectTableViewCell.swift */,
 				308E7FCB1D1DA3F000AF225D /* AjoutInformationTableViewCell.swift */,
 				304B19F81D13F3490006DB4A /* selectionTableViewCell.swift */,
 				304B19F61D13E0DD0006DB4A /* checkTableViewCell.swift */,
@@ -236,6 +239,8 @@
 		30D028981D19BC810050231C /* Dates et autres saisies */ = {
 			isa = PBXGroup;
 			children = (
+				30D5267C1D29233B0016A38B /* pluginFormViewController.swift */,
+				30905F8D1D29788A002F023D /* dateDureeViewController.swift */,
 				308E7FD11D1F5A2300AF225D /* SaisieNombreViewController.swift */,
 				30D028941D196E430050231C /* selectDateViewController.swift */,
 				30D028921D195A9D0050231C /* MonthYearPickerView.swift */,
@@ -250,8 +255,6 @@
 			isa = PBXGroup;
 			children = (
 				30F43EEB1D077C3B005E3BEB /* Main.storyboard */,
-				30905F8D1D29788A002F023D /* dateDureeViewController.swift */,
-				30D5267C1D29233B0016A38B /* pluginFormViewController.swift */,
 				30F43EE61D077C3B005E3BEB /* SaisieMed */,
 				30F43EFB1D077C3B005E3BEB /* SaisieMedTests */,
 				30F43EE51D077C3B005E3BEB /* Products */,
@@ -554,6 +557,7 @@
 				301826051D10580000592CE9 /* rapportViewController.swift in Sources */,
 				30D028931D195A9D0050231C /* MonthYearPickerView.swift in Sources */,
 				30D028951D196E430050231C /* selectDateViewController.swift in Sources */,
+				30987AB31D2BBB7D000B73F8 /* imageSelectTableViewCell.swift in Sources */,
 				308E7FCE1D1E8F8E00AF225D /* Numbers.swift in Sources */,
 				30F43F2B1D0EE789005E3BEB /* saisieTableViewCell.swift in Sources */,
 				30F43F2D1D0EE938005E3BEB /* categorieExamen.swift in Sources */,

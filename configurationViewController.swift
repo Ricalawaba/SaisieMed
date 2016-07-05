@@ -52,6 +52,24 @@ class configurationViewController: UIViewController,dateSelectedDelegate {
         self.navigationController!.pushViewController(svc,animated: true)
         
     }
+    @IBAction func exportFichierDonneeAction(sender: UIButton) {
+        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("rapportControlerID") as! rapportViewController
+      
+        var addStr=""
+        
+        for name in Donnees.selectiontextDict.keys {
+              addStr+="selectiontextDict[\"\(name)\"] = ["
+            for datastr in Donnees.selectiontextDict[name]! {
+                addStr += "\"\(datastr)\","
+            }
+            addStr += "\r\n]<p>"
+        }
+        svc.directHTML="<H3>Export Swift<H3><p>\(addStr)"
+        //self.presentViewController(svc, animated: true, completion: nil)
+        self.navigationController!.pushViewController(svc,animated: true)
+
+    }
+    
     @IBAction func exportSwift(sender: UIButton) {
         let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("rapportControlerID") as! rapportViewController
         svc.directHTML="<H3>Export Swift<H3><p>"

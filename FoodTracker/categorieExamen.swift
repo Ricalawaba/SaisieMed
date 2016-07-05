@@ -367,12 +367,22 @@ class categorieExamen : NSObject , NSCoding {
 
         let catEvolution=ExamTree.SuiviEvolution
         
-       
+//        let CatDocument = Categorie(nom: "Document",namedImage: "dossier.png")
+//        let examCatDocument = [
+//            Examen(intitule: "Date document", type:  .donnee ,tag: "date"),
+//            Examen(intitule: "Titre", type:  .reponsecourte,tag: "libre" ),
+//            Examen(intitule: "Description", type: .reponsecourte,tag: "libre"),
+//            ExamTree.Document.asExamen(),
+//            Examen(intitule: "Ajout page",type: .addinfo,tag: "pagedocument")
+//
+//            ]
+//        CatDocument.examens=examCatDocument
+
         
         
         
         // MARK: Categories
-        categories += [Categorie1, Categorie3,Categorie2,Categorie21,Categorie31,ExamTree.ExamenClinique,catParaclinique,catEvolution,ExamTree.Conclusion]
+        categories += [Categorie1, Categorie3,Categorie2,Categorie21,Categorie31,ExamTree.ExamenClinique,catParaclinique,catEvolution,ExamTree.Conclusion, ExamTree.Documents]
     }
     
     

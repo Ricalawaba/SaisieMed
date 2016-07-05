@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
@@ -100,6 +101,13 @@
                                         <state key="normal" title="Plugin Form Test"/>
                                         <connections>
                                             <action selector="pluginFormButtonAction:" destination="J7c-gS-fbg" eventType="touchUpInside" id="Hwh-TI-unr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZJ-e0-9KE">
+                                        <rect key="frame" x="167" y="37" width="151" height="30"/>
+                                        <state key="normal" title="Export Fichier donnee"/>
+                                        <connections>
+                                            <action selector="exportFichierDonneeAction:" destination="J7c-gS-fbg" eventType="touchUpInside" id="WID-ML-X3Z"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -430,7 +438,7 @@
                                     <constraint firstAttribute="height" constant="21" id="qz4-Bg-x4Z"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="f9W-OA-MVi">
@@ -440,7 +448,7 @@
                                 </constraints>
                                 <string key="text">Les différents types de fractures de l'extrémité supérieure du fémur. Les différents types de fractures de l'extrémité supérieure du fémur.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qrk-MW-LMv">
@@ -478,8 +486,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="descriptionLabel" destination="f9W-OA-MVi" id="RhT-cV-z37"/>
                         <outlet property="imageView" destination="Jb5-p5-cqI" id="1AN-Hc-RYl"/>
                         <outlet property="scrollView" destination="qrk-MW-LMv" id="zTw-2M-Ufs"/>
+                        <outlet property="titreLabel" destination="BKi-Rw-fqN" id="WJw-lh-PIg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pzE-29-3re" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -738,7 +748,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8SU-mA-831">
                                             <rect key="frame" x="8" y="8" width="170" height="36"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" misplaced="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap pour liste de choix" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Foj-5k-ThK">
@@ -773,6 +783,64 @@
                                     <outlet property="valueTextField" destination="Foj-5k-ThK" id="PgM-4d-2Y0"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageSelectCell" id="hEY-5b-DvI" customClass="imageSelectTableViewCell" customModule="SaisieMed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="512" width="600" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hEY-5b-DvI" id="5dF-qL-D3H">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3w-QR-tV5">
+                                            <rect key="frame" x="565" y="12" width="22" height="22"/>
+                                            <connections>
+                                                <action selector="selectImageAction:" destination="hEY-5b-DvI" eventType="touchUpInside" id="Zaa-Fp-liL"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4P-Xz-jI2">
+                                            <rect key="frame" x="529" y="12" width="22" height="22"/>
+                                            <connections>
+                                                <action selector="viewDocumentButtonAction:" destination="hEY-5b-DvI" eventType="touchUpInside" id="MTY-c9-Esd"/>
+                                            </connections>
+                                        </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dossier.png" translatesAutoresizingMaskIntoConstraints="NO" id="tjk-f4-kyy">
+                                            <rect key="frame" x="8" y="0.0" width="42" height="43"/>
+                                            <gestureRecognizers/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="43" id="2Ma-PP-giZ"/>
+                                                <constraint firstAttribute="width" constant="42" id="mxG-va-bAb"/>
+                                                <constraint firstAttribute="width" secondItem="tjk-f4-kyy" secondAttribute="height" multiplier="42:43" id="pLR-X9-gHk"/>
+                                            </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="5lf-1W-pR4" appends="YES" id="TRy-iE-cnd"/>
+                                            </connections>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MP0-FG-9kq">
+                                            <rect key="frame" x="58" y="0.0" width="457" height="43"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="tjk-f4-kyy" firstAttribute="top" secondItem="5dF-qL-D3H" secondAttribute="top" id="1a5-Gn-m9L"/>
+                                        <constraint firstItem="X3w-QR-tV5" firstAttribute="leading" secondItem="I4P-Xz-jI2" secondAttribute="trailing" constant="8" id="5Sm-nd-mUo"/>
+                                        <constraint firstAttribute="bottom" secondItem="tjk-f4-kyy" secondAttribute="bottom" constant="17" id="AK0-AN-lxa"/>
+                                        <constraint firstItem="MP0-FG-9kq" firstAttribute="leading" secondItem="tjk-f4-kyy" secondAttribute="trailing" constant="8" id="FbC-bC-TWX"/>
+                                        <constraint firstAttribute="trailing" secondItem="X3w-QR-tV5" secondAttribute="trailing" constant="13" id="HVY-v4-HDG"/>
+                                        <constraint firstItem="X3w-QR-tV5" firstAttribute="leading" secondItem="I4P-Xz-jI2" secondAttribute="trailing" constant="8" id="HdH-fL-8QW"/>
+                                        <constraint firstItem="I4P-Xz-jI2" firstAttribute="leading" secondItem="MP0-FG-9kq" secondAttribute="trailing" constant="8" id="UeJ-bF-mhf"/>
+                                        <constraint firstItem="I4P-Xz-jI2" firstAttribute="leading" secondItem="MP0-FG-9kq" secondAttribute="trailing" constant="8" id="VKL-Cw-ieC"/>
+                                        <constraint firstItem="MP0-FG-9kq" firstAttribute="top" secondItem="5dF-qL-D3H" secondAttribute="top" id="iDz-WM-fL6"/>
+                                        <constraint firstAttribute="bottom" secondItem="MP0-FG-9kq" secondAttribute="bottom" constant="17" id="oTf-Ym-usJ"/>
+                                        <constraint firstItem="MP0-FG-9kq" firstAttribute="leading" secondItem="tjk-f4-kyy" secondAttribute="trailing" constant="8" id="tHt-Ot-M7O"/>
+                                        <constraint firstItem="tjk-f4-kyy" firstAttribute="leading" secondItem="5dF-qL-D3H" secondAttribute="leading" constant="8" id="ve3-9n-OQL"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="imageLabel" destination="MP0-FG-9kq" id="adN-gF-7AV"/>
+                                    <outlet property="theImageView" destination="tjk-f4-kyy" id="j2u-IQ-1RF"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="6p3-rv-hQ4" id="gDF-dH-M5z"/>
@@ -782,22 +850,23 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem style="plain" systemItem="trash" id="b51-AW-Dg9">
+                        <barButtonItem style="plain" systemItem="bookmarks" id="b51-AW-Dg9">
                             <connections>
                                 <action selector="GoAccueil:" destination="6p3-rv-hQ4" id="PDP-FY-Nh6"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="pnE-cb-j9w"/>
                         <barButtonItem title="Patient" id="wBa-v7-Fce">
                             <connections>
                                 <action selector="goPatient:" destination="6p3-rv-hQ4" id="TIQ-CJ-dw9"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="pnE-cb-j9w"/>
                         <barButtonItem title="Item" systemItem="add" id="H8E-YG-UlR">
                             <connections>
                                 <action selector="ajouterChampLibre:" destination="6p3-rv-hQ4" id="Qyl-iy-npD"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="tly-Bx-xaM"/>
                         <barButtonItem systemItem="compose" id="yUn-1e-zGE">
                             <connections>
                                 <action selector="apercuBarButtonAction:" destination="6p3-rv-hQ4" id="gDK-TY-SP6"/>
@@ -825,6 +894,11 @@
                 <tapGestureRecognizer delaysTouchesBegan="YES" numberOfTapsRequired="2" id="K96-80-pIU">
                     <connections>
                         <action selector="doubletapRepCourteAction:" destination="6p3-rv-hQ4" id="OIt-Od-iC8"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="5lf-1W-pR4">
+                    <connections>
+                        <action selector="documentPageTap:" destination="6p3-rv-hQ4" id="Ns3-Rc-GZC"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

@@ -10,12 +10,18 @@ import UIKit
 
 class pluginFormViewController: UIViewController, UIScrollViewDelegate {
 
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var titreLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
+    var examen:Examen?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.scrollView.minimumZoomScale = 1.0
         self.scrollView.maximumZoomScale = 6.0
+//        if examen?.type == .imagefilename {
+//            
+//        }
     }
 
     override func didReceiveMemoryWarning() {

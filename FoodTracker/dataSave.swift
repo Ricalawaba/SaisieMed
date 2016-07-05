@@ -65,62 +65,62 @@ struct DataSave {
     }
     // MARK: Construction des noms de fichiers de données
     // TODO: Evenement (suivi/evolution/selection)
-    static var filePathConclusionRx : String {
-        let filename = getDocumentsDirectory().stringByAppendingPathComponent("ConclusionRx.dat")
-        return filename
-        
-    }
-    static var filePathProfession : String {
-        let filename = getDocumentsDirectory().stringByAppendingPathComponent("profession.dat")
-        return filename
-        
-    }
-    static var filePathAtcd : String {
-        let filename = getDocumentsDirectory().stringByAppendingPathComponent("atcd.dat")
-        return filename
-        
-    }
-    static var filePathMedicament : String {
-        let filename = getDocumentsDirectory().stringByAppendingPathComponent("medicament.dat")
-        return filename
-        
-    }
-    static var filePathLocalisation : String {
-        let filename = getDocumentsDirectory().stringByAppendingPathComponent("localisation.dat")
-        return filename
-        
-    }
-    static var filePathMedecin : String {
-        let filename = getDocumentsDirectory().stringByAppendingPathComponent("medecin.dat")
-        return filename
-        
-    }
-    static var filePathMotif : String {
-        let filename = getDocumentsDirectory().stringByAppendingPathComponent("motif.dat")
-        return filename
-        
-    }
-    static var filePathetablissement : String {
-        let filename = getDocumentsDirectory().stringByAppendingPathComponent("etablissements.dat")
-        return filename
-        
-    }
-    
+//    static var filePathConclusionRx : String {
+//        let filename = getDocumentsDirectory().stringByAppendingPathComponent("ConclusionRx.dat")
+//        return filename
+//        
+//    }
+//    static var filePathProfession : String {
+//        let filename = getDocumentsDirectory().stringByAppendingPathComponent("profession.dat")
+//        return filename
+//        
+//    }
+//    static var filePathAtcd : String {
+//        let filename = getDocumentsDirectory().stringByAppendingPathComponent("atcd.dat")
+//        return filename
+//        
+//    }
+//    static var filePathMedicament : String {
+//        let filename = getDocumentsDirectory().stringByAppendingPathComponent("medicament.dat")
+//        return filename
+//        
+//    }
+//    static var filePathLocalisation : String {
+//        let filename = getDocumentsDirectory().stringByAppendingPathComponent("localisation.dat")
+//        return filename
+//        
+//    }
+//    static var filePathMedecin : String {
+//        let filename = getDocumentsDirectory().stringByAppendingPathComponent("medecin.dat")
+//        return filename
+//        
+//    }
+//    static var filePathMotif : String {
+//        let filename = getDocumentsDirectory().stringByAppendingPathComponent("motif.dat")
+//        return filename
+//        
+//    }
+//    static var filePathetablissement : String {
+//        let filename = getDocumentsDirectory().stringByAppendingPathComponent("etablissements.dat")
+//        return filename
+//        
+//    }
+//    
     static var filePathPatients : String {
         let filename = getDocumentsDirectory().stringByAppendingPathComponent("patients.dat")
         return filename
         
     }
-    static var filePathPosologie : String {
-        let filename = getDocumentsDirectory().stringByAppendingPathComponent("posologie.dat")
-        return filename
-        
-    }
-    static var filePathAllergie : String {
-        let filename = getDocumentsDirectory().stringByAppendingPathComponent("Allergie.dat")
-        return filename
-        
-    }
+//    static var filePathPosologie : String {
+//        let filename = getDocumentsDirectory().stringByAppendingPathComponent("posologie.dat")
+//        return filename
+//        
+//    }
+//    static var filePathAllergie : String {
+//        let filename = getDocumentsDirectory().stringByAppendingPathComponent("Allergie.dat")
+//        return filename
+//        
+//    }
     static var filePathSelectionDictionary : String {
         let filename = getDocumentsDirectory().stringByAppendingPathComponent("saisiemed-dynamic.dat")
         return filename
@@ -132,37 +132,37 @@ struct DataSave {
     static func saveSelectionDictionary() {
         NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict, toFile: filePathSelectionDictionary)
     }
-    static func saveFileAllergie() {
-        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["Allergie"]!, toFile: filePathAllergie)
-    }
-    
-    static func saveFileConclusionRx() {
-        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["ConclusionRx"]!, toFile: filePathConclusionRx)
-    }
-    static func saveFileprofession() {
-        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["profession"]!, toFile: filePathProfession)
-    }
-    static func saveFileatcd() {
-        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["atcd"]!, toFile: filePathAtcd)
-    }
-    static func saveFilemedecin() {
-        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["medecin"]!, toFile: filePathMedecin)
-    }
-    static func saveFilemedicament() {
-        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["medicament"]!, toFile: filePathMedicament)
-    }
-    static func saveFilelocalisation() {
-        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["localisation"]!, toFile: filePathLocalisation)
-    }
-    static func saveFilemotif() {
-        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["motif"]!, toFile: filePathMotif)
-    }
-    static func saveFileetablissement() {
-        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["etablissement"]!, toFile: filePathetablissement)
-    }
-    static func saveFileposologie() {
-        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["posologie"]!, toFile: filePathPosologie)
-    }
+//    static func saveFileAllergie() {
+//        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["Allergie"]!, toFile: filePathAllergie)
+//    }
+//    
+//    static func saveFileConclusionRx() {
+//        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["ConclusionRx"]!, toFile: filePathConclusionRx)
+//    }
+//    static func saveFileprofession() {
+//        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["profession"]!, toFile: filePathProfession)
+//    }
+//    static func saveFileatcd() {
+//        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["atcd"]!, toFile: filePathAtcd)
+//    }
+//    static func saveFilemedecin() {
+//        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["medecin"]!, toFile: filePathMedecin)
+//    }
+//    static func saveFilemedicament() {
+//        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["medicament"]!, toFile: filePathMedicament)
+//    }
+//    static func saveFilelocalisation() {
+//        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["localisation"]!, toFile: filePathLocalisation)
+//    }
+//    static func saveFilemotif() {
+//        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["motif"]!, toFile: filePathMotif)
+//    }
+//    static func saveFileetablissement() {
+//        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["etablissement"]!, toFile: filePathetablissement)
+//    }
+//    static func saveFileposologie() {
+//        NSKeyedArchiver.archiveRootObject(Donnees.selectiontextDict["posologie"]!, toFile: filePathPosologie)
+//    }
     static func saveFilePatients() {
         NSKeyedArchiver.archiveRootObject(Donnees.listePatient, toFile: filePathPatients)
     }
@@ -174,56 +174,56 @@ struct DataSave {
             Donnees.selectiontextDict  = array
         }    }
 
-    
-    static func loadFileConclusionRx() {
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathConclusionRx) as? [String] {
-            Donnees.selectiontextDict["ConclusionRx"] = array
-        }    }
-    static func loadFileprofession() {
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathProfession) as? [String] {
-            Donnees.selectiontextDict["profession"] = array
-        }    }
-    static func loadFileatcd() {
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathAtcd) as? [String] {
-            Donnees.selectiontextDict["atcd"] = array
-        }    }
-    static func loadFilemedecin() {
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMedecin) as? [String] {
-            Donnees.selectiontextDict["medecin"] = array
-        }
-    }
-    static func loadFilemedicament() {
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMedicament) as? [String] {
-            Donnees.selectiontextDict["medicament"] = array
-        }
-    }
-    static func loadFilelocalisation() {
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathLocalisation) as? [String] {
-            Donnees.selectiontextDict["localisation"] = array
-        }
-    }
-    static func loadFilemotif() {
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMotif) as? [String] {
-            Donnees.selectiontextDict["motif"] = array
-        }
-    }
-    static func loadFileetablissement() {
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathetablissement) as? [String] {
-            Donnees.selectiontextDict["etablissement"] = array
-        }
-    }
-    static func loadFileposologie() {
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathPosologie) as? [String] {
-            Donnees.selectiontextDict["posologie"] = array
-        }
-    }
-    
-    
-    static func loadFileAllergie() {
-        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathAllergie) as? [String] {
-            Donnees.selectiontextDict["Allergie"] = array
-        }
-    }
+//    
+//    static func loadFileConclusionRx() {
+//        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathConclusionRx) as? [String] {
+//            Donnees.selectiontextDict["ConclusionRx"] = array
+//        }    }
+//    static func loadFileprofession() {
+//        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathProfession) as? [String] {
+//            Donnees.selectiontextDict["profession"] = array
+//        }    }
+//    static func loadFileatcd() {
+//        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathAtcd) as? [String] {
+//            Donnees.selectiontextDict["atcd"] = array
+//        }    }
+//    static func loadFilemedecin() {
+//        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMedecin) as? [String] {
+//            Donnees.selectiontextDict["medecin"] = array
+//        }
+//    }
+//    static func loadFilemedicament() {
+//        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMedicament) as? [String] {
+//            Donnees.selectiontextDict["medicament"] = array
+//        }
+//    }
+//    static func loadFilelocalisation() {
+//        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathLocalisation) as? [String] {
+//            Donnees.selectiontextDict["localisation"] = array
+//        }
+//    }
+//    static func loadFilemotif() {
+//        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathMotif) as? [String] {
+//            Donnees.selectiontextDict["motif"] = array
+//        }
+//    }
+//    static func loadFileetablissement() {
+//        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathetablissement) as? [String] {
+//            Donnees.selectiontextDict["etablissement"] = array
+//        }
+//    }
+//    static func loadFileposologie() {
+//        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathPosologie) as? [String] {
+//            Donnees.selectiontextDict["posologie"] = array
+//        }
+//    }
+//    
+//    
+//    static func loadFileAllergie() {
+//        if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePathAllergie) as? [String] {
+//            Donnees.selectiontextDict["Allergie"] = array
+//        }
+//    }
 
     
     // MARK: - Lecture fichier patient

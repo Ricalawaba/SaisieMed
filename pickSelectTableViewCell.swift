@@ -90,7 +90,7 @@ class pickSelectTableViewCell: UITableViewCell ,UITextFieldDelegate,UIPickerView
             pickerLabel.text = Donnees.multiColumnPickerDataStr[examen.tag]![component][row]
             switch component {
             case 0:
-                if Donnees.multiColumnPickerDataStr[examen.tag]?.count  < 4 {
+                if Donnees.multiColumnPickerDataStr[examen.tag]?.count  < 6 {
                    pickerLabel.textAlignment = NSTextAlignment.Right
                 }
             case 1:

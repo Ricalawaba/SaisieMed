@@ -33,6 +33,7 @@ class Examen : NSObject,NSCoding{
         case addinfo
         case datastr
         case multirowdatastr
+        case imagefilename
         func int()->Int {
             return self.rawValue
         }

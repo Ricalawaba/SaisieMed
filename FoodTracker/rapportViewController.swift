@@ -14,7 +14,7 @@ class rapportViewController: UIViewController ,MFMailComposeViewControllerDelega
     }
 
     @IBAction func accueilButtonAction(sender: UIBarButtonItem) {
-        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers
         for aViewController in viewControllers {
             if(aViewController is patientTableViewController){
                 self.navigationController!.popToViewController(aViewController, animated: true);

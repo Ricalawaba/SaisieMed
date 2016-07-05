@@ -9,7 +9,9 @@
 import UIKit
 //import EasyTipView
 
-class examensTableViewController: UITableViewController,textSelectedDelegate, UITextFieldDelegate,dateSelectedDelegate, AjoutInformationDelegate,numberSelectedDelegate, saisieNombreDelegate {
+
+
+class examensTableViewController: UITableViewController,textSelectedDelegate, UITextFieldDelegate,dateSelectedDelegate, AjoutInformationDelegate,numberSelectedDelegate, saisieNombreDelegate,imageSelectedDelegate {
     var categorie : categorieExamen.Categorie!
     var examenSelected: Examen?
     //var examen = [Examen]()
@@ -60,6 +62,12 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         if examen.tag=="radiologie" {
             categorie.examens.insert( ExamTree.Imagerie.asExamen(), atIndex: indextoInsert)
         }
+        if examen.tag=="page" {
+            categorie.examens.insert( Examen(intitule: "(image)", type:  .imagefilename ), atIndex: indextoInsert)
+        }
+        if examen.tag=="document" {
+            categorie.examens.insert( ExamTree.Document.asExamen(), atIndex: indextoInsert)
+        }
         if examen.tag=="clinique" {
             categorie.examens.insert( ExamTree.ExamenClinique.asExamen(), atIndex: indextoInsert)
         }
@@ -71,7 +79,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         }
 
         //tableView.sel
-        
+
         
         tableView.reloadData()
         let rowToSelect:NSIndexPath = NSIndexPath(forRow: indextoInsert, inSection: 0)
@@ -79,12 +87,19 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         self.tableView.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.None)
         if examen.tag == "medecin" {
             self.performSegueWithIdentifier("selectionSegue", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
-        } else if examen.tag != "libre" {
+        } else if examen.tag != "libre" && examen.tag != "imagefilename" {
             
-            self.performSegueWithIdentifier("autoshow", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
+           self.performSegueWithIdentifier("autoshow", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
             
         }
         
+    }
+    func imageSelected(sender:UIView,image:UIImage, url:String) {
+        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
+        let aview=svc.view
+        svc.imageView.image=image
+        
+        self.navigationController!.pushViewController(svc,animated: true)
     }
     func numberSelected(sender:selectNumberViewController, number:String) {
         ExamTaped!.value=number
@@ -97,6 +112,28 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
                 self.navigationController!.popToViewController(aViewController, animated: true);
             }
         }
+    }
+    @IBAction func documentPageTap(sender: UITapGestureRecognizer) {
+        let location : CGPoint = sender.locationInView(self.tableView)
+        let indexPath:NSIndexPath? = self.tableView.indexPathForRowAtPoint(location)
+        if indexPath == nil {return }
+        ExamTaped = categorie.examens[indexPath!.row]
+        
+        if (ExamTaped!.type == .imagefilename ){
+          //  image: loadImageFromPath(examen.value)! , url: examen.value)
+            // performSegueWithIdentifier("autoshow", sender: self)
+            //examensTableViewController
+            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
+            let aview=svc.view
+            svc.imageView.image = UIImage( contentsOfFile: ExamTaped!.value)
+            svc.titreLabel.text = categorie.examens[0].value
+            
+            
+          //  svc.navigationController?.title = svc.categorie!.nom
+            self.navigationController!.pushViewController(svc,animated: true)
+            
+        }
+
     }
 
     @IBAction func ajouterChampLibre(sender: UIBarButtonItem) {
@@ -134,6 +171,19 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         let indexPath:NSIndexPath = self.tableView.indexPathForRowAtPoint(location)!
         ExamTaped = categorie.examens[indexPath.row]
         NSLog("Double tap sur \(ExamTaped?.intitule)")
+        if ExamTaped!.tag == "image" {
+            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
+            let aview=svc.view
+            svc.imageView.image = UIImage( contentsOfFile: ExamTaped!.value)
+            svc.titreLabel.text=categorie.detailString()
+           // svc.descriptionLabel.text = categorie.detailString()
+           // svc.delegate=self
+            self.navigationController!.pushViewController(svc,animated: true)
+        }
+    //    let aview = svc.view
+        
+        
+    
        // EasyTipView.Pref
     }
     @IBAction func tapRepCourte(sender: UITapGestureRecognizer) {
@@ -166,8 +216,8 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             self.navigationController!.pushViewController(svc,animated: true)
             return
         }
-        let idfkey=Donnees.selectiontextDict.indexForKey((ExamTaped?.tag)!)
-        print(idfkey)
+      //  let idfkey=Donnees.selectiontextDict.indexForKey((ExamTaped?.tag)!)
+     //   print(idfkey)
         if ExamTaped?.type != .addinfo &&  (Donnees.selectiontextDict.indexForKey((ExamTaped?.tag)!) != nil) {
       //  if (ExamTaped!.tag == "Evenement" ){
             
@@ -332,6 +382,12 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             } else {
                 svc.value=ExamTaped!.value
             }
+        if ExamTaped!.tag == "image" {
+            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
+            let aview=svc.view
+            svc.imageView.image = UIImage( contentsOfFile: ExamTaped!.value)
+            svc.titreLabel.text = categorie.examens[0].value
+            }
             let aview = svc.view
             svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
@@ -430,7 +486,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     }
     // MARK: - Table view data source
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "autoshow") {
+        if (sender is examgroupTableViewCell &&  segue.identifier == "autoshow") {
             // FIXME: Erreur segue
             let svc = segue.destinationViewController as! examensTableViewController
             let mycell = (sender as! examgroupTableViewCell)
@@ -576,21 +632,35 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             
 
             return cell3
-        } else
-            if examen1.type==Examen.ExamenEnum.addinfo {
+        } else if examen1.type==Examen.ExamenEnum.addinfo {
             let cell3 = tableView.dequeueReusableCellWithIdentifier("addCell", forIndexPath: indexPath) as! AjoutInformationTableViewCell
                 cell3.delegate=self
                 //cell3.ajoutInfoBtn.titleLabel?.text="Ajouter \(examen1.tag)"
                 cell3.examen=examen1
                 return cell3
-            } else
-                if examen1.type == Examen.ExamenEnum.datastr || examen1.type == Examen.ExamenEnum.multirowdatastr {
+            } else if examen1.type == Examen.ExamenEnum.datastr || examen1.type == Examen.ExamenEnum.multirowdatastr {
                 let cell3 = tableView.dequeueReusableCellWithIdentifier("pickSelectCell", forIndexPath: indexPath) as! pickSelectTableViewCell
                     cell3.intituleLabel.text=examen1.intitule
                     cell3.valueTextField.text=examen1.value
                     cell3.intituleLabel.textColor=UIColor.redColor()
                 cell3.examen=examen1
                 return cell3
+                } else if examen1.type == Examen.ExamenEnum.imagefilename {
+                    
+            let cell3 = tableView.dequeueReusableCellWithIdentifier("imageSelectCell", forIndexPath: indexPath) as! imageSelectTableViewCell
+            if examen1.value.isEmpty {
+                cell3.imageLabel.text = "(image)"
+            } else {
+                cell3.imageLabel.text =  "(done)"
+                cell3.theImageView.image=UIImage(contentsOfFile: examen1.value)
+            }
+            
+            cell3.delegate=self
+            cell3.examen=examen1
+
+        
+    
+            
         }
 
         // Configure the cell...

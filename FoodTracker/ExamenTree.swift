@@ -735,7 +735,7 @@ static var Face:categorieExamen.Categorie {
 
     
     static var neuroFonctionnel:categorieExamen.Categorie {
-        let catneuroFonctionnel = categorieExamen.Categorie(nom:"fonctionnels",namedImage: "tete_icon.png",showNom: true)
+        let catneuroFonctionnel = categorieExamen.Categorie(nom:"Fonctionnels",namedImage: "tete_icon.png",showNom: true)
         let examCatneuroFonctionnel = [
             Examen(intitule: "Communication normale", type:  .check ),
             Examen(intitule: "Pas de communication", type:  .check ),
@@ -869,8 +869,24 @@ static var Face:categorieExamen.Categorie {
         catDemandeExamen.examens=examCatDemandeExamen
         return catDemandeExamen
     }
- static var DocumentConsulte:categorieExamen.Categorie {
-        let catDocumentConsulte = categorieExamen.Categorie(nom:"Document Consulté",namedImage: "dossier.png",showNom: true)
+  static var Documents:categorieExamen.Categorie {
+        let catDocuments = categorieExamen.Categorie(nom:"Documents",namedImage: "dossier.png",showNom: true)
+        let examCatDocuments = [
+            Examen(intitule: "horodatage", type: .reponsecourte,tag: "date"),
+
+            self.Document.asExamen(),
+            // Examen(intitule: "Xie", type:  .check ,info: " "),
+            //Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
+            //Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
+            Examen(intitule: "libre", type:  .reponsecourte ),
+            Examen(intitule: "Ajout document",type: .addinfo,tag: "document")
+        ]
+        catDocuments.examens=examCatDocuments
+        return catDocuments
+    }
+   
+ static var Document:categorieExamen.Categorie {
+        let catDocumentConsulte = categorieExamen.Categorie(nom:"Document ",namedImage: "dossier.png",showNom: false)
         let examCatDocumentConsulte = [
             // Examen(intitule: "Xie", type:  .check ,info: " "),
             //Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
@@ -883,10 +899,17 @@ static var Face:categorieExamen.Categorie {
             Examen(intitule: "(courrier de suivi)", type: .check),
             Examen(intitule: "(Resumé d'hospitalisation)", type: .check),
             Examen(intitule: "(Bilan spécialisé)", type: .check),
+            Examen(intitule: "Avancée diagnostique", type: .check),
             Examen(intitule: "Etat Stable", type: .check),
+            Examen(intitule: "Amélioration", type: .check),
+
+            Examen(intitule: "Aggravation", type: .check),
+
             Examen(intitule: "Introduction médicamenteuse", type: .check),
             Examen(intitule: "Modification du traitement", type: .ouinon),
-            Examen(intitule: "resume", type:  .reponsecourte ),
+            Examen(intitule: "resume", type:  .reponsecourte,tag: "libre" ),
+            Examen(intitule: "(image)", type:  .imagefilename ),
+            Examen(intitule: "Ajout page",type: .addinfo,tag: "page")
             //Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
         ]
         catDocumentConsulte.examens=examCatDocumentConsulte
@@ -902,7 +925,6 @@ static var Face:categorieExamen.Categorie {
             AvisSpecialiste.asExamen(),
             ActeTherapeuthique.asExamen(),
             DemandeExamen.asExamen(),
-            DocumentConsulte.asExamen(),
             //Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre"),
             ]
         catevenement.examens=examCatevenement
@@ -991,6 +1013,18 @@ static var Face:categorieExamen.Categorie {
         catSuiviEvolution.examens=examCatSuiviEvolution
         return catSuiviEvolution
     }
+// static var Document:categorieExamen.Categorie {
+//        let catDocument = categorieExamen.Categorie(nom:"Document",namedImage: "dossier_icon.png",showNom: false)
+//        let examCatDocument = [
+//            Examen(intitule: "Date document", type:  .donnee ,tag: "date"),
+//            Examen(intitule: "Titre", type:  .reponsecourte,tag: "libre" ),
+//            Examen(intitule: "Description", type: .reponsecourte,tag: "libre"),
+//            Examen(intitule: "(image)", type: .imagefilename),
+//            Examen(intitule: "Ajout page",type: .addinfo,tag: "page"),
+//        ]
+//        catDocument.examens=examCatDocument
+//        return catDocument
+//    }
 
     static var Radiographie:categorieExamen.Categorie {
         let catRadiographie = categorieExamen.Categorie(nom:"Radiographies",namedImage: "imagerie_icon.png",showNom: true)
@@ -1028,6 +1062,66 @@ static var Face:categorieExamen.Categorie {
         ]
         catRadiographie.examens=examCatRadiographie
         return catRadiographie
+    }
+    static var ExamenGeneral:categorieExamen.Categorie {
+        let catExamenGeneral = categorieExamen.Categorie(nom:"Examen général",namedImage: "examenclinique.png",showNom: true)
+        let examCatExamenGeneral = [
+            self.Poids.asExamen(),
+            self.OMS,
+            self.Karnofsky,
+            self.Adenopathies.asExamen(),
+            Examen(intitule: "Dernier repas", type:  .reponsecourte, tag: "date" ),
+            //self.libre,
+            // Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
+        ]
+        catExamenGeneral.examens=examCatExamenGeneral
+        return catExamenGeneral
+    }
+    
+    static var ExamenClinique:categorieExamen.Categorie {
+        let catExamenClinique = categorieExamen.Categorie(nom:"Examen Clinique",namedImage: "examenclinique.png",showNom: true)
+        let examCatExamenClinique = [
+            Examen(intitule: "horodatage", type:  .reponsecourte,tag: "date" ),
+            self.ExamenGeneral.asExamen(),
+            self.Neurologie.asExamen(),
+            self.Cardiovasculaire.asExamen(),
+            self.Respiratoire.asExamen(),
+            self.Digestif.asExamen(),
+            self.Urologie.asExamen(),
+            //  self.Urologie.asExamen(),
+            self.ORL.asExamen(),
+            self.Locomoteur.asExamen(),
+            //self.libre,
+        ]
+        catExamenClinique.examens=examCatExamenClinique
+        return catExamenClinique
+    }
+    static var Conclusion:categorieExamen.Categorie {
+        let catConclusion = categorieExamen.Categorie(nom:"Conclusion",namedImage: "medecin_icon.png",showNom: true)
+        let examCatConclusion = [
+            Examen(intitule: "Suspicion ", type: .check),
+            Examen(intitule: "Diagnostic", type: .selection,tag: "atcd"),
+            ExamTree.LocAnat.asExamen(),
+            //self.libre,
+            Examen(intitule: "hospitalisation", type: .check),
+            Examen(intitule: "pris en charge par", type: .check),
+            Examen(intitule: "médecin", type: .selection, tag: "medecin"),
+            Examen(intitule: "Retour à domicile", type: .check),
+            Examen(intitule: "Surveillance par le médecin traitant", type: .check),
+            Examen(intitule: "Consultation spécialisé prévu", type: .check),
+            Examen(intitule: "Consultation spécialisé à prévoir", type: .check),
+            Examen(intitule: "date", type: .reponsecourte,tag: "date"),
+            Examen(intitule: "médecin", type: .selection, tag: "medecin"),
+            Examen(intitule: "sous", type: .reponsecourte),
+            Examen(intitule: "Nouvelle consultation nécessaire si évolution péjorative", type: .check),
+            Examen(intitule: "Prendre nouvel avis médical si aggravation ou évolution insatisfaisante", type: .check),
+            Examen(intitule: "Prendre nouvel avis médical si récidive", type: .check),
+            //self.libre,
+            Examen(intitule: "Autre", type: .reponsecourte,tag: "conclusionautre"),
+            // Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
+        ]
+        catConclusion.examens=examCatConclusion
+        return catConclusion
     }
     static var Imagerie:categorieExamen.Categorie {
         let catImagerie = categorieExamen.Categorie(nom:"Imagerie",namedImage: "imagerie_icon.png",showNom: true)
@@ -1184,6 +1278,7 @@ static var Face:categorieExamen.Categorie {
             Examen(intitule: "Pas de défense", type:  .check ),
             
             
+            
             Examen(intitule: "Ictère", type:  .ouinon ),
             Examen(intitule: "Orifices herniaires libres", type:  .ouinon ),
             //self.libre,
@@ -1194,6 +1289,24 @@ static var Face:categorieExamen.Categorie {
         ]
         catDigestif.examens=examCatDigestif
         return catDigestif
+    }
+    static var Adenopathies:categorieExamen.Categorie {
+        let catAdenopathies = categorieExamen.Categorie(nom:"(adénopathies)",namedImage: "examenclinique.png",showNom: false)
+        let examCatAdenopathies = [
+            Examen(intitule: "Pas d'adénopathies cervicales ou axillaires", type: .check),
+            Examen(intitule: "Adénopathie inguinale", type: .ouinon),
+            Examen(intitule: "Adénopathie axillaire", type: .ouinon),
+            Examen(intitule: "Adénopathie cervicale", type: .ouinon),
+            Examen(intitule: "Adénopathie sus-claviculaire", type: .ouinon),
+            LocAnat.asExamen(),
+            
+            // Examen(intitule: "Xie", type:  .check ,info: " "),
+            //Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
+            //Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
+            //self.libre,            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
+        ]
+        catAdenopathies.examens=examCatAdenopathies
+        return catAdenopathies
     }
     static var Urologie:categorieExamen.Categorie {
         let catUrologie = categorieExamen.Categorie(nom:"Appareil Urologique",namedImage: "rein_icon.png",showNom: true)
@@ -1333,7 +1446,7 @@ static var Face:categorieExamen.Categorie {
         catBiologie.examens=examCatBiologie
         return catBiologie
     }
-    
+ // MARK: Examens
      static var OMS:Examen {
         Donnees.selectiontextDict["dataStrZubrodOMS"]=[
             "Zubrod/OMS 0: capable d'une activité identique à celle précédant la maladie",
@@ -1347,16 +1460,7 @@ static var Face:categorieExamen.Categorie {
     }
     
     
-//    static var Organe:Examen{
-//        Donnees.selectiontextDict["dataStrOrgane"]=[
-//            " 0: capable d'une activité identique à celle précédant la maladie",
-//            " 1: activité physique diminuée, mais ambulatoire et capable de mener un travail",
-//            " 2: ambulatoire et capable de prendre soin de soi-même. Incapable de travailler et alité moins de 50% du temps",
-//            " 3: Capable seulement de quelques activités ou en chaise plus de 50% du temps",
-//            " 4: Incapable de prendre soin de soi-même. Alité ou en chaise en permanence",
-//        ]
-//        return Examen(intitule: "Echelle Zubrod/OMS", type: .datastr, tag: "dataStrZubrodOMS",info: "<br>")
-//    }
+
     static var temperatureMultirow:Examen {
         
         if  Donnees.multiColumnPickerDataStr["temperatureMultirow"] == nil {
@@ -1396,24 +1500,7 @@ static var Face:categorieExamen.Categorie {
     }
 
     
-   static var Adenopathies:categorieExamen.Categorie {
-        let catAdenopathies = categorieExamen.Categorie(nom:"(adénopathies)",namedImage: "examenclinique.png",showNom: false)
-        let examCatAdenopathies = [
-            Examen(intitule: "Pas d'adénopathies cervicales ou axillaires", type: .check),
-            Examen(intitule: "Adénopathie inguinale", type: .ouinon),
-            Examen(intitule: "Adénopathie axillaire", type: .ouinon),
-            Examen(intitule: "Adénopathie cervicale", type: .ouinon),
-            Examen(intitule: "Adénopathie sus-claviculaire", type: .ouinon),
-            LocAnat.asExamen(),
-            
-            // Examen(intitule: "Xie", type:  .check ,info: " "),
-            //Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
-            //Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
-            //self.libre,            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
-        ]
-        catAdenopathies.examens=examCatAdenopathies
-        return catAdenopathies
-    }
+
    static var Karnofsky:Examen {
         //let catKarnofsky = categorieExamen.Categorie(nom:"Échelle de Karnofsky",namedImage: "pancarte_icon.png",showNom: true)
     
@@ -1431,87 +1518,11 @@ static var Face:categorieExamen.Categorie {
              "Indice 0 : Décédé."
 
         ]
-//        let examCatKarnofsky = [
-//            // Examen(intitule: "Xie", type:  .check ,info: " "),
-//            //Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
-//            //Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
-//            Examen(intitule: "Indice 100 : Normal ; aucune plainte, aucun signe de maladie.", type: .check),
-//            Examen(intitule: "Indice 90 : En mesure de poursuivre une activité normale ; signes ou symptômes mineurs de maladie.", type: .check),
-//            Examen(intitule: "Indice 80 : Activité normale, avec un effort ; quelques signes ou symptômes de maladie.", type: .check),
-//            Examen(intitule: "Indice 70 : Autonome ; incapable de poursuivre une activité normale ou de travailler de façon active.", type: .check),
-//            Examen(intitule: "Indice 60 : Nécessité occasionnelle d'assistance mais capacité de pourvoir à ses besoins essentiels.", type: .check),
-//            Examen(intitule: "Indice 50 : Nécessité d'aide considérable à la personne, soins médicaux fréquents.", type: .check),
-//            Examen(intitule: "Indice 40 : Invalide ; nécessité de soins et d'assistance spécifiques.", type: .check),
-//            Examen(intitule: "Indice 30 : Complètement invalide ; indication d'hospitalisation, pas de risque imminent de décès.", type: .check),
-//            Examen(intitule: "Indice 20 : Très malade ; hospitalisation nécessaire, traitement actif ou de support nécessaire.", type: .check),
-//            Examen(intitule: "Indice 10 : Moribond ; issue fatale proche.", type: .check),
-//            Examen(intitule: "Indice 0 : Décédé.", type: .check),
-//            //self.libre,            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
-//        ]
-//        catKarnofsky.examens=examCatKarnofsky
+
         return Examen(intitule: "Echelle Karnofsky", type: .datastr, tag: "dataStrKarnofksy",info: "<br>")
     }
 
-     static var ExamenGeneral:categorieExamen.Categorie {
-        let catExamenGeneral = categorieExamen.Categorie(nom:"Examen général",namedImage: "examenclinique.png",showNom: true)
-        let examCatExamenGeneral = [
-            self.Poids.asExamen(),
-            self.OMS,
-            self.Karnofsky,
-            self.Adenopathies.asExamen(),
-            Examen(intitule: "Dernier repas", type:  .reponsecourte, tag: "date" ),
-            //self.libre,
-           // Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
-        ]
-        catExamenGeneral.examens=examCatExamenGeneral
-        return catExamenGeneral
-    }
 
-    static var ExamenClinique:categorieExamen.Categorie {
-        let catExamenClinique = categorieExamen.Categorie(nom:"Examen Clinique",namedImage: "examenclinique.png",showNom: true)
-        let examCatExamenClinique = [
-            Examen(intitule: "horodatage", type:  .reponsecourte,tag: "date" ),
-            self.ExamenGeneral.asExamen(),
-            self.Neurologie.asExamen(),
-            self.Cardiovasculaire.asExamen(),
-            self.Respiratoire.asExamen(),
-            self.Digestif.asExamen(),
-            self.Urologie.asExamen(),
-            //  self.Urologie.asExamen(),
-            self.ORL.asExamen(),
-            self.Locomoteur.asExamen(),
-           //self.libre,
-        ]
-        catExamenClinique.examens=examCatExamenClinique
-        return catExamenClinique
-    }
-    static var Conclusion:categorieExamen.Categorie {
-        let catConclusion = categorieExamen.Categorie(nom:"Conclusion",namedImage: "medecin_icon.png",showNom: true)
-        let examCatConclusion = [
-            Examen(intitule: "Suspicion ", type: .check),
-            Examen(intitule: "Diagnostic", type: .selection,tag: "atcd"),
-            ExamTree.LocAnat.asExamen(),
-            //self.libre,
-            Examen(intitule: "hospitalisation", type: .check),
-            Examen(intitule: "pris en charge par", type: .check),
-            Examen(intitule: "médecin", type: .selection, tag: "medecin"),
-            Examen(intitule: "Retour à domicile", type: .check),
-            Examen(intitule: "Surveillance par le médecin traitant", type: .check),
-            Examen(intitule: "Consultation spécialisé prévu", type: .check),
-            Examen(intitule: "Consultation spécialisé à prévoir", type: .check),
-            Examen(intitule: "date", type: .reponsecourte,tag: "date"),
-            Examen(intitule: "médecin", type: .selection, tag: "medecin"),
-            Examen(intitule: "sous", type: .reponsecourte),
-            Examen(intitule: "Nouvelle consultation nécessaire si évolution péjorative", type: .check),
-            Examen(intitule: "Prendre nouvel avis médical si aggravation ou évolution insatisfaisante", type: .check),
-            Examen(intitule: "Prendre nouvel avis médical si récidive", type: .check),
-            //self.libre,
-             Examen(intitule: "Autre", type: .reponsecourte,tag: "conclusionautre"),
-           // Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
-        ]
-        catConclusion.examens=examCatConclusion
-        return catConclusion
-    }
     
     
 }
