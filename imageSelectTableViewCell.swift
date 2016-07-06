@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import AssetsLibrary
+//import AssetsLibrary
+import MobileCoreServices
 protocol imageSelectedDelegate {
     func imageSelected(sender:UIView,image:UIImage, url: String)
     
@@ -45,7 +46,12 @@ class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegat
 //            del.imageSelected(self, image: loadImageFromPath(examen.value)! , url: examen.value)
 //        }
         
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate=self
+
+
         imagePicker.sourceType = .SavedPhotosAlbum
+        imagePicker.mediaTypes = [kUTTypeImage as String]
         imagePicker.allowsEditing = true
         
         UIApplication.sharedApplication().keyWindow?.rootViewController!.presentViewController(imagePicker, animated: true, completion: nil)
@@ -62,7 +68,10 @@ class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegat
     @IBAction func selectImageAction(sender: UIButton) {
        // imagePicker.cameraCaptureMode = .Photo
         
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate=self
         imagePicker.sourceType = .Camera
+        imagePicker.showsCameraControls=true
         imagePicker.allowsEditing = true
         
         UIApplication.sharedApplication().keyWindow?.rootViewController!.presentViewController(imagePicker, animated: true, completion: nil)
@@ -73,7 +82,7 @@ class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegat
         }
     }
     
-    let imagePicker = UIImagePickerController()
+    var imagePicker = UIImagePickerController()
     
     override func awakeFromNib() {
         super.awakeFromNib()

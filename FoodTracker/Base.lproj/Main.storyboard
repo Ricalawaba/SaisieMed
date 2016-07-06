@@ -545,8 +545,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="hH5-wn-7Nh">
-                                            <rect key="frame" x="471" y="8" width="121" height="29"/>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="hH5-wn-7Nh">
+                                            <rect key="frame" x="472" y="15.5" width="120" height="29"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="bfk-zs-Aer"/>
                                             </constraints>
@@ -570,6 +570,7 @@
                                         <constraint firstItem="18j-6B-IPh" firstAttribute="leading" secondItem="F0x-Kj-s9b" secondAttribute="leading" constant="8" id="20y-vo-WSf"/>
                                         <constraint firstItem="hH5-wn-7Nh" firstAttribute="trailing" secondItem="F0x-Kj-s9b" secondAttribute="trailingMargin" id="8tt-P2-fVX"/>
                                         <constraint firstItem="hH5-wn-7Nh" firstAttribute="leading" secondItem="18j-6B-IPh" secondAttribute="trailing" constant="2" id="Amh-CC-qrW"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="hH5-wn-7Nh" secondAttribute="bottom" constant="8" id="WKa-na-Hyb"/>
                                         <constraint firstItem="18j-6B-IPh" firstAttribute="top" secondItem="F0x-Kj-s9b" secondAttribute="top" constant="1" id="gzI-QW-BJS"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -631,8 +632,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EIo-pE-g9W">
-                                            <rect key="frame" x="521" y="8" width="71" height="29"/>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EIo-pE-g9W">
+                                            <rect key="frame" x="521" y="15.5" width="71" height="29"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="71" id="J3t-IU-d4l"/>
                                             </constraints>
@@ -652,6 +653,7 @@
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="EIo-pE-g9W" secondAttribute="bottom" constant="8" id="Agf-zh-EhU"/>
                                         <constraint firstItem="rEZ-oE-gIA" firstAttribute="leading" secondItem="e9e-k0-PYg" secondAttribute="leading" constant="10" id="PSY-4o-YGU"/>
                                         <constraint firstItem="EIo-pE-g9W" firstAttribute="leading" secondItem="rEZ-oE-gIA" secondAttribute="trailing" constant="8" id="RzU-yb-hx5"/>
                                         <constraint firstAttribute="trailing" secondItem="EIo-pE-g9W" secondAttribute="trailing" constant="8" id="gIa-Ef-ndu"/>
@@ -735,22 +737,22 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8SU-mA-831">
-                                            <rect key="frame" x="8" y="8" width="170" height="36"/>
+                                            <rect key="frame" x="8" y="8" width="234" height="51.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" misplaced="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap pour liste de choix" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Foj-5k-ThK">
-                                            <rect key="frame" x="186" y="8" width="374" height="30"/>
+                                            <rect key="frame" x="245" y="8" width="315" height="43.5"/>
                                             <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                             <connections>
                                                 <action selector="valueTextFieldDidEnd:" destination="ScK-Ut-Z4E" eventType="editingDidEnd" id="sU4-d4-gNV"/>
                                             </connections>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cn8-Gw-TjF">
-                                            <rect key="frame" x="568" y="8" width="16" height="30"/>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cn8-Gw-TjF">
+                                            <rect key="frame" x="568" y="0.0" width="16" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="16" id="iCO-Q9-32q"/>
                                             </constraints>
@@ -760,10 +762,12 @@
                                     <constraints>
                                         <constraint firstItem="8SU-mA-831" firstAttribute="leading" secondItem="2ST-GA-hjd" secondAttribute="leadingMargin" id="2p5-N5-GtH"/>
                                         <constraint firstItem="8SU-mA-831" firstAttribute="top" secondItem="2ST-GA-hjd" secondAttribute="topMargin" id="5FV-Br-Zaq"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Foj-5k-ThK" secondAttribute="bottom" constant="-2" id="GXJ-Z6-cSJ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Foj-5k-ThK" secondAttribute="bottom" constant="13.5" id="GXJ-Z6-cSJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="Foj-5k-ThK" secondAttribute="bottom" constant="8" id="IN6-UB-3nx"/>
                                         <constraint firstItem="cn8-Gw-TjF" firstAttribute="leading" secondItem="Foj-5k-ThK" secondAttribute="trailing" constant="8" id="KYm-7V-V1c"/>
                                         <constraint firstItem="Foj-5k-ThK" firstAttribute="leading" secondItem="8SU-mA-831" secondAttribute="trailing" constant="8" id="adT-2n-Cmm"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="8SU-mA-831" secondAttribute="bottom" constant="-8" id="eDX-kt-SwK"/>
+                                        <constraint firstItem="Foj-5k-ThK" firstAttribute="top" secondItem="2ST-GA-hjd" secondAttribute="top" constant="8" id="jh2-jI-pJf"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="cn8-Gw-TjF" secondAttribute="trailing" constant="8" id="wwU-6Z-edC"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -842,6 +846,11 @@
                         <barButtonItem style="plain" systemItem="bookmarks" id="b51-AW-Dg9">
                             <connections>
                                 <action selector="GoAccueil:" destination="6p3-rv-hQ4" id="PDP-FY-Nh6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="refresh" id="Q92-Q9-bRy">
+                            <connections>
+                                <action selector="refreshButtonAction:" destination="6p3-rv-hQ4" id="SUJ-s0-xRX"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="pnE-cb-j9w"/>

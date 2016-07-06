@@ -15,6 +15,12 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     var categorie : categorieExamen.Categorie!
     var examenSelected: Examen?
     //var examen = [Examen]()
+    
+    @IBAction func refreshButtonAction(sender: UIBarButtonItem) {
+        tableView.reloadData()
+        
+    }
+    
     var activeField: UITextField?
     func ajoutInformation(sender:AjoutInformationTableViewCell, examen: Examen) {
         let indextoInsert = categorie.examens.indexOf(examen)!
@@ -99,8 +105,13 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         let aview=svc.view
         svc.imageView.image=image
         
-        self.navigationController!.pushViewController(svc,animated: true)
-         tableView.reloadData()
+       
+        dispatch_async(dispatch_get_main_queue()) {
+            self.tableView.reloadData()
+            
+        }
+         self.navigationController!.pushViewController(svc,animated: true)
+         //tableView.reloadData()
     }
     func numberSelected(sender:selectNumberViewController, number:String) {
         ExamTaped!.value=number

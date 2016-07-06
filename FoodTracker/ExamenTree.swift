@@ -118,9 +118,9 @@ struct ExamTree {
             Examen(intitule: "probable", type:  .check ),
             Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
             Examen(intitule: "ou ?", type:  .selection,tag: "etablissement" ),
-            Examen(intitule: "pas de suivi spécialisé", type:  .check ),
+            Examen(intitule: "suivi spécialisé", type:  .ouinon ),
             Examen(intitule: "qui ?", type:  .selection,tag: "medecin" ),
-            Examen(intitule: "Commentaire", type:  .reponsecourte )
+            Examen(intitule: "Commentaire", type:  .reponsecourte, tag: "libre")
         ]
         catATCD.examens=examCatATCD
         return catATCD
@@ -351,14 +351,19 @@ struct ExamTree {
         let examCatPancarte = [
             Examen(intitule: "horodatage", type:  .reponsecourte,tag: "date" ),
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(categorie: self.TA),
+    //        Examen(categorie: self.TA),
             Examen(intitule: "FC", type:  .donnee,tag: "FC" ),
+            tensionMultirow,
+            Examen(intitule: "Tension bras droit", type: .multirowdatastr , tag: "tensionMultirow"),
+            Examen(intitule: "Tension bras gauche", type: .multirowdatastr , tag: "tensionMultirow"),
+
             self.temperatureMultirow,
             Examen(intitule: "T°", type:  .donnee ),
-            Examen(intitule: "EVA", type:  .donnee,tag: "EVA" ),
+           
             Examen(intitule: "SaO2% Air Ambiant", type:  .donnee, tag: "sao2" ),
             Examen(intitule: "SaO2% sous O2", type:  .donnee, tag: "sao2" ),
             Examen(intitule: "Fr. Resp", type:  .donnee ,tag: "fresp"),
+             Examen(intitule: "EVA", type:  .donnee,tag: "EVA" ),
             
             
    //         Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
