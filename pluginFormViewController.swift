@@ -19,6 +19,9 @@ class pluginFormViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         self.scrollView.minimumZoomScale = 1.0
         self.scrollView.maximumZoomScale = 6.0
+        self.scrollView.contentMode = .ScaleAspectFit
+        imageView.sizeToFit()
+        self.scrollView.contentSize=imageView.frame.size
 //        if examen?.type == .imagefilename {
 //            
 //        }

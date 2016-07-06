@@ -87,7 +87,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         self.tableView.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.None)
         if examen.tag == "medecin" {
             self.performSegueWithIdentifier("selectionSegue", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
-        } else if examen.tag != "libre" && examen.tag != "imagefilename" {
+        } else if examen.tag != "libre" && examen.tag != "page" {
             
            self.performSegueWithIdentifier("autoshow", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
             
@@ -100,6 +100,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         svc.imageView.image=image
         
         self.navigationController!.pushViewController(svc,animated: true)
+         tableView.reloadData()
     }
     func numberSelected(sender:selectNumberViewController, number:String) {
         ExamTaped!.value=number
@@ -388,7 +389,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             svc.imageView.image = UIImage( contentsOfFile: ExamTaped!.value)
             svc.titreLabel.text = categorie.examens[0].value
             }
-            let aview = svc.view
+            
             svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
         }
@@ -649,9 +650,9 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
                     
             let cell3 = tableView.dequeueReusableCellWithIdentifier("imageSelectCell", forIndexPath: indexPath) as! imageSelectTableViewCell
             if examen1.value.isEmpty {
-                cell3.imageLabel.text = "(image)"
+                cell3.imageLabel.text = "Aucun document"
             } else {
-                cell3.imageLabel.text =  "(done)"
+                cell3.imageLabel.text =  examen1.value
                 cell3.theImageView.image=UIImage(contentsOfFile: examen1.value)
             }
             

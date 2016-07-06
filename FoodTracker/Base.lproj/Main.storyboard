@@ -432,61 +432,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fracture du fémur" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKi-Rw-fqN">
-                                <rect key="frame" x="20" y="28" width="138" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fracture du fémur" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="BKi-Rw-fqN">
+                                <rect key="frame" x="20" y="12" width="560" height="99"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="qz4-Bg-x4Z"/>
+                                    <constraint firstAttribute="height" constant="99" id="qz4-Bg-x4Z"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="f9W-OA-MVi">
-                                <rect key="frame" x="30" y="57" width="539" height="54"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="54" id="EUO-dd-Vl2"/>
-                                </constraints>
-                                <string key="text">Les différents types de fractures de l'extrémité supérieure du fémur. Les différents types de fractures de l'extrémité supérieure du fémur.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qrk-MW-LMv">
-                                <rect key="frame" x="1" y="119" width="579" height="393"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="qrk-MW-LMv">
+                                <rect key="frame" x="14" y="119" width="555" height="468"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fracture_femur.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jb5-p5-cqI">
-                                        <rect key="frame" x="20" y="20" width="539" height="353"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fracture_femur.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jb5-p5-cqI">
+                                        <rect key="frame" x="7" y="8" width="548" height="452"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="548" id="Uf8-wA-tDp"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Jb5-p5-cqI" secondAttribute="trailing" constant="20" id="4bG-Kh-q6T"/>
-                                    <constraint firstItem="Jb5-p5-cqI" firstAttribute="top" secondItem="qrk-MW-LMv" secondAttribute="top" constant="20" id="9qr-pg-S8h"/>
-                                    <constraint firstAttribute="bottom" secondItem="Jb5-p5-cqI" secondAttribute="bottom" constant="20" id="Acd-Ma-O1w"/>
-                                    <constraint firstItem="Jb5-p5-cqI" firstAttribute="centerX" secondItem="qrk-MW-LMv" secondAttribute="centerX" id="dnu-eu-tIe"/>
-                                    <constraint firstItem="Jb5-p5-cqI" firstAttribute="centerY" secondItem="qrk-MW-LMv" secondAttribute="centerY" id="eME-Sg-aN0"/>
-                                    <constraint firstItem="Jb5-p5-cqI" firstAttribute="leading" secondItem="qrk-MW-LMv" secondAttribute="leading" constant="20" id="klU-60-gx1"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jb5-p5-cqI" secondAttribute="trailing" id="J3a-mD-ubM"/>
+                                    <constraint firstItem="Jb5-p5-cqI" firstAttribute="bottom" secondItem="qrk-MW-LMv" secondAttribute="bottomMargin" id="KNz-LR-EeT"/>
+                                    <constraint firstItem="Jb5-p5-cqI" firstAttribute="leading" secondItem="qrk-MW-LMv" secondAttribute="leading" constant="7" id="STp-yy-uZ5"/>
+                                    <constraint firstItem="Jb5-p5-cqI" firstAttribute="top" secondItem="qrk-MW-LMv" secondAttribute="topMargin" id="hf3-Us-PGe"/>
+                                    <constraint firstItem="Jb5-p5-cqI" firstAttribute="centerY" secondItem="qrk-MW-LMv" secondAttribute="centerY" id="uvj-kF-cwX"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="5ft-dh-3zX" id="D15-a8-oCT"/>
                                 </connections>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6GI-BO-FXi" firstAttribute="top" secondItem="qrk-MW-LMv" secondAttribute="bottom" constant="88" id="4ou-bh-kIx"/>
-                            <constraint firstItem="qrk-MW-LMv" firstAttribute="top" secondItem="f9W-OA-MVi" secondAttribute="bottom" constant="8" symbolic="YES" id="5Wz-Zh-JHv"/>
-                            <constraint firstItem="qrk-MW-LMv" firstAttribute="leading" secondItem="2XV-Nt-ayN" secondAttribute="leadingMargin" constant="-19" id="AU8-uO-DVM"/>
                             <constraint firstItem="BKi-Rw-fqN" firstAttribute="leading" secondItem="2XV-Nt-ayN" secondAttribute="leadingMargin" id="K4J-Cb-xWG"/>
-                            <constraint firstItem="f9W-OA-MVi" firstAttribute="leading" secondItem="2XV-Nt-ayN" secondAttribute="leadingMargin" constant="10" id="Tgw-PS-u8D"/>
-                            <constraint firstItem="6GI-BO-FXi" firstAttribute="top" secondItem="qrk-MW-LMv" secondAttribute="bottom" constant="88" id="Yad-I3-5a6"/>
-                            <constraint firstItem="f9W-OA-MVi" firstAttribute="top" secondItem="BKi-Rw-fqN" secondAttribute="bottom" constant="8" symbolic="YES" id="eA3-FX-WnE"/>
-                            <constraint firstItem="f9W-OA-MVi" firstAttribute="centerX" secondItem="2XV-Nt-ayN" secondAttribute="centerX" id="s4t-oz-5OF"/>
-                            <constraint firstItem="qrk-MW-LMv" firstAttribute="trailing" secondItem="2XV-Nt-ayN" secondAttribute="trailingMargin" id="sul-Wm-34E"/>
-                            <constraint firstItem="BKi-Rw-fqN" firstAttribute="top" secondItem="ma5-u6-NW9" secondAttribute="bottom" constant="8" symbolic="YES" id="ue6-SE-pBd"/>
+                            <constraint firstItem="qrk-MW-LMv" firstAttribute="leading" secondItem="2XV-Nt-ayN" secondAttribute="leadingMargin" constant="-6" id="ZnU-Wf-ym4"/>
+                            <constraint firstItem="BKi-Rw-fqN" firstAttribute="trailing" secondItem="2XV-Nt-ayN" secondAttribute="trailingMargin" id="bCd-K8-Ybf"/>
+                            <constraint firstItem="qrk-MW-LMv" firstAttribute="top" secondItem="BKi-Rw-fqN" secondAttribute="bottom" constant="8" id="csz-sK-od6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qrk-MW-LMv" secondAttribute="trailing" constant="11" id="ctj-Q9-LTe"/>
+                            <constraint firstItem="BKi-Rw-fqN" firstAttribute="leading" secondItem="2XV-Nt-ayN" secondAttribute="leadingMargin" id="fqm-by-1hS"/>
+                            <constraint firstItem="6GI-BO-FXi" firstAttribute="top" secondItem="qrk-MW-LMv" secondAttribute="bottom" constant="13" id="gXp-eI-C73"/>
+                            <constraint firstItem="BKi-Rw-fqN" firstAttribute="top" secondItem="ma5-u6-NW9" secondAttribute="bottom" constant="-8" id="ue6-SE-pBd"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="descriptionLabel" destination="f9W-OA-MVi" id="RhT-cV-z37"/>
                         <outlet property="imageView" destination="Jb5-p5-cqI" id="1AN-Hc-RYl"/>
                         <outlet property="scrollView" destination="qrk-MW-LMv" id="zTw-2M-Ufs"/>
                         <outlet property="titreLabel" destination="BKi-Rw-fqN" id="WJw-lh-PIg"/>
@@ -787,7 +776,7 @@
                                 <rect key="frame" x="0.0" y="512" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hEY-5b-DvI" id="5dF-qL-D3H">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3w-QR-tV5">

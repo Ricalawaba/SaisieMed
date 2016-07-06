@@ -322,6 +322,7 @@ class categorieExamen : NSObject , NSCoding {
             Examen(categorie: CatECG3),
             Examen(categorie: CatECG4),
             Examen(categorie: CatECG5),
+            ExamTree.Document.asExamen(),
             
             
         ]

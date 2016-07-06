@@ -45,7 +45,7 @@ class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegat
 //            del.imageSelected(self, image: loadImageFromPath(examen.value)! , url: examen.value)
 //        }
         
-        imagePicker.sourceType = .PhotoLibrary
+        imagePicker.sourceType = .SavedPhotosAlbum
         imagePicker.allowsEditing = true
         
         UIApplication.sharedApplication().keyWindow?.rootViewController!.presentViewController(imagePicker, animated: true, completion: nil)

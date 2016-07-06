@@ -520,6 +520,7 @@ struct ExamTree {
     static var LocoFonctionnel:categorieExamen.Categorie {
         let catLocoFonctionnel = categorieExamen.Categorie(nom:"LocoFonctionnel",namedImage: "os_icon.png",showNom: false)
         let examCatLocoFonctionnel = [
+            Examen(intitule: "Examen clinique dans les limites de la normale", type:  .ouinon ),
             Examen(intitule: "Gène significative de la mobilité active", type:  .ouinon ),
             Examen(intitule: "Gène significative de la mobilité passive", type:  .ouinon ),
             Examen(intitule: "Impotence fonctionnelle", type:  .ouinon ),
@@ -541,6 +542,7 @@ struct ExamTree {
             Examen(intitule: "déficit sensitif", type: .ouinon),
             Examen(intitule: "déficit moteur", type: .ouinon),
             Examen(intitule: "Amyotrophie", type: .ouinon),
+            Examen(intitule: "Trouble vasculaire distal", type: .ouinon),
             //self.libre,
             ]
         catLocoFonctionnel.examens=examCatLocoFonctionnel
@@ -872,33 +874,51 @@ static var Face:categorieExamen.Categorie {
   static var Documents:categorieExamen.Categorie {
         let catDocuments = categorieExamen.Categorie(nom:"Documents",namedImage: "dossier.png",showNom: true)
         let examCatDocuments = [
-            Examen(intitule: "horodatage", type: .reponsecourte,tag: "date"),
+  //          Examen(intitule: "horodatage", type: .reponsecourte,tag: "date"),
 
             self.Document.asExamen(),
             // Examen(intitule: "Xie", type:  .check ,info: " "),
             //Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
             //Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
-            Examen(intitule: "libre", type:  .reponsecourte ),
+//            Examen(intitule: "libre", type:  .reponsecourte,libre ),
             Examen(intitule: "Ajout document",type: .addinfo,tag: "document")
         ]
         catDocuments.examens=examCatDocuments
         return catDocuments
     }
-   
+static var typeDocument:Examen {
+        Donnees.selectiontextDict["dataStrtypecourrier"]=[
+            "Courrier de demande de prise en charge",
+            "Courrier de sortie d'hospitalisation",
+            
+            "Courrier CR de consultation",
+            "Résultat biologique",
+            "Electrocardiogramme",
+            "Résultat Imagerie",
+            "Résultat Scanner",
+            "Résultat Echographie",
+            "Ordonnance Médecin traitant",
+            "Ordonnance Spécialiste",
+            "Photographie lésion",
+            "Compte rendu Imagerie",
+        ]
+        return Examen(intitule: "Type", type: .datastr, tag: "dataStrtypecourrier")
+        // return catOMS
+    }
+  
  static var Document:categorieExamen.Categorie {
         let catDocumentConsulte = categorieExamen.Categorie(nom:"Document ",namedImage: "dossier.png",showNom: false)
         let examCatDocumentConsulte = [
             // Examen(intitule: "Xie", type:  .check ,info: " "),
             //Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
             //Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
-            Examen(intitule: "Courrier", type: .check),
-            Examen(intitule: "Compte rendu d'examen", type: .donnee),
+            Examen(intitule: "Date", type:  .reponsecourte, tag: "date" ),
+            self.typeDocument,
+           // Examen(intitule: "Courrier", type: .check),
+            //Examen(intitule: "Compte rendu d'examen", type: .donnee),
            
             Examen(intitule: "de qui ?", type:  .selection,tag: "medecin" ),
-            Examen(intitule: "Date", type:  .donnee, tag: "date" ),
-            Examen(intitule: "(courrier de suivi)", type: .check),
-            Examen(intitule: "(Resumé d'hospitalisation)", type: .check),
-            Examen(intitule: "(Bilan spécialisé)", type: .check),
+            
             Examen(intitule: "Avancée diagnostique", type: .check),
             Examen(intitule: "Etat Stable", type: .check),
             Examen(intitule: "Amélioration", type: .check),
@@ -1128,18 +1148,20 @@ static var Face:categorieExamen.Categorie {
         let examCatImagerie = [
             ExamTree.Radiographie.asExamen(),
             Examen(intitule: "Echographie abdominale", type: .check),
+             Examen(intitule: "Echographie", type: .check),
             Examen(intitule: "Echographie doppler", type: .check),
             Examen(intitule: "Scanner", type: .check),
             Examen(intitule: "IRM", type: .check),
             Examen(intitule: "E.E.G.", type: .check),
             Examen(intitule: "EMG", type: .check),
-            Examen(intitule: "(précision)", type: .reponsecourte),
+            Examen(intitule: "(précision)", type: .reponsecourte,tag: "libre"),
             Examen(intitule: "en cours", type: .check),
             
             Examen(intitule: "(Interprétation radiologue)", type: .check),
             Examen(intitule: "conclusion:", type: .selection,tag: "ConclusionRx"),
             
             Examen(intitule: "sous reserve de confirmation par le radiologue", type: .check),
+            self.Document.asExamen(),
             //self.libre,
             
             ]
@@ -1149,6 +1171,7 @@ static var Face:categorieExamen.Categorie {
     static var Gazometrie:categorieExamen.Categorie {
         let catGazometrie = categorieExamen.Categorie(nom:"Gazometrie",namedImage: "piqure_icon.png",showNom: true)
         let examCatGazometrie = [
+            self.Document.asExamen(),
             Examen(intitule: "Air ambiant", type:  .check ),
             Examen(intitule: "Sous O2", type:  .check ),
             
@@ -1346,6 +1369,7 @@ static var Face:categorieExamen.Categorie {
     static var Locomoteur:categorieExamen.Categorie {
         let catLocomoteur = categorieExamen.Categorie(nom:"Locomoteur",namedImage: "os_icon.png",showNom: true)
         let examCatLocomoteur = [
+            self.Document.asExamen(),
             ExamTree.Plaie.asExamen(),
             self.Face.asExamen(),
             self.RachisCervical.asExamen(),
@@ -1364,6 +1388,7 @@ static var Face:categorieExamen.Categorie {
             ExamTree.Cheville.asExamen(),
             //self.libre,
              Examen(intitule: "Dupliquer précedent",type: .addinfo,tag: "dupliquer")
+            
         ]
         catLocomoteur.examens=examCatLocomoteur
         return catLocomoteur

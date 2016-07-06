@@ -107,24 +107,20 @@ class pickSelectTableViewCell: UITableViewCell ,UITextFieldDelegate,UIPickerView
                 if Donnees.multiColumnPickerDataStr[examen.tag]!.count == 5 {
                     pickerLabel.textAlignment = NSTextAlignment.Right
                 }
-
-//                if Donnees.multiColumnPickerDataStr[examen.tag]?.count  < 3 {
-//                    pickerLabel.textAlignment = NSTextAlignment.Left
-//                }
             default:
                 pickerLabel.textAlignment = NSTextAlignment.Center
-
                 break
-                
             }
+        } else {
+            pickerLabel.text = Donnees.selectiontextDict[examen.tag]![row]
+            pickerLabel.textAlignment = .Center
         }
-            else { pickerLabel.text = Donnees.selectiontextDict[examen.tag]![row]}
         
         // pickerLabel.font = UIFont(name: pickerLabel.font.fontName, size: 15)
         pickerLabel.numberOfLines=3
         pickerLabel.adjustsFontSizeToFitWidth=true
         
-        pickerLabel.font = UIFont(name: "Arial-BoldMT", size: 25) // In this use your custom font
+        pickerLabel.font = UIFont(name: "Arial-BoldMT", size: 30) // In this use your custom font
                 return pickerLabel
     }
 }
