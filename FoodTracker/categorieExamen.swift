@@ -84,15 +84,19 @@ class categorieExamen : NSObject , NSCoding {
         func asExamen() -> Examen {
             return Examen(categorie: self)
         }
-        func UIString() -> String {
-            var removeHtmlStr = formattedDetaiString()
+        static func removeHtml(originalString: String)->String {
+            var removeHtmlStr = originalString
             let subStr=["<br>","</br>","<u>","</u>","<p>","</p>","<li>","<ul>","<ol>","<b>","</b>","<section>","</section>"]
             
             for str in subStr {
-                 removeHtmlStr=removeHtmlStr.stringByReplacingOccurrencesOfString(str, withString: "", options: NSStringCompareOptions.CaseInsensitiveSearch)
-                }
-           
+                removeHtmlStr=removeHtmlStr.stringByReplacingOccurrencesOfString(str, withString: "", options: NSStringCompareOptions.CaseInsensitiveSearch)
+            }
+            
             return removeHtmlStr
+            
+        }
+        func UIString() -> String {           
+            return Categorie.removeHtml(formattedDetaiString())
         }
         func formattedDetaiString() -> String {
             var str: String = ""

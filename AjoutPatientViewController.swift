@@ -14,22 +14,22 @@ protocol ajoutPatientDelegate {
 
 class AjoutPatientViewController: UIViewController , UITextFieldDelegate {
 
-    @IBOutlet weak var motif: UITextField!
+  //  @IBOutlet weak var motif: UITextField!
     @IBOutlet weak var hommeFemme: UISegmentedControl!
     @IBOutlet weak var nomFamille: UITextField!
-    @IBOutlet weak var prenom: UITextField!
+   // @IBOutlet weak var prenom: UITextField!
     @IBOutlet weak var age: UITextField!
-    @IBOutlet weak var localisation: UITextField!
-    @IBOutlet weak var medicaltraumato: UISegmentedControl!
+  //  @IBOutlet weak var localisation: UITextField!
+ //   @IBOutlet weak var medicaltraumato: UISegmentedControl!
     @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        motif.delegate=self
+        
         nomFamille.delegate=self
-        prenom.delegate=self
-        localisation.delegate=self
+        
+  //      localisation.delegate=self
         age.delegate=self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AjoutPatientViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AjoutPatientViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
@@ -48,13 +48,13 @@ class AjoutPatientViewController: UIViewController , UITextFieldDelegate {
         
         var contentInset:UIEdgeInsets = self.scrollView.contentInset
         contentInset.bottom = keyboardFrame.size.height+20
-        self.scrollView.contentInset = contentInset
+       // self.scrollView.contentInset = contentInset
     }
     
     func keyboardWillHide(notification:NSNotification){
         
         let contentInset:UIEdgeInsets = UIEdgeInsetsZero
-        self.scrollView.contentInset = contentInset
+       // self.scrollView.contentInset = contentInset
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -68,10 +68,10 @@ class AjoutPatientViewController: UIViewController , UITextFieldDelegate {
             var unAge = Int(age.text!)
             if unAge==nil {unAge=0}
             if hommeFemme.selectedSegmentIndex==0 {val = true}
-            let patient1 =  patients.patient(nomPrenom: "\(nomFamille.text!.uppercaseString) \(prenom.text!.capitalizedString)",
+            let patient1 =  patients.patient(nomPrenom: "\(nomFamille.text!.uppercaseString)",
                                              age: unAge!,
-                                             localisation: localisation.text!,
-                                             motif: motif.text!, masculin: val )
+                                             localisation: "",
+                                             motif: "", masculin: val )
             del.patientAdded(self, patient: patient1)
         }
     }
