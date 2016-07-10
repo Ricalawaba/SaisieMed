@@ -53,7 +53,7 @@ class patients :  NSObject,NSCoding {
         }
         var motif : String {
             get {
-                return examen.categories[0].examens[4].categorie!.detailString()
+                return examen.categories[0].examens[4].categorie!.UIString()
 
             }
             set {
@@ -93,11 +93,11 @@ class patients :  NSObject,NSCoding {
                     let medTraitant=cat.examens[5].value
                     if !medTraitant.isEmpty { AdminStr += "<li><u>Médecin traitant:</u> \(medTraitant)" }
                     
-                    let modevie=cat.examens[7].categorie!.detailString()
+                    let modevie=cat.examens[7].categorie!.formattedDetaiString()
                     if !modevie.isEmpty {
                         AdminStr += "<li><u>Mode de vie:</u> \(modevie)"
                     }
-                    let modeentree=cat.examens[6].categorie!.detailString()
+                    let modeentree=cat.examens[6].categorie!.formattedDetaiString()
                     if !modeentree.isEmpty {
                         AdminStr += "<li><u>Mode d'entrée:</u> \(modeentree)"
                     }
@@ -105,22 +105,16 @@ class patients :  NSObject,NSCoding {
                     if !connuProfession.isEmpty {
                         AdminStr += "<li><u>Profession:</u> \(connuProfession)"
                     }
-                    let connuClinique=cat.examens[9].categorie!.detailString()
+                    let connuClinique=cat.examens[9].categorie!.formattedDetaiString()
                     if !connuClinique.isEmpty {
                         AdminStr += "<li><u>Connu de la clinique:</u> \(connuClinique)"
                     }
                     
                     retStr += AdminStr
                 } else {
-                    var detailstr = ""
-                    if cat.nom == "Traitement" {
-                        detailstr=cat.formattedDetaiString("<br>- ")
-                    } else if cat.nom.containsString("Plaintes") || cat.nom.containsString("Connu de la clinique"){
-                        detailstr=cat.formattedDetaiString("<br>➮ ")
-                    } else
-                    { detailstr=cat.formattedDetaiString() }
+                    let detailstr = cat.formattedDetaiString()
                     if !detailstr.isEmpty {
-                        retStr += "<p><b><u>\(cat.nom)</u></b><br>\(detailstr)"
+                        retStr += "<p><b><u>\(cat.nom)</u></b>\(detailstr)"
                     }
                 }
             }

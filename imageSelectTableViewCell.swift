@@ -100,7 +100,9 @@ class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegat
     // MARK: - UIImagePickerControllerDelegate Methods
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+      var quelleImage="UIImagePickerControllerOriginalImage"
+        if picker.sourceType == .Camera { quelleImage="UIImagePickerControllerEditedImage"}
+        if let pickedImage = info[quelleImage] as? UIImage {
             //imageLabel.text=(info[UIImagePickerControllerReferenceURL] as! NSURL).absoluteString
             let fileName = "\(randomStringWithLength(8)).jpg"
             let imagePath = fileInDocumentsDirectory(fileName)

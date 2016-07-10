@@ -8,10 +8,9 @@
 
 import UIKit
 
-// TODO: Import image libray et camera, Categorie "Documents Scannés"
 // TODO: Protocoles médicaux
 // TODO: Formatage examen/categorie
-
+// TODO: Refactoring UI Pancarte
 
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {

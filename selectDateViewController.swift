@@ -42,7 +42,7 @@ class selectDateViewController: UIViewController {
             //dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
            // dateFormatter.locale = NSLocale.currentLocale()
             dateFormatter.dateFormat=format
-            let strDate = dateFormatter.stringFromDate(self.date).capitalizedString
+            let strDate = dateFormatter.stringFromDate(self.date)
             del.dateSelected(self, text: strDate, date: self.date)
             
         }

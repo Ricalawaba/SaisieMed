@@ -42,14 +42,17 @@ class Examen : NSObject,NSCoding{
         }
     }
 
-    
+    var formatPreString:String = ""
+    var formatPostString:String = ", "
     
     // MARK: NSCoding
     required convenience init?(coder decoder: NSCoder) {
         guard let intitule = decoder.decodeObjectForKey("intitule") as? String,
             let info = decoder.decodeObjectForKey("info") as? String,
             let tag = decoder.decodeObjectForKey("tag") as? String,
-            let value = decoder.decodeObjectForKey("value") as? String
+            let formatPreString = decoder.decodeObjectForKey("formatPreString") as? String,
+            let formatPostString = decoder.decodeObjectForKey("formatPostString") as? String,
+        let value = decoder.decodeObjectForKey("value") as? String
             else { return nil }
         
         
@@ -57,6 +60,8 @@ class Examen : NSObject,NSCoding{
         self.info=info
         self.tag=tag
         self.value=value
+        self.formatPreString=formatPreString
+        self.formatPostString=formatPostString
         
         let type = ExamenEnum(rawValue: (decoder.decodeObjectForKey("type") as! Int))
         self.type=type!
@@ -71,6 +76,9 @@ class Examen : NSObject,NSCoding{
         coder.encodeObject(self.info, forKey: "info")
         coder.encodeObject(self.tag, forKey: "tag")
         coder.encodeObject(self.type.rawValue, forKey: "type")
+        coder.encodeObject(self.formatPreString, forKey: "formatPreString")
+        coder.encodeObject(self.formatPostString, forKey: "formatPostString")
+        
         coder.encodeObject(self.value, forKey: "value")
         if self.type == .group {
             coder.encodeObject(self.categorie, forKey: "categorie")
@@ -88,6 +96,16 @@ class Examen : NSObject,NSCoding{
     init(intitule: String,type:  ExamenEnum) {
         self.type=type
         self.intitule=intitule
+    }
+    init(intitule: String,type:  ExamenEnum,  formatPreString: String? , formatPostString: String?) {
+        self.type=type
+        self.intitule=intitule
+        if (formatPreString != nil) {
+            self.formatPreString=formatPreString!
+        }
+        if (formatPostString != nil) {
+            self.formatPostString=formatPostString!
+        }
     }
     init(intitule: String,type:  ExamenEnum, tag: String) {
         self.type=type
@@ -112,4 +130,5 @@ class Examen : NSObject,NSCoding{
         self.value=value
         
     }
+    
 }

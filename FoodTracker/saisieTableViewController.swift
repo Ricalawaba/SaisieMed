@@ -97,7 +97,7 @@ class saisieTableViewController: UITableViewController {
         let categorie=patient.examen.categories[indexPath.row]
         cell.imageCategorie.image = UIImage(named: categorie.namedImage)
         cell.nomCategorie.text = categorie.nom
-        cell.detailCategorie.text = categorie.detailString()
+        cell.detailCategorie.text = categorie.UIString()
         cell.tag=indexPath.row
         return cell
     }

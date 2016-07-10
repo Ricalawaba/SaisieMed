@@ -41,6 +41,18 @@ class dateDureeViewController: UIViewController {
     @IBOutlet weak var dateHeureDatePicker: UIDatePicker!
     @IBOutlet weak var dateDatePicker: UIDatePicker!
     
+    @IBAction func qqMinutesActionButton(sender: UIButton) {
+        returnString("quelques minutes")
+    }
+    @IBAction func qqHeuresActionButton(sender: UIButton) {
+        returnString("quelques heures")
+    }
+    @IBAction func qqJoursActionButton(sender: UIButton) {
+        returnString("quelques jours")
+    }
+    @IBAction func qqSemainesActionButton(sender: UIButton) {
+        returnString("quelques semaines")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +64,13 @@ class dateDureeViewController: UIViewController {
     //    }
 
     }
-
+    func returnString(str:String) {
+        if let del=delegate  {
+            del.dateSelected(self, text: str, date: self.date)
+            
+        }
+        self.navigationController?.popViewControllerAnimated(true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -64,7 +82,7 @@ class dateDureeViewController: UIViewController {
             //dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
             // dateFormatter.locale = NSLocale.currentLocale()
             dateFormatter.dateFormat=format
-            let strDate = dateFormatter.stringFromDate(self.date).capitalizedString
+            let strDate = dateFormatter.stringFromDate(self.date)
             del.dateSelected(self, text: strDate, date: self.date)
             
         }

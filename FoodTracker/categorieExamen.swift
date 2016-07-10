@@ -17,38 +17,64 @@ class categorieExamen : NSObject , NSCoding {
         var nom: String
         var namedImage : String
         var showNom : Bool = true
+        var formatPreString:String = "<br>"
+        var formatPostString:String = ""
+        
         required convenience init?(coder decoder: NSCoder) {
             guard let nom = decoder.decodeObjectForKey("nom") as? String,
                 let namedImage = decoder.decodeObjectForKey("namedImage") as? String,
-                let examens = decoder.decodeObjectForKey("examens") as? [Examen]
+                let examens = decoder.decodeObjectForKey("examens") as? [Examen],
+                let formatPreString = decoder.decodeObjectForKey("formatPreString") as? String,
+                let formatPostString = decoder.decodeObjectForKey("formatPostString") as? String
+                
                 else { return nil }
             
-            self.init(nom: nom, namedImage: namedImage)
+            self.init(nom: nom, namedImage: namedImage,showNom: decoder.decodeBoolForKey("shownom"), formatPreString: formatPreString,formatPostString: formatPostString)
             self.examens=examens
-            self.showNom = decoder.decodeBoolForKey("shownom")
+//            self.showNom = decoder.decodeBoolForKey("shownom")
+//            self.formatPostString=formatPostString
+//            self.formatPreString=formatPreString
             
-            }
-            
+        }
+        func startNewLine() {
+            formatPreString="<br>"
+        }
+        func startLI() {
+            formatPreString="<li>"
+        }
         func encodeWithCoder(coder: NSCoder) {
             coder.encodeObject(self.nom, forKey: "nom")
             coder.encodeObject(self.namedImage, forKey: "namedImage")
+            coder.encodeObject(self.formatPreString, forKey: "formatPreString")
+            coder.encodeObject(self.formatPostString, forKey: "formatPostString")
             coder.encodeObject(self.examens, forKey: "examens")
             coder.encodeBool(self.showNom, forKey: "shownom")
         }
         
-
-      override init(){
         
+        override init(){
+            
             nom=""
             namedImage=""
-        super.init()
+            super.init()
             
         }
-        
-        init(nom:String, namedImage:String, showNom: Bool){
+        init(nom:String, namedImage:String, showNom: Bool) {
             self.nom=nom
             self.namedImage=namedImage
             self.showNom=showNom
+            
+        }
+        
+        convenience init(nom:String, namedImage:String, showNom: Bool,formatPreString: String, formatPostString: String?){
+            self.init(nom: nom,namedImage:namedImage,showNom: showNom)
+            
+            if (formatPostString != nil) {
+                self.formatPostString=formatPostString!
+            }
+            
+                self.formatPreString=formatPreString
+            
         }
         init(nom:String, namedImage:String){
             self.nom=nom
@@ -58,97 +84,123 @@ class categorieExamen : NSObject , NSCoding {
         func asExamen() -> Examen {
             return Examen(categorie: self)
         }
-        func formattedDetaiString(catSeparator:String="<p>") -> String {
+        func UIString() -> String {
+            var removeHtmlStr = formattedDetaiString()
+            let subStr=["<br>","</br>","<u>","</u>","<p>","</p>","<li>","<ul>","<ol>","<b>","</b>","<section>","</section>"]
+            
+            for str in subStr {
+                 removeHtmlStr=removeHtmlStr.stringByReplacingOccurrencesOfString(str, withString: "", options: NSStringCompareOptions.CaseInsensitiveSearch)
+                }
+           
+            return removeHtmlStr
+        }
+        func formattedDetaiString() -> String {
             var str: String = ""
+            var savedStr:String=""
+            // Itération des examens de la catégorie
             for  index in 0..<examens.count {
+                savedStr=str
                 let examen=examens[index]
-                if !examen.value.isEmpty {
+                
+                if !examen.value.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).isEmpty {
                     if examen.type ==  .ouinon || examen.type == .check {
                         if examen.value == "0" {
-                            str += "\(examen.intitule), "
+                            str += "\(examen.intitule)"
                         } else if examen.value == "1" {
                             let vowels: [Character] = ["a","e","i","o","u","h"]
                             if vowels.contains(examen.intitule.lowercaseString.characters.first!) {
                                 
-                                str += "Pas d'\(examen.intitule), "}
+                                str += "Pas d'\(examen.intitule)"}
                             else {
-                                str += "Pas de \(examen.intitule), "}
+                                str += "Pas de \(examen.intitule)"}
                         }
-                    }
-                    
-                    if  examen.type ==  .reponsecourte || examen.type == .selection{
-                        str += "\(examen.value), "
-                    }
-                    if examen.type ==  .donnee  || examen.type == .datastr || examen.type == Examen.ExamenEnum.multirowdatastr {
-                        str += "\(examen.intitule): \(examen.value)\(examen.info) "
+                    } else if  examen.type ==  .reponsecourte || examen.type == .selection{
+                        str += "\(examen.value)"
+                    } else if examen.type ==  .donnee  || examen.type == .datastr || examen.type == Examen.ExamenEnum.multirowdatastr {
+                        str += "\(examen.intitule): \(examen.value)"
                     }
                     
                 }else if examen.type ==  .group  {
-                    let str2=examen.categorie?.formattedDetaiString()
-                    if !(str2?.isEmpty)! {
-                        str += catSeparator
+                    let str2=examen.categorie!.formattedDetaiString()
+                    if !(str2.isEmpty) {
+                        //  str += catSeparator
                         if ((examen.categorie!.showNom) ) {
                             str += "<u>\(examen.intitule)</u>: "
                         }
-                        str += "\(str2!)\(examen.info) "
+                        str += "\(str2)"
                     }
                 }
-            }
-            if !str.isEmpty {str.removeAtIndex(str.endIndex.predecessor())
-            //    str.removeAtIndex(str.endIndex.predecessor())
-            }
-            return str
+                while let lastchar=str.characters.last {
+                    if [",", ".", "-", "?"," "].contains(lastchar) {
+                        str = String(str.characters.dropLast())
+                        //print(newstr)
+                    } else {break}
+                }
 
+                if str != savedStr {
+                    str = "\(examen.formatPreString)\(str)\(examen.formatPostString)"
+                }
+            }
+            while let lastchar=str.characters.last {
+                if [",", ".", "-", "?"," "].contains(lastchar) {
+                    str = String(str.characters.dropLast())
+                    //print(newstr)
+                } else {break}
+            }
+
+            if str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).isEmpty {return ""}
+            return "\(formatPreString)\(str)\(formatPostString)"
+            
         }
-        func detailString() -> String {
-                var str: String = ""
-            var str2: String = ""
-                for  index in 0..<examens.count {
-                    str2=str
-                    let examen=examens[index]
-                    if !examen.value.isEmpty {
-                        if examen.type ==  .ouinon || examen.type == .check {
-                            if examen.value == "0" {
-                                str += "\(examen.intitule), "
-                            } else if examen.value == "1" {
-                                let vowels: [Character] = ["a","e","i","o","u","h"]
-                                if vowels.contains(examen.intitule.lowercaseString.characters.first!) {
-                                    
-                                    str += "Pas d'\(examen.intitule), "}
-                                else {
-                                    str += "Pas de \(examen.intitule), "}
-                            }
-                        }
-                        
-                        if  examen.type ==  .reponsecourte || examen.type == .selection{
-                            str += "\(examen.value), "
-                        }
-                        if examen.type ==  .donnee || examen.type == .datastr || examen.type == Examen.ExamenEnum.multirowdatastr{
-                            str += "\(examen.intitule)=\(examen.value), "
-                        }
-                        
-                    }else if examen.type ==  .group {
-                        let str2=examen.categorie?.detailString()
-                        if !(str2?.isEmpty)! {
-                            if ((examen.categorie!.showNom) ) {
-                                str += "\(examen.intitule):"
-                            }
-                           
-                        str += "\(examen.categorie!.detailString())\(examen.info) "
-                       // str = "<br>\(str)"
-                        }
-                    }
-                    // if !str.isEmpty
-                     if str2 != str  &&
-                     ( self.nom.containsString("de la clinique") || self.nom.containsString("comoteur")
-                     ){str = "<br>\(str)" }
-                }
-                if !str.isEmpty {str.removeAtIndex(str.endIndex.predecessor())
-                str.removeAtIndex(str.endIndex.predecessor())}
-                return str
-            }
+        //        func detailString() -> String {
+        //            var str: String = ""
+        //            var str2: String = ""
+        //            for  index in 0..<examens.count {
+        //                str2=str
+        //                let examen=examens[index]
+        //                if !examen.value.isEmpty {
+        //                    if examen.type ==  .ouinon || examen.type == .check {
+        //                        if examen.value == "0" {
+        //                            str += "\(examen.intitule), "
+        //                        } else if examen.value == "1" {
+        //                            let vowels: [Character] = ["a","e","i","o","u","h"]
+        //                            if vowels.contains(examen.intitule.lowercaseString.characters.first!) {
+        //
+        //                                str += "Pas d'\(examen.intitule), "}
+        //                            else {
+        //                                str += "Pas de \(examen.intitule), "}
+        //                        }
+        //                    }
+        //
+        //                    if  examen.type ==  .reponsecourte || examen.type == .selection{
+        //                        str += "\(examen.value), "
+        //                    }
+        //                    if examen.type ==  .donnee || examen.type == .datastr || examen.type == Examen.ExamenEnum.multirowdatastr{
+        //                        str += "\(examen.intitule)=\(examen.value), "
+        //                    }
+        //
+        //                }else if examen.type ==  .group {
+        //                    let str2=examen.categorie?.detailString()
+        //                    if !(str2?.isEmpty)! {
+        //                        if ((examen.categorie!.showNom) ) {
+        //                            str += "\(examen.intitule):"
+        //                        }
+        //
+        //                        str += "\(examen.categorie!.detailString())\(examen.info) "
+        //                        // str = "<br>\(str)"
+        //                    }
+        //                }
+        //                // if !str.isEmpty
+        //                if str2 != str  &&
+        //                    ( self.nom.containsString("de la clinique") || self.nom.containsString("comoteur")
+        //                    ){str = "<br>\(str)" }
+        //            }
+        //            if !str.isEmpty {str.removeAtIndex(str.endIndex.predecessor())
+        //                str.removeAtIndex(str.endIndex.predecessor())}
+        //            return str
+        //        }
     }
-
+    
     required convenience init?(coder decoder: NSCoder) {
         guard let categories = decoder.decodeObjectForKey("categories") as? [Categorie]
             else { return nil }
@@ -160,7 +212,7 @@ class categorieExamen : NSObject , NSCoding {
     func encodeWithCoder(coder: NSCoder) {
         coder.encodeObject(self.categories, forKey: "categories")
     }
-
+    
     init (categories: [Categorie]){
         self.categories=categories
     }
@@ -171,7 +223,7 @@ class categorieExamen : NSObject , NSCoding {
         // MARK: Comorbidité / antécédent
         let Categorie2 = ExamTree.Comorbidite
         
-
+        
         // MARK: Traitement
         
         
@@ -181,28 +233,7 @@ class categorieExamen : NSObject , NSCoding {
         // MARK: Pancarte
         let Categorie31 = ExamTree.Pancartes
         
-        // Examen(intitule: "Motif", type:  .reponsecourte )
-//        
-//        // MARK: Neurologie
-//        let Categorie4 = ExamTree.Neurologie
-//        
-//        // MARK: Cardiovasculaire
-//        let CategorieCardiovasculaire = ExamTree.Cardiovasculaire
-//        
-//        // MARK: Respiratoire
-//        let Categorie6 = ExamTree.Respiratoire
-//        
-//        // MARK: Digestif
-//        let Categorie7 = ExamTree.Digestif
-//        
-//        // MARK: Urologie
-//        let Categorie8 = ExamTree.Urologie
-//        // MARK: ORL
-//        let Categorie9 = ExamTree.ORL
-//        
-//        // MARK: Locomoteur
-//        let Categorie20 = ExamTree.Locomoteur
-        // MARK: Electrocardiogramme
+ 
         let CatECG = Categorie(nom: "ECG",namedImage: "cardio_icon.png")
         let catECGConclusion = Categorie(nom: "Conclusion",namedImage: "cardio_icon.png")
         let examCatConclusion = [
@@ -229,52 +260,52 @@ class categorieExamen : NSObject , NSCoding {
         
         let catECG1 = Categorie(nom: "Paramètres Tracé",namedImage: "cardio_icon.png")
         let examcatECG1 = [
-             Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre"),
-             Examen(intitule: "Qualité correcte", type:  .check ),
-             Examen(intitule: "Tracé parasité", type:  .check ),
-             Examen(intitule: "Microvoltage", type:  .check ),
-             Examen(intitule: "Ligne de base instable", type:  .check ),
-             Examen(intitule: "FC", type:  .donnee ),
-             
-             Examen(intitule: "P (mm)", type:  .donnee ),
-             Examen(intitule: "P (ms)", type:  .donnee ),
-             Examen(intitule: "PR (ms)", type:  .donnee ),
-             Examen(intitule: "QRS (ms)", type:  .donnee ),
-             Examen(intitule: "aQRS", type:  .donnee ),
-             Examen(intitule: "QT", type:  .donnee ),
-             Examen(intitule: "QTc", type:  .donnee )
+            Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre"),
+            Examen(intitule: "Qualité correcte", type:  .check ),
+            Examen(intitule: "Tracé parasité", type:  .check ),
+            Examen(intitule: "Microvoltage", type:  .check ),
+            Examen(intitule: "Ligne de base instable", type:  .check ),
+            Examen(intitule: "FC", type:  .donnee ),
+            
+            Examen(intitule: "P (mm)", type:  .donnee ),
+            Examen(intitule: "P (ms)", type:  .donnee ),
+            Examen(intitule: "PR (ms)", type:  .donnee ),
+            Examen(intitule: "QRS (ms)", type:  .donnee ),
+            Examen(intitule: "aQRS", type:  .donnee ),
+            Examen(intitule: "QT", type:  .donnee ),
+            Examen(intitule: "QTc", type:  .donnee )
         ]
         catECG1.examens = examcatECG1
         
         
         let CatECG2 = Categorie(nom: "Rythme/P/PR",namedImage: "cardio_icon.png")
         let examCatECG2=[
-                Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre"),
-                Examen(intitule: "Rythme régulier sinusal", type: .check),
-                Examen(intitule: "Rythme irrégulier", type: .check),
-                Examen(intitule: "non sinusal", type: .check),
-                Examen(intitule: "FA (P=0)", type: .check),
-                Examen(intitule: "Axe Normal (aVF et D1>0)", type: .check),
-                Examen(intitule: "Axe Gauche (aVF<0 et D1>0)", type: .check),
-                Examen(intitule: "Axe Droit (aVF>0 et D1<0)", type: .check),
-                
-                Examen(intitule: "Pas d'hypertrophie auriculaire", type: .check),
-                Examen(intitule: "PR constant", type: .check),
-                Examen(intitule: "PR allongé", type: .donnee),
-                Examen(intitule: "PR court", type: .donnee),
-                Examen(intitule: "BAV1", type: .check),
-                Examen(intitule: "BAV2", type: .check),
-                Examen(intitule: "BAV3", type: .check),
-
-                
-                
-        ]
+            Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre"),
+            Examen(intitule: "Rythme régulier sinusal", type: .check),
+            Examen(intitule: "Rythme irrégulier", type: .check),
+            Examen(intitule: "non sinusal", type: .check),
+            Examen(intitule: "FA (P=0)", type: .check),
+            Examen(intitule: "Axe Normal (aVF et D1>0)", type: .check),
+            Examen(intitule: "Axe Gauche (aVF<0 et D1>0)", type: .check),
+            Examen(intitule: "Axe Droit (aVF>0 et D1<0)", type: .check),
+            
+            Examen(intitule: "Pas d'hypertrophie auriculaire", type: .check),
+            Examen(intitule: "PR constant", type: .check),
+            Examen(intitule: "PR allongé", type: .donnee),
+            Examen(intitule: "PR court", type: .donnee),
+            Examen(intitule: "BAV1", type: .check),
+            Examen(intitule: "BAV2", type: .check),
+            Examen(intitule: "BAV3", type: .check),
+            
+            
+            
+            ]
         CatECG2.examens=examCatECG2
         let CatECG3 = Categorie(nom: "QRS",namedImage: "cardio_icon.png")
         let examCatECG3 = [
             Examen(intitule: "Libre", type:  .reponsecourte,tag: "libre" ),
             Examen(intitule: "QRS fins", type: .check),
-
+            
             Examen(intitule: "QRS Larges", type: .check),
             Examen(intitule: "HVG  (RD1+SD3>25)", type: .check),
             Examen(intitule: "HVG Cornell (RV1+SV3>28H,21F)", type: .check),
@@ -286,8 +317,8 @@ class categorieExamen : NSObject , NSCoding {
             Examen(intitule: "QRS fragmentés", type: .donnee),
             Examen(intitule: "Pas d'Ondes Q suspectes", type: .check),
             Examen(intitule: "Ondes Q", type: .donnee),
-
-        ]
+            
+            ]
         CatECG3.examens=examCatECG3
         
         let CatECG4 = Categorie(nom: "ST",namedImage: "cardio_icon.png")
@@ -297,7 +328,7 @@ class categorieExamen : NSObject , NSCoding {
             Examen(intitule: "ST sus-décalé", type: .donnee),
             Examen(intitule: "ST sous-decalé", type: .donnee),
             Examen(intitule: "Discordance de repolarisation 'approprié'", type: .check),
-        ]
+            ]
         CatECG4.examens=examCatECG4
         
         let CatECG5 = Categorie(nom: "T/U ",namedImage: "cardio_icon.png")
@@ -310,7 +341,7 @@ class categorieExamen : NSObject , NSCoding {
             Examen(intitule: "Ondes U", type: .ouinon),
             ]
         CatECG5.examens=examCatECG5
-
+        
         CatECG.examens = [
             Examen(intitule: "horodatage", type:  .reponsecourte,tag: "date" ),
             Examen(intitule: "Douleur thoracique au moment de l'examen", type: .ouinon),
@@ -326,7 +357,7 @@ class categorieExamen : NSObject , NSCoding {
             
             
         ]
-
+        
         
         
         // MARK: Examens paracliniques
@@ -343,8 +374,8 @@ class categorieExamen : NSObject , NSCoding {
         
         
         examCatParaclinique += [ Examen(categorie: catBiologie),
-                    ExamTree.Gazometrie.asExamen(),
-            ]
+                                 ExamTree.Gazometrie.asExamen(),
+        ]
         let catBandelette = Categorie(nom: "Bandelette Urinaire",namedImage: "nurse_icon.png")
         let examCatBandelette = [
             Examen(intitule: "normale", type: .check),
@@ -358,28 +389,17 @@ class categorieExamen : NSObject , NSCoding {
             ]
         catBandelette.examens=examCatBandelette
         examCatParaclinique += [ Examen(categorie: catBandelette),
-            ExamTree.Imagerie.asExamen(),
-            Examen(intitule: "Ajout Radiologie",type: .addinfo,tag: "radiologie")
-            ]
+                                 ExamTree.Imagerie.asExamen(),
+                                 Examen(intitule: "Ajout Radiologie",type: .addinfo,tag: "radiologie")
+        ]
         
-        // MARK: Imagerie
-
+ 
+        
         catParaclinique.examens=examCatParaclinique
-
+        
         let catEvolution=ExamTree.SuiviEvolution
         
-//        let CatDocument = Categorie(nom: "Document",namedImage: "dossier.png")
-//        let examCatDocument = [
-//            Examen(intitule: "Date document", type:  .donnee ,tag: "date"),
-//            Examen(intitule: "Titre", type:  .reponsecourte,tag: "libre" ),
-//            Examen(intitule: "Description", type: .reponsecourte,tag: "libre"),
-//            ExamTree.Document.asExamen(),
-//            Examen(intitule: "Ajout page",type: .addinfo,tag: "pagedocument")
-//
-//            ]
-//        CatDocument.examens=examCatDocument
 
-        
         
         
         // MARK: Categories

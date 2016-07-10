@@ -183,11 +183,22 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         let indexPath:NSIndexPath = self.tableView.indexPathForRowAtPoint(location)!
         ExamTaped = categorie.examens[indexPath.row]
         NSLog("Double tap sur \(ExamTaped?.intitule)")
-        if ExamTaped!.tag == "image" {
+        if ExamTaped!.intitule.containsString("Document") && ExamTaped!.type == .group {
+            for ex in ExamTaped!.categorie!.examens where ex.type == .imagefilename {
+                let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
+                let aview=svc.view
+                svc.imageView.image = UIImage( contentsOfFile: ex.value)
+                svc.titreLabel.text=categorie.UIString()
+                // svc.descriptionLabel.text = categorie.detailString()
+                // svc.delegate=self
+                self.navigationController!.pushViewController(svc,animated: true)
+                break
+            }
+        } else  if ExamTaped!.tag == "image" {
             let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
             let aview=svc.view
             svc.imageView.image = UIImage( contentsOfFile: ExamTaped!.value)
-            svc.titreLabel.text=categorie.detailString()
+            svc.titreLabel.text=categorie.UIString()
            // svc.descriptionLabel.text = categorie.detailString()
            // svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
@@ -624,7 +635,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
                 cell3.monImage.image=UIImage(named: namedImage)
             }
             
-            cell3.details.text=examen1.categorie?.detailString()
+            cell3.details.text=examen1.categorie?.UIString()
             cell3.intitule.hidden = !examen1.categorie!.showNom && !(cell3.details.text?.isEmpty)!
             return cell3
         } else
