@@ -60,6 +60,7 @@ extension ExamTree {
         let examCatneuroMusculaire = [
             OuiNon("Amyotrophie"),
             LocAnat.asExamen(),
+            regionAnat,
             
             Examen(intitule: "libre", type:  .reponsecourte ),
             Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
@@ -68,10 +69,36 @@ extension ExamTree {
         return catneuroMusculaire
     }
 
-      // MARK: Neurologie Examen clinique
     
+      // MARK: Neurologie Examen clinique
+     static var Occulomotricite:categorieExamen.Categorie {
+        let catOcculomotricite = categorieExamen.Categorie(nom:"Occulomotricite",namedImage: "<#image#>",showNom: false)
+        let examCatOcculomotricite = [
+            Check("Occulomotricité normale"),
+            Check("Nystagmus droit"),
+            Check("Nystagmus gauche"),
+            Check("Convergence occulaire normale"),
+            Check("Paralysie abduction oeil droit"),
+            Check("Paralysie abduction oeil gauche"),
+            Check("Paralysie adduction oeil droit"),
+            Check("Paralysie adduction oeil gauche"),
+            OuiNon("Diplopie"),
+           
+            Check("Anisocorie"),
+            Check("Pupilles intermédiaires"),
+            Check("Pupilles en Myosis"),
+            Check("Pupilles en Mydriase"),
+            Check("réactives"),
+            Check("Réflexes photomoteurs présents"),
+
+            
+        ]
+        catOcculomotricite.examens=examCatOcculomotricite
+        return catOcculomotricite
+    }
+
     static var neuroReflexes:categorieExamen.Categorie {
-        let catneuroReflexes = categorieExamen.Categorie(nom:"clinique",namedImage: "neuro_icon.png",showNom: true)
+        let catneuroReflexes = categorieExamen.Categorie(nom:"<br>clinique:",namedImage: "neuro_icon.png",showNom: true)
         //catneuroReflexes.startLI()
         let examCatneuroReflexes = [
             Check("ROT symétriques"),
@@ -87,11 +114,11 @@ extension ExamTree {
             
             Check("Babinski"),
             LocAnat.asExamen(),
-            Check("Occulomotricité normale"),
-            Check("RPM présents"),
-            Check("Nystagmus"),
+            Occulomotricite.asExamen(),
+           
+
             LocAnat.asExamen(),
-            OuiNon("Dysmétrie (epreuve doigt-nez) "),
+            OuiNon("Dysmétrie (epreuve doigt-nez)"),
             OuiNon("Ataxie statique (Romberg)"),
             
             
@@ -107,8 +134,9 @@ extension ExamTree {
     static func detailROT(intitule: String = "Détail")-> Examen {
         
         Donnees.selectiontextDict["dataStrdetailROT"]=[
-            "symétrique","assymétrique","hypotonique à gauche", "aboli à gauche","hypotonique à droite", "aboli à droite",
-            "hyperrefléxie gauche","hyperrefléxie droite","polycinétique à gauche", "polycinétique à droite"
+            " symétrique","assymétrique","hypotonique à gauche", "aboli à gauche","hypotonique à droite", "aboli à droite",
+            "hyperrefléxie gauche","hyperrefléxie droite","polycinétique à gauche", "polycinétique à droite","pendulaire",
+            " vif symétrique"
             ].sort()
         
         return Examen(intitule: intitule, type: .datastr, tag: "dataStrdetailROT")

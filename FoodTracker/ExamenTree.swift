@@ -1576,21 +1576,40 @@ struct ExamTree {
     
     static var regionAnat:Examen {
         //let catKarnofsky = categorieExamen.Categorie(nom:"Échelle de Karnofsky",namedImage: "pancarte_icon.png",showNom: true)
+   
+
         
         Donnees.selectiontextDict["dataStrregionAnat"]=[
-            "Indice 100 : Normal ; aucune plainte, aucun signe de maladie.",
-            "Indice 90 : En mesure de poursuivre une activité normale ; signes ou symptômes mineurs de maladie.",
-            "Indice 80 : Activité normale, avec un effort ; quelques signes ou symptômes de maladie.",
-            "Indice 70 : Autonome ; incapable de poursuivre une activité normale ou de travailler de façon active.",
-            "Indice 60 : Nécessité occasionnelle d'assistance mais capacité de pourvoir à ses besoins essentiels.",
-            "Indice 50 : Nécessité d'aide considérable à la personne, soins médicaux fréquents.",
-            "Indice 40 : Invalide ; nécessité de soins et d'assistance spécifiques.",
-            "Indice 30 : Complètement invalide ; indication d'hospitalisation, pas de risque imminent de décès.",
-            "Indice 20 : Très malade ; hospitalisation nécessaire, traitement actif ou de support nécessaire.",
-            "Indice 10 : Moribond ; issue fatale proche.",
-            "Indice 0 : Décédé."
+            "Crane",
+            "Thoracique",
+            "Gril costal gauche",
+            "Gril costal droit",
+            "Cervicales",
+            "Dorsales",
+            "Lombaires",
+            "Bassin",
+            "Hanche gauche",
+            "Hanche droite",
+            "Femur gauche",
+            "Fémur droit",
             
-        ]
+            "Genou gauche",
+            "Genou droit",
+            "Jambe gauche",
+            "Jambe droite",
+            "Epaule gauche",
+            "Epaule droit",
+            "Bras gauche",
+            "Bras droit",
+            "Coude gauche",
+            "Coude droit",
+            "Avant-bras gauche",
+            "Avant-bras droit",
+            "Poignet gauche",
+            "Poignet droit",
+            "Main gauche",
+            "Main droite",
+        ].sort()
         
         return Examen(intitule: "(région anatomique)", type: .datastr, tag: "dataStrregionAnat")
     }

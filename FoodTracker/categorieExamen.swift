@@ -14,12 +14,15 @@ class categorieExamen : NSObject , NSCoding {
     
     class Categorie : NSObject,NSCoding{
         var examens = [ Examen]()
+        
         var nom: String
         var namedImage : String
         var showNom : Bool = true
         var formatPreString:String = "<br>"
         var formatPostString:String = ""
-        
+        func nomUI()->String{
+            return categorieExamen.Categorie.removeHtml(nom)
+        }
         required convenience init?(coder decoder: NSCoder) {
             guard let nom = decoder.decodeObjectForKey("nom") as? String,
                 let namedImage = decoder.decodeObjectForKey("namedImage") as? String,

@@ -628,7 +628,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
 
         if examen1.type==Examen.ExamenEnum.group {
             let cell3 = tableView.dequeueReusableCellWithIdentifier("examgroup", forIndexPath: indexPath) as! examgroupTableViewCell
-            cell3.intitule.text = examen1.intitule
+            cell3.intitule.text = categorieExamen.Categorie.removeHtml(examen1.intitule)
                         cell3.examen=examen1
             if let namedImage = examen1.categorie?.namedImage
             {
