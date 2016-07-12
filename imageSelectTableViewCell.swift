@@ -17,11 +17,11 @@ func randomStringWithLength (len : Int) -> NSString {
     
     let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     
-    var randomString : NSMutableString = NSMutableString(capacity: len)
+    let randomString : NSMutableString = NSMutableString(capacity: len)
     
-    for (var i=0; i < len; i++){
-        var length = UInt32 (letters.length)
-        var rand = arc4random_uniform(length)
+    for ( var i=0;i<len; i++  ){
+        let length = UInt32 (letters.length)
+        let rand = arc4random_uniform(length)
         randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
     }
     
@@ -106,7 +106,7 @@ class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegat
             //imageLabel.text=(info[UIImagePickerControllerReferenceURL] as! NSURL).absoluteString
             let fileName = "\(randomStringWithLength(8)).jpg"
             let imagePath = fileInDocumentsDirectory(fileName)
-            examen.value=imagePath
+            examen.value=fileName
             examen.tag="image"
             saveImage(pickedImage, path: imagePath)
                     if let del=self.delegate  {

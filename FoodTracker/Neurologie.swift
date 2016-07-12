@@ -14,22 +14,53 @@ extension ExamTree {
     static var Neurologie:categorieExamen.Categorie {
         let catNeurologie = categorieExamen.Categorie(nom:"<br>Examen neurologique",namedImage: "neuro_icon.png",showNom: true)
         catNeurologie.startLI()
-        let examCatNeurologie = [
+        let examCatNeurologie : [Examen]  = [
             Check("Examen Normal"),
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
             ExamTree.neuroFonctionnel.asExamen(),
             ExamTree.neuroReflexes.asExamen(),
+            ExamTree.NerfsCraniens.asExamen(),
             Check("Pas de signe de localisation"),
             //self.libre,
         ]
         catNeurologie.examens=examCatNeurologie
         return catNeurologie
     }
+   static var NerfsCraniens:categorieExamen.Categorie {
+        let catNerfsCraniens = categorieExamen.Categorie(nom:"<br>NerfsCraniens",namedImage: "<#image#>",showNom: true)
+    let examCatNerfsCraniens : [Examen] = [
+            Check("I",poststring: ":"),
+            OuiNon("Anosmie"),
+            Check("II",poststring: ":"),
+            OuiNon("Troubles du champ visuel"),
+            Check("III,IV,VI",poststring: ":"),
+            Check("Occulomotricité normale"),
+            OuiNon("Trouble de l'occulomotricité"),
+            Check("V",poststring: ":"),
+            OuiNon("Trouble de la mastication"),
+            Check("VII",poststring: ":"),
+            OuiNon("Assymétrie faciale"),
+            Check("VIII",poststring: ":"),
+            OuiNon("Nystagmus"),
+            LocAnat.asExamen(),
+            
+            
+            // Examen(intitule: "Xie", type:  .check ,info: " "),
+            //Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
+            //Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
+            Examen(intitule: "libre", type:  .reponsecourte ),
+            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
+        ]
+        catNerfsCraniens.examens=examCatNerfsCraniens
+        return catNerfsCraniens
+    }
+  
+    
         // MARK: Neurologie Fonctionnels
     static var neuroFonctionnel:categorieExamen.Categorie {
         let catneuroFonctionnel = categorieExamen.Categorie(nom:"Fonctionnels",namedImage: "tete_icon.png",showNom: true)
         // catneuroFonctionnel.startLI()
-        let examCatneuroFonctionnel = [
+        let examCatneuroFonctionnel : [Examen]  = [
             Check("Communication normale" ),
             Check("Pas de communication" ),
             Check("Communication altérée" ),
@@ -57,7 +88,7 @@ extension ExamTree {
     }
      static var neuroMusculaire:categorieExamen.Categorie {
         let catneuroMusculaire = categorieExamen.Categorie(nom:"neuroMusculaire",namedImage: "neuro_icon.png",showNom: false)
-        let examCatneuroMusculaire = [
+        let examCatneuroMusculaire : [Examen] = [
             OuiNon("Amyotrophie"),
             LocAnat.asExamen(),
             regionAnat,
@@ -73,7 +104,7 @@ extension ExamTree {
       // MARK: Neurologie Examen clinique
      static var Occulomotricite:categorieExamen.Categorie {
         let catOcculomotricite = categorieExamen.Categorie(nom:"Occulomotricite",namedImage: "<#image#>",showNom: false)
-        let examCatOcculomotricite = [
+        let examCatOcculomotricite : [Examen]  = [
             Check("Occulomotricité normale"),
             Check("Nystagmus droit"),
             Check("Nystagmus gauche"),
@@ -100,8 +131,8 @@ extension ExamTree {
     static var neuroReflexes:categorieExamen.Categorie {
         let catneuroReflexes = categorieExamen.Categorie(nom:"<br>clinique:",namedImage: "neuro_icon.png",showNom: true)
         //catneuroReflexes.startLI()
-        let examCatneuroReflexes = [
-            Check("ROT symétriques"),
+        let examCatneuroReflexes : [Examen] = [
+            Check("ROT symétriques (rotulien, achileen, tricipital, radial)"),
             detailROT("Réflexe rotulien"),
             detailROT("Réflexe bicipital"),
             detailROT("Réflexe achilléen"),

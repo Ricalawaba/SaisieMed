@@ -31,8 +31,8 @@ class AjoutPatientViewController: UIViewController , UITextFieldDelegate {
         
   //      localisation.delegate=self
         age.delegate=self
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AjoutPatientViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AjoutPatientViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AjoutPatientViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AjoutPatientViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
     }
    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -40,22 +40,7 @@ class AjoutPatientViewController: UIViewController , UITextFieldDelegate {
         return true
     }
     
-    func keyboardWillShow(notification:NSNotification){
-        
-        var userInfo = notification.userInfo!
-        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
-        keyboardFrame = self.view.convertRect(keyboardFrame, fromView: nil)
-        
-        var contentInset:UIEdgeInsets = self.scrollView.contentInset
-        contentInset.bottom = keyboardFrame.size.height+20
-       // self.scrollView.contentInset = contentInset
-    }
-    
-    func keyboardWillHide(notification:NSNotification){
-        
-        let contentInset:UIEdgeInsets = UIEdgeInsetsZero
-       // self.scrollView.contentInset = contentInset
-    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -10,7 +10,7 @@ import Foundation
 
 func stringFromTimeInterval(interval: NSTimeInterval) -> String {
     let interval = Int(interval)
-    let seconds = interval % 60
+    _ = interval % 60
     let minutes = (interval / 60) % 60
     let hours = (interval / 3600)
     return String(format: "%02d:%02d", hours, minutes)
@@ -70,6 +70,13 @@ class patients :  NSObject,NSCoding {
                 if newValue {examen.categories[0].examens[1].value = "0"}
                 else { examen.categories[0].examens[1].value = "1" }
             }
+        }
+        func getDocuments() -> [String] {
+            var documents: [String]=[]
+            for cat in self.examen.categories {
+                documents.appendContentsOf(cat.getDocuments())
+            }
+            return documents
         }
         var examen=categorieExamen()
         

@@ -23,7 +23,9 @@ struct Donnees {
     static var selectiontextDict = [String: ([String]) ]()
     static var multiColumnPickerDataStr = [String: [([String])] ]()
     
+    
 }
+
 // MARK: Structure statiques d'accès aux fichiers de données
 struct DataSave {
     static var lastPatientVC: saisieTableViewController!
@@ -234,6 +236,24 @@ struct DataSave {
     }
 
 
-    
+    static func ListDirectory() {
+        let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+        
+        do {
+            // Get the directory contents urls (including subfolders urls)
+            let directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL( documentsUrl, includingPropertiesForKeys: nil, options: [])
+            print(directoryContents)
+            
+            // if you want to filter the directory contents you can do like this:
+            print("directory contents:",directoryContents)
+            let mp3Files = directoryContents.filter{ $0.pathExtension == "dat" }
+            print("jpg urls:",mp3Files)
+            let mp3FileNames = mp3Files.flatMap({$0.URLByDeletingPathExtension?.lastPathComponent})
+            print("jpg list:", mp3FileNames)
+            
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    }
 }
 

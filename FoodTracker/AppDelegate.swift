@@ -171,6 +171,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Error: \(error)")  
             }  
         }*/
+        // Get the document directory url
+
+
+        //var documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+        // var documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         
         return true
     }

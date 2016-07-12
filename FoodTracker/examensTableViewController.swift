@@ -102,7 +102,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     }
     func imageSelected(sender:UIView,image:UIImage, url:String) {
         let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
-        let aview=svc.view
+        _=svc.view
         svc.imageView.image=image
         
        
@@ -118,7 +118,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         tableView.reloadData()
     }
     @IBAction func GoAccueil(sender: UIBarButtonItem) {
-        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers ;
         for aViewController in viewControllers {
             if(aViewController is patientTableViewController){
                 self.navigationController!.popToViewController(aViewController, animated: true);
@@ -136,8 +136,8 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             // performSegueWithIdentifier("autoshow", sender: self)
             //examensTableViewController
             let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
-            let aview=svc.view
-            svc.imageView.image = UIImage( contentsOfFile: ExamTaped!.value)
+            _=svc.view
+            svc.imageView.image = UIImage( contentsOfFile:fileInDocumentsDirectory(ExamTaped!.value))
             svc.titreLabel.text = categorie.examens[0].value
             
             
@@ -186,9 +186,9 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         if ExamTaped!.intitule.containsString("Document") && ExamTaped!.type == .group {
             for ex in ExamTaped!.categorie!.examens where ex.type == .imagefilename {
                 let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
-                let aview=svc.view
-                svc.imageView.image = UIImage( contentsOfFile: ex.value)
-                svc.titreLabel.text=categorie.UIString()
+                _=svc.view
+                svc.imageView.image = UIImage( contentsOfFile: fileInDocumentsDirectory(ex.value))
+                svc.titreLabel.text=categorie.UIString().stringByReplacingOccurrencesOfString("<[^>]+>", withString: "", options: .RegularExpressionSearch, range: nil)
                 // svc.descriptionLabel.text = categorie.detailString()
                 // svc.delegate=self
                 self.navigationController!.pushViewController(svc,animated: true)
@@ -196,9 +196,10 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             }
         } else  if ExamTaped!.tag == "image" {
             let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
-            let aview=svc.view
-            svc.imageView.image = UIImage( contentsOfFile: ExamTaped!.value)
-            svc.titreLabel.text=categorie.UIString()
+            _=svc.view
+            svc.imageView.image = UIImage( contentsOfFile: fileInDocumentsDirectory(ExamTaped!.value))
+            svc.titreLabel.text=categorie.UIString().stringByReplacingOccurrencesOfString("<[^>]+>", withString: "", options: .RegularExpressionSearch, range: nil)
+
            // svc.descriptionLabel.text = categorie.detailString()
            // svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
@@ -223,7 +224,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("examensTVID") as! examensTableViewController
             //svc.delegate=self
             svc.categorie = ExamTaped!.categorie
-            svc.navigationController?.title = svc.categorie!.nom
+            svc.navigationController?.title = svc.categorie!.nomUI()
             self.navigationController!.pushViewController(svc,animated: true)
             
         }
@@ -266,7 +267,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         }
         if ExamTaped!.tag == "tension" {
             let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectNumberID") as! selectNumberViewController
-            let aview = svc.view
+            _ = svc.view
             svc.numberPickView.type = .tensionarterielle
             
             svc.delegate=self
@@ -285,7 +286,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
                 svc.value=ExamTaped!.value
             }
 
-            let aview = svc.view
+            _ = svc.view
            
             
             
@@ -304,7 +305,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             
                 svc.value=ExamTaped!.value
             }
-                let aview = svc.view
+                _ = svc.view
             
             
             
@@ -323,7 +324,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
                 
                 svc.value=ExamTaped!.value
             }
-            let aview = svc.view
+            _ = svc.view
             
             
             
@@ -342,7 +343,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
                 
                 svc.value=ExamTaped!.value
             }
-            let aview = svc.view
+            _ = svc.view
             
             
             
@@ -360,7 +361,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             } else {
                 svc.value=ExamTaped!.value
             }
-            let aview = svc.view
+            _ = svc.view
             svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
         }
@@ -375,7 +376,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             } else {
                 svc.value=ExamTaped!.value
             }
-            let aview = svc.view
+            _ = svc.view
             svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
         }
@@ -390,7 +391,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             } else {
                 svc.value=ExamTaped!.value
             }
-            let aview = svc.view
+            _ = svc.view
             svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
         }
@@ -407,9 +408,9 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             }
         if ExamTaped!.tag == "image" {
             let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
-            let aview=svc.view
-            svc.imageView.image = UIImage( contentsOfFile: ExamTaped!.value)
-            svc.titreLabel.text = categorie.examens[0].value
+            _=svc.view
+            svc.imageView.image = UIImage( contentsOfFile:fileInDocumentsDirectory(ExamTaped!.value))
+            svc.titreLabel.text = "" // categorie.examens[0].value
             }
             
             svc.delegate=self
@@ -427,7 +428,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
          self.navigationItem.rightBarButtonItem = self.editButtonItem()
         //examen=Donnees.listeCategorie.categories.first!.examens
-        self.title=categorie!.nom
+        self.title=categorie!.nomUI()
         // print(examen.count)
         registerForKeyboardNotifications()
      
@@ -514,12 +515,11 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             let svc = segue.destinationViewController as! examensTableViewController
             let mycell = (sender as! examgroupTableViewCell)
             svc.categorie = mycell.examen!.categorie!
-            svc.navigationController?.title = svc.categorie!.nom
+            svc.navigationController?.title = svc.categorie!.nomUI()
             //  sender?.row
             //  svc.listePatients = Donnees.listePatient
             
-        }
-        if (segue.identifier == "selectionSegue") {
+        } else if (segue.identifier == "selectionSegue") {
             
             let svc = segue.destinationViewController as! selectionTexteTableViewController
             let mycell = (sender as! selectionTableViewCell)
@@ -531,6 +531,9 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             //  sender?.row
             //  svc.listePatients = Donnees.listePatient
             
+        } else {// if (segue.identifier == "selectionSegue") {
+            print(segue.identifier)
+            NSLog(segue.identifier!)
         }
 
         
@@ -675,7 +678,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
                 cell3.imageLabel.text = "Aucun document"
             } else {
                 cell3.imageLabel.text =  examen1.value
-                cell3.theImageView.image=UIImage(contentsOfFile: examen1.value)
+                cell3.theImageView.image=UIImage(contentsOfFile: fileInDocumentsDirectory(examen1.value))
             }
             
             cell3.delegate=self

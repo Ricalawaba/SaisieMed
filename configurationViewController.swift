@@ -10,6 +10,37 @@ import UIKit
 
 class configurationViewController: UIViewController,dateSelectedDelegate {
 
+    @IBAction func listingDocumentsButtonAction(sender: UIButton) {
+        DataSave.ListDirectory()
+        let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+        
+        do {
+            // Get the directory contents urls (including subfolders urls)
+            let directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL( documentsUrl, includingPropertiesForKeys: nil, options: [])
+            print(directoryContents)
+            
+            // if you want to filter the directory contents you can do like this:
+//            for d in directoryContents {
+//                let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
+//                let aview=svc.view
+//                svc.imageView.image = UIImage(contentsOfFile: d.absoluteString)
+//                svc.titreLabel.text=d.absoluteString
+//                // svc.descriptionLabel.text = categorie.detailString()
+//                // svc.delegate=self
+//                self.navigationController!.pushViewController(svc,animated: true)
+//            }
+          //  print("directory contents:",directoryContents)
+            let mp3Files = directoryContents.filter{ $0.pathExtension == "dat" }
+            print("dat urls:",mp3Files)
+            let mp3FileNames = mp3Files.flatMap({$0.URLByDeletingPathExtension?.lastPathComponent})
+            print("dat list:", mp3FileNames)
+            
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+
+       
+    }
     func dateSelected(sender: UIViewController, text: String, date: NSDate) {
         self.title=text
         // create the alert

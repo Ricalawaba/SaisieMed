@@ -29,7 +29,7 @@ class pickSelectTableViewCell: UITableViewCell ,UITextFieldDelegate,UIPickerView
         // Initialization code
         valueTextField.delegate=self
         
-        var pickerView=UIPickerView()
+        let pickerView=UIPickerView()
         pickerView.delegate=self
         valueTextField.inputView=pickerView
         
@@ -80,11 +80,11 @@ class pickSelectTableViewCell: UITableViewCell ,UITextFieldDelegate,UIPickerView
     func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 36.0
     }
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView
     {
         
         
-        var pickerLabel = UILabel()
+        let pickerLabel = UILabel()
         pickerLabel.textColor = UIColor.blackColor()
         if examen.type == .multirowdatastr {
             pickerLabel.text = Donnees.multiColumnPickerDataStr[examen.tag]![component][row]

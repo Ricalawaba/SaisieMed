@@ -101,6 +101,21 @@ class categorieExamen : NSObject , NSCoding {
         func UIString() -> String {           
             return Categorie.removeHtml(formattedDetaiString())
         }
+        func getDocuments() -> [String] {
+            var documents = [String]()
+            for ex in examens {
+                if ex.type == .imagefilename && !ex.value.isEmpty {
+                    documents.append( ex.value)
+                } else if ex.type == .group {
+                    
+                    documents.appendContentsOf(ex.categorie!.getDocuments())
+                }
+                
+            }
+
+            return documents
+            
+        }
         func formattedDetaiString() -> String {
             var str: String = ""
             var savedStr:String=""
@@ -125,6 +140,8 @@ class categorieExamen : NSObject , NSCoding {
                         str += "\(examen.value)"
                     } else if examen.type ==  .donnee  || examen.type == .datastr || examen.type == Examen.ExamenEnum.multirowdatastr {
                         str += "\(examen.intitule): \(examen.value)"
+                    } else if examen.type == .imagefilename {
+                        str+="<img src=\"file:\(NSString(string: examen.value).lastPathComponent)\" max-width=100%>"
                     }
                     
                 }else if examen.type ==  .group  {
@@ -241,136 +258,12 @@ class categorieExamen : NSObject , NSCoding {
         let Categorie31 = ExamTree.Pancartes
         
  
-        let CatECG = Categorie(nom: "ECG",namedImage: "cardio_icon.png")
-        let catECGConclusion = Categorie(nom: "Conclusion",namedImage: "cardio_icon.png")
-        let examCatConclusion = [
-            Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre"),
-            Examen(intitule: "ECG Normal", type: .check),
-            Examen(intitule: "Pas de troubles de la conduction ou de repolarisation", type: .check),
-            Examen(intitule: "Pas de troubles du rythme", type: .check),
-            Examen(intitule: "AC/FA", type: .check),
-            Examen(intitule: "Extrasystolie ventriculaire", type: .check),
-            Examen(intitule: "Extrasystolie auriculaire", type: .check),
-            Examen(intitule: "Tachycardie sinusale", type: .check),
-            Examen(intitule: "Tachycardie supraventriculaire", type: .check),
-            Examen(intitule: "Bradycardie", type: .check),
-            Examen(intitule: "BBG", type: .check),
-            Examen(intitule: "BBD", type: .check),
-            Examen(intitule: "BBD", type: .check),
-            Examen(intitule: "HBAG", type: .check),
-            Examen(intitule: "HBPG", type: .check),
-            Examen(intitule: "Courant de lésion", type: .donnee),
-            Examen(intitule: "Ischémie", type: .donnee),
-            
-            ]
-        catECGConclusion.examens=examCatConclusion
-        
-        let catECG1 = Categorie(nom: "Paramètres Tracé",namedImage: "cardio_icon.png")
-        let examcatECG1 = [
-            Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre"),
-            Examen(intitule: "Qualité correcte", type:  .check ),
-            Examen(intitule: "Tracé parasité", type:  .check ),
-            Examen(intitule: "Microvoltage", type:  .check ),
-            Examen(intitule: "Ligne de base instable", type:  .check ),
-            Examen(intitule: "FC", type:  .donnee ),
-            
-            Examen(intitule: "P (mm)", type:  .donnee ),
-            Examen(intitule: "P (ms)", type:  .donnee ),
-            Examen(intitule: "PR (ms)", type:  .donnee ),
-            Examen(intitule: "QRS (ms)", type:  .donnee ),
-            Examen(intitule: "aQRS", type:  .donnee ),
-            Examen(intitule: "QT", type:  .donnee ),
-            Examen(intitule: "QTc", type:  .donnee )
-        ]
-        catECG1.examens = examcatECG1
-        
-        
-        let CatECG2 = Categorie(nom: "Rythme/P/PR",namedImage: "cardio_icon.png")
-        let examCatECG2=[
-            Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre"),
-            Examen(intitule: "Rythme régulier sinusal", type: .check),
-            Examen(intitule: "Rythme irrégulier", type: .check),
-            Examen(intitule: "non sinusal", type: .check),
-            Examen(intitule: "FA (P=0)", type: .check),
-            Examen(intitule: "Axe Normal (aVF et D1>0)", type: .check),
-            Examen(intitule: "Axe Gauche (aVF<0 et D1>0)", type: .check),
-            Examen(intitule: "Axe Droit (aVF>0 et D1<0)", type: .check),
-            
-            Examen(intitule: "Pas d'hypertrophie auriculaire", type: .check),
-            Examen(intitule: "PR constant", type: .check),
-            Examen(intitule: "PR allongé", type: .donnee),
-            Examen(intitule: "PR court", type: .donnee),
-            Examen(intitule: "BAV1", type: .check),
-            Examen(intitule: "BAV2", type: .check),
-            Examen(intitule: "BAV3", type: .check),
-            
-            
-            
-            ]
-        CatECG2.examens=examCatECG2
-        let CatECG3 = Categorie(nom: "QRS",namedImage: "cardio_icon.png")
-        let examCatECG3 = [
-            Examen(intitule: "Libre", type:  .reponsecourte,tag: "libre" ),
-            Examen(intitule: "QRS fins", type: .check),
-            
-            Examen(intitule: "QRS Larges", type: .check),
-            Examen(intitule: "HVG  (RD1+SD3>25)", type: .check),
-            Examen(intitule: "HVG Cornell (RV1+SV3>28H,21F)", type: .check),
-            Examen(intitule: "Pas d'hypertrophie ventriculaire", type: .check),
-            Examen(intitule: "BBD (aspect rsr' V1)", type: .check),
-            Examen(intitule: "BBG (aspect QS V1)", type: .check),
-            Examen(intitule: "HBAG (D2<0)", type: .check),
-            Examen(intitule: "HBPG (D1<0)", type: .check),
-            Examen(intitule: "QRS fragmentés", type: .donnee),
-            Examen(intitule: "Pas d'Ondes Q suspectes", type: .check),
-            Examen(intitule: "Ondes Q", type: .donnee),
-            
-            ]
-        CatECG3.examens=examCatECG3
-        
-        let CatECG4 = Categorie(nom: "ST",namedImage: "cardio_icon.png")
-        let examCatECG4 = [
-            Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre"),
-            Examen(intitule: "ST isoélectrique", type: .check),
-            Examen(intitule: "ST sus-décalé", type: .donnee),
-            Examen(intitule: "ST sous-decalé", type: .donnee),
-            Examen(intitule: "Discordance de repolarisation 'approprié'", type: .check),
-            ]
-        CatECG4.examens=examCatECG4
-        
-        let CatECG5 = Categorie(nom: "T/U ",namedImage: "cardio_icon.png")
-        let examCatECG5 = [
-            Examen(intitule: "Libre", type:  .reponsecourte,tag: "libre" ),
-            Examen(intitule: "Ondes T normales", type: .check),
-            Examen(intitule: "Ondes T aplatis", type: .donnee),
-            Examen(intitule: "Ondes T pointues assymétriques", type: .donnee),
-            Examen(intitule: "Ondes T négative", type: .donnee),
-            Examen(intitule: "Ondes U", type: .ouinon),
-            ]
-        CatECG5.examens=examCatECG5
-        
-        CatECG.examens = [
-            Examen(intitule: "horodatage", type:  .reponsecourte,tag: "date" ),
-            Examen(intitule: "Douleur thoracique au moment de l'examen", type: .ouinon),
-            Examen(intitule: "ECG de contrôle", type: .check),
-            Examen(categorie: catECGConclusion),
-            Examen(intitule: "libre", type: .reponsecourte,tag: "libre"),
-            Examen(categorie: catECG1),
-            Examen(categorie: CatECG2),
-            Examen(categorie: CatECG3),
-            Examen(categorie: CatECG4),
-            Examen(categorie: CatECG5),
-            ExamTree.Document.asExamen(),
-            
-            
-        ]
-        
         
         
         // MARK: Examens paracliniques
         let catParaclinique = Categorie(nom: "Examens Paracliniques",namedImage: "imagerie_icon.png")
         var examCatParaclinique = [
-            Examen(categorie: CatECG)]
+             ExamTree.ECG.asExamen() ]
         
         
         
@@ -384,7 +277,7 @@ class categorieExamen : NSObject , NSCoding {
                                  ExamTree.Gazometrie.asExamen(),
         ]
         let catBandelette = Categorie(nom: "Bandelette Urinaire",namedImage: "nurse_icon.png")
-        let examCatBandelette = [
+        let examCatBandelette : [Examen] = [
             Examen(intitule: "normale", type: .check),
             Examen(intitule: "Sang", type: .donnee),
             Examen(intitule: "Leucocytes", type: .donnee),
