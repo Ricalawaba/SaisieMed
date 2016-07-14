@@ -32,6 +32,303 @@
             </objects>
             <point key="canvasLocation" x="433" y="360"/>
         </scene>
+        <!--Pancarte View Controller-->
+        <scene sceneID="JgO-W2-IVk">
+            <objects>
+                <viewController storyboardIdentifier="pancartViewRef" id="pyl-gq-osW" customClass="pancarteViewController" customModule="SaisieMed" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JIQ-j4-YXg"/>
+                        <viewControllerLayoutGuide type="bottom" id="FmZ-wD-dzH"/>
+                    </layoutGuides>
+                    <view key="view" autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="LLD-Rf-VwP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view autoresizesSubviews="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d9c-rH-F9H">
+                                <rect key="frame" x="0.0" y="0.0" width="214" height="306"/>
+                                <subviews>
+                                    <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Is9-nN-evJ">
+                                        <rect key="frame" x="56" y="105" width="22" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lT3-OS-jZR">
+                                        <rect key="frame" x="97" y="101" width="97" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                    <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="T°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gs1-qe-7cK">
+                                        <rect key="frame" x="59" y="222" width="18" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="QUd-Xf-ucc">
+                                        <rect key="frame" x="97" y="180" width="97" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                    <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TA Syst" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9W-h5-crL">
+                                        <rect key="frame" x="20" y="24" width="58" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TA Dias" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCI-iA-iCj">
+                                        <rect key="frame" x="20" y="67" width="58" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sao2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4t-cT-tuA">
+                                        <rect key="frame" x="39" y="146" width="39" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="r4d-UT-cnK">
+                                        <rect key="frame" x="96" y="218" width="97" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="97" id="iB5-lY-OYj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="iB5-lY-OYj"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="iB5-lY-OYj"/>
+                                            </mask>
+                                        </variation>
+                                    </textField>
+                                    <textField autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Egx-kO-V6V">
+                                        <rect key="frame" x="96" y="256" width="97" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                    <textField autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ooz-iJ-dd2">
+                                        <rect key="frame" x="97" y="142" width="97" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                    <textField autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BUa-AV-K3i">
+                                        <rect key="frame" x="97" y="63" width="97" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                    <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EVA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LqC-U4-cUD">
+                                        <rect key="frame" x="47" y="184" width="31" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iwM-dz-gc8">
+                                        <rect key="frame" x="97" y="20" width="97" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="97" id="Dzz-1T-57e"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Dzz-1T-57e"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="Dzz-1T-57e"/>
+                                            </mask>
+                                        </variation>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDt-9c-d8B">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <connections>
+                                            <action selector="addPancarteButtonAction:" destination="pyl-gq-osW" eventType="touchUpInside" id="m6m-Az-OC9"/>
+                                        </connections>
+                                    </button>
+                                    <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="F.Resp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2m-qF-ZXm">
+                                        <rect key="frame" x="26" y="260" width="51" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="LqC-U4-cUD" firstAttribute="centerY" secondItem="QUd-Xf-ucc" secondAttribute="centerY" id="0Ju-4d-5WR"/>
+                                    <constraint firstItem="QUd-Xf-ucc" firstAttribute="top" secondItem="ooz-iJ-dd2" secondAttribute="bottom" constant="8" symbolic="YES" id="3IN-9I-nTx"/>
+                                    <constraint firstItem="ZDt-9c-d8B" firstAttribute="top" secondItem="Egx-kO-V6V" secondAttribute="bottom" constant="12" id="4bY-5u-COD"/>
+                                    <constraint firstItem="ooz-iJ-dd2" firstAttribute="leading" secondItem="QUd-Xf-ucc" secondAttribute="leading" id="5I4-Nx-Nkv"/>
+                                    <constraint firstItem="B4t-cT-tuA" firstAttribute="trailing" secondItem="LqC-U4-cUD" secondAttribute="trailing" id="6PW-69-Bi9"/>
+                                    <constraint firstItem="iwM-dz-gc8" firstAttribute="leading" secondItem="W9W-h5-crL" secondAttribute="trailing" constant="19" id="7IN-nv-Bah"/>
+                                    <constraint firstItem="r4d-UT-cnK" firstAttribute="leading" secondItem="gs1-qe-7cK" secondAttribute="trailing" constant="19" id="9Lz-zB-hun"/>
+                                    <constraint firstItem="J2m-qF-ZXm" firstAttribute="centerY" secondItem="Egx-kO-V6V" secondAttribute="centerY" id="ELD-yR-1Mr"/>
+                                    <constraint firstItem="W9W-h5-crL" firstAttribute="centerY" secondItem="iwM-dz-gc8" secondAttribute="centerY" id="FAZ-uA-j6k"/>
+                                    <constraint firstItem="W9W-h5-crL" firstAttribute="leading" secondItem="d9c-rH-F9H" secondAttribute="leading" constant="33" id="Hm1-bn-eZ4"/>
+                                    <constraint firstItem="gs1-qe-7cK" firstAttribute="centerY" secondItem="r4d-UT-cnK" secondAttribute="centerY" id="IHK-dF-dea"/>
+                                    <constraint firstItem="B4t-cT-tuA" firstAttribute="centerY" secondItem="ooz-iJ-dd2" secondAttribute="centerY" id="Ivz-pg-YFr"/>
+                                    <constraint firstItem="Egx-kO-V6V" firstAttribute="centerX" secondItem="ZDt-9c-d8B" secondAttribute="centerX" id="Jjl-Xa-GZR"/>
+                                    <constraint firstItem="QCI-iA-iCj" firstAttribute="trailing" secondItem="Is9-nN-evJ" secondAttribute="trailing" id="L6U-ik-EXm"/>
+                                    <constraint firstItem="r4d-UT-cnK" firstAttribute="top" secondItem="QUd-Xf-ucc" secondAttribute="bottom" constant="8" symbolic="YES" id="L8u-IY-6On"/>
+                                    <constraint firstItem="Is9-nN-evJ" firstAttribute="centerY" secondItem="lT3-OS-jZR" secondAttribute="centerY" id="LGH-D0-gpS"/>
+                                    <constraint firstItem="iwM-dz-gc8" firstAttribute="top" secondItem="d9c-rH-F9H" secondAttribute="top" constant="65" id="N0t-ar-sXA"/>
+                                    <constraint firstItem="ooz-iJ-dd2" firstAttribute="trailing" secondItem="QUd-Xf-ucc" secondAttribute="trailing" id="SvY-8v-Ugh"/>
+                                    <constraint firstItem="J2m-qF-ZXm" firstAttribute="leading" secondItem="d9c-rH-F9H" secondAttribute="leading" constant="39" id="UhJ-p3-H5Y"/>
+                                    <constraint firstItem="iwM-dz-gc8" firstAttribute="trailing" secondItem="BUa-AV-K3i" secondAttribute="trailing" id="XwB-BK-Rb4"/>
+                                    <constraint firstItem="Is9-nN-evJ" firstAttribute="trailing" secondItem="B4t-cT-tuA" secondAttribute="trailing" id="ZxJ-rX-uvc"/>
+                                    <constraint firstItem="W9W-h5-crL" firstAttribute="leading" secondItem="QCI-iA-iCj" secondAttribute="leading" id="b98-8o-sKu"/>
+                                    <constraint firstItem="BUa-AV-K3i" firstAttribute="top" secondItem="iwM-dz-gc8" secondAttribute="bottom" constant="13" id="bLW-Wv-VaZ"/>
+                                    <constraint firstItem="gs1-qe-7cK" firstAttribute="trailing" secondItem="J2m-qF-ZXm" secondAttribute="trailing" id="eHz-0R-i3C"/>
+                                    <constraint firstItem="r4d-UT-cnK" firstAttribute="trailing" secondItem="Egx-kO-V6V" secondAttribute="trailing" id="eUH-ek-5IG"/>
+                                    <constraint firstItem="Egx-kO-V6V" firstAttribute="top" secondItem="r4d-UT-cnK" secondAttribute="bottom" constant="8" symbolic="YES" id="gxq-wj-4Yo"/>
+                                    <constraint firstItem="QCI-iA-iCj" firstAttribute="centerY" secondItem="BUa-AV-K3i" secondAttribute="centerY" id="hpf-0Q-ePU"/>
+                                    <constraint firstItem="lT3-OS-jZR" firstAttribute="top" secondItem="BUa-AV-K3i" secondAttribute="bottom" constant="8" symbolic="YES" id="k8J-n0-5Az"/>
+                                    <constraint firstItem="lT3-OS-jZR" firstAttribute="trailing" secondItem="ooz-iJ-dd2" secondAttribute="trailing" id="kUl-xS-CXz"/>
+                                    <constraint firstItem="r4d-UT-cnK" firstAttribute="leading" secondItem="Egx-kO-V6V" secondAttribute="leading" id="mBm-X9-omc"/>
+                                    <constraint firstItem="BUa-AV-K3i" firstAttribute="trailing" secondItem="lT3-OS-jZR" secondAttribute="trailing" id="nIb-DY-jSI"/>
+                                    <constraint firstItem="lT3-OS-jZR" firstAttribute="leading" secondItem="ooz-iJ-dd2" secondAttribute="leading" id="qqg-ge-GsV"/>
+                                    <constraint firstItem="BUa-AV-K3i" firstAttribute="leading" secondItem="lT3-OS-jZR" secondAttribute="leading" id="rfx-rM-oc7"/>
+                                    <constraint firstItem="ooz-iJ-dd2" firstAttribute="top" secondItem="lT3-OS-jZR" secondAttribute="bottom" constant="11" id="rpg-6X-QbJ"/>
+                                    <constraint firstItem="iwM-dz-gc8" firstAttribute="leading" secondItem="BUa-AV-K3i" secondAttribute="leading" id="va6-BT-wCI"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="ZDt-9c-d8B"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="FAZ-uA-j6k"/>
+                                        <exclude reference="Hm1-bn-eZ4"/>
+                                        <exclude reference="b98-8o-sKu"/>
+                                        <exclude reference="L6U-ik-EXm"/>
+                                        <exclude reference="hpf-0Q-ePU"/>
+                                        <exclude reference="7IN-nv-Bah"/>
+                                        <exclude reference="N0t-ar-sXA"/>
+                                        <exclude reference="XwB-BK-Rb4"/>
+                                        <exclude reference="va6-BT-wCI"/>
+                                        <exclude reference="bLW-Wv-VaZ"/>
+                                        <exclude reference="nIb-DY-jSI"/>
+                                        <exclude reference="rfx-rM-oc7"/>
+                                        <exclude reference="LGH-D0-gpS"/>
+                                        <exclude reference="ZxJ-rX-uvc"/>
+                                        <exclude reference="k8J-n0-5Az"/>
+                                        <exclude reference="kUl-xS-CXz"/>
+                                        <exclude reference="qqg-ge-GsV"/>
+                                        <exclude reference="6PW-69-Bi9"/>
+                                        <exclude reference="Ivz-pg-YFr"/>
+                                        <exclude reference="5I4-Nx-Nkv"/>
+                                        <exclude reference="SvY-8v-Ugh"/>
+                                        <exclude reference="rpg-6X-QbJ"/>
+                                        <exclude reference="0Ju-4d-5WR"/>
+                                        <exclude reference="3IN-9I-nTx"/>
+                                        <exclude reference="IHK-dF-dea"/>
+                                        <exclude reference="eHz-0R-i3C"/>
+                                        <exclude reference="9Lz-zB-hun"/>
+                                        <exclude reference="L8u-IY-6On"/>
+                                        <exclude reference="eUH-ek-5IG"/>
+                                        <exclude reference="mBm-X9-omc"/>
+                                        <exclude reference="ELD-yR-1Mr"/>
+                                        <exclude reference="UhJ-p3-H5Y"/>
+                                        <exclude reference="Jjl-Xa-GZR"/>
+                                        <exclude reference="gxq-wj-4Yo"/>
+                                        <exclude reference="4bY-5u-COD"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="26" width="214" height="348"/>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="ZDt-9c-d8B"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="FAZ-uA-j6k"/>
+                                        <include reference="Hm1-bn-eZ4"/>
+                                        <include reference="b98-8o-sKu"/>
+                                        <include reference="L6U-ik-EXm"/>
+                                        <include reference="hpf-0Q-ePU"/>
+                                        <include reference="7IN-nv-Bah"/>
+                                        <include reference="N0t-ar-sXA"/>
+                                        <include reference="XwB-BK-Rb4"/>
+                                        <include reference="va6-BT-wCI"/>
+                                        <include reference="bLW-Wv-VaZ"/>
+                                        <include reference="nIb-DY-jSI"/>
+                                        <include reference="rfx-rM-oc7"/>
+                                        <include reference="LGH-D0-gpS"/>
+                                        <include reference="ZxJ-rX-uvc"/>
+                                        <include reference="k8J-n0-5Az"/>
+                                        <include reference="kUl-xS-CXz"/>
+                                        <include reference="qqg-ge-GsV"/>
+                                        <include reference="6PW-69-Bi9"/>
+                                        <include reference="Ivz-pg-YFr"/>
+                                        <include reference="5I4-Nx-Nkv"/>
+                                        <include reference="SvY-8v-Ugh"/>
+                                        <include reference="rpg-6X-QbJ"/>
+                                        <include reference="0Ju-4d-5WR"/>
+                                        <include reference="3IN-9I-nTx"/>
+                                        <include reference="IHK-dF-dea"/>
+                                        <include reference="eHz-0R-i3C"/>
+                                        <include reference="9Lz-zB-hun"/>
+                                        <include reference="L8u-IY-6On"/>
+                                        <include reference="eUH-ek-5IG"/>
+                                        <include reference="mBm-X9-omc"/>
+                                        <include reference="ELD-yR-1Mr"/>
+                                        <include reference="UhJ-p3-H5Y"/>
+                                        <include reference="Jjl-Xa-GZR"/>
+                                        <include reference="gxq-wj-4Yo"/>
+                                        <include reference="4bY-5u-COD"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="d9c-rH-F9H" firstAttribute="centerX" secondItem="LLD-Rf-VwP" secondAttribute="centerX" id="6my-jg-3AH"/>
+                            <constraint firstAttribute="trailing" secondItem="d9c-rH-F9H" secondAttribute="trailing" id="QKC-Pu-Gt2"/>
+                            <constraint firstItem="d9c-rH-F9H" firstAttribute="top" secondItem="LLD-Rf-VwP" secondAttribute="top" id="dLf-KM-o2a"/>
+                            <constraint firstItem="d9c-rH-F9H" firstAttribute="leading" secondItem="LLD-Rf-VwP" secondAttribute="leading" id="gnt-mD-JvX"/>
+                            <constraint firstItem="d9c-rH-F9H" firstAttribute="bottom" secondItem="FmZ-wD-dzH" secondAttribute="top" id="mKr-vh-t0Q"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="6my-jg-3AH"/>
+                                <exclude reference="QKC-Pu-Gt2"/>
+                                <exclude reference="dLf-KM-o2a"/>
+                                <exclude reference="gnt-mD-JvX"/>
+                                <exclude reference="mKr-vh-t0Q"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="constraints">
+                                <include reference="QKC-Pu-Gt2"/>
+                                <include reference="dLf-KM-o2a"/>
+                                <include reference="gnt-mD-JvX"/>
+                                <include reference="mKr-vh-t0Q"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="6my-jg-3AH"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="evaLabel" destination="QUd-Xf-ucc" id="amb-dC-KIy"/>
+                        <outlet property="fRespLabel" destination="Egx-kO-V6V" id="xdN-0G-wwX"/>
+                        <outlet property="fcLabel" destination="lT3-OS-jZR" id="rBp-kb-pQr"/>
+                        <outlet property="sao2Label" destination="ooz-iJ-dd2" id="cwh-bR-LCa"/>
+                        <outlet property="taDiasLabel" destination="BUa-AV-K3i" id="2lV-Tr-ia5"/>
+                        <outlet property="taSystLabel" destination="iwM-dz-gc8" id="wXf-K8-pfW"/>
+                        <outlet property="tempetLabel" destination="r4d-UT-cnK" id="8C0-m7-ruF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UNF-ZR-uhF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="818" y="-399"/>
+        </scene>
         <!--Configuration View Controller-->
         <scene sceneID="RHr-LK-PUp">
             <objects>
@@ -47,79 +344,115 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5za-r9-KC6">
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fichiers de données" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96F-qr-MMA">
-                                        <rect key="frame" x="8" y="8" width="154" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHP-mf-UmI">
-                                        <rect key="frame" x="27" y="37" width="117" height="30"/>
-                                        <state key="normal" title="Exporter en swift"/>
-                                        <connections>
-                                            <action selector="exportSwift:" destination="J7c-gS-fbg" eventType="touchUpInside" id="5Tc-HF-tLJ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5T-NZ-LZn">
-                                        <rect key="frame" x="27" y="70" width="186" height="30"/>
-                                        <state key="normal" title="Changer de fichier patients"/>
-                                        <connections>
-                                            <action selector="changerFichierPatient:" destination="J7c-gS-fbg" eventType="touchUpInside" id="TyS-sk-8Na"/>
-                                            <segue destination="g9o-9X-QRF" kind="show" identifier="selectDateFromConfig" id="0g1-qg-TBA"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGk-oS-IAT">
-                                        <rect key="frame" x="27" y="108" width="276" height="30"/>
-                                        <state key="normal" title="Envoyer par mail toutes les observations"/>
-                                        <connections>
-                                            <action selector="mailObservationsAction:" destination="J7c-gS-fbg" eventType="touchUpInside" id="9fI-vB-1Ow"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPb-gk-xTP">
-                                        <rect key="frame" x="249" y="157" width="165" height="30"/>
-                                        <state key="normal" title="Effacer les observations">
-                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="effaceObservation:" destination="J7c-gS-fbg" eventType="touchUpInside" id="Y96-4G-a1Y"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0g-la-pEm">
-                                        <rect key="frame" x="27" y="198" width="154" height="30"/>
-                                        <state key="normal" title="Test Selection nombre"/>
-                                        <connections>
-                                            <action selector="testSelectionNombreAction:" destination="J7c-gS-fbg" eventType="touchUpInside" id="hDm-Iu-mVx"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lqq-RK-ksb">
-                                        <rect key="frame" x="27" y="236" width="132" height="30"/>
-                                        <state key="normal" title="Test Selection date"/>
-                                        <connections>
-                                            <segue destination="nSv-17-Mdl" kind="show" id="Gqb-f7-qn5"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29y-i6-V3K">
-                                        <rect key="frame" x="33" y="274" width="115" height="30"/>
-                                        <state key="normal" title="Plugin Form Test"/>
-                                        <connections>
-                                            <action selector="pluginFormButtonAction:" destination="J7c-gS-fbg" eventType="touchUpInside" id="Hwh-TI-unr"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZJ-e0-9KE">
-                                        <rect key="frame" x="167" y="37" width="151" height="30"/>
-                                        <state key="normal" title="Export Fichier donnee"/>
-                                        <connections>
-                                            <action selector="exportFichierDonneeAction:" destination="J7c-gS-fbg" eventType="touchUpInside" id="WID-ML-X3Z"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RE9-ZX-Czp">
-                                        <rect key="frame" x="27" y="312" width="127" height="30"/>
-                                        <state key="normal" title="Listing documents"/>
-                                        <connections>
-                                            <action selector="listingDocumentsButtonAction:" destination="J7c-gS-fbg" eventType="touchUpInside" id="eqR-ls-Yby"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="d8N-Mw-kpj">
+                                        <rect key="frame" x="8" y="8" width="276" height="393"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Fichiers de données" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96F-qr-MMA">
+                                                <rect key="frame" x="0.0" y="0.0" width="154" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aE5-Wt-CXo">
+                                                <rect key="frame" x="0.0" y="22" width="160" height="30"/>
+                                                <state key="normal" title="Nouveau fichier Patient"/>
+                                                <connections>
+                                                    <action selector="nouveauFichierPatientButtonAction:" destination="J7c-gS-fbg" eventType="touchUpInside" id="nZc-eQ-9oj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZJ-e0-9KE">
+                                                <rect key="frame" x="0.0" y="53" width="151" height="30"/>
+                                                <state key="normal" title="Export Fichier donnee"/>
+                                                <connections>
+                                                    <action selector="exportFichierDonneeAction:" destination="J7c-gS-fbg" eventType="touchUpInside" id="WID-ML-X3Z"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHP-mf-UmI">
+                                                <rect key="frame" x="0.0" y="84" width="117" height="30"/>
+                                                <state key="normal" title="Exporter en swift"/>
+                                                <connections>
+                                                    <action selector="exportSwift:" destination="J7c-gS-fbg" eventType="touchUpInside" id="5Tc-HF-tLJ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RE9-ZX-Czp">
+                                                <rect key="frame" x="0.0" y="115" width="111" height="30"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                <size key="titleShadowOffset" width="2.2250738585072014e-308" height="2.2250738585072014e-308"/>
+                                                <state key="normal" title="Fichiers patients"/>
+                                                <connections>
+                                                    <action selector="fichiersPatientsButtonAction:" destination="J7c-gS-fbg" eventType="touchUpInside" id="Jk2-5W-9Xv"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5T-NZ-LZn">
+                                                <rect key="frame" x="0.0" y="146" width="99" height="30"/>
+                                                <state key="normal" title="Listing Images"/>
+                                                <connections>
+                                                    <action selector="changerFichierPatient:" destination="J7c-gS-fbg" eventType="touchUpInside" id="TyS-sk-8Na"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Utv-4j-2eD">
+                                                <rect key="frame" x="0.0" y="177" width="127" height="30"/>
+                                                <state key="normal" title="Listing documents"/>
+                                                <connections>
+                                                    <action selector="listingDocumentsButtonAction:" destination="J7c-gS-fbg" eventType="touchUpInside" id="1X4-TT-OyL"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGk-oS-IAT">
+                                                <rect key="frame" x="0.0" y="208" width="276" height="30"/>
+                                                <state key="normal" title="Envoyer par mail toutes les observations"/>
+                                                <connections>
+                                                    <action selector="mailObservationsAction:" destination="J7c-gS-fbg" eventType="touchUpInside" id="9fI-vB-1Ow"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPb-gk-xTP">
+                                                <rect key="frame" x="0.0" y="239" width="165" height="30"/>
+                                                <state key="normal" title="Effacer les observations">
+                                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="effaceObservation:" destination="J7c-gS-fbg" eventType="touchUpInside" id="Y96-4G-a1Y"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0g-la-pEm">
+                                                <rect key="frame" x="0.0" y="270" width="154" height="30"/>
+                                                <state key="normal" title="Test Selection nombre"/>
+                                                <connections>
+                                                    <action selector="testSelectionNombreAction:" destination="J7c-gS-fbg" eventType="touchUpInside" id="hDm-Iu-mVx"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lqq-RK-ksb">
+                                                <rect key="frame" x="0.0" y="301" width="132" height="30"/>
+                                                <state key="normal" title="Test Selection date"/>
+                                                <connections>
+                                                    <segue destination="nSv-17-Mdl" kind="show" id="Gqb-f7-qn5"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29y-i6-V3K">
+                                                <rect key="frame" x="0.0" y="332" width="115" height="30"/>
+                                                <state key="normal" title="Plugin Form Test"/>
+                                                <connections>
+                                                    <action selector="pluginFormButtonAction:" destination="J7c-gS-fbg" eventType="touchUpInside" id="Hwh-TI-unr"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4W-xP-H0C">
+                                                <rect key="frame" x="0.0" y="363" width="99" height="30"/>
+                                                <state key="normal" title="Pancarte View"/>
+                                                <connections>
+                                                    <action selector="pancarteViewButtonAction:" destination="J7c-gS-fbg" eventType="touchUpInside" id="J0B-7F-ttY"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
+                                <variation key="heightClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="64" width="600" height="292"/>
+                                </variation>
+                                <variation key="heightClass=regular" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="64" width="600" height="692"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="292"/>
+                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -134,6 +467,117 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeF-gQ-aip" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1617" y="-413"/>
+        </scene>
+        <!--Files Table View Controller-->
+        <scene sceneID="g0T-Is-7FV">
+            <objects>
+                <tableViewController storyboardIdentifier="filesViewSceneID" id="rEV-cC-Tal" customClass="filesTableViewController" customModule="SaisieMed" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="GzV-Y0-Oei">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="patientFileCell" id="bFt-su-DtI" customClass="patientFileTableViewCell" customModule="SaisieMed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bFt-su-DtI" id="jMe-tu-aai">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom fichier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28L-St-eVS">
+                                            <rect key="frame" x="8" y="0.0" width="88.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="xx patients, xx documents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwu-im-Aw2">
+                                            <rect key="frame" x="12" y="22" width="521" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vendredi 15/07/2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55l-6O-w4s">
+                                            <rect key="frame" x="433" y="0.0" width="159" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="55l-6O-w4s" secondAttribute="trailing" constant="8" id="55i-E1-6VC"/>
+                                        <constraint firstItem="55l-6O-w4s" firstAttribute="top" secondItem="jMe-tu-aai" secondAttribute="top" id="aCl-9M-KBI"/>
+                                        <constraint firstItem="28L-St-eVS" firstAttribute="leading" secondItem="jMe-tu-aai" secondAttribute="leadingMargin" id="g7o-TJ-xnS"/>
+                                        <constraint firstItem="28L-St-eVS" firstAttribute="top" secondItem="jMe-tu-aai" secondAttribute="topMargin" constant="-8" id="tiJ-FC-A4f"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="55l-6O-w4s" id="2tH-rA-HWI"/>
+                                    <outlet property="descriptionLabel" destination="kwu-im-Aw2" id="3rd-ug-4Sa"/>
+                                    <outlet property="filenameLabel" destination="28L-St-eVS" id="TB4-ew-Wvo"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="imagefileCell" rowHeight="96" id="oUH-XL-qj1" customClass="imagefileTableViewCell" customModule="SaisieMed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="600" height="96"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oUH-XL-qj1" id="UMQ-fX-K7A">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="95.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WcR-fv-PRN">
+                                            <rect key="frame" x="8" y="0.0" width="95" height="95"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="WcR-fv-PRN" secondAttribute="height" multiplier="1:1" id="Ie4-LV-BFJ"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="15/07/2016 - 15:33" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="EYv-Zf-r8A">
+                                            <rect key="frame" x="408.5" y="0.0" width="158.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fQ-mY-piF">
+                                            <rect key="frame" x="111" y="45" width="448" height="42.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="filename.ext" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVm-pR-1oW">
+                                            <rect key="frame" x="111" y="24" width="93" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="8fQ-mY-piF" firstAttribute="trailing" secondItem="UMQ-fX-K7A" secondAttribute="trailingMargin" id="TeO-7N-R6H"/>
+                                        <constraint firstItem="8fQ-mY-piF" firstAttribute="bottom" secondItem="UMQ-fX-K7A" secondAttribute="bottomMargin" id="YtJ-z2-gBK"/>
+                                        <constraint firstItem="WcR-fv-PRN" firstAttribute="leading" secondItem="UMQ-fX-K7A" secondAttribute="leadingMargin" id="dKH-pe-S3V"/>
+                                        <constraint firstItem="WcR-fv-PRN" firstAttribute="top" secondItem="UMQ-fX-K7A" secondAttribute="top" id="fdB-FK-9uu"/>
+                                        <constraint firstItem="WVm-pR-1oW" firstAttribute="leading" secondItem="WcR-fv-PRN" secondAttribute="trailing" constant="8" id="ho1-5m-GTH"/>
+                                        <constraint firstItem="WVm-pR-1oW" firstAttribute="top" secondItem="UMQ-fX-K7A" secondAttribute="top" constant="24" id="k5a-I4-U4Q"/>
+                                        <constraint firstItem="8fQ-mY-piF" firstAttribute="leading" secondItem="WcR-fv-PRN" secondAttribute="trailing" constant="8" id="ndK-xm-vkl"/>
+                                        <constraint firstAttribute="trailing" secondItem="EYv-Zf-r8A" secondAttribute="trailing" id="qVn-V1-8Wb"/>
+                                        <constraint firstItem="WcR-fv-PRN" firstAttribute="centerY" secondItem="UMQ-fX-K7A" secondAttribute="centerY" id="rl2-nx-K5u"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="EYv-Zf-r8A" id="4Uj-mn-hYH"/>
+                                    <outlet property="descriptionLabel" destination="8fQ-mY-piF" id="nWN-Fj-6ij"/>
+                                    <outlet property="fileNameLabel" destination="WVm-pR-1oW" id="NsP-oU-SGQ"/>
+                                    <outlet property="filenameImageView" destination="WcR-fv-PRN" id="YiD-1p-REE"/>
+                                    <segue destination="5ft-dh-3zX" kind="show" identifier="showImageFromFileTableview" id="Q9J-UL-PJI"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rEV-cC-Tal" id="fcy-5L-4zN"/>
+                            <outlet property="delegate" destination="rEV-cC-Tal" id="dcu-PH-0zb"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rH1-Cb-S8A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2403" y="-413"/>
         </scene>
         <!--Patient Table View Controller-->
         <scene sceneID="c19-Fv-jOw">
@@ -242,7 +686,7 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="r1p-pZ-Rbx">
                         <leftBarButtonItems>
-                            <barButtonItem title="Add" systemItem="add" id="YM2-Fe-cB6">
+                            <barButtonItem systemItem="add" id="YM2-Fe-cB6">
                                 <connections>
                                     <segue destination="nwM-eu-nwT" kind="show" identifier="ajoutPatient" id="Qgp-qg-X5K"/>
                                 </connections>
@@ -299,7 +743,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Détail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5w-yK-Avv">
-                                            <rect key="frame" x="82" y="15" width="510" height="56.5"/>
+                                            <rect key="frame" x="74" y="22.5" width="518" height="57"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -384,8 +828,8 @@
                                             <outlet property="delegate" destination="xzg-q4-AMy" id="IiJ-Ki-w6J"/>
                                         </connections>
                                     </pickerView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTa-FS-dkl">
-                                        <rect key="frame" x="8" y="8" width="154" height="27"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTa-FS-dkl">
+                                        <rect key="frame" x="8" y="8" width="29" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -510,8 +954,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Question à réponse courte" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lA1-Kv-Sg3">
-                                            <rect key="frame" x="8" y="0.0" width="405" height="44"/>
+                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question à réponse courte" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lA1-Kv-Sg3">
+                                            <rect key="frame" x="8" y="0.0" width="405" height="59.5"/>
                                             <accessibility key="accessibilityConfiguration">
                                                 <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                             </accessibility>
@@ -771,7 +1215,6 @@
                                     <constraints>
                                         <constraint firstItem="8SU-mA-831" firstAttribute="leading" secondItem="2ST-GA-hjd" secondAttribute="leadingMargin" id="2p5-N5-GtH"/>
                                         <constraint firstItem="8SU-mA-831" firstAttribute="top" secondItem="2ST-GA-hjd" secondAttribute="topMargin" id="5FV-Br-Zaq"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Foj-5k-ThK" secondAttribute="bottom" constant="13.5" id="GXJ-Z6-cSJ"/>
                                         <constraint firstAttribute="bottom" secondItem="Foj-5k-ThK" secondAttribute="bottom" constant="8" id="IN6-UB-3nx"/>
                                         <constraint firstItem="cn8-Gw-TjF" firstAttribute="leading" secondItem="Foj-5k-ThK" secondAttribute="trailing" constant="8" id="KYm-7V-V1c"/>
                                         <constraint firstItem="Foj-5k-ThK" firstAttribute="leading" secondItem="8SU-mA-831" secondAttribute="trailing" constant="8" id="adT-2n-Cmm"/>
@@ -1039,6 +1482,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7g-RH-81r">
                                         <rect key="frame" x="250" y="0.0" width="100" height="30"/>
                                         <state key="normal" title="Date complète"/>
+                                        <variation key="heightClass=compact-widthClass=compact" ambiguous="YES">
+                                            <rect key="frame" x="150" y="0.0" width="100" height="30"/>
+                                        </variation>
                                         <connections>
                                             <action selector="returnDateComplète:" destination="g9o-9X-QRF" eventType="touchUpInside" id="aqM-zD-SWQ"/>
                                         </connections>
@@ -1049,6 +1495,9 @@
                                             <!--2016-06-21 15:42:41 +0000-->
                                         </date>
                                         <locale key="locale" localeIdentifier="fr"/>
+                                        <variation key="heightClass=compact-widthClass=compact" ambiguous="YES">
+                                            <rect key="frame" x="7" y="28" width="385" height="216"/>
+                                        </variation>
                                     </datePicker>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1060,6 +1509,12 @@
                                     <constraint firstItem="fGA-Zt-7Kg" firstAttribute="trailing" secondItem="A7z-am-Bgk" secondAttribute="trailingMargin" id="nIg-Hi-8Vj"/>
                                     <constraint firstItem="S7g-RH-81r" firstAttribute="centerX" secondItem="fGA-Zt-7Kg" secondAttribute="centerX" id="qlO-eD-47C"/>
                                 </constraints>
+                                <variation key="heightClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="305" width="600" height="146"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="46" width="400" height="259"/>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1130,6 +1585,9 @@
                                         <date key="date" timeIntervalSinceReferenceDate="488979664.37724">
                                             <!--2016-06-30 11:41:04 +0000-->
                                         </date>
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="50" width="360" height="18"/>
+                                        </variation>
                                     </datePicker>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1147,6 +1605,9 @@
                                     <constraint firstItem="boN-oV-PRp" firstAttribute="top" secondItem="cjm-G2-mg8" secondAttribute="bottom" id="suu-20-0jN"/>
                                     <constraint firstAttribute="trailing" secondItem="cjm-G2-mg8" secondAttribute="trailing" constant="7" id="xBu-O5-gnW"/>
                                 </constraints>
+                                <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="47" width="360" height="68"/>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXG-CP-LIk">
                                 <rect key="frame" x="20" y="202" width="560" height="121"/>
@@ -1166,6 +1627,9 @@
                                         <date key="date" timeIntervalSinceReferenceDate="488979800.06919801">
                                             <!--2016-06-30 11:43:20 +0000-->
                                         </date>
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="38" width="360" height="216"/>
+                                        </variation>
                                     </datePicker>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1177,6 +1641,9 @@
                                     <constraint firstItem="KX1-AA-5fk" firstAttribute="leading" secondItem="rXG-CP-LIk" secondAttribute="leading" id="Yb5-Dz-ieX"/>
                                     <constraint firstAttribute="trailing" secondItem="KX1-AA-5fk" secondAttribute="trailing" id="uJm-Bx-Dso"/>
                                 </constraints>
+                                <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="123" width="360" height="0.0"/>
+                                </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TzJ-lq-uXm">
                                 <rect key="frame" x="20" y="336" width="124" height="30"/>
@@ -1202,6 +1669,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKG-87-CZP">
                                 <rect key="frame" x="156" y="368" width="134" height="30"/>
                                 <state key="normal" title="Quelques semaines"/>
+                                <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="156" y="198" width="134" height="0.0"/>
+                                </variation>
                                 <connections>
                                     <action selector="qqSemainesActionButton:" destination="nSv-17-Mdl" eventType="touchUpInside" id="Ced-Su-dCh"/>
                                 </connections>

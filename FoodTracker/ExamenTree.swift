@@ -311,6 +311,7 @@ struct ExamTree {
             Check("(Traitement indiqué par le patient)"),
             Check("(Traitement indiqué par l'entourage)"),
             Check("(Traitement non connu par le patient)"),
+            Check("(Autre prise médicamenteuse non identifié par le patient)"),
             
             ]
         catdetailsTraitement.examens=examCatdetailsTraitement
@@ -370,8 +371,9 @@ struct ExamTree {
     static var Pancartes:categorieExamen.Categorie {
         let catPancartes = categorieExamen.Categorie(nom:"Pancartes",namedImage: "thermo_icon.png",showNom: true)
         let examCatPancartes : [Examen] = [
-            Pancarte.asExamen(),
-            Examen(intitule: "Ajout pancarte",type: .addinfo,tag: "pancarte"),
+            //Pancarte.asExamen(),
+            Examen(intitule: "Pancarte",type: .donnee , tag: "pancarteView"),
+            Examen(intitule: "Ajout pancarte",type: .addinfo,tag: "pancarteV"),
             //           Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
         ]
         catPancartes.examens=examCatPancartes
@@ -440,7 +442,7 @@ struct ExamTree {
     static var Plaie:categorieExamen.Categorie {
         let catPlaie = categorieExamen.Categorie(nom:"Plaie",namedImage: "nurse_icon.png",showNom: true)
         catPlaie.startLI()
-        var examCatPlaie : [Examen] = [
+        let examCatPlaie : [Examen] = [
             Examen(intitule: "situation", type:  .reponsecourte ),
             self.LocAnat.asExamen(),
             Check("superficielle"),
@@ -453,7 +455,7 @@ struct ExamTree {
             Check("bords nets"),
             Check("bords contus"),
             Check("plaie souillée"),]
-        var  Plaie2: [Examen] = [
+        let  Plaie2: [Examen] = [
         //examCatPlaie.append([
             Check("perte de substance"),
             Check("présence de zones tissulaires dévitalisées"),
@@ -863,14 +865,16 @@ struct ExamTree {
             // Examen(intitule: "Xie", type:  .check ,info: " "),
             //Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
             //Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
-            Examen(intitule: "(image)", type:  .imagefilename ),
-            Examen(intitule: "Ajout page",type: .addinfo,tag: "page"),
+
             Examen(intitule: "Date", type:  .reponsecourte, tag: "date" ),
             self.typeDocument,
             // Check("Courrier"),
             //Examen(intitule: "Compte rendu d'examen", type: .donnee),
             
             Examen(intitule: "de qui ?", type:  .selection,tag: "medecin" ),
+            Examen(intitule: "(image)", type:  .imagefilename ),
+            Examen(intitule: "Ajout page",type: .addinfo,tag: "page"),
+
             
             Check("Avancée diagnostique"),
             Check("Etat Stable"),

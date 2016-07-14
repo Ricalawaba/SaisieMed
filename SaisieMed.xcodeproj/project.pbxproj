@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3015F3A51D36C90100A23BE0 /* filesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3015F3A41D36C90100A23BE0 /* filesTableViewController.swift */; };
+		3015F3A71D36C9D800A23BE0 /* imagefileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3015F3A61D36C9D800A23BE0 /* imagefileTableViewCell.swift */; };
+		3015F3A91D36CB8C00A23BE0 /* patientFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3015F3A81D36CB8C00A23BE0 /* patientFileTableViewCell.swift */; };
 		301825F41D0EFFB400592CE9 /* administratif_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 301825F11D0EFFB400592CE9 /* administratif_icon.png */; };
 		301825F51D0EFFB400592CE9 /* digestif_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 301825F21D0EFFB400592CE9 /* digestif_icon.png */; };
 		301825F61D0EFFB400592CE9 /* tete_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 301825F31D0EFFB400592CE9 /* tete_icon.png */; };
@@ -30,6 +33,7 @@
 		301C08671D25877200E79763 /* laboratoire.png in Resources */ = {isa = PBXBuildFile; fileRef = 301C08621D25877200E79763 /* laboratoire.png */; };
 		301C08681D25877200E79763 /* dossier.png in Resources */ = {isa = PBXBuildFile; fileRef = 301C08631D25877200E79763 /* dossier.png */; };
 		301C08691D25877200E79763 /* tension.png in Resources */ = {isa = PBXBuildFile; fileRef = 301C08641D25877200E79763 /* tension.png */; };
+		3041E67C1D3805A100CD4B42 /* pancarteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3041E67B1D3805A100CD4B42 /* pancarteViewController.swift */; };
 		304B19F41D10C3D30006DB4A /* examgroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304B19F31D10C3D30006DB4A /* examgroupTableViewCell.swift */; };
 		304B19F71D13E0DD0006DB4A /* checkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304B19F61D13E0DD0006DB4A /* checkTableViewCell.swift */; };
 		304B19F91D13F3490006DB4A /* selectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304B19F81D13F3490006DB4A /* selectionTableViewCell.swift */; };
@@ -98,6 +102,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3015F3A41D36C90100A23BE0 /* filesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = filesTableViewController.swift; sourceTree = "<group>"; };
+		3015F3A61D36C9D800A23BE0 /* imagefileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imagefileTableViewCell.swift; sourceTree = "<group>"; };
+		3015F3A81D36CB8C00A23BE0 /* patientFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = patientFileTableViewCell.swift; sourceTree = "<group>"; };
 		301825F11D0EFFB400592CE9 /* administratif_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = administratif_icon.png; sourceTree = "<group>"; };
 		301825F21D0EFFB400592CE9 /* digestif_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = digestif_icon.png; sourceTree = "<group>"; };
 		301825F31D0EFFB400592CE9 /* tete_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tete_icon.png; sourceTree = "<group>"; };
@@ -121,6 +128,7 @@
 		301C08621D25877200E79763 /* laboratoire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laboratoire.png; sourceTree = "<group>"; };
 		301C08631D25877200E79763 /* dossier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dossier.png; sourceTree = "<group>"; };
 		301C08641D25877200E79763 /* tension.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tension.png; sourceTree = "<group>"; };
+		3041E67B1D3805A100CD4B42 /* pancarteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pancarteViewController.swift; sourceTree = "<group>"; };
 		304B19F31D10C3D30006DB4A /* examgroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = examgroupTableViewCell.swift; sourceTree = "<group>"; };
 		304B19F61D13E0DD0006DB4A /* checkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkTableViewCell.swift; sourceTree = "<group>"; };
 		304B19F81D13F3490006DB4A /* selectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -216,6 +224,27 @@
 			name = Examens;
 			sourceTree = "<group>";
 		};
+		3041E67A1D36EBBD00CD4B42 /* Arbre Examens */ = {
+			isa = PBXGroup;
+			children = (
+				30D8527C1D33D1D600F2F850 /* ECG.swift */,
+				30D852781D32943800F2F850 /* Neurologie.swift */,
+				30D8527A1D33D12200F2F850 /* Cardiologie.swift */,
+			);
+			name = "Arbre Examens";
+			sourceTree = "<group>";
+		};
+		3041E67D1D382FC500CD4B42 /* file View */ = {
+			isa = PBXGroup;
+			children = (
+				3015F3A41D36C90100A23BE0 /* filesTableViewController.swift */,
+				3015F3A81D36CB8C00A23BE0 /* patientFileTableViewCell.swift */,
+				3015F3A61D36C9D800A23BE0 /* imagefileTableViewCell.swift */,
+			);
+			name = "file View";
+			path = ..;
+			sourceTree = "<group>";
+		};
 		304B19F51D10D5370006DB4A /* Rapport */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +274,7 @@
 		30D028981D19BC810050231C /* Dates et autres saisies */ = {
 			isa = PBXGroup;
 			children = (
+				3041E67B1D3805A100CD4B42 /* pancarteViewController.swift */,
 				30D5267C1D29233B0016A38B /* pluginFormViewController.swift */,
 				30905F8D1D29788A002F023D /* dateDureeViewController.swift */,
 				308E7FD11D1F5A2300AF225D /* SaisieNombreViewController.swift */,
@@ -282,10 +312,9 @@
 				30F43EE71D077C3B005E3BEB /* AppDelegate.swift */,
 				30D0288E1D174F870050231C /* dataSave.swift */,
 				30F43F2C1D0EE938005E3BEB /* categorieExamen.swift */,
-				30D8527C1D33D1D600F2F850 /* ECG.swift */,
+				3041E67D1D382FC500CD4B42 /* file View */,
+				3041E67A1D36EBBD00CD4B42 /* Arbre Examens */,
 				308E7FC91D1D924800AF225D /* ExamenTree.swift */,
-				30D852781D32943800F2F850 /* Neurologie.swift */,
-				30D8527A1D33D12200F2F850 /* Cardiologie.swift */,
 				304B19FA1D1413540006DB4A /* Examen.swift */,
 				308E7FD31D1FC60100AF225D /* Configuration */,
 				30F43F2F1D0EF7DE005E3BEB /* Liste patient */,
@@ -552,7 +581,9 @@
 				30D028911D18AA470050231C /* configurationViewController.swift in Sources */,
 				30D526791D281EBE0016A38B /* pickSelectTableViewCell.swift in Sources */,
 				308E7FD21D1F5A2300AF225D /* SaisieNombreViewController.swift in Sources */,
+				3015F3A51D36C90100A23BE0 /* filesTableViewController.swift in Sources */,
 				301825FC1D0F057A00592CE9 /* questionOuiNonTableViewCell.swift in Sources */,
+				3015F3A71D36C9D800A23BE0 /* imagefileTableViewCell.swift in Sources */,
 				30D5267D1D29233B0016A38B /* pluginFormViewController.swift in Sources */,
 				30D8527D1D33D1D600F2F850 /* ECG.swift in Sources */,
 				308E7FCC1D1DA3F000AF225D /* AjoutInformationTableViewCell.swift in Sources */,
@@ -564,6 +595,8 @@
 				30F43F101D0E27FE005E3BEB /* patientTableViewCell.swift in Sources */,
 				30F43F271D0ED1DC005E3BEB /* AjoutPatientViewController.swift in Sources */,
 				30D852791D32943800F2F850 /* Neurologie.swift in Sources */,
+				3015F3A91D36CB8C00A23BE0 /* patientFileTableViewCell.swift in Sources */,
+				3041E67C1D3805A100CD4B42 /* pancarteViewController.swift in Sources */,
 				304B19F41D10C3D30006DB4A /* examgroupTableViewCell.swift in Sources */,
 				30F43F291D0EE751005E3BEB /* saisieTableViewController.swift in Sources */,
 				301826051D10580000592CE9 /* rapportViewController.swift in Sources */,

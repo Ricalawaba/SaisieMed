@@ -8,6 +8,22 @@
 // TODO: Plntage lors de l'export mail de rapport non "patient"
 import UIKit
 import MessageUI
+
+extension UIPrintPageRenderer {
+    func printToPDF() -> NSData {
+        let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, self.paperRect, nil)
+        self.prepareForDrawingPages(NSMakeRange(0, self.numberOfPages()))
+        let bounds = UIGraphicsGetPDFContextBounds()
+        for i in 0..<self.numberOfPages() {
+            UIGraphicsBeginPDFPage();
+            self.drawPageAtIndex(i, inRect: bounds)
+        }
+        UIGraphicsEndPDFContext();
+        return pdfData;
+    }
+    
+}
 class rapportViewController: UIViewController ,MFMailComposeViewControllerDelegate  {
     @IBAction func patientButtonAction(sender: UIBarButtonItem) {
         self.navigationController!.popToViewController(DataSave.lastPatientVC!,animated: true)
@@ -54,8 +70,26 @@ class rapportViewController: UIViewController ,MFMailComposeViewControllerDelega
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    func createPdfFile(printFormatter: UIViewPrintFormatter) -> NSData {
+        let renderer = UIPrintPageRenderer()
+        renderer.addPrintFormatter(printFormatter, startingAtPageAtIndex: 0);
+        let paperSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)
+        let printableRect = CGRectMake(0, 0, paperSize.width, paperSize.height)
+        let paperRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
+        renderer.setValue(NSValue(CGRect: paperRect), forKey: "paperRect")
+        renderer.setValue(NSValue(CGRect: printableRect), forKey: "printableRect")
+        return renderer.printToPDF()
+    }
+    func savePdf(filename: String){
+        // FIXME: Non implémenté
+    }
+    
+    func pdfToFile(pathfile: String) {
+        let pdfData = createPdfFile(webView.viewPrintFormatter())
+        pdfData.writeToFile(pathfile, atomically: true)
+    }
     override func viewDidAppear(animated: Bool) {
-        var myHTMLString:String="<head><meta name=\"viewport\" content=\"width=300;initial-scale=1.0\" maximum-scale=4.0; user-scalable=1;></head>"
+        var myHTMLString:String="<head><meta name=\"viewport\" content=\"width=device-width;initial-scale=1.0\"></head>"
         if directHTML != nil {
             myHTMLString += directHTML!
         }

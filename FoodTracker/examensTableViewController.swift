@@ -11,11 +11,14 @@ import UIKit
 
 
 
-class examensTableViewController: UITableViewController,textSelectedDelegate, UITextFieldDelegate,dateSelectedDelegate, AjoutInformationDelegate,numberSelectedDelegate, saisieNombreDelegate,imageSelectedDelegate {
+class examensTableViewController: UITableViewController,textSelectedDelegate, UITextFieldDelegate,dateSelectedDelegate,
+                    AjoutInformationDelegate,numberSelectedDelegate,
+                    saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
     var categorie : categorieExamen.Categorie!
     var examenSelected: Examen?
     //var examen = [Examen]()
     
+  
     @IBAction func refreshButtonAction(sender: UIBarButtonItem) {
         tableView.reloadData()
         
@@ -58,8 +61,10 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         if examen.tag=="medecin" {
             categorie.examens.insert( Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"), atIndex: indextoInsert)
         }
-        if examen.tag=="pancarte" {
-            categorie.examens.insert(Examen(categorie: ExamTree.Pancarte), atIndex: indextoInsert)
+        if examen.tag=="pancarteV" {
+            categorie.examens.insert(Examen(intitule: "Pancarte", type: .donnee,tag: "pancarteView" ), atIndex: indextoInsert)
+            tableView.reloadData()
+            return
         }
         if examen.tag=="evenementSuivi" {
             categorie.examens.insert( ExamTree.evenement.asExamen(), atIndex: indextoInsert)
@@ -227,11 +232,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             svc.navigationController?.title = svc.categorie!.nomUI()
             self.navigationController!.pushViewController(svc,animated: true)
             
-        }
-        /*if !(ExamTaped!.type == Examen.ExamenEnum.donnee || ExamTaped!.type == Examen.ExamenEnum.reponsecourte) {
-         return
-         }*/
-        if (ExamTaped!.type == .selection ){
+        } else if (ExamTaped!.type == .selection ){
             if ExamTaped!.tag.isEmpty {return}
             let svc = self.storyboard?.instantiateViewControllerWithIdentifier("selectionViewID") as! selectionTexteTableViewController
                        svc.textes = Donnees.selectiontextDict[ ExamTaped!.tag ]!
@@ -240,10 +241,8 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             self.navigationController!.pushViewController(svc,animated: true)
             return
         }
-      //  let idfkey=Donnees.selectiontextDict.indexForKey((ExamTaped?.tag)!)
-     //   print(idfkey)
+      
         if ExamTaped?.type != .addinfo &&  (Donnees.selectiontextDict.indexForKey((ExamTaped?.tag)!) != nil) {
-      //  if (ExamTaped!.tag == "Evenement" ){
             
             let svc = self.storyboard?.instantiateViewControllerWithIdentifier("selectionViewID") as! selectionTexteTableViewController
             svc.textes = Donnees.selectiontextDict[ ExamTaped!.tag ]!
@@ -253,18 +252,20 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             return
         }
 
-        //  sender?.row
-        //  svc.listePatients = Donnees.listePatient
-        
-
+      
         if ExamTaped!.tag == "date" {
-            //let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectDateViewControler") as! selectDateViewController
-            
-                let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("dateDureeViewID") as! dateDureeViewController
+            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("dateDureeViewID") as! dateDureeViewController
             
             svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
         }
+        if ExamTaped!.tag == "pancarteView" {
+            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pancartViewRef") as! pancarteViewController
+            
+            svc.delegate=self
+            self.navigationController!.pushViewController(svc,animated: true)
+        }
+
         if ExamTaped!.tag == "tension" {
             let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectNumberID") as! selectNumberViewController
             _ = svc.view
@@ -428,7 +429,8 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
          self.navigationItem.rightBarButtonItem = self.editButtonItem()
         //examen=Donnees.listeCategorie.categories.first!.examens
-        self.title=categorie!.nomUI()
+        if categorie != nil {     self.title=categorie!.nomUI() }
+        
         // print(examen.count)
         registerForKeyboardNotifications()
      
@@ -538,6 +540,13 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
 
         
     }
+    func pancarteSelected(sender:pancarteViewController, pancarteStr:String) {
+         if (ExamTaped != nil) {
+            ExamTaped?.value=pancarteStr
+        }
+        tableView.reloadData()
+    }
+
     // MARK: Retour selection texte
     func textSelected(sender:selectionTexteTableViewController, text:String) {
         if (examenSelected != nil) {

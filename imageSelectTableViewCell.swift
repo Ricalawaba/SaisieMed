@@ -27,17 +27,7 @@ func randomStringWithLength (len : Int) -> NSString {
     
     return randomString
 }
-func getDocumentsURL() -> NSURL {
-    let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-    return documentsURL
-}
 
-func fileInDocumentsDirectory(filename: String) -> String {
-    
-    let fileURL = getDocumentsURL().URLByAppendingPathComponent(filename)
-    return fileURL.path!
-    
-}
 
 class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
@@ -52,7 +42,7 @@ class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegat
 
         imagePicker.sourceType = .SavedPhotosAlbum
         imagePicker.mediaTypes = [kUTTypeImage as String]
-        imagePicker.allowsEditing = true
+        imagePicker.allowsEditing = false
         
         UIApplication.sharedApplication().keyWindow?.rootViewController!.presentViewController(imagePicker, animated: true, completion: nil)
 
@@ -72,7 +62,7 @@ class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegat
         imagePicker.delegate=self
         imagePicker.sourceType = .Camera
         imagePicker.showsCameraControls=true
-        imagePicker.allowsEditing = true
+        imagePicker.allowsEditing = false
         
         UIApplication.sharedApplication().keyWindow?.rootViewController!.presentViewController(imagePicker, animated: true, completion: nil)
     }
@@ -100,8 +90,8 @@ class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegat
     // MARK: - UIImagePickerControllerDelegate Methods
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-      var quelleImage="UIImagePickerControllerOriginalImage"
-        if picker.sourceType == .Camera { quelleImage="UIImagePickerControllerEditedImage"}
+      let quelleImage="UIImagePickerControllerOriginalImage"
+       // if picker.sourceType == .Camera { quelleImage="UIImagePickerControllerEditedImage"}
         if let pickedImage = info[quelleImage] as? UIImage {
             //imageLabel.text=(info[UIImagePickerControllerReferenceURL] as! NSURL).absoluteString
             let fileName = "\(randomStringWithLength(8)).jpg"

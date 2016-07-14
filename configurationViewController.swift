@@ -9,37 +9,59 @@
 import UIKit
 
 class configurationViewController: UIViewController,dateSelectedDelegate {
-
-    @IBAction func listingDocumentsButtonAction(sender: UIButton) {
-        DataSave.ListDirectory()
-        let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+    
+    @IBAction func pancarteViewButtonAction(sender: UIButton) {
+        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pancartViewRef") as! pancarteViewController
         
-        do {
-            // Get the directory contents urls (including subfolders urls)
-            let directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL( documentsUrl, includingPropertiesForKeys: nil, options: [])
-            print(directoryContents)
-            
-            // if you want to filter the directory contents you can do like this:
-//            for d in directoryContents {
-//                let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
-//                let aview=svc.view
-//                svc.imageView.image = UIImage(contentsOfFile: d.absoluteString)
-//                svc.titreLabel.text=d.absoluteString
-//                // svc.descriptionLabel.text = categorie.detailString()
-//                // svc.delegate=self
-//                self.navigationController!.pushViewController(svc,animated: true)
-//            }
-          //  print("directory contents:",directoryContents)
-            let mp3Files = directoryContents.filter{ $0.pathExtension == "dat" }
-            print("dat urls:",mp3Files)
-            let mp3FileNames = mp3Files.flatMap({$0.URLByDeletingPathExtension?.lastPathComponent})
-            print("dat list:", mp3FileNames)
-            
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-
-       
+      //  svc.type = .all
+        self.navigationController!.pushViewController(svc,animated: true)
+        
+    }
+    @IBAction func nouveauFichierPatientButtonAction(sender: UIButton) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "YYYYMmdd-kkmm"
+        let d = NSDate()
+        let s = dateFormatter.stringFromDate(d)
+        DataSave.saveFilePatients()
+        Donnees.userdefault.setObject("\(s)patients.dat", forKey: "patientdat")
+        Donnees.listePatient.patients.removeAll()
+        DataSave.loadFilePatients()
+        
+    }
+  
+    @IBAction func listingDocumentsButtonAction(sender: UIButton) {
+        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("filesViewSceneID") as! filesTableViewController
+        svc.type = .all
+        self.navigationController!.pushViewController(svc,animated: true)
+        //DataSave.ListDirectory()
+//        let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+//        
+//        do {
+//            // Get the directory contents urls (including subfolders urls)
+//            let directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL( documentsUrl, includingPropertiesForKeys: nil, options: [])
+//            print(directoryContents)
+//            
+//            // if you want to filter the directory contents you can do like this:
+//            //            for d in directoryContents {
+//            //                let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
+//            //                let aview=svc.view
+//            //                svc.imageView.image = UIImage(contentsOfFile: d.absoluteString)
+//            //                svc.titreLabel.text=d.absoluteString
+//            //                // svc.descriptionLabel.text = categorie.detailString()
+//            //                // svc.delegate=self
+//            //                self.navigationController!.pushViewController(svc,animated: true)
+//            //            }
+//            //  print("directory contents:",directoryContents)
+//            let mp3Files = directoryContents.filter{ $0.pathExtension == "dat" }
+//            print("dat urls:",mp3Files)
+//            let mp3FileNames = mp3Files.flatMap({$0.URLByDeletingPathExtension?.lastPathComponent})
+//            print("dat list:", mp3FileNames)
+//            
+//        } catch let error as NSError {
+//            print(error.localizedDescription)
+//        }
+//        
+//        
     }
     func dateSelected(sender: UIViewController, text: String, date: NSDate) {
         self.title=text
@@ -58,7 +80,7 @@ class configurationViewController: UIViewController,dateSelectedDelegate {
     }
     @IBAction func pluginFormButtonAction(sender: UIButton) {
         let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
-         self.navigationController!.pushViewController(svc,animated: true)
+        self.navigationController!.pushViewController(svc,animated: true)
     }
     
     @IBAction func testSelectionNombreAction(sender: UIButton) {
@@ -67,7 +89,7 @@ class configurationViewController: UIViewController,dateSelectedDelegate {
         svc.maxNumber=330
         svc.step=5
         svc.value="120"
-//       let aview = svc.view
+        //       let aview = svc.view
         svc.Information = "TA Systolique"
         self.navigationController!.pushViewController(svc,animated: true)
         
@@ -85,11 +107,11 @@ class configurationViewController: UIViewController,dateSelectedDelegate {
     }
     @IBAction func exportFichierDonneeAction(sender: UIButton) {
         let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("rapportControlerID") as! rapportViewController
-      
+        
         var addStr=""
         
         for name in Donnees.selectiontextDict.keys {
-              addStr+="selectiontextDict[\"\(name)\"] = ["
+            addStr+="selectiontextDict[\"\(name)\"] = ["
             for datastr in Donnees.selectiontextDict[name]! {
                 addStr += "\"\(datastr)\","
             }
@@ -98,7 +120,7 @@ class configurationViewController: UIViewController,dateSelectedDelegate {
         svc.directHTML="<H3>Export Swift<H3><p>\(addStr)"
         //self.presentViewController(svc, animated: true, completion: nil)
         self.navigationController!.pushViewController(svc,animated: true)
-
+        
     }
     
     @IBAction func exportSwift(sender: UIButton) {
@@ -151,41 +173,55 @@ class configurationViewController: UIViewController,dateSelectedDelegate {
             addStr += "\r\n\"\(anStr)\","
         }
         addStr += "\r\n]<p>"
-
+        
         addStr += "selectiontextDict[\"ConclusionRx\"] = ["
         for anStr in Donnees.selectiontextDict["ConclusionRx"]! {
             addStr += "\r\n\"\(anStr)\","
         }
         addStr += "\r\n]<p>"
-
+        
         addStr += "selectiontextDict[\"Evenement\"] = ["
         for anStr in Donnees.selectiontextDict["Evenement"]! {
             addStr += "\r\n\"\(anStr)\","
         }
         addStr += "\r\n]<p>"
-
+        
         svc.directHTML="<H3>Export Swift<H3><p>\(addStr)"
         //self.presentViewController(svc, animated: true, completion: nil)
         self.navigationController!.pushViewController(svc,animated: true)
     }
-    @IBAction func changerFichierPatient(sender: UIButton) {
+    
+    @IBAction func fichiersPatientsButtonAction(sender: UIButton) {
+        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("filesViewSceneID") as! filesTableViewController
+        svc.type = .patients
+        self.navigationController!.pushViewController(svc,animated: true)
     }
+    
+    @IBAction func changerFichierPatient(sender: UIButton) {
+        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("filesViewSceneID") as! filesTableViewController
+        svc.type = .jpg
+        self.navigationController!.pushViewController(svc,animated: true)
+        
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-    
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
@@ -194,10 +230,10 @@ class configurationViewController: UIViewController,dateSelectedDelegate {
         {
             let svc = segue.destinationViewController as! selectDateViewController
             svc.delegate=self
-
+            
         }
         
     }
     
-
+    
 }
