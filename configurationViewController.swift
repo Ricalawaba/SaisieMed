@@ -204,13 +204,15 @@ class configurationViewController: UIViewController,dateSelectedDelegate {
         
         
     }
+    @IBOutlet weak var stackView: UIStackView!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
+        scrollView.contentSize=stackView.bounds.size
     }
     
     override func didReceiveMemoryWarning() {

@@ -344,7 +344,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5za-r9-KC6">
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="d8N-Mw-kpj">
+                                    <stackView autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="d8N-Mw-kpj">
                                         <rect key="frame" x="8" y="8" width="276" height="393"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Fichiers de données" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96F-qr-MMA">
@@ -441,7 +441,17 @@
                                                     <action selector="pancarteViewButtonAction:" destination="J7c-gS-fbg" eventType="touchUpInside" id="J0B-7F-ttY"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7r-Gk-gF9">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <state key="normal" title="Envoi fichier patient"/>
+                                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="394" width="136" height="30"/>
+                                                </variation>
+                                            </button>
                                         </subviews>
+                                        <variation key="heightClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="8" y="0.0" width="276" height="424"/>
+                                        </variation>
                                     </stackView>
                                 </subviews>
                                 <variation key="heightClass=compact" ambiguous="YES">
@@ -463,6 +473,10 @@
                             <constraint firstAttribute="trailing" secondItem="5za-r9-KC6" secondAttribute="trailing" id="tm5-eV-Nbh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="scrollView" destination="5za-r9-KC6" id="VzY-Fc-URg"/>
+                        <outlet property="stackView" destination="d8N-Mw-kpj" id="zic-5J-Uzi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeF-gQ-aip" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -897,7 +911,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="qrk-MW-LMv">
                                 <rect key="frame" x="1" y="95" width="599" height="504"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fracture_femur.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jb5-p5-cqI">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fracture_femur.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jb5-p5-cqI">
                                         <rect key="frame" x="8" y="8" width="583" height="464"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="583" id="Uf8-wA-tDp"/>
@@ -1842,7 +1856,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGH-0B-XzB">
+                            <webView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scalesPageToFit="YES" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGH-0B-XzB">
                                 <rect key="frame" x="20" y="64" width="571" height="492"/>
                                 <color key="backgroundColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
                                 <dataDetectorType key="dataDetectorTypes"/>

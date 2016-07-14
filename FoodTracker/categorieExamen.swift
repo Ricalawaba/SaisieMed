@@ -44,6 +44,7 @@ class categorieExamen : NSObject , NSCoding {
         }
         func startLI() {
             formatPreString="<li>"
+            formatPostString="</li>"
         }
         func encodeWithCoder(coder: NSCoder) {
             coder.encodeObject(self.nom, forKey: "nom")
@@ -89,7 +90,7 @@ class categorieExamen : NSObject , NSCoding {
         }
         static func removeHtml(originalString: String)->String {
             var removeHtmlStr = originalString
-            let subStr=["<br>","</br>","<u>","</u>","<p>","</p>","<li>","<ul>","<ol>","<b>","</b>","<section>","</section>"]
+            let subStr=["<br>","</br>","<u>","</u>","<p>","</p>","<li>","</li>","<ul>","<ol>","<b>","</b>","<section>","</section>"]
             
             for str in subStr {
                 removeHtmlStr=removeHtmlStr.stringByReplacingOccurrencesOfString(str, withString: "", options: NSStringCompareOptions.CaseInsensitiveSearch)
@@ -136,9 +137,9 @@ class categorieExamen : NSObject , NSCoding {
                             else {
                                 str += "Pas de \(examen.intitule)"}
                         }
-                    } else if  examen.type ==  .reponsecourte || examen.type == .selection{
+                    } else if  examen.type ==  .reponsecourte || examen.type == .selection || examen.type == .datastr {
                         str += "\(examen.value)"
-                    } else if examen.type ==  .donnee  || examen.type == .datastr || examen.type == Examen.ExamenEnum.multirowdatastr {
+                    } else if examen.type ==  .donnee   || examen.type == Examen.ExamenEnum.multirowdatastr {
                         str += "\(examen.intitule): \(examen.value)"
                     } else if examen.type == .imagefilename {
                         str+="<img src=\"file:\(NSString(string: examen.value).lastPathComponent)\" max-width=100%>"

@@ -68,7 +68,7 @@ class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegat
     }
     var examen:Examen! = nil {
         didSet {
-            
+            print("examen set dans imageselectviewcell")
         }
     }
     

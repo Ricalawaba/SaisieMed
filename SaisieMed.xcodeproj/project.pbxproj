@@ -129,6 +129,8 @@
 		301C08631D25877200E79763 /* dossier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dossier.png; sourceTree = "<group>"; };
 		301C08641D25877200E79763 /* tension.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tension.png; sourceTree = "<group>"; };
 		3041E67B1D3805A100CD4B42 /* pancarteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pancarteViewController.swift; sourceTree = "<group>"; };
+		3041E67E1D3854E000CD4B42 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		3041E67F1D3854E000CD4B42 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		304B19F31D10C3D30006DB4A /* examgroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = examgroupTableViewCell.swift; sourceTree = "<group>"; };
 		304B19F61D13E0DD0006DB4A /* checkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkTableViewCell.swift; sourceTree = "<group>"; };
 		304B19F81D13F3490006DB4A /* selectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 		3041E67A1D36EBBD00CD4B42 /* Arbre Examens */ = {
 			isa = PBXGroup;
 			children = (
+				308E7FC91D1D924800AF225D /* ExamenTree.swift */,
 				30D8527C1D33D1D600F2F850 /* ECG.swift */,
 				30D852781D32943800F2F850 /* Neurologie.swift */,
 				30D8527A1D33D12200F2F850 /* Cardiologie.swift */,
@@ -314,7 +317,6 @@
 				30F43F2C1D0EE938005E3BEB /* categorieExamen.swift */,
 				3041E67D1D382FC500CD4B42 /* file View */,
 				3041E67A1D36EBBD00CD4B42 /* Arbre Examens */,
-				308E7FC91D1D924800AF225D /* ExamenTree.swift */,
 				304B19FA1D1413540006DB4A /* Examen.swift */,
 				308E7FD31D1FC60100AF225D /* Configuration */,
 				30F43F2F1D0EF7DE005E3BEB /* Liste patient */,
@@ -633,6 +635,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				30F43EEC1D077C3B005E3BEB /* Base */,
+				3041E67E1D3854E000CD4B42 /* fr */,
 			);
 			name = Main.storyboard;
 			path = FoodTracker;
@@ -642,6 +645,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				30F43EF11D077C3B005E3BEB /* Base */,
+				3041E67F1D3854E000CD4B42 /* fr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

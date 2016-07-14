@@ -333,7 +333,7 @@ struct ExamTree {
     }
     
     static var Poids:categorieExamen.Categorie {
-        let catPoids = categorieExamen.Categorie(nom:"Poids/Taille",namedImage: "Homme.png",showNom: false)
+        let catPoids = categorieExamen.Categorie(nom:"<br>Poids/Taille",namedImage: "Homme.png",showNom: false)
         catPoids.startLI()
         let examCatPoids : [Examen] = [
             
@@ -346,7 +346,7 @@ struct ExamTree {
             OuiNon("Variation pondérale récente significative"),
             Examen(intitule: "Détail", type:  .reponsecourte ),
             Examen(intitule: "Périmètre abdominal", type:  .donnee, tag: "taille" ),
-             
+            
             ]
         catPoids.examens=examCatPoids
         return catPoids
@@ -394,10 +394,10 @@ struct ExamTree {
             Examen(intitule: "Tension bras gauche", type: .multirowdatastr , tag: "tensionMultirow"),
             
             self.temperatureMultirow,
-           
+            
             saO2("SaO2% AA"),
             saO2("Sao2% sous O2"),
-
+            
             Examen(intitule: "Fr. Resp", type:  .donnee ,tag: "fresp"),
             Examen(intitule: "EVA", type:  .donnee,tag: "EVA" ),
             
@@ -443,6 +443,7 @@ struct ExamTree {
         let catPlaie = categorieExamen.Categorie(nom:"Plaie",namedImage: "nurse_icon.png",showNom: true)
         catPlaie.startLI()
         let examCatPlaie : [Examen] = [
+            regionAnat,
             Examen(intitule: "situation", type:  .reponsecourte ),
             self.LocAnat.asExamen(),
             Check("superficielle"),
@@ -456,7 +457,7 @@ struct ExamTree {
             Check("bords contus"),
             Check("plaie souillée"),]
         let  Plaie2: [Examen] = [
-        //examCatPlaie.append([
+            //examCatPlaie.append([
             Check("perte de substance"),
             Check("présence de zones tissulaires dévitalisées"),
             Check("datant de plusieurs jours"),
@@ -492,7 +493,7 @@ struct ExamTree {
         catPlaie.examens=examCatPlaie+Plaie2
         return catPlaie
     }
-
+    
     
     
     static var TypeTrauma:categorieExamen.Categorie {
@@ -865,7 +866,7 @@ struct ExamTree {
             // Examen(intitule: "Xie", type:  .check ,info: " "),
             //Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
             //Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
-
+            
             Examen(intitule: "Date", type:  .reponsecourte, tag: "date" ),
             self.typeDocument,
             // Check("Courrier"),
@@ -874,7 +875,7 @@ struct ExamTree {
             Examen(intitule: "de qui ?", type:  .selection,tag: "medecin" ),
             Examen(intitule: "(image)", type:  .imagefilename ),
             Examen(intitule: "Ajout page",type: .addinfo,tag: "page"),
-
+            
             
             Check("Avancée diagnostique"),
             Check("Etat Stable"),
@@ -911,11 +912,13 @@ struct ExamTree {
         let catDigestifFonctionnel = categorieExamen.Categorie(nom:"Fonctionnel",namedImage: "tete_icon.png",showNom: true)
         catDigestifFonctionnel.startLI()
         let examCatDigestifFonctionnel : [Examen] = [
-            OuiNon("Trouble de l'apétit"),
             OuiNon("Nausée/Vomissements"),
             OuiNon("Ballonement"),
             OuiNon("Diarrhée"),
             OuiNon("Constipation"),
+            
+            OuiNon("Trouble de l'apétit"),
+            OuiNon("Trouble du transit"),
             Check("Alternance diarrhée / constipation"),
             Examen(intitule: "dernier repas", type:  .donnee,tag: "date" ),
             Examen(intitule: "dernières selles", type:  .donnee,tag: "date" ),
@@ -927,6 +930,7 @@ struct ExamTree {
             Check("Selles glaireuses"),
             OuiNon("Méléna"),
             OuiNon("Rectorragie"),
+            Check("coloration normale"),
             OuiNon("décoloration des selles"),
             OuiNon("Constipation"),
             OuiNon("Odeur inhabituelle"),
@@ -941,17 +945,26 @@ struct ExamTree {
         catDigestifDouleur.startLI()
         let examCatDigestifDouleur : [Examen] = [
             Check("Abdomen globalement sensible"),
+            Check("irradiation"),
             OuiNon("Douleur abdominale"),
             Check("épigastrique"),
+            Check("transfixiante"),
             OuiNon("Irradiation dans le dos"),
             Check("hypochondre droit"),
             Check("flanc droit"),
-            Check("FI droite"),
+            Check("périombilicale"),
+            Check("Fosse iliaque droite"),
             Check("hypochondre gauche"),
             Check("flanc gauche"),
-            Check("FI gauche"),
+            Check("Fosse iliaque gauche"),
             Check("périombilicale"),
             Check("hypogastrique"),
+            Check("Organe génitaux"),
+            Check("Fosse lombaire gauche"),
+            Check("fosse lombaire droite"),
+            Check("lombaire"),
+            typeDouleur.asExamen(),
+            
             OuiNon("signe de Murphy"),
             
             ]
@@ -1022,26 +1035,26 @@ struct ExamTree {
             Check("Hanche droite"),
             Check("Femur gauche"),
             Check("Fémur droit"),]
-//        examCatRadiographie.append([
-//            
-//            Check("Genou gauche"),
-//            Check("Genou droit"),
-////            Check("Jambe gauche"),
-////            Check("Jambe droite"),
-////            Check("Epaule gauche"),
-////            Check("Epaule droit"),
-////            Check("Bras gauche"),
-////            Check("Bras droit"),
-////            Check("Coude gauche"),
-////            Check("Coude droit"),
-////            Check("Avant-bras gauche"),
-////            Check("Avant-bras droit"),
-////            Check("Poignet gauche"),
-////            Check("Poignet droit"),
-////            Check("Main gauche"),
-//            Check("Main droite"),
-//            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
-//        ])
+        //        examCatRadiographie.append([
+        //
+        //            Check("Genou gauche"),
+        //            Check("Genou droit"),
+        ////            Check("Jambe gauche"),
+        ////            Check("Jambe droite"),
+        ////            Check("Epaule gauche"),
+        ////            Check("Epaule droit"),
+        ////            Check("Bras gauche"),
+        ////            Check("Bras droit"),
+        ////            Check("Coude gauche"),
+        ////            Check("Coude droit"),
+        ////            Check("Avant-bras gauche"),
+        ////            Check("Avant-bras droit"),
+        ////            Check("Poignet gauche"),
+        ////            Check("Poignet droit"),
+        ////            Check("Main gauche"),
+        //            Check("Main droite"),
+        //            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
+        //        ])
         catRadiographie.examens=examCatRadiographie
         return catRadiographie
     }
@@ -1049,6 +1062,13 @@ struct ExamTree {
         let catExamenGeneral = categorieExamen.Categorie(nom:"<br>Examen général",namedImage: "examenclinique.png",showNom: true)
         //catExamenGeneral.startLI()
         let examCatExamenGeneral : [Examen] = [
+            Check("Communication normale" ),
+            Check("Pas de communication" ),
+            Check("Communication altérée" ),
+            Check("Compréhension difficile" ),
+            Check("Conscient" ),
+            Check("Orienté" ),
+            OuiNon("Anxiété apparente"),
             self.Poids.asExamen(),
             self.Adenopathies.asExamen(),
             Examen(intitule: "Dernier repas", type:  .reponsecourte, tag: "date" ),
@@ -1174,7 +1194,7 @@ struct ExamTree {
         return catPlainteAnamnèse
     }
     
-
+    
     
     static var RespiratoireFonctionnel:categorieExamen.Categorie {
         let catRespiratoireFonctionnel = categorieExamen.Categorie(nom:"Fonctionnel",namedImage: "pneumo_icon.png",showNom: true)
@@ -1235,11 +1255,14 @@ struct ExamTree {
         let examCatDigestif : [Examen] =  [
             OuiNon("Examen Normal"),
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            ExamTree.DigestifFonctionnel.asExamen(),
-            ExamTree.DigestifDouleur.asExamen(),
             
+            ExamTree.DigestifDouleur.asExamen(),
+            ExamTree.DigestifFonctionnel.asExamen(),
             Check("Abdomen souple et depressible"),
-            OuiNon("Bruits hydroaériques"),
+            OuiNon("Bruits hydroaériques audbles"),
+            OuiNon("exacerbation des flatulences"),
+            OuiNon("borborygmes"),
+            Check("B.H.A. +++"),
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
             Check("Pas de défense"),
             
@@ -1265,7 +1288,7 @@ struct ExamTree {
             OuiNon("Adénopathie cervicale"),
             OuiNon("Adénopathie sus-claviculaire"),
             LocAnat.asExamen(),
-        ]
+            ]
         catAdenopathies.examens=examCatAdenopathies
         return catAdenopathies
     }
@@ -1367,6 +1390,28 @@ struct ExamTree {
         ]
         catORL.examens=examCatORL
         return catORL
+    }
+    static var typeDouleur:categorieExamen.Categorie {
+        let cattypeDouleur = categorieExamen.Categorie(nom:"typeDouleur",namedImage: "<#image#>",showNom: false)
+        cattypeDouleur.startNewLine()
+        let examCattypeDouleur = [
+            Check("Apparition brutale"),
+            Check("Apparition progressive"),
+            Check("douleur continue"),
+            Check("douleur intermittente"),
+            Check("douleur continue avec crises paroxystiques"),
+            OuiNon("modification par les mouvements respiratoires"),
+            Check("Pas de position antalgique"),
+            Check("atténué par le décubitus"),
+            OuiNon("Soulagement par l'émission de gaz"),
+            OuiNon("Augmentation à la palpation"),
+            OuiNon("Modification par la mobilisation rachidienne"),
+            OuiNon("Modification par les mouvements respiratoires"),
+             OuiNon("Modification à la mobilisation"),
+            
+            ]
+        cattypeDouleur.examens=examCattypeDouleur
+        return cattypeDouleur
     }
     
     static var Biologie:categorieExamen.Categorie {
@@ -1494,8 +1539,8 @@ struct ExamTree {
     
     static var regionAnat:Examen {
         //let catKarnofsky = categorieExamen.Categorie(nom:"Échelle de Karnofsky",namedImage: "pancarte_icon.png",showNom: true)
-   
-
+        
+        
         
         Donnees.selectiontextDict["dataStrregionAnat"]=[
             "Crane",
@@ -1527,29 +1572,35 @@ struct ExamTree {
             "Poignet droit",
             "Main gauche",
             "Main droite",
-        ].sort()
+            ].sort()
         
         return Examen(intitule: "(région anatomique)", type: .datastr, tag: "dataStrregionAnat")
     }
-     static func Accompagnant(intitule: String = "Accompagnant")-> Examen {
-//static var :Examen {
-    
+    static func Accompagnant(intitule: String = "Accompagnant")-> Examen {
+        //static var :Examen {
+        
         Donnees.selectiontextDict["dataStrAccompagnant"]=[
-             "Epoux(se)","Frère","Soeur","Mère","Père","Compagnon","Compagne","proches",
+            "Epoux(se)","Frère","Soeur","Mère","Père","Compagnon","Compagne","proches",
         ]
-
+        
         return Examen(intitule: "Accompagnant", type: .datastr, tag: "dataStrAccompagnant")
     }
- static func saO2(intitule: String = "saO2")-> Examen {
-//static var :Examen {
-    
-    Donnees.selectiontextDict["dataStrsaO2"]=[""]
-    for x in 80...100 {
-        Donnees.selectiontextDict["dataStrsaO2"]?.append(String(x))
-    }
-
+    static func saO2(intitule: String = "saO2")-> Examen {
+        //static var :Examen {
+        
+        Donnees.selectiontextDict["dataStrsaO2"]=[""]
+        for x in 80...100 {
+            Donnees.selectiontextDict["dataStrsaO2"]?.append(String(x))
+        }
+        
         return Examen(intitule: intitule, type: .datastr, tag: "dataStrsaO2")
     }
-
     
+    static func debutDouleur(intitule: String )-> Examen {
+        Donnees.selectiontextDict["dataStrdebutDouleur"]=[
+            "Franche et brutale en coups de poignard","d'évolution progressive, insidieuse",
+        ]
+        
+        return Examen(intitule: intitule, type: .datastr, tag: "dataStrdebutDouleur")
+    }
 }

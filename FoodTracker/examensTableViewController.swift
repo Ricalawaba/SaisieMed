@@ -62,7 +62,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             categorie.examens.insert( Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"), atIndex: indextoInsert)
         }
         if examen.tag=="pancarteV" {
-            categorie.examens.insert(Examen(intitule: "Pancarte", type: .donnee,tag: "pancarteView" ), atIndex: indextoInsert)
+            categorie.examens.insert(Examen(intitule: "<br>Pancarte", type: .donnee,tag: "pancarteView" ), atIndex: indextoInsert)
             tableView.reloadData()
             return
         }

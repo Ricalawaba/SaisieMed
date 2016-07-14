@@ -89,7 +89,7 @@ class rapportViewController: UIViewController ,MFMailComposeViewControllerDelega
         pdfData.writeToFile(pathfile, atomically: true)
     }
     override func viewDidAppear(animated: Bool) {
-        var myHTMLString:String="<head><meta name=\"viewport\" content=\"width=device-width;initial-scale=1.0\"></head>"
+        var myHTMLString:String="<head><meta name=\"viewport\" content=\"width=600;initial-scale=1.0\"></head>"
         if directHTML != nil {
             myHTMLString += directHTML!
         }

@@ -17,11 +17,13 @@ class pluginFormViewController: UIViewController, UIScrollViewDelegate {
     var examen:Examen?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.scrollView.minimumZoomScale = 1.0
-        self.scrollView.maximumZoomScale = 6.0
+        self.scrollView.minimumZoomScale = 0.5
+        self.scrollView.maximumZoomScale = 10.0
         self.scrollView.contentMode = .ScaleAspectFit
         imageView.sizeToFit()
         self.scrollView.contentSize=imageView.frame.size
+       // imageView.frame = CGRectMake(0,0,imageView.image,image_height);
+        imageView.center = scrollView.center
 //        if examen?.type == .imagefilename {
 //            
 //        }

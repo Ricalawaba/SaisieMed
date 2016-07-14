@@ -71,15 +71,14 @@ extension ExamTree {
         let cattypeDouleurThoracique = categorieExamen.Categorie(nom:"typeDouleurThoracique",namedImage: "cardio2_icon.png",showNom: false)
         cattypeDouleurThoracique.formatPreString=""
         let examCattypeDouleurThoracique   : [Examen] = [
+            typeDouleur.asExamen(),
             Check("en barre"),
             Check("en pointe"),
             Check("type brulure"),
             Check("Irradiation membre supérieur gauche"),
             Check("Irradiation membre supérieur droit"),
             Check("Irradiation dans le cou"),
-            OuiNon("Augmentation à la palpation"),
-            OuiNon("Modification par la mobilisation rachidienne"),
-            OuiNon("Modification par les mouvements respiratoires"),
+       
             
             
             Examen(intitule: "Détail", type:  .reponsecourte ),
