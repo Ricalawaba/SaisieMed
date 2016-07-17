@@ -34,6 +34,8 @@
 		301C08681D25877200E79763 /* dossier.png in Resources */ = {isa = PBXBuildFile; fileRef = 301C08631D25877200E79763 /* dossier.png */; };
 		301C08691D25877200E79763 /* tension.png in Resources */ = {isa = PBXBuildFile; fileRef = 301C08641D25877200E79763 /* tension.png */; };
 		3041E67C1D3805A100CD4B42 /* pancarteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3041E67B1D3805A100CD4B42 /* pancarteViewController.swift */; };
+		3041E6811D3A828300CD4B42 /* Documents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3041E6801D3A828300CD4B42 /* Documents.swift */; };
+		3041E6851D3B8BBE00CD4B42 /* Digestif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3041E6841D3B8BBE00CD4B42 /* Digestif.swift */; };
 		304B19F41D10C3D30006DB4A /* examgroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304B19F31D10C3D30006DB4A /* examgroupTableViewCell.swift */; };
 		304B19F71D13E0DD0006DB4A /* checkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304B19F61D13E0DD0006DB4A /* checkTableViewCell.swift */; };
 		304B19F91D13F3490006DB4A /* selectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304B19F81D13F3490006DB4A /* selectionTableViewCell.swift */; };
@@ -131,6 +133,8 @@
 		3041E67B1D3805A100CD4B42 /* pancarteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pancarteViewController.swift; sourceTree = "<group>"; };
 		3041E67E1D3854E000CD4B42 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		3041E67F1D3854E000CD4B42 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		3041E6801D3A828300CD4B42 /* Documents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Documents.swift; sourceTree = "<group>"; };
+		3041E6841D3B8BBE00CD4B42 /* Digestif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Digestif.swift; sourceTree = "<group>"; };
 		304B19F31D10C3D30006DB4A /* examgroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = examgroupTableViewCell.swift; sourceTree = "<group>"; };
 		304B19F61D13E0DD0006DB4A /* checkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkTableViewCell.swift; sourceTree = "<group>"; };
 		304B19F81D13F3490006DB4A /* selectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -233,6 +237,8 @@
 				30D8527C1D33D1D600F2F850 /* ECG.swift */,
 				30D852781D32943800F2F850 /* Neurologie.swift */,
 				30D8527A1D33D12200F2F850 /* Cardiologie.swift */,
+				3041E6801D3A828300CD4B42 /* Documents.swift */,
+				3041E6841D3B8BBE00CD4B42 /* Digestif.swift */,
 			);
 			name = "Arbre Examens";
 			sourceTree = "<group>";
@@ -581,6 +587,7 @@
 				30D0288F1D174F870050231C /* dataSave.swift in Sources */,
 				308E7FCA1D1D924800AF225D /* ExamenTree.swift in Sources */,
 				30D028911D18AA470050231C /* configurationViewController.swift in Sources */,
+				3041E6851D3B8BBE00CD4B42 /* Digestif.swift in Sources */,
 				30D526791D281EBE0016A38B /* pickSelectTableViewCell.swift in Sources */,
 				308E7FD21D1F5A2300AF225D /* SaisieNombreViewController.swift in Sources */,
 				3015F3A51D36C90100A23BE0 /* filesTableViewController.swift in Sources */,
@@ -600,6 +607,7 @@
 				3015F3A91D36CB8C00A23BE0 /* patientFileTableViewCell.swift in Sources */,
 				3041E67C1D3805A100CD4B42 /* pancarteViewController.swift in Sources */,
 				304B19F41D10C3D30006DB4A /* examgroupTableViewCell.swift in Sources */,
+				3041E6811D3A828300CD4B42 /* Documents.swift in Sources */,
 				30F43F291D0EE751005E3BEB /* saisieTableViewController.swift in Sources */,
 				301826051D10580000592CE9 /* rapportViewController.swift in Sources */,
 				30D028931D195A9D0050231C /* MonthYearPickerView.swift in Sources */,

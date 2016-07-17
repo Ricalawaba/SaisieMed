@@ -24,7 +24,7 @@ class pancarteViewController: UIViewController {
     @IBOutlet weak var fcLabel: UITextField!
     @IBOutlet weak var taDiasLabel: UITextField!
     @IBAction func addPancarteButtonAction(sender: UIButton) {
-        let cat: categorieExamen.Categorie = ExamTree.Pancarte
+      //  let cat: categorieExamen.Categorie = ExamTree.Pancarte
         var retValueString = ""
         if !(taSystLabel.text?.isEmpty)! {
             retValueString += " TA: \(taSystLabel.text!)/\(taDiasLabel.text!) "

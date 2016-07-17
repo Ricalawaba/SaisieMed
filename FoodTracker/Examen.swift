@@ -87,6 +87,12 @@ class Examen : NSObject,NSCoding{
     }
     
     // MARK: Initialisations
+    init(intitule: String,datastr: [String]){
+        self.type = .datastr
+        self.intitule=intitule
+        self.tag="dataStr\(intitule)"
+        Donnees.selectiontextDict[tag]=datastr
+    }
     init(categorie:categorieExamen.Categorie) {
         self.categorie=categorie
         self.intitule=categorie.nom
