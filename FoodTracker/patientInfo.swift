@@ -60,7 +60,7 @@ class patients :  NSObject,NSCoding {
                examen.categories[0].examens[4].value=newValue
             }
         }
-        var masculin: Bool {
+               var masculin: Bool {
             get {
                 if examen.categories[0].examens[1].value == "0"
                 { return true }
@@ -166,6 +166,10 @@ class patients :  NSObject,NSCoding {
             examen.categories[0].examens[3].value=localisation
             examen.categories[0].examens[4].value=motif
         }
+        var examenCliniqueCat:categorieExamen.Categorie {
+            return examen.categories[5]
+        }
+
     }
     var patients = [patient]()
     required convenience init?(coder decoder: NSCoder) {
@@ -190,5 +194,6 @@ class patients :  NSObject,NSCoding {
         let patient4 = patient(nomPrenom: "Fructus fabrice",age: 47, localisation: "Degrav",motif: "Douleur Epaule",masculin: true)
         patients += [patient1,patient4]//,patient3,patient4]
     }
+    
 }
 

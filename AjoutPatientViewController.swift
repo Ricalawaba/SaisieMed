@@ -7,13 +7,22 @@
 //
 
 import UIKit
-
+import DropDown
 protocol ajoutPatientDelegate {
     func patientAdded(sender:AjoutPatientViewController, patient:patients.patient)
 }
 
 class AjoutPatientViewController: UIViewController , UITextFieldDelegate {
-
+    @IBOutlet weak var actionButtonItem: UIBarButtonItem!
+let dropdown = DropDown()
+    @IBAction func ActionButtonAction(sender: AnyObject) {
+        
+        dropdown.anchorView=actionButtonItem
+        
+        dropdown.dataSource=["Main","pied","Cheville","coude","tete"].sort()
+        
+        dropdown.show()
+    }
   //  @IBOutlet weak var motif: UITextField!
     @IBOutlet weak var hommeFemme: UISegmentedControl!
     @IBOutlet weak var nomFamille: UITextField!

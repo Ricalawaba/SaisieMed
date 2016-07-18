@@ -7,9 +7,11 @@
 //
 
 import UIKit
-
+import DropDown
 class saisieTableViewController: UITableViewController {
+    
     var patient = patients.patient()
+    var dropdown = DropDown()
     @IBAction func compteRenduAction(sender: UIBarButtonItem) {
          let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("rapportControlerID") as! rapportViewController
         svc.patient=self.patient
@@ -18,8 +20,36 @@ class saisieTableViewController: UITableViewController {
     
     @IBAction func saveTabBarButtonAction(sender: UIBarButtonItem) {
         DataSave.saveDataFiles()
-        sender.enabled=false
+        //sender.enabled=false
+        
     }
+    
+    @IBOutlet weak var ajoutExamBarButton: UIBarButtonItem!
+    @IBAction func ajoutExamButtonAction(sender: AnyObject) {
+        dropdown.anchorView=ajoutExamBarButton
+        dropdown.dataSource=["Neurologique","digestif","urologique","orl","Locomoteur"]
+        dropdown.selectionAction = { [unowned self] (index: Int, item: String) in
+            print("Selected item: \(item) at index: \(index)")
+            switch index {
+            case 0:
+                self.patient.examenCliniqueCat.examens.append(ExamTree.Neurologie.asExamen())
+            case 1:
+                self.patient.examenCliniqueCat.examens.append(ExamTree.Digestif.asExamen())
+            case 2:
+                self.patient.examenCliniqueCat.examens.append(ExamTree.Urologie.asExamen())
+            case 3:
+                self.patient.examenCliniqueCat.examens.append(ExamTree.ORL.asExamen())
+            case 4:
+                self.patient.examenCliniqueCat.examens.append(ExamTree.Locomoteur.asExamen())
+            default:
+                break
+            }
+        }
+        
+        dropdown.show()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1774423E8602EAB0930C025D /* Pods_SaisieMedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDA2817AB0040F470CEE1BC /* Pods_SaisieMedTests.framework */; };
 		3015F3A51D36C90100A23BE0 /* filesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3015F3A41D36C90100A23BE0 /* filesTableViewController.swift */; };
 		3015F3A71D36C9D800A23BE0 /* imagefileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3015F3A61D36C9D800A23BE0 /* imagefileTableViewCell.swift */; };
 		3015F3A91D36CB8C00A23BE0 /* patientFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3015F3A81D36CB8C00A23BE0 /* patientFileTableViewCell.swift */; };
@@ -33,6 +34,7 @@
 		301C08671D25877200E79763 /* laboratoire.png in Resources */ = {isa = PBXBuildFile; fileRef = 301C08621D25877200E79763 /* laboratoire.png */; };
 		301C08681D25877200E79763 /* dossier.png in Resources */ = {isa = PBXBuildFile; fileRef = 301C08631D25877200E79763 /* dossier.png */; };
 		301C08691D25877200E79763 /* tension.png in Resources */ = {isa = PBXBuildFile; fileRef = 301C08641D25877200E79763 /* tension.png */; };
+		303468E11D3D1B2D00FB10E4 /* Locomoteur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303468E01D3D1B2D00FB10E4 /* Locomoteur.swift */; };
 		3041E67C1D3805A100CD4B42 /* pancarteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3041E67B1D3805A100CD4B42 /* pancarteViewController.swift */; };
 		3041E6811D3A828300CD4B42 /* Documents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3041E6801D3A828300CD4B42 /* Documents.swift */; };
 		3041E6851D3B8BBE00CD4B42 /* Digestif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3041E6841D3B8BBE00CD4B42 /* Digestif.swift */; };
@@ -91,6 +93,7 @@
 		30F43F291D0EE751005E3BEB /* saisieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43F281D0EE751005E3BEB /* saisieTableViewController.swift */; };
 		30F43F2B1D0EE789005E3BEB /* saisieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43F2A1D0EE789005E3BEB /* saisieTableViewCell.swift */; };
 		30F43F2D1D0EE938005E3BEB /* categorieExamen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43F2C1D0EE938005E3BEB /* categorieExamen.swift */; };
+		4797C2C7EDF82921A5397438 /* Pods_SaisieMed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F0F34C624DBAC6FD1E8FBCC /* Pods_SaisieMed.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +133,7 @@
 		301C08621D25877200E79763 /* laboratoire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laboratoire.png; sourceTree = "<group>"; };
 		301C08631D25877200E79763 /* dossier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dossier.png; sourceTree = "<group>"; };
 		301C08641D25877200E79763 /* tension.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tension.png; sourceTree = "<group>"; };
+		303468E01D3D1B2D00FB10E4 /* Locomoteur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locomoteur.swift; sourceTree = "<group>"; };
 		3041E67B1D3805A100CD4B42 /* pancarteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pancarteViewController.swift; sourceTree = "<group>"; };
 		3041E67E1D3854E000CD4B42 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		3041E67F1D3854E000CD4B42 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -194,6 +198,12 @@
 		30F43F281D0EE751005E3BEB /* saisieTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = saisieTableViewController.swift; sourceTree = "<group>"; };
 		30F43F2A1D0EE789005E3BEB /* saisieTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = saisieTableViewCell.swift; sourceTree = "<group>"; };
 		30F43F2C1D0EE938005E3BEB /* categorieExamen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = categorieExamen.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		36C56C2C61E9CB515E6EEEB5 /* Pods-SaisieMed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaisieMed.release.xcconfig"; path = "Pods/Target Support Files/Pods-SaisieMed/Pods-SaisieMed.release.xcconfig"; sourceTree = "<group>"; };
+		6A05D36507BB1C748BE5D487 /* Pods-SaisieMed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaisieMed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SaisieMed/Pods-SaisieMed.debug.xcconfig"; sourceTree = "<group>"; };
+		7CDA2817AB0040F470CEE1BC /* Pods_SaisieMedTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaisieMedTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F0F34C624DBAC6FD1E8FBCC /* Pods_SaisieMed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaisieMed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA7263CC6F13639093ADCA4F /* Pods-SaisieMedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaisieMedTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SaisieMedTests/Pods-SaisieMedTests.release.xcconfig"; sourceTree = "<group>"; };
+		F0D423A513FE1EE33BB86B6F /* Pods-SaisieMedTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaisieMedTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SaisieMedTests/Pods-SaisieMedTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +211,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4797C2C7EDF82921A5397438 /* Pods_SaisieMed.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,12 +219,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1774423E8602EAB0930C025D /* Pods_SaisieMedTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17C5D53021C936DA55CF31C8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7F0F34C624DBAC6FD1E8FBCC /* Pods_SaisieMed.framework */,
+				7CDA2817AB0040F470CEE1BC /* Pods_SaisieMedTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		301826011D0F0B2A00592CE9 /* Examens */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +260,7 @@
 				30D8527A1D33D12200F2F850 /* Cardiologie.swift */,
 				3041E6801D3A828300CD4B42 /* Documents.swift */,
 				3041E6841D3B8BBE00CD4B42 /* Digestif.swift */,
+				303468E01D3D1B2D00FB10E4 /* Locomoteur.swift */,
 			);
 			name = "Arbre Examens";
 			sourceTree = "<group>";
@@ -303,6 +325,8 @@
 				30F43EE61D077C3B005E3BEB /* SaisieMed */,
 				30F43EFB1D077C3B005E3BEB /* SaisieMedTests */,
 				30F43EE51D077C3B005E3BEB /* Products */,
+				447D980BB8ECCF403C5FE62E /* Pods */,
+				17C5D53021C936DA55CF31C8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -418,6 +442,17 @@
 			name = "Liste patient";
 			sourceTree = "<group>";
 		};
+		447D980BB8ECCF403C5FE62E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6A05D36507BB1C748BE5D487 /* Pods-SaisieMed.debug.xcconfig */,
+				36C56C2C61E9CB515E6EEEB5 /* Pods-SaisieMed.release.xcconfig */,
+				F0D423A513FE1EE33BB86B6F /* Pods-SaisieMedTests.debug.xcconfig */,
+				AA7263CC6F13639093ADCA4F /* Pods-SaisieMedTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -425,10 +460,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30F43F011D077C3B005E3BEB /* Build configuration list for PBXNativeTarget "SaisieMed" */;
 			buildPhases = (
+				816A126E208C839DF24DCF11 /* [CP] Check Pods Manifest.lock */,
 				30F43EE01D077C3B005E3BEB /* Sources */,
 				30F43EE11D077C3B005E3BEB /* Frameworks */,
 				30F43EE21D077C3B005E3BEB /* Resources */,
 				308E7FC81D1D780100AF225D /* ShellScript */,
+				A5F91A11ED1A6DEC083A5724 /* [CP] Embed Pods Frameworks */,
+				8E8AE7183F6413CC70BF4FA4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -443,9 +481,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30F43F041D077C3B005E3BEB /* Build configuration list for PBXNativeTarget "SaisieMedTests" */;
 			buildPhases = (
+				E689F963881D503420B3B126 /* [CP] Check Pods Manifest.lock */,
 				30F43EF41D077C3B005E3BEB /* Sources */,
 				30F43EF51D077C3B005E3BEB /* Frameworks */,
 				30F43EF61D077C3B005E3BEB /* Resources */,
+				6850F691C29C4BBA82BDD94C /* [CP] Embed Pods Frameworks */,
+				02763E2FE7C608916B520612 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -558,6 +599,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		02763E2FE7C608916B520612 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SaisieMedTests/Pods-SaisieMedTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		308E7FC81D1D780100AF225D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -570,6 +626,81 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "TAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"";
+		};
+		6850F691C29C4BBA82BDD94C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SaisieMedTests/Pods-SaisieMedTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		816A126E208C839DF24DCF11 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8E8AE7183F6413CC70BF4FA4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SaisieMed/Pods-SaisieMed-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5F91A11ED1A6DEC083A5724 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SaisieMed/Pods-SaisieMed-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E689F963881D503420B3B126 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -614,6 +745,7 @@
 				30D028951D196E430050231C /* selectDateViewController.swift in Sources */,
 				30987AB31D2BBB7D000B73F8 /* imageSelectTableViewCell.swift in Sources */,
 				308E7FCE1D1E8F8E00AF225D /* Numbers.swift in Sources */,
+				303468E11D3D1B2D00FB10E4 /* Locomoteur.swift in Sources */,
 				30F43F2B1D0EE789005E3BEB /* saisieTableViewCell.swift in Sources */,
 				30F43F2D1D0EE938005E3BEB /* categorieExamen.swift in Sources */,
 				304B19F71D13E0DD0006DB4A /* checkTableViewCell.swift in Sources */,
@@ -748,6 +880,7 @@
 		};
 		30F43F021D077C3B005E3BEB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A05D36507BB1C748BE5D487 /* Pods-SaisieMed.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -762,6 +895,7 @@
 		};
 		30F43F031D077C3B005E3BEB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36C56C2C61E9CB515E6EEEB5 /* Pods-SaisieMed.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -776,6 +910,7 @@
 		};
 		30F43F051D077C3B005E3BEB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0D423A513FE1EE33BB86B6F /* Pods-SaisieMedTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = FoodTrackerTests/Info.plist;
@@ -788,6 +923,7 @@
 		};
 		30F43F061D077C3B005E3BEB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA7263CC6F13639093ADCA4F /* Pods-SaisieMedTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = FoodTrackerTests/Info.plist;
