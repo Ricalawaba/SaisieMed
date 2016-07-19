@@ -169,6 +169,12 @@ class patients :  NSObject,NSCoding {
         var examenCliniqueCat:categorieExamen.Categorie {
             return examen.categories[5]
         }
+        var documentsCat:categorieExamen.Categorie {
+            return examen.categories[9]
+        }
+        var suiviCat:categorieExamen.Categorie {
+            return examen.categories[7]
+        }
 
     }
     var patients = [patient]()

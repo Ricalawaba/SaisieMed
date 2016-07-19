@@ -63,6 +63,9 @@ class categorieExamen : NSObject , NSCoding {
             super.init()
             
         }
+        var subitems: [String]=[]
+       // var subItemDel: Selector?
+        
         init(nom:String, namedImage:String, showNom: Bool) {
             self.nom=nom
             self.namedImage=namedImage
@@ -177,53 +180,6 @@ class categorieExamen : NSObject , NSCoding {
             return "\(formatPreString)\(str)\(formatPostString)"
             
         }
-        //        func detailString() -> String {
-        //            var str: String = ""
-        //            var str2: String = ""
-        //            for  index in 0..<examens.count {
-        //                str2=str
-        //                let examen=examens[index]
-        //                if !examen.value.isEmpty {
-        //                    if examen.type ==  .ouinon || examen.type == .check {
-        //                        if examen.value == "0" {
-        //                            str += "\(examen.intitule), "
-        //                        } else if examen.value == "1" {
-        //                            let vowels: [Character] = ["a","e","i","o","u","h"]
-        //                            if vowels.contains(examen.intitule.lowercaseString.characters.first!) {
-        //
-        //                                str += "Pas d'\(examen.intitule), "}
-        //                            else {
-        //                                str += "Pas de \(examen.intitule), "}
-        //                        }
-        //                    }
-        //
-        //                    if  examen.type ==  .reponsecourte || examen.type == .selection{
-        //                        str += "\(examen.value), "
-        //                    }
-        //                    if examen.type ==  .donnee || examen.type == .datastr || examen.type == Examen.ExamenEnum.multirowdatastr{
-        //                        str += "\(examen.intitule)=\(examen.value), "
-        //                    }
-        //
-        //                }else if examen.type ==  .group {
-        //                    let str2=examen.categorie?.detailString()
-        //                    if !(str2?.isEmpty)! {
-        //                        if ((examen.categorie!.showNom) ) {
-        //                            str += "\(examen.intitule):"
-        //                        }
-        //
-        //                        str += "\(examen.categorie!.detailString())\(examen.info) "
-        //                        // str = "<br>\(str)"
-        //                    }
-        //                }
-        //                // if !str.isEmpty
-        //                if str2 != str  &&
-        //                    ( self.nom.containsString("de la clinique") || self.nom.containsString("comoteur")
-        //                    ){str = "<br>\(str)" }
-        //            }
-        //            if !str.isEmpty {str.removeAtIndex(str.endIndex.predecessor())
-        //                str.removeAtIndex(str.endIndex.predecessor())}
-        //            return str
-        //        }
     }
     
     required convenience init?(coder decoder: NSCoder) {
@@ -242,41 +198,20 @@ class categorieExamen : NSObject , NSCoding {
         self.categories=categories
     }
     override init(){
-        // MARK: Administratif
+
         let Categorie1 = ExamTree.administratif
-        
-        // MARK: Comorbidité / antécédent
         let Categorie2 = ExamTree.Comorbidite
-        
-        
-        // MARK: Traitement
-        
-        
         let Categorie21 = ExamTree.Traitement
-        // MARK: Plaintes/Anamnese
         let Categorie3 =  ExamTree.PlainteAnamnèse
-        // MARK: Pancarte
         let Categorie31 = ExamTree.Pancartes
         
- 
-        
-        
-        // MARK: Examens paracliniques
+
         let catParaclinique = Categorie(nom: "Examens Paracliniques",namedImage: "imagerie_icon.png")
         var examCatParaclinique = [
-             ExamTree.ECG.asExamen() ]
-        
-        
-        
-        
-        //MARK: Biologie
-        
-        let catBiologie = ExamTree.Biologie
-        
-        
-        examCatParaclinique += [ Examen(categorie: catBiologie),
-                                 ExamTree.Gazometrie.asExamen(),
-        ]
+             ExamTree.ECG.asExamen() ,
+             ExamTree.Biologie.asExamen(),
+             ExamTree.Gazometrie.asExamen(),
+             ]
         let catBandelette = Categorie(nom: "Bandelette Urinaire",namedImage: "nurse_icon.png")
         let examCatBandelette : [Examen] = [
             Examen(intitule: "normale", type: .check),
@@ -289,6 +224,7 @@ class categorieExamen : NSObject , NSCoding {
             
             ]
         catBandelette.examens=examCatBandelette
+        
         examCatParaclinique += [ Examen(categorie: catBandelette),
                                  ExamTree.Imagerie.asExamen(),
                                  Examen(intitule: "Ajout Radiologie",type: .addinfo,tag: "radiologie")

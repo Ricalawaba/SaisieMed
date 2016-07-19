@@ -61,18 +61,14 @@ extension ExamTree {
         let catneuroFonctionnel = categorieExamen.Categorie(nom:"Fonctionnels",namedImage: "tete_icon.png",showNom: true)
         // catneuroFonctionnel.startLI()
         let examCatneuroFonctionnel : [Examen]  = [
-            Check("Communication normale" ),
-            Check("Pas de communication" ),
-            Check("Communication altérée" ),
-            Check("Compréhension difficile" ),
-            Check("Conscient" ),
-            Check("Orienté" ),
-            Check("Ralentissement psychomoteur" ),
+
             Examen(intitule: "Glasgow", type:  .donnee , tag: "glasgow"),
+            
+            
             OuiNon("D.T.S."),
             OuiNon("Confusion"),
             OuiNon("Céphallée"),
-            OuiNon("Troubles du langage"),
+            
             OuiNon("Photophobie"),
             OuiNon("Troubles de la marche"),
             

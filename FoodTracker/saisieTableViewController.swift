@@ -27,20 +27,34 @@ class saisieTableViewController: UITableViewController {
     @IBOutlet weak var ajoutExamBarButton: UIBarButtonItem!
     @IBAction func ajoutExamButtonAction(sender: AnyObject) {
         dropdown.anchorView=ajoutExamBarButton
-        dropdown.dataSource=["Neurologique","digestif","urologique","orl","Locomoteur"]
+        dropdown.dataSource=["Documents","Evenement","Examen Clinique","Alarmes.."]
         dropdown.selectionAction = { [unowned self] (index: Int, item: String) in
             print("Selected item: \(item) at index: \(index)")
             switch index {
             case 0:
-                self.patient.examenCliniqueCat.examens.append(ExamTree.Neurologie.asExamen())
+                let exam=ExamTree.Document.asExamen()
+                self.patient.documentsCat.examens.append(exam)
+                let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("examensTVID") as! examensTableViewController
+                svc.categorie = exam.categorie
+                svc.navigationController?.title = svc.categorie!.nomUI()
+                self.navigationController!.pushViewController(svc,animated: true)
+               // self.patient.examenCliniqueCat.examens.append(ExamTree.Neurologie.asExamen())
             case 1:
-                self.patient.examenCliniqueCat.examens.append(ExamTree.Digestif.asExamen())
+                let exam = ExamTree.evenement.asExamen()
+                self.patient.suiviCat.examens.append(exam)
+                let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("examensTVID") as! examensTableViewController
+                svc.categorie = exam.categorie
+                svc.navigationController?.title = svc.categorie!.nomUI()
+                self.navigationController!.pushViewController(svc,animated: true)
             case 2:
-                self.patient.examenCliniqueCat.examens.append(ExamTree.Urologie.asExamen())
-            case 3:
-                self.patient.examenCliniqueCat.examens.append(ExamTree.ORL.asExamen())
-            case 4:
-                self.patient.examenCliniqueCat.examens.append(ExamTree.Locomoteur.asExamen())
+                let exam = ExamTree.ExamenClinique.asExamen()
+                self.patient.suiviCat.examens.append(exam)
+                let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("examensTVID") as! examensTableViewController
+                svc.categorie = exam.categorie
+                svc.navigationController?.title = svc.categorie!.nomUI()
+                self.navigationController!.pushViewController(svc,animated: true)
+
+           
             default:
                 break
             }

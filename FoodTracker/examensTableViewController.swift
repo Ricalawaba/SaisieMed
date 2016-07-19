@@ -8,17 +8,63 @@
 
 import UIKit
 //import EasyTipView
+import DropDown
 
 
 
 class examensTableViewController: UITableViewController,textSelectedDelegate, UITextFieldDelegate,dateSelectedDelegate,
-                    AjoutInformationDelegate,numberSelectedDelegate,
-                    saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
+    AjoutInformationDelegate,numberSelectedDelegate,
+saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
     var categorie : categorieExamen.Categorie!
     var examenSelected: Examen?
     //var examen = [Examen]()
-    
-  
+      var dropdown = DropDown()
+    @IBAction func ajouterChampLibre(sender: UIBarButtonItem) {
+        //var categorie : categorieExamen.Categorie!
+        var dd:[String]=[]
+//        if let subitemsDel=categorie.subItemDel {
+//            categorie.subitems=#selector(subitemsDel)as [String:Examen]
+//            
+//        }
+        let subitems=categorie.subitems
+            for (name) in subitems {
+                dd.append(name)
+            }
+        
+        dd.append("Libre")
+        dropdown.anchorView=sender
+        dropdown.dataSource=dd
+        dropdown.bottomOffset = CGPoint(x: 0, y:sender.plainView.bounds.height)
+        dropdown.selectionAction = { [unowned self] (index: Int, item: String) in
+            print("Selected item: \(item) at index: \(index)")
+          //  var exam = Examen(
+      //      if let exam=
+            if item == "Libre" {
+             self.categorie.examens.append(ExamTree.libre)
+            } else {
+                if let exam=ExamTree.getExam(item) {
+                    self.categorie.examens.append(exam)
+                }
+                
+//                 let netExam=Examen(intitule: exam.intitule, type: exam.type)
+//                self.categorie.examens.append(self.categorie.subitems![item]!)
+            }
+            switch index {
+            case 0:
+               // self.
+                break
+            default:
+                break
+            }
+            self.tableView.reloadData()
+
+        }
+        
+        dropdown.show()
+
+       // categorie.examens.append(ExamTree.libre)
+        
+         }
     @IBAction func refreshButtonAction(sender: UIBarButtonItem) {
         tableView.reloadData()
         
@@ -88,9 +134,9 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         if examen.tag=="libre" {
             categorie.examens.insert(Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre" ), atIndex: indextoInsert)
         }
-
+        
         //tableView.sel
-
+        
         
         tableView.reloadData()
         let rowToSelect:NSIndexPath = NSIndexPath(forRow: indextoInsert, inSection: 0)
@@ -100,7 +146,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             self.performSegueWithIdentifier("selectionSegue", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
         } else if examen.tag != "libre" && examen.tag != "page" {
             
-           self.performSegueWithIdentifier("autoshow", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
+            self.performSegueWithIdentifier("autoshow", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
             
         }
         
@@ -109,14 +155,16 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
         _=svc.view
         svc.imageView.image=image
+        svc.titreLabel.text="Document"
         
-       
+        
+        
         dispatch_async(dispatch_get_main_queue()) {
             self.tableView.reloadData()
             
         }
-         self.navigationController!.pushViewController(svc,animated: true)
-         //tableView.reloadData()
+        self.navigationController!.pushViewController(svc,animated: true)
+        //tableView.reloadData()
     }
     func numberSelected(sender:selectNumberViewController, number:String) {
         ExamTaped!.value=number
@@ -137,7 +185,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         ExamTaped = categorie.examens[indexPath!.row]
         
         if (ExamTaped!.type == .imagefilename ){
-          //  image: loadImageFromPath(examen.value)! , url: examen.value)
+            //  image: loadImageFromPath(examen.value)! , url: examen.value)
             // performSegueWithIdentifier("autoshow", sender: self)
             //examensTableViewController
             let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
@@ -146,18 +194,14 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             svc.titreLabel.text = categorie.examens[0].value
             
             
-          //  svc.navigationController?.title = svc.categorie!.nom
+            //  svc.navigationController?.title = svc.categorie!.nom
             self.navigationController!.pushViewController(svc,animated: true)
             
         }
-
+        
     }
-
-    @IBAction func ajouterChampLibre(sender: UIBarButtonItem) {
-        //var categorie : categorieExamen.Categorie!
-        categorie.examens.append(ExamTree.libre)
-         tableView.reloadData()
-    }
+    
+    
     @IBAction func goPatient(sender: UIBarButtonItem) {
         self.navigationController!.popToViewController(DataSave.lastPatientVC!,animated: true)
     }
@@ -167,18 +211,18 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         self.navigationController!.pushViewController(svc,animated: true)
     }
     func dateSelected(sender: UIViewController, text: String, date: NSDate) {
-
+        
         ExamTaped!.value=text
         tableView.reloadData()
     }
     func nombreSelected(sender:SaisieNombreViewController, numberStr:String) {
         ExamTaped!.value=numberStr
         tableView.reloadData()
-
+        
         
     }
-
-      var ExamTaped:Examen?
+    
+    var ExamTaped:Examen?
     
     @IBOutlet var doubleTap: UITapGestureRecognizer!
     @IBOutlet var singleTap: UITapGestureRecognizer!
@@ -204,16 +248,16 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             _=svc.view
             svc.imageView.image = UIImage( contentsOfFile: fileInDocumentsDirectory(ExamTaped!.value))
             svc.titreLabel.text=categorie.UIString().stringByReplacingOccurrencesOfString("<[^>]+>", withString: "", options: .RegularExpressionSearch, range: nil)
-
-           // svc.descriptionLabel.text = categorie.detailString()
-           // svc.delegate=self
+            
+            // svc.descriptionLabel.text = categorie.detailString()
+            // svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
         }
-    //    let aview = svc.view
+        //    let aview = svc.view
         
         
-    
-       // EasyTipView.Pref
+        
+        // EasyTipView.Pref
     }
     @IBAction func tapRepCourte(sender: UITapGestureRecognizer) {
         if tableView.editing {return}
@@ -235,13 +279,13 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         } else if (ExamTaped!.type == .selection ){
             if ExamTaped!.tag.isEmpty {return}
             let svc = self.storyboard?.instantiateViewControllerWithIdentifier("selectionViewID") as! selectionTexteTableViewController
-                       svc.textes = Donnees.selectiontextDict[ ExamTaped!.tag ]!
+            svc.textes = Donnees.selectiontextDict[ ExamTaped!.tag ]!
             examenSelected=ExamTaped
             svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
             return
         }
-      
+        
         if ExamTaped?.type != .addinfo &&  (Donnees.selectiontextDict.indexForKey((ExamTaped?.tag)!) != nil) {
             
             let svc = self.storyboard?.instantiateViewControllerWithIdentifier("selectionViewID") as! selectionTexteTableViewController
@@ -251,8 +295,8 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             self.navigationController!.pushViewController(svc,animated: true)
             return
         }
-
-      
+        
+        
         if ExamTaped!.tag == "date" {
             let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("dateDureeViewID") as! dateDureeViewController
             
@@ -265,7 +309,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
         }
-
+        
         if ExamTaped!.tag == "tension" {
             let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectNumberID") as! selectNumberViewController
             _ = svc.view
@@ -286,9 +330,9 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
                 
                 svc.value=ExamTaped!.value
             }
-
+            
             _ = svc.view
-           
+            
             
             
             svc.delegate=self
@@ -301,12 +345,12 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             svc.step=5
             svc.Information = "Freq. Cardiaque"
             if ExamTaped!.value.isEmpty {
-                 svc.value="80"
+                svc.value="80"
             } else {
-            
+                
                 svc.value=ExamTaped!.value
             }
-                _ = svc.view
+            _ = svc.view
             
             
             
@@ -407,55 +451,55 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             } else {
                 svc.value=ExamTaped!.value
             }
-        if ExamTaped!.tag == "image" {
-            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
-            _=svc.view
-            svc.imageView.image = UIImage( contentsOfFile:fileInDocumentsDirectory(ExamTaped!.value))
-            svc.titreLabel.text = "" // categorie.examens[0].value
+            if ExamTaped!.tag == "image" {
+                let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
+                _=svc.view
+                svc.imageView.image = UIImage( contentsOfFile:fileInDocumentsDirectory(ExamTaped!.value))
+                svc.titreLabel.text = "" // categorie.examens[0].value
             }
             
             svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
         }
-
+        
     }
     override func viewDidLoad() {
         singleTap.requireGestureRecognizerToFail(doubleTap)
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
-         self.clearsSelectionOnViewWillAppear = false
-
+        self.clearsSelectionOnViewWillAppear = false
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-         self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem()
         //examen=Donnees.listeCategorie.categories.first!.examens
         if categorie != nil {     self.title=categorie!.nomUI() }
         
         // print(examen.count)
         registerForKeyboardNotifications()
-     
-            autoshowFirstGroup()
+        
+        autoshowFirstGroup()
         
         
     }
     // MARK: Affiche le premier element du tabview si c'est type "selection"
     func autoshowFirstGroup () {
         if categorie.examens.count==0 { return }
-       
-                let aExam = categorie.examens[0]
+        
+        let aExam = categorie.examens[0]
         if !aExam.value.isEmpty { return }
         if aExam.intitule == "horodatage" || aExam.intitule == "timestamp"{
             
-                let dateFormatter=NSDateFormatter()
-                //dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
-                //dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
-                // dateFormatter.locale = NSLocale.currentLocale()
-                dateFormatter.dateFormat="dd/MM/yyyy - HH:mm"
-                let strDate = dateFormatter.stringFromDate(NSDate())
-                aExam.value=strDate
+            let dateFormatter=NSDateFormatter()
+            //dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+            //dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+            // dateFormatter.locale = NSLocale.currentLocale()
+            dateFormatter.dateFormat="dd/MM/yyyy - HH:mm"
+            let strDate = dateFormatter.stringFromDate(NSDate())
+            aExam.value=strDate
             
         }
-
+        
         if aExam.type == .selection {
             let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectionViewID") as! selectionTexteTableViewController
             examenSelected=categorie.examens[0]
@@ -491,14 +535,14 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         contentInsets = UIEdgeInsets(top: 90, left: 0, bottom: kbSize.height, right: 0)
         self.tableView.contentInset = contentInsets
         self.tableView.scrollIndicatorInsets = contentInsets
-
+        
         // If active text field is hidden by keyboard, scroll it so it's visible
         // Your app might not need or want this behavior.
         var aRect = self.view.frame
         aRect.size.height -= kbSize.height
         
         if !CGRectContainsPoint(aRect, activeField!.frame.origin) {
-           
+            
             
             self.tableView.scrollRectToVisible(activeField!.frame, animated: true)
         }
@@ -513,7 +557,6 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     // MARK: - Table view data source
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (sender is examgroupTableViewCell &&  segue.identifier == "autoshow") {
-            // FIXME: Erreur segue
             let svc = segue.destinationViewController as! examensTableViewController
             let mycell = (sender as! examgroupTableViewCell)
             svc.categorie = mycell.examen!.categorie!
@@ -525,7 +568,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             
             let svc = segue.destinationViewController as! selectionTexteTableViewController
             let mycell = (sender as! selectionTableViewCell)
-           // let tab:[String]=(["Cholecystectomie","Appendicectomie","IDM"]).sort()
+            // let tab:[String]=(["Cholecystectomie","Appendicectomie","IDM"]).sort()
             examenSelected=mycell.examen
             svc.textes = Donnees.selectiontextDict[examenSelected!.tag]!
             svc.delegate=self
@@ -537,16 +580,16 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             print(segue.identifier)
             NSLog(segue.identifier!)
         }
-
+        
         
     }
     func pancarteSelected(sender:pancarteViewController, pancarteStr:String) {
-         if (ExamTaped != nil) {
+        if (ExamTaped != nil) {
             ExamTaped?.value=pancarteStr
         }
         tableView.reloadData()
     }
-
+    
     // MARK: Retour selection texte
     func textSelected(sender:selectionTexteTableViewController, text:String) {
         if (examenSelected != nil) {
@@ -554,7 +597,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
                 Donnees.selectiontextDict[examenSelected!.tag]!.append(String(text))
                 Donnees.selectiontextDict[examenSelected!.tag] = Donnees.selectiontextDict[examenSelected!.tag]?.sort()
             }
-
+            
             examenSelected?.value=text
         }
         
@@ -564,7 +607,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     func textDeleted(sender: selectionTexteTableViewController, text: String) {
         if (examenSelected != nil) {
             if Donnees.selectiontextDict[examenSelected!.tag]!.indexOf(text) != nil{
-               Donnees.selectiontextDict[examenSelected!.tag]!.removeAtIndex(Donnees.selectiontextDict[examenSelected!.tag]!.indexOf(text)!)
+                Donnees.selectiontextDict[examenSelected!.tag]!.removeAtIndex(Donnees.selectiontextDict[examenSelected!.tag]!.indexOf(text)!)
             }
         }
     }
@@ -573,7 +616,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return categorie.examens.count
@@ -584,10 +627,10 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
     }
     @IBAction func EnregistrerModif(sender: UIBarButtonItem) {
         
-
-         self.navigationController?.popViewControllerAnimated(true)
-       /* let parent = self.parentViewController as! saisieTableViewController
-        parent.tableView.reloadData()*/
+        
+        self.navigationController?.popViewControllerAnimated(true)
+        /* let parent = self.parentViewController as! saisieTableViewController
+         parent.tableView.reloadData()*/
         
     }
     
@@ -598,7 +641,7 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         //cell.textequestion
         let cell = UITableViewCell()
         if examen1.type==Examen.ExamenEnum.reponsecourte || examen1.type==Examen.ExamenEnum.donnee{
-         let cell2 = tableView.dequeueReusableCellWithIdentifier("reponsecourteCell", forIndexPath: indexPath) as! reponsecourteTableViewCell
+            let cell2 = tableView.dequeueReusableCellWithIdentifier("reponsecourteCell", forIndexPath: indexPath) as! reponsecourteTableViewCell
             cell2.texteReponsecourte.text=examen1.intitule
             if !examen1.tag.isEmpty {cell2.texteReponsecourte.textColor=UIColor.blueColor()}
             if examen1.value != "" {
@@ -608,20 +651,20 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             cell2.valeurReponseCourte.delegate=self
             return cell2
         } else
-        if examen1.type==Examen.ExamenEnum.ouinon {
-            let cell3 = tableView.dequeueReusableCellWithIdentifier("questionOuiNonCell", forIndexPath: indexPath) as! questionOuiNonTableViewCell
-            cell3.texteQuestion.text = examen1.intitule
-            cell3.texteQuestion.enabled=true
-            if examen1.value == "0" {
-                cell3.reponseSegmentedControl.selectedSegmentIndex=0
-            } else if examen1.value == "1" {
-                cell3.reponseSegmentedControl.selectedSegmentIndex=1
-                
-            }else if examen1.value == "" {
-                cell3.texteQuestion.enabled=false
-            }
-            cell3.examen=examen1
-            return cell3
+            if examen1.type==Examen.ExamenEnum.ouinon {
+                let cell3 = tableView.dequeueReusableCellWithIdentifier("questionOuiNonCell", forIndexPath: indexPath) as! questionOuiNonTableViewCell
+                cell3.texteQuestion.text = examen1.intitule
+                cell3.texteQuestion.enabled=true
+                if examen1.value == "0" {
+                    cell3.reponseSegmentedControl.selectedSegmentIndex=0
+                } else if examen1.value == "1" {
+                    cell3.reponseSegmentedControl.selectedSegmentIndex=1
+                    
+                }else if examen1.value == "" {
+                    cell3.texteQuestion.enabled=false
+                }
+                cell3.examen=examen1
+                return cell3
         }
         if examen1.type==Examen.ExamenEnum.check {
             let cell3 = tableView.dequeueReusableCellWithIdentifier("checkCell", forIndexPath: indexPath) as! checkTableViewCell
@@ -637,87 +680,78 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             cell3.examen=examen1
             return cell3
         } else
-
-        if examen1.type==Examen.ExamenEnum.group {
-            let cell3 = tableView.dequeueReusableCellWithIdentifier("examgroup", forIndexPath: indexPath) as! examgroupTableViewCell
-            cell3.intitule.text = categorieExamen.Categorie.removeHtml(examen1.intitule)
-                        cell3.examen=examen1
-            if let namedImage = examen1.categorie?.namedImage
-            {
-                cell3.monImage.image=UIImage(named: namedImage)
-            }
             
-            cell3.details.text=examen1.categorie?.UIString()
-            cell3.intitule.hidden = !examen1.categorie!.showNom && !(cell3.details.text?.isEmpty)!
-            return cell3
-        } else
-        if examen1.type==Examen.ExamenEnum.selection {
-            let cell3 = tableView.dequeueReusableCellWithIdentifier("selectionCell", forIndexPath: indexPath) as! selectionTableViewCell
-            
-            if examen1.value.isEmpty {
-            cell3.questionSelection.text = examen1.intitule
-                //cell3.questionSelection.enabled=false
-            } else {
-                cell3.questionSelection.text=examen1.value
-               // cell3.questionSelection.enabled=true
-            }
-            
-            cell3.examen=examen1
-
-            
-
-            return cell3
-        } else if examen1.type==Examen.ExamenEnum.addinfo {
-            let cell3 = tableView.dequeueReusableCellWithIdentifier("addCell", forIndexPath: indexPath) as! AjoutInformationTableViewCell
-                cell3.delegate=self
-                //cell3.ajoutInfoBtn.titleLabel?.text="Ajouter \(examen1.tag)"
+            if examen1.type==Examen.ExamenEnum.group {
+                let cell3 = tableView.dequeueReusableCellWithIdentifier("examgroup", forIndexPath: indexPath) as! examgroupTableViewCell
+                cell3.intitule.text = categorieExamen.Categorie.removeHtml(examen1.intitule)
                 cell3.examen=examen1
+                if let namedImage = examen1.categorie?.namedImage
+                {
+                    cell3.monImage.image=UIImage(named: namedImage)
+                }
+                
+                cell3.details.text=examen1.categorie?.UIString()
+                cell3.intitule.hidden = !examen1.categorie!.showNom && !(cell3.details.text?.isEmpty)!
                 return cell3
-            } else if examen1.type == Examen.ExamenEnum.datastr || examen1.type == Examen.ExamenEnum.multirowdatastr {
-                let cell3 = tableView.dequeueReusableCellWithIdentifier("pickSelectCell", forIndexPath: indexPath) as! pickSelectTableViewCell
+            } else
+                if examen1.type==Examen.ExamenEnum.selection {
+                    let cell3 = tableView.dequeueReusableCellWithIdentifier("selectionCell", forIndexPath: indexPath) as! selectionTableViewCell
+                    
+                    if examen1.value.isEmpty {
+                        cell3.questionSelection.text = examen1.intitule
+                        //cell3.questionSelection.enabled=false
+                    } else {
+                        cell3.questionSelection.text=examen1.value
+                        // cell3.questionSelection.enabled=true
+                    }
+                    
+                    cell3.examen=examen1
+                    
+                    
+                    
+                    return cell3
+                } else if examen1.type==Examen.ExamenEnum.addinfo {
+                    let cell3 = tableView.dequeueReusableCellWithIdentifier("addCell", forIndexPath: indexPath) as! AjoutInformationTableViewCell
+                    cell3.delegate=self
+                    //cell3.ajoutInfoBtn.titleLabel?.text="Ajouter \(examen1.tag)"
+                    cell3.examen=examen1
+                    return cell3
+                } else if examen1.type == Examen.ExamenEnum.datastr || examen1.type == Examen.ExamenEnum.multirowdatastr {
+                    let cell3 = tableView.dequeueReusableCellWithIdentifier("pickSelectCell", forIndexPath: indexPath) as! pickSelectTableViewCell
                     cell3.intituleLabel.text=examen1.intitule
                     cell3.valueTextField.text=examen1.value
                     cell3.intituleLabel.textColor=UIColor.redColor()
-                cell3.examen=examen1
-                return cell3
+                    cell3.examen=examen1
+                    return cell3
                 } else if examen1.type == Examen.ExamenEnum.imagefilename {
                     
-            let cell3 = tableView.dequeueReusableCellWithIdentifier("imageSelectCell", forIndexPath: indexPath) as! imageSelectTableViewCell
-            if examen1.value.isEmpty {
-                cell3.imageLabel.text = "Aucun document"
-            } else {
-                cell3.imageLabel.text =  examen1.value
-                cell3.theImageView.image=UIImage(contentsOfFile: fileInDocumentsDirectory(examen1.value))
-            }
-            
-            cell3.delegate=self
-            cell3.examen=examen1
-
-        
-    
-            
+                    let cell3 = tableView.dequeueReusableCellWithIdentifier("imageSelectCell", forIndexPath: indexPath) as! imageSelectTableViewCell
+                    if examen1.value.isEmpty {
+                        cell3.imageLabel.text = "Aucun document"
+                    } else {
+                        cell3.imageLabel.text =  examen1.value
+                        cell3.theImageView.image=UIImage(contentsOfFile: fileInDocumentsDirectory(examen1.value))
+                    }
+                    
+                    cell3.delegate=self
+                    cell3.examen=examen1
+                    
+                    
+                    
+                    
         }
-
+        
         // Configure the cell...
         return cell
-         }
+    }
     
-
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
         
     }
-//    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
-//    {
-//        var title = UILabel()
-//        title.font = UIFont(name: "Futura", size: 38)!
-//        title.textColor = UIColor.lightGrayColor()
-//        
-//        let header = view as! UITableViewHeaderFooterView
-//        header.textLabel?.font=title.font
-//        header.textLabel?.textColor=title.textColor
-//    }
+    
     
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -727,11 +761,11 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
         return true
     }
     
-
+    
     
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    //    super.tableView(<#T##tableView: UITableView##UITableView#>, commitEditingStyle: <#T##UITableViewCellEditingStyle#>, forRowAtIndexPath: <#T##NSIndexPath#>)
+        //    super.tableView(<#T##tableView: UITableView##UITableView#>, commitEditingStyle: <#T##UITableViewCellEditingStyle#>, forRowAtIndexPath: <#T##NSIndexPath#>)
         if editingStyle == .Delete {
             
             // Delete the row from the data source
@@ -739,34 +773,25 @@ class examensTableViewController: UITableViewController,textSelectedDelegate, UI
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     
-
+    
     
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
         if fromIndexPath == toIndexPath {return }
         
         swap(&categorie.examens[fromIndexPath.row],&categorie.examens[toIndexPath.row])
-
+        
     }
     
-    // Override to support conditional rearranging of the table view.
+    
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
 }

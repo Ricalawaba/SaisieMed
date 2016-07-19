@@ -81,6 +81,7 @@
 		30D852791D32943800F2F850 /* Neurologie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D852781D32943800F2F850 /* Neurologie.swift */; };
 		30D8527B1D33D12200F2F850 /* Cardiologie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D8527A1D33D12200F2F850 /* Cardiologie.swift */; };
 		30D8527D1D33D1D600F2F850 /* ECG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D8527C1D33D1D600F2F850 /* ECG.swift */; };
+		30EFF0D41D3D8B3200358874 /* ExamenClinique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EFF0D31D3D8B3200358874 /* ExamenClinique.swift */; };
 		30F43EE81D077C3B005E3BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43EE71D077C3B005E3BEB /* AppDelegate.swift */; };
 		30F43EED1D077C3B005E3BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30F43EEB1D077C3B005E3BEB /* Main.storyboard */; };
 		30F43EEF1D077C3B005E3BEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30F43EEE1D077C3B005E3BEB /* Assets.xcassets */; };
@@ -182,6 +183,7 @@
 		30D852781D32943800F2F850 /* Neurologie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Neurologie.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		30D8527A1D33D12200F2F850 /* Cardiologie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Cardiologie.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		30D8527C1D33D1D600F2F850 /* ECG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ECG.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		30EFF0D31D3D8B3200358874 /* ExamenClinique.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamenClinique.swift; sourceTree = "<group>"; };
 		30F43EE41D077C3B005E3BEB /* SaisieMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaisieMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F43EE71D077C3B005E3BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30F43EEC1D077C3B005E3BEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				308E7FC91D1D924800AF225D /* ExamenTree.swift */,
+				30EFF0D31D3D8B3200358874 /* ExamenClinique.swift */,
 				30D8527C1D33D1D600F2F850 /* ECG.swift */,
 				30D852781D32943800F2F850 /* Neurologie.swift */,
 				30D8527A1D33D12200F2F850 /* Cardiologie.swift */,
@@ -425,8 +428,8 @@
 		30F43F2E1D0EF7BE005E3BEB /* Menu Saisie */ = {
 			isa = PBXGroup;
 			children = (
-				30F43F2A1D0EE789005E3BEB /* saisieTableViewCell.swift */,
 				30F43F281D0EE751005E3BEB /* saisieTableViewController.swift */,
+				30F43F2A1D0EE789005E3BEB /* saisieTableViewCell.swift */,
 			);
 			name = "Menu Saisie";
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 				308E7FCA1D1D924800AF225D /* ExamenTree.swift in Sources */,
 				30D028911D18AA470050231C /* configurationViewController.swift in Sources */,
 				3041E6851D3B8BBE00CD4B42 /* Digestif.swift in Sources */,
+				30EFF0D41D3D8B3200358874 /* ExamenClinique.swift in Sources */,
 				30D526791D281EBE0016A38B /* pickSelectTableViewCell.swift in Sources */,
 				308E7FD21D1F5A2300AF225D /* SaisieNombreViewController.swift in Sources */,
 				3015F3A51D36C90100A23BE0 /* filesTableViewController.swift in Sources */,
