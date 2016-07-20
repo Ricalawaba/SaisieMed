@@ -143,6 +143,14 @@ class saisieTableViewController: UITableViewController {
         cell.nomCategorie.text = categorie.nomUI()
         
         cell.detailCategorie.text = categorie.UIString()
+        if categorie.subitems.count==0 {
+//            switch categorie.nomUI() {
+//            case <#pattern#>:
+//                <#code#>
+//            default:
+//                <#code#>
+//            }
+      }
         cell.tag=indexPath.row
         return cell
     }

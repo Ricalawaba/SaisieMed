@@ -34,7 +34,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
         dd.append("Libre")
         dropdown.anchorView=sender
         dropdown.dataSource=dd
-        dropdown.bottomOffset = CGPoint(x: 0, y:sender.plainView.bounds.height)
+        dropdown.bottomOffset = CGPoint(x: 0, y:-sender.plainView.bounds.height)
         dropdown.selectionAction = { [unowned self] (index: Int, item: String) in
             print("Selected item: \(item) at index: \(index)")
           //  var exam = Examen(

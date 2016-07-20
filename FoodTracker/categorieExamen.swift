@@ -34,9 +34,9 @@ class categorieExamen : NSObject , NSCoding {
             
             self.init(nom: nom, namedImage: namedImage,showNom: decoder.decodeBoolForKey("shownom"), formatPreString: formatPreString,formatPostString: formatPostString)
             self.examens=examens
-//            self.showNom = decoder.decodeBoolForKey("shownom")
-//            self.formatPostString=formatPostString
-//            self.formatPreString=formatPreString
+            //            self.showNom = decoder.decodeBoolForKey("shownom")
+            //            self.formatPostString=formatPostString
+            //            self.formatPreString=formatPreString
             
         }
         func startNewLine() {
@@ -64,7 +64,7 @@ class categorieExamen : NSObject , NSCoding {
             
         }
         var subitems: [String]=[]
-       // var subItemDel: Selector?
+        // var subItemDel: Selector?
         
         init(nom:String, namedImage:String, showNom: Bool) {
             self.nom=nom
@@ -80,7 +80,7 @@ class categorieExamen : NSObject , NSCoding {
                 self.formatPostString=formatPostString!
             }
             
-                self.formatPreString=formatPreString
+            self.formatPreString=formatPreString
             
         }
         init(nom:String, namedImage:String){
@@ -102,7 +102,7 @@ class categorieExamen : NSObject , NSCoding {
             return removeHtmlStr
             
         }
-        func UIString() -> String {           
+        func UIString() -> String {
             return Categorie.removeHtml(formattedDetaiString())
         }
         func getDocuments() -> [String] {
@@ -116,7 +116,7 @@ class categorieExamen : NSObject , NSCoding {
                 }
                 
             }
-
+            
             return documents
             
         }
@@ -164,7 +164,7 @@ class categorieExamen : NSObject , NSCoding {
                         //print(newstr)
                     } else {break}
                 }
-
+                
                 if str != savedStr {
                     str = "\(examen.formatPreString)\(str)\(examen.formatPostString)"
                 }
@@ -175,7 +175,7 @@ class categorieExamen : NSObject , NSCoding {
                     //print(newstr)
                 } else {break}
             }
-
+            
             if str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).isEmpty {return ""}
             return "\(formatPreString)\(str)\(formatPostString)"
             
@@ -198,49 +198,19 @@ class categorieExamen : NSObject , NSCoding {
         self.categories=categories
     }
     override init(){
-
-        let Categorie1 = ExamTree.administratif
-        let Categorie2 = ExamTree.Comorbidite
-        let Categorie21 = ExamTree.Traitement
-        let Categorie3 =  ExamTree.PlainteAnamnèse
-        let Categorie31 = ExamTree.Pancartes
+        
+        categories.append(ExamTree.administratif)
+        categories.append(ExamTree.PlainteAnamnèse)
+        categories.append(ExamTree.Comorbidite)
+        categories.append( ExamTree.Traitement)
+        categories.append( ExamTree.Pancartes)
+        categories.append( ExamTree.ExamenClinique)
+        categories.append( ExamTree.Paraclinique)
+        categories.append( ExamTree.SuiviEvolution)
+        categories.append( ExamTree.Conclusion)
+        categories.append( ExamTree.Documents)
         
 
-        let catParaclinique = Categorie(nom: "Examens Paracliniques",namedImage: "imagerie_icon.png")
-        var examCatParaclinique = [
-             ExamTree.ECG.asExamen() ,
-             ExamTree.Biologie.asExamen(),
-             ExamTree.Gazometrie.asExamen(),
-             ]
-        let catBandelette = Categorie(nom: "Bandelette Urinaire",namedImage: "nurse_icon.png")
-        let examCatBandelette : [Examen] = [
-            Examen(intitule: "normale", type: .check),
-            Examen(intitule: "Sang", type: .donnee),
-            Examen(intitule: "Leucocytes", type: .donnee),
-            Examen(intitule: "Nitrites", type: .donnee),
-            Examen(intitule: "Corps cétoniques", type: .donnee),
-            Examen(intitule: "ECBU demandé", type: .check),
-            Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre"),
-            
-            ]
-        catBandelette.examens=examCatBandelette
-        
-        examCatParaclinique += [ Examen(categorie: catBandelette),
-                                 ExamTree.Imagerie.asExamen(),
-                                 Examen(intitule: "Ajout Radiologie",type: .addinfo,tag: "radiologie")
-        ]
-        
- 
-        
-        catParaclinique.examens=examCatParaclinique
-        
-        let catEvolution=ExamTree.SuiviEvolution
-        
-
-        
-        
-        // MARK: Categories
-        categories += [Categorie1, Categorie3,Categorie2,Categorie21,Categorie31,ExamTree.ExamenClinique,catParaclinique,catEvolution,ExamTree.Conclusion, ExamTree.Documents]
     }
     
     

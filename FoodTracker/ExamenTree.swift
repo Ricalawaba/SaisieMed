@@ -10,20 +10,6 @@ import Foundation
 
 class ExamTree :NSObject{
     
-//    catLocomoteur.subitems=["Plaie"]
-//    catLocomoteur.subitems.append("Face")
-//    catLocomoteur.subitems.append("RachisCervical")
-    //        catLocomoteur.subitems!["Epaule"] = ExamTree.Epaule.asExamen()
-    //        catLocomoteur.subitems!["Coude"] = ExamTree.Coude.asExamen()
-    //        catLocomoteur.subitems!["AvantBras"] = ExamTree.AvantBras.asExamen()
-    //        catLocomoteur.subitems!["Main"] = ExamTree.Main.asExamen()
-    //        catLocomoteur.subitems!["Doigt"] = ExamTree.Doigt.asExamen()
-    //        catLocomoteur.subitems!["RachisLombaire"] = ExamTree.RachisLombaire.asExamen()
-    //        catLocomoteur.subitems!["Hanche"] = ExamTree.Hanche.asExamen()
-    //        catLocomoteur.subitems!["Genou"] = ExamTree.Genou.asExamen()
-    //        catLocomoteur.subitems!["Jambe"] = ExamTree.Jambe.asExamen()
-    //        catLocomoteur.subitems!["Cheville"] = ExamTree.Cheville.asExamen()
-    ////        catLocomoteur.subItemDel=#selector(ExamTree.subitemsLocomoteur)
     static func getExam(examtype:String) ->Examen? {
         switch examtype {
         case "libre":
@@ -65,13 +51,17 @@ class ExamTree :NSObject{
             return self.Jambe.asExamen()
         case "Cheville":
             return self.Cheville.asExamen()
-//        case "<#NOM#>":
-//            return self.<#NOM#>.asExamen()
-//        case "<#NOM#>":
-//            return self.<#NOM#>.asExamen()
-//        case "<#NOM#>":
-//            return self.<#NOM#>.asExamen()
-          
+        case "ECG":
+            return self.ECG.asExamen()
+        case "Biologie":
+            return self.Biologie.asExamen()
+        case "Gazometrie":
+            return self.Gazometrie.asExamen()
+        case "Bandelette":
+            return self.Bandelette.asExamen()
+        case "Imagerie":
+            return self.Imagerie.asExamen()
+            
     
         default:
             print("get exam Non géré : ", examtype)
@@ -683,7 +673,7 @@ class ExamTree :NSObject{
     
     static var Radiographie:categorieExamen.Categorie {
         let catRadiographie = categorieExamen.Categorie(nom:"Radiographies",namedImage: "imagerie_icon.png",showNom: true)
-        catRadiographie.startLI()
+        //catRadiographie.startLI()
         let examCatRadiographie : [Examen] = [
             Check("Crane"),
             Check("Thoracique"),
@@ -987,52 +977,7 @@ class ExamTree :NSObject{
         return cattypeDouleur
     }
     
-    static var Biologie:categorieExamen.Categorie {
-        let catBiologie = categorieExamen.Categorie(nom:"Biologie",namedImage: "piqure_icon.png",showNom: true)
-        catBiologie.startNewLine()
-        let examCatBiologie : [Examen] = [
-            Check("Bilan normal"),
-            Check("Hémogramme normal"),
-            Examen(intitule: "Hémoglobine", type: .donnee),
-            Examen(intitule: "Leucocytes", type: .donnee),
-            Examen(intitule: "Plaquettes", type: .donnee),
-            OuiNon("Insuffisance rénale"),
-            Examen(intitule: "Créatinémie", type: .donnee),
-            Examen(intitule: "Clairance", type: .donnee),
-            Examen(intitule: "Sodium (Na)", type: .donnee),
-            Examen(intitule: "Potassium (K)", type: .donnee),
-            OuiNon("Syndrome inflammatoire"),
-            Examen(intitule: "Proteine C Réactive (CRP)", type: .donnee),
-            Examen(intitule: "Fibrinogène", type: .donnee),
-            Examen(intitule: "Procalcitonine", type: .donnee),
-            Check("Bilan hépatique normal"),
-            OuiNon("Cytolyse"),
-            Examen(intitule: "ASAT (TGO)", type: .donnee),
-            Examen(intitule: "ALAT (TGP)", type: .donnee),
-            
-            OuiNon("Cholestase"),
-            Examen(intitule: "Bilirubine", type: .donnee),
-            Examen(intitule: "Phosphatases Alcalines", type: .donnee),
-            Examen(intitule: "ɣGT", type: .donnee),
-            
-            Check("Enzymes cardiaques normales"),
-            Examen(intitule: "Troponine", type: .donnee),
-            Examen(intitule: "Pro-BNP", type: .donnee),
-            Examen(intitule: "BNP", type: .donnee),
-            Examen(intitule: "D-Dimères", type: .donnee),
-            Examen(intitule: "Myoglobine", type: .donnee),
-            
-            Check("Euthyroïdie"),
-            Examen(intitule: "TSH", type: .donnee),
-            Examen(intitule: "T4L", type: .donnee),
-            Examen(intitule: "T3", type: .donnee),
-            
-            
-            // Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
-        ]
-        catBiologie.examens=examCatBiologie
-        return catBiologie
-    }
+
     // MARK: Examens
     static var OMS:Examen {
         Donnees.selectiontextDict["dataStrZubrodOMS"]=[

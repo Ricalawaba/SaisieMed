@@ -82,6 +82,7 @@
 		30D8527B1D33D12200F2F850 /* Cardiologie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D8527A1D33D12200F2F850 /* Cardiologie.swift */; };
 		30D8527D1D33D1D600F2F850 /* ECG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D8527C1D33D1D600F2F850 /* ECG.swift */; };
 		30EFF0D41D3D8B3200358874 /* ExamenClinique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EFF0D31D3D8B3200358874 /* ExamenClinique.swift */; };
+		30EFF0D81D3E413A00358874 /* Paraclinique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EFF0D71D3E413A00358874 /* Paraclinique.swift */; };
 		30F43EE81D077C3B005E3BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43EE71D077C3B005E3BEB /* AppDelegate.swift */; };
 		30F43EED1D077C3B005E3BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30F43EEB1D077C3B005E3BEB /* Main.storyboard */; };
 		30F43EEF1D077C3B005E3BEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30F43EEE1D077C3B005E3BEB /* Assets.xcassets */; };
@@ -184,6 +185,7 @@
 		30D8527A1D33D12200F2F850 /* Cardiologie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Cardiologie.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		30D8527C1D33D1D600F2F850 /* ECG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ECG.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		30EFF0D31D3D8B3200358874 /* ExamenClinique.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamenClinique.swift; sourceTree = "<group>"; };
+		30EFF0D71D3E413A00358874 /* Paraclinique.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paraclinique.swift; sourceTree = "<group>"; };
 		30F43EE41D077C3B005E3BEB /* SaisieMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaisieMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F43EE71D077C3B005E3BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30F43EEC1D077C3B005E3BEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				3041E6801D3A828300CD4B42 /* Documents.swift */,
 				3041E6841D3B8BBE00CD4B42 /* Digestif.swift */,
 				303468E01D3D1B2D00FB10E4 /* Locomoteur.swift */,
+				30EFF0D71D3E413A00358874 /* Paraclinique.swift */,
 			);
 			name = "Arbre Examens";
 			sourceTree = "<group>";
@@ -749,6 +752,7 @@
 				30D028951D196E430050231C /* selectDateViewController.swift in Sources */,
 				30987AB31D2BBB7D000B73F8 /* imageSelectTableViewCell.swift in Sources */,
 				308E7FCE1D1E8F8E00AF225D /* Numbers.swift in Sources */,
+				30EFF0D81D3E413A00358874 /* Paraclinique.swift in Sources */,
 				303468E11D3D1B2D00FB10E4 /* Locomoteur.swift in Sources */,
 				30F43F2B1D0EE789005E3BEB /* saisieTableViewCell.swift in Sources */,
 				30F43F2D1D0EE938005E3BEB /* categorieExamen.swift in Sources */,

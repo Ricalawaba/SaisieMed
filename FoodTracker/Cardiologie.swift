@@ -10,7 +10,7 @@
 import Foundation
 
 extension ExamTree {
-
+    
     // MARK: Cardiologie Principal
     static var cardioPouls:categorieExamen.Categorie {
         let catcardioPouls = categorieExamen.Categorie(nom:"Pouls",namedImage: "cardio_icon.png",showNom: true)
@@ -71,20 +71,22 @@ extension ExamTree {
         let cattypeDouleurThoracique = categorieExamen.Categorie(nom:"typeDouleurThoracique",namedImage: "cardio2_icon.png",showNom: false)
         cattypeDouleurThoracique.formatPreString=""
         let examCattypeDouleurThoracique   : [Examen] = [
+            Examen(intitule: "loc. douleur thoracique", datastr: ["épigastrique","rétrosternale haute","précordiale","antérieure","postérieure"].sort() ),
+            
+            Examen(intitule: "type douleur thoracique", datastr: ["en barre","en pointe","type brulure","type oppression"].sort() ),
             typeDouleur.asExamen(),
-            Check("en barre"),
-            Check("en pointe"),
-            Check("type brulure"),
+            Check("sans irradiation \"coronarienne\""),
             Check("Irradiation membre supérieur gauche"),
             Check("Irradiation membre supérieur droit"),
             Check("Irradiation dans le cou"),
-       
+            Check("transfixiante"),
+            Check("fixe"),
+            Check("mobile dans le temps"),
             
             
             Examen(intitule: "Détail", type:  .reponsecourte ),
             
-            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
-        ]
+            ]
         cattypeDouleurThoracique.examens=examCattypeDouleurThoracique
         return cattypeDouleurThoracique
     }
@@ -98,12 +100,7 @@ extension ExamTree {
             OuiNon("Palpitations"),
             OuiNon("Dyspnée"),
             OuiNon("Dyspnée de décubitus (orthopnée)"),
-            Check("NYHA 1 (Aucune gène fonctionnelle)"),
-            Check("NYHA 2 (gène à l'effort seulement)"),
-            Check("NYHA 3 (gène à l'effort modérée)"),
-            Check("NYHA 4 (gène au moindre effort)"),
-            Examen(intitule: "Détail", type:  .reponsecourte ),
-            
+            Examen(intitule: "Classification NYHA ", datastr: ["NYHA 1 (Aucune gène fonctionnelle)","NYHA 2 (gène à l'effort seulement)","NYHA 3 (gène à l'effort modérée)","NYHA 4 (gène au moindre effort)"].sort() ),
             OuiNon("Toux"),
             Check("grasse"),
             Check("sèche"),

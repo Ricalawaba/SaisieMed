@@ -8,15 +8,15 @@
 
 import Foundation
 extension ExamTree {
-
+    
     static var Locomoteur:categorieExamen.Categorie {
         let catLocomoteur = categorieExamen.Categorie(nom:"Locomoteur",namedImage: "os_icon.png",showNom: false)
-        catLocomoteur.startNewLine()
+       // catLocomoteur.startNewLine()
         let examCatLocomoteur : [Examen] = [
             self.Document.asExamen(),
             Check("Pas sous anti-coagulant"),
-            Check("Pas sous anti-agrégant"),            
-        ]
+            Check("Pas sous anti-agrégant"),
+            ]
         catLocomoteur.subitems=["Plaie"]
         catLocomoteur.subitems.append("Face")
         catLocomoteur.subitems.append("Epaule")
@@ -28,25 +28,14 @@ extension ExamTree {
         catLocomoteur.subitems.append("Genou")
         catLocomoteur.subitems.append("Jambe")
         catLocomoteur.subitems.append("Cheville")
-       
-//        catLocomoteur.subitems!["Epaule"] = ExamTree.Epaule.asExamen()
-//        catLocomoteur.subitems!["Coude"] = ExamTree.Coude.asExamen()
-//        catLocomoteur.subitems!["AvantBras"] = ExamTree.AvantBras.asExamen()
-//        catLocomoteur.subitems!["Main"] = ExamTree.Main.asExamen()
-//        catLocomoteur.subitems!["Doigt"] = ExamTree.Doigt.asExamen()
-//        catLocomoteur.subitems!["RachisLombaire"] = ExamTree.RachisLombaire.asExamen()
-//        catLocomoteur.subitems!["Hanche"] = ExamTree.Hanche.asExamen()
-//        catLocomoteur.subitems!["Genou"] = ExamTree.Genou.asExamen()
-//        catLocomoteur.subitems!["Jambe"] = ExamTree.Jambe.asExamen()
-//        catLocomoteur.subitems!["Cheville"] = ExamTree.Cheville.asExamen()
-////        catLocomoteur.subItemDel=#selector(ExamTree.subitemsLocomoteur)
+        
         
         catLocomoteur.examens=examCatLocomoteur
         return catLocomoteur
     }
     static var TypeTrauma:categorieExamen.Categorie {
-        let catTypeTrauma = categorieExamen.Categorie(nom:"Type Trauma",namedImage: "os_icon.png",showNom: true)
-        catTypeTrauma.startLI()
+        let catTypeTrauma = categorieExamen.Categorie(nom:"<br>Type Trauma",namedImage: "os_icon.png",showNom: true)
+       // catTypeTrauma.startLI()
         let examCatTypeTrauma : [Examen] = [
             Check("Trauma direct"),
             Check("Trauma indirect"),
@@ -69,17 +58,21 @@ extension ExamTree {
         let catLocoFonctionnel = categorieExamen.Categorie(nom:"LocoFonctionnel",namedImage: "os_icon.png",showNom: false)
         let examCatLocoFonctionnel : [Examen] = [
             OuiNon("Examen clinique dans les limites de la normale"),
+            Check("Trop algique pour une évaluation fonctionnelle complète"),
+            OuiNon("Douleur au repos"),
+            OuiNon("Douleur a la mobilisation"),
+            OuiNon("Déformation"),
+            OuiNon("Tuméfaction"),
+            Check("Contusion"),
+            OuiNon("Oedeme péri-articulaire"),
+            OuiNon("Oedeme péri-lésionel"),
+            
             OuiNon("Gène significative de la mobilité active"),
             OuiNon("Gène significative de la mobilité passive"),
             OuiNon("Impotence fonctionnelle"),
             Check("Impotence fonctionnelle partielle"),
             Check("Examen des mobilités limité par la douleur"),
             Check("Examen des mobilités limité par la douleur et l'oedeme"),
-            OuiNon("Déformation"),
-            OuiNon("Tuméfaction"),
-            Check("Contusion"),
-            OuiNon("Oedeme péri-articulaire"),
-            OuiNon("Oedeme péri-lésionel"),
             OuiNon("Gène à la mobilité articulaire"),
             Check("Flexion limitée"),
             Check("Extension limitée"),
@@ -219,7 +212,7 @@ extension ExamTree {
         let examCatCoude : [Examen] = [
             self.LocAnat.asExamen(),
             self.TypeTrauma.asExamen(),
-            
+            self.LocoFonctionnel.asExamen(),
             ]
         catCoude.examens=examCatCoude
         return catCoude
