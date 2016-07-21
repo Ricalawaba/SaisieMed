@@ -258,6 +258,7 @@
 		3041E67A1D36EBBD00CD4B42 /* Arbre Examens */ = {
 			isa = PBXGroup;
 			children = (
+				304B19FA1D1413540006DB4A /* Examen.swift */,
 				308E7FC91D1D924800AF225D /* ExamenTree.swift */,
 				30EFF0D31D3D8B3200358874 /* ExamenClinique.swift */,
 				30D8527C1D33D1D600F2F850 /* ECG.swift */,
@@ -353,7 +354,6 @@
 				30F43F2C1D0EE938005E3BEB /* categorieExamen.swift */,
 				3041E67D1D382FC500CD4B42 /* file View */,
 				3041E67A1D36EBBD00CD4B42 /* Arbre Examens */,
-				304B19FA1D1413540006DB4A /* Examen.swift */,
 				308E7FD31D1FC60100AF225D /* Configuration */,
 				30F43F2F1D0EF7DE005E3BEB /* Liste patient */,
 				301826011D0F0B2A00592CE9 /* Examens */,

@@ -34,6 +34,8 @@ class categorieExamen : NSObject , NSCoding {
             
             self.init(nom: nom, namedImage: namedImage,showNom: decoder.decodeBoolForKey("shownom"), formatPreString: formatPreString,formatPostString: formatPostString)
             self.examens=examens
+            if let subitems=decoder.decodeObjectForKey("subitems") as? [String] {
+                self.subitems=subitems             }
             //            self.showNom = decoder.decodeBoolForKey("shownom")
             //            self.formatPostString=formatPostString
             //            self.formatPreString=formatPreString
@@ -52,7 +54,9 @@ class categorieExamen : NSObject , NSCoding {
             coder.encodeObject(self.formatPreString, forKey: "formatPreString")
             coder.encodeObject(self.formatPostString, forKey: "formatPostString")
             coder.encodeObject(self.examens, forKey: "examens")
+            
             coder.encodeBool(self.showNom, forKey: "shownom")
+            coder.encodeObject(self.subitems, forKey: "subitems")
         }
         
         

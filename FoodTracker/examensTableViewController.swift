@@ -18,53 +18,68 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
     var categorie : categorieExamen.Categorie!
     var examenSelected: Examen?
     //var examen = [Examen]()
-      var dropdown = DropDown()
+    var dropdown = DropDown()
     @IBAction func ajouterChampLibre(sender: UIBarButtonItem) {
         //var categorie : categorieExamen.Categorie!
         var dd:[String]=[]
-//        if let subitemsDel=categorie.subItemDel {
-//            categorie.subitems=#selector(subitemsDel)as [String:Examen]
-//            
-//        }
+        //        if let subitemsDel=categorie.subItemDel {
+        //            categorie.subitems=#selector(subitemsDel)as [String:Examen]
+        //
+        //        }
         let subitems=categorie.subitems
-            for (name) in subitems {
-                dd.append(name)
-            }
+        for (name) in subitems {
+            dd.append(name)
+        }
         
         dd.append("Libre")
         dropdown.anchorView=sender
         dropdown.dataSource=dd
-        dropdown.bottomOffset = CGPoint(x: 0, y:-sender.plainView.bounds.height)
+        dropdown.topOffset = CGPoint(x: 0, y:-sender.plainView.bounds.height)
         dropdown.selectionAction = { [unowned self] (index: Int, item: String) in
             print("Selected item: \(item) at index: \(index)")
-          //  var exam = Examen(
-      //      if let exam=
+            //  var exam = Examen(
+            //      if let exam=
             if item == "Libre" {
-             self.categorie.examens.append(ExamTree.libre)
+                self.categorie.examens.append(ExamTree.libre)
             } else {
                 if let exam=ExamTree.getExam(item) {
                     self.categorie.examens.append(exam)
                 }
+                else {print("erreur examen non reconnu : \"\(item)\"")}
                 
-//                 let netExam=Examen(intitule: exam.intitule, type: exam.type)
-//                self.categorie.examens.append(self.categorie.subitems![item]!)
+                //                 let netExam=Examen(intitule: exam.intitule, type: exam.type)
+                //                self.categorie.examens.append(self.categorie.subitems![item]!)
             }
+            self.tableView.reloadData()
+            let rowToSelect:NSIndexPath = NSIndexPath(forRow: self.categorie.examens.count-1, inSection: 0)
+            // NSIndexPath(
+            self.tableView.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.Bottom)
+            // self.performSegueWithIdentifier("autoshow", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
+            if item != "Libre" {
+                self.performSegueWithIdentifier("autoshow", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
+            } else {
+                
+                //self.performSegueWithIdentifier("selectionSegue", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
+            }
+            //            self.tableView.scrollToRowAtIndexPath(rowToSelect, atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
+            //
+            
             switch index {
             case 0:
-               // self.
+                // self.
                 break
             default:
                 break
             }
             self.tableView.reloadData()
-
+            
         }
         
         dropdown.show()
-
-       // categorie.examens.append(ExamTree.libre)
         
-         }
+        // categorie.examens.append(ExamTree.libre)
+        
+    }
     @IBAction func refreshButtonAction(sender: UIBarButtonItem) {
         tableView.reloadData()
         
@@ -226,6 +241,8 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
     
     @IBOutlet var doubleTap: UITapGestureRecognizer!
     @IBOutlet var singleTap: UITapGestureRecognizer!
+    @IBAction func editDidBegin(sender: UITextField) {
+    }
     @IBAction func doubletapRepCourteAction(sender: UITapGestureRecognizer) {
         if tableView.editing {return}
         let location : CGPoint = sender.locationInView(self.tableView)
@@ -286,7 +303,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
             return
         }
         
-        if ExamTaped?.type != .addinfo &&  (Donnees.selectiontextDict.indexForKey((ExamTaped?.tag)!) != nil) {
+        if ExamTaped?.type != .addinfo &&   ExamTaped?.type != .datastr && (Donnees.selectiontextDict.indexForKey((ExamTaped?.tag)!) != nil) {
             
             let svc = self.storyboard?.instantiateViewControllerWithIdentifier("selectionViewID") as! selectionTexteTableViewController
             svc.textes = Donnees.selectiontextDict[ ExamTaped!.tag ]!
@@ -310,91 +327,91 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
             self.navigationController!.pushViewController(svc,animated: true)
         }
         
-        if ExamTaped!.tag == "tension" {
-            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectNumberID") as! selectNumberViewController
-            _ = svc.view
-            svc.numberPickView.type = .tensionarterielle
-            
-            svc.delegate=self
-            self.navigationController!.pushViewController(svc,animated: true)
-        }
-        if ExamTaped!.tag == "EVA" {
-            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
-            svc.minNumber=0
-            svc.maxNumber=11
-            svc.step=1
-            svc.Information = "EVA"
-            if ExamTaped!.value.isEmpty {
-                svc.value="0"
-            } else {
-                
-                svc.value=ExamTaped!.value
-            }
-            
-            _ = svc.view
-            
-            
-            
-            svc.delegate=self
-            self.navigationController!.pushViewController(svc,animated: true)
-        }
-        if ExamTaped!.tag == "FC" {
-            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
-            svc.minNumber=25
-            svc.maxNumber=310
-            svc.step=5
-            svc.Information = "Freq. Cardiaque"
-            if ExamTaped!.value.isEmpty {
-                svc.value="80"
-            } else {
-                
-                svc.value=ExamTaped!.value
-            }
-            _ = svc.view
-            
-            
-            
-            svc.delegate=self
-            self.navigationController!.pushViewController(svc,animated: true)
-        }
-        if ExamTaped!.tag == "sao2" {
-            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
-            svc.minNumber=75
-            svc.maxNumber=101
-            svc.step=1
-            svc.Information = "SaO2%"
-            if ExamTaped!.value.isEmpty {
-                svc.value="95"
-            } else {
-                
-                svc.value=ExamTaped!.value
-            }
-            _ = svc.view
-            
-            
-            
-            svc.delegate=self
-            self.navigationController!.pushViewController(svc,animated: true)
-        }
-        if ExamTaped!.tag == "fresp" {
-            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
-            svc.minNumber=5
-            svc.maxNumber=35
-            svc.step=1
-            svc.Information = "Freq. respiratoire"
-            if ExamTaped!.value.isEmpty {
-                svc.value="95"
-            } else {
-                
-                svc.value=ExamTaped!.value
-            }
-            _ = svc.view
-            
-            
-            
-            svc.delegate=self
-            self.navigationController!.pushViewController(svc,animated: true)
-        }
+//        if ExamTaped!.tag == "tension" {
+//            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectNumberID") as! selectNumberViewController
+//            _ = svc.view
+//            svc.numberPickView.type = .tensionarterielle
+//            
+//            svc.delegate=self
+//            self.navigationController!.pushViewController(svc,animated: true)
+//        }
+//        if ExamTaped!.tag == "EVA" {
+//            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+//            svc.minNumber=0
+//            svc.maxNumber=11
+//            svc.step=1
+//            svc.Information = "EVA"
+//            if ExamTaped!.value.isEmpty {
+//                svc.value="0"
+//            } else {
+//                
+//                svc.value=ExamTaped!.value
+//            }
+//            
+//            _ = svc.view
+//            
+//            
+//            
+//            svc.delegate=self
+//            self.navigationController!.pushViewController(svc,animated: true)
+//        }
+//        if ExamTaped!.tag == "FC" {
+//            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+//            svc.minNumber=25
+//            svc.maxNumber=310
+//            svc.step=5
+//            svc.Information = "Freq. Cardiaque"
+//            if ExamTaped!.value.isEmpty {
+//                svc.value="80"
+//            } else {
+//                
+//                svc.value=ExamTaped!.value
+//            }
+//            _ = svc.view
+//            
+//            
+//            
+//            svc.delegate=self
+//            self.navigationController!.pushViewController(svc,animated: true)
+//        }
+//        if ExamTaped!.tag == "sao2" {
+//            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+//            svc.minNumber=75
+//            svc.maxNumber=101
+//            svc.step=1
+//            svc.Information = "SaO2%"
+//            if ExamTaped!.value.isEmpty {
+//                svc.value="95"
+//            } else {
+//                
+//                svc.value=ExamTaped!.value
+//            }
+//            _ = svc.view
+//            
+//            
+//            
+//            svc.delegate=self
+//            self.navigationController!.pushViewController(svc,animated: true)
+//        }
+//        if ExamTaped!.tag == "fresp" {
+//            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+//            svc.minNumber=5
+//            svc.maxNumber=35
+//            svc.step=1
+//            svc.Information = "Freq. respiratoire"
+//            if ExamTaped!.value.isEmpty {
+//                svc.value="95"
+//            } else {
+//                
+//                svc.value=ExamTaped!.value
+//            }
+//            _ = svc.view
+//            
+//            
+//            
+//            svc.delegate=self
+//            self.navigationController!.pushViewController(svc,animated: true)
+//        }
         if ExamTaped!.tag == "poids" {
             let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
             svc.minNumber=10
@@ -716,7 +733,24 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
                     //cell3.ajoutInfoBtn.titleLabel?.text="Ajouter \(examen1.tag)"
                     cell3.examen=examen1
                     return cell3
-                } else if examen1.type == Examen.ExamenEnum.datastr || examen1.type == Examen.ExamenEnum.multirowdatastr {
+                } /*else if examen1.type == Examen.ExamenEnum.datastr {
+
+                    var dd:[String]=[]
+
+                    for t in Donnees.selectiontextDict[examen1.tag]! {
+                        dd.append(t)
+                    }
+                    dropdown.anchorView=self.view
+                    dropdown.dataSource=dd
+                  //  dropdown.topOffset = CGPoint(x: 0, y:-sender.plainView.bounds.height)
+                    dropdown.selectionAction = { [unowned self] (index: Int, item: String) in
+                        examen1.value=item
+                        self.tableView.reloadData()
+                        
+                    }
+                    
+                    dropdown.show()
+                }*/else if examen1.type == Examen.ExamenEnum.datastr || examen1.type == Examen.ExamenEnum.multirowdatastr {
                     let cell3 = tableView.dequeueReusableCellWithIdentifier("pickSelectCell", forIndexPath: indexPath) as! pickSelectTableViewCell
                     cell3.intituleLabel.text=examen1.intitule
                     cell3.valueTextField.text=examen1.value

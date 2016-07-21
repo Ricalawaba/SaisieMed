@@ -9,9 +9,53 @@
 import Foundation
 extension ExamTree {
     
+    static var locoMoteurCommun:categorieExamen.Categorie {
+        let catlocoMoteurCommun = categorieExamen.Categorie(nom:"locoMoteurCommun",namedImage: "<#image#>",showNom: false)
+        let examCatlocoMoteurCommun = [
+            self.regionAnat,
+            self.LocAnat.asExamen(),
+            self.TypeTrauma.asExamen(),
+            self.LocoFonctionnel.asExamen(),
+            Plaie.asExamen(),
+            ]
+        catlocoMoteurCommun.examens=examCatlocoMoteurCommun
+        return catlocoMoteurCommun
+    }
+    static var LocAnat:categorieExamen.Categorie {
+        let catLocAnat = categorieExamen.Categorie(nom:"Loc.  anatomique",namedImage: "os_icon.png",showNom: false)
+        catLocAnat.formatPreString=""
+        let examCatLocAnat : [Examen] = [
+            Check("droit(e)"),
+            Check("gauche"),
+            Examen(intitule: "Description zone", datastr: ["1/3 distal","1/3 proximal","1/3 moyen","1/3 inférieur","1/3 inférieur","1/3 inférieur",].sort() ),
+            Examen(intitule: "Bord", type:  .check, info: " "  ),
+            Examen(intitule: "Extrémité", type:  .check, info: " "  ),
+            Examen(intitule: "face", type:  .check, info: " "  ),
+            Check("interne (e)"),
+            Check("médial (e)"),
+            Check("médian"),
+            Check("latéral(e)"),
+            Check("externe"),
+            Examen(intitule: "1/3", type:  .check , info : " " ),
+            Examen(intitule: "1/4", type:  .check, info: " "  ),
+            Check("antérieur(e)"),
+            Check("postérieur(e)"),
+            Check("inférieur(e)"),
+            Check("Moyen"),
+            Check("supérieur(e)"),
+            Check("proximal(e)"),
+            Check("distal(e)"),
+            Check("droit(e)"),
+            Check("gauche"),
+            Check("bilatéral(e)"),
+            
+            ]
+        catLocAnat.examens=examCatLocAnat
+        return catLocAnat
+    }
     static var Locomoteur:categorieExamen.Categorie {
         let catLocomoteur = categorieExamen.Categorie(nom:"Locomoteur",namedImage: "os_icon.png",showNom: false)
-       // catLocomoteur.startNewLine()
+        // catLocomoteur.startNewLine()
         let examCatLocomoteur : [Examen] = [
             self.Document.asExamen(),
             Check("Pas sous anti-coagulant"),
@@ -35,7 +79,7 @@ extension ExamTree {
     }
     static var TypeTrauma:categorieExamen.Categorie {
         let catTypeTrauma = categorieExamen.Categorie(nom:"<br>Type Trauma",namedImage: "os_icon.png",showNom: true)
-       // catTypeTrauma.startLI()
+        // catTypeTrauma.startLI()
         let examCatTypeTrauma : [Examen] = [
             Check("Trauma direct"),
             Check("Trauma indirect"),
@@ -92,12 +136,11 @@ extension ExamTree {
     static var Main:categorieExamen.Categorie {
         let catMain = categorieExamen.Categorie(nom:"Main",namedImage: "main_icon.png",showNom: true)
         let examCatMain : [Examen] = [
-            self.regionAnat,
-            self.LocAnat.asExamen(),
-            self.TypeTrauma.asExamen(),
-            self.LocoFonctionnel.asExamen(),
-            
+            locoMoteurCommun.asExamen(),
+            OuiNon("perte de l'effet ténodèse à la flexion/extension du poignet"),
             ]
+        catMain.subitems.append("Poignet")
+        catMain.subitems.append("Doigt")
         catMain.examens=examCatMain
         return catMain
     }
@@ -112,12 +155,54 @@ extension ExamTree {
         catPoignet.examens=examCatPoignet
         return catPoignet
     }
+    static var vascularisationDoigt:categorieExamen.Categorie {
+        let catvascularisationDoigt = categorieExamen.Categorie(nom:"vascularisation",namedImage: "<#image#>",showNom: false)
+        let examCatvascularisationDoigt = [
+            Check("Pas de déficit sensitivomoteur"),
+            OuiNon("Paleur cutanée distale"),
+            OuiNon("Disparition du galbe pulpaire"),
+            OuiNon("Pouls capillaire"),
+            Check("froideur des extrémités"),
+            
+            Check("hypoesthésie"),
+            Check("anesthésie distale"),
+            Check("paresthésie"),
+            
+            ]
+        catvascularisationDoigt.examens=examCatvascularisationDoigt
+        return catvascularisationDoigt
+    }
+    
+    static var Doigt:categorieExamen.Categorie {
+        let catDoigt = categorieExamen.Categorie(nom:"Doigt",namedImage: "main_icon.png",showNom: true)
+        let examCatDoigt : [Examen] = [
+            Examen(intitule: "identification doigt", datastr: ["Pouce","Index","Majeur","Annulaire","Auriculaire","Hallux","2ième orteil","3ième orteil","4ième orteil","5ième orteil",].sort() ),
+            locoMoteurCommun.asExamen(),
+            Check("(Maintien des doigts non testés en extension)"),
+            OuiNon("deficit du fléchisseur superficiel"),
+            
+            Check("(flexion elective de l'IPD)"),
+            OuiNon("deficit du fléchisseur profond"),
+            
+            OuiNon("perte de l'effet ténodèse à la flexion/extension du poignet"),
+            
+            Check("(Hyperextension active des MCP main à plat)"),
+            OuiNon("Deficit des tendons extenseurs communs"),
+            
+            Check("(Extension active IPD contre resistance P3)"),
+            OuiNon("Déficit des bandelettes terminales de l'appareil extenseur"),
+            Check("(Extension active IPP contre resistance P2)"),
+            OuiNon("Déficit des bandelettes medianes l'appareil extenseur"),
+            
+            //Examen(
+        ]
+        catDoigt.examens=examCatDoigt
+        return catDoigt
+    }
     static var AvantBras:categorieExamen.Categorie {
         let catAvantBras = categorieExamen.Categorie(nom:"AvantBras",namedImage: "os_icon.png",showNom: true)
         let examCatAvantBras : [Examen] = [
-            self.LocAnat.asExamen(),
-            self.TypeTrauma.asExamen(),
-            self.LocoFonctionnel.asExamen(),
+            locoMoteurCommun.asExamen(),
             
             ]
         catAvantBras.examens=examCatAvantBras
@@ -126,10 +211,7 @@ extension ExamTree {
     static var Jambe:categorieExamen.Categorie {
         let catJambe = categorieExamen.Categorie(nom:"Jambe",namedImage: "os_icon.png",showNom: true)
         let examCatJambe : [Examen] = [
-            self.LocAnat.asExamen(),
-            self.TypeTrauma.asExamen(),
-            self.LocoFonctionnel.asExamen(),
-            
+            locoMoteurCommun.asExamen(),
             ]
         catJambe.examens=examCatJambe
         return catJambe
@@ -137,9 +219,7 @@ extension ExamTree {
     static var Bras:categorieExamen.Categorie {
         let catBras = categorieExamen.Categorie(nom:"Bras",namedImage: "os_icon.png",showNom: true)
         let examCatBras : [Examen] = [
-            self.LocAnat.asExamen(),
-            self.TypeTrauma.asExamen(),
-            self.LocoFonctionnel.asExamen(),
+            locoMoteurCommun.asExamen(),
             
             
             ]
@@ -147,36 +227,19 @@ extension ExamTree {
         return catBras
     }
     
-    static var Doigt:categorieExamen.Categorie {
-        let catDoigt = categorieExamen.Categorie(nom:"Doigt",namedImage: "main_icon.png",showNom: true)
-        let examCatDoigt : [Examen] = [
-            self.LocAnat.asExamen(),
-            self.TypeTrauma.asExamen(),
-            self.LocoFonctionnel.asExamen(),
-            
-            
-            ]
-        catDoigt.examens=examCatDoigt
-        return catDoigt
-    }
     static var RachisCervical:categorieExamen.Categorie {
         let catRachisCervical = categorieExamen.Categorie(nom:"Rachis Cervical",namedImage: "os_icon.png",showNom: true)
         let examCatRachisCervical : [Examen] = [
-            self.LocAnat.asExamen(),
-            self.TypeTrauma.asExamen(),
-            self.LocoFonctionnel.asExamen(),
+            locoMoteurCommun.asExamen(),
             
-            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
-        ]
+            ]
         catRachisCervical.examens=examCatRachisCervical
         return catRachisCervical
     }
     static var RachisLombaire:categorieExamen.Categorie {
         let catRachisLombaire = categorieExamen.Categorie(nom:"Rachis Lombaire",namedImage: "os_icon.png",showNom: true)
         let examCatRachisLombaire : [Examen] = [
-            self.LocAnat.asExamen(),
-            self.TypeTrauma.asExamen(),
-            self.LocoFonctionnel.asExamen(),
+            locoMoteurCommun.asExamen(),
             
             ]
         catRachisLombaire.examens=examCatRachisLombaire
@@ -185,10 +248,7 @@ extension ExamTree {
     static var Hanche:categorieExamen.Categorie {
         let catHanche = categorieExamen.Categorie(nom:"Hanche",namedImage: "os_icon.png",showNom: true)
         let examCatHanche : [Examen] = [
-            self.LocAnat.asExamen(),
-            self.TypeTrauma.asExamen(),
-            self.LocoFonctionnel.asExamen(),
-            
+            locoMoteurCommun.asExamen(),
             ]
         catHanche.examens=examCatHanche
         return catHanche
@@ -197,9 +257,7 @@ extension ExamTree {
     static var Face:categorieExamen.Categorie {
         let catFace = categorieExamen.Categorie(nom:"Face/Visage",namedImage: "tete_icon.png",showNom: true)
         let examCatFace : [Examen] = [
-            self.LocAnat.asExamen(),
-            self.TypeTrauma.asExamen(),
-            self.LocoFonctionnel.asExamen(),
+            locoMoteurCommun.asExamen(),
             
             ]
         catFace.examens=examCatFace
@@ -210,9 +268,7 @@ extension ExamTree {
     static var Coude:categorieExamen.Categorie {
         let catCoude = categorieExamen.Categorie(nom:"Coude",namedImage: "os_icon.png",showNom: true)
         let examCatCoude : [Examen] = [
-            self.LocAnat.asExamen(),
-            self.TypeTrauma.asExamen(),
-            self.LocoFonctionnel.asExamen(),
+            locoMoteurCommun.asExamen(),
             ]
         catCoude.examens=examCatCoude
         return catCoude
@@ -221,9 +277,7 @@ extension ExamTree {
     static var Genou:categorieExamen.Categorie {
         let catGenou = categorieExamen.Categorie(nom:"Genou",namedImage: "os_icon.png",showNom: true)
         let examCatGenou : [Examen] = [
-            self.LocAnat.asExamen(),
-            self.TypeTrauma.asExamen(),
-            self.LocoFonctionnel.asExamen(),
+            locoMoteurCommun.asExamen(),
             Examen(intitule: "différence de circonférence", type:  .donnee ),
             OuiNon("Choc rotulien"),
             OuiNon("lésion LCA au test de Lachman"),
@@ -241,12 +295,23 @@ extension ExamTree {
         catGenou.examens=examCatGenou
         return catGenou
     }
+     static var mobiliteEpaule:categorieExamen.Categorie {
+        let catmobiliteEpaule = categorieExamen.Categorie(nom:"<br>Mobilité",namedImage: "os_icon.png",showNom: true)
+        let examCatmobiliteEpaule = [
+            // Examen(intitule: "Xie", type:  .check ,info: " "),
+            //Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
+            //Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
+            Examen(intitule: "libre", type:  .reponsecourte ),
+            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
+        ]
+        catmobiliteEpaule.examens=examCatmobiliteEpaule
+        return catmobiliteEpaule
+    }
+
     static var Epaule:categorieExamen.Categorie {
         let catEpaule = categorieExamen.Categorie(nom:"Epaule",namedImage: "<#image#>",showNom: true)
         let examCatEpaule : [Examen] = [
-            self.LocAnat.asExamen(),
-            self.TypeTrauma.asExamen(),
-            self.LocoFonctionnel.asExamen(),
+            locoMoteurCommun.asExamen(),
             OuiNon("Douleur acromio-clavulaire"),
             Check("\"touche de piano\""),
             OuiNon("Instabilité acromio-clavulaire"),
@@ -261,6 +326,104 @@ extension ExamTree {
             ]
         catEpaule.examens=examCatEpaule
         return catEpaule
+    }
+    static var Cheville:categorieExamen.Categorie {
+        let catCheville = categorieExamen.Categorie(nom:"Cheville",namedImage: "pied_icon.png",showNom: true)
+        catCheville.startLI()
+        let examCatCheville : [Examen] = [
+            locoMoteurCommun.asExamen(),
+            self.LocoFonctionnel.asExamen(),
+            Examen(intitule: "\"craquement\" lors du traumatisme", type:  .ouinon ,info: " "),
+            Examen(intitule: "Evolution en deux temps (aggravation secondaire)", type:  .check),
+            Examen(intitule: "Appui possible", type:  .ouinon ,info: " "),
+            Check("Marche possible"),
+            Check("Marche impossible"),
+            OuiNon("déformation apparente"),
+            OuiNon("Oedeme peri-malleolaire externe"),
+            OuiNon("Oedeme peri-malleolaire interne"),
+            OuiNon("Oedeme cou du pied"),
+            OuiNon("hématome"),
+            
+            Check("douleur f.antérieur du LLE"),
+            Check("douleur f.postérieur du LLE"),
+            Check("douleur f.moyen du LLE"),
+            OuiNon("douleur achilleene"),
+            Check("Dermabrasion"),
+            
+            
+            ]
+        catCheville.examens=examCatCheville
+        return catCheville
+    }
+    static var Suture:categorieExamen.Categorie {
+        let catSuture = categorieExamen.Categorie(nom:"<br>Suture",namedImage: "nurse_icon.png",showNom: true)
+        let examCatSuture = [
+            Check("Désinfection bétadine"),
+            Check("Anesthésie locale"),
+            Check("Anesthésie Intra-thecale"),
+            Check("Xylocaine non adrénalinée"),
+            Check("Exploration"),
+            OuiNon("lésion d'élement musculo-tendineux"),
+            OuiNon("lésion vasculaire"),
+            Check("Corps étrangers"),
+            Check("Nettoyage et brossage"),
+            Check("Exérèse des tissus nécrotiques et contus"),
+            Examen(intitule: "type suture parage", datastr: ["Parage sans suture","Suture en 2 plans","Suture revètement cutanée"].sort() ),
+            
+            Examen(intitule: "Ethycrin 3/0", type:  .donnee ),
+            Examen(intitule: "Ethycrin 4/0", type:  .donnee ),
+            Examen(intitule: "Ethycrin 5/0", type: .donnee),
+            Examen(intitule: "Ethycrin 6/0", type:  .donnee ),
+            Examen(intitule: "Résorbable 3/0", type:  .donnee ),
+            Examen(intitule: "Résorbable 4/0", type:  .donnee ),
+            Examen(intitule: "Résorbable 5/0", type: .donnee),
+            Check("Stéristrip"),
+            ]
+        catSuture.examens=examCatSuture
+        return catSuture
+    }
+    
+    static var Plaie:categorieExamen.Categorie {
+        let catPlaie = categorieExamen.Categorie(nom:"Plaie",namedImage: "nurse_icon.png",showNom: true)
+        catPlaie.startLI()
+        let examCatPlaie : [Examen] = [
+            regionAnat,
+            
+            self.LocAnat.asExamen(),
+            Examen(intitule: "situation", type:  .reponsecourte ),
+            Check("franche"),Check("déchiquetée"),
+            Check("superficielle, ne dépassant pas le derme"),
+            Examen(intitule: "contexte", type:  .reponsecourte ),
+            
+            Check("par écrasement"),
+            Check("par lacération"),
+            Check("par morsure"),
+            Examen(intitule: "agent vulnérant", type:  .donnee ,tag: "libre"),
+            Examen(intitule: "taille", type:  .donnee ,tag: "libre"),
+            Check("bords nets"),
+            Check("bords contus"),
+            ]
+        let  Plaie2: [Examen] = [
+            Check("Souillure"),
+            Check("perte de substance"),
+            Check("présence de zones tissulaires dévitalisées"),
+            OuiNon("élément noble visible"),
+            Check("datant de plusieurs jours"),
+            Check("datant de plus de 6 heures"),
+            
+            self.Suture.asExamen(),
+            Examen(intitule: "Test d'immunité anti-tétanique", type:  .donnee ),
+            Examen(intitule: "Antibioprophylaxie", type:  .donnee ),
+            Check("Surveillance journalière"),
+            
+            Check("Ablation des points par IDE ou MT sous 5-8 jours selon cicatrisation"),
+            
+            Check("Ablation des points par IDE ou MT sous 8-10 jours selon cicatrisation"),
+            
+            
+            ]
+        catPlaie.examens=examCatPlaie+Plaie2
+        return catPlaie
     }
     
 }

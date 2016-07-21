@@ -18,8 +18,12 @@ class ExamTree :NSObject{
             return self.Neurologie.asExamen()
         case "Digestif":
             return self.Digestif.asExamen()
+        case "neuroVertige":
+            return self.neuroVertige.asExamen()
         case "Locomoteur":
             return self.Locomoteur.asExamen()
+        case "ORL":
+            return self.ORL.asExamen()
         case "Cardiovasculaire":
             return self.Cardiovasculaire.asExamen()
         case "Urologie":
@@ -41,6 +45,8 @@ class ExamTree :NSObject{
             return self.Main.asExamen()
         case "Doigt":
             return self.Doigt.asExamen()
+        case "Poignet":
+            return self.Poignet.asExamen()
         case "RachisLombaire":
             return self.RachisLombaire.asExamen()
         case "Hanche":
@@ -51,6 +57,9 @@ class ExamTree :NSObject{
             return self.Jambe.asExamen()
         case "Cheville":
             return self.Cheville.asExamen()
+        case "TTT":
+            return self.TTT.asExamen()
+
         case "ECG":
             return self.ECG.asExamen()
         case "Biologie":
@@ -203,36 +212,7 @@ class ExamTree :NSObject{
         catTTT.examens=examCatTTT
         return catTTT
     }
-    static var LocAnat:categorieExamen.Categorie {
-        let catLocAnat = categorieExamen.Categorie(nom:"Loc.  anatomique",namedImage: "os_icon.png",showNom: false)
-        let examCatLocAnat : [Examen] = [
-            Check("droit(e)"),
-            Check("gauche"),
-            
-            Examen(intitule: "Bord", type:  .check, info: " "  ),
-            Examen(intitule: "Extrémité", type:  .check, info: " "  ),
-            Examen(intitule: "face", type:  .check, info: " "  ),
-            Check("interne (e)"),
-            Check("médial (e)"),
-            Check("médian"),
-            Check("latéral(e)"),
-            Check("externe"),
-            Examen(intitule: "1/3", type:  .check , info : " " ),
-            Examen(intitule: "1/4", type:  .check, info: " "  ),
-            Check("antérieur(e)"),
-            Check("postérieur(e)"),
-            Check("inférieur(e)"),
-            Check("supérieur(e)"),
-            Check("proximal(e)"),
-            Check("distal(e)"),
-            Check("droit(e)"),
-            Check("gauche"),
-            Check("bilatéral(e)"),
-            
-            ]
-        catLocAnat.examens=examCatLocAnat
-        return catLocAnat
-    }
+
     static var motif:categorieExamen.Categorie {
         let catMotif = categorieExamen.Categorie(nom:"Motif(s)",namedImage: "tete_icon.png",showNom: false)
         
@@ -310,20 +290,18 @@ class ExamTree :NSObject{
         let catComorbidite = categorieExamen.Categorie(nom:"Comorbidité/Antécédents",namedImage: "dossier.png",showNom: true)
         
         let examCatComorbidite : [Examen] = [
-            ExamTree.atcd.asExamen(),
-            Examen(intitule: "Ajout atcd",type: .addinfo,tag: "atcd"),
-            Check("Pas d'atcds notables"),
-            
-            
+
+            Check("Pas d'atcds notables<br>"),
             FRCV.asExamen(),
             Vaccin.asExamen(),
             OuiNon("Allergie connue"),
             OuiNon("Allergie médicamenteuse connue"),
             Examen(intitule: "Detail", type:  .reponsecourte, tag: "Allergie" ),
             
-            Check("Usager de médecine alternative"),
+           // Check("Usager de médecine alternative"),
             
             ]
+        catComorbidite.subitems.append("atcd")
         catComorbidite.examens=examCatComorbidite
         return catComorbidite
     }
@@ -354,7 +332,7 @@ class ExamTree :NSObject{
             Examen(intitule: "de qui ?", type:  .selection,tag: "medecin" ),
             Examen(intitule: "Date", type:  .donnee, tag: "date" ),
             Examen(intitule: "source info traitement", datastr: ["(Traitement indiqué par le patient)","(Traitement indiqué par l'entourage)","(Traitement non connu par le patient)","(Traitement vu courrier de transmission)"].sort() ),
-            Check("(Autre prise médicamenteuse non identifié par le patient)"),
+            Check("(Autre prise médicamenteuse non identifié)"),
             
             ]
         catdetailsTraitement.examens=examCatdetailsTraitement
@@ -369,8 +347,8 @@ class ExamTree :NSObject{
             Examen(categorie: ExamTree.TTT),
             Examen(intitule: "Ajout traitement",type: .addinfo,tag: "TTT"),
             detailsTraitement.asExamen(),
-            
             ]
+        catTraitement.subitems.append("TTT")
         catTraitement.examens=examCatTraitement
         return catTraitement
     }
@@ -396,22 +374,22 @@ class ExamTree :NSObject{
         return catPoids
     }
     
-    static var TA:categorieExamen.Categorie {
-        setTensionMultiRow()
-        let catTA = categorieExamen.Categorie(nom:"Tension artérielle",namedImage: "tension.png",showNom: false)
-        let examCatTA : [Examen] = [
-            tensionMultirow,
-            Examen(intitule: "Tension bras droit", type: .multirowdatastr , tag: "tensionMultirow"),
-            Examen(intitule: "Tension bras gauche", type: .multirowdatastr , tag: "tensionMultirow"),
-            Examen(intitule: "Tension cheville droite", type: .multirowdatastr , tag: "tensionMultirow"),
-            Examen(intitule: "Tension cheville gauche", type: .multirowdatastr , tag: "tensionMultirow"),
-            
-            Examen(intitule: "Index Pression Cheville (0,9<1,3)", type:  .donnee ,tag :"tension"),
-            
-            ]
-        catTA.examens=examCatTA
-        return catTA
-    }
+//    static var TA:categorieExamen.Categorie {
+//        setTensionMultiRow()
+//        let catTA = categorieExamen.Categorie(nom:"Tension artérielle",namedImage: "tension.png",showNom: false)
+//        let examCatTA : [Examen] = [
+//            tensionMultirow,
+//            Examen(intitule: "Tension bras droit", type: .multirowdatastr , tag: "tensionMultirow"),
+//            Examen(intitule: "Tension bras gauche", type: .multirowdatastr , tag: "tensionMultirow"),
+//            Examen(intitule: "Tension cheville droite", type: .multirowdatastr , tag: "tensionMultirow"),
+//            Examen(intitule: "Tension cheville gauche", type: .multirowdatastr , tag: "tensionMultirow"),
+//            
+//            Examen(intitule: "Index Pression Cheville (0,9<1,3)", type:  .donnee ,tag :"tension"),
+//            
+//            ]
+//        catTA.examens=examCatTA
+//        return catTA
+//    }
     static var Pancartes:categorieExamen.Categorie {
         let catPancartes = categorieExamen.Categorie(nom:"Pancartes",namedImage: "thermo_icon.png",showNom: true)
         let examCatPancartes : [Examen] = [
@@ -425,116 +403,33 @@ class ExamTree :NSObject{
     }
     
     
-    static var Pancarte:categorieExamen.Categorie {
-        let catPancarte = categorieExamen.Categorie(nom:"Pancarte",namedImage: "pancarte_icon.png",showNom: false)
-        catPancarte.startLI()
-        let examCatPancarte : [Examen] = [
-            Examen(intitule: "horodatage", type:  .reponsecourte,tag: "date" ),
-            Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            
-            Examen(intitule: "FC", type:  .donnee,tag: "FC" ),
-            tensionMultirow,
-            Examen(intitule: "Tension bras droit", type: .multirowdatastr , tag: "tensionMultirow"),
-            Examen(intitule: "Tension bras gauche", type: .multirowdatastr , tag: "tensionMultirow"),
-            
-            self.temperatureMultirow,
-            
-            saO2("SaO2% AA"),
-            saO2("Sao2% sous O2"),
-            
-            Examen(intitule: "Fr. Resp", type:  .donnee ,tag: "fresp"),
-            Examen(intitule: "EVA", type:  .donnee,tag: "EVA" ),
-            
-            ]
-        
-        
-        catPancarte.examens=examCatPancarte
-        return catPancarte
-    }
-    static var Cheville:categorieExamen.Categorie {
-        let catCheville = categorieExamen.Categorie(nom:"Cheville",namedImage: "pied_icon.png",showNom: true)
-        catCheville.startLI()
-        let examCatCheville : [Examen] = [
-            self.LocAnat.asExamen(),
-            self.TypeTrauma.asExamen(),
-            self.LocoFonctionnel.asExamen(),
-            Examen(intitule: "\"craquement\" lors du traumatisme", type:  .ouinon ,info: " "),
-            Examen(intitule: "Evolution en deux temps (aggravation secondaire)", type:  .check),
-            Examen(intitule: "Appui possible", type:  .ouinon ,info: " "),
-            Check("Marche possible"),
-            Check("Marche impossible"),
-            OuiNon("déformation apparente"),
-            OuiNon("Oedeme peri-malleolaire externe"),
-            OuiNon("Oedeme peri-malleolaire interne"),
-            OuiNon("Oedeme cou du pied"),
-            OuiNon("hématome"),
-            
-            Check("douleur f.antérieur du LLE"),
-            Check("douleur f.postérieur du LLE"),
-            Check("douleur f.moyen du LLE"),
-            OuiNon("douleur achilleene"),
-            Check("Dermabrasion"),
-            
-            
-            ]
-        catCheville.examens=examCatCheville
-        return catCheville
-    }
-    static var Plaie:categorieExamen.Categorie {
-        let catPlaie = categorieExamen.Categorie(nom:"Plaie",namedImage: "nurse_icon.png",showNom: true)
-        catPlaie.startLI()
-        let examCatPlaie : [Examen] = [
-            regionAnat,
-            Examen(intitule: "situation", type:  .reponsecourte ),
-            self.LocAnat.asExamen(),
-            Check("superficielle"),
-            Examen(intitule: "contexte", type:  .reponsecourte ),
-            
-            Check("par écrasement"),
-            Check("par lacération"),
-            Check("par morsure"),
-            Examen(intitule: "taille", type:  .donnee ),
-            Check("bords nets"),
-            Check("bords contus"),
-            Check("plaie souillée"),]
-        let  Plaie2: [Examen] = [
-            
-            Check("perte de substance"),
-            Check("présence de zones tissulaires dévitalisées"),
-            Check("datant de plusieurs jours"),
-            Check("datant de plus de 6 heures"),
-            Check("Désinfection bétadine"),
-            Check("Anesthésie locale"),
-            Check("Anesthésie Intra-thecale"),
-            Check("Xylocaine non adrénalinée"),
-            Check("Exploration"),
-            Check("Corps étrangers"),
-            Check("Nettoyage et brossage"),
-            Check("Exérèse des tissus nécrotiques ou contus"),
-            Check("Suture en 2 plans"),
-            
-            Check("Suture revëtement cutanée"),
-            Examen(intitule: "Ethycrin 3/0", type:  .donnee ),
-            Examen(intitule: "Ethycrin 4/0", type:  .donnee ),
-            Examen(intitule: "Ethycrin 5/0", type: .donnee),
-            Examen(intitule: "Ethycrin 6/0", type:  .donnee ),
-            Examen(intitule: "Résorbable 3/0", type:  .donnee ),
-            Examen(intitule: "Résorbable 4/0", type:  .donnee ),
-            Examen(intitule: "Résorbable 5/0", type: .donnee),
-            Examen(intitule: "Test d'immunité anti-tétanique", type:  .donnee ),
-            Examen(intitule: "Antibioprophylaxie", type:  .donnee ),
-            Check("Surveillance journalière"),
-            
-            Check("Ablation des points par IDE ou MT sous 5-8 jours selon cicatrisation"),
-            
-            Check("Ablation des points par IDE ou MT sous 8-10 jours selon cicatrisation"),
-            
-            
-            ]
-        catPlaie.examens=examCatPlaie+Plaie2
-        return catPlaie
-    }
-    
+//    static var Pancarte:categorieExamen.Categorie {
+//        let catPancarte = categorieExamen.Categorie(nom:"Pancarte",namedImage: "pancarte_icon.png",showNom: false)
+//        catPancarte.startLI()
+//        let examCatPancarte : [Examen] = [
+//            Examen(intitule: "horodatage", type:  .reponsecourte,tag: "date" ),
+//            Examen(intitule: "Commentaire", type:  .reponsecourte ),
+//            
+//            Examen(intitule: "FC", type:  .donnee,tag: "FC" ),
+//            tensionMultirow,
+//            Examen(intitule: "Tension bras droit", type: .multirowdatastr , tag: "tensionMultirow"),
+//            Examen(intitule: "Tension bras gauche", type: .multirowdatastr , tag: "tensionMultirow"),
+//            
+//            self.temperatureMultirow,
+//            
+//            saO2("SaO2% AA"),
+//            saO2("Sao2% sous O2"),
+//            
+//            Examen(intitule: "Fr. Resp", type:  .donnee ,tag: "fresp"),
+//            Examen(intitule: "EVA", type:  .donnee,tag: "EVA" ),
+//            
+//            ]
+//        
+//        
+//        catPancarte.examens=examCatPancarte
+//        return catPancarte
+//    }
+//    
     
     
    
@@ -543,22 +438,33 @@ class ExamTree :NSObject{
     static var EntretienPatient:categorieExamen.Categorie {
         let catEntretienPatient = categorieExamen.Categorie(nom:"Entretien",namedImage: "tete_icon.png",showNom: false)
         let examCatEntretienPatient : [Examen] = [
-            Check("Entretien avec le patient"),
-            Check("Entretien avec le patient et son entourage"),
-            Check("Entretien avec l'entourage"),
-            Check("Compte rendu des examens reçus"),
-            Check("Discussion sur les hypothèses diagnostiques"),
-            Check("Discussion sur le devenir"),
-            Check("souhaite des examens complémentaires"),
-            Check("souhaite un avis spécialisé"),
-            Check("difficulté pour le maintien à domicile"),
-            Check("ne souhaite pas d'investigations supplémentaires"),
-            Check("souhaiterait une hospitalisation"),
-            Check("agacé par l'attente"),
-            Check("ne souhaite pas l'hospitalisation"),
-            Check("ne souhaite pas quitter le service"),
-            
-            Check("souhaiterait si possible un retour à domicile"),
+            Examen(intitule: "entretien avec",
+                    datastr: [
+                        "Entretien avec le patient",
+                        "Entretien avec le patient et son entourage",
+                        "Entretien avec l'entourage"
+                                ].sort() ),
+            Examen(intitule: "sujet discussion",
+                datastr: [
+                    "Compte rendu des examens reçus",
+                    "Discussion sur les hypothèses diagnostiques",
+                    "Discussion sur le devenir"
+                    ].sort() ),
+            Examen(intitule: "souhait patient",
+                datastr: [
+                    "souhaite des examens complémentaires",
+                    "souhaite un avis spécialisé",
+                    "difficulté pour le maintien à domicile",
+                    "ne souhaite pas d'investigations supplémentaires",
+                    "souhaiterait une hospitalisation",
+                    "agacé par l'attente",
+                    "ne souhaite pas l'hospitalisation",
+                    "ne souhaite pas quitter le service",
+                    "souhaiterait si possible un retour à domicile",
+                    "souhaite un retour à domicile",
+                    
+                    ].sort() ),
+
             Check("souhaite un retour à domicile"),
             Check("sortie contre avis médical"),
             
@@ -593,6 +499,7 @@ class ExamTree :NSObject{
         catActeTherapeuthique.startLI()
         let examCatActeTherapeuthique : [Examen] = [
             Check("Voie veineuse"),
+            Check("2ième voie veineuse"),
             Examen(intitule: "Oxygénothérapie lunettes", type:  .donnee ),
             Examen(intitule: "Oxygénothérapie masque", type:  .donnee ),
             Examen(intitule: "Administration", type:  .check ,info: " "),
@@ -1098,7 +1005,7 @@ class ExamTree :NSObject{
         //static var :Examen {
         
         Donnees.selectiontextDict["dataStrAccompagnant"]=[
-            "Epoux(se)","Frère","Soeur","Mère","Père","Compagnon","Compagne","proches",
+            "Epoux(se)","Frère","Soeur","Mère","Père","Compagnon","Compagne","Parents","Grand-Parents","Collègues","Famille","Conjoint(e)","proches",
         ]
         
         return Examen(intitule: "Accompagnant", type: .datastr, tag: "dataStrAccompagnant")

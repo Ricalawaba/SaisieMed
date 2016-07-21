@@ -13,27 +13,20 @@ extension ExamTree {
         let catDigestifFonctionnel = categorieExamen.Categorie(nom:"Fonctionnel",namedImage: "tete_icon.png",showNom: true)
         catDigestifFonctionnel.startLI()
         let examCatDigestifFonctionnel : [Examen] = [
+            OuiNon("Anorexie"),
             OuiNon("Nausée/Vomissements"),
+            Examen(intitule: "type vomissements", datastr: ["vomissement alimentaire","vomissement de suc gastrique(incolore)","vomissement bileux (jaune)","vomissement fécaloïde","vomissement sanglant","vomissement noirâtre"].sort() ),
+            OuiNon("Vomissement en jet"),
             OuiNon("Ballonement"),
-            OuiNon("Diarrhée"),
-            OuiNon("Constipation"),
-            
             OuiNon("Trouble de l'apétit"),
             OuiNon("Trouble du transit"),
+            OuiNon("Diarrhée"),
+            OuiNon("Constipation"),
             Check("Alternance diarrhée / constipation"),
             Examen(intitule: "dernier repas", type:  .donnee,tag: "date" ),
             Examen(intitule: "dernières selles", type:  .donnee,tag: "date" ),
-            Check("\"normale\""),
-            Check("Selles moulées"),
-            Check("Selles dures"),
-            Check("Selles liquides"),
-            Check("Selles molles"),
-            Check("Selles glaireuses"),
-            OuiNon("Méléna"),
-            OuiNon("Rectorragie"),
-            Check("coloration normale"),
-            OuiNon("décoloration des selles"),
-            OuiNon("Constipation"),
+            Examen(intitule: "consistance selles", datastr: ["","\"normales\"","Selles moulées","Selles dures","Selles liquides","Selles molles","Selles glaireuses"].sort() ),
+            Examen(intitule: "coloration selles", datastr: ["de couleur \"normale\"","de couleur foncée","de couleur claire","de couleur noirâtre (méléna)","de couleur rougeatres","sanglantes (rectorragie)"].sort() ),
             OuiNon("Odeur inhabituelle"),
             
             
@@ -77,13 +70,17 @@ extension ExamTree {
             
             ExamTree.DigestifDouleur.asExamen(),
             ExamTree.DigestifFonctionnel.asExamen(),
-            Check("Abdomen souple et depressible"),
-            OuiNon("Bruits hydroaériques audbles"),
-            OuiNon("exacerbation des flatulences"),
+            Check("Abdomen souple et dépressible"),
+             Check("Pas de défense"),
+             Check("Silence auscultatoire"),
+            OuiNon("Bruits hydroaériques audibles"),
             OuiNon("borborygmes"),
+            OuiNon("Météorisme"),
+            OuiNon("exacerbation des flatulences"),
+            
             Check("B.H.A. +++"),
             Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Check("Pas de défense"),
+           
             
             
             

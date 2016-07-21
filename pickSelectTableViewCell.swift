@@ -7,31 +7,72 @@
 //
 
 import UIKit
+import DropDown
 
 class pickSelectTableViewCell: UITableViewCell ,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
     var examen:Examen! = nil
-    
+    var dropdown=DropDown()
     
     @IBOutlet weak var intituleLabel: UILabel!
 
+    @IBAction func launchDropDown(sender: UIButton) {
+        var dd:[String]=[]
+        
+        for t in Donnees.selectiontextDict[examen.tag]! {
+            dd.append(t)
+        }
+        dropdown.anchorView=self.viewForLastBaselineLayout
+        dropdown.dataSource=dd
+        //  dropdown.topOffset = CGPoint(x: 0, y:-sender.plainView.bounds.height)
+        dropdown.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.examen.value=item
+            //self.tableView.reloadData()
+            self.valueTextField.text=item
+            
+        }
+        
+        dropdown.show()
+    }
+    @IBAction func tapTextField(sender: UITextField) {
+//                var dd:[String]=[]
+//        
+//                for t in Donnees.selectiontextDict[examen.tag]! {
+//                    dd.append(t)
+//                }
+//                dropdown.anchorView=self.viewForLastBaselineLayout
+//                dropdown.dataSource=dd
+//                //  dropdown.topOffset = CGPoint(x: 0, y:-sender.plainView.bounds.height)
+//                dropdown.selectionAction = { [unowned self] (index: Int, item: String) in
+//                    self.examen.value=item
+//                    //self.tableView.reloadData()
+//                    self.valueTextField.text=item
+//                    
+//                }
+//                
+//                dropdown.show()
+    }
     @IBOutlet weak var valueTextField: UITextField!
     @IBAction func valueTextFieldDidEnd(sender: UITextField) {
+
+
         if (valueTextField.text != nil) {
             examen.value = valueTextField.text!
             
         }else {
             examen.value=""
         }
-
+        valueTextField.resignFirstResponder()
     }
+    var thePickerView:UIPickerView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         valueTextField.delegate=self
         
-        let pickerView=UIPickerView()
-        pickerView.delegate=self
-        valueTextField.inputView=pickerView
+        thePickerView=UIPickerView()
+//        thePickerView.delegate=self
+//        valueTextField.inputView=thePickerView
+//        
         
     }
 

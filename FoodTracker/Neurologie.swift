@@ -23,6 +23,7 @@ extension ExamTree {
             Check("Pas de signe de localisation"),
             //self.libre,
         ]
+        catNeurologie.subitems.append("neuroVertige")
         catNeurologie.examens=examCatNeurologie
         return catNeurologie
     }
@@ -55,7 +56,29 @@ extension ExamTree {
         return catNerfsCraniens
     }
   
-    
+     static var neuroVertige:categorieExamen.Categorie {
+        let catneuroVertige = categorieExamen.Categorie(nom:"neuroVertige",namedImage: "neuro_icon.png",showNom: false)
+        let examCatneuroVertige = [
+            Check("Syndrome vertigineux"),
+            OuiNon("Nystagmus Central"),
+            Check("Nystagmus vertical mal organisé"),
+             Check("Nystagmus horrizonto-rotatoire, modifié par le regard (Gaze Evoked Nystagmus)"),
+            OuiNon("Nystagmus périphérique"),
+            Check("Nystagmus horrizonto-rotatoire, non modifié par le regard"),
+            Check("Head Shaking Test (HST)"),
+            OuiNon("Majoration du nystagmus spontannée"),
+            Check("-----------------------"),
+            Check("Reflexe vestibulo-oculaire (Head Impulse Test)"),
+            OuiNon("Saccades de refixation oculaires (périphérique)"),
+            Check("Désalignement oculaire vertical (masque alternant, Skew Deviation)"),
+            Check("Repositionnement oculaire alternant (central?)"),
+            OuiNon("Perte auditive brutale récente"),
+
+        ]
+        catneuroVertige.examens=examCatneuroVertige
+        return catneuroVertige
+    }
+
         // MARK: Neurologie Fonctionnels
     static var neuroFonctionnel:categorieExamen.Categorie {
         let catneuroFonctionnel = categorieExamen.Categorie(nom:"Fonctionnels",namedImage: "tete_icon.png",showNom: true)
@@ -75,10 +98,12 @@ extension ExamTree {
             OuiNon("Troubles visuels"),
             OuiNon("Troubles Cognitifs"),
             OuiNon("Vertiges"),
+            
             //self.libre,
             // Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
             
         ]
+        
         catneuroFonctionnel.examens=examCatneuroFonctionnel
         return catneuroFonctionnel
     }
