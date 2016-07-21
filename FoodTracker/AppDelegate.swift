@@ -12,6 +12,10 @@ import DropDown
 // TODO: import/export fichier patient
 // TODO: reduction taille des données sauvegardées non utilisés
 // TODO: Alertes Bio, Examen, Autre
+// TODO: Bug affichage image document après insertion
+// TODO: Filtration HTML dans les enoncés/intitulés des celulles
+// TODO: Restructuration examen cardiorespiratoire
+
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
         let newRed = CGFloat(red)/255

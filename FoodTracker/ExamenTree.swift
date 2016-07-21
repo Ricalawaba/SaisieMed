@@ -32,7 +32,8 @@ class ExamTree :NSObject{
             return self.Plaie.asExamen()
         case "Face":
             return self.Face.asExamen()
-    
+        case "Plainte":
+            return self.Plainte.asExamen()
         case "RachisCervical":
             return self.RachisCervical.asExamen()
         case "Epaule":
@@ -604,13 +605,10 @@ class ExamTree :NSObject{
         let examCatExamenGeneral : [Examen] = [
             Examen(intitule: "Communication", datastr: ["Communication normale","Pas de communication","Communication altérée","difficultés linguistiques","Refus de communication"].sort() ),
             OuiNon("Troubles du langage"),
-            //    Check("Communication normale" ),
-            //  Check("Pas de communication" ),
-            //Check("Communication altérée" ),
-            //Check("Compréhension difficile" ),
+            
             Check("Conscient" ),
             Check("Orienté" ),
-            OuiNon("Anxiété apparente"),
+            OuiNon("Anxiété majeure apparente"),
             Check("Très algique"),
             OuiNon("Sueurs"),
             Check("Coloration cutanée normale"),
@@ -716,11 +714,13 @@ class ExamTree :NSObject{
         let catPlainteAnamnèse = categorieExamen.Categorie(nom:"Plaintes/Anamnèse",namedImage: "tete_icon.png",showNom: true)
         catPlainteAnamnèse.startLI()
         let examCatPlainteAnamnèse : [Examen] = [
+            ExamTree.Plainte.asExamen(),
+            OuiNon("Prise médicamenteuse"),
+            TTT.asExamen(),
             
-            //self.libre,
-            Examen(categorie: ExamTree.Plainte),
-            Examen(intitule: "Ajout plainte",type: .addinfo,tag: "Plainte")
         ]
+        catPlainteAnamnèse.subitems.append("Plainte")
+        catPlainteAnamnèse.subitems.append("TTT")
         catPlainteAnamnèse.examens=examCatPlainteAnamnèse
         return catPlainteAnamnèse
     }
