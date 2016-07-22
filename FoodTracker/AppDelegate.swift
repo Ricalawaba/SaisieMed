@@ -15,7 +15,7 @@ import DropDown
 // TODO: Bug affichage image document après insertion
 // TODO: Filtration HTML dans les enoncés/intitulés des celulles
 // TODO: Restructuration examen cardiorespiratoire
-
+// TODO: Nom celule du document et renommage plus human readable
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
         let newRed = CGFloat(red)/255

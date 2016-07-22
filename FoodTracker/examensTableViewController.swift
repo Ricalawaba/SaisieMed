@@ -37,40 +37,29 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
         dropdown.topOffset = CGPoint(x: 0, y:-sender.plainView.bounds.height)
         dropdown.selectionAction = { [unowned self] (index: Int, item: String) in
             print("Selected item: \(item) at index: \(index)")
-            //  var exam = Examen(
+            var exam : Examen? = ExamTree.getExam(item)
             //      if let exam=
-            if item == "Libre" {
-                self.categorie.examens.append(ExamTree.libre)
-            } else {
-                if let exam=ExamTree.getExam(item) {
-                    self.categorie.examens.append(exam)
-                }
-                else {print("erreur examen non reconnu : \"\(item)\"")}
+            if exam != nil {
+                self.categorie.examens.append(exam!)
                 
-                //                 let netExam=Examen(intitule: exam.intitule, type: exam.type)
-                //                self.categorie.examens.append(self.categorie.subitems![item]!)
             }
+            else {print("erreur examen non reconnu : \"\(item)\"");return}
+            
+            //                 let netExam=Examen(intitule: exam.intitule, type: exam.type)
+            //                self.categorie.examens.append(self.categorie.subitems![item]!)
+            
             self.tableView.reloadData()
+            
             let rowToSelect:NSIndexPath = NSIndexPath(forRow: self.categorie.examens.count-1, inSection: 0)
             // NSIndexPath(
             self.tableView.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.Bottom)
             // self.performSegueWithIdentifier("autoshow", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
-            if item != "Libre" {
-                self.performSegueWithIdentifier("autoshow", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
-            } else {
+            self.tableView.scrollToRowAtIndexPath(rowToSelect, atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
+            if exam!.categorie==nil {
+                self.tableView.reloadData();
                 
-                //self.performSegueWithIdentifier("selectionSegue", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
-            }
-            //            self.tableView.scrollToRowAtIndexPath(rowToSelect, atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
-            //
-            
-            switch index {
-            case 0:
-                // self.
-                break
-            default:
-                break
-            }
+                return}
+            self.performSegueWithIdentifier("autoshow", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
             self.tableView.reloadData()
             
         }
@@ -327,91 +316,91 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
             self.navigationController!.pushViewController(svc,animated: true)
         }
         
-//        if ExamTaped!.tag == "tension" {
-//            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectNumberID") as! selectNumberViewController
-//            _ = svc.view
-//            svc.numberPickView.type = .tensionarterielle
-//            
-//            svc.delegate=self
-//            self.navigationController!.pushViewController(svc,animated: true)
-//        }
-//        if ExamTaped!.tag == "EVA" {
-//            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
-//            svc.minNumber=0
-//            svc.maxNumber=11
-//            svc.step=1
-//            svc.Information = "EVA"
-//            if ExamTaped!.value.isEmpty {
-//                svc.value="0"
-//            } else {
-//                
-//                svc.value=ExamTaped!.value
-//            }
-//            
-//            _ = svc.view
-//            
-//            
-//            
-//            svc.delegate=self
-//            self.navigationController!.pushViewController(svc,animated: true)
-//        }
-//        if ExamTaped!.tag == "FC" {
-//            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
-//            svc.minNumber=25
-//            svc.maxNumber=310
-//            svc.step=5
-//            svc.Information = "Freq. Cardiaque"
-//            if ExamTaped!.value.isEmpty {
-//                svc.value="80"
-//            } else {
-//                
-//                svc.value=ExamTaped!.value
-//            }
-//            _ = svc.view
-//            
-//            
-//            
-//            svc.delegate=self
-//            self.navigationController!.pushViewController(svc,animated: true)
-//        }
-//        if ExamTaped!.tag == "sao2" {
-//            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
-//            svc.minNumber=75
-//            svc.maxNumber=101
-//            svc.step=1
-//            svc.Information = "SaO2%"
-//            if ExamTaped!.value.isEmpty {
-//                svc.value="95"
-//            } else {
-//                
-//                svc.value=ExamTaped!.value
-//            }
-//            _ = svc.view
-//            
-//            
-//            
-//            svc.delegate=self
-//            self.navigationController!.pushViewController(svc,animated: true)
-//        }
-//        if ExamTaped!.tag == "fresp" {
-//            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
-//            svc.minNumber=5
-//            svc.maxNumber=35
-//            svc.step=1
-//            svc.Information = "Freq. respiratoire"
-//            if ExamTaped!.value.isEmpty {
-//                svc.value="95"
-//            } else {
-//                
-//                svc.value=ExamTaped!.value
-//            }
-//            _ = svc.view
-//            
-//            
-//            
-//            svc.delegate=self
-//            self.navigationController!.pushViewController(svc,animated: true)
-//        }
+        //        if ExamTaped!.tag == "tension" {
+        //            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectNumberID") as! selectNumberViewController
+        //            _ = svc.view
+        //            svc.numberPickView.type = .tensionarterielle
+        //
+        //            svc.delegate=self
+        //            self.navigationController!.pushViewController(svc,animated: true)
+        //        }
+        //        if ExamTaped!.tag == "EVA" {
+        //            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+        //            svc.minNumber=0
+        //            svc.maxNumber=11
+        //            svc.step=1
+        //            svc.Information = "EVA"
+        //            if ExamTaped!.value.isEmpty {
+        //                svc.value="0"
+        //            } else {
+        //
+        //                svc.value=ExamTaped!.value
+        //            }
+        //
+        //            _ = svc.view
+        //
+        //
+        //
+        //            svc.delegate=self
+        //            self.navigationController!.pushViewController(svc,animated: true)
+        //        }
+        //        if ExamTaped!.tag == "FC" {
+        //            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+        //            svc.minNumber=25
+        //            svc.maxNumber=310
+        //            svc.step=5
+        //            svc.Information = "Freq. Cardiaque"
+        //            if ExamTaped!.value.isEmpty {
+        //                svc.value="80"
+        //            } else {
+        //
+        //                svc.value=ExamTaped!.value
+        //            }
+        //            _ = svc.view
+        //
+        //
+        //
+        //            svc.delegate=self
+        //            self.navigationController!.pushViewController(svc,animated: true)
+        //        }
+        //        if ExamTaped!.tag == "sao2" {
+        //            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+        //            svc.minNumber=75
+        //            svc.maxNumber=101
+        //            svc.step=1
+        //            svc.Information = "SaO2%"
+        //            if ExamTaped!.value.isEmpty {
+        //                svc.value="95"
+        //            } else {
+        //
+        //                svc.value=ExamTaped!.value
+        //            }
+        //            _ = svc.view
+        //
+        //
+        //
+        //            svc.delegate=self
+        //            self.navigationController!.pushViewController(svc,animated: true)
+        //        }
+        //        if ExamTaped!.tag == "fresp" {
+        //            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+        //            svc.minNumber=5
+        //            svc.maxNumber=35
+        //            svc.step=1
+        //            svc.Information = "Freq. respiratoire"
+        //            if ExamTaped!.value.isEmpty {
+        //                svc.value="95"
+        //            } else {
+        //
+        //                svc.value=ExamTaped!.value
+        //            }
+        //            _ = svc.view
+        //
+        //
+        //
+        //            svc.delegate=self
+        //            self.navigationController!.pushViewController(svc,animated: true)
+        //        }
         if ExamTaped!.tag == "poids" {
             let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
             svc.minNumber=10
@@ -501,6 +490,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
     }
     // MARK: Affiche le premier element du tabview si c'est type "selection"
     func autoshowFirstGroup () {
+        if categorie == nil {return }
         if categorie.examens.count==0 { return }
         
         let aExam = categorie.examens[0]
@@ -734,23 +724,23 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
                     cell3.examen=examen1
                     return cell3
                 } /*else if examen1.type == Examen.ExamenEnum.datastr {
-
-                    var dd:[String]=[]
-
-                    for t in Donnees.selectiontextDict[examen1.tag]! {
-                        dd.append(t)
-                    }
-                    dropdown.anchorView=self.view
-                    dropdown.dataSource=dd
-                  //  dropdown.topOffset = CGPoint(x: 0, y:-sender.plainView.bounds.height)
-                    dropdown.selectionAction = { [unowned self] (index: Int, item: String) in
-                        examen1.value=item
-                        self.tableView.reloadData()
-                        
-                    }
-                    
-                    dropdown.show()
-                }*/else if examen1.type == Examen.ExamenEnum.datastr || examen1.type == Examen.ExamenEnum.multirowdatastr {
+                     
+                     var dd:[String]=[]
+                     
+                     for t in Donnees.selectiontextDict[examen1.tag]! {
+                     dd.append(t)
+                     }
+                     dropdown.anchorView=self.view
+                     dropdown.dataSource=dd
+                     //  dropdown.topOffset = CGPoint(x: 0, y:-sender.plainView.bounds.height)
+                     dropdown.selectionAction = { [unowned self] (index: Int, item: String) in
+                     examen1.value=item
+                     self.tableView.reloadData()
+                     
+                     }
+                     
+                     dropdown.show()
+                 }*/else if examen1.type == Examen.ExamenEnum.datastr || examen1.type == Examen.ExamenEnum.multirowdatastr {
                     let cell3 = tableView.dequeueReusableCellWithIdentifier("pickSelectCell", forIndexPath: indexPath) as! pickSelectTableViewCell
                     cell3.intituleLabel.text=examen1.intitule
                     cell3.valueTextField.text=examen1.value

@@ -12,7 +12,10 @@ class ExamTree :NSObject{
     
     static func getExam(examtype:String) ->Examen? {
         switch examtype {
-        case "libre":
+        case "zone anatomique":
+            return self.regionAnat
+        case "Libre","libre" :
+       // case "libre":
             return self.libre
         case "Neurologie":
             return self.Neurologie.asExamen()
@@ -71,7 +74,8 @@ class ExamTree :NSObject{
             return self.Bandelette.asExamen()
         case "Imagerie":
             return self.Imagerie.asExamen()
-            
+        case "pancarte":
+            return self.Pancartes.asExamen()
     
         default:
             print("get exam Non géré : ", examtype)
@@ -344,10 +348,9 @@ class ExamTree :NSObject{
         let catTraitement = categorieExamen.Categorie(nom:"Traitement",namedImage: "medoc_icon.png",showNom: true)
         catTraitement.startNewLine()
         let examCatTraitement : [Examen] = [
-            Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(categorie: ExamTree.TTT),
-            Examen(intitule: "Ajout traitement",type: .addinfo,tag: "TTT"),
             detailsTraitement.asExamen(),
+            Examen(categorie: ExamTree.TTT),
+
             ]
         catTraitement.subitems.append("TTT")
         catTraitement.examens=examCatTraitement
@@ -575,6 +578,7 @@ class ExamTree :NSObject{
             Examen(intitule: "Ajout pancarte",type: .addinfo,tag: "pancarte"),
             Examen(intitule: "Ajout évènement",type: .addinfo,tag: "evenementSuivi"),
             ]
+        catSuiviEvolution.subitems.append("pancarte")
         catSuiviEvolution.examens=examCatSuiviEvolution
         return catSuiviEvolution
     }
@@ -583,19 +587,9 @@ class ExamTree :NSObject{
         let catRadiographie = categorieExamen.Categorie(nom:"Radiographies",namedImage: "imagerie_icon.png",showNom: true)
         //catRadiographie.startLI()
         let examCatRadiographie : [Examen] = [
-            Check("Crane"),
-            Check("Thoracique"),
-            Check("Gril costal gauche"),
-            Check("Gril costal droit"),
-            Check("Cervicales"),
-            Check("Dorsales"),
-            Check("Lombaires"),
-            Check("Bassin"),
-            Check("Hanche gauche"),
-            Check("Hanche droite"),
-            Check("Femur gauche"),
-            Check("Fémur droit"),]
-        
+            regionAnat,
+            ]
+        catRadiographie.subitems.append("zone anatomique")
         catRadiographie.examens=examCatRadiographie
         return catRadiographie
     }
@@ -658,6 +652,7 @@ class ExamTree :NSObject{
         catConclusion.examens=examCatConclusion
         return catConclusion
     }
+    // TODO: Datastr sur examens complémentaires
     static var Imagerie:categorieExamen.Categorie {
         let catImagerie = categorieExamen.Categorie(nom:"Imagerie",namedImage: "imagerie_icon.png",showNom: true)
         catImagerie.startLI()

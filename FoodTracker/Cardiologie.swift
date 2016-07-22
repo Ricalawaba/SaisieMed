@@ -101,10 +101,12 @@ extension ExamTree {
             OuiNon("Dyspnée"),
             OuiNon("Dyspnée de décubitus (orthopnée)"),
             Examen(intitule: "Classification NYHA ", datastr: ["NYHA 1 (Aucune gène fonctionnelle)","NYHA 2 (gène à l'effort seulement)","NYHA 3 (gène à l'effort modérée)","NYHA 4 (gène au moindre effort)"].sort() ),
-            OuiNon("Toux"),
-            Check("grasse"),
-            Check("sèche"),
-            OuiNon("Expectorations aérées"),
+            OuiNon("Claudication intermittente"),
+            Examen(intitule: "toux", datastr:
+                [ "Pas de toux","toux productive","toux irritative","toux rauque","toux quinteuse","toux dyspnéisante"
+                ]),
+            Examen(intitule: "expectorations", datastr:
+                ["Pas d'expectorations","Expectorations glaireuses","Expectorations sanguinolantes","expectorations aérées mousseuse","expectorations sales nauséabondes"])
             ]
         catCardioFonctionnel.examens=examCatCardioFonctionnel
         return catCardioFonctionnel

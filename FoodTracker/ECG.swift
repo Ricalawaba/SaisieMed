@@ -15,6 +15,7 @@ extension ExamTree {
     let examCatConclusion : [Examen] = [
         Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre"),
         Examen(intitule: "ECG Normal", type: .check),
+        Examen(intitule: "modification électrique en comparaison au précédent", type: .ouinon),
         Examen(intitule: "Pas de troubles de la conduction ou de repolarisation", type: .check),
         Examen(intitule: "Pas de troubles du rythme", type: .check),
         Examen(intitule: "AC/FA", type: .check),
@@ -69,9 +70,9 @@ extension ExamTree {
         Examen(intitule: "PR constant", type: .check),
         Examen(intitule: "PR allongé", type: .donnee),
         Examen(intitule: "PR court", type: .donnee),
-        Examen(intitule: "BAV1", type: .check),
-        Examen(intitule: "BAV2", type: .check),
-        Examen(intitule: "BAV3", type: .check),
+        Examen(intitule: "PR et BAV", datastr:
+            ["Pas de BAV","BAV 1","BAV 2 type I","BAV 2 type 2","BAV 3"]),
+        
         
         
         
