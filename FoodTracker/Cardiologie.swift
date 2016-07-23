@@ -71,18 +71,18 @@ extension ExamTree {
         let cattypeDouleurThoracique = categorieExamen.Categorie(nom:"typeDouleurThoracique",namedImage: "cardio2_icon.png",showNom: false)
         cattypeDouleurThoracique.formatPreString=""
         let examCattypeDouleurThoracique   : [Examen] = [
-            Examen(intitule: "loc. douleur thoracique", datastr: ["épigastrique","rétrosternale haute","précordiale","antérieure","postérieure"].sort() ),
+            Examen(intitule: "loc. douleur thoracique", datastr: ["épigastrique","basithoracique","latérothoracique","rétrosternale haute","précordiale","antérieure","postérieure"].sort() ),
             
-            Examen(intitule: "type douleur thoracique", datastr: ["en barre","en pointe","type brulure","type oppression"].sort() ),
+            Examen(intitule: "type douleur thoracique", datastr: ["en barre","en étau","en coup de poignard","en pointe","type brulure","type oppression"].sort() ),
             typeDouleur.asExamen(),
-            Check("sans irradiation \"coronarienne\""),
+            Check("isolée, sans irradiation \"coronarienne\""),
             Check("Irradiation membre supérieur gauche"),
             Check("Irradiation membre supérieur droit"),
             Check("Irradiation dans le cou"),
             Check("transfixiante"),
             Check("fixe"),
             Check("mobile dans le temps"),
-            
+            OuiNon("épisode de douleur similaire dans le passé"),
             
             Examen(intitule: "Détail", type:  .reponsecourte ),
             

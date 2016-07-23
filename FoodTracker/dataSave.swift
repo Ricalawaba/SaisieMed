@@ -23,7 +23,7 @@ struct Donnees {
     static var selectiontextDict = [String: ([String]) ]()
     static var multiColumnPickerDataStr = [String: [([String])] ]()
     static var userdefault: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-    
+    static var patientEnCours:patients.patient?
 }
 
 // MARK: Structure statiques d'accès aux fichiers de données

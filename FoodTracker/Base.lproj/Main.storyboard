@@ -1104,8 +1104,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8SU-mA-831">
-                                            <rect key="frame" x="8" y="8" width="377" height="51.5"/>
+                                        <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8SU-mA-831">
+                                            <rect key="frame" x="8" y="8" width="234" height="51.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="231" id="efs-7l-bLJ"/>
                                             </constraints>
@@ -1133,8 +1133,8 @@
                                                 <action selector="valueTextFieldDidEnd:" destination="ScK-Ut-Z4E" eventType="editingDidEnd" id="sU4-d4-gNV"/>
                                             </connections>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cn8-Gw-TjF">
-                                            <rect key="frame" x="568" y="0.0" width="16" height="30"/>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cn8-Gw-TjF">
+                                            <rect key="frame" x="568" y="15" width="16" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="Odl-EU-BpS"/>
                                                 <constraint firstAttribute="width" constant="16" id="iCO-Q9-32q"/>
@@ -1166,7 +1166,7 @@
                                         <constraint firstAttribute="bottom" secondItem="Foj-5k-ThK" secondAttribute="bottom" constant="8" id="IN6-UB-3nx"/>
                                         <constraint firstItem="cn8-Gw-TjF" firstAttribute="leading" secondItem="Foj-5k-ThK" secondAttribute="trailing" constant="8" id="KYm-7V-V1c"/>
                                         <constraint firstItem="cn8-Gw-TjF" firstAttribute="leading" secondItem="2ST-GA-hjd" secondAttribute="leadingMargin" id="Xtu-On-IJX"/>
-                                        <constraint firstItem="Foj-5k-ThK" firstAttribute="leading" secondItem="8SU-mA-831" secondAttribute="trailing" constant="8" id="adT-2n-Cmm"/>
+                                        <constraint firstItem="Foj-5k-ThK" firstAttribute="leading" secondItem="8SU-mA-831" secondAttribute="trailing" constant="3" id="adT-2n-Cmm"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="8SU-mA-831" secondAttribute="bottom" constant="-8.5" id="azo-sO-74K"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="8SU-mA-831" secondAttribute="bottom" constant="-8" id="eDX-kt-SwK"/>
                                         <constraint firstItem="Foj-5k-ThK" firstAttribute="top" secondItem="2ST-GA-hjd" secondAttribute="top" constant="8" id="jh2-jI-pJf"/>
@@ -1178,9 +1178,6 @@
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="5nW-df-LKi"/>
-                                            <exclude reference="Hu4-an-DNB"/>
-                                            <exclude reference="Xtu-On-IJX"/>
                                             <exclude reference="HRV-UR-m4u"/>
                                             <exclude reference="azo-sO-74K"/>
                                             <exclude reference="wTC-rM-Lk9"/>
@@ -1188,15 +1185,13 @@
                                             <exclude reference="r2Q-bp-b4T"/>
                                             <exclude reference="wsv-Hh-cJw"/>
                                             <exclude reference="y7r-qX-4Y2"/>
+                                            <exclude reference="5nW-df-LKi"/>
+                                            <exclude reference="Hu4-an-DNB"/>
+                                            <exclude reference="Xtu-On-IJX"/>
                                         </mask>
                                     </variation>
                                     <variation key="heightClass=regular-widthClass=regular">
                                         <mask key="constraints">
-                                            <include reference="5nW-df-LKi"/>
-                                            <include reference="Hu4-an-DNB"/>
-                                            <exclude reference="KYm-7V-V1c"/>
-                                            <include reference="Xtu-On-IJX"/>
-                                            <exclude reference="wwU-6Z-edC"/>
                                             <exclude reference="2p5-N5-GtH"/>
                                             <exclude reference="5FV-Br-Zaq"/>
                                             <include reference="HRV-UR-m4u"/>
@@ -1210,6 +1205,11 @@
                                             <include reference="r2Q-bp-b4T"/>
                                             <include reference="wsv-Hh-cJw"/>
                                             <include reference="y7r-qX-4Y2"/>
+                                            <include reference="5nW-df-LKi"/>
+                                            <include reference="Hu4-an-DNB"/>
+                                            <exclude reference="KYm-7V-V1c"/>
+                                            <include reference="Xtu-On-IJX"/>
+                                            <exclude reference="wwU-6Z-edC"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -1347,7 +1347,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="627" y="1905.75"/>
+            <point key="canvasLocation" x="627" y="1905"/>
         </scene>
         <!--Select Number View Controller-->
         <scene sceneID="XmM-AW-ciE">
@@ -1879,6 +1879,12 @@
                         <barButtonItem title="Mail" id="oz8-fW-lXu">
                             <connections>
                                 <action selector="MailData:" destination="wtD-GT-n0l" id="LBL-OO-gyW"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="kwS-yq-juB"/>
+                        <barButtonItem title="PDF" id="Jr0-QT-TmS">
+                            <connections>
+                                <action selector="savePDF:" destination="wtD-GT-n0l" id="aVS-Dh-eAe"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>

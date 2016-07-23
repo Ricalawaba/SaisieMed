@@ -290,6 +290,26 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
             svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
             return
+        } else if (ExamTaped!.type == .datastr ){
+            var dd:[String]=[]
+            
+            for t in Donnees.selectiontextDict[ExamTaped!.tag]! {
+                dd.append(t)
+            }
+            dropdown.anchorView=self.navigationController?.view
+            dropdown.bottomOffset = CGPoint(x: 0, y:(dropdown.anchorView?.plainView.bounds.height)!)
+            dropdown.dataSource=dd
+            //  dropdown.topOffset = CGPoint(x: 0, y:-sender.plainView.bounds.height)
+            dropdown.selectionAction = { [unowned self] (index: Int, item: String) in
+                self.ExamTaped!.value=item
+                self.tableView.reloadData()
+                //self.valueTextField.text=item
+                
+                
+            }
+            
+            dropdown.show()
+
         }
         
         if ExamTaped?.type != .addinfo &&   ExamTaped?.type != .datastr && (Donnees.selectiontextDict.indexForKey((ExamTaped?.tag)!) != nil) {
@@ -315,93 +335,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
             svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
         }
-        
-        //        if ExamTaped!.tag == "tension" {
-        //            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectNumberID") as! selectNumberViewController
-        //            _ = svc.view
-        //            svc.numberPickView.type = .tensionarterielle
-        //
-        //            svc.delegate=self
-        //            self.navigationController!.pushViewController(svc,animated: true)
-        //        }
-        //        if ExamTaped!.tag == "EVA" {
-        //            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
-        //            svc.minNumber=0
-        //            svc.maxNumber=11
-        //            svc.step=1
-        //            svc.Information = "EVA"
-        //            if ExamTaped!.value.isEmpty {
-        //                svc.value="0"
-        //            } else {
-        //
-        //                svc.value=ExamTaped!.value
-        //            }
-        //
-        //            _ = svc.view
-        //
-        //
-        //
-        //            svc.delegate=self
-        //            self.navigationController!.pushViewController(svc,animated: true)
-        //        }
-        //        if ExamTaped!.tag == "FC" {
-        //            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
-        //            svc.minNumber=25
-        //            svc.maxNumber=310
-        //            svc.step=5
-        //            svc.Information = "Freq. Cardiaque"
-        //            if ExamTaped!.value.isEmpty {
-        //                svc.value="80"
-        //            } else {
-        //
-        //                svc.value=ExamTaped!.value
-        //            }
-        //            _ = svc.view
-        //
-        //
-        //
-        //            svc.delegate=self
-        //            self.navigationController!.pushViewController(svc,animated: true)
-        //        }
-        //        if ExamTaped!.tag == "sao2" {
-        //            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
-        //            svc.minNumber=75
-        //            svc.maxNumber=101
-        //            svc.step=1
-        //            svc.Information = "SaO2%"
-        //            if ExamTaped!.value.isEmpty {
-        //                svc.value="95"
-        //            } else {
-        //
-        //                svc.value=ExamTaped!.value
-        //            }
-        //            _ = svc.view
-        //
-        //
-        //
-        //            svc.delegate=self
-        //            self.navigationController!.pushViewController(svc,animated: true)
-        //        }
-        //        if ExamTaped!.tag == "fresp" {
-        //            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
-        //            svc.minNumber=5
-        //            svc.maxNumber=35
-        //            svc.step=1
-        //            svc.Information = "Freq. respiratoire"
-        //            if ExamTaped!.value.isEmpty {
-        //                svc.value="95"
-        //            } else {
-        //
-        //                svc.value=ExamTaped!.value
-        //            }
-        //            _ = svc.view
-        //
-        //
-        //
-        //            svc.delegate=self
-        //            self.navigationController!.pushViewController(svc,animated: true)
-        //        }
-        if ExamTaped!.tag == "poids" {
+             if ExamTaped!.tag == "poids" {
             let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
             svc.minNumber=10
             svc.maxNumber=140

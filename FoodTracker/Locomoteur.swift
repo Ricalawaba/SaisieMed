@@ -362,7 +362,7 @@ extension ExamTree {
             Check("Anesthésie locale"),
             Check("Anesthésie Intra-thecale"),
             Check("Xylocaine non adrénalinée"),
-            Check("Exploration"),
+            Check("<br>Exploration"),
             OuiNon("lésion d'élement musculo-tendineux"),
             OuiNon("lésion vasculaire"),
             Check("Corps étrangers"),
@@ -390,7 +390,7 @@ extension ExamTree {
             regionAnat,
             
             self.LocAnat.asExamen(),
-            Examen(intitule: "situation", type:  .reponsecourte ),
+            Examen(intitule: "situation", type:  .reponsecourte , tag: "libre"),
             Check("franche"),Check("déchiquetée"),
             Check("superficielle, ne dépassant pas le derme"),
             Examen(intitule: "contexte", type:  .reponsecourte ),

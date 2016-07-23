@@ -10,11 +10,17 @@ import UIKit
 import DropDown
 class saisieTableViewController: UITableViewController {
     
-    var patient = patients.patient()
+    var patient : patients.patient? {
+        didSet {
+            Donnees.patientEnCours=patient
+            print(patient?.nomPrenom)
+            
+        }
+    }
     var dropdown = DropDown()
     @IBAction func compteRenduAction(sender: UIBarButtonItem) {
          let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("rapportControlerID") as! rapportViewController
-        svc.patient=self.patient
+        svc.patient=self.patient!
         self.navigationController!.pushViewController(svc,animated: true)
     }
     
@@ -33,7 +39,7 @@ class saisieTableViewController: UITableViewController {
             switch index {
             case 0:
                 let exam=ExamTree.Document.asExamen()
-                self.patient.documentsCat.examens.append(exam)
+                self.patient!.documentsCat.examens.append(exam)
                 let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("examensTVID") as! examensTableViewController
                 svc.categorie = exam.categorie
                 svc.navigationController?.title = svc.categorie!.nomUI()
@@ -41,14 +47,14 @@ class saisieTableViewController: UITableViewController {
                // self.patient.examenCliniqueCat.examens.append(ExamTree.Neurologie.asExamen())
             case 1:
                 let exam = ExamTree.evenement.asExamen()
-                self.patient.suiviCat.examens.append(exam)
+                self.patient!.suiviCat.examens.append(exam)
                 let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("examensTVID") as! examensTableViewController
                 svc.categorie = exam.categorie
                 svc.navigationController?.title = svc.categorie!.nomUI()
                 self.navigationController!.pushViewController(svc,animated: true)
             case 2:
                 let exam = ExamTree.ExamenClinique.asExamen()
-                self.patient.suiviCat.examens.append(exam)
+                self.patient!.suiviCat.examens.append(exam)
                 let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("examensTVID") as! examensTableViewController
                 svc.categorie = exam.categorie
                 svc.navigationController?.title = svc.categorie!.nomUI()
@@ -79,7 +85,7 @@ class saisieTableViewController: UITableViewController {
     @IBAction func LongPush(sender: UILongPressGestureRecognizer) {
         let location : CGPoint = sender.locationInView(self.tableView)
         let swipedIndexPath:NSIndexPath = self.tableView.indexPathForRowAtPoint(location)!
-        rapportCat = patient.examen.categories[swipedIndexPath.row]
+        rapportCat = patient!.examen.categories[swipedIndexPath.row]
         //let swipedcell:patientTableViewCell = self.tableView.cellForRowAtIndexPath(swipedIndexPath)!
         //do your stuff here
 //        longpushPatient = Donnees.listePatient.patients[swipedIndexPath.row]
@@ -106,7 +112,7 @@ class saisieTableViewController: UITableViewController {
             
             let svc = segue.destinationViewController as! examensTableViewController
             let selectedIndex = self.tableView.indexPathForCell(sender as! UITableViewCell)
-            svc.categorie = patient.examen.categories[selectedIndex!.row]
+            svc.categorie = patient!.examen.categories[selectedIndex!.row]
             svc.navigationController?.title = svc.categorie!.nom
            
             
@@ -126,7 +132,7 @@ class saisieTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return patient.examen.categories.count
+        return patient!.examen.categories.count
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -138,7 +144,7 @@ class saisieTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("CategorieExamen", forIndexPath: indexPath) as! saisieTableViewCell
 
         // Configure the cell...
-        let categorie=patient.examen.categories[indexPath.row]
+        let categorie=patient!.examen.categories[indexPath.row]
         cell.imageCategorie.image = UIImage(named: categorie.namedImage)
         cell.nomCategorie.text = categorie.nomUI()
         

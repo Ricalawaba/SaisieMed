@@ -92,7 +92,7 @@ class patientTableViewController: UITableViewController,ajoutPatientDelegate {
                 let svc = segue.destinationViewController as! saisieTableViewController
                 let selectedIndex = self.tableView.indexPathForCell(sender as! UITableViewCell)
                 svc.patient = Donnees.listePatient.patients[selectedIndex!.row]
-                svc.title=svc.patient.nomPrenom
+                svc.title=svc.patient!.nomPrenom
                 DataSave.lastPatientVC = svc
                 //svc.
           //  print("\(), \(), row \(selectedIndex!.row)")

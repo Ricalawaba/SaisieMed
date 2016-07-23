@@ -10,7 +10,7 @@ import Foundation
 
 extension ExamTree {
     static var ECG : categorieExamen.Categorie {
-    let CatECG = categorieExamen.Categorie(nom: "ECG",namedImage: "cardio_icon.png")
+    let CatECG = categorieExamen.Categorie(nom: "<br>ECG",namedImage: "cardio_icon.png")
     let catECGConclusion = categorieExamen.Categorie(nom: "Conclusion",namedImage: "cardio_icon.png")
     let examCatConclusion : [Examen] = [
         Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre"),

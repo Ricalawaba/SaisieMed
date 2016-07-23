@@ -137,7 +137,7 @@ class categorieExamen : NSObject , NSCoding {
                         if examen.value == "0" {
                             str += "\(examen.intitule)"
                         } else if examen.value == "1" {
-                            let vowels: [Character] = ["a","e","i","o","u","h"]
+                            let vowels: [Character] = ["a","e","i","o","u","é","h"]
                             if vowels.contains(examen.intitule.lowercaseString.characters.first!) {
                                 
                                 str += "Pas d'\(examen.intitule)"}

@@ -73,6 +73,11 @@ class pickSelectTableViewCell: UITableViewCell ,UITextFieldDelegate,UIPickerView
 //        thePickerView.delegate=self
 //        valueTextField.inputView=thePickerView
 //        
+        DropDown.appearance().textFont = UIFont.systemFontOfSize(15)
+      //  DropDown.appearance().cellHeight=60
+        DropDown.appearance().backgroundColor = UIColor.blackColor()
+        DropDown.appearance().textColor = UIColor.yellowColor()
+        DropDown.appearance().selectionBackgroundColor = UIColor.darkGrayColor()
         
     }
 

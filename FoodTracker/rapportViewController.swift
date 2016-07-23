@@ -80,6 +80,9 @@ class rapportViewController: UIViewController ,MFMailComposeViewControllerDelega
         renderer.setValue(NSValue(CGRect: printableRect), forKey: "printableRect")
         return renderer.printToPDF()
     }
+    @IBAction func savePDF(sender: AnyObject) {
+        
+    }
     func savePdf(filename: String){
         // FIXME: Non implémenté
     }

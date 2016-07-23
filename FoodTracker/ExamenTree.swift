@@ -11,78 +11,85 @@ import Foundation
 class ExamTree :NSObject{
     
     static func getExam(examtype:String) ->Examen? {
-        switch examtype {
+        switch examtype.lowercaseString {
         case "zone anatomique":
             return self.regionAnat
-        case "Libre","libre" :
-       // case "libre":
+        case "libre" :
+            // case "libre":
             return self.libre
-        case "Neurologie":
+        case "page" :
+            // case "libre":
+            return Examen(intitule: "(image)", type:  .imagefilename )
+        case "neurologie":
             return self.Neurologie.asExamen()
-        case "Digestif":
+        case "document":
+            return self.Document.asExamen()
+        case "motif":
+            return self.motif.asExamen()
+        case "digestif":
             return self.Digestif.asExamen()
-        case "neuroVertige":
+        case "neurovertige":
             return self.neuroVertige.asExamen()
-        case "Locomoteur":
+        case "locomoteur":
             return self.Locomoteur.asExamen()
-        case "ORL":
+        case "orl":
             return self.ORL.asExamen()
-        case "Cardiovasculaire":
+        case "cardiovasculaire":
             return self.Cardiovasculaire.asExamen()
-        case "Urologie":
+        case "urologie":
             return self.Urologie.asExamen()
-        case "Plaie":
+        case "plaie":
             return self.Plaie.asExamen()
-        case "Face":
+        case "face":
             return self.Face.asExamen()
-        case "Plainte":
+        case "plainte":
             return self.Plainte.asExamen()
-        case "RachisCervical":
+        case "rachiscervical":
             return self.RachisCervical.asExamen()
-        case "Epaule":
+        case "epaule":
             return self.Epaule.asExamen()
-        case "Coude":
+        case "coude":
             return self.Coude.asExamen()
-        case "AvantBras":
+        case "avantbras":
             return self.AvantBras.asExamen()
-        case "Main":
+        case "main":
             return self.Main.asExamen()
-        case "Doigt":
+        case "doigt":
             return self.Doigt.asExamen()
-        case "Poignet":
+        case "poignet":
             return self.Poignet.asExamen()
-        case "RachisLombaire":
+        case "rachisLombaire":
             return self.RachisLombaire.asExamen()
-        case "Hanche":
+        case "hanche":
             return self.Hanche.asExamen()
-        case "Genou":
+        case "genou":
             return self.Genou.asExamen()
-        case "Jambe":
+        case "jambe":
             return self.Jambe.asExamen()
-        case "Cheville":
+        case "cheville":
             return self.Cheville.asExamen()
-        case "TTT":
+        case "ttt":
             return self.TTT.asExamen()
-
-        case "ECG":
+            
+        case "ecg":
             return self.ECG.asExamen()
-        case "Biologie":
+        case "biologie":
             return self.Biologie.asExamen()
-        case "Gazometrie":
+        case "gazometrie":
             return self.Gazometrie.asExamen()
-        case "Bandelette":
+        case "bandelette":
             return self.Bandelette.asExamen()
-        case "Imagerie":
+        case "imagerie":
             return self.Imagerie.asExamen()
         case "pancarte":
             return self.Pancartes.asExamen()
-    
+            
         default:
             print("get exam Non géré : ", examtype)
             
             break
         }
-      return nil
+        return nil
     }
     static func Check(intitule: String) -> Examen {
         return Examen(intitule: intitule, type:  .check )
@@ -134,20 +141,14 @@ class ExamTree :NSObject{
         let catModeEntree = categorieExamen.Categorie(nom: "Mode d'entrée",namedImage: "ambulance_icon.png")
         //catModeEntree.startLI()
         let excamCatModeEntree = [
-            Check("adressé par le centre 15"),
-            Check("adressé par"),
+            Examen(intitule: "adressage", datastr: ["Se présente spontanément","amené par la famille","adressé par le centre 15","Adressé par médecin traitant","adressé par médecin de garde","adressé en interne",].sort() ),
             Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"),
             Check("(courrier)"),
             Check("(appel téléphonique)"),
-            Check("se présente spontanément"),
-            Check("n'a pas vu de médecin avant sa venue aux urgences"),
-            Check("a contacté son médecin avant sa venue aux urgences"),
             Check("médicalisé par le SMUR"),
             Examen(intitule: "Médecin SMUR", type:  .selection ,tag: "medecin"),
-            Check("Transporté par les Pompiers"),
-            Check("Transporté par ambulance"),
+            Examen(intitule: "transport", datastr: ["Transporté par les pompiers","transporté par ambulance","vient par ses propres moyens", "transporté par les proches"].sort() ),
             Check("non médicalisé"),
-            Check("Amené par la Famille"),
             Accompagnant(),
             ]
         catModeEntree.examens=excamCatModeEntree
@@ -208,6 +209,7 @@ class ExamTree :NSObject{
         catTTT.startLI()
         let examCatTTT   : [Examen] = [
             Examen(intitule: "Nom", type:  .selection,tag: "medicament" ),
+            Check("(Dosage non précisé)"),
             Examen(intitule: "Posologie", type:  .selection,tag: "posologie" ),
             Examen(intitule: "depuis quand ?", type:  .reponsecourte,tag: "date" ),
             Examen(intitule: "par qui ?", type:  .selection,tag: "medecin" ),
@@ -217,14 +219,14 @@ class ExamTree :NSObject{
         catTTT.examens=examCatTTT
         return catTTT
     }
-
+    
     static var motif:categorieExamen.Categorie {
         let catMotif = categorieExamen.Categorie(nom:"Motif(s)",namedImage: "tete_icon.png",showNom: false)
         
         let examCatMotif : [Examen] = [
             Examen(intitule: "motif", type:  .selection,tag: "motif" ),
             Examen(categorie: self.LocAnat),
-            
+            regionAnat,
             
             ]
         catMotif.examens=examCatMotif
@@ -234,10 +236,10 @@ class ExamTree :NSObject{
         let catMotifs = categorieExamen.Categorie(nom:"Motif(s)",namedImage: "tete_icon.png",showNom: true)
         let examCatMotifs : [Examen] = [
             motif.asExamen(),
-            Examen(intitule: "Ajout motif",type: .addinfo,tag: "motif"),
             Examen(intitule: "début", type:  .donnee,tag: "date" ),
             
             ]
+        catMotifs.subitems.append("motif")
         catMotifs.examens=examCatMotifs
         return catMotifs
     }
@@ -247,10 +249,11 @@ class ExamTree :NSObject{
         let catPlainte = categorieExamen.Categorie(nom:"Plainte",namedImage: "tete_icon.png",showNom: false)
         let examCatPlainte : [Examen] = [
             Examen(intitule: "Signe", type:  .selection,tag: "motif" ),
-            Examen(intitule: "Commentaire", type:  .reponsecourte ),
-            Examen(categorie: LocAnat),
+                       Examen(categorie: LocAnat),
             regionAnat,
-            
+            Examen(intitule: "début", type:  .donnee,tag: "date" ),
+            Examen(intitule: "durée", type:  .donnee,tag: "date" ),
+
             Check("aigüe"),
             Check("sub-aigüe"),
             Check("intense"),
@@ -260,8 +263,7 @@ class ExamTree :NSObject{
             Check("avec prodromes"),
             Check("d'évolution progressive"),
             Check("avec crises paroxystiques"),
-            Examen(intitule: "début", type:  .donnee,tag: "date" ),
-            Examen(intitule: "durée", type:  .donnee,tag: "date" ),
+            
             
             
             ]
@@ -295,7 +297,7 @@ class ExamTree :NSObject{
         let catComorbidite = categorieExamen.Categorie(nom:"Comorbidité/Antécédents",namedImage: "dossier.png",showNom: true)
         
         let examCatComorbidite : [Examen] = [
-
+            
             Check("Pas d'atcds notables<br>"),
             FRCV.asExamen(),
             Vaccin.asExamen(),
@@ -303,9 +305,9 @@ class ExamTree :NSObject{
             OuiNon("Allergie médicamenteuse connue"),
             Examen(intitule: "Detail", type:  .reponsecourte, tag: "Allergie" ),
             
-           // Check("Usager de médecine alternative"),
+            // Check("Usager de médecine alternative"),
             
-            ]
+        ]
         catComorbidite.subitems.append("atcd")
         catComorbidite.examens=examCatComorbidite
         return catComorbidite
@@ -333,10 +335,11 @@ class ExamTree :NSObject{
         let catdetailsTraitement = categorieExamen.Categorie(nom:"details",namedImage: "medecin-icone.png",showNom: false)
         let examCatdetailsTraitement : [Examen] = [
             Check("Pas de traitement au long cours"),
-            Check("(Traitement vu sur ordonnance)"),
+            Check("Prise médicamenteuse journalière (principe actif et posologie inconnu)"),
+            Examen(intitule: "source info traitement", datastr: ["Traitement vu sur ordonnance","(Traitement indiqué par le patient)","(Traitement indiqué par l'entourage)","(Traitement non connu par le patient)","(Traitement vu sur courrier de transmission)"].sort() ),
             Examen(intitule: "de qui ?", type:  .selection,tag: "medecin" ),
             Examen(intitule: "Date", type:  .donnee, tag: "date" ),
-            Examen(intitule: "source info traitement", datastr: ["(Traitement indiqué par le patient)","(Traitement indiqué par l'entourage)","(Traitement non connu par le patient)","(Traitement vu courrier de transmission)"].sort() ),
+            
             Check("(Autre prise médicamenteuse non identifié)"),
             
             ]
@@ -350,7 +353,7 @@ class ExamTree :NSObject{
         let examCatTraitement : [Examen] = [
             detailsTraitement.asExamen(),
             Examen(categorie: ExamTree.TTT),
-
+            
             ]
         catTraitement.subitems.append("TTT")
         catTraitement.examens=examCatTraitement
@@ -378,26 +381,28 @@ class ExamTree :NSObject{
         return catPoids
     }
     
-//    static var TA:categorieExamen.Categorie {
-//        setTensionMultiRow()
-//        let catTA = categorieExamen.Categorie(nom:"Tension artérielle",namedImage: "tension.png",showNom: false)
-//        let examCatTA : [Examen] = [
-//            tensionMultirow,
-//            Examen(intitule: "Tension bras droit", type: .multirowdatastr , tag: "tensionMultirow"),
-//            Examen(intitule: "Tension bras gauche", type: .multirowdatastr , tag: "tensionMultirow"),
-//            Examen(intitule: "Tension cheville droite", type: .multirowdatastr , tag: "tensionMultirow"),
-//            Examen(intitule: "Tension cheville gauche", type: .multirowdatastr , tag: "tensionMultirow"),
-//            
-//            Examen(intitule: "Index Pression Cheville (0,9<1,3)", type:  .donnee ,tag :"tension"),
-//            
-//            ]
-//        catTA.examens=examCatTA
-//        return catTA
-//    }
+    //    static var TA:categorieExamen.Categorie {
+    //        setTensionMultiRow()
+    //        let catTA = categorieExamen.Categorie(nom:"Tension artérielle",namedImage: "tension.png",showNom: false)
+    //        let examCatTA : [Examen] = [
+    //            tensionMultirow,
+    //            Examen(intitule: "Tension bras droit", type: .multirowdatastr , tag: "tensionMultirow"),
+    //            Examen(intitule: "Tension bras gauche", type: .multirowdatastr , tag: "tensionMultirow"),
+    //            Examen(intitule: "Tension cheville droite", type: .multirowdatastr , tag: "tensionMultirow"),
+    //            Examen(intitule: "Tension cheville gauche", type: .multirowdatastr , tag: "tensionMultirow"),
+    //
+    //            Examen(intitule: "Index Pression Cheville (0,9<1,3)", type:  .donnee ,tag :"tension"),
+    //
+    //            ]
+    //        catTA.examens=examCatTA
+    //        return catTA
+    //    }
     static var Pancartes:categorieExamen.Categorie {
         let catPancartes = categorieExamen.Categorie(nom:"Pancartes",namedImage: "thermo_icon.png",showNom: true)
         let examCatPancartes : [Examen] = [
-            
+            Check("Surveillance hémodynamique scopée"),
+            Check("Surveillance température"),
+            Check("Surveillance algique"),
             Examen(intitule: "Pancarte",type: .donnee , tag: "pancarteView"),
             Examen(intitule: "Ajout pancarte",type: .addinfo,tag: "pancarteV"),
             
@@ -407,47 +412,47 @@ class ExamTree :NSObject{
     }
     
     
-//    static var Pancarte:categorieExamen.Categorie {
-//        let catPancarte = categorieExamen.Categorie(nom:"Pancarte",namedImage: "pancarte_icon.png",showNom: false)
-//        catPancarte.startLI()
-//        let examCatPancarte : [Examen] = [
-//            Examen(intitule: "horodatage", type:  .reponsecourte,tag: "date" ),
-//            Examen(intitule: "Commentaire", type:  .reponsecourte ),
-//            
-//            Examen(intitule: "FC", type:  .donnee,tag: "FC" ),
-//            tensionMultirow,
-//            Examen(intitule: "Tension bras droit", type: .multirowdatastr , tag: "tensionMultirow"),
-//            Examen(intitule: "Tension bras gauche", type: .multirowdatastr , tag: "tensionMultirow"),
-//            
-//            self.temperatureMultirow,
-//            
-//            saO2("SaO2% AA"),
-//            saO2("Sao2% sous O2"),
-//            
-//            Examen(intitule: "Fr. Resp", type:  .donnee ,tag: "fresp"),
-//            Examen(intitule: "EVA", type:  .donnee,tag: "EVA" ),
-//            
-//            ]
-//        
-//        
-//        catPancarte.examens=examCatPancarte
-//        return catPancarte
-//    }
-//    
+    //    static var Pancarte:categorieExamen.Categorie {
+    //        let catPancarte = categorieExamen.Categorie(nom:"Pancarte",namedImage: "pancarte_icon.png",showNom: false)
+    //        catPancarte.startLI()
+    //        let examCatPancarte : [Examen] = [
+    //            Examen(intitule: "horodatage", type:  .reponsecourte,tag: "date" ),
+    //            Examen(intitule: "Commentaire", type:  .reponsecourte ),
+    //
+    //            Examen(intitule: "FC", type:  .donnee,tag: "FC" ),
+    //            tensionMultirow,
+    //            Examen(intitule: "Tension bras droit", type: .multirowdatastr , tag: "tensionMultirow"),
+    //            Examen(intitule: "Tension bras gauche", type: .multirowdatastr , tag: "tensionMultirow"),
+    //
+    //            self.temperatureMultirow,
+    //
+    //            saO2("SaO2% AA"),
+    //            saO2("Sao2% sous O2"),
+    //
+    //            Examen(intitule: "Fr. Resp", type:  .donnee ,tag: "fresp"),
+    //            Examen(intitule: "EVA", type:  .donnee,tag: "EVA" ),
+    //
+    //            ]
+    //
+    //
+    //        catPancarte.examens=examCatPancarte
+    //        return catPancarte
+    //    }
+    //
     
     
-   
+    
     
     
     static var EntretienPatient:categorieExamen.Categorie {
         let catEntretienPatient = categorieExamen.Categorie(nom:"Entretien",namedImage: "tete_icon.png",showNom: false)
         let examCatEntretienPatient : [Examen] = [
             Examen(intitule: "entretien avec",
-                    datastr: [
-                        "Entretien avec le patient",
-                        "Entretien avec le patient et son entourage",
-                        "Entretien avec l'entourage"
-                                ].sort() ),
+                datastr: [
+                    "Entretien avec le patient",
+                    "Entretien avec le patient et son entourage",
+                    "Entretien avec l'entourage"
+                    ].sort() ),
             Examen(intitule: "sujet discussion",
                 datastr: [
                     "Compte rendu des examens reçus",
@@ -468,7 +473,7 @@ class ExamTree :NSObject{
                     "souhaite un retour à domicile",
                     
                     ].sort() ),
-
+            
             Check("souhaite un retour à domicile"),
             Check("sortie contre avis médical"),
             
@@ -575,7 +580,7 @@ class ExamTree :NSObject{
             evenement.asExamen(),
             
             Examen(intitule: "Ajout clinique",type: .addinfo,tag: "clinique"),
-            Examen(intitule: "Ajout pancarte",type: .addinfo,tag: "pancarte"),
+     //       Examen(intitule: "Ajout pancarte",type: .addinfo,tag: "pancarte"),
             Examen(intitule: "Ajout évènement",type: .addinfo,tag: "evenementSuivi"),
             ]
         catSuiviEvolution.subitems.append("pancarte")
@@ -623,7 +628,7 @@ class ExamTree :NSObject{
         return catExamenGeneral
     }
     
-
+    
     static var Conclusion:categorieExamen.Categorie {
         let catConclusion = categorieExamen.Categorie(nom:"Conclusion",namedImage: "medecin_icon.png",showNom: true)
         catConclusion.startNewLine()
@@ -652,20 +657,21 @@ class ExamTree :NSObject{
         catConclusion.examens=examCatConclusion
         return catConclusion
     }
-    // TODO: Datastr sur examens complémentaires
+
     static var Imagerie:categorieExamen.Categorie {
         let catImagerie = categorieExamen.Categorie(nom:"Imagerie",namedImage: "imagerie_icon.png",showNom: true)
         catImagerie.startLI()
         let examCatImagerie : [Examen] = [
             ExamTree.Radiographie.asExamen(),
-            Check("Echographie abdominale"),
-            Check("Echographie"),
-            Check("Echographie doppler"),
-            Check("Scanner"),
-            Check("IRM"),
-            Check("E.E.G."),
-            Check("EMG"),
-            Examen(intitule: "(précision)", type: .reponsecourte,tag: "libre"),
+            Examen(intitule: "imagerie autre", datastr: [
+                "Echographie abdominale",
+                "Echo doppler des membres inférieurs",
+                "Echographie pariétale",
+                "Echographie pelvienne",
+                "Echographie exploratrice",
+                "TDM Crane","TDM abdominal","TDM thoracique","TDM Urologique","TDM Abdomino-pelvien","TDM thoraco-abdominal","TDM articulaire","Angioscanner","Scanner",
+                "IRM Cérébrale","IRM médullaire","Electroencéphallogramme","Electromyographie"
+                ].sort() ),
             Check("en cours"),
             
             Check("(Interprétation radiologue)"),
@@ -713,7 +719,7 @@ class ExamTree :NSObject{
             OuiNon("Prise médicamenteuse"),
             TTT.asExamen(),
             
-        ]
+            ]
         catPlainteAnamnèse.subitems.append("Plainte")
         catPlainteAnamnèse.subitems.append("TTT")
         catPlainteAnamnèse.examens=examCatPlainteAnamnèse
@@ -723,12 +729,17 @@ class ExamTree :NSObject{
     
     
     static var RespiratoireFonctionnel:categorieExamen.Categorie {
-        let catRespiratoireFonctionnel = categorieExamen.Categorie(nom:"Fonctionnel",namedImage: "pneumo_icon.png",showNom: true)
+        let catRespiratoireFonctionnel = categorieExamen.Categorie(nom:"<br>Fonctionnel",namedImage: "pneumo_icon.png",showNom: true)
         catRespiratoireFonctionnel.startLI()
         let examCatRespiratoireFonctionnel : [Examen] = [
-            OuiNon("Dyspnée"),
-            OuiNon("Toux"),
-            OuiNon("Expectorations"),
+            Examen(intitule: "respiration", datastr: ["eupnéïque","Dyspnée inspiratoire","dyspnée expiratoire"].sort() ),
+            Check("anxiogène"),
+            Check("Sifflante"),Check("Encombrement audible"),
+            OuiNon("pincement des ailes du nez"),
+          //  OuiNon("Toux"),
+            Examen(intitule: "type toux", datastr: ["Pas de toux","toux sèche isolée","toux sèche quinteuse","toux positionnelle","toux productive"].sort() ),
+            Examen(intitule: "expectorations", datastr: [" Pas d'expectorations","Expectorations d'aspect séreux (blanc, aéré)","Expectorations d'aspect muqueux (visqueux)","Expectorations muco-purulentes (jaune/ver)","Expectorations hémoptoïques"].sort() ),
+            
             OuiNon("Difficultés à l'élocution"),
             //self.libre,
         ]
@@ -736,12 +747,13 @@ class ExamTree :NSObject{
         return catRespiratoireFonctionnel
     }
     static var RespiratoireAuscultation:categorieExamen.Categorie {
-        let catRespiratoireAuscultation = categorieExamen.Categorie(nom:"Auscultation",namedImage: "stetho_icon.png",showNom: true)
+        let catRespiratoireAuscultation = categorieExamen.Categorie(nom:"<br>Auscultation",namedImage: "stetho_icon.png",showNom: true)
         catRespiratoireAuscultation.startLI()
         let examCatRespiratoireAuscultation : [Examen] =  [
-            Check("MV + symétrique"),
-            OuiNon("Sibilants"),
-            OuiNon("Crépitants"),
+            Check("Murmure vésiculaire symétrique"),
+            OuiNon("Râles sibilants"),
+            OuiNon("Râles crépitants"),
+            OuiNon("Râles sous-crépitants"),
             OuiNon("Ronchis"),
             OuiNon("Stridor"),
             OuiNon("Wheezing"),
@@ -764,8 +776,14 @@ class ExamTree :NSObject{
             self.RespiratoireAuscultation.asExamen(),
             OuiNon("Hippocratisme digital"),
             OuiNon("Cyanose labiale"),
+            OuiNon("Cyanose unguéale"),
+            OuiNon("Battements des ailes du nez"),
+            OuiNon("Hypersudation"),
             OuiNon("Tirage"),
+            Check("Signe de Campbell (descente inspiratoire du c. thyroïde)"),
             Check("Respiration de Cheyne-Stokes (RCS)"),
+            Check("Respiration de Kussmaül (rapide profonde)"),
+            Check("Respiration à lèvres pincées (pursed lips)"),
             Check("Oxygenothérapie à domicile"),
             OuiNon("Ronchopathie signalée"),
             Examen(intitule: "SaO2%", type:  .donnee ),
@@ -823,7 +841,7 @@ class ExamTree :NSObject{
         return catUrologie
     }
     
-        
+    
     
     static var ORL:categorieExamen.Categorie {
         let catORL = categorieExamen.Categorie(nom:"<br>O.R.L.",namedImage: "nez_icon.png",showNom: true)
@@ -865,7 +883,11 @@ class ExamTree :NSObject{
             Check("douleur continue"),
             Check("douleur intermittente"),
             Check("douleur continue avec crises paroxystiques"),
+            Check("dyspnéisante"),
+            Check("disparition au repos"),
+            OuiNon("soulagement par la position penchée en avant"),
             OuiNon("modification par les mouvements respiratoires"),
+            OuiNon("réveil à la palpation"),
             Check("Pas de position antalgique"),
             Check("atténué par le décubitus"),
             OuiNon("Soulagement par l'émission de gaz"),
@@ -879,7 +901,7 @@ class ExamTree :NSObject{
         return cattypeDouleur
     }
     
-
+    
     // MARK: Examens
     static var OMS:Examen {
         Donnees.selectiontextDict["dataStrZubrodOMS"]=[
@@ -963,6 +985,7 @@ class ExamTree :NSObject{
         
         
         Donnees.selectiontextDict["dataStrregionAnat"]=[
+            "Gauche","Droite",
             "Crane",
             "Thoracique",
             "Gril costal gauche",
@@ -992,6 +1015,7 @@ class ExamTree :NSObject{
             "Poignet droit",
             "Main gauche",
             "Main droite",
+            "Rachis cervical","Rachis cervicodorsal","os propre du nez","Rachis lombaire"
             ].sort()
         
         return Examen(intitule: "(région anatomique)", type: .datastr, tag: "dataStrregionAnat")

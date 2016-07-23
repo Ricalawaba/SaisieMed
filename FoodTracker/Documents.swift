@@ -14,8 +14,9 @@ extension ExamTree {
         let catDocuments = categorieExamen.Categorie(nom:"Documents",namedImage: "dossier.png",showNom: true)
         let examCatDocuments : [Examen] = [
             self.Document.asExamen(),
-            Examen(intitule: "Ajout document",type: .addinfo,tag: "document")
+        //    Examen(intitule: "Ajout document",type: .addinfo,tag: "document")
         ]
+        catDocuments.subitems.append("document")
         catDocuments.examens=examCatDocuments
         return catDocuments
     }
@@ -33,6 +34,9 @@ extension ExamTree {
             "Ordonnance Spécialiste",
             "Photographie lésion",
             "Compte rendu Imagerie",
+            "Photographie patient",
+            "Document administratif",
+            "Document manuscrit donné au patient",
         ]
         return Examen(intitule: "Type", type: .datastr, tag: "dataStrtypecourrier")
         // return catOMS
@@ -45,16 +49,12 @@ extension ExamTree {
                  Examen(intitule: "Date", type:  .reponsecourte, tag: "date" ),
             self.typeDocument,
             Examen(intitule: "de qui ?", type:  .selection,tag: "medecin" ),
-            Examen(intitule: "(image)", type:  .imagefilename ),
-            Examen(intitule: "Ajout page",type: .addinfo,tag: "page"),
-            Check("Avancée diagnostique"),
-            Check("Etat Stable"),
-            Check("Amélioration"),
-            Check("Aggravation"),
-            Check("Introduction médicamenteuse"),
-            OuiNon("Modification du traitement"),
             Examen(intitule: "resume", type:  .reponsecourte,tag: "libre" ),
+            Examen(intitule: "(image)", type:  .imagefilename ),
+          //  Examen(intitule: "Ajout page",type: .addinfo,tag: "page"),
+            
         ]
+        catDocumentConsulte.subitems.append("page")
         catDocumentConsulte.examens=examCatDocumentConsulte
         return catDocumentConsulte
     }

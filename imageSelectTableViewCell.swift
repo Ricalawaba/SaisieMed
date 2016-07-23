@@ -94,7 +94,7 @@ class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegat
        // if picker.sourceType == .Camera { quelleImage="UIImagePickerControllerEditedImage"}
         if let pickedImage = info[quelleImage] as? UIImage {
             //imageLabel.text=(info[UIImagePickerControllerReferenceURL] as! NSURL).absoluteString
-            let fileName = "\(randomStringWithLength(8)).jpg"
+            let fileName = "\(Donnees.patientEnCours!.nomPrenom)\(randomStringWithLength(4)).jpg"
             let imagePath = fileInDocumentsDirectory(fileName)
             examen.value=fileName
             examen.tag="image"
