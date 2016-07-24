@@ -17,6 +17,10 @@ class ExamTree :NSObject{
         case "libre" :
             // case "libre":
             return self.libre
+        case "atcd" :
+            // case "libre":
+            return self.atcd.asExamen()
+
         case "page" :
             // case "libre":
             return Examen(intitule: "(image)", type:  .imagefilename )
