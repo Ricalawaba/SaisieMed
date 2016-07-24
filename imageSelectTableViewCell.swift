@@ -98,6 +98,7 @@ class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegat
             let imagePath = fileInDocumentsDirectory(fileName)
             examen.value=fileName
             examen.tag="image"
+            theImageView.image=pickedImage
             saveImage(pickedImage, path: imagePath)
                     if let del=self.delegate  {
                         del.imageSelected(self, image: pickedImage , url: fileName)
