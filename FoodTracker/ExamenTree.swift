@@ -115,7 +115,7 @@ class ExamTree :NSObject{
         let examCatConnuClinique = [
             
             Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"),
-            Examen(intitule: "connucliniquepour", datastr: ["Suivi oncologique","Suivi cardiovasculaire","Suivi pneumologique","Suivi neurologique","Suivi urologique","Suivi traumatologique","Intervention orthopédique","Suivi diabétologique","Suivi angiologique","Déja vu en consultation"].sort()),
+            Examen(intitule: "connucliniquepour", datastr: ["non médical","Suivi oncologique","Suivi cardiovasculaire","Suivi pneumologique","Suivi neurologique","Suivi urologique","Suivi traumatologique","Intervention orthopédique","Intervention chirurgicale","Bilan spécialisé","Suivi diabétologique","Avis spécialisé","Suivi angiologique","Déja vu en consultation"].sort()),
             
             Examen(intitule: "dernier contact", type:  .donnee ,tag: "date"),
             
@@ -138,7 +138,8 @@ class ExamTree :NSObject{
             Check("en couple" ),
             Check("Veuf(ve)" ),
             Check("Pas d'enfants" ),
-            Examen(intitule: "enfants:", type:  .donnee ),
+            Examen(intitule: "enfant mineur/dépendant", type:  .donnee ),
+            Examen(intitule: "enfant autonome", type:  .donnee ),
             
             ]
         catModeVie.examens=excamCatModeVie
@@ -210,7 +211,8 @@ class ExamTree :NSObject{
     
     static var TTT:categorieExamen.Categorie {
         let catTTT = categorieExamen.Categorie(nom:"Traitement",namedImage: "medoc_icon.png",showNom: false)
-        catTTT.startLI()
+        //catTTT.startLI()
+        catTTT.formatPreString="<br>"
         let examCatTTT   : [Examen] = [
             Examen(intitule: "Nom", type:  .selection,tag: "medicament" ),
             Check("(Dosage non précisé)"),
@@ -307,6 +309,7 @@ class ExamTree :NSObject{
             Vaccin.asExamen(),
             OuiNon("Allergie connue"),
             OuiNon("Allergie médicamenteuse connue"),
+            Check("Pas de détail sur les allergènes"),
             Examen(intitule: "Detail", type:  .reponsecourte, tag: "Allergie" ),
             
             // Check("Usager de médecine alternative"),
@@ -340,7 +343,7 @@ class ExamTree :NSObject{
         let examCatdetailsTraitement : [Examen] = [
             Check("Pas de traitement au long cours"),
             Check("Prise médicamenteuse journalière (principe actif et posologie inconnu)"),
-            Examen(intitule: "source info traitement", datastr: ["Traitement vu sur ordonnance","(Traitement indiqué par le patient)","(Traitement indiqué par l'entourage)","(Traitement non connu par le patient)","(Traitement vu sur courrier de transmission)"].sort() ),
+            Examen(intitule: "source info traitement", datastr: ["(Traitement vu sur ordonnance)","(Traitement indiqué par le patient)","(Traitement indiqué par l'entourage)","(Traitement non connu par le patient)","(Traitement vu sur courrier de transmission)"].sort() ),
             Examen(intitule: "de qui ?", type:  .selection,tag: "medecin" ),
             Examen(intitule: "Date", type:  .donnee, tag: "date" ),
             
@@ -353,7 +356,7 @@ class ExamTree :NSObject{
     
     static var Traitement:categorieExamen.Categorie {
         let catTraitement = categorieExamen.Categorie(nom:"Traitement",namedImage: "medoc_icon.png",showNom: true)
-        catTraitement.startNewLine()
+      //  catTraitement.startNewLine()
         let examCatTraitement : [Examen] = [
             detailsTraitement.asExamen(),
             Examen(categorie: ExamTree.TTT),
@@ -368,16 +371,18 @@ class ExamTree :NSObject{
         let catPoids = categorieExamen.Categorie(nom:"<br>Poids/Taille",namedImage: "Homme.png",showNom: false)
         catPoids.startLI()
         let examCatPoids : [Examen] = [
-            
-            Examen(intitule: "Taille (indiqué par le patient)", type:  .donnee, tag: "taille" ),
             Examen(intitule: "Poids (indiqué par le patient)", type:  .donnee ,tag: "poids"),
+            Examen(intitule: "Taille (indiqué par le patient)", type:  .donnee, tag: "taille" ),
+            OuiNon("Variation pondérale récente significative"),
+            Examen(intitule: "Détail", type:  .reponsecourte ),
+            
             Examen(intitule: "Poids (estimé)", type:  .donnee ,tag: "poids"),
             Examen(intitule: "Poids (mesuré)", type:  .donnee ,tag: "poids"),
             Examen(intitule: "Taille (estimée)", type:  .donnee, tag: "taille" ),
             Examen(intitule: "Taille (mesurée)", type:  .donnee, tag: "taille" ),
-            
-            OuiNon("Variation pondérale récente significative"),
-            Examen(intitule: "Détail", type:  .reponsecourte ),
+            Check("Surcharge type androïde"),
+            Check("Surcharge type gynoïde"),
+           
             Examen(intitule: "Périmètre abdominal", type:  .donnee, tag: "taille" ),
             
             ]
@@ -614,15 +619,21 @@ class ExamTree :NSObject{
             OuiNon("Anxiété majeure apparente"),
             Check("Très algique"),
             OuiNon("Sueurs"),
-            Check("Coloration cutanée normale"),
-            
+            Examen(intitule: "coloration cutané", datastr: [
+                "Coloration cutanée normale",
+                "Paleur cutanéomuqueuse",
+                "Cyanose des muqueuses labiales",
+                "Mélanodermie",
+                "Ictère cutanéomuqueux",
+                "teint subictérique",
+                "teint erythémateux",
+                "teint grisatre",
+                "marbrures"].sort() ),
+            Check("Gérontoxon (arc sénile de la cornée)"),Check("Xanthélasma"),
             self.Poids.asExamen(),
             self.Adenopathies.asExamen(),
             Examen(intitule: "Dernier repas", type:  .reponsecourte, tag: "date" ),
-            Check("Erythrose faciale"),
-            Check("Teint ictérique"),
-            Check("Teint grisatre"),
-            Check("Paleur cutanéomuqueuse"),
+
             
             self.OMS,
             self.Karnofsky,
@@ -703,6 +714,7 @@ class ExamTree :NSObject{
             Check("Hypoxie"),
             Check("Hypocapnie"),
             Check("Hypercapnie"),
+            OuiNon("Effet Shunt (PaO2+pCO2 < 120)"),
             Examen(intitule: "pH (7,35 - 7,45)", type:  .donnee ),
             Examen(intitule: "PaO2 (90-100)", type:  .donnee ),
             Examen(intitule: "PaCO2 (35-45)", type:  .donnee ),

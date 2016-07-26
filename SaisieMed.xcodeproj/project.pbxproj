@@ -81,6 +81,7 @@
 		30D852791D32943800F2F850 /* Neurologie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D852781D32943800F2F850 /* Neurologie.swift */; };
 		30D8527B1D33D12200F2F850 /* Cardiologie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D8527A1D33D12200F2F850 /* Cardiologie.swift */; };
 		30D8527D1D33D1D600F2F850 /* ECG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D8527C1D33D1D600F2F850 /* ECG.swift */; };
+		30DA16EC1D46A2C700760DF9 /* Souffle cardiaque - Arbre décisionnel.png in Resources */ = {isa = PBXBuildFile; fileRef = 30DA16EB1D46A2C700760DF9 /* Souffle cardiaque - Arbre décisionnel.png */; };
 		30EFF0D41D3D8B3200358874 /* ExamenClinique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EFF0D31D3D8B3200358874 /* ExamenClinique.swift */; };
 		30EFF0D81D3E413A00358874 /* Paraclinique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EFF0D71D3E413A00358874 /* Paraclinique.swift */; };
 		30F43EE81D077C3B005E3BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F43EE71D077C3B005E3BEB /* AppDelegate.swift */; };
@@ -184,6 +185,7 @@
 		30D852781D32943800F2F850 /* Neurologie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Neurologie.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		30D8527A1D33D12200F2F850 /* Cardiologie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Cardiologie.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		30D8527C1D33D1D600F2F850 /* ECG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ECG.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		30DA16EB1D46A2C700760DF9 /* Souffle cardiaque - Arbre décisionnel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Souffle cardiaque - Arbre décisionnel.png"; sourceTree = "<group>"; };
 		30EFF0D31D3D8B3200358874 /* ExamenClinique.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamenClinique.swift; sourceTree = "<group>"; };
 		30EFF0D71D3E413A00358874 /* Paraclinique.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paraclinique.swift; sourceTree = "<group>"; };
 		30F43EE41D077C3B005E3BEB /* SaisieMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaisieMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -384,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				301C08601D25877200E79763 /* examenclinique.png */,
+				30DA16EB1D46A2C700760DF9 /* Souffle cardiaque - Arbre décisionnel.png */,
 				30A1900B1D2974E6001690C1 /* medecin-icone.png */,
 				301C08611D25877200E79763 /* scan.png */,
 				301C08621D25877200E79763 /* laboratoire.png */,
@@ -557,6 +560,7 @@
 				308E7FE31D2486E500AF225D /* peau_icon.png in Resources */,
 				301826101D10ABAA00592CE9 /* nez_icon.png in Resources */,
 				3018260E1D10ABAA00592CE9 /* rein_icon.png in Resources */,
+				30DA16EC1D46A2C700760DF9 /* Souffle cardiaque - Arbre décisionnel.png in Resources */,
 				301826121D10ABAA00592CE9 /* pied_icon.png in Resources */,
 				30905F8C1D29777B002F023D /* Homme.png in Resources */,
 				308E7FDF1D2486E500AF225D /* thermo_icon.png in Resources */,

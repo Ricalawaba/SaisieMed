@@ -161,7 +161,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setDefautTextDict()
         // MARK: Uncomment to read data files
         
-        DataSave.loadDataFiles()
+       DataSave.loadDataFiles()
         
        
         /*var filemgr = NSFileManager.defaultManager()

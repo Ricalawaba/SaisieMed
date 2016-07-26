@@ -16,6 +16,11 @@ extension ExamTree {
             self.LocAnat.asExamen(),
             self.TypeTrauma.asExamen(),
             self.LocoFonctionnel.asExamen(),
+            OuiNon("Trouble de la recoloration cutanée"),
+            OuiNon("déficit sensitif"),
+            OuiNon("déficit moteur"),
+            Check("Pas de déficit sensitivo-moteur distal"),
+            Check("Froideur distale"),
             Plaie.asExamen(),
             ]
         catlocoMoteurCommun.examens=examCatlocoMoteurCommun
@@ -25,9 +30,9 @@ extension ExamTree {
         let catLocAnat = categorieExamen.Categorie(nom:"Loc.  anatomique",namedImage: "os_icon.png",showNom: false)
         catLocAnat.formatPreString=""
         let examCatLocAnat : [Examen] = [
-            Check("droit(e)"),
-            Check("gauche"),
-            Examen(intitule: "Description zone", datastr: ["1/3 distal","1/3 proximal","1/3 moyen","1/3 inférieur","1/3 inférieur","1/3 inférieur",].sort() ),
+            Check("droit(e)",poststring: ""),
+            Check("gauche",poststring: ""),
+            Examen(intitule: "Description zone", datastr: ["1/3 distal","1/3 proximal","1/3 moyen","1/3 inférieur","1/3 supérieur",].sort() ),
             Examen(intitule: "Bord", type:  .check, info: " "  ),
             Examen(intitule: "Extrémité", type:  .check, info: " "  ),
             Examen(intitule: "face", type:  .check, info: " "  ),
@@ -60,6 +65,7 @@ extension ExamTree {
             self.Document.asExamen(),
             Check("Pas sous anti-coagulant"),
             Check("Pas sous anti-agrégant"),
+            locoMoteurCommun.asExamen(),
             ]
         catLocomoteur.subitems=["Plaie"]
         catLocomoteur.subitems.append("Face")
@@ -102,6 +108,7 @@ extension ExamTree {
         let catLocoFonctionnel = categorieExamen.Categorie(nom:"LocoFonctionnel",namedImage: "os_icon.png",showNom: false)
         let examCatLocoFonctionnel : [Examen] = [
             OuiNon("Examen clinique dans les limites de la normale"),
+            OuiNon("Instabilité"),
             Check("Trop algique pour une évaluation fonctionnelle complète"),
             OuiNon("Douleur au repos"),
             OuiNon("Douleur a la mobilisation"),
@@ -150,7 +157,6 @@ extension ExamTree {
             self.LocAnat.asExamen(),
             self.TypeTrauma.asExamen(),
             self.LocoFonctionnel.asExamen(),
-            
             ]
         catPoignet.examens=examCatPoignet
         return catPoignet
@@ -277,9 +283,12 @@ extension ExamTree {
     static var Genou:categorieExamen.Categorie {
         let catGenou = categorieExamen.Categorie(nom:"Genou",namedImage: "os_icon.png",showNom: true)
         let examCatGenou : [Examen] = [
+            
             locoMoteurCommun.asExamen(),
+            Examen(intitule: "déformation", datastr: ["varum","valgum","flexum","recurvatum"].sort() ),
             Examen(intitule: "différence de circonférence", type:  .donnee ),
             OuiNon("Choc rotulien"),
+            OuiNon("Instabilité"),
             OuiNon("lésion LCA au test de Lachman"),
             OuiNon("lésion LCA au test de Lemaire (subluxation du tibia à 15° de flexion + RI du pied)"),
             OuiNon("Tirroir antéro-postérieur"),

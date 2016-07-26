@@ -29,6 +29,33 @@ extension ExamTree {
         catcardioPouls.examens=examCatcardioPouls
         return catcardioPouls
     }
+    static var cardioVeine:categorieExamen.Categorie {
+        let catcardioVeine = categorieExamen.Categorie(nom:"Etat veineux",namedImage: "nurse_icon.png",showNom: true)
+        let examCatcardioVeine = [
+            Check("Etat veineux satisfaisant"),
+            Examen(intitule: "Mollets", datastr: [
+                "Mollets souples et indolore","Dimininution du ballant du mollet à gauche","Diminution du ballant du mollet à droite"
+                ].sort() ),
+            Check("Homans positif"),
+            Check("Homans négatif"),
+            Check("Douleur localisée oedématié"),
+            //Check(),
+            
+            Check("Etat veineux et cutané précaire"),
+            Check("Dilatations variqueuses"),
+            Check("Phlébectasies de stase"),
+            Check("Hyperpigmentation en chaussettes (dermite ocre)"),
+            Check("Hypodermite de stase"),
+            Check("Placard inflammatoire algique compatible avec une thrombophlébite superficielle"),
+            Check("Atrophie blanche de Millian"),
+            Check("Lésions eczémateuses"),
+            Check("Pas d'ulcère"),
+            Check("Ulcère variqueux (indolore)"),
+            Check("Ulcère artériel"),
+            ]
+        catcardioVeine.examens=examCatcardioVeine
+        return catcardioVeine
+    }
     
     static var Cardiovasculaire:categorieExamen.Categorie {
         let catCardiovasculaire = categorieExamen.Categorie(nom:"<br>Appareil cardiovasculaire",namedImage: "cardio2_icon.png",showNom: true)
@@ -39,10 +66,13 @@ extension ExamTree {
             ExamTree.CardioFonctionnel.asExamen(),
             ExamTree.CardioAuscultation.asExamen(),
             ExamTree.cardioPouls.asExamen(),
-            OuiNon("Turgescence jugulaire"),
+            OuiNon("Turgescence jugulaire en position demi assise"),
+            OuiNon("Reflux hépato-jugulaire"),
             OuiNon("Oedème des Mb inférieurs"),
-            Check("Hyperpigmentation en chaussettes (dermite ocre)"),
-            Check("Mollets souples et indolore"),
+            Check("Frémissement palpatoire xyphoïdien (Signe de harzer, HVD?)"),
+            
+            
+            
             //self.libre,
         ]
         catCardiovasculaire.examens=examCatCardiovasculaire
@@ -54,8 +84,42 @@ extension ExamTree {
         let examCatCardioAuscultation   : [Examen] = [
             Check("BDC régulier"),
             Check("BDC irrégulier"),
-            Check("Pas de souffle cardiaque"),
-            Examen(intitule: "Souffle cardiaque", type:  .donnee ),
+            Examen(intitule: "souffle", datastr: [
+                "Pas de souffle cardiaque audible",
+                "Souffle systolique",
+                "Souffle diastolique",
+                "Souffle mésosystolique",
+                "Souffle mésodiastolique",
+                "Souffle holosystolique",
+                "Souffle holodiastolique",
+                "Souffle télésystolique",
+                "Souffle télédiastolique",
+                ].sort() ),
+            Examen(intitule: "intensité souffle", datastr: [
+                "1/6",
+                "2/6",
+                "3/6",
+                "4/6",
+                "5/6",
+                "6/6",
+                ].sort() ),
+            Examen(intitule: "foyer auscultatoire", datastr: [
+                "Foyer aortique",
+                "Foyer mitral",
+                "Foyer tricuspidien",
+                "Foyer pulmonaire",
+                
+                ].sort() ),
+            Examen(intitule: "Irradiation", datastr: [
+                "sans irradiation",
+                "irradiation carotidienne",
+                "irradiation en rayon de roue",
+                "irradiation bord gauche du sternum",
+                "irradiation axillaire",
+                "",
+                ].sort() ),
+
+            
             OuiNon("Souffle carotidien"),
             OuiNon("Souffle abdominal"),
             OuiNon("Souffle fémoral"),
@@ -107,7 +171,7 @@ extension ExamTree {
                 ]),
             Examen(intitule: "expectorations", datastr:
                 ["Pas d'expectorations","Expectorations glaireuses","Expectorations sanguinolantes","expectorations aérées mousseuse","expectorations sales nauséabondes"])
-            ]
+        ]
         catCardioFonctionnel.examens=examCatCardioFonctionnel
         return catCardioFonctionnel
     }
