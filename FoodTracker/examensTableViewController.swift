@@ -272,7 +272,20 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
         let indexPath:NSIndexPath? = self.tableView.indexPathForRowAtPoint(location)
         if indexPath == nil {return }
         ExamTaped = categorie.examens[indexPath!.row]
-        
+        if (ExamTaped!.type == Examen.ExamenEnum.documentinfo) {
+           
+                let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("documentViewID") as! imageDocumentViewController
+            _=svc.view
+            
+            if let img = UIImage(named: ExamTaped!.value) {
+                  svc.imageView.image = img
+                print(img.description)
+            } else {print (ExamTaped!.value," not found") }
+            //  =UIImage(named: (ExamTaped?.value)!)
+            
+                self.navigationController!.pushViewController(svc,animated: true)
+            return
+        }
         if (ExamTaped!.type == .group ){
             // performSegueWithIdentifier("autoshow", sender: self)
             //examensTableViewController
@@ -693,9 +706,11 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
                     
                     cell3.delegate=self
                     cell3.examen=examen1
-                    
-                    
-                    
+                    return cell3
+        } else if  examen1.type == Examen.ExamenEnum.documentinfo{
+                        let cell3 = tableView.dequeueReusableCellWithIdentifier("imageDocumentCell", forIndexPath: indexPath) as! imageDocumentTableViewCell
+                    cell3.examen=examen1
+                    return cell3
                     
         }
         

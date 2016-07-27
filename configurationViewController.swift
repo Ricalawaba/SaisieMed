@@ -9,6 +9,11 @@
 import UIKit
 
 class configurationViewController: UIViewController,dateSelectedDelegate {
+    @IBAction func imageDocumentAction(sender: UIButton) {
+         let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("documentViewID") as! imageDocumentViewController
+        self.navigationController!.pushViewController(svc,animated: true)
+
+    }
     
     @IBAction func pancarteViewButtonAction(sender: UIButton) {
         let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pancartViewRef") as! pancarteViewController

@@ -254,7 +254,13 @@ extension ExamTree {
     static var Hanche:categorieExamen.Categorie {
         let catHanche = categorieExamen.Categorie(nom:"Hanche",namedImage: "os_icon.png",showNom: true)
         let examCatHanche : [Examen] = [
+            Examen(intitule: "doc fracture du col fémoral", imageName: "fracture_femur.png"),
             locoMoteurCommun.asExamen(),
+            OuiNon("Racourcissement"),
+            OuiNon("Rotation externe"),
+            Check("Station debout possible"),
+            Check("Orthostatisme impossible"),
+            
             ]
         catHanche.examens=examCatHanche
         return catHanche
@@ -304,18 +310,18 @@ extension ExamTree {
         catGenou.examens=examCatGenou
         return catGenou
     }
-     static var mobiliteEpaule:categorieExamen.Categorie {
-        let catmobiliteEpaule = categorieExamen.Categorie(nom:"<br>Mobilité",namedImage: "os_icon.png",showNom: true)
-        let examCatmobiliteEpaule = [
-            // Examen(intitule: "Xie", type:  .check ,info: " "),
-            //Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
-            //Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
-            Examen(intitule: "libre", type:  .reponsecourte ),
-            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
-        ]
-        catmobiliteEpaule.examens=examCatmobiliteEpaule
-        return catmobiliteEpaule
-    }
+//     static var mobiliteEpaule:categorieExamen.Categorie {
+//        let catmobiliteEpaule = categorieExamen.Categorie(nom:"<br>Mobilité",namedImage: "os_icon.png",showNom: true)
+//        let examCatmobiliteEpaule = [
+//            // Examen(intitule: "Xie", type:  .check ,info: " "),
+//            //Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
+//            //Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
+//            Examen(intitule: "libre", type:  .reponsecourte ),
+//            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
+//        ]
+//        catmobiliteEpaule.examens=examCatmobiliteEpaule
+//        return catmobiliteEpaule
+//    }
 
     static var Epaule:categorieExamen.Categorie {
         let catEpaule = categorieExamen.Categorie(nom:"Epaule",namedImage: "<#image#>",showNom: true)

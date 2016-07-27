@@ -34,6 +34,7 @@ class Examen : NSObject,NSCoding{
         case datastr
         case multirowdatastr
         case imagefilename
+        case documentinfo
         func int()->Int {
             return self.rawValue
         }
@@ -135,6 +136,12 @@ class Examen : NSObject,NSCoding{
         self.intitule=intitule
         self.value=value
         
+    }
+    init (intitule: String, imageName: String)
+    {
+        self.type = .documentinfo
+        self.value=imageName
+        self.intitule=intitule
     }
     
 }

@@ -66,7 +66,8 @@ extension ExamTree {
             ExamTree.CardioFonctionnel.asExamen(),
             ExamTree.CardioAuscultation.asExamen(),
             ExamTree.cardioPouls.asExamen(),
-            OuiNon("Turgescence jugulaire en position demi assise"),
+            ExamTree.cardioVeine.asExamen(),
+            OuiNon("Turgescence jugulaire spontannée en position demi assise"),
             OuiNon("Reflux hépato-jugulaire"),
             OuiNon("Oedème des Mb inférieurs"),
             Check("Frémissement palpatoire xyphoïdien (Signe de harzer, HVD?)"),
@@ -80,8 +81,12 @@ extension ExamTree {
     }
     static var CardioAuscultation:categorieExamen.Categorie {
         let catCardioAuscultation = categorieExamen.Categorie(nom:"<br>auscultation",namedImage: "cardio2_icon.png",showNom: true)
-        catCardioAuscultation.startLI()
+        //catCardioAuscultation.startLI()
+       // let anexamen=Examen(intitule: "doc souffle", type: Examen.ExamenEnum.documentinfo)
+     //   anexamen.value="Souffle cardiaque - Arbre décisionnel.png"
+       // anexamen.value="fracture_femur.png"
         let examCatCardioAuscultation   : [Examen] = [
+            Examen(intitule: "doc souffle", imageName: "Souffle cardiaque - Arbre décisionnel.png"),
             Check("BDC régulier"),
             Check("BDC irrégulier"),
             Examen(intitule: "souffle", datastr: [
@@ -123,8 +128,7 @@ extension ExamTree {
             OuiNon("Souffle carotidien"),
             OuiNon("Souffle abdominal"),
             OuiNon("Souffle fémoral"),
-            OuiNon("Souffle carotidien"),
-            Check("Pas de crépitants"),
+                      Check("Pas de crépitants"),
             Check("Rales crépitants aux bases"),
             Check("Rales crépitants étendues"),
             ]
