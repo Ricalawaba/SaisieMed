@@ -15,17 +15,15 @@ class ExamTree :NSObject{
         case "zone anatomique":
             return self.regionAnat
         case "libre" :
-            // case "libre":
             return self.libre
         case "atcd" :
-            // case "libre":
             return self.atcd.asExamen()
-
         case "page" :
-            // case "libre":
             return Examen(intitule: "(image)", type:  .imagefilename )
         case "neurologie":
             return self.Neurologie.asExamen()
+        case "locabdo":
+            return self.locAbdo
         case "document":
             return self.Document.asExamen()
         case "motif":
@@ -612,6 +610,7 @@ class ExamTree :NSObject{
         
         let examCatExamenGeneral : [Examen] = [
             Examen(intitule: "Communication", datastr: ["Communication normale","Pas de communication","Communication altérée","difficultés linguistiques","Refus de communication"].sort() ),
+            neuroFonctionnel.asExamen(),
             OuiNon("Troubles du langage"),
             
             Check("Conscient" ),
@@ -748,7 +747,7 @@ class ExamTree :NSObject{
         let catRespiratoireFonctionnel = categorieExamen.Categorie(nom:"<br>Fonctionnel",namedImage: "pneumo_icon.png",showNom: true)
         catRespiratoireFonctionnel.startLI()
         let examCatRespiratoireFonctionnel : [Examen] = [
-            Examen(intitule: "respiration", datastr: ["eupnéïque","Dyspnée inspiratoire","dyspnée expiratoire"].sort() ),
+            Examen(intitule: "respiration", datastr: ["dyspnée au repos","dyspnée d'effort","eupnéïque","Dyspnée inspiratoire","dyspnée expiratoire"].sort() ),
             Check("anxiogène"),
             Check("Sifflante"),Check("Encombrement audible"),
             OuiNon("pincement des ailes du nez"),

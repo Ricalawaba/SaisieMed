@@ -12,8 +12,13 @@ extension String {
     func stringByAppendingPathComponent(path: String) -> String {
         
         let nsSt = self as NSString
-        
+        //nsSt.st
         return nsSt.stringByAppendingPathComponent(path)
+    }
+    func stringByAppendingPathExtension(ext:String) -> String {
+        let nsSt = self as NSString
+        //nsSt.st
+        return nsSt.stringByAppendingPathExtension(ext)!
     }
 }
 
@@ -24,6 +29,7 @@ struct Donnees {
     static var multiColumnPickerDataStr = [String: [([String])] ]()
     static var userdefault: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     static var patientEnCours:patients.patient?
+    static var mainView:UIViewController!
 }
 
 // MARK: Structure statiques d'accès aux fichiers de données

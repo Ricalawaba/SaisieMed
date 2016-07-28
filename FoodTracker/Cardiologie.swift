@@ -13,9 +13,12 @@ extension ExamTree {
     
     // MARK: Cardiologie Principal
     static var cardioPouls:categorieExamen.Categorie {
-        let catcardioPouls = categorieExamen.Categorie(nom:"Pouls",namedImage: "cardio_icon.png",showNom: true)
+        let catcardioPouls = categorieExamen.Categorie(nom:"<br>Pouls",namedImage: "cardio_icon.png",showNom: true)
         catcardioPouls.startLI()
         let examCatcardioPouls :   [Examen] = [
+            Check("Pouls filant"),
+            Check("Pouls bien tapés"),
+            Check("Pouls fémoraux et tibiaux présents symétriques"),
             Check("fémoral présent symétrique"),
             Check("fémoraux assymétriques"),
             Check("radial présent symétrique"),

@@ -276,6 +276,8 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
            
                 let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("documentViewID") as! imageDocumentViewController
             _=svc.view
+            svc.imageMapped=MappedImage(contentsOfFile: ExamTaped!.value)
+            
             
             if let img = UIImage(named: ExamTaped!.value) {
                   svc.imageView.image = img
@@ -309,8 +311,8 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
             for t in Donnees.selectiontextDict[ExamTaped!.tag]! {
                 dd.append(t)
             }
-            dropdown.anchorView=self.navigationController?.view
-            dropdown.bottomOffset = CGPoint(x: 0, y:(dropdown.anchorView?.plainView.bounds.height)!)
+            dropdown.anchorView=self.editButtonItem()
+           // dropdown.bottomOffset = CGPoint(x: 0, y:(dropdown.anchorView?.plainView.bounds.height)!)
             dropdown.dataSource=dd
             //  dropdown.topOffset = CGPoint(x: 0, y:-sender.plainView.bounds.height)
             dropdown.selectionAction = { [unowned self] (index: Int, item: String) in

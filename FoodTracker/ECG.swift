@@ -15,6 +15,10 @@ extension ExamTree {
     let examCatConclusion : [Examen] = [
         Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre"),
         Examen(intitule: "ECG Normal", type: .check),
+        Check("ECG Anormal: trouble du rythme"),
+        Check("ECG Anormal: Signes d'insufisance coronarienne"),
+        Check("ECG Anormal: Insufisance coronarienne aigüe"),
+        Check("ECG d'interprétation délicate, avis spécialisé souhaitable"),
         Examen(intitule: "modification électrique en comparaison au précédent", type: .ouinon),
         Examen(intitule: "Pas de troubles de la conduction ou de repolarisation", type: .check),
         Examen(intitule: "Pas de troubles du rythme", type: .check),

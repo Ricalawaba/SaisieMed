@@ -53,6 +53,7 @@ class patientTableViewController: UITableViewController,ajoutPatientDelegate {
         self.tableView.remembersLastFocusedIndexPath=true
         configMenuItem.title = "\u{2699}\u{0000FE0E}"
         
+        Donnees.mainView=self
         
     }
     private var havepatient: Bool = false

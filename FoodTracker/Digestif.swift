@@ -52,11 +52,10 @@ extension ExamTree {
             typeDouleur.asExamen(),
             OuiNon("irradiation"),
             locAbdo,
-            locAbdo,
-            locAbdo,
             OuiNon("signe de Murphy"),
             
             ]
+        catDigestifDouleur.subitems.append("locabdo")
         catDigestifDouleur.examens=examCatDigestifDouleur
         
         return catDigestifDouleur

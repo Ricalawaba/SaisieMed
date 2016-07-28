@@ -37,6 +37,8 @@ extension ExamTree {
             "Photographie patient",
             "Document administratif",
             "Document manuscrit donné au patient",
+            "Document médical personnel du patient",
+            "Autre document" ,
         ]
         return Examen(intitule: "Type", type: .datastr, tag: "dataStrtypecourrier")
         // return catOMS

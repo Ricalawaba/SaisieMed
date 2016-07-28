@@ -45,12 +45,6 @@ extension ExamTree {
             OuiNon("Nystagmus"),
             LocAnat.asExamen(),
             
-            
-            // Examen(intitule: "Xie", type:  .check ,info: " "),
-            //Examen(intitule: "nom", type:  .selection,tag: "atcd" ),
-            //Examen(intitule: "quand ?", type:  .reponsecourte ,tag: "date"),
-            Examen(intitule: "libre", type:  .reponsecourte ),
-            Examen(intitule: "Ajout texte libre",type: .addinfo,tag: "libre")
         ]
         catNerfsCraniens.examens=examCatNerfsCraniens
         return catNerfsCraniens
