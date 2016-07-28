@@ -8,6 +8,13 @@
 
 import UIKit
 
+ protocol mappedImageDelegate {
+  func regionSelected(sender:MappedImage,region: MappedImage.region)
+  //func actionSelected(sender:MappedImage,region:MappedImage.region,action:String)
+    func selectionDone(sender:MappedImage,fulltext:String)
+  func zoneAdded(sender:MappedImage,region:MappedImage.region)
+ }
+
 class imageDocumentViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
@@ -16,10 +23,51 @@ class imageDocumentViewController: UIViewController {
     @IBOutlet weak var imageViewLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageViewTrailingConstraint: NSLayoutConstraint!
+    
+    @IBAction func doneButtonAction(sender: AnyObject) {
+        var fullString=""
+        for zone in imageMapped!.regionsMain {
+            if zone.action.isEmpty { continue}
+            fullString += zone.name + " "
+            
+        }
+        print("imagemap result: ",fullString)
+        if let del=delegate {
+                del.selectionDone(imageMapped!, fulltext: fullString)
+        }
+    }
+    @IBAction func refreshButtonAction(sender: UIBarButtonItem) {
+        for zone in imageMapped!.regionsMain {
+            if zone.action == "" {
+                let overlay: UIView = UIView(frame: zone.bounds)
+                
+                overlay.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.5)
+                self.imageView.addSubview(overlay)
+                zone.action=zone.name
+                
+            }else {
+                for subview:UIView in self.imageView.subviews { //where subview.bounds==zone.bounds {
+                    // print(subview.frame,point)
+                    if subview.frame.contains(zone.bounds.origin){
+                        subview.removeFromSuperview()
+                    }
+                }
+                zone.action=""
+                // self.imageView.vie
+                // self.imageView.subviews[0].removeFromSuperview()
+            }
+        }
+        
+    }
+    @IBAction func editZoneAction(sender: AnyObject) {
+        editMode = !editMode
+        let but=sender as? UIBarButtonItem
+        but?.title="Edit \(editMode)"
+    }
     var imageMapped:MappedImage? {
         didSet {
             imageView.image=imageMapped?.image
-            
+            //imageMapped.
         }
     }
     var editMode:Bool=false
@@ -34,23 +82,53 @@ class imageDocumentViewController: UIViewController {
         
     }
     var firstPoint:CGPoint?
-    
+    var delegate:mappedImageDelegate?
+    var savedZoom:CGFloat?
+    var savedBounds:CGRect?
     func tap(gesture: UIGestureRecognizer) {
         let point = gesture.locationInView(gesture.view)
         
-        print("touch:", point) // You can check for their tag and do different things based on tag
+     //   print("touch:", point) // You can check for their tag and do different things based on tag
         
         if editMode {
             if let firstPointU=firstPoint {
-                imageMapped?.addZone(CGRect(origin: firstPointU, size: CGSize(width: point.x-firstPointU.x, height: point.y-firstPointU.y)),viewController: self)
+                let reg=imageMapped?.addZone(CGRect(origin: firstPointU, size: CGSize(width: point.x-firstPointU.x, height: point.y-firstPointU.y)),viewController: self)
+                if let del=delegate {
+                    if let regg=reg {
+                    del.zoneAdded(imageMapped!, region: regg)
+                    }
+                }
                 firstPoint=nil
             } else {
                 firstPoint=point
             }
         } else if let zone=imageMapped!.regionHittedAt(point) {
-            print("hit zone:",zone.name)
+            print("hit zone: ",zone.name," at point ",point)
+            if zone.action=="" {
+                let overlay: UIView = UIView(frame: zone.bounds)
+                //overlay.
+                overlay.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.5)
+                savedZoom=self.scrollView.zoomScale
+                savedBounds=self.scrollView.bounds
+             //   let bounds=self.scrollView.
+                self.imageView.addSubview(overlay)
+                zone.action=zone.name
+               // self.scrollView.setZoomScale(savedZoom, animated: true)
+            } else {
+                for subview:UIView in self.imageView.subviews { //where subview.bounds==zone.bounds {
+                   // print(subview.frame,point)
+                    if subview.frame.contains(point){
+                    subview.removeFromSuperview()
+                    }
+                }
+                zone.action=""
+               // self.imageView.vie
+               // self.imageView.subviews[0].removeFromSuperview()
+            }
+            if let del=delegate {               
+                    del.regionSelected(imageMapped!, region: zone)
+            }
         }
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -102,5 +180,10 @@ extension imageDocumentViewController: UIScrollViewDelegate {
     }
     func scrollViewDidZoom(scrollView: UIScrollView) {
         updateConstraintsForSize(view.frame.size)
+        if savedZoom != nil {
+            self.scrollView.bounds=savedBounds!
+            self.scrollView.zoomScale=savedZoom!
+            savedZoom=nil
+        }
     }
 }

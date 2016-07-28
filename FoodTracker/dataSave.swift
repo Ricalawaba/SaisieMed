@@ -30,6 +30,7 @@ struct Donnees {
     static var userdefault: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     static var patientEnCours:patients.patient?
     static var mainView:UIViewController!
+    static var imagesMap:[String:MappedImage]=[:]
 }
 
 // MARK: Structure statiques d'accès aux fichiers de données

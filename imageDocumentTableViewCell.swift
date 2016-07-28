@@ -27,7 +27,7 @@ class imageDocumentTableViewCell: UITableViewCell {
                 } else
                     if let img = UIImage(named: ex.value) {
                         // if img.
-                        var imageMap=MappedImage()
+                        let imageMap=MappedImage()
                         imageMap.imageFileName=ex.value
                         imageMap.name=ex.value.stringByAppendingPathExtension("pngmap")
                         imageMap.saveToFile(imageMap.name)

@@ -143,6 +143,70 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Donnees.selectiontextDict["profession"] = ["Agent technique","Agriculteur","Batiments","Boulanger","Etudiant","Infimier(e)","Lycéen","Magasinier","Médecin","Retraité","Travaux public","sans emploi", ]
     }
+    func configImageMapped() {
+      //  var imagesMap:[String:MappedImage]=[:]
+       // let souffleMap=MappedImage(name: "", regionsMain: <#T##[MappedImage.region]#>, imagefilename: <#T##String#>)
+        let imageFilenames=["fracture_femur.png","Souffle cardiaque - Arbre décisionnel.png","douleur_thoracique.png"]
+        for imgfilename in imageFilenames {
+            let imageMap=MappedImage()
+            imageMap.imageFileName=imgfilename
+            
+            imageMap.name=imgfilename.stringByAppendingPathExtension("pngmap")
+            switch imgfilename {
+            case "douleur_thoracique.png":
+               // imageMap.regionsMain.append(<#T##newElement: Element##Element#>)
+                imageMap.regionsMain.append(MappedImage.region(name: "douleur précordiale", bounds: CGRect(x: 189.897391113889, y: 157.494264852392, width: 139.408799032022, height: 25.6210765788581)))
+                imageMap.regionsMain.append(MappedImage.region(name: "douleur rétrosternale", bounds: CGRect(x: 359.448633179862, y: 152.219337321451, width: 250.182277181791, height: 42.9529813233797)))
+                imageMap.regionsMain.append(MappedImage.region(name: "douleur basithoracique", bounds: CGRect(x: 623.948570802779, y: 161.262070231636, width: 162.769192383334, height: 36.1709316407408)))
+                imageMap.regionsMain.append(MappedImage.region(name: "intense", bounds: CGRect(x: 152.134548958451, y: 205.029011344668, width: 76.5710312638563, height: 31.2329206470993)))
+                imageMap.regionsMain.append(MappedImage.region(name: "violente", bounds: CGRect(x: 271.021150131281, y: 204.525254560037, width: 75.0597609099644, height: 26.6991095854236)))
+                imageMap.regionsMain.append(MappedImage.region(name: "angoissante", bounds: CGRect(x: 399.982886996723, y: 210.570335975605, width: 163.217198220325, height: 48.8644081091714)))
+                imageMap.regionsMain.append(MappedImage.region(name: "sourde", bounds: CGRect(x: 634.733548634598, y: 199.487686713731, width: 139.036872558055, height: 79.59357197164)))
+                imageMap.regionsMain.append(MappedImage.region(name: "en coup de poignard", bounds: CGRect(x: 158.683387158649, y: 298.727773285966, width: 180.344928897767, height: 68.5109227097661)))
+                imageMap.regionsMain.append(MappedImage.region(name: "constrictive en étau", bounds: CGRect(x: 370.261236703515, y: 301.246557209119, width: 220.645471668217, height: 72.0372202021805)))
+                imageMap.regionsMain.append(MappedImage.region(name: "déchirure", bounds: CGRect(x: 806.010855409013, y: 299.735286855227, width: 138.533115773424, height: 72.0372202021805)))
+                imageMap.regionsMain.append(MappedImage.region(name: "sans irradiation", bounds: CGRect(x: 188.908794236487, y: 391.922778442633, width: 151.12703538919, height: 61.9620845095678)))
+                imageMap.regionsMain.append(MappedImage.region(name: "machoires", bounds: CGRect(x: 394.441562365786, y: 389.90775130411, width: 97.7288162183429, height: 26.6991095854236)))
+                imageMap.regionsMain.append(MappedImage.region(name: "epaules", bounds: CGRect(x: 502.749271061372, y: 388.900237734849, width: 74.0522473407031, height: 18.6390010313334)))
+                imageMap.regionsMain.append(MappedImage.region(name: "bras", bounds: CGRect(x: 469.50132327575, y: 419.125644812687, width: 44.8343538321264, height: 16.1202171081803)))
+                imageMap.regionsMain.append(MappedImage.region(name: "transfixiante", bounds: CGRect(x: 820.619802163302, y: 391.922778442633, width: 115.864060465046, height: 20.654028169856)))
+                imageMap.regionsMain.append(MappedImage.region(name: "mobile descendante", bounds: CGRect(x: 815.078477532365, y: 435.749618705498, width: 131.984277573226, height: 25.6915960161623)))
+                imageMap.regionsMain.append(MappedImage.region(name: "survenue spontannée", bounds: CGRect(x: 192.938848513533, y: 477.05767504521, width: 121.909141880613, height: 20.1502713852253)))
+                imageMap.regionsMain.append(MappedImage.region(name: "survenue à l'effort", bounds: CGRect(x: 441.290943336435, y: 478.568945399102, width: 94.2025187259283, height: 28.2103799393155)))
+                imageMap.regionsMain.append(MappedImage.region(name: "augmentée à l'inspiration", bounds: CGRect(x: 172.284820343677, y: 509.801866046201, width: 119.894114742091, height: 35.766731708775)))
+                imageMap.regionsMain.append(MappedImage.region(name: "augmenté en position allongé", bounds: CGRect(x: 160.0, y: 550.0, width: 183.871226390181, height: 22.1652985237479)))
+                imageMap.regionsMain.append(MappedImage.region(name: "augmenté par la respiration et la toux", bounds: CGRect(x: 638.259846127012, y: 507.283082123048, width: 140.044386127316, height: 63.4733548634598)))
+                imageMap.regionsMain.append(MappedImage.region(name: "diminué par la position penché en avant", bounds: CGRect(x: 150.119521819929, y: 661.936415004652, width: 183.367469605551, height: 42.3155699089732)))
+                imageMap.regionsMain.append(MappedImage.region(name: "diminué au repos", bounds: CGRect(x: 407.035481981552, y: 661.936415004652, width: 166.239738928109, height: 20.6540281698559)))
+                imageMap.regionsMain.append(MappedImage.region(name: "cède sous derivés nitrés", bounds: CGRect(x: 447.839781536633, y: 688.635524590076, width: 89.6687076642527, height: 17.1277306774415)))
+                imageMap.regionsMain.append(MappedImage.region(name: "pas de position antalgiques", bounds: CGRect(x: 632.718521496075, y: 662.440171789283, width: 306.787881840056, height: 40.8042995550813)))
+                imageMap.regionsMain.append(MappedImage.region(name: "punctiforme bien localisée", bounds: CGRect(x: 627.683423606481, y: 294.660951737321, width: 155.113972707005, height: 78.390932443325)))
+                imageMap.regionsMain.append(MappedImage.region(name: "sans irradiation", bounds: CGRect(x: 634.910956384944, y: 391.954662216625, width: 135.655230611144, height: 52.816585688765)))
+                break
+            case "Souffle cardiaque - Arbre décisionnel.png":
+                imageMap.regionsMain.append(MappedImage.region(name: "souffle cardiaque", bounds: CGRect(x: 393.815104166667, y: 177.44140625, width: 321.940104166667, height: 66.6341145833333)))
+                imageMap.regionsMain.append(MappedImage.region(name: "systolique", bounds: CGRect(x: 110.807291666667, y: 350.390625, width: 246.321614583333, height: 65.1367187499999)))
+                imageMap.regionsMain.append(MappedImage.region(name: "systolo-diastolique", bounds: CGRect(x: 429.752604166667, y: 351.139322916667, width: 285.25390625, height: 52.4088541666666)))
+                imageMap.regionsMain.append(MappedImage.region(name: "diastolique", bounds: CGRect(x: 763.671875, y: 345.149739583333, width: 238.834635416667, height: 67.3828125)))
+                imageMap.regionsMain.append(MappedImage.region(name: "timbre", bounds: CGRect(x: 444.0, y: 932.0, width: 272.5, height: 55.5)))
+                imageMap.regionsMain.append(MappedImage.region(name: "dur et rapeux", bounds: CGRect(x: 131.5, y: 1043.5, width: 226.0, height: 42.5)))
+                imageMap.regionsMain.append(MappedImage.region(name: "doux et en jet de vapeur", bounds: CGRect(x: 134.0, y: 1143.0, width: 209.0, height: 77.0)))
+                imageMap.regionsMain.append(MappedImage.region(name: "doux et aspiratif", bounds: CGRect(x: 794.5, y: 1047.5, width: 234.5, height: 49.0)))
+                imageMap.regionsMain.append(MappedImage.region(name: "roulement ( grondement )", bounds: CGRect(x: 797.0, y: 1134.0, width: 228.0, height: 79.5)))
+                imageMap.regionsMain.append(MappedImage.region(name: "foyer tricuspidien", bounds: CGRect(x: 199.0, y: 611.5, width: 24.5, height: 28.0)))
+                imageMap.regionsMain.append(MappedImage.region(name: "foyer aortique", bounds: CGRect(x: 170.0, y: 563.0, width: 35.0, height: 16.5)))
+                imageMap.regionsMain.append(MappedImage.region(name: "foyer pulmonaire", bounds: CGRect(x: 218.5, y: 550.5, width: 23.0, height: 36.0)))
+                imageMap.regionsMain.append(MappedImage.region(name: "foyer mitral", bounds: CGRect(x: 246.5, y: 598.5, width: 30.0, height: 51.5)))
+            default:
+                break
+            }
+            imageMap.saveToFile(imageMap.name)
+          //  imageMap.regionsMain.append(MappedImage.region(name: "test", bounds: CGRect(x: <#T##Double#>, y: <#T##Double#>, width: <#T##Double#>, height: <#T##Double#>)))
+            //ex.value=imageMap.name
+
+        }
+       
+    }
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -163,7 +227,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
        DataSave.loadDataFiles()
         
-       
+       configImageMapped()
         /*var filemgr = NSFileManager.defaultManager()
         if filemgr.fileExistsAtPath(filePathPatients) {
             print("File exists")

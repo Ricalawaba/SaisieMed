@@ -34,6 +34,7 @@
 		301C08671D25877200E79763 /* laboratoire.png in Resources */ = {isa = PBXBuildFile; fileRef = 301C08621D25877200E79763 /* laboratoire.png */; };
 		301C08681D25877200E79763 /* dossier.png in Resources */ = {isa = PBXBuildFile; fileRef = 301C08631D25877200E79763 /* dossier.png */; };
 		301C08691D25877200E79763 /* tension.png in Resources */ = {isa = PBXBuildFile; fileRef = 301C08641D25877200E79763 /* tension.png */; };
+		302974711D4A0810006FF74D /* douleur_thoracique.png in Resources */ = {isa = PBXBuildFile; fileRef = 302974701D4A0810006FF74D /* douleur_thoracique.png */; };
 		303468E11D3D1B2D00FB10E4 /* Locomoteur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303468E01D3D1B2D00FB10E4 /* Locomoteur.swift */; };
 		3041E67C1D3805A100CD4B42 /* pancarteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3041E67B1D3805A100CD4B42 /* pancarteViewController.swift */; };
 		3041E6811D3A828300CD4B42 /* Documents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3041E6801D3A828300CD4B42 /* Documents.swift */; };
@@ -139,6 +140,7 @@
 		301C08621D25877200E79763 /* laboratoire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laboratoire.png; sourceTree = "<group>"; };
 		301C08631D25877200E79763 /* dossier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dossier.png; sourceTree = "<group>"; };
 		301C08641D25877200E79763 /* tension.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tension.png; sourceTree = "<group>"; };
+		302974701D4A0810006FF74D /* douleur_thoracique.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = douleur_thoracique.png; sourceTree = "<group>"; };
 		303468E01D3D1B2D00FB10E4 /* Locomoteur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locomoteur.swift; sourceTree = "<group>"; };
 		3041E67B1D3805A100CD4B42 /* pancarteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pancarteViewController.swift; sourceTree = "<group>"; };
 		3041E67E1D3854E000CD4B42 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 		30F43F231D0EA255005E3BEB /* images */ = {
 			isa = PBXGroup;
 			children = (
+				302974701D4A0810006FF74D /* douleur_thoracique.png */,
 				301C08601D25877200E79763 /* examenclinique.png */,
 				30DA16EB1D46A2C700760DF9 /* Souffle cardiaque - Arbre décisionnel.png */,
 				30A1900B1D2974E6001690C1 /* medecin-icone.png */,
@@ -563,6 +566,7 @@
 				301826031D0F834500592CE9 /* pancarte_icon.png in Resources */,
 				30905F871D29777B002F023D /* cardio2_icon.png in Resources */,
 				301826131D10ABAA00592CE9 /* main_icon.png in Resources */,
+				302974711D4A0810006FF74D /* douleur_thoracique.png in Resources */,
 				30D5267B1D2863260016A38B /* fracture_femur.png in Resources */,
 				308E7FE21D2486E500AF225D /* chirurgien_icon.png in Resources */,
 				301C08681D25877200E79763 /* dossier.png in Resources */,

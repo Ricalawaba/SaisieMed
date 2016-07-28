@@ -277,11 +277,15 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
                 let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("documentViewID") as! imageDocumentViewController
             _=svc.view
             svc.imageMapped=MappedImage(contentsOfFile: ExamTaped!.value)
-            
+            svc.delegate=self
+            for reg in svc.imageMapped!.regionsMain {
+                // TODO: Non implémenté
+            }
             
             if let img = UIImage(named: ExamTaped!.value) {
                   svc.imageView.image = img
                 print(img.description)
+                
             } else {print (ExamTaped!.value," not found") }
             //  =UIImage(named: (ExamTaped?.value)!)
             
@@ -769,4 +773,19 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
     
     
     
+}
+extension examensTableViewController : mappedImageDelegate {
+    func regionSelected(sender:MappedImage,region: MappedImage.region) {
+        
+    }
+    //func actionSelected(sender:MappedImage,region:MappedImage.region,action:String)
+    func selectionDone(sender:MappedImage,fulltext:String) {
+        let ex=ExamTree.libre
+        ex.value=fulltext
+        categorie.examens.append(ex)
+        tableView.reloadData()
+    }
+    func zoneAdded(sender:MappedImage,region:MappedImage.region) {
+        
+    }
 }

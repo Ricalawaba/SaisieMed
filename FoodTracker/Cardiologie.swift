@@ -166,6 +166,7 @@ extension ExamTree {
         let catCardioFonctionnel = categorieExamen.Categorie(nom:"Fonctionnel",namedImage: "cardio_icon.png",showNom: true)
         catCardioFonctionnel.startLI()
         let examCatCardioFonctionnel   : [Examen] = [
+            Examen(intitule: "doc douleur tho", imageName: "douleur_thoracique.png"),
             OuiNon("Douleur thoracique"),
             typeDouleurThoracique.asExamen(),
             OuiNon("Palpitations"),

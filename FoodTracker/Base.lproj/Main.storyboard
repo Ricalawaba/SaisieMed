@@ -2010,7 +2010,7 @@
         <!--Image Document View Controller-->
         <scene sceneID="cg3-xu-vqi">
             <objects>
-                <viewController storyboardIdentifier="documentViewID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PEW-jw-XSW" customClass="imageDocumentViewController" customModule="SaisieMed" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="documentViewID" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PEW-jw-XSW" customClass="imageDocumentViewController" customModule="SaisieMed" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="h5B-yU-f5F"/>
                         <viewControllerLayoutGuide type="bottom" id="XGo-1a-EOs"/>
@@ -2042,6 +2042,25 @@
                             <constraint firstAttribute="bottom" secondItem="328-rF-Fis" secondAttribute="bottom" constant="20" id="qDR-yW-MYI"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Edit Zone" id="8dh-YG-hQO">
+                            <connections>
+                                <action selector="editZoneAction:" destination="PEW-jw-XSW" id="90p-0q-0ZK"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="vhu-7F-CA7"/>
+                        <barButtonItem systemItem="refresh" id="1uc-OS-Bgk">
+                            <connections>
+                                <action selector="refreshButtonAction:" destination="PEW-jw-XSW" id="tsc-IZ-JAt"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="nho-9R-wiG"/>
+                        <barButtonItem title="Item" systemItem="done" id="gwd-tG-mgQ">
+                            <connections>
+                                <action selector="doneButtonAction:" destination="PEW-jw-XSW" id="WdY-bU-Exq"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>

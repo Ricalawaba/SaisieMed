@@ -8,10 +8,7 @@
 
 import Foundation
 import UIKit
-/*protocol mappedImageDelegate {
- func regionSelected(sender:MappedImage,region: MappedImage.region)
- func actionSelected(sender:MappedImage,region:MappedImage.region,action:String)
- }*/
+
 class MappedImage: NSObject,NSCoding {
     
     //  var delegate:mappedImageDelegate?
@@ -48,7 +45,7 @@ class MappedImage: NSObject,NSCoding {
             guard let name = decoder.decodeObjectForKey("name") as? String,
                 
                 let action = decoder.decodeObjectForKey("action") as? String,
-           //     let tag = decoder.decodeObjectForKey("tag") as? NSObject,
+                //     let tag = decoder.decodeObjectForKey("tag") as? NSObject,
                 let value = decoder.decodeObjectForKey("value") as? String
                 else { return nil }
             let bounds = decoder.decodeCGRectForKey("bounds")
@@ -56,13 +53,13 @@ class MappedImage: NSObject,NSCoding {
             self.name=name
             self.bounds=bounds
             self.action=action
-        //    self.tag=tag
+            //    self.tag=tag
             self.regions=regions
             self.value=value
         }
         func encodeWithCoder(aCoder: NSCoder) {
             aCoder.encodeObject(name, forKey: "name")
-   //         aCoder.encodeObject(tag, forKey: "tag")
+            //         aCoder.encodeObject(tag, forKey: "tag")
             aCoder.encodeObject(action, forKey: "action")
             aCoder.encodeCGRect(bounds, forKey: "bounds")
             aCoder.encodeObject(regions,forKey: "regions")
@@ -91,36 +88,36 @@ class MappedImage: NSObject,NSCoding {
     var imageFileName:String="" {
         didSet {
             readImage()
-                    }
+        }
     }
     var regionsMain:[region]=[]
-
+    
     var image: UIImage?
     func readImage() {
         if let img = UIImage(named: imageFileName) {
             image = img
-            print(img.description)
+            //print(img.description)
         } else if let img = UIImage(contentsOfFile:fileInDocumentsDirectory(imageFileName)) {
             image = img
-            print(img.description)
+           // print(img.description)
         }
         else {print (imageFileName," non trouvé (classe Image Mapped)") }
-  
+        
     }
     // MARK: Load/Save to file
     func saveToFile(filename:String) {
         let pathfilename=DataSave.getDocumentsDirectory().stringByAppendingPathComponent(filename)
         if  NSKeyedArchiver.archiveRootObject(self, toFile: pathfilename) {
-        print("save map:",filename)
-        print(self)
+            print("save map:",filename)
+            //print(self)
         } else {print("erreur ecriture fichier map") }
-
-    }	
-//    func loadFromFile(filename:String) {
-//        if let listpatient=NSKeyedUnarchiver.unarchiveObjectWithFile(filePathPatients) as? patients{
-//            Donnees.listePatient=listpatient
-//        }
-//    }
+        
+    }
+    //    func loadFromFile(filename:String) {
+    //        if let listpatient=NSKeyedUnarchiver.unarchiveObjectWithFile(filePathPatients) as? patients{
+    //            Donnees.listePatient=listpatient
+    //        }
+    //    }
     // MARK: NSCoding
     init(name:String,regionsMain:[region],imagefilename:String){
         self.name=name
@@ -130,7 +127,7 @@ class MappedImage: NSObject,NSCoding {
     override init() {
         super.init()
     }
-    private var loadedFromPathfilename:String?
+    var loadedFromPathfilename:String?
     
     
     init?(contentsOfFile:String) {
@@ -146,20 +143,21 @@ class MappedImage: NSObject,NSCoding {
             self.readImage()
             print("lecture fichier map: ",pathfilename)
             print("name:",name,"imageFileName",self.imageFileName)
-    //        print("MappedImage: img:",self.imageFileName," - file:", self.loadedFromPathfilename!)
+            //        print("MappedImage: img:",self.imageFileName," - file:", self.loadedFromPathfilename!)
             print("Regions:")
             for reg in self.regionsMain {
-                print(reg.name,reg.bounds)
+                //imageMap.regionsMain.append(MappedImage.region(name: "test", bounds: CGRect(x: <#T##Double#>, y: <#T##Double#>, width: <#T##Double#>, height: <#T##Double#>)))
+                print("imageMap.regionsMain.append(MappedImage.region(name: \"\(reg.name)\", bounds: CGRect(x: \(reg.bounds.origin.x), y: \(reg.bounds.origin.y), width: \(reg.bounds.width), height: \(reg.bounds.height))))")
             }
         } else {
             print("lecture impossible fichier map:",self.imageFileName)
             return nil}
         
- 
+        
     }
     required
     init?(coder decoder: NSCoder) {
- //       super.init(decoder)
+        //       super.init(decoder)
         
         guard let name = decoder.decodeObjectForKey("name") as? String,
             let imageFilename = decoder.decodeObjectForKey("imagefilename") as? String,
@@ -178,7 +176,7 @@ class MappedImage: NSObject,NSCoding {
         aCoder.encodeObject(self.regionsMain,forKey: "regionsmain")
     }
     // MARK: Gestion UI des zones
-    func addZone(rect:CGRect,viewController:UIViewController){
+    func addZone(rect:CGRect,viewController:UIViewController) -> region?{
         let reg=region(bounds: rect)
         //1. Create the alert controller.
         let alert = UIAlertController(title: "Nom de zone", message: "Entrer texte", preferredStyle: .Alert)
@@ -191,24 +189,25 @@ class MappedImage: NSObject,NSCoding {
         //3. Grab the value from the text field, and print it when the user clicks OK.
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
+            textField.autocorrectionType = .Yes
             reg.name=textField.text!
             print("Text field: \(textField.text)")
             self.regionsMain.append(reg)
             if let pathfilename=self.loadedFromPathfilename {
                 dispatch_async(dispatch_get_main_queue()) {
-                    //HACK: If not done in dispatch_async on main queue `setupUI` will have no effect
                     self.saveToFile(pathfilename)
                     print(pathfilename," sauvegardé. + ",reg.name,reg.bounds)
                 }
-
-                }
-                
-
-                       }))
+            }
+            }
+            
+            ))
         
         // 4. Present the alert.
         //view
         viewController.presentViewController(alert, animated: true, completion: nil)
+        if reg.name.isEmpty {return nil}
+        return reg
     }
     
     // MARK: Calcul zones
