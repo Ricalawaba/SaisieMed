@@ -2019,6 +2019,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4M-J9-qnN">
+                                <rect key="frame" x="40" y="40" width="520" height="25"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="328-rF-Fis">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <subviews>
@@ -2038,7 +2046,10 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="328-rF-Fis" secondAttribute="trailing" id="71D-HR-PXC"/>
                             <constraint firstItem="328-rF-Fis" firstAttribute="top" secondItem="hA2-D8-WhP" secondAttribute="top" id="Np1-sl-2uQ"/>
+                            <constraint firstItem="M4M-J9-qnN" firstAttribute="leading" secondItem="hA2-D8-WhP" secondAttribute="leadingMargin" constant="20" id="SJl-4X-CRl"/>
                             <constraint firstItem="328-rF-Fis" firstAttribute="leading" secondItem="hA2-D8-WhP" secondAttribute="leading" id="XPR-8x-Y2M"/>
+                            <constraint firstItem="M4M-J9-qnN" firstAttribute="top" secondItem="h5B-yU-f5F" secondAttribute="bottom" constant="20" id="cD6-kx-dLM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="M4M-J9-qnN" secondAttribute="trailing" constant="20" id="flX-BT-HBM"/>
                             <constraint firstAttribute="bottom" secondItem="328-rF-Fis" secondAttribute="bottom" constant="20" id="qDR-yW-MYI"/>
                         </constraints>
                     </view>
@@ -2069,6 +2080,7 @@
                         <outlet property="imageViewLeadingConstraint" destination="7ev-xe-BYD" id="cPz-Pt-dIV"/>
                         <outlet property="imageViewTopConstraint" destination="0y0-UT-S3D" id="ViU-qS-Kfd"/>
                         <outlet property="imageViewTrailingConstraint" destination="ebT-d2-xzr" id="Hr1-nD-nbZ"/>
+                        <outlet property="resultLabel" destination="M4M-J9-qnN" id="8T7-pG-XsA"/>
                         <outlet property="scrollView" destination="328-rF-Fis" id="avm-im-SAn"/>
                     </connections>
                 </viewController>

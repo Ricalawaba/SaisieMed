@@ -278,9 +278,9 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
             _=svc.view
             svc.imageMapped=MappedImage(contentsOfFile: ExamTaped!.value)
             svc.delegate=self
-            for reg in svc.imageMapped!.regionsMain {
-                // TODO: Non implémenté
-            }
+//            for reg in svc.imageMapped!.regionsMain {
+//                // TODO: Non implémenté
+//            }
             
             if let img = UIImage(named: ExamTaped!.value) {
                   svc.imageView.image = img

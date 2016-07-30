@@ -17,6 +17,7 @@ import UIKit
 
 class imageDocumentViewController: UIViewController {
     
+    @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageViewBottomConstraint: NSLayoutConstraint!
@@ -25,16 +26,20 @@ class imageDocumentViewController: UIViewController {
     @IBOutlet weak var imageViewTrailingConstraint: NSLayoutConstraint!
     
     @IBAction func doneButtonAction(sender: AnyObject) {
+        let fullString=getFullResult()
+        print("imagemap result: ",fullString)
+        if let del=delegate {
+                del.selectionDone(imageMapped!, fulltext: fullString)
+        }
+    }
+    func getFullResult() -> String {
         var fullString=""
         for zone in imageMapped!.regionsMain {
             if zone.action.isEmpty { continue}
             fullString += zone.name + " "
             
         }
-        print("imagemap result: ",fullString)
-        if let del=delegate {
-                del.selectionDone(imageMapped!, fulltext: fullString)
-        }
+        return fullString
     }
     @IBAction func refreshButtonAction(sender: UIBarButtonItem) {
         for zone in imageMapped!.regionsMain {
@@ -79,7 +84,7 @@ class imageDocumentViewController: UIViewController {
         imageView.userInteractionEnabled=true
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageDocumentViewController.tap(_:))))
         
-        
+        self.view.bringSubviewToFront(resultLabel)
     }
     var firstPoint:CGPoint?
     var delegate:mappedImageDelegate?
@@ -113,6 +118,7 @@ class imageDocumentViewController: UIViewController {
              //   let bounds=self.scrollView.
                 self.imageView.addSubview(overlay)
                 zone.action=zone.name
+               // resultLabel.text=zone.name
                // self.scrollView.setZoomScale(savedZoom, animated: true)
             } else {
                 for subview:UIView in self.imageView.subviews { //where subview.bounds==zone.bounds {
@@ -125,6 +131,7 @@ class imageDocumentViewController: UIViewController {
                // self.imageView.vie
                // self.imageView.subviews[0].removeFromSuperview()
             }
+            resultLabel.text=getFullResult()
             if let del=delegate {               
                     del.regionSelected(imageMapped!, region: zone)
             }
@@ -166,11 +173,11 @@ class imageDocumentViewController: UIViewController {
     private func updateMinZoomScaleForSize(size: CGSize) {
         let widthScale = size.width / imageView.bounds.width
         let heightScale = size.height / imageView.bounds.height
-        let minScale = min(widthScale, heightScale)
+        let minScale = min(widthScale, heightScale)/2
         
         scrollView.minimumZoomScale = minScale
-        
-        scrollView.zoomScale = minScale
+        scrollView.maximumZoomScale=6.0
+        scrollView.zoomScale = minScale*2
     }
     
 }

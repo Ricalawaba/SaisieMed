@@ -226,7 +226,7 @@ extension ExamTree {
         let catBras = categorieExamen.Categorie(nom:"Bras",namedImage: "os_icon.png",showNom: true)
         let examCatBras : [Examen] = [
             locoMoteurCommun.asExamen(),
-            
+            Examen(intitule: "fracture extrémité supérieure humérus", imageName: "fracture_sup_humerus.png") // fracture_sup_humerus.png
             
             ]
         catBras.examens=examCatBras
@@ -281,6 +281,8 @@ extension ExamTree {
         let catCoude = categorieExamen.Categorie(nom:"Coude",namedImage: "os_icon.png",showNom: true)
         let examCatCoude : [Examen] = [
             locoMoteurCommun.asExamen(),
+            Check("Attitude type pronation douloureuse, bras en extension non algique en dehors de la mobilisation"),
+            Check("Reduction par manoeuvre de Broca"),
             ]
         catCoude.examens=examCatCoude
         return catCoude
@@ -331,6 +333,7 @@ extension ExamTree {
             Check("\"touche de piano\""),
             OuiNon("Instabilité acromio-clavulaire"),
             OuiNon("Douleur sterno-clavulaire"),
+            Examen(intitule: "mobilité épaule", imageName: "mobilite_epaule.png"),
             Examen(intitule: "Rotation externe passive (0-90°)", type:  .donnee ),
             Examen(intitule: "Rotation Interne (pouce)", type:  .donnee ),
             OuiNon("douleur au Palm-Up test (long biceps)"),
