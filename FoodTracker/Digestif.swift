@@ -10,8 +10,8 @@ import Foundation
 
 extension ExamTree {
     static var DigestifFonctionnel:categorieExamen.Categorie {
-        let catDigestifFonctionnel = categorieExamen.Categorie(nom:"Fonctionnel",namedImage: "tete_icon.png",showNom: true)
-        catDigestifFonctionnel.startLI()
+        let catDigestifFonctionnel = categorieExamen.Categorie(nom:"<br>Fonctionnel",namedImage: "tete_icon.png",showNom: true)
+        //catDigestifFonctionnel.startLI()
         let examCatDigestifFonctionnel : [Examen] = [
             OuiNon("Anorexie"),
             OuiNon("Nausée/Vomissements"),

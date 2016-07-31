@@ -89,7 +89,7 @@ extension ExamTree {
      //   anexamen.value="Souffle cardiaque - Arbre décisionnel.png"
        // anexamen.value="fracture_femur.png"
         let examCatCardioAuscultation   : [Examen] = [
-            Examen(intitule: "doc souffle", imageName: "Souffle cardiaque - Arbre décisionnel.png"),
+            Examen(intitule: "doc souffle", imageName: "Souffle cardiaque - Arbre décisionnel.png.map"),
             Check("BDC régulier"),
             Check("BDC irrégulier"),
             Examen(intitule: "souffle", datastr: [
@@ -166,7 +166,7 @@ extension ExamTree {
         let catCardioFonctionnel = categorieExamen.Categorie(nom:"Fonctionnel",namedImage: "cardio_icon.png",showNom: true)
         catCardioFonctionnel.startLI()
         let examCatCardioFonctionnel   : [Examen] = [
-            Examen(intitule: "doc douleur tho", imageName: "douleur_thoracique.png"),
+            Examen(intitule: "doc douleur tho", imageName: "douleur_thoracique.png.map"),
             OuiNon("Douleur thoracique"),
             typeDouleurThoracique.asExamen(),
             OuiNon("Palpitations"),

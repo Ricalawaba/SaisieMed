@@ -36,6 +36,8 @@ class ExamTree :NSObject{
             return self.Locomoteur.asExamen()
         case "orl":
             return self.ORL.asExamen()
+        case "bras":
+            return self.Bras.asExamen()
         case "cardiovasculaire":
             return self.Cardiovasculaire.asExamen()
         case "urologie":

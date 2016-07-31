@@ -69,6 +69,7 @@ extension ExamTree {
             ]
         catLocomoteur.subitems=["Plaie"]
         catLocomoteur.subitems.append("Face")
+        catLocomoteur.subitems.append("Bras")
         catLocomoteur.subitems.append("Epaule")
         catLocomoteur.subitems.append("Coude")
         catLocomoteur.subitems.append("AvantBras")
@@ -185,7 +186,7 @@ extension ExamTree {
             Examen(intitule: "identification doigt", datastr: ["Pouce","Index","Majeur","Annulaire","Auriculaire","Hallux","2ième orteil","3ième orteil","4ième orteil","5ième orteil",].sort() ),
             locoMoteurCommun.asExamen(),
             
-            Examen(intitule: "fracture métacarpes", imageName: "fractures métacarpe.png"),
+            Examen(intitule: "fracture métacarpes", imageName: "fractures métacarpe.png.map"),
             Check("(Maintien des doigts non testés en extension)"),
             OuiNon("deficit du fléchisseur superficiel"),
             
@@ -230,7 +231,7 @@ extension ExamTree {
         let catBras = categorieExamen.Categorie(nom:"Bras",namedImage: "os_icon.png",showNom: true)
         let examCatBras : [Examen] = [
             locoMoteurCommun.asExamen(),
-            Examen(intitule: "fracture extrémité supérieure humérus", imageName: "fracture_sup_humerus.png") // fracture_sup_humerus.png
+            Examen(intitule: "fracture extrémité supérieure humérus", imageName: "fracture_sup_humerus.png.map") // fracture_sup_humerus.png
             
             ]
         catBras.examens=examCatBras
@@ -258,7 +259,7 @@ extension ExamTree {
     static var Hanche:categorieExamen.Categorie {
         let catHanche = categorieExamen.Categorie(nom:"Hanche",namedImage: "os_icon.png",showNom: true)
         let examCatHanche : [Examen] = [
-            Examen(intitule: "doc fracture du col fémoral", imageName: "fracture_femur.png"),
+            Examen(intitule: "doc fracture du col fémoral", imageName: "fracture_femur.png.map"),
             locoMoteurCommun.asExamen(),
             OuiNon("Racourcissement"),
             OuiNon("Rotation externe"),
@@ -337,7 +338,7 @@ extension ExamTree {
             Check("\"touche de piano\""),
             OuiNon("Instabilité acromio-clavulaire"),
             OuiNon("Douleur sterno-clavulaire"),
-            Examen(intitule: "mobilité épaule", imageName: "mobilite_epaule.png"),
+            Examen(intitule: "mobilité épaule", imageName: "mobilite_epaule.png.map"),
             Examen(intitule: "Rotation externe passive (0-90°)", type:  .donnee ),
             Examen(intitule: "Rotation Interne (pouce)", type:  .donnee ),
             OuiNon("douleur au Palm-Up test (long biceps)"),

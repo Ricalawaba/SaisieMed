@@ -45,7 +45,8 @@ class patients :  NSObject,NSCoding {
         }
         var localisation : String {
             get {
-                return examen.categories[0].examens[3].value
+               return examen.categories[0].examens[3].value
+                
             }
             set {
                 examen.categories[0].examens[3].value=newValue

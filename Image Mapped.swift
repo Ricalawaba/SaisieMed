@@ -129,6 +129,16 @@ class MappedImage: NSObject,NSCoding {
     }
     var loadedFromPathfilename:String?
     
+    func printSwift() {
+        print("lecture fichier map: ",loadedFromPathfilename)
+        print("name:",name,"imageFileName",self.imageFileName)
+        print("Regions:")
+        for reg in self.regionsMain {
+            //imageMap.regionsMain.append(MappedImage.region(name: "test", bounds: CGRect(x: <#T##Double#>, y: <#T##Double#>, width: <#T##Double#>, height: <#T##Double#>)))
+            print("imageMap.regionsMain.append(MappedImage.region(name: \"\(reg.name)\", bounds: CGRect(x: \(reg.bounds.origin.x), y: \(reg.bounds.origin.y), width: \(reg.bounds.width), height: \(reg.bounds.height))))")
+        }
+ 
+    }
     
     init?(contentsOfFile:String) {
         
@@ -141,15 +151,9 @@ class MappedImage: NSObject,NSCoding {
             self.regionsMain = imagemap.regionsMain
             self.imageFileName=imagemap.imageFileName
             self.readImage()
-            print("lecture fichier map: ",pathfilename)
-            print("name:",name,"imageFileName",self.imageFileName)
-            //        print("MappedImage: img:",self.imageFileName," - file:", self.loadedFromPathfilename!)
-            print("Regions:")
-            for reg in self.regionsMain {
-                //imageMap.regionsMain.append(MappedImage.region(name: "test", bounds: CGRect(x: <#T##Double#>, y: <#T##Double#>, width: <#T##Double#>, height: <#T##Double#>)))
-                print("imageMap.regionsMain.append(MappedImage.region(name: \"\(reg.name)\", bounds: CGRect(x: \(reg.bounds.origin.x), y: \(reg.bounds.origin.y), width: \(reg.bounds.width), height: \(reg.bounds.height))))")
-            }
-        } else {
+      
+            printSwift()
+                    } else {
             print("lecture impossible fichier map:",self.imageFileName)
             return nil}
         

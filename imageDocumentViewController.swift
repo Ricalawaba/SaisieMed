@@ -9,10 +9,10 @@
 import UIKit
 
  protocol mappedImageDelegate {
-  func regionSelected(sender:MappedImage,region: MappedImage.region)
-  //func actionSelected(sender:MappedImage,region:MappedImage.region,action:String)
-    func selectionDone(sender:MappedImage,fulltext:String)
-  func zoneAdded(sender:MappedImage,region:MappedImage.region)
+    func regionSelected(sender:imageDocumentViewController,mapImg:MappedImage,region: MappedImage.region)
+  //func actionSelected(sender:imageDocumentViewController,mapImg:MappedImage,region:MappedImage.region,action:String)
+    func selectionDone(sender:imageDocumentViewController,mapImg:MappedImage,fulltext:String)
+  func zoneAdded(sender:imageDocumentViewController,mapImg:MappedImage,region:MappedImage.region)
  }
 
 class imageDocumentViewController: UIViewController {
@@ -29,8 +29,9 @@ class imageDocumentViewController: UIViewController {
         let fullString=getFullResult()
         print("imagemap result: ",fullString)
         if let del=delegate {
-                del.selectionDone(imageMapped!, fulltext: fullString)
+                del.selectionDone(self,mapImg: imageMapped!, fulltext: fullString)
         }
+        self.navigationController?.popViewControllerAnimated(true)
     }
     func getFullResult() -> String {
         var fullString=""
@@ -100,7 +101,7 @@ class imageDocumentViewController: UIViewController {
                 let reg=imageMapped?.addZone(CGRect(origin: firstPointU, size: CGSize(width: point.x-firstPointU.x, height: point.y-firstPointU.y)),viewController: self)
                 if let del=delegate {
                     if let regg=reg {
-                    del.zoneAdded(imageMapped!, region: regg)
+                    del.zoneAdded(self,mapImg: imageMapped!, region: regg)
                     }
                 }
                 firstPoint=nil
@@ -133,7 +134,7 @@ class imageDocumentViewController: UIViewController {
             }
             resultLabel.text=getFullResult()
             if let del=delegate {               
-                    del.regionSelected(imageMapped!, region: zone)
+                    del.regionSelected(self,mapImg: imageMapped!, region: zone)
             }
         }
     }

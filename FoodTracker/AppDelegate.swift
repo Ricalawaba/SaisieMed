@@ -151,7 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let imageMap=MappedImage()
             imageMap.imageFileName=imgfilename
             
-            imageMap.name=imgfilename.stringByAppendingPathExtension("pngmap")
+            imageMap.name=imgfilename.stringByAppendingPathExtension("map")
             switch imgfilename {
             case "douleur_thoracique.png":
                // imageMap.regionsMain.append(<#T##newElement: Element##Element#>)
@@ -197,6 +197,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 imageMap.regionsMain.append(MappedImage.region(name: "foyer aortique", bounds: CGRect(x: 170.0, y: 563.0, width: 35.0, height: 16.5)))
                 imageMap.regionsMain.append(MappedImage.region(name: "foyer pulmonaire", bounds: CGRect(x: 218.5, y: 550.5, width: 23.0, height: 36.0)))
                 imageMap.regionsMain.append(MappedImage.region(name: "foyer mitral", bounds: CGRect(x: 246.5, y: 598.5, width: 30.0, height: 51.5)))
+            case "fracture_femur.png":
+                imageMap.regionsMain.append(MappedImage.region(name: "fracture cervico-trochantérienne", bounds: CGRect(x: 369.0, y: 120.0, width: 403.234, height: 22.5156)))
+                imageMap.regionsMain.append(MappedImage.region(name: "fracture per-trochantérienne", bounds: CGRect(x: 368.438, y: 159.656, width: 367.414, height: 27.6328)))
+                imageMap.regionsMain.append(MappedImage.region(name: "fracture sous-trochantérienne", bounds: CGRect(x: 371.508, y: 207.758, width: 372.531, height: 21.4922)))
+                imageMap.regionsMain.append(MappedImage.region(name: "fracture tronchantéro-diaphysaire", bounds: CGRect(x: 370.0, y: 247.0, width: 401.188, height: 23.5391)))
+            case "fracture_sup_humerus.png":
+                imageMap.regionsMain.append(MappedImage.region(name: "fracture du col anatomique", bounds: CGRect(x: 128.262, y: 89.7832, width: 149.25, height: 150.416)))
+                imageMap.regionsMain.append(MappedImage.region(name: "fracture du col chirurgical", bounds: CGRect(x: 12.8262, y: 250.693, width: 264.686, height: 145.752)))
+                imageMap.regionsMain.append(MappedImage.region(name: "fracture de la grosse tubérosité", bounds: CGRect(x: 12.8262, y: 406.939, width: 415.102, height: 148.084)))
+                imageMap.regionsMain.append(MappedImage.region(name: "fracture de la petite tubérosité", bounds: CGRect(x: 11.6601, y: 562.02, width: 417.434, height: 148.084)))
+                imageMap.regionsMain.append(MappedImage.region(name: "fracture luxation antérieure", bounds: CGRect(x: 125.93, y: 715.934, width: 610.992, height: 150.416)))
+                imageMap.regionsMain.append(MappedImage.region(name: "fracture luxation postérieure", bounds: CGRect(x: 129.428, y: 876.844, width: 608.66, height: 145.752)))
+                imageMap.regionsMain.append(MappedImage.region(name: "fracture comminutive tête humérale", bounds: CGRect(x: 15.1582, y: 1034.26, width: 726.428, height: 143.42)))
             default:
                 break
             }

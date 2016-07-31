@@ -37,7 +37,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
         dropdown.topOffset = CGPoint(x: 0, y:-sender.plainView.bounds.height)
         dropdown.selectionAction = { [unowned self] (index: Int, item: String) in
             print("Selected item: \(item) at index: \(index)")
-            var exam : Examen? = ExamTree.getExam(item)
+            let exam : Examen? = ExamTree.getExam(item)
             //      if let exam=
             if exam != nil {
                 self.categorie.examens.append(exam!)
@@ -284,7 +284,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
             
             if let img = UIImage(named: ExamTaped!.value) {
                   svc.imageView.image = img
-                print(img.description)
+               // print(img.description)
                 
             } else {print (ExamTaped!.value," not found") }
             //  =UIImage(named: (ExamTaped?.value)!)
@@ -602,10 +602,10 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
         let cell = UITableViewCell()
         if examen1.type==Examen.ExamenEnum.reponsecourte || examen1.type==Examen.ExamenEnum.donnee{
             let cell2 = tableView.dequeueReusableCellWithIdentifier("reponsecourteCell", forIndexPath: indexPath) as! reponsecourteTableViewCell
-            cell2.texteReponsecourte.text=examen1.intitule
+            cell2.texteReponsecourte.text=categorieExamen.Categorie.removeHtml(examen1.intitule )
             if !examen1.tag.isEmpty {cell2.texteReponsecourte.textColor=UIColor.blueColor()}
             if examen1.value != "" {
-                cell2.valeurReponseCourte.text = examen1.value
+                cell2.valeurReponseCourte.text = categorieExamen.Categorie.removeHtml(examen1.value)
             }
             cell2.examen=examen1
             cell2.valeurReponseCourte.delegate=self
@@ -613,7 +613,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
         } else
             if examen1.type==Examen.ExamenEnum.ouinon {
                 let cell3 = tableView.dequeueReusableCellWithIdentifier("questionOuiNonCell", forIndexPath: indexPath) as! questionOuiNonTableViewCell
-                cell3.texteQuestion.text = examen1.intitule
+                cell3.texteQuestion.text = categorieExamen.Categorie.removeHtml(examen1.intitule)
                 cell3.texteQuestion.enabled=true
                 if examen1.value == "0" {
                     cell3.reponseSegmentedControl.selectedSegmentIndex=0
@@ -628,7 +628,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
         }
         if examen1.type==Examen.ExamenEnum.check {
             let cell3 = tableView.dequeueReusableCellWithIdentifier("checkCell", forIndexPath: indexPath) as! checkTableViewCell
-            cell3.questionCheckLabel.text = examen1.intitule
+            cell3.questionCheckLabel.text = categorieExamen.Categorie.removeHtml(examen1.intitule)
             if examen1.value == "0" {
                 cell3.questionCheckLabel.enabled=true
                 cell3.checkSegment.selectedSegmentIndex=0
@@ -658,7 +658,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
                     let cell3 = tableView.dequeueReusableCellWithIdentifier("selectionCell", forIndexPath: indexPath) as! selectionTableViewCell
                     
                     if examen1.value.isEmpty {
-                        cell3.questionSelection.text = examen1.intitule
+                        cell3.questionSelection.text = categorieExamen.Categorie.removeHtml(examen1.intitule)
                         //cell3.questionSelection.enabled=false
                     } else {
                         cell3.questionSelection.text=examen1.value
@@ -695,7 +695,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
                      dropdown.show()
                  }*/else if examen1.type == Examen.ExamenEnum.datastr || examen1.type == Examen.ExamenEnum.multirowdatastr {
                     let cell3 = tableView.dequeueReusableCellWithIdentifier("pickSelectCell", forIndexPath: indexPath) as! pickSelectTableViewCell
-                    cell3.intituleLabel.text=examen1.intitule
+                    cell3.intituleLabel.text=categorieExamen.Categorie.removeHtml(examen1.intitule)
                     cell3.valueTextField.text=examen1.value
                     cell3.intituleLabel.textColor=UIColor.redColor()
                     cell3.examen=examen1
@@ -706,7 +706,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
                     if examen1.value.isEmpty {
                         cell3.imageLabel.text = "Aucun document"
                     } else {
-                        cell3.imageLabel.text =  examen1.value
+                        cell3.imageLabel.text =  categorieExamen.Categorie.removeHtml(examen1.value)
                         cell3.theImageView.image=UIImage(contentsOfFile: fileInDocumentsDirectory(examen1.value))
                     }
                     
@@ -775,17 +775,18 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
     
 }
 extension examensTableViewController : mappedImageDelegate {
-    func regionSelected(sender:MappedImage,region: MappedImage.region) {
+    func regionSelected(sender:imageDocumentViewController,mapImg:MappedImage,region: MappedImage.region) {
         
     }
     //func actionSelected(sender:MappedImage,region:MappedImage.region,action:String)
-    func selectionDone(sender:MappedImage,fulltext:String) {
+    func selectionDone(sender:imageDocumentViewController,mapImg:MappedImage,fulltext:String) {
         let ex=ExamTree.libre
         ex.value=fulltext
+        let insertAfter=categorie.examens.indexOf(sender.)
         categorie.examens.append(ex)
         tableView.reloadData()
     }
-    func zoneAdded(sender:MappedImage,region:MappedImage.region) {
+    func zoneAdded(sender:imageDocumentViewController,mapImg:MappedImage,region:MappedImage.region) {
         
     }
 }
