@@ -625,9 +625,12 @@ class ExamTree :NSObject{
                 "Mélanodermie",
                 "Ictère cutanéomuqueux",
                 "teint subictérique",
-                "teint erythémateux",
+                "teint érythémateux",
                 "teint grisatre",
                 "marbrures"].sort() ),
+            OuiNon("Pli cutanée"),
+            OuiNon("Crampes"),
+            
             Check("Gérontoxon (arc sénile de la cornée)"),Check("Xanthélasma"),
             self.Poids.asExamen(),
             self.Adenopathies.asExamen(),

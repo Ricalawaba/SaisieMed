@@ -37,6 +37,7 @@
 		302974711D4A0810006FF74D /* douleur_thoracique.png in Resources */ = {isa = PBXBuildFile; fileRef = 302974701D4A0810006FF74D /* douleur_thoracique.png */; };
 		302974731D4AC8FA006FF74D /* mobilite_epaule.png in Resources */ = {isa = PBXBuildFile; fileRef = 302974721D4AC8FA006FF74D /* mobilite_epaule.png */; };
 		302974771D4B5F39006FF74D /* fracture_sup_humerus.png in Resources */ = {isa = PBXBuildFile; fileRef = 302974761D4B5F39006FF74D /* fracture_sup_humerus.png */; };
+		302974791D4D9DA5006FF74D /* fractures métacarpe.png in Resources */ = {isa = PBXBuildFile; fileRef = 302974781D4D9DA5006FF74D /* fractures métacarpe.png */; };
 		303468E11D3D1B2D00FB10E4 /* Locomoteur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303468E01D3D1B2D00FB10E4 /* Locomoteur.swift */; };
 		3041E67C1D3805A100CD4B42 /* pancarteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3041E67B1D3805A100CD4B42 /* pancarteViewController.swift */; };
 		3041E6811D3A828300CD4B42 /* Documents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3041E6801D3A828300CD4B42 /* Documents.swift */; };
@@ -145,6 +146,7 @@
 		302974701D4A0810006FF74D /* douleur_thoracique.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = douleur_thoracique.png; sourceTree = "<group>"; };
 		302974721D4AC8FA006FF74D /* mobilite_epaule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobilite_epaule.png; sourceTree = "<group>"; };
 		302974761D4B5F39006FF74D /* fracture_sup_humerus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fracture_sup_humerus.png; sourceTree = "<group>"; };
+		302974781D4D9DA5006FF74D /* fractures métacarpe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fractures métacarpe.png"; sourceTree = "<group>"; };
 		303468E01D3D1B2D00FB10E4 /* Locomoteur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locomoteur.swift; sourceTree = "<group>"; };
 		3041E67B1D3805A100CD4B42 /* pancarteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pancarteViewController.swift; sourceTree = "<group>"; };
 		3041E67E1D3854E000CD4B42 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 		30F43F231D0EA255005E3BEB /* images */ = {
 			isa = PBXGroup;
 			children = (
+				302974781D4D9DA5006FF74D /* fractures métacarpe.png */,
 				302974761D4B5F39006FF74D /* fracture_sup_humerus.png */,
 				302974721D4AC8FA006FF74D /* mobilite_epaule.png */,
 				302974701D4A0810006FF74D /* douleur_thoracique.png */,
@@ -586,6 +589,7 @@
 				308E7FDF1D2486E500AF225D /* thermo_icon.png in Resources */,
 				308E7FDD1D2486E500AF225D /* tablets_icon.png in Resources */,
 				301826111D10ABAA00592CE9 /* oreille_icon.png in Resources */,
+				302974791D4D9DA5006FF74D /* fractures métacarpe.png in Resources */,
 				301825F81D0F005000592CE9 /* nurse_icon.png in Resources */,
 				30905F8A1D29777B002F023D /* neuro_icon.png in Resources */,
 				3018260F1D10ABAA00592CE9 /* medoc_icon.png in Resources */,

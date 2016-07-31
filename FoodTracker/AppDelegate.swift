@@ -146,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func configImageMapped() {
       //  var imagesMap:[String:MappedImage]=[:]
        // let souffleMap=MappedImage(name: "", regionsMain: <#T##[MappedImage.region]#>, imagefilename: <#T##String#>)
-        let imageFilenames=["fracture_femur.png","Souffle cardiaque - Arbre décisionnel.png","douleur_thoracique.png","mobilite_epaule.png","fracture_sup_humerus.png"]
+        let imageFilenames=["fracture_femur.png","Souffle cardiaque - Arbre décisionnel.png","douleur_thoracique.png","mobilite_epaule.png","fracture_sup_humerus.png","fractures métacarpe.png"]
         for imgfilename in imageFilenames {
             let imageMap=MappedImage()
             imageMap.imageFileName=imgfilename

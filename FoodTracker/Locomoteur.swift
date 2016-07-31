@@ -184,6 +184,8 @@ extension ExamTree {
         let examCatDoigt : [Examen] = [
             Examen(intitule: "identification doigt", datastr: ["Pouce","Index","Majeur","Annulaire","Auriculaire","Hallux","2ième orteil","3ième orteil","4ième orteil","5ième orteil",].sort() ),
             locoMoteurCommun.asExamen(),
+            
+            Examen(intitule: "fracture métacarpes", imageName: "fractures métacarpe.png"),
             Check("(Maintien des doigts non testés en extension)"),
             OuiNon("deficit du fléchisseur superficiel"),
             
@@ -197,6 +199,8 @@ extension ExamTree {
             
             Check("(Extension active IPD contre resistance P3)"),
             OuiNon("Déficit des bandelettes terminales de l'appareil extenseur"),
+            
+            OuiNon("Perte de convergence des doigts en flexion"),
             Check("(Extension active IPP contre resistance P2)"),
             OuiNon("Déficit des bandelettes medianes l'appareil extenseur"),
             
