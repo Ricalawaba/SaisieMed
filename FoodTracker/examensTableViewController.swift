@@ -782,8 +782,13 @@ extension examensTableViewController : mappedImageDelegate {
     func selectionDone(sender:imageDocumentViewController,mapImg:MappedImage,fulltext:String) {
         let ex=ExamTree.libre
         ex.value=fulltext
-        let insertAfter=categorie.examens.indexOf(sender.)
-        categorie.examens.append(ex)
+        for exDoc:Examen in categorie.examens where exDoc.value==mapImg.loadedFromPathfilename {
+             let insertAfter=categorie.examens.indexOf(exDoc)
+            categorie.examens.insert(ex, atIndex: insertAfter!)
+        }
+       
+       
+      //  categorie.examens.append(ex)
         tableView.reloadData()
     }
     func zoneAdded(sender:imageDocumentViewController,mapImg:MappedImage,region:MappedImage.region) {

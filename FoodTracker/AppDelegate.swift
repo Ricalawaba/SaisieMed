@@ -210,6 +210,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 imageMap.regionsMain.append(MappedImage.region(name: "fracture luxation antérieure", bounds: CGRect(x: 125.93, y: 715.934, width: 610.992, height: 150.416)))
                 imageMap.regionsMain.append(MappedImage.region(name: "fracture luxation postérieure", bounds: CGRect(x: 129.428, y: 876.844, width: 608.66, height: 145.752)))
                 imageMap.regionsMain.append(MappedImage.region(name: "fracture comminutive tête humérale", bounds: CGRect(x: 15.1582, y: 1034.26, width: 726.428, height: 143.42)))
+            case "fractures métacarpe.png":
+                imageMap.regionsMain.append(MappedImage.region(name: "fracture diaphysaire transversale", bounds: CGRect(x: 222.656, y: 450.0, width: 126.562, height: 522.656)))
+                imageMap.regionsMain.append(MappedImage.region(name: "fracture diaphysaire oblique", bounds: CGRect(x: 431.25, y: 433.594, width: 117.188, height: 539.062)))
+                imageMap.regionsMain.append(MappedImage.region(name: "fracture dipahysaire spiroïde", bounds: CGRect(x: 614.062, y: 433.594, width: 82.0312, height: 543.75)))
+                imageMap.regionsMain.append(MappedImage.region(name: "fracture métaphysaire proximale", bounds: CGRect(x: 782.812, y: 445.312, width: 91.4062, height: 532.031)))
+                imageMap.regionsMain.append(MappedImage.region(name: "fracture métaphysaire distale", bounds: CGRect(x: 965.625, y: 450.0, width: 126.562, height: 522.656)))
+                imageMap.regionsMain.append(MappedImage.region(name: "fracture comminutive", bounds: CGRect(x: 1164.84, y: 431.25, width: 98.4375, height: 550.781)))
+
             default:
                 break
             }
