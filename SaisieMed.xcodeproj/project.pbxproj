@@ -49,6 +49,8 @@
 		304B19FD1D14174C0006DB4A /* selectionTexteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304B19FC1D14174C0006DB4A /* selectionTexteTableViewController.swift */; };
 		305ECBB41D47819F0019DBB7 /* imageDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305ECBB31D47819F0019DBB7 /* imageDocumentViewController.swift */; };
 		305ECBB61D47B3880019DBB7 /* imageDocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305ECBB51D47B3880019DBB7 /* imageDocumentTableViewCell.swift */; };
+		3061871F1D4FDD280026A1A8 /* corps femme front.png in Resources */ = {isa = PBXBuildFile; fileRef = 3061871D1D4FDD280026A1A8 /* corps femme front.png */; };
+		306187201D4FDD280026A1A8 /* corps femme back.png in Resources */ = {isa = PBXBuildFile; fileRef = 3061871E1D4FDD280026A1A8 /* corps femme back.png */; };
 		308E7FCA1D1D924800AF225D /* ExamenTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E7FC91D1D924800AF225D /* ExamenTree.swift */; };
 		308E7FCC1D1DA3F000AF225D /* AjoutInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E7FCB1D1DA3F000AF225D /* AjoutInformationTableViewCell.swift */; };
 		308E7FCE1D1E8F8E00AF225D /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E7FCD1D1E8F8E00AF225D /* Numbers.swift */; };
@@ -160,6 +162,8 @@
 		304B19FC1D14174C0006DB4A /* selectionTexteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectionTexteTableViewController.swift; sourceTree = "<group>"; };
 		305ECBB31D47819F0019DBB7 /* imageDocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageDocumentViewController.swift; sourceTree = "<group>"; };
 		305ECBB51D47B3880019DBB7 /* imageDocumentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = imageDocumentTableViewCell.swift; path = ../imageDocumentTableViewCell.swift; sourceTree = "<group>"; };
+		3061871D1D4FDD280026A1A8 /* corps femme front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "corps femme front.png"; sourceTree = "<group>"; };
+		3061871E1D4FDD280026A1A8 /* corps femme back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "corps femme back.png"; sourceTree = "<group>"; };
 		308E7FC91D1D924800AF225D /* ExamenTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ExamenTree.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		308E7FCB1D1DA3F000AF225D /* AjoutInformationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AjoutInformationTableViewCell.swift; path = ../AjoutInformationTableViewCell.swift; sourceTree = "<group>"; };
 		308E7FCD1D1E8F8E00AF225D /* Numbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
@@ -402,6 +406,8 @@
 		30F43F231D0EA255005E3BEB /* images */ = {
 			isa = PBXGroup;
 			children = (
+				3061871D1D4FDD280026A1A8 /* corps femme front.png */,
+				3061871E1D4FDD280026A1A8 /* corps femme back.png */,
 				302974781D4D9DA5006FF74D /* fractures métacarpe.png */,
 				302974761D4B5F39006FF74D /* fracture_sup_humerus.png */,
 				302974721D4AC8FA006FF74D /* mobilite_epaule.png */,
@@ -572,6 +578,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3061871F1D4FDD280026A1A8 /* corps femme front.png in Resources */,
 				301826031D0F834500592CE9 /* pancarte_icon.png in Resources */,
 				30905F871D29777B002F023D /* cardio2_icon.png in Resources */,
 				301826131D10ABAA00592CE9 /* main_icon.png in Resources */,
@@ -598,6 +605,7 @@
 				30D0289C1D1AECD40050231C /* imagerie_icon.png in Resources */,
 				301826151D10ABAA00592CE9 /* uro_icon.png in Resources */,
 				308E7FE41D2486E500AF225D /* bouche_icon.png in Resources */,
+				306187201D4FDD280026A1A8 /* corps femme back.png in Resources */,
 				30905F881D29777B002F023D /* cardio_icon.png in Resources */,
 				301C08671D25877200E79763 /* laboratoire.png in Resources */,
 				302974731D4AC8FA006FF74D /* mobilite_epaule.png in Resources */,

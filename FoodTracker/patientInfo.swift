@@ -29,6 +29,7 @@ class patients :  NSObject,NSCoding {
         }
         var nomPrenom : String {
             get {
+                if examen.categories.count == 0 { return ""}
                 return examen.categories[0].examens[0].value
             }
             set {
@@ -37,6 +38,7 @@ class patients :  NSObject,NSCoding {
         }
         var age : Int {
             get {
+                if examen.categories.count == 0 { return 0}
                 return Int(examen.categories[0].examens[2].value) ?? 0
             }
             set {
@@ -45,6 +47,7 @@ class patients :  NSObject,NSCoding {
         }
         var localisation : String {
             get {
+                if examen.categories.count == 0 { return ""}
                return examen.categories[0].examens[3].value
                 
             }
@@ -54,6 +57,7 @@ class patients :  NSObject,NSCoding {
         }
         var motif : String {
             get {
+                if examen.categories.count == 0 { return ""}
                 return examen.categories[0].examens[4].categorie!.UIString()
 
             }
@@ -63,6 +67,7 @@ class patients :  NSObject,NSCoding {
         }
                var masculin: Bool {
             get {
+                if examen.categories.count == 0 { return false}
                 if examen.categories[0].examens[1].value == "0"
                 { return true }
                 return false

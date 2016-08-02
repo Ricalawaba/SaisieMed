@@ -36,6 +36,8 @@ extension ExamTree {
             Examen(intitule: "Bord", type:  .check, info: " "  ),
             Examen(intitule: "Extrémité", type:  .check, info: " "  ),
             Examen(intitule: "face", type:  .check, info: " "  ),
+            Examen(intitule: "corps face", imageName: "corps femme front.png"),
+            Examen(intitule: "corps face", imageName: "corps femme back.png"),
             Check("interne (e)"),
             Check("médial (e)"),
             Check("médian"),

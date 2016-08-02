@@ -146,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func configImageMapped() {
       //  var imagesMap:[String:MappedImage]=[:]
        // let souffleMap=MappedImage(name: "", regionsMain: <#T##[MappedImage.region]#>, imagefilename: <#T##String#>)
-        let imageFilenames=["fracture_femur.png","Souffle cardiaque - Arbre décisionnel.png","douleur_thoracique.png","mobilite_epaule.png","fracture_sup_humerus.png","fractures métacarpe.png"]
+        let imageFilenames=["fracture_femur.png","Souffle cardiaque - Arbre décisionnel.png","douleur_thoracique.png","mobilite_epaule.png","fracture_sup_humerus.png","fractures métacarpe.png","corps femme back.png"]
         for imgfilename in imageFilenames {
             let imageMap=MappedImage()
             imageMap.imageFileName=imgfilename
@@ -217,7 +217,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 imageMap.regionsMain.append(MappedImage.region(name: "fracture métaphysaire proximale", bounds: CGRect(x: 782.812, y: 445.312, width: 91.4062, height: 532.031)))
                 imageMap.regionsMain.append(MappedImage.region(name: "fracture métaphysaire distale", bounds: CGRect(x: 965.625, y: 450.0, width: 126.562, height: 522.656)))
                 imageMap.regionsMain.append(MappedImage.region(name: "fracture comminutive", bounds: CGRect(x: 1164.84, y: 431.25, width: 98.4375, height: 550.781)))
-
+            case "corps femme back.png":
+                imageMap.regionsMain.append(MappedImage.region(name: "fesse gauche", bounds: CGRect(x: 179.8857421875, y: 795.4189453125, width: 144.0791015625, height: 178.1806640625)))
+                imageMap.regionsMain.append(MappedImage.region(name: "fesse droite", bounds: CGRect(x: 340.1630859375, y: 768.1376953125, width: 138.9638671875, height: 204.609375)))
+                imageMap.regionsMain.append(MappedImage.region(name: "scapulaire gauche", bounds: CGRect(x: 171.3603515625, y: 343.5732421875, width: 124.470703125, height: 184.1484375)))
+                imageMap.regionsMain.append(MappedImage.region(name: "scapulaire droite", bounds: CGRect(x: 362.3291015625, y: 353.8037109375, width: 96.3369140625, height: 158.572265625)))
             default:
                 break
             }
