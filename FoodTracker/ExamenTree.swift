@@ -736,6 +736,9 @@ class ExamTree :NSObject{
         catPlainteAnamnèse.startLI()
         let examCatPlainteAnamnèse : [Examen] = [
             ExamTree.Plainte.asExamen(),
+            Examen(intitule: "corps face", imageName: "corps femme front.png.map"),
+            Examen(intitule: "corps face", imageName: "corps femme back.png.map"),
+
             OuiNon("Prise médicamenteuse"),
             TTT.asExamen(),
             

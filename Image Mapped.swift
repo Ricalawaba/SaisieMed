@@ -210,7 +210,7 @@ class MappedImage: NSObject,NSCoding {
         // 4. Present the alert.
         //view
         viewController.presentViewController(alert, animated: true, completion: nil)
-        if reg.name.isEmpty {return nil}
+        //if reg.name.isEmpty {return nil}
         return reg
     }
     

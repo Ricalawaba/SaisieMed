@@ -8,12 +8,12 @@
 
 import UIKit
 
- protocol mappedImageDelegate {
+protocol mappedImageDelegate {
     func regionSelected(sender:imageDocumentViewController,mapImg:MappedImage,region: MappedImage.region)
-  //func actionSelected(sender:imageDocumentViewController,mapImg:MappedImage,region:MappedImage.region,action:String)
+    //func actionSelected(sender:imageDocumentViewController,mapImg:MappedImage,region:MappedImage.region,action:String)
     func selectionDone(sender:imageDocumentViewController,mapImg:MappedImage,fulltext:String)
-  func zoneAdded(sender:imageDocumentViewController,mapImg:MappedImage,region:MappedImage.region)
- }
+    func zoneAdded(sender:imageDocumentViewController,mapImg:MappedImage,region:MappedImage.region)
+}
 
 class imageDocumentViewController: UIViewController {
     
@@ -29,7 +29,7 @@ class imageDocumentViewController: UIViewController {
         let fullString=getFullResult()
         print("imagemap result: ",fullString)
         if let del=delegate {
-                del.selectionDone(self,mapImg: imageMapped!, fulltext: fullString)
+            del.selectionDone(self,mapImg: imageMapped!, fulltext: fullString)
         }
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -42,7 +42,13 @@ class imageDocumentViewController: UIViewController {
         }
         return fullString
     }
-    @IBAction func refreshButtonAction(sender: UIBarButtonItem) {
+    
+    func showZone() {
+        if imageMapped == nil { return }
+        for subV in self.imageView.subviews {
+            subV.removeFromSuperview()
+        }
+        //  self.imageView.subviews.removeAll()
         for zone in imageMapped!.regionsMain {
             if zone.action == "" {
                 let overlay: UIView = UIView(frame: zone.bounds)
@@ -64,6 +70,10 @@ class imageDocumentViewController: UIViewController {
             }
         }
         
+        
+    }
+    @IBAction func refreshButtonAction(sender: UIBarButtonItem) {
+        showZone()
     }
     @IBAction func editZoneAction(sender: AnyObject) {
         editMode = !editMode
@@ -73,6 +83,8 @@ class imageDocumentViewController: UIViewController {
     var imageMapped:MappedImage? {
         didSet {
             imageView.image=imageMapped?.image
+            
+            // refreshButtonAction()
             //imageMapped.
         }
     }
@@ -85,7 +97,9 @@ class imageDocumentViewController: UIViewController {
         imageView.userInteractionEnabled=true
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageDocumentViewController.tap(_:))))
         
+                showZone()
         self.view.bringSubviewToFront(resultLabel)
+
     }
     var firstPoint:CGPoint?
     var delegate:mappedImageDelegate?
@@ -94,17 +108,28 @@ class imageDocumentViewController: UIViewController {
     func tap(gesture: UIGestureRecognizer) {
         let point = gesture.locationInView(gesture.view)
         
-     //   print("touch:", point) // You can check for their tag and do different things based on tag
+        //   print("touch:", point) // You can check for their tag and do different things based on tag
         
         if editMode {
             if let firstPointU=firstPoint {
                 let reg=imageMapped?.addZone(CGRect(origin: firstPointU, size: CGSize(width: point.x-firstPointU.x, height: point.y-firstPointU.y)),viewController: self)
                 if let del=delegate {
                     if let regg=reg {
-                    del.zoneAdded(self,mapImg: imageMapped!, region: regg)
+                        del.zoneAdded(self,mapImg: imageMapped!, region: regg)
                     }
+                    
                 }
+                let overlay: UIView = UIView(frame: reg!.bounds)
+                //overlay.
+                overlay.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.5)
+                savedZoom=self.scrollView.zoomScale
+                savedBounds=self.scrollView.bounds
+                //   let bounds=self.scrollView.
+                self.imageView.addSubview(overlay)
+                // zone.action=zone.name
+                
                 firstPoint=nil
+                
             } else {
                 firstPoint=point
             }
@@ -116,27 +141,28 @@ class imageDocumentViewController: UIViewController {
                 overlay.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.5)
                 savedZoom=self.scrollView.zoomScale
                 savedBounds=self.scrollView.bounds
-             //   let bounds=self.scrollView.
+                //   let bounds=self.scrollView.
                 self.imageView.addSubview(overlay)
                 zone.action=zone.name
-               // resultLabel.text=zone.name
-               // self.scrollView.setZoomScale(savedZoom, animated: true)
+                // resultLabel.text=zone.name
+                // self.scrollView.setZoomScale(savedZoom, animated: true)
             } else {
                 for subview:UIView in self.imageView.subviews { //where subview.bounds==zone.bounds {
-                   // print(subview.frame,point)
+                    // print(subview.frame,point)
                     if subview.frame.contains(point){
-                    subview.removeFromSuperview()
+                        subview.removeFromSuperview()
                     }
                 }
                 zone.action=""
-               // self.imageView.vie
-               // self.imageView.subviews[0].removeFromSuperview()
+                // self.imageView.vie
+                // self.imageView.subviews[0].removeFromSuperview()
             }
-            resultLabel.text=getFullResult()
-            if let del=delegate {               
-                    del.regionSelected(self,mapImg: imageMapped!, region: zone)
+            
+            if let del=delegate {
+                del.regionSelected(self,mapImg: imageMapped!, region: zone)
             }
         }
+        resultLabel.text=getFullResult()
     }
     
     override func didReceiveMemoryWarning() {

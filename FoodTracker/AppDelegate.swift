@@ -36,7 +36,7 @@ struct RedColors {
 }
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     // MARK: - Antécédents : liste initiale
     func setDefaultAtcd() {
@@ -46,13 +46,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Médicaments : liste initiale
     func setDefaultMedicament() {
         Donnees.selectiontextDict["medicament"] = [ "ABILIFY 5", "AMIODARONE 200", "AMLODIPINE 10", "AMLODIPINE 5", "AMLOR 5", "AVLOCARDYL 40", "AVLOCARDYL 40", "BACLOFENE 10", "BISOPROLOL 1,25", "BISOPROLOL 2,5", "BRICANYL 5mg/2ml", "CLONAZEPAM 2,5", "CO-APROVEL 150/12.5", "COUMADINE 2", "COUMADINE 5", "CRESTOR 20", "CYMBALTA 60", "DEPAKINE CHRONO 500", "DIFFU-K", "DIGOXINE 0,25", "DOLIPRANE 1000", "DOLIPRANE 500", "ESOMEPRAZOLE 20", "ESOMEPRAZOLE 40", "EUPRESSYL 60", "EZETROL", "FENOFIBRATE 300", "FIXICAL D3", "FLECAINE 100", "FLECAINE 100 LP", "FUROSEMIDE 20", "FUROSEMIDE 40", "FUROSEMIDE 500", "IRBESARTAN 150", "IRBESARTAN 300", "KARDEGIC 160", "KARDEGIC 75", "KEPRA 500", "LANTUS 100UI/ml", "LERCAN 20", "LEVOTHYROXINE 100", "LEVOTHYROXINE 125", "LEVOTHYROXINE 150", "LEVOTHYROXINE 25", "LEVOTHYROXINE 50", "LEVOTHYROXINE 75", "LOSARTAN 100", "METFORMINE 1000", "METFORMINE 500", "METFORMINE 850", "METOPROLOL 25", "MIANSERINE 30", "MONO-TILDIEM LP 200", "OMEPRAZOLE 10", "OMEPRAZOLE 20", "PANTOPRAZOLE 40", "PARACETAMOL 1000", "PARACETAMOL 500", "PAROXETINE 20", "PINAVERIUM 100", "PLAVIX 75", "PREVISCAN", "PROPRANOLOL 40", "RAMIPRIL 5", "SERESTA 10", "SERETIDE DISKUS 500", "SEROPLEX 20", "SIMVASTATINE 20", "SIMVASTATINE 40", "SPIRIVA 18", "STILNOX", "TAMSULOSINE 0,4", "TARDYFERON", "TRAMADOL 100 LP", "TRAMADOL 50", "TRINITRINE 5 patch", "XEROQUEL LP 50", "ZOPICLONE 7,5", ]   .sort()
-
+        
     }
-        // MARK: - Motifs : liste initiale
+    // MARK: - Motifs : liste initiale
     func setDefaultMotif() {
         Donnees.selectiontextDict["motif"] = [ "", "Accident de la voie publique", "Acouphènes", "Adénopathies", "Agression/Rixe", "Ait", "Altération de l'état général", "Amaurose transitoire", "Anorexie", "Anurie", "Aphasie", "Arret des matières et des gaz", "Aucun", "Brulures cutanées", "Brulures occulaires", "Brulures urinaires", "Certificat médical", "Cervicalgie", "Céphallée", "Chute de sa hauteur", "Chute en 2R", "Chute par maladresse", "Coxalgie", "Crise convulsive", "Crise d'angoisse", "Cruralgie", "Début brutal", "Désorientation temporospatiale", "Diarrhée", "Dorsalgie", "Douleur abdominale", "Douleur bras", "Douleur cervicale", "Douleur cheville", "Douleur cuisse", "Douleur dentaire", "Douleur epaule", "Douleur épigastrique", "Douleur fesse", "Douleur genou", "Douleur généralisée", "Douleur lombaire", "Douleur mollet", "Douleur pelvienne", "Douleur pharyngée", "Douleur poignet", "Douleur talon", "Douleur thoracique", "Dyspnée", "Epigastralgie", "Eruption cutanée", "Etat de faiblesse", "Frissons", "Gonalgie", "Gonalgie", "Hernie inguinale", "Hématurie", "Hyperthermie", "Infection urinaire", "Lombalgie", "Malaise", "Morsure de chat", "Morsure de chien", "Morsure de serpent", "Nausées", "Otalgie", "Palpitations", "Perte de connaissance", "Perte de poids", "Piqures d'insectes", "Plaie abdominale", "Plaie arcade", "Plaie avant-bras", "Plaie cuisse", "Plaie de la face", "Plaie de la main", "Plaie du crane", "Plaie abdominale","Plaie face","Plaie jambe","Plaie cuisse","Plaie doigt","Rachialgie",  "Rétention urinaire", "Sans perte de connaissance", "Scapulalgie", "Sciatalgie", "Sonde urinaire obstruée", "Surdité brusque", "Syndrome rhinopharyngée", "Tachycardie", "Talalgie", "Toux", "Trauma bassin", "Trauma cheville", "Trauma crânien", "Trauma epaule", "Trauma genou", "Trauma main", "Trauma poignet","Trauma coude", "Tremblements", "Troubles de l'appétit", "Troubles du langage", "Vertiges", "Vomissements", "d'aggravation progressive", ].sort()
     }
-        // MARK: - Localisation : liste initiale
+    // MARK: - Localisation : liste initiale
     func setDefaultLocalisation() {
         Donnees.selectiontextDict["localisation"] = [
             "Bureau",
@@ -77,10 +77,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setDefaultMedecin() {
         Donnees.selectiontextDict["medecin"] = [ " Médecin traitant", " Pas de médecin traitant", "Dr Adad", "Dr Alzieu (CCB)", "Dr Arhire Anca (Sidobre)", "Dr Arhire Andréi (Sidobre)", "Dr Avram", "Dr Berthoumieu", "Dr Baux D.", "Dr Bensoussan L-C.", "Dr Boige-Martin (Aussillon)", "Dr Boulanger-Rayssac (Sidobre)", "Dr Bouyssou", "Dr Castex B. (Roquecourbe)", "Dr Charles X.", "Dr Chatillon B.", "Dr Cuinat L. (CCB)", "Dr Dary (CCB)", "Dr De Germay (Union)", "Dr De la porte C. (Sidobre)", "Dr Eleftérion P. (Revel)", "Dr Farge P.", "Dr Fargues P. (Sidobre)", "Dr Gipoulou", "Dr Gorostis", "Dr Guiraud-Chaumeil (CCB)", "Dr Hacker (Sidobre)", "Dr Lafon-Cantié (Sidobre)", "Dr Laur D.", "Dr Lefèvre D.", "Dr Louis C.", "Dr Mariambourg G.", "Dr Marolda S.", "Dr Mezières J.", "Dr Moruzi M.", "Dr Moruzi S.", "Dr Mullens", "Dr Mylonas P.", "Dr Novas", "Dr Olivier C.", "Dr Pages F. (La crouzette)", "Dr Pages P. (CCB)", "Dr Paquié C.", "Dr Pascal", "Dr Peltier J.p", "Dr Pistre (Vabre)", "Dr Prudhomme L.", "Dr Puech C", "Dr Ramon J.p (Castres)", "Dr Rouzaud", "Dr Villacreces B.", "Dr Goutner", "Dr siget Martinez", ].sort()
     }
-     // MARK: - Posologie : liste initiale
+    // MARK: - Posologie : liste initiale
     func setDefaultPosologie() {
         Donnees.selectiontextDict["posologie"] = [
-             "au besoin", "à la demande", "par cure","1/j", "1/j 5/7j", "1x2/j", "1x3/j", "2x2/j", "2x3/j", "X/X/XV",  "¼/j", "¼x2/j", "¼x3/j", "½/j", "½x2/j", "½x3/j", "¾/j", "¾x2/j", "¾x3/j"
+            "au besoin", "à la demande", "par cure","1/j", "1/j 5/7j", "1x2/j", "1x3/j", "2x2/j", "2x3/j", "X/X/XV",  "¼/j", "¼x2/j", "¼x3/j", "½/j", "½x2/j", "½x3/j", "¾/j", "¾x2/j", "¾x3/j"
         ]
     }
     // MARK: - Posologie : liste initiale
@@ -89,8 +89,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "sans emploi","Etudiant","Lycéen","Agent technique","Infimier(e)","Médecin","Boulanger","Batiments","Agriculteur"]
         
     }
-
-
+    
+    
     // MARK: - Posologie : liste initiale
     func setDefaultConclusionRx() {
         Donnees.selectiontextDict["ConclusionRx"] = [
@@ -103,12 +103,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "Antalgie acquise","Détérioration","Malaise","Vu par spécialiste"]
         
     }
-
+    
     func setDefaultAllergie() {
         Donnees.selectiontextDict["Allergie"] = [
             "aspirine","pénicilline","iode","amoxicilline","tramadol","codéine","\"antibiotique\"","connerie humaine","acariens","graminés","poils de chiens","poils de chat","piqure d'hyménoptère","piqure de guèpe",
             "piqure d'abeille",
-        
+            
         ]
         
     }
@@ -144,9 +144,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Donnees.selectiontextDict["profession"] = ["Agent technique","Agriculteur","Batiments","Boulanger","Etudiant","Infimier(e)","Lycéen","Magasinier","Médecin","Retraité","Travaux public","sans emploi", ]
     }
     func configImageMapped() {
-      //  var imagesMap:[String:MappedImage]=[:]
-       // let souffleMap=MappedImage(name: "", regionsMain: <#T##[MappedImage.region]#>, imagefilename: <#T##String#>)
-        let imageFilenames=["fracture_femur.png","Souffle cardiaque - Arbre décisionnel.png","douleur_thoracique.png","mobilite_epaule.png","fracture_sup_humerus.png","fractures métacarpe.png","corps femme back.png"]
+        //  var imagesMap:[String:MappedImage]=[:]
+        // let souffleMap=MappedImage(name: "", regionsMain: <#T##[MappedImage.region]#>, imagefilename: <#T##String#>)
+        let imageFilenames=["fracture_femur.png","Souffle cardiaque - Arbre décisionnel.png","douleur_thoracique.png","mobilite_epaule.png","fracture_sup_humerus.png","fractures métacarpe.png","corps femme back.png","corps femme front.png"]
         for imgfilename in imageFilenames {
             let imageMap=MappedImage()
             imageMap.imageFileName=imgfilename
@@ -154,7 +154,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             imageMap.name=imgfilename.stringByAppendingPathExtension("map")
             switch imgfilename {
             case "douleur_thoracique.png":
-               // imageMap.regionsMain.append(<#T##newElement: Element##Element#>)
+                // imageMap.regionsMain.append(<#T##newElement: Element##Element#>)
                 imageMap.regionsMain.append(MappedImage.region(name: "douleur précordiale", bounds: CGRect(x: 189.897391113889, y: 157.494264852392, width: 139.408799032022, height: 25.6210765788581)))
                 imageMap.regionsMain.append(MappedImage.region(name: "douleur rétrosternale", bounds: CGRect(x: 359.448633179862, y: 152.219337321451, width: 250.182277181791, height: 42.9529813233797)))
                 imageMap.regionsMain.append(MappedImage.region(name: "douleur basithoracique", bounds: CGRect(x: 623.948570802779, y: 161.262070231636, width: 162.769192383334, height: 36.1709316407408)))
@@ -222,57 +222,104 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 imageMap.regionsMain.append(MappedImage.region(name: "fesse droite", bounds: CGRect(x: 340.1630859375, y: 768.1376953125, width: 138.9638671875, height: 204.609375)))
                 imageMap.regionsMain.append(MappedImage.region(name: "scapulaire gauche", bounds: CGRect(x: 171.3603515625, y: 343.5732421875, width: 124.470703125, height: 184.1484375)))
                 imageMap.regionsMain.append(MappedImage.region(name: "scapulaire droite", bounds: CGRect(x: 362.3291015625, y: 353.8037109375, width: 96.3369140625, height: 158.572265625)))
+            case "corps femme front.png":
+                //Regions:
+                imageMap.regionsMain.append(MappedImage.region(name: "oeil droit", bounds: CGRect(x: 265.606187862026, y: 101.586430417349, width: 23.2802236373091, height: 53.9677911592164)))
+                imageMap.regionsMain.append(MappedImage.region(name: "oeil gauche", bounds: CGRect(x: 320.984901665928, y: 112.168350252489, width: 41.6222180182193, height: 35.2730661171349)))
+                imageMap.regionsMain.append(MappedImage.region(name: "nez", bounds: CGRect(x: 295.941024722762, y: 148.499608353138, width: 21.5165703314523, height: 29.6293755383933)))
+                imageMap.regionsMain.append(MappedImage.region(name: "levres", bounds: CGRect(x: 276.893569019509, y: 195.765516950099, width: 58.5532897544441, height: 22.222031653795)))
+                imageMap.regionsMain.append(MappedImage.region(name: "menton", bounds: CGRect(x: 283.948182242936, y: 224.68943116615, width: 52.556868514531, height: 28.9239142160506)))
+                imageMap.regionsMain.append(MappedImage.region(name: "oreille droite", bounds: CGRect(x: 232.802236373091, y: 127.688499344028, width: 19.0474557032529, height: 51.1459458698457)))
+                imageMap.regionsMain.append(MappedImage.region(name: "oreille gauche", bounds: CGRect(x: 359.538191420372, y: 134.743112567455, width: 20.0, height: 46.9131779357895)))
+                imageMap.regionsMain.append(MappedImage.region(name: "epaule droite", bounds: CGRect(x: 102.997353062034, y: 323.454016294127, width: 86.0662813258093, height: 75.8370921518401)))
+                imageMap.regionsMain.append(MappedImage.region(name: "epaule gauche", bounds: CGRect(x: 419.044025471563, y: 305.464752574389, width: 98.7645851279778, height: 102.644622400863)))
+                imageMap.regionsMain.append(MappedImage.region(name: "sein droit", bounds: CGRect(x: 185.889058437301, y: 415.163988198678, width: 107.23012099609, height: 94.1790865327503)))
+                imageMap.regionsMain.append(MappedImage.region(name: "sein gauche", bounds: CGRect(x: 335.799589435125, y: 415.163988198678, width: 111.462888930146, height: 92.4154332268936)))
+                imageMap.regionsMain.append(MappedImage.region(name: "bras droit", bounds: CGRect(x: 102.644622400863, y: 391.178303239026, width: 61.3751350438148, height: 182.361751825588)))
+                imageMap.regionsMain.append(MappedImage.region(name: "bras gauche", bounds: CGRect(x: 444.793363737072, y: 368.250810262889, width: 79.0116681023822, height: 153.437837609537)))
+                imageMap.regionsMain.append(MappedImage.region(name: "coude droit", bounds: CGRect(x: 78.3062067800395, y: 565.779980518844, width: 90.6517799210368, height: 77.2480147965255)))
+                imageMap.regionsMain.append(MappedImage.region(name: "avant bras droit", bounds: CGRect(x: 74.0734388459834, y: 651.140800522311, width: 58.9060204156153, height: 190.474557032529)))
+                imageMap.regionsMain.append(MappedImage.region(name: "coude gauche", bounds: CGRect(x: 456.433475555726, y: 600.700315974808, width: 87.1244733093233, height: 42.327679340562)))
+                imageMap.regionsMain.append(MappedImage.region(name: "avant-bras gauche", bounds: CGRect(x: 468.073587374381, y: 658.548144406909, width: 74.4261695071546, height: 150.615992320166)))
+                imageMap.regionsMain.append(MappedImage.region(name: "poignet droit", bounds: CGRect(x: 62.4333270273288, y: 823.626093835101, width: 74.0734388459834, height: 45.5022552911041)))
+                imageMap.regionsMain.append(MappedImage.region(name: "poignet gauche", bounds: CGRect(x: 495.586578945746, y: 845.848125488896, width: 63.1387883496715, height: 17.9892637197388)))
+                imageMap.regionsMain.append(MappedImage.region(name: "hanche droite", bounds: CGRect(x: 156.259682898908, y: 821.156979206901, width: 107.935582318433, height: 113.932003558346)))
+                imageMap.regionsMain.append(MappedImage.region(name: "hanche gauche", bounds: CGRect(x: 387.386530014641, y: 849.126281112738, width: 80.6013909224012, height: 77.4773060029282)))
+                imageMap.regionsMain.append(MappedImage.region(name: "organes genitaux", bounds: CGRect(x: 279.71541430888, y: 897.346802019913, width: 53.9677911592164, height: 59.2587510767867)))
+                imageMap.regionsMain.append(MappedImage.region(name: "epigastrique", bounds: CGRect(x: 283.925319520494, y: 549.594865535439, width: 79.7489053137089, height: 92.2396977122417)))
+                imageMap.regionsMain.append(MappedImage.region(name: "hypochondre droit", bounds: CGRect(x: 204.656829299036, y: 560.163997564967, width: 80.2293204059601, height: 74.464339298945)))
+                imageMap.regionsMain.append(MappedImage.region(name: "flanc droit", bounds: CGRect(x: 203.049045995781, y: 646.211646383399, width: 67.683015331927, height: 87.4238948037391)))
+                imageMap.regionsMain.append(MappedImage.region(name: "flanc gauche", bounds: CGRect(x: 364.601957591631, y: 653.866273117367, width: 80.1721431610326, height: 87.0210197124775)))
+                imageMap.regionsMain.append(MappedImage.region(name: "genou droit", bounds: CGRect(x: 201.116666489456, y: 1182.83869952274, width: 100.984427877121, height: 104.393184936264)))
+                imageMap.regionsMain.append(MappedImage.region(name: "genou gauche", bounds: CGRect(x: 324.258015251009, y: 1171.76023908052, width: 103.967090303871, height: 105.24537420105)))
+                imageMap.regionsMain.append(MappedImage.region(name: "jambe droite", bounds: CGRect(x: 210.490748402101, y: 1297.88425026882, width: 87.3493996405478, height: 217.73435715278)))
+                imageMap.regionsMain.append(MappedImage.region(name: "jambe gauche", bounds: CGRect(x: 332.353813266475, y: 1302.57129122514, width: 82.2362640518328, height: 203.247139651421)))
+                imageMap.regionsMain.append(MappedImage.region(name: "cheville droite", bounds: CGRect(x: 252.248022376606, y: 1552.68884043979, width: 63.0620055941515, height: 43.4616525040774)))
+                imageMap.regionsMain.append(MappedImage.region(name: "cheville gauche", bounds: CGRect(x: 343.006179076297, y: 1553.96712433697, width: 62.6359109617587, height: 43.4616525040774)))
+                imageMap.regionsMain.append(MappedImage.region(name: "pied droit", bounds: CGRect(x: 231.795480021746, y: 1634.92510449162, width: 65.618573388509, height: 63.9141948589374)))
+                imageMap.regionsMain.append(MappedImage.region(name: "pied gauche", bounds: CGRect(x: 351.954166356549, y: 1628.95977963812, width: 82.6623586842258, height: 62.2098163293656)))
+                imageMap.regionsMain.append(MappedImage.region(name: "fosse iliaque droite", bounds: CGRect(x: 185.540497436517, y: 741.681314882244, width: 94.2122733097342, height: 71.620554709951)))
+                imageMap.regionsMain.append(MappedImage.region(name: "hypogastre", bounds: CGRect(x: 280.714120473902, y: 818.589293094272, width: 66.8138060716992, height: 71.1398798461258)))
+                imageMap.regionsMain.append(MappedImage.region(name: "main droite", bounds: CGRect(x: 47.5868115186923, y: 882.038375119195, width: 81.2340519864545, height: 56.2389590675454)))
+                imageMap.regionsMain.append(MappedImage.region(name: "main gauche", bounds: CGRect(x: 494.133760012279, y: 890.209847804223, width: 72.1012295737762, height: 47.5868115186923)))
+                imageMap.regionsMain.append(MappedImage.region(name: "cuisse droite", bounds: CGRect(x: 171.120251521762, y: 959.427028195048, width: 122.572090275419, height: 171.600926385587)))
+                imageMap.regionsMain.append(MappedImage.region(name: "cuisse gauche", bounds: CGRect(x: 335.511054949972, y: 977.692673020405, width: 104.306445450063, height: 157.661355334657)))
+                imageMap.regionsMain.append(MappedImage.region(name: "rétrosternal", bounds: CGRect(x: 278.043557833089, y: 346.148609077599, width: 48.1109077598829, height: 55.6087115666178)))
+                imageMap.regionsMain.append(MappedImage.region(name: "périombilical", bounds: CGRect(x: 285.541361639824, y: 669.803806734993, width: 58.1079795021963, height: 66.8554172767203)))
+                imageMap.regionsMain.append(MappedImage.region(name: "poignet gauche", bounds: CGRect(x: 486.107613469985, y: 851.625549048316, width: 83.1006588579795, height: 33.7401171303075)))
+
+                imageMap.regionsMain.append(MappedImage.region(name: "fosse iliaque gauche", bounds: CGRect(x: 361.144216691069, y: 767.900073206442, width: 81.8510248901904, height: 67.4802342606149)))
             default:
                 break
             }
             imageMap.saveToFile(imageMap.name)
-          //  imageMap.regionsMain.append(MappedImage.region(name: "test", bounds: CGRect(x: <#T##Double#>, y: <#T##Double#>, width: <#T##Double#>, height: <#T##Double#>)))
+            //  imageMap.regionsMain.append(MappedImage.region(name: "test", bounds: CGRect(x: <#T##Double#>, y: <#T##Double#>, width: <#T##Double#>, height: <#T##Double#>)))
             //ex.value=imageMap.name
-
+            
         }
-       
+        
     }
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-//        setDefaultAtcd()
-//        setDefaultMedicament()
-//        setDefaultMotif()
-//        setDefaultLocalisation()
-//        setDefaultEtablissement()
-//        setDefaultMedecin()
-//        setDefaultPosologie()
-//        setDefaultProfession()
-//        setDefaultConclusionRx()
-//        setDefaultEvenement()
-//        setDefaultAllergie()
-//        Donnees.selectiontextDict["libre"]=["test"]
+        //        setDefaultAtcd()
+        //        setDefaultMedicament()
+        //        setDefaultMotif()
+        //        setDefaultLocalisation()
+        //        setDefaultEtablissement()
+        //        setDefaultMedecin()
+        //        setDefaultPosologie()
+        //        setDefaultProfession()
+        //        setDefaultConclusionRx()
+        //        setDefaultEvenement()
+        //        setDefaultAllergie()
+        //        Donnees.selectiontextDict["libre"]=["test"]
         setDefautTextDict()
         // MARK: Uncomment to read data files
         
-       DataSave.loadDataFiles()
+        DataSave.loadDataFiles()
         
-       configImageMapped()
+        configImageMapped()
         /*var filemgr = NSFileManager.defaultManager()
-        if filemgr.fileExistsAtPath(filePathPatients) {
-            print("File exists")
-            do {
-                let readFile = try String(contentsOfFile: filePathPatients, encoding: NSASCIIStringEncoding)
-                print("\(readFile)")
-                // the above prints "some text"
-            } catch let error as NSError {
-                print("Error: \(error)")  
-            }  
-        }*/
+         if filemgr.fileExistsAtPath(filePathPatients) {
+         print("File exists")
+         do {
+         let readFile = try String(contentsOfFile: filePathPatients, encoding: NSASCIIStringEncoding)
+         print("\(readFile)")
+         // the above prints "some text"
+         } catch let error as NSError {
+         print("Error: \(error)")
+         }
+         }*/
         // Get the document directory url
-
-
+        
+        
         //var documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
         // var documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         
         return true
     }
-
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -281,24 +328,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DropDown.startListeningToKeyboard()
     }
     func applicationDidEnterBackground(application: UIApplication) {
-
-       DataSave.saveDataFiles()
+        
+        DataSave.saveDataFiles()
         
     }
-
+    
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
-
+    
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
-
+    
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         
     }
-
-
+    
+    
 }
 
