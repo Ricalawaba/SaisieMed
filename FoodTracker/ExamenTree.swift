@@ -123,7 +123,19 @@ class ExamTree :NSObject{
         catConnuClinique.examens=examCatConnuClinique
         return catConnuClinique
     }
-    
+     static var activitePhysique:categorieExamen.Categorie {
+        let catactivitePhysique = categorieExamen.Categorie(nom:"<#nom#>",namedImage: "<#image#>",showNom: true)
+        let examCatactivitePhysique = [
+            Check("Pas d'activité physique - Sédentaire"),
+            Check("Activité physique modérée"),
+            Check("Jardinage"),Check("Marche rapide"),Check("Bricolage"),Check("Travaux ménagers"),
+            OuiNon("Activité physique d'intensité élevée"),
+            Check("Course"),Check("vélo"),Check("Activité sportive"),Check("profession manuelle"),
+        ]
+        catactivitePhysique.examens=examCatactivitePhysique
+        return catactivitePhysique
+    }
+
     
     // MARK: administratif
     static var administratif: categorieExamen.Categorie {
@@ -132,6 +144,7 @@ class ExamTree :NSObject{
         let catModeVie = categorieExamen.Categorie(nom: "Mode de vie", namedImage: "femme.png")
         
         let excamCatModeVie = [
+             Examen(intitule: "Profession", type:  .selection ,tag: "profession"),
             Examen(intitule: "lieu mode vie", datastr: ["à son domicile","en institution","en maison de retraite" ,"en maison médicalisée","sans domicile fixe","hébergé chez des proches"].sort() ),
             Check("avec sa famille" ),
             Check("seul" ),
@@ -140,7 +153,7 @@ class ExamTree :NSObject{
             Check("Pas d'enfants" ),
             Examen(intitule: "enfant mineur/dépendant", type:  .donnee ),
             Examen(intitule: "enfant autonome", type:  .donnee ),
-            
+            activitePhysique.asExamen(),
             ]
         catModeVie.examens=excamCatModeVie
         let catModeEntree = categorieExamen.Categorie(nom: "Mode d'entrée",namedImage: "ambulance_icon.png")
@@ -154,6 +167,7 @@ class ExamTree :NSObject{
             Examen(intitule: "Médecin SMUR", type:  .selection ,tag: "medecin"),
             Examen(intitule: "transport", datastr: ["Transporté par les pompiers","transporté par ambulance","vient par ses propres moyens", "transporté par les proches"].sort() ),
             Check("non médicalisé"),
+            Check("Accompagné :"),
             Accompagnant(),
             ]
         catModeEntree.examens=excamCatModeEntree
@@ -240,10 +254,18 @@ class ExamTree :NSObject{
     }
     static var motifs:categorieExamen.Categorie {
         let catMotifs = categorieExamen.Categorie(nom:"Motif(s)",namedImage: "tete_icon.png",showNom: true)
+        
+        
         let examCatMotifs : [Examen] = [
-            motif.asExamen(),
-            Examen(intitule: "début", type:  .donnee,tag: "date" ),
             
+            Examen(intitule: "date", type:  .donnee,tag: "date" ),
+            motif.asExamen(),
+            Check("Traumatisme"),
+            Check("par chute de sa hauteur"),
+            Check("Douleur"),
+            Check("d'apparition brutale"),
+            Examen(intitule: "localisation de face", imageName: "corps femme front.png.map"),
+            Examen(intitule: "localisation de dos", imageName: "corps femme back.png.map"),
             ]
         catMotifs.subitems.append("motif")
         catMotifs.examens=examCatMotifs

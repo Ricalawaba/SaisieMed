@@ -149,6 +149,9 @@ class imageDocumentViewController: UIViewController {
             } else {
                 for subview:UIView in self.imageView.subviews { //where subview.bounds==zone.bounds {
                     // print(subview.frame,point)
+                    savedZoom=self.scrollView.zoomScale
+                    savedBounds=self.scrollView.bounds
+
                     if subview.frame.contains(point){
                         subview.removeFromSuperview()
                     }

@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1774423E8602EAB0930C025D /* Pods_SaisieMedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDA2817AB0040F470CEE1BC /* Pods_SaisieMedTests.framework */; };
+		300BF7361D52A7D10038CDB2 /* dermatomes.png in Resources */ = {isa = PBXBuildFile; fileRef = 300BF7351D52A7D10038CDB2 /* dermatomes.png */; };
+		300BF7381D534CAA0038CDB2 /* veines mb inf.png in Resources */ = {isa = PBXBuildFile; fileRef = 300BF7371D534CAA0038CDB2 /* veines mb inf.png */; };
+		300BF73A1D5357B70038CDB2 /* pied.png in Resources */ = {isa = PBXBuildFile; fileRef = 300BF7391D5357B70038CDB2 /* pied.png */; };
+		300BF73C1D538E2D0038CDB2 /* thorax.png in Resources */ = {isa = PBXBuildFile; fileRef = 300BF73B1D538E2D0038CDB2 /* thorax.png */; };
+		300BF73E1D5608250038CDB2 /* cheville_ottawa.png in Resources */ = {isa = PBXBuildFile; fileRef = 300BF73D1D5608250038CDB2 /* cheville_ottawa.png */; };
 		3015F3A51D36C90100A23BE0 /* filesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3015F3A41D36C90100A23BE0 /* filesTableViewController.swift */; };
 		3015F3A71D36C9D800A23BE0 /* imagefileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3015F3A61D36C9D800A23BE0 /* imagefileTableViewCell.swift */; };
 		3015F3A91D36CB8C00A23BE0 /* patientFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3015F3A81D36CB8C00A23BE0 /* patientFileTableViewCell.swift */; };
@@ -119,6 +124,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		300BF7351D52A7D10038CDB2 /* dermatomes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dermatomes.png; sourceTree = "<group>"; };
+		300BF7371D534CAA0038CDB2 /* veines mb inf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "veines mb inf.png"; sourceTree = "<group>"; };
+		300BF7391D5357B70038CDB2 /* pied.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pied.png; sourceTree = "<group>"; };
+		300BF73B1D538E2D0038CDB2 /* thorax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thorax.png; sourceTree = "<group>"; };
+		300BF73D1D5608250038CDB2 /* cheville_ottawa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cheville_ottawa.png; sourceTree = "<group>"; };
 		3015F3A41D36C90100A23BE0 /* filesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = filesTableViewController.swift; sourceTree = "<group>"; };
 		3015F3A61D36C9D800A23BE0 /* imagefileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imagefileTableViewCell.swift; sourceTree = "<group>"; };
 		3015F3A81D36CB8C00A23BE0 /* patientFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = patientFileTableViewCell.swift; sourceTree = "<group>"; };
@@ -406,6 +416,11 @@
 		30F43F231D0EA255005E3BEB /* images */ = {
 			isa = PBXGroup;
 			children = (
+				300BF73D1D5608250038CDB2 /* cheville_ottawa.png */,
+				300BF73B1D538E2D0038CDB2 /* thorax.png */,
+				300BF7391D5357B70038CDB2 /* pied.png */,
+				300BF7371D534CAA0038CDB2 /* veines mb inf.png */,
+				300BF7351D52A7D10038CDB2 /* dermatomes.png */,
 				3061871D1D4FDD280026A1A8 /* corps femme front.png */,
 				3061871E1D4FDD280026A1A8 /* corps femme back.png */,
 				302974781D4D9DA5006FF74D /* fractures métacarpe.png */,
@@ -580,7 +595,9 @@
 			files = (
 				3061871F1D4FDD280026A1A8 /* corps femme front.png in Resources */,
 				301826031D0F834500592CE9 /* pancarte_icon.png in Resources */,
+				300BF7361D52A7D10038CDB2 /* dermatomes.png in Resources */,
 				30905F871D29777B002F023D /* cardio2_icon.png in Resources */,
+				300BF7381D534CAA0038CDB2 /* veines mb inf.png in Resources */,
 				301826131D10ABAA00592CE9 /* main_icon.png in Resources */,
 				302974711D4A0810006FF74D /* douleur_thoracique.png in Resources */,
 				30D5267B1D2863260016A38B /* fracture_femur.png in Resources */,
@@ -595,16 +612,19 @@
 				30905F8C1D29777B002F023D /* Homme.png in Resources */,
 				308E7FDF1D2486E500AF225D /* thermo_icon.png in Resources */,
 				308E7FDD1D2486E500AF225D /* tablets_icon.png in Resources */,
+				300BF73C1D538E2D0038CDB2 /* thorax.png in Resources */,
 				301826111D10ABAA00592CE9 /* oreille_icon.png in Resources */,
 				302974791D4D9DA5006FF74D /* fractures métacarpe.png in Resources */,
 				301825F81D0F005000592CE9 /* nurse_icon.png in Resources */,
 				30905F8A1D29777B002F023D /* neuro_icon.png in Resources */,
 				3018260F1D10ABAA00592CE9 /* medoc_icon.png in Resources */,
+				300BF73E1D5608250038CDB2 /* cheville_ottawa.png in Resources */,
 				301825F41D0EFFB400592CE9 /* administratif_icon.png in Resources */,
 				301C08661D25877200E79763 /* scan.png in Resources */,
 				30D0289C1D1AECD40050231C /* imagerie_icon.png in Resources */,
 				301826151D10ABAA00592CE9 /* uro_icon.png in Resources */,
 				308E7FE41D2486E500AF225D /* bouche_icon.png in Resources */,
+				300BF73A1D5357B70038CDB2 /* pied.png in Resources */,
 				306187201D4FDD280026A1A8 /* corps femme back.png in Resources */,
 				30905F881D29777B002F023D /* cardio_icon.png in Resources */,
 				301C08671D25877200E79763 /* laboratoire.png in Resources */,

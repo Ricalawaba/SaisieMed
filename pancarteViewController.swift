@@ -12,7 +12,20 @@ protocol saisiePancarteDelegate {
     func pancarteSelected(sender:pancarteViewController, pancarteStr:String)
     
 }
-class pancarteViewController: UIViewController {
+private var kAssociationKeyNextField: UInt8 = 0
+
+extension UITextField {
+    @IBOutlet var nextField: UITextField? {
+        get {
+            return objc_getAssociatedObject(self, &kAssociationKeyNextField) as? UITextField
+        }
+        set(newField) {
+            objc_setAssociatedObject(self, &kAssociationKeyNextField, newField, .OBJC_ASSOCIATION_RETAIN)
+        }
+    }
+}
+
+class pancarteViewController: UIViewController,UITextFieldDelegate {
 
       var delegate: saisiePancarteDelegate?
     @IBOutlet weak var taSystLabel: UITextField!
@@ -64,6 +77,13 @@ class pancarteViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.taSystLabel.nextField=taDiasLabel
+        taDiasLabel.nextField=fcLabel
+        fcLabel.nextField=sao2Label
+        sao2Label.nextField=evaLabel
+        evaLabel.nextField=tempetLabel
+        tempetLabel.nextField=fRespLabel
+        fRespLabel.nextField=taSystLabel
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,5 +101,8 @@ class pancarteViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.nextField?.becomeFirstResponder()
+        return true
+    }
 }

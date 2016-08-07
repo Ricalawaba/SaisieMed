@@ -352,17 +352,35 @@ extension ExamTree {
         catEpaule.examens=examCatEpaule
         return catEpaule
     }
+     static var chevilleOttawa:categorieExamen.Categorie {
+        let catchevilleOttawa = categorieExamen.Categorie(nom:"<br>Critères d'Ottawa",namedImage: "pied_icon.png",showNom: true)
+        let examCatchevilleOttawa = [
+            Examen(intitule: "Critères d'ottawa", imageName: "cheville_ottawa.png.map"),
+            OuiNon("radiographie nécessaire selon les critères d'Ottawa"),
+            OuiNon("douleur bord postérieur de la malléole latérale"),
+            OuiNon("douleur bord postérieur de la malléole médiale"),
+            OuiNon("Appui ou marche sur 4 pas possible"),
+            OuiNon("Douleur de la base du 5ième métatarsien"),
+            OuiNon("Douleur à la palpation du scaphoide tarsien"),
+        ]
+        catchevilleOttawa.examens=examCatchevilleOttawa
+        return catchevilleOttawa
+    }
+
     static var Cheville:categorieExamen.Categorie {
         let catCheville = categorieExamen.Categorie(nom:"Cheville",namedImage: "pied_icon.png",showNom: true)
         catCheville.startLI()
         let examCatCheville : [Examen] = [
             locoMoteurCommun.asExamen(),
             self.LocoFonctionnel.asExamen(),
+            Examen(intitule: "anatomie pied", imageName: "pied.png.map"),
             Examen(intitule: "\"craquement\" lors du traumatisme", type:  .ouinon ,info: " "),
             Examen(intitule: "Evolution en deux temps (aggravation secondaire)", type:  .check),
             Examen(intitule: "Appui possible", type:  .ouinon ,info: " "),
             Check("Marche possible"),
             Check("Marche impossible"),
+            OuiNon("Douleur à la pronosupination passive (Lisfranc)"),
+            OuiNon("Douleur à l'inclinaison latérale calcaneum bloqué (Chopart)"),
             OuiNon("déformation apparente"),
             OuiNon("Oedeme peri-malleolaire externe"),
             OuiNon("Oedeme peri-malleolaire interne"),
@@ -373,8 +391,9 @@ extension ExamTree {
             Check("douleur f.postérieur du LLE"),
             Check("douleur f.moyen du LLE"),
             OuiNon("douleur achilleene"),
-            Check("Dermabrasion"),
             
+            Check("Dermabrasion"),
+            self.chevilleOttawa.asExamen(),
             
             ]
         catCheville.examens=examCatCheville
@@ -388,13 +407,15 @@ extension ExamTree {
             Check("Anesthésie Intra-thecale"),
             Check("Xylocaine non adrénalinée"),
             Check("<br>Exploration"),
+            Check("lésion profonde visible"),
             OuiNon("lésion d'élement musculo-tendineux"),
             OuiNon("lésion vasculaire"),
             Check("Corps étrangers"),
             Check("Nettoyage et brossage"),
             Check("Exérèse des tissus nécrotiques et contus"),
             Examen(intitule: "type suture parage", datastr: ["Parage sans suture","Suture en 2 plans","Suture revètement cutanée"].sort() ),
-            
+            Check("Points simples"),
+            Check("Points en X (hémostatique)"),
             Examen(intitule: "Ethycrin 3/0", type:  .donnee ),
             Examen(intitule: "Ethycrin 4/0", type:  .donnee ),
             Examen(intitule: "Ethycrin 5/0", type: .donnee),
@@ -423,6 +444,7 @@ extension ExamTree {
             Check("par écrasement"),
             Check("par lacération"),
             Check("par morsure"),
+            Check("Antibioprophylaxie anti-pasteurellose (fluoroquinolone"),
             Examen(intitule: "agent vulnérant", type:  .donnee ,tag: "libre"),
             Examen(intitule: "taille", type:  .donnee ,tag: "libre"),
             Check("bords nets"),

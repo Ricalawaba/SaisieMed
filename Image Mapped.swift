@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 
 class MappedImage: NSObject,NSCoding {
-    
-    //  var delegate:mappedImageDelegate?
     class region: NSObject,NSCoding {
         // MARK: Propriétés
         var name:String

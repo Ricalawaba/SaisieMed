@@ -43,7 +43,7 @@ extension ExamTree {
             Check("Homans négatif"),
             Check("Douleur localisée oedématié"),
             //Check(),
-            
+            Examen(intitule: "veines mb inf", imageName: "veines mb inf.png.map"),
             Check("Etat veineux et cutané précaire"),
             Check("Dilatations variqueuses"),
             Check("Phlébectasies de stase"),

@@ -20,6 +20,7 @@ extension ExamTree {
             ExamTree.neuroFonctionnel.asExamen(),
             ExamTree.neuroReflexes.asExamen(),
             ExamTree.NerfsCraniens.asExamen(),
+            Examen(intitule: "dermatomes", imageName: "dermatomes.png.map"),
             Check("Pas de signe de localisation"),
             //self.libre,
         ]
