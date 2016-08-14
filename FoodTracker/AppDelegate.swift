@@ -290,6 +290,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 imageMap.regionsMain.append(MappedImage.region(name: "cuisse gauche", bounds: CGRect(x: 335.511054949972, y: 977.692673020405, width: 104.306445450063, height: 157.661355334657)))
                 imageMap.regionsMain.append(MappedImage.region(name: "rétrosternal", bounds: CGRect(x: 278.043557833089, y: 346.148609077599, width: 48.1109077598829, height: 55.6087115666178)))
                 imageMap.regionsMain.append(MappedImage.region(name: "périombilical", bounds: CGRect(x: 285.541361639824, y: 669.803806734993, width: 58.1079795021963, height: 66.8554172767203)))
+                imageMap.regionsMain.append(MappedImage.region(name: "abdominale", bounds: CGRect(x: 281.940084850197, y: 737.947526433994, width: 74.7754138080958, height: 72.9366741242902)))
             case "dermatomes.png":
                 imageMap.regionsMain.append(MappedImage.region(name: "Dysesthésie", bounds: CGRect(x: 667.390625, y: 103.0390625, width: 166.375, height: 30.25)))
                 imageMap.regionsMain.append(MappedImage.region(name: "Hypoesthésie", bounds: CGRect(x: 669.28125, y: 133.2890625, width: 168.265625, height: 23.6328125)))

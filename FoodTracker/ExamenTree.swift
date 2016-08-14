@@ -800,10 +800,11 @@ class ExamTree :NSObject{
     static var Douleur:categorieExamen.Categorie {
         let catDouleur = categorieExamen.Categorie(nom:"<br>Douleur",namedImage: "<#image#>",showNom: true)
         let examCatDouleur = [
-            
+            Check("irradiation ➠"),
             Examen(intitule: "corps face", imageName: "corps femme front.png.map"),
             Examen(intitule: "corps face", imageName: "corps femme back.png.map"),
             Check("avec impotence fonctionnelle"),
+            
             Examen(intitule: "EVA", type:  .donnee,tag: "EVA" )
             
         ]
