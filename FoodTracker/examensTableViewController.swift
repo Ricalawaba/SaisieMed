@@ -315,7 +315,8 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
             for t in Donnees.selectiontextDict[ExamTaped!.tag]! {
                 dd.append(t)
             }
-            dropdown.anchorView=self.editButtonItem()
+            dropdown.anchorView=self.view
+                //self.editButtonItem()
            // dropdown.bottomOffset = CGPoint(x: 0, y:(dropdown.anchorView?.plainView.bounds.height)!)
             dropdown.dataSource=dd
             //  dropdown.topOffset = CGPoint(x: 0, y:-sender.plainView.bounds.height)

@@ -838,7 +838,8 @@ class ExamTree :NSObject{
         let catRespiratoireFonctionnel = categorieExamen.Categorie(nom:"<br>Fonctionnel",namedImage: "pneumo_icon.png",showNom: true)
         catRespiratoireFonctionnel.startLI()
         let examCatRespiratoireFonctionnel : [Examen] = [
-            Examen(intitule: "respiration", datastr: ["dyspnée au repos","dyspnée d'effort","eupnéïque","Dyspnée inspiratoire","dyspnée expiratoire"].sort() ),
+            Examen(intitule: "respiration", datastr: [" dyspnéique","dyspnée au repos","dyspnée d'effort"," eupnéïque","Dyspnée inspiratoire","dyspnée expiratoire"].sort() ),
+            Examen(intitule: "Echelle de Borg ('eva' dyspnée)", type: .donnee),
             Check("anxiogène"),
             Check("Sifflante"),Check("Encombrement audible"),
             OuiNon("pincement des ailes du nez"),
