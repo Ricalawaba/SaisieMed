@@ -14,6 +14,11 @@ class ExamTree :NSObject{
         switch examtype.lowercaseString {
         case "zone anatomique":
             return self.regionAnat
+            
+        case "typemotif":
+            return self.typeMotif.asExamen()
+        case "douleur":
+            return Douleur.asExamen()
         case "libre" :
             return self.libre
         case "atcd" :
@@ -87,6 +92,8 @@ class ExamTree :NSObject{
             return self.Imagerie.asExamen()
         case "pancarte":
             return self.Pancartes.asExamen()
+        case "connuclinique":
+            return self.ConnuClinique.asExamen()
             
         default:
             print("get exam Non géré : ", examtype)
@@ -118,24 +125,25 @@ class ExamTree :NSObject{
             Examen(intitule: "connucliniquepour", datastr: ["non médical","Suivi oncologique","Suivi cardiovasculaire","Suivi pneumologique","Suivi neurologique","Suivi urologique","Suivi traumatologique","Intervention orthopédique","Intervention chirurgicale","Bilan spécialisé","Suivi diabétologique","Avis spécialisé","Suivi angiologique","Déja vu en consultation"].sort()),
             
             Examen(intitule: "dernier contact", type:  .donnee ,tag: "date"),
-            
+            atcd.asExamen(),
             ]
+        catConnuClinique.subitems.append("atcd")
         catConnuClinique.examens=examCatConnuClinique
         return catConnuClinique
     }
-     static var activitePhysique:categorieExamen.Categorie {
-        let catactivitePhysique = categorieExamen.Categorie(nom:"<#nom#>",namedImage: "<#image#>",showNom: true)
+    static var activitePhysique:categorieExamen.Categorie {
+        let catactivitePhysique = categorieExamen.Categorie(nom:"Activités physiques",namedImage: "examenclinique.png",showNom: true)
         let examCatactivitePhysique = [
             Check("Pas d'activité physique - Sédentaire"),
             Check("Activité physique modérée"),
             Check("Jardinage"),Check("Marche rapide"),Check("Bricolage"),Check("Travaux ménagers"),
             OuiNon("Activité physique d'intensité élevée"),
             Check("Course"),Check("vélo"),Check("Activité sportive"),Check("profession manuelle"),
-        ]
+            ]
         catactivitePhysique.examens=examCatactivitePhysique
         return catactivitePhysique
     }
-
+    
     
     // MARK: administratif
     static var administratif: categorieExamen.Categorie {
@@ -144,7 +152,7 @@ class ExamTree :NSObject{
         let catModeVie = categorieExamen.Categorie(nom: "Mode de vie", namedImage: "femme.png")
         
         let excamCatModeVie = [
-             Examen(intitule: "Profession", type:  .selection ,tag: "profession"),
+            Examen(intitule: "Profession", type:  .selection ,tag: "profession"),
             Examen(intitule: "lieu mode vie", datastr: ["à son domicile","en institution","en maison de retraite" ,"en maison médicalisée","sans domicile fixe","hébergé chez des proches"].sort() ),
             Check("avec sa famille" ),
             Check("seul" ),
@@ -167,7 +175,7 @@ class ExamTree :NSObject{
             Examen(intitule: "Médecin SMUR", type:  .selection ,tag: "medecin"),
             Examen(intitule: "transport", datastr: ["Transporté par les pompiers","transporté par ambulance","vient par ses propres moyens", "transporté par les proches"].sort() ),
             Check("non médicalisé"),
-            Check("Accompagné :"),
+            OuiNon("Accompagnant"),
             Accompagnant(),
             ]
         catModeEntree.examens=excamCatModeEntree
@@ -182,6 +190,7 @@ class ExamTree :NSObject{
             Examen(intitule: "Ajout connu clinique",type: .addinfo,tag: "connuClinique"),
             
             ]
+        catConnu.subitems.append("connuClinique")
         catConnu.examens=examCatConnu
         
         
@@ -252,6 +261,25 @@ class ExamTree :NSObject{
         catMotif.examens=examCatMotif
         return catMotif
     }
+    static var typeMotif:categorieExamen.Categorie {
+        let cattypeMotif = categorieExamen.Categorie(nom:"Contexte Motif",namedImage: "nurse_icon.png",showNom: false)
+        let examCattypeMotif = [
+            Check("Traumatisme"),
+            Check("Douleur"),
+            Check("Malaise"),
+            Check("Bilan de chute"),
+            Check("Accident de la voie publique"),
+            Check("Chute à vélo"),
+            Check("Accident de sport"),
+            Check("Accident de travail"),
+            Check("Accident domestique"),
+            
+            
+            ]
+        cattypeMotif.examens=examCattypeMotif
+        return cattypeMotif
+    }
+    
     static var motifs:categorieExamen.Categorie {
         let catMotifs = categorieExamen.Categorie(nom:"Motif(s)",namedImage: "tete_icon.png",showNom: true)
         
@@ -259,29 +287,45 @@ class ExamTree :NSObject{
         let examCatMotifs : [Examen] = [
             
             Examen(intitule: "date", type:  .donnee,tag: "date" ),
-            motif.asExamen(),
-            Check("Traumatisme"),
-            Check("par chute de sa hauteur"),
-            Check("Douleur"),
-            Check("d'apparition brutale"),
+            
+            typeMotif.asExamen(),
             Examen(intitule: "localisation de face", imageName: "corps femme front.png.map"),
             Examen(intitule: "localisation de dos", imageName: "corps femme back.png.map"),
+            motif.asExamen(),
             ]
         catMotifs.subitems.append("motif")
+        catMotifs.subitems.append("typemotif")
         catMotifs.examens=examCatMotifs
         return catMotifs
     }
     
+    static var SignesGeneraux:categorieExamen.Categorie {
+        let catSignesGeneraux = categorieExamen.Categorie(nom:"Signes Generaux",namedImage: "nurse_icon.png",showNom: false)
+        let examCatSignesGeneraux = [
+            Check("Nausée"),
+            Check("Vomissements"),
+            Check("Céphallée"),
+            Check("Diarrhée"),
+            Check("Troubles sensoriels"),
+            Check("Lipothymies"),
+            Check("Sueurs"),
+            Check("Dyspnée"),
+            Check("Anxiété"),
+            Check("Hyperthermie"),
+            ]
+        catSignesGeneraux.examens=examCatSignesGeneraux
+        return catSignesGeneraux
+    }
     
     static var Plainte:categorieExamen.Categorie {
         let catPlainte = categorieExamen.Categorie(nom:"Plainte",namedImage: "tete_icon.png",showNom: false)
         let examCatPlainte : [Examen] = [
             Examen(intitule: "Signe", type:  .selection,tag: "motif" ),
-                       Examen(categorie: LocAnat),
+            Examen(categorie: LocAnat),
             regionAnat,
             Examen(intitule: "début", type:  .donnee,tag: "date" ),
             Examen(intitule: "durée", type:  .donnee,tag: "date" ),
-
+            
             Check("aigüe"),
             Check("sub-aigüe"),
             Check("intense"),
@@ -378,7 +422,7 @@ class ExamTree :NSObject{
     
     static var Traitement:categorieExamen.Categorie {
         let catTraitement = categorieExamen.Categorie(nom:"Traitement",namedImage: "medoc_icon.png",showNom: true)
-      //  catTraitement.startNewLine()
+        //  catTraitement.startNewLine()
         let examCatTraitement : [Examen] = [
             detailsTraitement.asExamen(),
             Examen(categorie: ExamTree.TTT),
@@ -404,7 +448,7 @@ class ExamTree :NSObject{
             Examen(intitule: "Taille (mesurée)", type:  .donnee, tag: "taille" ),
             Check("Surcharge type androïde"),
             Check("Surcharge type gynoïde"),
-           
+            
             Examen(intitule: "Périmètre abdominal", type:  .donnee, tag: "taille" ),
             
             ]
@@ -611,7 +655,7 @@ class ExamTree :NSObject{
             evenement.asExamen(),
             
             Examen(intitule: "Ajout clinique",type: .addinfo,tag: "clinique"),
-     //       Examen(intitule: "Ajout pancarte",type: .addinfo,tag: "pancarte"),
+            //       Examen(intitule: "Ajout pancarte",type: .addinfo,tag: "pancarte"),
             Examen(intitule: "Ajout évènement",type: .addinfo,tag: "evenementSuivi"),
             ]
         catSuiviEvolution.subitems.append("pancarte")
@@ -633,13 +677,14 @@ class ExamTree :NSObject{
         let catExamenGeneral = categorieExamen.Categorie(nom:"<br>Examen général",namedImage: "examenclinique.png",showNom: true)
         
         let examCatExamenGeneral : [Examen] = [
+            self.Poids.asExamen(),
             Examen(intitule: "Communication", datastr: ["Communication normale","Pas de communication","Communication altérée","difficultés linguistiques","Refus de communication"].sort() ),
-            neuroFonctionnel.asExamen(),
-            OuiNon("Troubles du langage"),
+            //           neuroFonctionnel.asExamen(),
+            //           OuiNon("Troubles du langage"),
             
-            Check("Conscient" ),
-            Check("Orienté" ),
-            OuiNon("Anxiété majeure apparente"),
+            Check("Conscient, Orienté" ),
+            OuiNon("Anxiété apparente"),
+            Check("Non algique"),
             Check("Très algique"),
             OuiNon("Sueurs"),
             Examen(intitule: "coloration cutané", datastr: [
@@ -654,12 +699,12 @@ class ExamTree :NSObject{
                 "marbrures"].sort() ),
             OuiNon("Pli cutanée"),
             OuiNon("Crampes"),
+            OuiNon("Asthénie marquée"),
             
-            Check("Gérontoxon (arc sénile de la cornée)"),Check("Xanthélasma"),
-            self.Poids.asExamen(),
+            
             self.Adenopathies.asExamen(),
             Examen(intitule: "Dernier repas", type:  .reponsecourte, tag: "date" ),
-
+            
             
             self.OMS,
             self.Karnofsky,
@@ -698,7 +743,7 @@ class ExamTree :NSObject{
         catConclusion.examens=examCatConclusion
         return catConclusion
     }
-
+    
     static var Imagerie:categorieExamen.Categorie {
         let catImagerie = categorieExamen.Categorie(nom:"Imagerie",namedImage: "imagerie_icon.png",showNom: true)
         catImagerie.startLI()
@@ -752,19 +797,34 @@ class ExamTree :NSObject{
         catGazometrie.examens=examCatGazometrie
         return catGazometrie
     }
+    static var Douleur:categorieExamen.Categorie {
+        let catDouleur = categorieExamen.Categorie(nom:"<br>Douleur",namedImage: "<#image#>",showNom: true)
+        let examCatDouleur = [
+            
+            Examen(intitule: "corps face", imageName: "corps femme front.png.map"),
+            Examen(intitule: "corps face", imageName: "corps femme back.png.map"),
+            Check("avec impotence fonctionnelle"),
+            Examen(intitule: "EVA", type:  .donnee,tag: "EVA" )
+            
+        ]
+        catDouleur.examens=examCatDouleur
+        return catDouleur
+    }
     
     static var PlainteAnamnèse:categorieExamen.Categorie {
         let catPlainteAnamnèse = categorieExamen.Categorie(nom:"Plaintes/Anamnèse",namedImage: "tete_icon.png",showNom: true)
         catPlainteAnamnèse.startLI()
         let examCatPlainteAnamnèse : [Examen] = [
+            SignesGeneraux.asExamen(),
+            Douleur.asExamen(),
             ExamTree.Plainte.asExamen(),
-            Examen(intitule: "corps face", imageName: "corps femme front.png.map"),
-            Examen(intitule: "corps face", imageName: "corps femme back.png.map"),
-
+            
+            
             OuiNon("Prise médicamenteuse"),
             TTT.asExamen(),
             
             ]
+        catPlainteAnamnèse.subitems.append("Douleur")
         catPlainteAnamnèse.subitems.append("Plainte")
         catPlainteAnamnèse.subitems.append("TTT")
         catPlainteAnamnèse.examens=examCatPlainteAnamnèse
@@ -781,7 +841,7 @@ class ExamTree :NSObject{
             Check("anxiogène"),
             Check("Sifflante"),Check("Encombrement audible"),
             OuiNon("pincement des ailes du nez"),
-          //  OuiNon("Toux"),
+            //  OuiNon("Toux"),
             Examen(intitule: "type toux", datastr: ["Pas de toux","toux sèche isolée","toux sèche quinteuse","toux positionnelle","toux productive"].sort() ),
             Examen(intitule: "expectorations", datastr: [" Pas d'expectorations","Expectorations d'aspect séreux (blanc, aéré)","Expectorations d'aspect muqueux (visqueux)","Expectorations muco-purulentes (jaune/ver)","Expectorations hémoptoïques"].sort() ),
             
