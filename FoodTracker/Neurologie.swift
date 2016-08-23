@@ -36,6 +36,7 @@ extension ExamTree {
             Check("II",poststring: ":"),
             OuiNon("Troubles du champ visuel"),
             Check("III,IV,VI",poststring: ":"),
+            OuiNon("Ptosis"),
             Check("Occulomotricité normale"),
             OuiNon("Trouble de l'occulomotricité"),
             Check("V",poststring: ":"),
