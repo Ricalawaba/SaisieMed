@@ -302,16 +302,18 @@ class ExamTree :NSObject{
     static var SignesGeneraux:categorieExamen.Categorie {
         let catSignesGeneraux = categorieExamen.Categorie(nom:"Signes Generaux",namedImage: "nurse_icon.png",showNom: false)
         let examCatSignesGeneraux = [
-            Check("Nausée"),
-            Check("Vomissements"),
-            Check("Céphallée"),
-            Check("Diarrhée"),
-            Check("Troubles sensoriels"),
-            Check("Lipothymies"),
-            Check("Sueurs"),
-            Check("Dyspnée"),
-            Check("Anxiété"),
-            Check("Hyperthermie"),
+             OuiNon("Faiblesse/Asthénie"),
+            OuiNon("Nausée"),
+            OuiNon("Vomissements"),
+            OuiNon("Céphallée"),
+            OuiNon("Diarrhée"),
+            OuiNon("Troubles sensoriels"),
+            OuiNon("Lipothymies"),
+            OuiNon("Sueurs"),
+            OuiNon("Dyspnée"),
+            OuiNon("Anxiété"),
+            OuiNon("Palpitations"),
+            OuiNon("Hyperthermie"),
             ]
         catSignesGeneraux.examens=examCatSignesGeneraux
         return catSignesGeneraux
@@ -798,8 +800,12 @@ class ExamTree :NSObject{
         return catGazometrie
     }
     static var Douleur:categorieExamen.Categorie {
-        let catDouleur = categorieExamen.Categorie(nom:"<br>Douleur",namedImage: "<#image#>",showNom: true)
+        let catDouleur = categorieExamen.Categorie(nom:"<br>Douleur",namedImage: "bouche_icon.png",showNom: true)
         let examCatDouleur = [
+            Check("Thoracique"),
+            Check("Abdominale"),
+            Check("Céphallée"),
+            Check("sans irradiation"),
             Check("irradiation ➠"),
             Examen(intitule: "corps face", imageName: "corps femme front.png.map"),
             Examen(intitule: "corps face", imageName: "corps femme back.png.map"),
@@ -811,11 +817,29 @@ class ExamTree :NSObject{
         catDouleur.examens=examCatDouleur
         return catDouleur
     }
-    
+     static var modeSurvenue:categorieExamen.Categorie {
+        let catmodeSurvenue = categorieExamen.Categorie(nom:"(mode de survenue)",namedImage: "stetho_icon.png",showNom: false)
+        let examCatmodeSurvenue = [
+            Check("Début brutal"),
+            Check("Début progressif"),
+            Check("Début insidueux"),
+            Check("pendant le repas"),
+            Examen(intitule: "début:", type:  .reponsecourte,tag: "date" ),
+            Check("Au repos"),
+            Check("Au cours d'un effort"),
+            Check("Au cours d'activités habituelles"),
+            Examen(intitule: "(Activité)", type:  .reponsecourte ),
+            
+        ]
+        catmodeSurvenue.examens=examCatmodeSurvenue
+        return catmodeSurvenue
+    }
+
     static var PlainteAnamnèse:categorieExamen.Categorie {
         let catPlainteAnamnèse = categorieExamen.Categorie(nom:"Plaintes/Anamnèse",namedImage: "tete_icon.png",showNom: true)
         catPlainteAnamnèse.startLI()
         let examCatPlainteAnamnèse : [Examen] = [
+            modeSurvenue.asExamen(),
             SignesGeneraux.asExamen(),
             Douleur.asExamen(),
             ExamTree.Plainte.asExamen(),

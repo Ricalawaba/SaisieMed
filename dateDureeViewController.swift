@@ -17,7 +17,7 @@ class dateDureeViewController: UIViewController {
     }
     @IBAction func jourheureAction(sender: UIButton) {
         self.date=dateHeureDatePicker.date
-        returnDate("dd MMM yyyy à HH:mm")
+        returnDate("dd/MM/yyyy (HH:mm)")
 
     }
     
@@ -26,6 +26,9 @@ class dateDureeViewController: UIViewController {
         returnDate("yyyy")
     }
 
+    @IBAction func dateHeureChanger(sender: UIDatePicker) {
+        dateDatePicker.date=sender.date
+    }
     @IBAction func moisAction(sender: UIButton) {
         self.date=dateDatePicker.date
         returnDate()
