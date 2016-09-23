@@ -8,7 +8,7 @@
 
 import UIKit
 protocol dateSelectedDelegate {
-    func dateSelected(sender:UIViewController, text:String,date:NSDate)
+    func dateSelected(_ sender:UIViewController, text:String,date:Date)
     
 }
 
@@ -18,35 +18,35 @@ class selectDateViewController: UIViewController {
     @IBOutlet weak var jourmoisanneeDatePicker: UIDatePicker!
     @IBOutlet weak var dateComplete: UIDatePicker!
     
-    @IBAction func returnDateComplète(sender: UIButton) {
+    @IBAction func returnDateComplète(_ sender: UIButton) {
         self.date=dateComplete.date
         returnDate("dd MMM yyyy à HH:mm")
     }
-    @IBAction func returnJourMoisAnnee(sender: UIButton) {
+    @IBAction func returnJourMoisAnnee(_ sender: UIButton) {
         self.date=jourmoisanneeDatePicker.date
         returnDate("dd/MM/yyyy")
     }
-    @IBAction func returnMoisAnnee(sender: UIButton) {
+    @IBAction func returnMoisAnnee(_ sender: UIButton) {
             returnDate()
     }
-    @IBAction func returnAnnee(sender: UIButton) {
+    @IBAction func returnAnnee(_ sender: UIButton) {
             returnDate("yyyy")
     }
-    var date=NSDate()
+    var date=Date()
     
     var delegate:dateSelectedDelegate?
-    func returnDate(format: String="MMMM yyyy"){
+    func returnDate(_ format: String="MMMM yyyy"){
         if let del=delegate  {
-            let dateFormatter=NSDateFormatter()
+            let dateFormatter=DateFormatter()
             //dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
             //dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
            // dateFormatter.locale = NSLocale.currentLocale()
             dateFormatter.dateFormat=format
-            let strDate = dateFormatter.stringFromDate(self.date)
+            let strDate = dateFormatter.string(from: self.date)
             del.dateSelected(self, text: strDate, date: self.date)
             
         }
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
         
     }
 
@@ -57,12 +57,12 @@ class selectDateViewController: UIViewController {
         dateMYPickerView.onDateSelected =   { (month: Int, year: Int) in
         //    let string = String(format: "%02d/%d", month, year)
             
-            let components = NSDateComponents()
-            let calendar = NSCalendar.currentCalendar()
+            var components = DateComponents()
+            let calendar = Calendar.current
             components.month = month
             components.year = year
             
-            self.date = calendar.dateFromComponents(components)!
+            self.date = calendar.date(from: components)!
             
             
            // NSLog(string) // should show something like 05/2015

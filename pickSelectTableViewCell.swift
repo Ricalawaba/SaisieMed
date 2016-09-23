@@ -8,20 +8,31 @@
 
 import UIKit
 import DropDown
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 
 class pickSelectTableViewCell: UITableViewCell ,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
     var examen:Examen! = nil
-    var dropdown=DropDown()
+    var dropdown = DropDown()
     
     @IBOutlet weak var intituleLabel: UILabel!
 
-    @IBAction func launchDropDown(sender: UIButton) {
+    @IBAction func launchDropDown(_ sender: UIButton) {
         var dd:[String]=[]
         
         for t in Donnees.selectiontextDict[examen.tag]! {
             dd.append(t)
         }
-        dropdown.anchorView=self.viewForLastBaselineLayout
+        dropdown.anchorView=self.forLastBaselineLayout
         dropdown.dataSource=dd
         //  dropdown.topOffset = CGPoint(x: 0, y:-sender.plainView.bounds.height)
         dropdown.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -33,7 +44,7 @@ class pickSelectTableViewCell: UITableViewCell ,UITextFieldDelegate,UIPickerView
         
         dropdown.show()
     }
-    @IBAction func tapTextField(sender: UITextField) {
+    @IBAction func tapTextField(_ sender: UITextField) {
 //                var dd:[String]=[]
 //        
 //                for t in Donnees.selectiontextDict[examen.tag]! {
@@ -52,7 +63,7 @@ class pickSelectTableViewCell: UITableViewCell ,UITextFieldDelegate,UIPickerView
 //                dropdown.show()
     }
     @IBOutlet weak var valueTextField: UITextField!
-    @IBAction func valueTextFieldDidEnd(sender: UITextField) {
+    @IBAction func valueTextFieldDidEnd(_ sender: UITextField) {
 
 
         if (valueTextField.text != nil) {
@@ -73,49 +84,49 @@ class pickSelectTableViewCell: UITableViewCell ,UITextFieldDelegate,UIPickerView
 //        thePickerView.delegate=self
 //        valueTextField.inputView=thePickerView
 //        
-        DropDown.appearance().textFont = UIFont.systemFontOfSize(15)
+        DropDown.appearance().textFont = UIFont.systemFont(ofSize: 15)
       //  DropDown.appearance().cellHeight=60
-        DropDown.appearance().backgroundColor = UIColor.blackColor()
-        DropDown.appearance().textColor = UIColor.yellowColor()
-        DropDown.appearance().selectionBackgroundColor = UIColor.darkGrayColor()
+        DropDown.appearance().backgroundColor = UIColor.black
+        DropDown.appearance().textColor = UIColor.yellow
+        DropDown.appearance().selectionBackgroundColor = UIColor.darkGray
         
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.endEditing(true)
         return false
     }
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         if examen.type == .multirowdatastr {
             return Donnees.multiColumnPickerDataStr[examen.tag]!.count
         }
 
         return 1
     }
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if examen.type == .multirowdatastr {
         return Donnees.multiColumnPickerDataStr[examen.tag]![component].count
         }
         return Donnees.selectiontextDict[examen.tag]!.count
         
     }
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if examen.type == .multirowdatastr {
             return Donnees.multiColumnPickerDataStr[examen.tag]![component][row]
         }
         
         return Donnees.selectiontextDict[examen.tag]![row]
     }
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if examen.type == .multirowdatastr {
             var  makeStr:String=""
             for c in 0..<pickerView.numberOfComponents {
-                makeStr += Donnees.multiColumnPickerDataStr[examen.tag]![c][pickerView.selectedRowInComponent(c)]
+                makeStr += Donnees.multiColumnPickerDataStr[examen.tag]![c][pickerView.selectedRow(inComponent: c)]
             
             }
             valueTextField.text = makeStr
@@ -123,26 +134,26 @@ class pickSelectTableViewCell: UITableViewCell ,UITextFieldDelegate,UIPickerView
         valueTextField.text = Donnees.selectiontextDict[examen.tag]![row]
         }
     }
-    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 36.0
     }
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
     {
         
         
         let pickerLabel = UILabel()
-        pickerLabel.textColor = UIColor.blackColor()
+        pickerLabel.textColor = UIColor.black
         if examen.type == .multirowdatastr {
             pickerLabel.text = Donnees.multiColumnPickerDataStr[examen.tag]![component][row]
             switch component {
             case 0:
                 if Donnees.multiColumnPickerDataStr[examen.tag]?.count  < 6 {
-                   pickerLabel.textAlignment = NSTextAlignment.Right
+                   pickerLabel.textAlignment = NSTextAlignment.right
                 }
             case 1:
                 switch Donnees.multiColumnPickerDataStr[examen.tag]!.count {
                 case 2,4..<6 :
-                    pickerLabel.textAlignment = NSTextAlignment.Left
+                    pickerLabel.textAlignment = NSTextAlignment.left
               
                     
                 default: break
@@ -151,15 +162,15 @@ class pickSelectTableViewCell: UITableViewCell ,UITextFieldDelegate,UIPickerView
                 }
             case 3:
                 if Donnees.multiColumnPickerDataStr[examen.tag]!.count == 5 {
-                    pickerLabel.textAlignment = NSTextAlignment.Right
+                    pickerLabel.textAlignment = NSTextAlignment.right
                 }
             default:
-                pickerLabel.textAlignment = NSTextAlignment.Center
+                pickerLabel.textAlignment = NSTextAlignment.center
                 break
             }
         } else {
             pickerLabel.text = Donnees.selectiontextDict[examen.tag]![row]
-            pickerLabel.textAlignment = .Center
+            pickerLabel.textAlignment = .center
         }
         
         // pickerLabel.font = UIFont(name: pickerLabel.font.fontName, size: 15)

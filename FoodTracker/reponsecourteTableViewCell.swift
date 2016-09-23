@@ -11,7 +11,7 @@ import UIKit
 class reponsecourteTableViewCell: UITableViewCell, UITextFieldDelegate {
     var examen: Examen! = nil
     
-    @IBAction func reponsecourteEditEnd(sender: UITextField) {
+    @IBAction func reponsecourteEditEnd(_ sender: UITextField) {
         if (valeurReponseCourte.text != nil) {
             examen.value = valeurReponseCourte.text!
          
@@ -27,12 +27,12 @@ class reponsecourteTableViewCell: UITableViewCell, UITextFieldDelegate {
         valeurReponseCourte.delegate=self
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.endEditing(true)
         return false
     }

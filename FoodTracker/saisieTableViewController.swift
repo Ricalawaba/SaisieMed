@@ -18,20 +18,20 @@ class saisieTableViewController: UITableViewController {
         }
     }
     var dropdown = DropDown()
-    @IBAction func compteRenduAction(sender: UIBarButtonItem) {
-         let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("rapportControlerID") as! rapportViewController
+    @IBAction func compteRenduAction(_ sender: UIBarButtonItem) {
+         let svc =  self.storyboard?.instantiateViewController(withIdentifier: "rapportControlerID") as! rapportViewController
         svc.patient=self.patient!
         self.navigationController!.pushViewController(svc,animated: true)
     }
     
-    @IBAction func saveTabBarButtonAction(sender: UIBarButtonItem) {
+    @IBAction func saveTabBarButtonAction(_ sender: UIBarButtonItem) {
         DataSave.saveDataFiles()
         //sender.enabled=false
         
     }
     
     @IBOutlet weak var ajoutExamBarButton: UIBarButtonItem!
-    @IBAction func ajoutExamButtonAction(sender: AnyObject) {
+    @IBAction func ajoutExamButtonAction(_ sender: AnyObject) {
         dropdown.anchorView=ajoutExamBarButton
         dropdown.dataSource=["Documents","Evenement","Examen Clinique","Alarmes.."]
         dropdown.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -40,7 +40,7 @@ class saisieTableViewController: UITableViewController {
             case 0:
                 let exam=ExamTree.Document.asExamen()
                 self.patient!.documentsCat.examens.append(exam)
-                let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("examensTVID") as! examensTableViewController
+                let svc =  self.storyboard?.instantiateViewController(withIdentifier: "examensTVID") as! examensTableViewController
                 svc.categorie = exam.categorie
                 svc.navigationController?.title = svc.categorie!.nomUI()
                 self.navigationController!.pushViewController(svc,animated: true)
@@ -48,14 +48,14 @@ class saisieTableViewController: UITableViewController {
             case 1:
                 let exam = ExamTree.evenement.asExamen()
                 self.patient!.suiviCat.examens.append(exam)
-                let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("examensTVID") as! examensTableViewController
+                let svc =  self.storyboard?.instantiateViewController(withIdentifier: "examensTVID") as! examensTableViewController
                 svc.categorie = exam.categorie
                 svc.navigationController?.title = svc.categorie!.nomUI()
                 self.navigationController!.pushViewController(svc,animated: true)
             case 2:
                 let exam = ExamTree.ExamenClinique.asExamen()
                 self.patient!.suiviCat.examens.append(exam)
-                let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("examensTVID") as! examensTableViewController
+                let svc =  self.storyboard?.instantiateViewController(withIdentifier: "examensTVID") as! examensTableViewController
                 svc.categorie = exam.categorie
                 svc.navigationController?.title = svc.categorie!.nomUI()
                 self.navigationController!.pushViewController(svc,animated: true)
@@ -82,16 +82,16 @@ class saisieTableViewController: UITableViewController {
     }
     var rapportCat: categorieExamen.Categorie?
     
-    @IBAction func LongPush(sender: UILongPressGestureRecognizer) {
-        let location : CGPoint = sender.locationInView(self.tableView)
-        let swipedIndexPath:NSIndexPath = self.tableView.indexPathForRowAtPoint(location)!
-        rapportCat = patient!.examen.categories[swipedIndexPath.row]
+    @IBAction func LongPush(_ sender: UILongPressGestureRecognizer) {
+        let location : CGPoint = sender.location(in: self.tableView)
+        let swipedIndexPath:IndexPath = self.tableView.indexPathForRow(at: location)!
+        rapportCat = patient!.examen.categories[(swipedIndexPath as NSIndexPath).row]
         //let swipedcell:patientTableViewCell = self.tableView.cellForRowAtIndexPath(swipedIndexPath)!
         //do your stuff here
 //        longpushPatient = Donnees.listePatient.patients[swipedIndexPath.row]
 //        performSegueWithIdentifier("showrapportSegue", sender: self)
 //
-        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("rapportControlerID") as! rapportViewController
+        let svc =  self.storyboard?.instantiateViewController(withIdentifier: "rapportControlerID") as! rapportViewController
         svc.uneCategorie=rapportCat
 
         
@@ -106,13 +106,13 @@ class saisieTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          //DataSave.lastPatientVC=segue.de
         if (segue.identifier == "showexamen") {
             
-            let svc = segue.destinationViewController as! examensTableViewController
-            let selectedIndex = self.tableView.indexPathForCell(sender as! UITableViewCell)
-            svc.categorie = patient!.examen.categories[selectedIndex!.row]
+            let svc = segue.destination as! examensTableViewController
+            let selectedIndex = self.tableView.indexPath(for: sender as! UITableViewCell)
+            svc.categorie = patient!.examen.categories[(selectedIndex! as NSIndexPath).row]
             svc.navigationController?.title = svc.categorie!.nom
            
             
@@ -125,26 +125,26 @@ class saisieTableViewController: UITableViewController {
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return patient!.examen.categories.count
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
         
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CategorieExamen", forIndexPath: indexPath) as! saisieTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategorieExamen", for: indexPath) as! saisieTableViewCell
 
         // Configure the cell...
-        let categorie=patient!.examen.categories[indexPath.row]
+        let categorie=patient!.examen.categories[(indexPath as NSIndexPath).row]
         cell.imageCategorie.image = UIImage(named: categorie.namedImage)
         cell.nomCategorie.text = categorie.nomUI()
         
@@ -157,7 +157,7 @@ class saisieTableViewController: UITableViewController {
 //                <#code#>
 //            }
       }
-        cell.tag=indexPath.row
+        cell.tag=(indexPath as NSIndexPath).row
         return cell
     }
     

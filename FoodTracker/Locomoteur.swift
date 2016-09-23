@@ -32,7 +32,7 @@ extension ExamTree {
         let examCatLocAnat : [Examen] = [
             Check("droit(e)",poststring: ""),
             Check("gauche",poststring: ""),
-            Examen(intitule: "Description zone", datastr: ["1/3 distal","1/3 proximal","1/3 moyen","1/3 inférieur","1/3 supérieur",].sort() ),
+            Examen(intitule: "Description zone", datastr: ["1/3 distal","1/3 proximal","1/3 moyen","1/3 inférieur","1/3 supérieur",].sorted() ),
             Examen(intitule: "Bord", type:  .check, info: " "  ),
             Examen(intitule: "Extrémité", type:  .check, info: " "  ),
             Examen(intitule: "face", type:  .check, info: " "  ),
@@ -185,7 +185,7 @@ extension ExamTree {
     static var Doigt:categorieExamen.Categorie {
         let catDoigt = categorieExamen.Categorie(nom:"Doigt",namedImage: "main_icon.png",showNom: true)
         let examCatDoigt : [Examen] = [
-            Examen(intitule: "identification doigt", datastr: ["Pouce","Index","Majeur","Annulaire","Auriculaire","Hallux","2ième orteil","3ième orteil","4ième orteil","5ième orteil",].sort() ),
+            Examen(intitule: "identification doigt", datastr: ["Pouce","Index","Majeur","Annulaire","Auriculaire","Hallux","2ième orteil","3ième orteil","4ième orteil","5ième orteil",].sorted() ),
             locoMoteurCommun.asExamen(),
             
             Examen(intitule: "fracture métacarpes", imageName: "fractures métacarpe.png.map"),
@@ -300,7 +300,7 @@ extension ExamTree {
         let examCatGenou : [Examen] = [
             
             locoMoteurCommun.asExamen(),
-            Examen(intitule: "déformation", datastr: ["varum","valgum","flexum","recurvatum"].sort() ),
+            Examen(intitule: "déformation", datastr: ["varum","valgum","flexum","recurvatum"].sorted() ),
             Examen(intitule: "différence de circonférence", type:  .donnee ),
             OuiNon("Choc rotulien"),
             OuiNon("Instabilité"),
@@ -413,7 +413,7 @@ extension ExamTree {
             Check("Corps étrangers"),
             Check("Nettoyage et brossage"),
             Check("Exérèse des tissus nécrotiques et contus"),
-            Examen(intitule: "type suture parage", datastr: ["Parage sans suture","Suture en 2 plans","Suture revètement cutanée"].sort() ),
+            Examen(intitule: "type suture parage", datastr: ["Parage sans suture","Suture en 2 plans","Suture revètement cutanée"].sorted() ),
             Check("Points simples"),
             Check("Points en X (hémostatique)"),
             Examen(intitule: "Ethycrin 3/0", type:  .donnee ),

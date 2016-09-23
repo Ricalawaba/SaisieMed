@@ -21,13 +21,13 @@ class NumbersPickerView: UIPickerView , UIPickerViewDelegate, UIPickerViewDataSo
         case none
         case tensionarterielle
         case temperature
-        case EVA
+        case eva
         case frequencecardiaque
         case frequencerespiratoire
         
     }
     var type:NumbersType = .none
-    var onNumberSelected: ((number:String) -> Void)?
+    var onNumberSelected: ((_ number:String) -> Void)?
     var data1:[String]!
     var data2:[String]?
     override init(frame: CGRect) {
@@ -83,13 +83,13 @@ class NumbersPickerView: UIPickerView , UIPickerViewDelegate, UIPickerViewDataSo
 //        self.selectRow(years.indexOf(year)!, inComponent: 1, animated: true)
     }
 
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         if data1.count==0 {commonSetup()}
         if type == .tensionarterielle { return 2 }
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch component {
         case 0:
             return data1[row]
@@ -100,7 +100,7 @@ class NumbersPickerView: UIPickerView , UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch component {
         case 0:
             return data1.count
@@ -111,10 +111,10 @@ class NumbersPickerView: UIPickerView , UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if let block = onNumberSelected {
-            if self.type == .tensionarterielle { block(number: "\(data1[self.selectedRowInComponent(0)])/\(data2![self.selectedRowInComponent(1)])")}
+            if self.type == .tensionarterielle { block("\(data1[self.selectedRow(inComponent: 0)])/\(data2![self.selectedRow(inComponent: 1)])")}
         }
 //        let month = self.selectedRowInComponent(0)+1
 //        let year = years[self.selectedRowInComponent(1)]

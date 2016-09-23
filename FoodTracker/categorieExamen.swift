@@ -24,17 +24,17 @@ class categorieExamen : NSObject , NSCoding {
             return categorieExamen.Categorie.removeHtml(nom)
         }
         required convenience init?(coder decoder: NSCoder) {
-            guard let nom = decoder.decodeObjectForKey("nom") as? String,
-                let namedImage = decoder.decodeObjectForKey("namedImage") as? String,
-                let examens = decoder.decodeObjectForKey("examens") as? [Examen],
-                let formatPreString = decoder.decodeObjectForKey("formatPreString") as? String,
-                let formatPostString = decoder.decodeObjectForKey("formatPostString") as? String
+            guard let nom = decoder.decodeObject(forKey: "nom") as? String,
+                let namedImage = decoder.decodeObject(forKey: "namedImage") as? String,
+                let examens = decoder.decodeObject(forKey: "examens") as? [Examen],
+                let formatPreString = decoder.decodeObject(forKey: "formatPreString") as? String,
+                let formatPostString = decoder.decodeObject(forKey: "formatPostString") as? String
                 
                 else { return nil }
             
-            self.init(nom: nom, namedImage: namedImage,showNom: decoder.decodeBoolForKey("shownom"), formatPreString: formatPreString,formatPostString: formatPostString)
+            self.init(nom: nom, namedImage: namedImage,showNom: decoder.decodeBool(forKey: "shownom"), formatPreString: formatPreString,formatPostString: formatPostString)
             self.examens=examens
-            if let subitems=decoder.decodeObjectForKey("subitems") as? [String] {
+            if let subitems=decoder.decodeObject(forKey: "subitems") as? [String] {
                 self.subitems=subitems             }
             //            self.showNom = decoder.decodeBoolForKey("shownom")
             //            self.formatPostString=formatPostString
@@ -48,15 +48,15 @@ class categorieExamen : NSObject , NSCoding {
             formatPreString="<li>"
             formatPostString="</li>"
         }
-        func encodeWithCoder(coder: NSCoder) {
-            coder.encodeObject(self.nom, forKey: "nom")
-            coder.encodeObject(self.namedImage, forKey: "namedImage")
-            coder.encodeObject(self.formatPreString, forKey: "formatPreString")
-            coder.encodeObject(self.formatPostString, forKey: "formatPostString")
-            coder.encodeObject(self.examens, forKey: "examens")
+        func encode(with coder: NSCoder) {
+            coder.encode(self.nom, forKey: "nom")
+            coder.encode(self.namedImage, forKey: "namedImage")
+            coder.encode(self.formatPreString, forKey: "formatPreString")
+            coder.encode(self.formatPostString, forKey: "formatPostString")
+            coder.encode(self.examens, forKey: "examens")
             
-            coder.encodeBool(self.showNom, forKey: "shownom")
-            coder.encodeObject(self.subitems, forKey: "subitems")
+            coder.encode(self.showNom, forKey: "shownom")
+            coder.encode(self.subitems, forKey: "subitems")
         }
         
         
@@ -95,12 +95,12 @@ class categorieExamen : NSObject , NSCoding {
         func asExamen() -> Examen {
             return Examen(categorie: self)
         }
-        static func removeHtml(originalString: String)->String {
+        static func removeHtml(_ originalString: String)->String {
             var removeHtmlStr = originalString
             let subStr=["<br>","</br>","<u>","</u>","<p>","</p>","<li>","</li>","<ul>","<ol>","<b>","</b>","<section>","</section>"]
             
             for str in subStr {
-                removeHtmlStr=removeHtmlStr.stringByReplacingOccurrencesOfString(str, withString: "", options: NSStringCompareOptions.CaseInsensitiveSearch)
+                removeHtmlStr=removeHtmlStr.replacingOccurrences(of: str, with: "", options: NSString.CompareOptions.caseInsensitive)
             }
             
             return removeHtmlStr
@@ -116,7 +116,7 @@ class categorieExamen : NSObject , NSCoding {
                     documents.append( ex.value)
                 } else if ex.type == .group {
                     
-                    documents.appendContentsOf(ex.categorie!.getDocuments())
+                    documents.append(contentsOf: ex.categorie!.getDocuments())
                 }
                 
             }
@@ -132,13 +132,13 @@ class categorieExamen : NSObject , NSCoding {
                 savedStr=str
                 let examen=examens[index]
                 
-                if !examen.value.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).isEmpty {
+                if !examen.value.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty {
                     if examen.type ==  .ouinon || examen.type == .check {
                         if examen.value == "0" {
                             str += "\(examen.intitule)"
                         } else if examen.value == "1" {
                             let vowels: [Character] = ["a","e","i","o","u","é","h"]
-                            if vowels.contains(examen.intitule.lowercaseString.characters.first!) {
+                            if vowels.contains(examen.intitule.lowercased().characters.first!) {
                                 
                                 str += "Pas d'\(examen.intitule)"}
                             else {
@@ -180,22 +180,22 @@ class categorieExamen : NSObject , NSCoding {
                 } else {break}
             }
             
-            if str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).isEmpty {return ""}
+            if str.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty {return ""}
             return "\(formatPreString)\(str)\(formatPostString)"
             
         }
     }
     
     required convenience init?(coder decoder: NSCoder) {
-        guard let categories = decoder.decodeObjectForKey("categories") as? [Categorie]
+        guard let categories = decoder.decodeObject(forKey: "categories") as? [Categorie]
             else { return nil }
         
         
         self.init(categories: categories)
         
     }
-    func encodeWithCoder(coder: NSCoder) {
-        coder.encodeObject(self.categories, forKey: "categories")
+    func encode(with coder: NSCoder) {
+        coder.encode(self.categories, forKey: "categories")
     }
     
     init (categories: [Categorie]){

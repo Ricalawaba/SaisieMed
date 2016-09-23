@@ -16,18 +16,18 @@ class checkTableViewCell: UITableViewCell {
     @IBOutlet weak var checkSegment: UISegmentedControl!
     @IBOutlet weak var checkSegment1: UISegmentedControl!
     
-    @IBAction func chekSegmentChanged(sender: UISegmentedControl) {
+    @IBAction func chekSegmentChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 1 {
             examen.value = ""
         } else { examen.value = "0" }
-        self.questionCheckLabel.enabled = (examen.value=="0")
+        self.questionCheckLabel.isEnabled = (examen.value=="0")
     }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

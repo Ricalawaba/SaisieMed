@@ -8,15 +8,15 @@
 
 import UIKit
 
-func getDocumentsURL() -> NSURL {
-    let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+func getDocumentsURL() -> URL {
+    let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     return documentsURL
 }
 
-func fileInDocumentsDirectory(filename: String) -> String {
+func fileInDocumentsDirectory(_ filename: String) -> String {
     
-    let fileURL = getDocumentsURL().URLByAppendingPathComponent(filename)
-    return fileURL.path!
+    let fileURL = getDocumentsURL().appendingPathComponent(filename)
+    return fileURL.path
     
 }
 
@@ -36,11 +36,11 @@ class filesTableViewController: UITableViewController {
     var fileNames: [String]=[]
     var type: filesType = .unknown {
         didSet {
-            let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
-            var filesNamesList:[NSURL]=[]
+            let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            var filesNamesList:[URL]=[]
             do {
                 // Get the directory contents urls (including subfolders urls)
-                filesNamesList = try NSFileManager.defaultManager().contentsOfDirectoryAtURL( documentsUrl, includingPropertiesForKeys: nil, options: [])
+                filesNamesList = try FileManager.default.contentsOfDirectory( at: documentsUrl, includingPropertiesForKeys: nil, options: [])
                 
                 
                 // if you want to filter the directory contents you can do like this:
@@ -60,7 +60,7 @@ class filesTableViewController: UITableViewController {
                 // print("dat list:", mp3FileNames)
                 
                 
-                var filterFiles : [NSURL]=[]
+                var filterFiles : [URL]=[]
                 switch type {
                 case .jpg:
                     filterFiles = filesNamesList.filter{ $0.pathExtension == "jpg" }
@@ -74,14 +74,14 @@ class filesTableViewController: UITableViewController {
                     filterFiles = filesNamesList.filter{ $0.pathExtension == "txt" }
                 case .patients:
                     tableView.rowHeight=48
-                    filterFiles = filesNamesList.filter {$0.absoluteString.containsString("patients.dat")}
+                    filterFiles = filesNamesList.filter {$0.absoluteString.contains("patients.dat")}
                 default:
                     filterFiles = filesNamesList
                     break
                 }
                 fileNames.removeAll()
                 for filteredFile in filterFiles {
-                    fileNames.append(filteredFile.lastPathComponent!)
+                    fileNames.append(filteredFile.lastPathComponent)
                 }
                 //fileNames = filterFiles.flatMap( {$0.URLByDeletingPathExtension?.lastPathComponent} )
             } catch let error as NSError {
@@ -109,11 +109,11 @@ class filesTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fileNames.count
     }
     
@@ -122,30 +122,30 @@ class filesTableViewController: UITableViewController {
     
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    func fileSizeFor(fullpathname: String) -> String {
-        let MyUrl = NSURL(fileURLWithPath: fullpathname)
-        let fileAttributes = try! NSFileManager.defaultManager().attributesOfItemAtPath(MyUrl.path!)
-        let fileSizeNumber = fileAttributes[NSFileSize] as! NSNumber
-        let fileSize = fileSizeNumber.longLongValue
+    func fileSizeFor(_ fullpathname: String) -> String {
+        let MyUrl = URL(fileURLWithPath: fullpathname)
+        let fileAttributes = try! FileManager.default.attributesOfItem(atPath: MyUrl.path)
+        let fileSizeNumber = fileAttributes[FileAttributeKey.size] as! NSNumber
+        let fileSize = fileSizeNumber.int64Value
         var sizeMB = Double(fileSize / 1024)
         sizeMB = Double(sizeMB / 1024)
         var sizestr=String(format: "%.2f", sizeMB) + " mo"
         if sizestr == "0.00 mo" {
-            sizestr = String(fileSizeNumber.longLongValue) + " o"
+            sizestr = String(fileSizeNumber.int64Value) + " o"
             
         }
         return sizestr
  
     }
     
-    func fileDateFor(fullpathname: String, format: String = "dd/MM/YYYY-kk:mm") ->String {
+    func fileDateFor(_ fullpathname: String, format: String = "dd/MM/YYYY-kk:mm") ->String {
         do{
-            let fileAttributes = try NSFileManager.defaultManager().attributesOfItemAtPath(fullpathname)
-            let fileDate = fileAttributes[NSFileCreationDate] as? NSDate
-            let dateFormatter = NSDateFormatter()
+            let fileAttributes = try FileManager.default.attributesOfItem(atPath: fullpathname)
+            let fileDate = fileAttributes[FileAttributeKey.creationDate] as? Date
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = format
             //let d = NSDate()
-            let s = dateFormatter.stringFromDate(fileDate!)
+            let s = dateFormatter.string(from: fileDate!)
             // println(s)
             return s
             
@@ -156,15 +156,15 @@ class filesTableViewController: UITableViewController {
 
        return ""
     }
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellvide = UITableViewCell();
-        let fullpathname = fileInDocumentsDirectory(fileNames[indexPath.row])
+        let fullpathname = fileInDocumentsDirectory(fileNames[(indexPath as NSIndexPath).row])
         if type != .patients {
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("imagefileCell", forIndexPath: indexPath) as! imagefileTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "imagefileCell", for: indexPath) as! imagefileTableViewCell
             cell.filenameImageView.image=UIImage(contentsOfFile: fullpathname)
             cell.filenameImageView.sizeToFit()
-            cell.fileNameLabel.text=fileNames[indexPath.row]
+            cell.fileNameLabel.text=fileNames[(indexPath as NSIndexPath).row]
             cell.descriptionLabel.text=fileSizeFor(fullpathname)
             cell.dateLabel.text=fileDateFor(fullpathname)
 //            let MyUrl = NSURL(fileURLWithPath: fullpathname)
@@ -199,9 +199,9 @@ class filesTableViewController: UITableViewController {
 //            // Configure the cell...
             return cell
         } else {  // Type patient
-            let cell = tableView.dequeueReusableCellWithIdentifier("patientFileCell", forIndexPath: indexPath) as! patientFileTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "patientFileCell", for: indexPath) as! patientFileTableViewCell
             //cell.filenameImageView.image=UIImage(contentsOfFile: fullpathname)
-            cell.filenameLabel.text=fileNames[indexPath.row]
+            cell.filenameLabel.text=fileNames[(indexPath as NSIndexPath).row]
             cell.dateLabel.text=fileDateFor(fullpathname)
             cell.descriptionLabel.text=fileSizeFor(fullpathname)
 
@@ -251,11 +251,11 @@ class filesTableViewController: UITableViewController {
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "showImageFromFileTableview" {
-            let svc = segue.destinationViewController as! pluginFormViewController
+            let svc = segue.destination as! pluginFormViewController
             _ = svc.view
             let mycell = (sender as! imagefileTableViewCell)
             svc.imageView.image=mycell.filenameImageView.image!
@@ -271,10 +271,10 @@ class filesTableViewController: UITableViewController {
             
         }
     }
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       //  super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
         if type == .patients {
-            Donnees.userdefault.setObject(fileNames[indexPath.row], forKey: "patientdat")
+            Donnees.userdefault.set(fileNames[(indexPath as NSIndexPath).row], forKey: "patientdat")
             Donnees.listePatient.patients=[]
             DataSave.loadFilePatients()
             //Donnees.userdefault.setObject("\(s)patients.dat", forKey: "patientdat")

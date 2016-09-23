@@ -9,7 +9,7 @@
 import UIKit
 
 protocol saisieNombreDelegate {
-    func nombreSelected(sender:SaisieNombreViewController, numberStr:String)
+    func nombreSelected(_ sender:SaisieNombreViewController, numberStr:String)
     
 }
 class SaisieNombreViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource {
@@ -17,7 +17,7 @@ class SaisieNombreViewController: UIViewController,UIPickerViewDelegate, UIPicke
     var minNumber: Int=0
     var maxNumber: Int=100
     var step:Int=1
-    private var val:String = ""
+    fileprivate var val:String = ""
     var value:String {
         get {
             return val
@@ -35,12 +35,12 @@ class SaisieNombreViewController: UIViewController,UIPickerViewDelegate, UIPicke
     // MARK: IBoutlet & Action
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var informationLabel: UILabel!
-    @IBAction func validerAction(sender: UIButton) {
+    @IBAction func validerAction(_ sender: UIButton) {
         if let del=delegate {
             del.nombreSelected(self,numberStr: value)
             
         }
-         self.navigationController?.popViewControllerAnimated(true)
+         self.navigationController?.popViewController(animated: true)
     }
     
 
@@ -49,7 +49,7 @@ class SaisieNombreViewController: UIViewController,UIPickerViewDelegate, UIPicke
         if ((data) != nil) {return}
         data=[String]()
         
-        for x in minNumber.stride(to: maxNumber, by: step) {
+        for x in stride(from: minNumber, to: maxNumber, by: step) {
      //   for var x=minNumber;x<=maxNumber;x = x+step{
             data!.append(String(x))
         }
@@ -61,7 +61,7 @@ class SaisieNombreViewController: UIViewController,UIPickerViewDelegate, UIPicke
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        if let indexRow=data!.indexOf(val) {
+        if let indexRow=data!.index(of: val) {
             pickerView.selectRow(indexRow, inComponent: 0, animated: false)
         }
         informationLabel.text=Information
@@ -85,11 +85,11 @@ class SaisieNombreViewController: UIViewController,UIPickerViewDelegate, UIPicke
 
     // Mark: UIPicker Delegate / Data Source
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         fillData()
         switch component {
         case 0:
@@ -100,7 +100,7 @@ class SaisieNombreViewController: UIViewController,UIPickerViewDelegate, UIPicke
         }
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         fillData()
         switch component {
         case 0:
@@ -110,7 +110,7 @@ class SaisieNombreViewController: UIViewController,UIPickerViewDelegate, UIPicke
         }
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //super.
         value = data![row]
         

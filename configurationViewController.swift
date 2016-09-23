@@ -9,33 +9,33 @@
 import UIKit
 
 class configurationViewController: UIViewController,dateSelectedDelegate {
-    @IBAction func imageDocumentAction(sender: UIButton) {
-         let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("documentViewID") as! imageDocumentViewController
+    @IBAction func imageDocumentAction(_ sender: UIButton) {
+         let svc =  self.storyboard?.instantiateViewController(withIdentifier: "documentViewID") as! imageDocumentViewController
         self.navigationController!.pushViewController(svc,animated: true)
 
     }
     
-    @IBAction func pancarteViewButtonAction(sender: UIButton) {
-        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pancartViewRef") as! pancarteViewController
+    @IBAction func pancarteViewButtonAction(_ sender: UIButton) {
+        let svc =  self.storyboard?.instantiateViewController(withIdentifier: "pancartViewRef") as! pancarteViewController
         
       //  svc.type = .all
         self.navigationController!.pushViewController(svc,animated: true)
         
     }
-    @IBAction func nouveauFichierPatientButtonAction(sender: UIButton) {
-        let dateFormatter = NSDateFormatter()
+    @IBAction func nouveauFichierPatientButtonAction(_ sender: UIButton) {
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYYMmdd-kkmm"
-        let d = NSDate()
-        let s = dateFormatter.stringFromDate(d)
+        let d = Date()
+        let s = dateFormatter.string(from: d)
         DataSave.saveFilePatients()
-        Donnees.userdefault.setObject("\(s)patients.dat", forKey: "patientdat")
+        Donnees.userdefault.set("\(s)patients.dat", forKey: "patientdat")
         Donnees.listePatient.patients.removeAll()
         DataSave.loadFilePatients()
         
     }
   
-    @IBAction func listingDocumentsButtonAction(sender: UIButton) {
-        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("filesViewSceneID") as! filesTableViewController
+    @IBAction func listingDocumentsButtonAction(_ sender: UIButton) {
+        let svc =  self.storyboard?.instantiateViewController(withIdentifier: "filesViewSceneID") as! filesTableViewController
         svc.type = .all
         self.navigationController!.pushViewController(svc,animated: true)
         //DataSave.ListDirectory()
@@ -68,28 +68,28 @@ class configurationViewController: UIViewController,dateSelectedDelegate {
 //        
 //        
     }
-    func dateSelected(sender: UIViewController, text: String, date: NSDate) {
+    func dateSelected(_ sender: UIViewController, text: String, date: Date) {
         self.title=text
         // create the alert
-        let alert = UIAlertController(title: "Selection date", message: text, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Selection date", message: text, preferredStyle: UIAlertControllerStyle.alert)
         
         // add an action (button)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         
         // show the alert
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
-    @IBAction func effaceObservation(sender: UIButton) {
+    @IBAction func effaceObservation(_ sender: UIButton) {
         Donnees.listePatient.patients.removeAll()
         
     }
-    @IBAction func pluginFormButtonAction(sender: UIButton) {
-        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
+    @IBAction func pluginFormButtonAction(_ sender: UIButton) {
+        let svc =  self.storyboard?.instantiateViewController(withIdentifier: "pluginFormID") as! pluginFormViewController
         self.navigationController!.pushViewController(svc,animated: true)
     }
     
-    @IBAction func testSelectionNombreAction(sender: UIButton) {
-        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+    @IBAction func testSelectionNombreAction(_ sender: UIButton) {
+        let svc =  self.storyboard?.instantiateViewController(withIdentifier: "saisieNombreID") as! SaisieNombreViewController
         svc.minNumber=40
         svc.maxNumber=330
         svc.step=5
@@ -100,8 +100,8 @@ class configurationViewController: UIViewController,dateSelectedDelegate {
         
     }
     
-    @IBAction func mailObservationsAction(sender: UIButton) {
-        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("rapportControlerID") as! rapportViewController
+    @IBAction func mailObservationsAction(_ sender: UIButton) {
+        let svc =  self.storyboard?.instantiateViewController(withIdentifier: "rapportControlerID") as! rapportViewController
         var  html : String = ""
         for patient in Donnees.listePatient.patients {
             html += patient.DetailedString()
@@ -110,8 +110,8 @@ class configurationViewController: UIViewController,dateSelectedDelegate {
         self.navigationController!.pushViewController(svc,animated: true)
         
     }
-    @IBAction func exportFichierDonneeAction(sender: UIButton) {
-        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("rapportControlerID") as! rapportViewController
+    @IBAction func exportFichierDonneeAction(_ sender: UIButton) {
+        let svc =  self.storyboard?.instantiateViewController(withIdentifier: "rapportControlerID") as! rapportViewController
         
         var addStr=""
         
@@ -128,8 +128,8 @@ class configurationViewController: UIViewController,dateSelectedDelegate {
         
     }
     
-    @IBAction func exportSwift(sender: UIButton) {
-        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("rapportControlerID") as! rapportViewController
+    @IBAction func exportSwift(_ sender: UIButton) {
+        let svc =  self.storyboard?.instantiateViewController(withIdentifier: "rapportControlerID") as! rapportViewController
         svc.directHTML="<H3>Export Swift<H3><p>"
         var addStr="selectiontextDict[\"atcd\"] = ["
         
@@ -196,14 +196,14 @@ class configurationViewController: UIViewController,dateSelectedDelegate {
         self.navigationController!.pushViewController(svc,animated: true)
     }
     
-    @IBAction func fichiersPatientsButtonAction(sender: UIButton) {
-        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("filesViewSceneID") as! filesTableViewController
+    @IBAction func fichiersPatientsButtonAction(_ sender: UIButton) {
+        let svc =  self.storyboard?.instantiateViewController(withIdentifier: "filesViewSceneID") as! filesTableViewController
         svc.type = .patients
         self.navigationController!.pushViewController(svc,animated: true)
     }
     
-    @IBAction func changerFichierPatient(sender: UIButton) {
-        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("filesViewSceneID") as! filesTableViewController
+    @IBAction func changerFichierPatient(_ sender: UIButton) {
+        let svc =  self.storyboard?.instantiateViewController(withIdentifier: "filesViewSceneID") as! filesTableViewController
         svc.type = .jpg
         self.navigationController!.pushViewController(svc,animated: true)
         
@@ -230,12 +230,12 @@ class configurationViewController: UIViewController,dateSelectedDelegate {
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier=="selectDateFromConfig"
         {
-            let svc = segue.destinationViewController as! selectDateViewController
+            let svc = segue.destination as! selectDateViewController
             svc.delegate=self
             
         }

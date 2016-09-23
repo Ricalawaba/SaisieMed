@@ -19,7 +19,7 @@ class pluginFormViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         self.scrollView.minimumZoomScale = 0.5
         self.scrollView.maximumZoomScale = 10.0
-        self.scrollView.contentMode = .ScaleAspectFit
+        self.scrollView.contentMode = .scaleAspectFit
         imageView.sizeToFit()
         self.scrollView.contentSize=imageView.frame.size
        // imageView.frame = CGRectMake(0,0,imageView.image,image_height);
@@ -33,7 +33,7 @@ class pluginFormViewController: UIViewController, UIScrollViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
      
         
         return self.imageView

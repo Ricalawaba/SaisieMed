@@ -8,8 +8,8 @@
 
 import UIKit
 protocol textSelectedDelegate {
-    func textSelected(sender:selectionTexteTableViewController, text:String)
-    func textDeleted(sender:selectionTexteTableViewController, text:String)
+    func textSelected(_ sender:selectionTexteTableViewController, text:String)
+    func textDeleted(_ sender:selectionTexteTableViewController, text:String)
 }
 class selectionTexteTableViewController: UITableViewController, UISearchBarDelegate {
     // MARK: Properties
@@ -23,7 +23,7 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
     @IBOutlet weak var searchBar: UISearchBar!
     
     // MARK: UIView override
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         searchBar.becomeFirstResponder()
         searchActive=false
     }
@@ -34,7 +34,7 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-         self.navigationItem.rightBarButtonItem = self.editButtonItem()
+         self.navigationItem.rightBarButtonItem = self.editButtonItem
         searchBar.delegate=self
        // searchBar.becomeFirstResponder()
     //    tableView!.reloadData()
@@ -47,29 +47,29 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
 //        searchBar.text=cell.textLabel?.text
 //    }
     // MARK: Selection Delegate
-    func returnText(text: String?){
+    func returnText(_ text: String?){
         if let del=delegate  {
-            if (text != nil) {del.textSelected(self, text: text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()))}
+            if (text != nil) {del.textSelected(self, text: text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))}
             
         }
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
 
     }
     // MARK: UISearchBarDelegate
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = true;
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchActive = false;
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         returnText("")
         searchActive = false;
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.text != nil {
             returnText(searchBar.text!)
             
@@ -77,22 +77,22 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
 
         searchActive = false;
     }
-    func searchBarBookmarkButtonClicked(searchBar: UISearchBar) {
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.text != nil {
             returnText(searchBar.text!)
             
         }
         searchActive=false
     }
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
             searchActive=false
             self.tableView.reloadData()
             return
         }
         filtered = textes.filter({ (text) -> Bool in
-            let tmp: NSString = text
-            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            let tmp: NSString = text as NSString
+            let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
             return range.location != NSNotFound
         })
         if(filtered.count == 0){
@@ -109,24 +109,24 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
     }
 
     // MARK: - Table view data source
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //let cell = tableView.dequeueReusableCellWithIdentifier("selectionTextCell", forIndexPath: indexPath)
         let mytext:String!
       
         if(searchActive){
-            mytext = filtered[indexPath.row]
+            mytext = filtered[(indexPath as NSIndexPath).row]
         } else {
-            mytext=textes[indexPath.row]
+            mytext=textes[(indexPath as NSIndexPath).row]
         }
         returnText(mytext)
     }
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if(searchActive) {
             return filtered.count
@@ -135,17 +135,17 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("selectionTextCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "selectionTextCell", for: indexPath)
           cell.textLabel?.adjustsFontSizeToFitWidth = true
         cell.textLabel?.font = UIFont(name: "System", size: 10)
         if(searchActive){
             if filtered.count>0 {
-            cell.textLabel?.text = filtered[indexPath.row]
+            cell.textLabel?.text = filtered[(indexPath as NSIndexPath).row]
             } 
         } else {
-        cell.textLabel?.text=textes[indexPath.row]
+        cell.textLabel?.text=textes[(indexPath as NSIndexPath).row]
         }
         // Configure the cell...
 
@@ -155,7 +155,7 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
 
     
     // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
         
@@ -164,15 +164,15 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
 
     
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if filtered.count>0 { return }
-        if editingStyle == .Delete {
+        if editingStyle == .delete {
             // Delete the row from the data source
             
-            delegate?.textDeleted(self,text: textes[indexPath.row])
-            textes.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
+            delegate?.textDeleted(self,text: textes[(indexPath as NSIndexPath).row])
+            textes.remove(at: (indexPath as NSIndexPath).row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }

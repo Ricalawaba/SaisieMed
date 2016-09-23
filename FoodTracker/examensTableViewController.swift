@@ -19,7 +19,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
     var examenSelected: Examen?
     //var examen = [Examen]()
     var dropdown = DropDown()
-    @IBAction func ajouterChampLibre(sender: UIBarButtonItem) {
+    @IBAction func ajouterChampLibre(_ sender: UIBarButtonItem) {
         //var categorie : categorieExamen.Categorie!
         var dd:[String]=[]
         //        if let subitemsDel=categorie.subItemDel {
@@ -50,16 +50,16 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
             
             self.tableView.reloadData()
             
-            let rowToSelect:NSIndexPath = NSIndexPath(forRow: self.categorie.examens.count-1, inSection: 0)
+            let rowToSelect:IndexPath = IndexPath(row: self.categorie.examens.count-1, section: 0)
             // NSIndexPath(
-            self.tableView.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.Bottom)
+            self.tableView.selectRow(at: rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.bottom)
             // self.performSegueWithIdentifier("autoshow", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
-            self.tableView.scrollToRowAtIndexPath(rowToSelect, atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
+            self.tableView.scrollToRow(at: rowToSelect, at: UITableViewScrollPosition.middle, animated: true)
             if exam!.categorie==nil {
                 self.tableView.reloadData();
                 
                 return}
-            self.performSegueWithIdentifier("autoshow", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
+            self.performSegue(withIdentifier: "autoshow", sender: self.tableView.cellForRow(at: rowToSelect));
             self.tableView.reloadData()
             
         }
@@ -69,112 +69,112 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
         // categorie.examens.append(ExamTree.libre)
         
     }
-    @IBAction func refreshButtonAction(sender: UIBarButtonItem) {
+    @IBAction func refreshButtonAction(_ sender: UIBarButtonItem) {
         tableView.reloadData()
         
     }
     
     var activeField: UITextField?
-    func ajoutInformation(sender:AjoutInformationTableViewCell, examen: Examen) {
-        let indextoInsert = categorie.examens.indexOf(examen)!
+    func ajoutInformation(_ sender:AjoutInformationTableViewCell, examen: Examen) {
+        let indextoInsert = categorie.examens.index(of: examen)!
         
         if examen.tag=="dupliquer" {
             let prevExamen=categorie.examens[indextoInsert-1]
-            if prevExamen.intitule.containsString("Main") {
-                categorie.examens.insert(Examen(categorie: ExamTree.Main), atIndex: indextoInsert)
-            } else if prevExamen.intitule.containsString("Doigt") {
-                categorie.examens.insert(Examen(categorie: ExamTree.Doigt), atIndex: indextoInsert)
-            } else if prevExamen.intitule.containsString("Hanche") {
-                categorie.examens.insert(Examen(categorie: ExamTree.Hanche), atIndex: indextoInsert)
-            } else if prevExamen.intitule.containsString("Coude") {
-                categorie.examens.insert(Examen(categorie: ExamTree.Coude), atIndex: indextoInsert)
-            } else if prevExamen.intitule.containsString("Genou") {
-                categorie.examens.insert(Examen(categorie: ExamTree.Genou), atIndex: indextoInsert)
-            } else if prevExamen.intitule.containsString("Epaule") {
-                categorie.examens.insert(Examen(categorie: ExamTree.Epaule), atIndex: indextoInsert)
-            } else if prevExamen.intitule.containsString("Cheville") {
-                categorie.examens.insert(Examen(categorie: ExamTree.Cheville), atIndex: indextoInsert)
+            if prevExamen.intitule.contains("Main") {
+                categorie.examens.insert(Examen(categorie: ExamTree.Main), at: indextoInsert)
+            } else if prevExamen.intitule.contains("Doigt") {
+                categorie.examens.insert(Examen(categorie: ExamTree.Doigt), at: indextoInsert)
+            } else if prevExamen.intitule.contains("Hanche") {
+                categorie.examens.insert(Examen(categorie: ExamTree.Hanche), at: indextoInsert)
+            } else if prevExamen.intitule.contains("Coude") {
+                categorie.examens.insert(Examen(categorie: ExamTree.Coude), at: indextoInsert)
+            } else if prevExamen.intitule.contains("Genou") {
+                categorie.examens.insert(Examen(categorie: ExamTree.Genou), at: indextoInsert)
+            } else if prevExamen.intitule.contains("Epaule") {
+                categorie.examens.insert(Examen(categorie: ExamTree.Epaule), at: indextoInsert)
+            } else if prevExamen.intitule.contains("Cheville") {
+                categorie.examens.insert(Examen(categorie: ExamTree.Cheville), at: indextoInsert)
             }
         }
         if examen.tag=="atcd" {
-            categorie.examens.insert(Examen(categorie: ExamTree.atcd), atIndex: indextoInsert)
+            categorie.examens.insert(Examen(categorie: ExamTree.atcd), at: indextoInsert)
         }
         if examen.tag=="TTT" {
-            categorie.examens.insert(Examen(categorie: ExamTree.TTT), atIndex: indextoInsert)
+            categorie.examens.insert(Examen(categorie: ExamTree.TTT), at: indextoInsert)
         }
         if examen.tag=="Plainte" {
-            categorie.examens.insert(Examen(categorie: ExamTree.Plainte), atIndex: indextoInsert)
+            categorie.examens.insert(Examen(categorie: ExamTree.Plainte), at: indextoInsert)
         }
         if examen.tag=="motif" {
-            categorie.examens.insert(Examen(categorie: ExamTree.motif), atIndex: indextoInsert)
+            categorie.examens.insert(Examen(categorie: ExamTree.motif), at: indextoInsert)
         }
         if examen.tag=="medecin" {
-            categorie.examens.insert( Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"), atIndex: indextoInsert)
+            categorie.examens.insert( Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"), at: indextoInsert)
         }
         if examen.tag=="pancarteV" {
-            categorie.examens.insert(Examen(intitule: "<br>Pancarte", type: .donnee,tag: "pancarteView" ), atIndex: indextoInsert)
+            categorie.examens.insert(Examen(intitule: "<br>Pancarte", type: .donnee,tag: "pancarteView" ), at: indextoInsert)
             tableView.reloadData()
             return
         }
         if examen.tag=="evenementSuivi" {
-            categorie.examens.insert( ExamTree.evenement.asExamen(), atIndex: indextoInsert)
+            categorie.examens.insert( ExamTree.evenement.asExamen(), at: indextoInsert)
         }
         
         if examen.tag=="radiologie" {
-            categorie.examens.insert( ExamTree.Imagerie.asExamen(), atIndex: indextoInsert)
+            categorie.examens.insert( ExamTree.Imagerie.asExamen(), at: indextoInsert)
         }
         if examen.tag=="page" {
-            categorie.examens.insert( Examen(intitule: "(image)", type:  .imagefilename ), atIndex: indextoInsert)
+            categorie.examens.insert( Examen(intitule: "(image)", type:  .imagefilename ), at: indextoInsert)
         }
         if examen.tag=="document" {
-            categorie.examens.insert( ExamTree.Document.asExamen(), atIndex: indextoInsert)
+            categorie.examens.insert( ExamTree.Document.asExamen(), at: indextoInsert)
         }
         if examen.tag=="clinique" {
-            categorie.examens.insert( ExamTree.ExamenClinique.asExamen(), atIndex: indextoInsert)
+            categorie.examens.insert( ExamTree.ExamenClinique.asExamen(), at: indextoInsert)
         }
         if examen.tag=="connuClinique" {
-            categorie.examens.insert( ExamTree.ConnuClinique.asExamen(), atIndex: indextoInsert)
+            categorie.examens.insert( ExamTree.ConnuClinique.asExamen(), at: indextoInsert)
         }
         if examen.tag=="libre" {
-            categorie.examens.insert(Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre" ), atIndex: indextoInsert)
+            categorie.examens.insert(Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre" ), at: indextoInsert)
         }
         
         //tableView.sel
         
         
         tableView.reloadData()
-        let rowToSelect:NSIndexPath = NSIndexPath(forRow: indextoInsert, inSection: 0)
+        let rowToSelect:IndexPath = IndexPath(row: indextoInsert, section: 0)
         // NSIndexPath(
-        self.tableView.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.None)
+        self.tableView.selectRow(at: rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.none)
         if examen.tag == "medecin" {
-            self.performSegueWithIdentifier("selectionSegue", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
+            self.performSegue(withIdentifier: "selectionSegue", sender: self.tableView.cellForRow(at: rowToSelect));
         } else if examen.tag != "libre" && examen.tag != "page" {
             
-            self.performSegueWithIdentifier("autoshow", sender: self.tableView.cellForRowAtIndexPath(rowToSelect));
+            self.performSegue(withIdentifier: "autoshow", sender: self.tableView.cellForRow(at: rowToSelect));
             
         }
         
     }
-    func imageSelected(sender:UIView,image:UIImage, url:String) {
-        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
+    func imageSelected(_ sender:UIView,image:UIImage, url:String) {
+        let svc =  self.storyboard?.instantiateViewController(withIdentifier: "pluginFormID") as! pluginFormViewController
         _=svc.view
         svc.imageView.image=image
         svc.titreLabel.text="Document"
         
         
         
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             self.tableView.reloadData()
             
         }
         self.navigationController!.pushViewController(svc,animated: true)
         //tableView.reloadData()
     }
-    func numberSelected(sender:selectNumberViewController, number:String) {
+    func numberSelected(_ sender:selectNumberViewController, number:String) {
         ExamTaped!.value=number
         tableView.reloadData()
     }
-    @IBAction func GoAccueil(sender: UIBarButtonItem) {
+    @IBAction func GoAccueil(_ sender: UIBarButtonItem) {
         let viewControllers: [UIViewController] = self.navigationController!.viewControllers ;
         for aViewController in viewControllers {
             if(aViewController is patientTableViewController){
@@ -182,17 +182,17 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
             }
         }
     }
-    @IBAction func documentPageTap(sender: UITapGestureRecognizer) {
-        let location : CGPoint = sender.locationInView(self.tableView)
-        let indexPath:NSIndexPath? = self.tableView.indexPathForRowAtPoint(location)
+    @IBAction func documentPageTap(_ sender: UITapGestureRecognizer) {
+        let location : CGPoint = sender.location(in: self.tableView)
+        let indexPath:IndexPath? = self.tableView.indexPathForRow(at: location)
         if indexPath == nil {return }
-        ExamTaped = categorie.examens[indexPath!.row]
+        ExamTaped = categorie.examens[(indexPath! as NSIndexPath).row]
         
         if (ExamTaped!.type == .imagefilename ){
             //  image: loadImageFromPath(examen.value)! , url: examen.value)
             // performSegueWithIdentifier("autoshow", sender: self)
             //examensTableViewController
-            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
+            let svc =  self.storyboard?.instantiateViewController(withIdentifier: "pluginFormID") as! pluginFormViewController
             _=svc.view
             svc.imageView.image = UIImage( contentsOfFile:fileInDocumentsDirectory(ExamTaped!.value))
             svc.titreLabel.text = categorie.examens[0].value
@@ -206,20 +206,20 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
     }
     
     
-    @IBAction func goPatient(sender: UIBarButtonItem) {
+    @IBAction func goPatient(_ sender: UIBarButtonItem) {
         self.navigationController!.popToViewController(DataSave.lastPatientVC!,animated: true)
     }
-    @IBAction func apercuBarButtonAction(sender: UIBarButtonItem) {
-        let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("rapportControlerID") as! rapportViewController
+    @IBAction func apercuBarButtonAction(_ sender: UIBarButtonItem) {
+        let svc =  self.storyboard?.instantiateViewController(withIdentifier: "rapportControlerID") as! rapportViewController
         svc.uneCategorie=self.categorie
         self.navigationController!.pushViewController(svc,animated: true)
     }
-    func dateSelected(sender: UIViewController, text: String, date: NSDate) {
+    func dateSelected(_ sender: UIViewController, text: String, date: Date) {
         
         ExamTaped!.value=text
         tableView.reloadData()
     }
-    func nombreSelected(sender:SaisieNombreViewController, numberStr:String) {
+    func nombreSelected(_ sender:SaisieNombreViewController, numberStr:String) {
         ExamTaped!.value=numberStr
         tableView.reloadData()
         
@@ -230,30 +230,30 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
     
     @IBOutlet var doubleTap: UITapGestureRecognizer!
     @IBOutlet var singleTap: UITapGestureRecognizer!
-    @IBAction func editDidBegin(sender: UITextField) {
+    @IBAction func editDidBegin(_ sender: UITextField) {
     }
-    @IBAction func doubletapRepCourteAction(sender: UITapGestureRecognizer) {
-        if tableView.editing {return}
-        let location : CGPoint = sender.locationInView(self.tableView)
-        let indexPath:NSIndexPath = self.tableView.indexPathForRowAtPoint(location)!
-        ExamTaped = categorie.examens[indexPath.row]
+    @IBAction func doubletapRepCourteAction(_ sender: UITapGestureRecognizer) {
+        if tableView.isEditing {return}
+        let location : CGPoint = sender.location(in: self.tableView)
+        let indexPath:IndexPath = self.tableView.indexPathForRow(at: location)!
+        ExamTaped = categorie.examens[(indexPath as NSIndexPath).row]
         NSLog("Double tap sur \(ExamTaped?.intitule)")
-        if ExamTaped!.intitule.containsString("Document") && ExamTaped!.type == .group {
+        if ExamTaped!.intitule.contains("Document") && ExamTaped!.type == .group {
             for ex in ExamTaped!.categorie!.examens where ex.type == .imagefilename {
-                let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
+                let svc =  self.storyboard?.instantiateViewController(withIdentifier: "pluginFormID") as! pluginFormViewController
                 _=svc.view
                 svc.imageView.image = UIImage( contentsOfFile: fileInDocumentsDirectory(ex.value))
-                svc.titreLabel.text=categorie.UIString().stringByReplacingOccurrencesOfString("<[^>]+>", withString: "", options: .RegularExpressionSearch, range: nil)
+                svc.titreLabel.text=categorie.UIString().replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
                 // svc.descriptionLabel.text = categorie.detailString()
                 // svc.delegate=self
                 self.navigationController!.pushViewController(svc,animated: true)
                 break
             }
         } else  if ExamTaped!.tag == "image" {
-            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
+            let svc =  self.storyboard?.instantiateViewController(withIdentifier: "pluginFormID") as! pluginFormViewController
             _=svc.view
             svc.imageView.image = UIImage( contentsOfFile: fileInDocumentsDirectory(ExamTaped!.value))
-            svc.titreLabel.text=categorie.UIString().stringByReplacingOccurrencesOfString("<[^>]+>", withString: "", options: .RegularExpressionSearch, range: nil)
+            svc.titreLabel.text=categorie.UIString().replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
             
             // svc.descriptionLabel.text = categorie.detailString()
             // svc.delegate=self
@@ -265,16 +265,16 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
         
         // EasyTipView.Pref
     }
-    @IBAction func tapRepCourte(sender: UITapGestureRecognizer) {
-        if tableView.editing {return}
+    @IBAction func tapRepCourte(_ sender: UITapGestureRecognizer) {
+        if tableView.isEditing {return}
         
-        let location : CGPoint = sender.locationInView(self.tableView)
-        let indexPath:NSIndexPath? = self.tableView.indexPathForRowAtPoint(location)
+        let location : CGPoint = sender.location(in: self.tableView)
+        let indexPath:IndexPath? = self.tableView.indexPathForRow(at: location)
         if indexPath == nil {return }
-        ExamTaped = categorie.examens[indexPath!.row]
+        ExamTaped = categorie.examens[(indexPath! as NSIndexPath).row]
         if (ExamTaped!.type == Examen.ExamenEnum.documentinfo) {
            
-                let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("documentViewID") as! imageDocumentViewController
+                let svc =  self.storyboard?.instantiateViewController(withIdentifier: "documentViewID") as! imageDocumentViewController
             _=svc.view
             svc.imageMapped=MappedImage(contentsOfFile: ExamTaped!.value)
             svc.delegate=self
@@ -295,7 +295,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
         if (ExamTaped!.type == .group ){
             // performSegueWithIdentifier("autoshow", sender: self)
             //examensTableViewController
-            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("examensTVID") as! examensTableViewController
+            let svc =  self.storyboard?.instantiateViewController(withIdentifier: "examensTVID") as! examensTableViewController
             //svc.delegate=self
             svc.categorie = ExamTaped!.categorie
             svc.navigationController?.title = svc.categorie!.nomUI()
@@ -303,7 +303,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
             
         } else if (ExamTaped!.type == .selection ){
             if ExamTaped!.tag.isEmpty {return}
-            let svc = self.storyboard?.instantiateViewControllerWithIdentifier("selectionViewID") as! selectionTexteTableViewController
+            let svc = self.storyboard?.instantiateViewController(withIdentifier: "selectionViewID") as! selectionTexteTableViewController
             svc.textes = Donnees.selectiontextDict[ ExamTaped!.tag ]!
             examenSelected=ExamTaped
             svc.delegate=self
@@ -332,9 +332,9 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
 
         }
         
-        if ExamTaped?.type != .addinfo &&   ExamTaped?.type != .datastr && (Donnees.selectiontextDict.indexForKey((ExamTaped?.tag)!) != nil) {
+        if ExamTaped?.type != .addinfo &&   ExamTaped?.type != .datastr && (Donnees.selectiontextDict.index(forKey: (ExamTaped?.tag)!) != nil) {
             
-            let svc = self.storyboard?.instantiateViewControllerWithIdentifier("selectionViewID") as! selectionTexteTableViewController
+            let svc = self.storyboard?.instantiateViewController(withIdentifier: "selectionViewID") as! selectionTexteTableViewController
             svc.textes = Donnees.selectiontextDict[ ExamTaped!.tag ]!
             examenSelected=ExamTaped
             svc.delegate=self
@@ -344,19 +344,19 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
         
         
         if ExamTaped!.tag == "date" {
-            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("dateDureeViewID") as! dateDureeViewController
+            let svc =  self.storyboard?.instantiateViewController(withIdentifier: "dateDureeViewID") as! dateDureeViewController
             
             svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
         }
         if ExamTaped!.tag == "pancarteView" {
-            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pancartViewRef") as! pancarteViewController
+            let svc =  self.storyboard?.instantiateViewController(withIdentifier: "pancartViewRef") as! pancarteViewController
             
             svc.delegate=self
             self.navigationController!.pushViewController(svc,animated: true)
         }
              if ExamTaped!.tag == "poids" {
-            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+            let svc =  self.storyboard?.instantiateViewController(withIdentifier: "saisieNombreID") as! SaisieNombreViewController
             svc.minNumber=10
             svc.maxNumber=140
             svc.step=1
@@ -371,7 +371,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
             self.navigationController!.pushViewController(svc,animated: true)
         }
         if ExamTaped!.tag == "taille" {
-            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+            let svc =  self.storyboard?.instantiateViewController(withIdentifier: "saisieNombreID") as! SaisieNombreViewController
             svc.minNumber=145
             svc.maxNumber=210
             svc.step=1
@@ -386,7 +386,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
             self.navigationController!.pushViewController(svc,animated: true)
         }
         if ExamTaped!.tag == "age" {
-            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+            let svc =  self.storyboard?.instantiateViewController(withIdentifier: "saisieNombreID") as! SaisieNombreViewController
             svc.minNumber=2
             svc.maxNumber=100
             svc.step=1
@@ -401,7 +401,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
             self.navigationController!.pushViewController(svc,animated: true)
         }
         if ExamTaped!.tag == "glasgow" {
-            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("saisieNombreID") as! SaisieNombreViewController
+            let svc =  self.storyboard?.instantiateViewController(withIdentifier: "saisieNombreID") as! SaisieNombreViewController
             svc.minNumber=3
             svc.maxNumber=16
             svc.step=1
@@ -412,7 +412,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
                 svc.value=ExamTaped!.value
             }
             if ExamTaped!.tag == "image" {
-                let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
+                let svc =  self.storyboard?.instantiateViewController(withIdentifier: "pluginFormID") as! pluginFormViewController
                 _=svc.view
                 svc.imageView.image = UIImage( contentsOfFile:fileInDocumentsDirectory(ExamTaped!.value))
                 svc.titreLabel.text = "" // categorie.examens[0].value
@@ -424,14 +424,14 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
         
     }
     override func viewDidLoad() {
-        singleTap.requireGestureRecognizerToFail(doubleTap)
+        singleTap.require(toFail: doubleTap)
         super.viewDidLoad()
         
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
         //examen=Donnees.listeCategorie.categories.first!.examens
         if categorie != nil {     self.title=categorie!.nomUI() }
         
@@ -451,18 +451,18 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
         if !aExam.value.isEmpty { return }
         if aExam.intitule == "horodatage" || aExam.intitule == "timestamp"{
             
-            let dateFormatter=NSDateFormatter()
+            let dateFormatter=DateFormatter()
             //dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
             //dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
             // dateFormatter.locale = NSLocale.currentLocale()
             dateFormatter.dateFormat="dd/MM/yyyy - HH:mm"
-            let strDate = dateFormatter.stringFromDate(NSDate())
+            let strDate = dateFormatter.string(from: Date())
             aExam.value=strDate
             
         }
         
         if aExam.type == .selection {
-            let svc =  self.storyboard?.instantiateViewControllerWithIdentifier("selectionViewID") as! selectionTexteTableViewController
+            let svc =  self.storyboard?.instantiateViewController(withIdentifier: "selectionViewID") as! selectionTexteTableViewController
             examenSelected=categorie.examens[0]
             svc.textes = Donnees.selectiontextDict[examenSelected!.tag]!
             svc.delegate=self
@@ -477,22 +477,22 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
         // Dispose of any resources that can be recreated.
     }
     // MARK/ Textfield delegate
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         self.activeField = textField
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         self.activeField = nil
     }
     func registerForKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(examensTableViewController.keyboardWasShown(_:)), name: UIKeyboardDidShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(examensTableViewController.keyboardWillBeHidden(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(examensTableViewController.keyboardWasShown(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(examensTableViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    func keyboardWasShown(aNotification: NSNotification) {
+    func keyboardWasShown(_ aNotification: Notification) {
         if activeField == nil {return}
-        let info = aNotification.userInfo as! [String: AnyObject],
-        kbSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue().size,
+        let info = (aNotification as NSNotification).userInfo as! [String: AnyObject],
+        kbSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue.size,
         contentInsets = UIEdgeInsets(top: 90, left: 0, bottom: kbSize.height, right: 0)
         self.tableView.contentInset = contentInsets
         self.tableView.scrollIndicatorInsets = contentInsets
@@ -502,23 +502,23 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
         var aRect = self.view.frame
         aRect.size.height -= kbSize.height
         
-        if !CGRectContainsPoint(aRect, activeField!.frame.origin) {
+        if !aRect.contains(activeField!.frame.origin) {
             
             
             self.tableView.scrollRectToVisible(activeField!.frame, animated: true)
         }
     }
     
-    func keyboardWillBeHidden(aNotification: NSNotification) {
+    func keyboardWillBeHidden(_ aNotification: Notification) {
         if activeField == nil {return}
-        let contentInsets = UIEdgeInsetsZero
+        let contentInsets = UIEdgeInsets.zero
         self.tableView.contentInset = contentInsets
         self.tableView.scrollIndicatorInsets = contentInsets
     }
     // MARK: - Table view data source
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (sender is examgroupTableViewCell &&  segue.identifier == "autoshow") {
-            let svc = segue.destinationViewController as! examensTableViewController
+            let svc = segue.destination as! examensTableViewController
             let mycell = (sender as! examgroupTableViewCell)
             svc.categorie = mycell.examen!.categorie!
             svc.navigationController?.title = svc.categorie!.nomUI()
@@ -527,7 +527,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
             
         } else if (segue.identifier == "selectionSegue") {
             
-            let svc = segue.destinationViewController as! selectionTexteTableViewController
+            let svc = segue.destination as! selectionTexteTableViewController
             let mycell = (sender as! selectionTableViewCell)
             // let tab:[String]=(["Cholecystectomie","Appendicectomie","IDM"]).sort()
             examenSelected=mycell.examen
@@ -544,7 +544,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
         
         
     }
-    func pancarteSelected(sender:pancarteViewController, pancarteStr:String) {
+    func pancarteSelected(_ sender:pancarteViewController, pancarteStr:String) {
         if (ExamTaped != nil) {
             ExamTaped?.value=pancarteStr
         }
@@ -552,11 +552,11 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
     }
     
     // MARK: Retour selection texte
-    func textSelected(sender:selectionTexteTableViewController, text:String) {
+    func textSelected(_ sender:selectionTexteTableViewController, text:String) {
         if (examenSelected != nil) {
-            if  Donnees.selectiontextDict[examenSelected!.tag]!.indexOf(text) == nil {
+            if  Donnees.selectiontextDict[examenSelected!.tag]!.index(of: text) == nil {
                 Donnees.selectiontextDict[examenSelected!.tag]!.append(String(text))
-                Donnees.selectiontextDict[examenSelected!.tag] = Donnees.selectiontextDict[examenSelected!.tag]?.sort()
+                Donnees.selectiontextDict[examenSelected!.tag] = Donnees.selectiontextDict[examenSelected!.tag]?.sorted()
             }
             
             examenSelected?.value=text
@@ -565,46 +565,46 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
         tableView.reloadData()
     }
     // MARK: Suppression selection texte
-    func textDeleted(sender: selectionTexteTableViewController, text: String) {
+    func textDeleted(_ sender: selectionTexteTableViewController, text: String) {
         if (examenSelected != nil) {
-            if Donnees.selectiontextDict[examenSelected!.tag]!.indexOf(text) != nil{
-                Donnees.selectiontextDict[examenSelected!.tag]!.removeAtIndex(Donnees.selectiontextDict[examenSelected!.tag]!.indexOf(text)!)
+            if Donnees.selectiontextDict[examenSelected!.tag]!.index(of: text) != nil{
+                Donnees.selectiontextDict[examenSelected!.tag]!.remove(at: Donnees.selectiontextDict[examenSelected!.tag]!.index(of: text)!)
             }
         }
     }
     // MARK: Tableview datasource et delegate
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return categorie.examens.count
     }
-    override func setEditing(editing: Bool, animated: Bool) {
+    override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         doubleTap.delaysTouchesBegan = !editing
     }
-    @IBAction func EnregistrerModif(sender: UIBarButtonItem) {
+    @IBAction func EnregistrerModif(_ sender: UIBarButtonItem) {
         
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
         /* let parent = self.parentViewController as! saisieTableViewController
          parent.tableView.reloadData()*/
         
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let examen1 = categorie.examens[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let examen1 = categorie.examens[(indexPath as NSIndexPath).row]
         
         //var cell :UITableViewCell = tableView.dequeueReusableCellWithIdentifier("reponsecourteCell", forIndexPath: indexPath) as! reponsecourteTableViewCell
         //cell.textequestion
         let cell = UITableViewCell()
         if examen1.type==Examen.ExamenEnum.reponsecourte || examen1.type==Examen.ExamenEnum.donnee{
-            let cell2 = tableView.dequeueReusableCellWithIdentifier("reponsecourteCell", forIndexPath: indexPath) as! reponsecourteTableViewCell
+            let cell2 = tableView.dequeueReusableCell(withIdentifier: "reponsecourteCell", for: indexPath) as! reponsecourteTableViewCell
             cell2.texteReponsecourte.text=categorieExamen.Categorie.removeHtml(examen1.intitule )
-            if !examen1.tag.isEmpty {cell2.texteReponsecourte.textColor=UIColor.blueColor()}
+            if !examen1.tag.isEmpty {cell2.texteReponsecourte.textColor=UIColor.blue}
             if examen1.value != "" {
                 cell2.valeurReponseCourte.text = categorieExamen.Categorie.removeHtml(examen1.value)
             }
@@ -613,28 +613,28 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
             return cell2
         } else
             if examen1.type==Examen.ExamenEnum.ouinon {
-                let cell3 = tableView.dequeueReusableCellWithIdentifier("questionOuiNonCell", forIndexPath: indexPath) as! questionOuiNonTableViewCell
+                let cell3 = tableView.dequeueReusableCell(withIdentifier: "questionOuiNonCell", for: indexPath) as! questionOuiNonTableViewCell
                 cell3.texteQuestion.text = categorieExamen.Categorie.removeHtml(examen1.intitule)
-                cell3.texteQuestion.enabled=true
+                cell3.texteQuestion.isEnabled=true
                 if examen1.value == "0" {
                     cell3.reponseSegmentedControl.selectedSegmentIndex=0
                 } else if examen1.value == "1" {
                     cell3.reponseSegmentedControl.selectedSegmentIndex=1
                     
                 }else if examen1.value == "" {
-                    cell3.texteQuestion.enabled=false
+                    cell3.texteQuestion.isEnabled=false
                 }
                 cell3.examen=examen1
                 return cell3
         }
         if examen1.type==Examen.ExamenEnum.check {
-            let cell3 = tableView.dequeueReusableCellWithIdentifier("checkCell", forIndexPath: indexPath) as! checkTableViewCell
+            let cell3 = tableView.dequeueReusableCell(withIdentifier: "checkCell", for: indexPath) as! checkTableViewCell
             cell3.questionCheckLabel.text = categorieExamen.Categorie.removeHtml(examen1.intitule)
             if examen1.value == "0" {
-                cell3.questionCheckLabel.enabled=true
+                cell3.questionCheckLabel.isEnabled=true
                 cell3.checkSegment.selectedSegmentIndex=0
             } else  {
-                cell3.questionCheckLabel.enabled=false
+                cell3.questionCheckLabel.isEnabled=false
                 cell3.checkSegment.selectedSegmentIndex=1
                 
             }
@@ -643,7 +643,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
         } else
             
             if examen1.type==Examen.ExamenEnum.group {
-                let cell3 = tableView.dequeueReusableCellWithIdentifier("examgroup", forIndexPath: indexPath) as! examgroupTableViewCell
+                let cell3 = tableView.dequeueReusableCell(withIdentifier: "examgroup", for: indexPath) as! examgroupTableViewCell
                 cell3.intitule.text = categorieExamen.Categorie.removeHtml(examen1.intitule)
                 cell3.examen=examen1
                 if let namedImage = examen1.categorie?.namedImage
@@ -652,11 +652,11 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
                 }
                 
                 cell3.details.text=examen1.categorie?.UIString()
-                cell3.intitule.hidden = !examen1.categorie!.showNom && !(cell3.details.text?.isEmpty)!
+                cell3.intitule.isHidden = !examen1.categorie!.showNom && !(cell3.details.text?.isEmpty)!
                 return cell3
             } else
                 if examen1.type==Examen.ExamenEnum.selection {
-                    let cell3 = tableView.dequeueReusableCellWithIdentifier("selectionCell", forIndexPath: indexPath) as! selectionTableViewCell
+                    let cell3 = tableView.dequeueReusableCell(withIdentifier: "selectionCell", for: indexPath) as! selectionTableViewCell
                     
                     if examen1.value.isEmpty {
                         cell3.questionSelection.text = categorieExamen.Categorie.removeHtml(examen1.intitule)
@@ -672,7 +672,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
                     
                     return cell3
                 } else if examen1.type==Examen.ExamenEnum.addinfo {
-                    let cell3 = tableView.dequeueReusableCellWithIdentifier("addCell", forIndexPath: indexPath) as! AjoutInformationTableViewCell
+                    let cell3 = tableView.dequeueReusableCell(withIdentifier: "addCell", for: indexPath) as! AjoutInformationTableViewCell
                     cell3.delegate=self
                     //cell3.ajoutInfoBtn.titleLabel?.text="Ajouter \(examen1.tag)"
                     cell3.examen=examen1
@@ -695,15 +695,15 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
                      
                      dropdown.show()
                  }*/else if examen1.type == Examen.ExamenEnum.datastr || examen1.type == Examen.ExamenEnum.multirowdatastr {
-                    let cell3 = tableView.dequeueReusableCellWithIdentifier("pickSelectCell", forIndexPath: indexPath) as! pickSelectTableViewCell
+                    let cell3 = tableView.dequeueReusableCell(withIdentifier: "pickSelectCell", for: indexPath) as! pickSelectTableViewCell
                     cell3.intituleLabel.text=categorieExamen.Categorie.removeHtml(examen1.intitule)
                     cell3.valueTextField.text=examen1.value
-                    cell3.intituleLabel.textColor=UIColor.redColor()
+                    cell3.intituleLabel.textColor=UIColor.red
                     cell3.examen=examen1
                     return cell3
                 } else if examen1.type == Examen.ExamenEnum.imagefilename {
                     
-                    let cell3 = tableView.dequeueReusableCellWithIdentifier("imageSelectCell", forIndexPath: indexPath) as! imageSelectTableViewCell
+                    let cell3 = tableView.dequeueReusableCell(withIdentifier: "imageSelectCell", for: indexPath) as! imageSelectTableViewCell
                     if examen1.value.isEmpty {
                         cell3.imageLabel.text = "Aucun document"
                     } else {
@@ -715,7 +715,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
                     cell3.examen=examen1
                     return cell3
         } else if  examen1.type == Examen.ExamenEnum.documentinfo{
-                        let cell3 = tableView.dequeueReusableCellWithIdentifier("imageDocumentCell", forIndexPath: indexPath) as! imageDocumentTableViewCell
+                        let cell3 = tableView.dequeueReusableCell(withIdentifier: "imageDocumentCell", for: indexPath) as! imageDocumentTableViewCell
                     cell3.examen=examen1
                     return cell3
                     
@@ -726,7 +726,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
     }
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
         
@@ -734,9 +734,9 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
     
     
     // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        let examen1 = categorie.examens[indexPath.row]
+        let examen1 = categorie.examens[(indexPath as NSIndexPath).row]
         if examen1.type == Examen.ExamenEnum.addinfo {return false}
         return true
     }
@@ -744,14 +744,14 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
     
     
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         //    super.tableView(<#T##tableView: UITableView##UITableView#>, commitEditingStyle: <#T##UITableViewCellEditingStyle#>, forRowAtIndexPath: <#T##NSIndexPath#>)
-        if editingStyle == .Delete {
+        if editingStyle == .delete {
             
             // Delete the row from the data source
-            categorie.examens.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
+            categorie.examens.remove(at: (indexPath as NSIndexPath).row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
@@ -759,15 +759,15 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
     
     
     // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
         if fromIndexPath == toIndexPath {return }
         
-        swap(&categorie.examens[fromIndexPath.row],&categorie.examens[toIndexPath.row])
+        swap(&categorie.examens[(fromIndexPath as NSIndexPath).row],&categorie.examens[(toIndexPath as NSIndexPath).row])
         
     }
     
     
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
@@ -776,23 +776,23 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
     
 }
 extension examensTableViewController : mappedImageDelegate {
-    func regionSelected(sender:imageDocumentViewController,mapImg:MappedImage,region: MappedImage.region) {
+    func regionSelected(_ sender:imageDocumentViewController,mapImg:MappedImage,region: MappedImage.region) {
         
     }
     //func actionSelected(sender:MappedImage,region:MappedImage.region,action:String)
-    func selectionDone(sender:imageDocumentViewController,mapImg:MappedImage,fulltext:String) {
+    func selectionDone(_ sender:imageDocumentViewController,mapImg:MappedImage,fulltext:String) {
         let ex=ExamTree.libre
         ex.value=fulltext
         for exDoc:Examen in categorie.examens where exDoc.value==mapImg.loadedFromPathfilename {
-             let insertAfter=categorie.examens.indexOf(exDoc)
-            categorie.examens.insert(ex, atIndex: insertAfter!)
+             let insertAfter=categorie.examens.index(of: exDoc)
+            categorie.examens.insert(ex, at: insertAfter!)
         }
        
        
       //  categorie.examens.append(ex)
         tableView.reloadData()
     }
-    func zoneAdded(sender:imageDocumentViewController,mapImg:MappedImage,region:MappedImage.region) {
+    func zoneAdded(_ sender:imageDocumentViewController,mapImg:MappedImage,region:MappedImage.region) {
         
     }
 }

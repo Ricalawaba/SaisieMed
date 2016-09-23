@@ -10,26 +10,26 @@ import UIKit
 import MessageUI
 
 extension UIPrintPageRenderer {
-    func printToPDF() -> NSData {
+    func printToPDF() -> Data {
         let pdfData = NSMutableData()
         UIGraphicsBeginPDFContextToData(pdfData, self.paperRect, nil)
-        self.prepareForDrawingPages(NSMakeRange(0, self.numberOfPages()))
+        self.prepare(forDrawingPages: NSMakeRange(0, self.numberOfPages))
         let bounds = UIGraphicsGetPDFContextBounds()
-        for i in 0..<self.numberOfPages() {
+        for i in 0..<self.numberOfPages {
             UIGraphicsBeginPDFPage();
-            self.drawPageAtIndex(i, inRect: bounds)
+            self.drawPage(at: i, in: bounds)
         }
         UIGraphicsEndPDFContext();
-        return pdfData;
+        return pdfData as Data;
     }
     
 }
 class rapportViewController: UIViewController ,MFMailComposeViewControllerDelegate  {
-    @IBAction func patientButtonAction(sender: UIBarButtonItem) {
+    @IBAction func patientButtonAction(_ sender: UIBarButtonItem) {
         self.navigationController!.popToViewController(DataSave.lastPatientVC!,animated: true)
     }
     
-    @IBAction func accueilButtonAction(sender: UIBarButtonItem) {
+    @IBAction func accueilButtonAction(_ sender: UIBarButtonItem) {
         let viewControllers: [UIViewController] = self.navigationController!.viewControllers
         for aViewController in viewControllers {
             if(aViewController is patientTableViewController){
@@ -38,13 +38,13 @@ class rapportViewController: UIViewController ,MFMailComposeViewControllerDelega
         }
         
     }
-    @IBAction func MailData(sender: UIBarButtonItem) {
+    @IBAction func MailData(_ sender: UIBarButtonItem) {
         let email = MFMailComposeViewController()
         email.mailComposeDelegate = self
         email.setToRecipients(["drricalens@gmail.com"])
         
         email.setSubject("Synthèse clinique de \(patient.nomPrenom), \(patient.age) ans")
-        let messageBody=webView.stringByEvaluatingJavaScriptFromString("document.body.innerHTML")!
+        let messageBody=webView.stringByEvaluatingJavaScript(from: "document.body.innerHTML")!
         let documents=patient.getDocuments()
         var x=0
         for doc in documents{
@@ -56,10 +56,10 @@ class rapportViewController: UIViewController ,MFMailComposeViewControllerDelega
             
         }
         email.setMessageBody(messageBody, isHTML: true) // or true, if you prefer
-        presentViewController(email, animated: true, completion: nil)
+        present(email, animated: true, completion: nil)
     }
-    @IBAction func done(sender: UIBarButtonItem) {
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func done(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
     }
     @IBOutlet weak var webView: UIWebView!
     var patient=patients.patient()
@@ -67,31 +67,31 @@ class rapportViewController: UIViewController ,MFMailComposeViewControllerDelega
     var directHTML : String?
     
     // Delegate requirement
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        dismissViewControllerAnimated(true, completion: nil)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        dismiss(animated: true, completion: nil)
     }
-    func createPdfFile(printFormatter: UIViewPrintFormatter) -> NSData {
+    func createPdfFile(_ printFormatter: UIViewPrintFormatter) -> Data {
         let renderer = UIPrintPageRenderer()
-        renderer.addPrintFormatter(printFormatter, startingAtPageAtIndex: 0);
-        let paperSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)
-        let printableRect = CGRectMake(0, 0, paperSize.width, paperSize.height)
-        let paperRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
-        renderer.setValue(NSValue(CGRect: paperRect), forKey: "paperRect")
-        renderer.setValue(NSValue(CGRect: printableRect), forKey: "printableRect")
+        renderer.addPrintFormatter(printFormatter, startingAtPageAt: 0);
+        let paperSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height)
+        let printableRect = CGRect(x: 0, y: 0, width: paperSize.width, height: paperSize.height)
+        let paperRect = CGRect(x: 0, y: 0, width: paperSize.width, height: paperSize.height);
+        renderer.setValue(NSValue(cgRect: paperRect), forKey: "paperRect")
+        renderer.setValue(NSValue(cgRect: printableRect), forKey: "printableRect")
         return renderer.printToPDF()
     }
-    @IBAction func savePDF(sender: AnyObject) {
+    @IBAction func savePDF(_ sender: AnyObject) {
         
     }
-    func savePdf(filename: String){
+    func savePdf(_ filename: String){
         // FIXME: Non implémenté
     }
     
-    func pdfToFile(pathfile: String) {
+    func pdfToFile(_ pathfile: String) {
         let pdfData = createPdfFile(webView.viewPrintFormatter())
-        pdfData.writeToFile(pathfile, atomically: true)
+        try? pdfData.write(to: URL(fileURLWithPath: pathfile), options: [.atomic])
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         var myHTMLString:String="<head><meta name=\"viewport\" content=\"width=600;initial-scale=1.0\"></head>"
         if directHTML != nil {
             myHTMLString += directHTML!
@@ -109,7 +109,7 @@ class rapportViewController: UIViewController ,MFMailComposeViewControllerDelega
         }
       //  myHTMLString += "</div></body>"
         // let url = NSBundle.mainBundle().URLForResource("examenclinique", withExtension: "png")
-        let url = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+        let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         webView.loadHTMLString(myHTMLString, baseURL: url)
         
     }

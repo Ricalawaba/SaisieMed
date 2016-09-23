@@ -8,7 +8,7 @@
 
 import UIKit
 protocol numberSelectedDelegate {
-    func numberSelected(sender:selectNumberViewController, number:String)
+    func numberSelected(_ sender:selectNumberViewController, number:String)
     
 }
 class selectNumberViewController: UIViewController {
@@ -17,11 +17,11 @@ class selectNumberViewController: UIViewController {
     
     @IBOutlet weak var numberPickView: NumbersPickerView!
     
-        @IBAction func valideNumberAction(sender: UIButton) {
+        @IBAction func valideNumberAction(_ sender: UIButton) {
         if let del=delegate  {
             del.numberSelected(self, number: numberResult)
         }
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

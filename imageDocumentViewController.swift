@@ -9,10 +9,10 @@
 import UIKit
 
 protocol mappedImageDelegate {
-    func regionSelected(sender:imageDocumentViewController,mapImg:MappedImage,region: MappedImage.region)
+    func regionSelected(_ sender:imageDocumentViewController,mapImg:MappedImage,region: MappedImage.region)
     //func actionSelected(sender:imageDocumentViewController,mapImg:MappedImage,region:MappedImage.region,action:String)
-    func selectionDone(sender:imageDocumentViewController,mapImg:MappedImage,fulltext:String)
-    func zoneAdded(sender:imageDocumentViewController,mapImg:MappedImage,region:MappedImage.region)
+    func selectionDone(_ sender:imageDocumentViewController,mapImg:MappedImage,fulltext:String)
+    func zoneAdded(_ sender:imageDocumentViewController,mapImg:MappedImage,region:MappedImage.region)
 }
 
 class imageDocumentViewController: UIViewController {
@@ -25,13 +25,13 @@ class imageDocumentViewController: UIViewController {
     @IBOutlet weak var imageViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageViewTrailingConstraint: NSLayoutConstraint!
     
-    @IBAction func doneButtonAction(sender: AnyObject) {
+    @IBAction func doneButtonAction(_ sender: AnyObject) {
         let fullString=getFullResult()
         print("imagemap result: ",fullString)
         if let del=delegate {
             del.selectionDone(self,mapImg: imageMapped!, fulltext: fullString)
         }
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     func getFullResult() -> String {
         var fullString=""
@@ -72,10 +72,10 @@ class imageDocumentViewController: UIViewController {
         
         
     }
-    @IBAction func refreshButtonAction(sender: UIBarButtonItem) {
+    @IBAction func refreshButtonAction(_ sender: UIBarButtonItem) {
         showZone()
     }
-    @IBAction func editZoneAction(sender: AnyObject) {
+    @IBAction func editZoneAction(_ sender: AnyObject) {
         editMode = !editMode
         let but=sender as? UIBarButtonItem
         but?.title="Edit \(editMode)"
@@ -94,19 +94,19 @@ class imageDocumentViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         scrollView.delegate=self
-        imageView.userInteractionEnabled=true
+        imageView.isUserInteractionEnabled=true
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageDocumentViewController.tap(_:))))
         
                 showZone()
-        self.view.bringSubviewToFront(resultLabel)
+        self.view.bringSubview(toFront: resultLabel)
 
     }
     var firstPoint:CGPoint?
     var delegate:mappedImageDelegate?
     var savedZoom:CGFloat?
     var savedBounds:CGRect?
-    func tap(gesture: UIGestureRecognizer) {
-        let point = gesture.locationInView(gesture.view)
+    func tap(_ gesture: UIGestureRecognizer) {
+        let point = gesture.location(in: gesture.view)
         
         //   print("touch:", point) // You can check for their tag and do different things based on tag
         
@@ -188,7 +188,7 @@ class imageDocumentViewController: UIViewController {
         
         updateMinZoomScaleForSize(view.frame.size)
     }
-    private func updateConstraintsForSize(size: CGSize) {
+    fileprivate func updateConstraintsForSize(_ size: CGSize) {
         
         let yOffset = max(0, (size.height - imageView.frame.height) / 2)
         imageViewTopConstraint.constant = yOffset
@@ -200,7 +200,7 @@ class imageDocumentViewController: UIViewController {
         
         view.layoutIfNeeded()
     }
-    private func updateMinZoomScaleForSize(size: CGSize) {
+    fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
         let widthScale = size.width / imageView.bounds.width
         let heightScale = size.height / imageView.bounds.height
         let minScale = min(widthScale, heightScale)/2
@@ -212,10 +212,10 @@ class imageDocumentViewController: UIViewController {
     
 }
 extension imageDocumentViewController: UIScrollViewDelegate {
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
-    func scrollViewDidZoom(scrollView: UIScrollView) {
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
         updateConstraintsForSize(view.frame.size)
         if savedZoom != nil {
             self.scrollView.bounds=savedBounds!

@@ -20,14 +20,14 @@ class MappedImage: NSObject,NSCoding {
         
         var regions:[region]?
         // MARK: Fonctions
-        func contains(point:CGPoint)->Bool { return bounds.contains(point) }
+        func contains(_ point:CGPoint)->Bool { return bounds.contains(point) }
         func haveRegion() -> Bool {
             if let reg=regions {
                 return reg.count>0
             }
             return false
         }
-        func regionAtLocation(location:CGPoint) -> region?{
+        func regionAtLocation(_ location:CGPoint) -> region?{
             if let regs=regions {
                 for reg in regs {
                     if reg.bounds.contains(location) {
@@ -40,14 +40,14 @@ class MappedImage: NSObject,NSCoding {
         // MARK: Initialisation / NSCoding
         required
         init?(coder decoder: NSCoder) {
-            guard let name = decoder.decodeObjectForKey("name") as? String,
+            guard let name = decoder.decodeObject(forKey: "name") as? String,
                 
-                let action = decoder.decodeObjectForKey("action") as? String,
+                let action = decoder.decodeObject(forKey: "action") as? String,
                 //     let tag = decoder.decodeObjectForKey("tag") as? NSObject,
-                let value = decoder.decodeObjectForKey("value") as? String
+                let value = decoder.decodeObject(forKey: "value") as? String
                 else { return nil }
-            let bounds = decoder.decodeCGRectForKey("bounds")
-            let regions = decoder.decodeObjectForKey("regions") as? [region]
+            let bounds = decoder.decodeCGRect(forKey: "bounds")
+            let regions = decoder.decodeObject(forKey: "regions") as? [region]
             self.name=name
             self.bounds=bounds
             self.action=action
@@ -55,13 +55,13 @@ class MappedImage: NSObject,NSCoding {
             self.regions=regions
             self.value=value
         }
-        func encodeWithCoder(aCoder: NSCoder) {
-            aCoder.encodeObject(name, forKey: "name")
+        func encode(with aCoder: NSCoder) {
+            aCoder.encode(name, forKey: "name")
             //         aCoder.encodeObject(tag, forKey: "tag")
-            aCoder.encodeObject(action, forKey: "action")
-            aCoder.encodeCGRect(bounds, forKey: "bounds")
-            aCoder.encodeObject(regions,forKey: "regions")
-            aCoder.encodeObject(value,forKey: "value")
+            aCoder.encode(action, forKey: "action")
+            aCoder.encode(bounds, forKey: "bounds")
+            aCoder.encode(regions,forKey: "regions")
+            aCoder.encode(value,forKey: "value")
         }
         
         
@@ -103,7 +103,7 @@ class MappedImage: NSObject,NSCoding {
         
     }
     // MARK: Load/Save to file
-    func saveToFile(filename:String) {
+    func saveToFile(_ filename:String) {
         let pathfilename=DataSave.getDocumentsDirectory().stringByAppendingPathComponent(filename)
         if  NSKeyedArchiver.archiveRootObject(self, toFile: pathfilename) {
             print("save map:",filename)
@@ -143,7 +143,7 @@ class MappedImage: NSObject,NSCoding {
         super.init()
         let pathfilename=DataSave.getDocumentsDirectory().stringByAppendingPathComponent(contentsOfFile)
         loadedFromPathfilename=contentsOfFile
-        if let imagemap=NSKeyedUnarchiver.unarchiveObjectWithFile(pathfilename) as? MappedImage {
+        if let imagemap=NSKeyedUnarchiver.unarchiveObject(withFile: pathfilename) as? MappedImage {
             
             self.name = imagemap.name
             self.regionsMain = imagemap.regionsMain
@@ -161,9 +161,9 @@ class MappedImage: NSObject,NSCoding {
     init?(coder decoder: NSCoder) {
         //       super.init(decoder)
         
-        guard let name = decoder.decodeObjectForKey("name") as? String,
-            let imageFilename = decoder.decodeObjectForKey("imagefilename") as? String,
-            let regions = (decoder.decodeObjectForKey("regionsmain") as? [region])
+        guard let name = decoder.decodeObject(forKey: "name") as? String,
+            let imageFilename = decoder.decodeObject(forKey: "imagefilename") as? String,
+            let regions = (decoder.decodeObject(forKey: "regionsmain") as? [region])
             else { return nil }
         
         self.name=name
@@ -172,31 +172,31 @@ class MappedImage: NSObject,NSCoding {
         
         
     }
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(self.name, forKey: "name")
-        aCoder.encodeObject(self.imageFileName,forKey: "imagefilename")
-        aCoder.encodeObject(self.regionsMain,forKey: "regionsmain")
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.name, forKey: "name")
+        aCoder.encode(self.imageFileName,forKey: "imagefilename")
+        aCoder.encode(self.regionsMain,forKey: "regionsmain")
     }
     // MARK: Gestion UI des zones
-    func addZone(rect:CGRect,viewController:UIViewController) -> region?{
+    func addZone(_ rect:CGRect,viewController:UIViewController) -> region?{
         let reg=region(bounds: rect)
         //1. Create the alert controller.
-        let alert = UIAlertController(title: "Nom de zone", message: "Entrer texte", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Nom de zone", message: "Entrer texte", preferredStyle: .alert)
         
         //2. Add the text field. You can configure it however you need.
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+        alert.addTextField(configurationHandler: { (textField) -> Void in
             textField.text = ""
         })
         
         //3. Grab the value from the text field, and print it when the user clicks OK.
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
-            textField.autocorrectionType = .Yes
+            textField.autocorrectionType = .yes
             reg.name=textField.text!
             print("Text field: \(textField.text)")
             self.regionsMain.append(reg)
             if let pathfilename=self.loadedFromPathfilename {
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async {
                     self.saveToFile(pathfilename)
                     print(pathfilename," sauvegardé. + ",reg.name,reg.bounds)
                 }
@@ -207,20 +207,20 @@ class MappedImage: NSObject,NSCoding {
         
         // 4. Present the alert.
         //view
-        viewController.presentViewController(alert, animated: true, completion: nil)
+        viewController.present(alert, animated: true, completion: nil)
         //if reg.name.isEmpty {return nil}
         return reg
     }
     
     // MARK: Calcul zones
-    func hittedAt(point:CGPoint)->Bool {
+    func hittedAt(_ point:CGPoint)->Bool {
         for reg in regionsMain {
             if reg.contains(point) {return true}
         }
         return false
     }
     
-    func regionHittedAt(point:CGPoint)->region?{
+    func regionHittedAt(_ point:CGPoint)->region?{
         for reg in regionsMain {
             if reg.contains(point) {return reg}
         }

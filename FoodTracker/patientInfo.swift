@@ -8,7 +8,7 @@
 
 import Foundation
 
-func stringFromTimeInterval(interval: NSTimeInterval) -> String {
+func stringFromTimeInterval(_ interval: TimeInterval) -> String {
     let interval = Int(interval)
     _ = interval % 60
     let minutes = (interval / 60) % 60
@@ -20,10 +20,10 @@ class patients :  NSObject,NSCoding {
     
     class patient :  NSObject,NSCoding {
         // MARK: Properties
-        var timestamp=NSDate()
+        var timestamp=Date()
         var waitingStr: String {
             get {
-                return stringFromTimeInterval(NSDate().timeIntervalSinceDate(timestamp))
+                return stringFromTimeInterval(Date().timeIntervalSince(timestamp))
                 
             }
         }
@@ -80,7 +80,7 @@ class patients :  NSObject,NSCoding {
         func getDocuments() -> [String] {
             var documents: [String]=[]
             for cat in self.examen.categories {
-                documents.appendContentsOf(cat.getDocuments())
+                documents.append(contentsOf: cat.getDocuments())
             }
             return documents
         }
@@ -136,20 +136,20 @@ class patients :  NSObject,NSCoding {
         }
         // MARK: NSCoding
         required convenience init?(coder decoder: NSCoder) {
-            guard let examen = decoder.decodeObjectForKey("examen") as? categorieExamen,
-                    aDate=decoder.decodeObjectForKey("timestamp") as? NSDate
+            guard let examen = decoder.decodeObject(forKey: "examen") as? categorieExamen,
+                    let aDate=decoder.decodeObject(forKey: "timestamp") as? Date
                                 else { return nil }
             self.init(examen1: examen)
             self.timestamp=aDate
         }
-        func encodeWithCoder(coder: NSCoder) {
-            coder.encodeObject(self.nomPrenom, forKey: "nomprenom")
-            coder.encodeObject(self.age, forKey: "age")
-            coder.encodeObject(self.localisation, forKey: "localisation")
-            coder.encodeObject(self.timestamp, forKey: "timestamp")
+        func encode(with coder: NSCoder) {
+            coder.encode(self.nomPrenom, forKey: "nomprenom")
+            coder.encode(self.age, forKey: "age")
+            coder.encode(self.localisation, forKey: "localisation")
+            coder.encode(self.timestamp, forKey: "timestamp")
             
             //coder.encodeObject(self.motif, forKey: "motif")
-            coder.encodeObject(self.examen, forKey: "examen")
+            coder.encode(self.examen, forKey: "examen")
             
         }
 
@@ -185,7 +185,7 @@ class patients :  NSObject,NSCoding {
     }
     var patients = [patient]()
     required convenience init?(coder decoder: NSCoder) {
-        guard let patients = decoder.decodeObjectForKey("patients") as? [patient]
+        guard let patients = decoder.decodeObject(forKey: "patients") as? [patient]
             else { return nil }
         
         
@@ -194,8 +194,8 @@ class patients :  NSObject,NSCoding {
         self.patients=patients
         
     }
-    func encodeWithCoder(coder: NSCoder) {
-        coder.encodeObject(self.patients, forKey: "patients")        
+    func encode(with coder: NSCoder) {
+        coder.encode(self.patients, forKey: "patients")        
         
     }
 

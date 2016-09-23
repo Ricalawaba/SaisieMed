@@ -8,22 +8,22 @@
 
 import UIKit
 protocol AjoutInformationDelegate {
-    func ajoutInformation(sender:AjoutInformationTableViewCell, examen: Examen)
+    func ajoutInformation(_ sender:AjoutInformationTableViewCell, examen: Examen)
     
 }
 class AjoutInformationTableViewCell: UITableViewCell {
     var examen:Examen! = nil {
         didSet {
-            ajoutInfoBtn.setTitle("Ajouter \(examen.tag)", forState: .Normal)
+            ajoutInfoBtn.setTitle("Ajouter \(examen.tag)", for: UIControlState())
         }
     }
     var delegate:AjoutInformationDelegate!
     
     @IBOutlet weak var ajoutInfoBtn: UIButton!
-    @IBAction func ajoutInfoAction(sender: UIButton) {
+    @IBAction func ajoutInfoAction(_ sender: UIButton) {
         if let del=delegate  {
                 let exa=self.examen
-            del.ajoutInformation(self, examen: exa)
+            del.ajoutInformation(self, examen: exa!)
 
         }
     }
@@ -32,7 +32,7 @@ class AjoutInformationTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

@@ -9,7 +9,7 @@
 import Foundation
 protocol NSCodableEnum {func int() -> Int;init?(rawValue:Int);init(defaultValue:Any)}
 
-extension NSCoder {func encodeEnum( e:Examen.ExamenEnum, forKey:String) {self.encodeInteger(e.int(), forKey: forKey)};func decodeEnum(forKey:String) -> Examen.ExamenEnum {if let t = Examen.ExamenEnum(rawValue:self.decodeIntegerForKey(forKey)) {return t} else {return Examen.ExamenEnum(defaultValue:0)}}}
+extension NSCoder {func encodeEnum( _ e:Examen.ExamenEnum, forKey:String) {self.encode(e.int(), forKey: forKey)};func decodeEnum(_ forKey:String) -> Examen.ExamenEnum {if let t = Examen.ExamenEnum(rawValue:self.decodeInteger(forKey: forKey)) {return t} else {return Examen.ExamenEnum(defaultValue:0)}}}
 
 
 class Examen : NSObject,NSCoding{
@@ -48,12 +48,12 @@ class Examen : NSObject,NSCoding{
     
     // MARK: NSCoding
     required convenience init?(coder decoder: NSCoder) {
-        guard let intitule = decoder.decodeObjectForKey("intitule") as? String,
-            let info = decoder.decodeObjectForKey("info") as? String,
-            let tag = decoder.decodeObjectForKey("tag") as? String,
-            let formatPreString = decoder.decodeObjectForKey("formatPreString") as? String,
-            let formatPostString = decoder.decodeObjectForKey("formatPostString") as? String,
-        let value = decoder.decodeObjectForKey("value") as? String
+        guard let intitule = decoder.decodeObject(forKey: "intitule") as? String,
+            let info = decoder.decodeObject(forKey: "info") as? String,
+            let tag = decoder.decodeObject(forKey: "tag") as? String,
+            let formatPreString = decoder.decodeObject(forKey: "formatPreString") as? String,
+            let formatPostString = decoder.decodeObject(forKey: "formatPostString") as? String,
+        let value = decoder.decodeObject(forKey: "value") as? String
             else { return nil }
         
         
@@ -63,26 +63,30 @@ class Examen : NSObject,NSCoding{
         self.value=value
         self.formatPreString=formatPreString
         self.formatPostString=formatPostString
-        
-        let type = ExamenEnum(rawValue: (decoder.decodeObjectForKey("type") as! Int))
+        if let typeint = (decoder.decodeObject(forKey: "type") )  {
+            print("typint:",typeint)
+        let type = ExamenEnum(rawValue: (decoder.decodeObject(forKey: "type") as! Int))
         self.type=type!
+        }
         
         if self.type == .group {
-            self.categorie = decoder.decodeObjectForKey("categorie") as? categorieExamen.Categorie
+            self.categorie = decoder.decodeObject(forKey: "categorie") as? categorieExamen.Categorie
         }
    
     }
-    func encodeWithCoder(coder: NSCoder) {
-        coder.encodeObject(self.intitule, forKey: "intitule")
-        coder.encodeObject(self.info, forKey: "info")
-        coder.encodeObject(self.tag, forKey: "tag")
-        coder.encodeObject(self.type.rawValue, forKey: "type")
-        coder.encodeObject(self.formatPreString, forKey: "formatPreString")
-        coder.encodeObject(self.formatPostString, forKey: "formatPostString")
+    func encode(with coder: NSCoder) {
+        coder.encode(self.intitule, forKey: "intitule")
+        coder.encode(self.info, forKey: "info")
+        coder.encode(self.tag, forKey: "tag")
+        coder.encode(self.type.rawValue, forKey: "type")
+        print("rawtype:",self.type.rawValue)
+   //     NSLog(<#T##format: String##String#>, <#T##args: CVarArg...##CVarArg#>)
+        coder.encode(self.formatPreString, forKey: "formatPreString")
+        coder.encode(self.formatPostString, forKey: "formatPostString")
         
-        coder.encodeObject(self.value, forKey: "value")
+        coder.encode(self.value, forKey: "value")
         if self.type == .group {
-            coder.encodeObject(self.categorie, forKey: "categorie")
+            coder.encode(self.categorie, forKey: "categorie")
         }
   
     }

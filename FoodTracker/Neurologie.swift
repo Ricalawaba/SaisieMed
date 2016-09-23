@@ -179,13 +179,13 @@ extension ExamTree {
         return catneuroReflexes
     }
     
-    static func detailROT(intitule: String = "Détail")-> Examen {
+    static func detailROT(_ intitule: String = "Détail")-> Examen {
         
         Donnees.selectiontextDict["dataStrdetailROT"]=[
             " symétrique","assymétrique","hypotonique à gauche", "aboli à gauche","hypotonique à droite", "aboli à droite",
             "hyperrefléxie gauche","hyperrefléxie droite","polycinétique à gauche", "polycinétique à droite","pendulaire",
             " vif symétrique"
-            ].sort()
+            ].sorted()
         
         return Examen(intitule: intitule, type: .datastr, tag: "dataStrdetailROT")
     }

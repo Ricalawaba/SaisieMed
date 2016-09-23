@@ -15,7 +15,7 @@ extension ExamTree {
         let examCatDigestifFonctionnel : [Examen] = [
             OuiNon("Anorexie"),
             OuiNon("Nausée/Vomissements"),
-            Examen(intitule: "type vomissements", datastr: ["vomissement alimentaire","vomissement de suc gastrique(incolore)","vomissement bileux (jaune)","vomissement fécaloïde","vomissement sanglant","vomissement noirâtre"].sort() ),
+            Examen(intitule: "type vomissements", datastr: ["vomissement alimentaire","vomissement de suc gastrique(incolore)","vomissement bileux (jaune)","vomissement fécaloïde","vomissement sanglant","vomissement noirâtre"].sorted() ),
             OuiNon("Vomissement en jet"),
             OuiNon("Ballonement"),
             OuiNon("Trouble de l'apétit"),
@@ -25,8 +25,8 @@ extension ExamTree {
             Check("Alternance diarrhée / constipation"),
             Examen(intitule: "dernier repas", type:  .donnee,tag: "date" ),
             Examen(intitule: "dernières selles", type:  .donnee,tag: "date" ),
-            Examen(intitule: "consistance selles", datastr: ["","\"normales\"","Selles moulées","Selles dures","Selles liquides","Selles molles","Selles glaireuses"].sort() ),
-            Examen(intitule: "coloration selles", datastr: ["de couleur \"normale\"","de couleur foncée","de couleur claire","de couleur noirâtre (méléna)","de couleur rougeatres","sanglantes (rectorragie)"].sort() ),
+            Examen(intitule: "consistance selles", datastr: ["","\"normales\"","Selles moulées","Selles dures","Selles liquides","Selles molles","Selles glaireuses"].sorted() ),
+            Examen(intitule: "coloration selles", datastr: ["de couleur \"normale\"","de couleur foncée","de couleur claire","de couleur noirâtre (méléna)","de couleur rougeatres","sanglantes (rectorragie)"].sorted() ),
             OuiNon("Odeur inhabituelle"),
             
             
@@ -37,7 +37,7 @@ extension ExamTree {
     
     static var locAbdo:Examen {
         return Examen(intitule: "locabdo", datastr: ["épigastrique","hyponcondre droit","périombilicale","fosse iliaque droite","fosse iliaque gauche","flanc gauche","flanc droit",
-            "fosse lombaire droite","fosse lombaire gauche", "lombaire", "inguinale droite", "inguinale gauche","transfixiante"].sort())
+            "fosse lombaire droite","fosse lombaire gauche", "lombaire", "inguinale droite", "inguinale gauche","transfixiante"].sorted())
 
         
     }

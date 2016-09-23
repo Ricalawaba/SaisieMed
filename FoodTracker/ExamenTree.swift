@@ -10,8 +10,8 @@ import Foundation
 
 class ExamTree :NSObject{
     
-    static func getExam(examtype:String) ->Examen? {
-        switch examtype.lowercaseString {
+    static func getExam(_ examtype:String) ->Examen? {
+        switch examtype.lowercased() {
         case "zone anatomique":
             return self.regionAnat
             
@@ -102,15 +102,15 @@ class ExamTree :NSObject{
         }
         return nil
     }
-    static func Check(intitule: String) -> Examen {
+    static func Check(_ intitule: String) -> Examen {
         return Examen(intitule: intitule, type:  .check )
     }
-    static func Check(intitule: String,poststring: String) -> Examen {
+    static func Check(_ intitule: String,poststring: String) -> Examen {
         let ex = Examen(intitule: intitule, type:  .check )
         ex.formatPostString=poststring
         return ex
     }
-    static func OuiNon(intitule: String) -> Examen {
+    static func OuiNon(_ intitule: String) -> Examen {
         return Examen(intitule: intitule, type:  .ouinon )
     }
     static var libre:Examen{
@@ -122,7 +122,7 @@ class ExamTree :NSObject{
         let examCatConnuClinique = [
             
             Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"),
-            Examen(intitule: "connucliniquepour", datastr: ["non médical","Suivi oncologique","Suivi cardiovasculaire","Suivi pneumologique","Suivi neurologique","Suivi urologique","Suivi traumatologique","Intervention orthopédique","Intervention chirurgicale","Bilan spécialisé","Suivi diabétologique","Avis spécialisé","Suivi angiologique","Déja vu en consultation"].sort()),
+            Examen(intitule: "connucliniquepour", datastr: ["non médical","Suivi oncologique","Suivi cardiovasculaire","Suivi pneumologique","Suivi neurologique","Suivi urologique","Suivi traumatologique","Intervention orthopédique","Intervention chirurgicale","Bilan spécialisé","Suivi diabétologique","Avis spécialisé","Suivi angiologique","Déja vu en consultation"].sorted()),
             
             Examen(intitule: "dernier contact", type:  .donnee ,tag: "date"),
             atcd.asExamen(),
@@ -153,7 +153,7 @@ class ExamTree :NSObject{
         
         let excamCatModeVie = [
             Examen(intitule: "Profession", type:  .selection ,tag: "profession"),
-            Examen(intitule: "lieu mode vie", datastr: ["à son domicile","en institution","en maison de retraite" ,"en maison médicalisée","sans domicile fixe","hébergé chez des proches"].sort() ),
+            Examen(intitule: "lieu mode vie", datastr: ["à son domicile","en institution","en maison de retraite" ,"en maison médicalisée","sans domicile fixe","hébergé chez des proches"].sorted() ),
             Check("avec sa famille" ),
             Check("seul" ),
             Check("en couple" ),
@@ -167,13 +167,13 @@ class ExamTree :NSObject{
         let catModeEntree = categorieExamen.Categorie(nom: "Mode d'entrée",namedImage: "ambulance_icon.png")
         //catModeEntree.startLI()
         let excamCatModeEntree = [
-            Examen(intitule: "adressage", datastr: ["Se présente spontanément","amené par la famille","adressé par le centre 15","Adressé par médecin traitant","adressé par médecin de garde","adressé en interne",].sort() ),
+            Examen(intitule: "adressage", datastr: ["Se présente spontanément","amené par la famille","adressé par le centre 15","Adressé par médecin traitant","adressé par médecin de garde","adressé en interne",].sorted() ),
             Examen(intitule: "Médecin", type:  .selection ,tag: "medecin"),
             Check("(courrier)"),
             Check("(appel téléphonique)"),
             Check("médicalisé par le SMUR"),
             Examen(intitule: "Médecin SMUR", type:  .selection ,tag: "medecin"),
-            Examen(intitule: "transport", datastr: ["Transporté par les pompiers","transporté par ambulance","vient par ses propres moyens", "transporté par les proches"].sort() ),
+            Examen(intitule: "transport", datastr: ["Transporté par les pompiers","transporté par ambulance","vient par ses propres moyens", "transporté par les proches"].sorted() ),
             Check("non médicalisé"),
             OuiNon("Accompagnant"),
             Accompagnant(),
@@ -302,18 +302,31 @@ class ExamTree :NSObject{
     static var SignesGeneraux:categorieExamen.Categorie {
         let catSignesGeneraux = categorieExamen.Categorie(nom:"Signes Generaux",namedImage: "nurse_icon.png",showNom: false)
         let examCatSignesGeneraux = [
-             OuiNon("Faiblesse/Asthénie"),
+            OuiNon("Faiblesse/Asthénie"),
+            OuiNon("Lipothymies"),
+            OuiNon("Perte de connaissance"),
+            
+            OuiNon("Sueurs"),
+            OuiNon("Hyperthermie"),
+            
+            OuiNon("Dyspnée"),
+            OuiNon("Douleur thoracique"),
+            OuiNon("Palpitations"),
+            
+            
+            OuiNon("Céphallée"),
+            OuiNon("Troubles sensoriels"),
+            OuiNon("Vertiges"),
+            
+            OuiNon("Douleur abdominale"),
             OuiNon("Nausée"),
             OuiNon("Vomissements"),
-            OuiNon("Céphallée"),
             OuiNon("Diarrhée"),
-            OuiNon("Troubles sensoriels"),
-            OuiNon("Lipothymies"),
-            OuiNon("Sueurs"),
-            OuiNon("Dyspnée"),
+            
             OuiNon("Anxiété"),
-            OuiNon("Palpitations"),
-            OuiNon("Hyperthermie"),
+            
+            
+            
             ]
         catSignesGeneraux.examens=examCatSignesGeneraux
         return catSignesGeneraux
@@ -411,7 +424,7 @@ class ExamTree :NSObject{
         let examCatdetailsTraitement : [Examen] = [
             Check("Pas de traitement au long cours"),
             Check("Prise médicamenteuse journalière (principe actif et posologie inconnu)"),
-            Examen(intitule: "source info traitement", datastr: ["(Traitement vu sur ordonnance)","(Traitement indiqué par le patient)","(Traitement indiqué par l'entourage)","(Traitement non connu par le patient)","(Traitement vu sur courrier de transmission)"].sort() ),
+            Examen(intitule: "source info traitement", datastr: ["(Traitement vu sur ordonnance)","(Traitement indiqué par le patient)","(Traitement indiqué par l'entourage)","(Traitement non connu par le patient)","(Traitement vu sur courrier de transmission)"].sorted() ),
             Examen(intitule: "de qui ?", type:  .selection,tag: "medecin" ),
             Examen(intitule: "Date", type:  .donnee, tag: "date" ),
             
@@ -529,13 +542,13 @@ class ExamTree :NSObject{
                     "Entretien avec le patient",
                     "Entretien avec le patient et son entourage",
                     "Entretien avec l'entourage"
-                    ].sort() ),
+                    ].sorted() ),
             Examen(intitule: "sujet discussion",
                 datastr: [
                     "Compte rendu des examens reçus",
                     "Discussion sur les hypothèses diagnostiques",
                     "Discussion sur le devenir"
-                    ].sort() ),
+                    ].sorted() ),
             Examen(intitule: "souhait patient",
                 datastr: [
                     "souhaite des examens complémentaires",
@@ -549,7 +562,7 @@ class ExamTree :NSObject{
                     "souhaiterait si possible un retour à domicile",
                     "souhaite un retour à domicile",
                     
-                    ].sort() ),
+                    ].sorted() ),
             
             Check("souhaite un retour à domicile"),
             Check("sortie contre avis médical"),
@@ -680,7 +693,7 @@ class ExamTree :NSObject{
         
         let examCatExamenGeneral : [Examen] = [
             self.Poids.asExamen(),
-            Examen(intitule: "Communication", datastr: ["Communication normale","Pas de communication","Communication altérée","difficultés linguistiques","Refus de communication"].sort() ),
+            Examen(intitule: "Communication", datastr: ["Communication normale","Pas de communication","Communication altérée","difficultés linguistiques","Refus de communication"].sorted() ),
             //           neuroFonctionnel.asExamen(),
             //           OuiNon("Troubles du langage"),
             
@@ -698,7 +711,7 @@ class ExamTree :NSObject{
                 "teint subictérique",
                 "teint érythémateux",
                 "teint grisatre",
-                "marbrures"].sort() ),
+                "marbrures"].sorted() ),
             OuiNon("Pli cutanée"),
             OuiNon("Crampes"),
             OuiNon("Asthénie marquée"),
@@ -759,7 +772,7 @@ class ExamTree :NSObject{
                 "Echographie exploratrice",
                 "TDM Crane","TDM abdominal","TDM thoracique","TDM Urologique","TDM Abdomino-pelvien","TDM thoraco-abdominal","TDM articulaire","Angioscanner","Scanner",
                 "IRM Cérébrale","IRM médullaire","Electroencéphallogramme","Electromyographie"
-                ].sort() ),
+                ].sorted() ),
             Check("en cours"),
             
             Check("(Interprétation radiologue)"),
@@ -834,17 +847,29 @@ class ExamTree :NSObject{
         catmodeSurvenue.examens=examCatmodeSurvenue
         return catmodeSurvenue
     }
+    static var modeEvolutif:categorieExamen.Categorie {
+        let catmodeEvolutif = categorieExamen.Categorie(nom:"(mode Evolutif)",namedImage: "stetho_icon.png",showNom: false)
+        let examCatmodeEvolutif = [
+            Check("Disparition des troubles avant l'arrivées aux urgences"),
+            Check("aggravation progressive"),
+            Check("amélioration progressive"),
+            Check("évolution par crises"),
+            Check("Sensation de retour à l'état basal"),
+        ]
+        catmodeEvolutif.examens=examCatmodeEvolutif
+        return catmodeEvolutif
+    }
 
     static var PlainteAnamnèse:categorieExamen.Categorie {
         let catPlainteAnamnèse = categorieExamen.Categorie(nom:"Plaintes/Anamnèse",namedImage: "tete_icon.png",showNom: true)
         catPlainteAnamnèse.startLI()
         let examCatPlainteAnamnèse : [Examen] = [
-            modeSurvenue.asExamen(),
+           
             SignesGeneraux.asExamen(),
             Douleur.asExamen(),
             ExamTree.Plainte.asExamen(),
-            
-            
+            modeSurvenue.asExamen(),
+            modeEvolutif.asExamen(),
             OuiNon("Prise médicamenteuse"),
             TTT.asExamen(),
             
@@ -862,14 +887,14 @@ class ExamTree :NSObject{
         let catRespiratoireFonctionnel = categorieExamen.Categorie(nom:"<br>Fonctionnel",namedImage: "pneumo_icon.png",showNom: true)
         catRespiratoireFonctionnel.startLI()
         let examCatRespiratoireFonctionnel : [Examen] = [
-            Examen(intitule: "respiration", datastr: [" dyspnéique","dyspnée au repos","dyspnée d'effort"," eupnéïque","dyspnée inspiratoire","dyspnée expiratoire"].sort() ),
+            Examen(intitule: "respiration", datastr: [" dyspnéique","dyspnée au repos","dyspnée d'effort"," eupnéïque","dyspnée inspiratoire","dyspnée expiratoire"].sorted() ),
             Examen(intitule: "Echelle de Borg ('eva' dyspnée)", type: .donnee),
             Check("anxiogène"),
             Check("Sifflante"),Check("Encombrement audible"),
             OuiNon("pincement des ailes du nez"),
             //  OuiNon("Toux"),
-            Examen(intitule: "type toux", datastr: ["Pas de toux","toux sèche isolée","toux sèche quinteuse","toux positionnelle","toux productive"].sort() ),
-            Examen(intitule: "expectorations", datastr: [" Pas d'expectorations","Expectorations d'aspect séreux (blanc, aéré)","Expectorations d'aspect muqueux (visqueux)","Expectorations muco-purulentes (jaune/ver)","Expectorations hémoptoïques"].sort() ),
+            Examen(intitule: "type toux", datastr: ["Pas de toux","toux sèche isolée","toux sèche quinteuse","toux positionnelle","toux productive"].sorted() ),
+            Examen(intitule: "expectorations", datastr: [" Pas d'expectorations","Expectorations d'aspect séreux (blanc, aéré)","Expectorations d'aspect muqueux (visqueux)","Expectorations muco-purulentes (jaune/ver)","Expectorations hémoptoïques"].sorted() ),
             
             OuiNon("Difficultés à l'élocution"),
             //self.libre,
@@ -1061,7 +1086,7 @@ class ExamTree :NSObject{
         return Examen(intitule: "Temp.", type: .multirowdatastr , tag: "temperatureMultirow")
         // return catOMS
     }
-    private static func setTensionMultiRow() {
+    fileprivate static func setTensionMultiRow() {
         if  Donnees.multiColumnPickerDataStr["tensionMultirow"] == nil {
             var degre=[String]()
             for x in 5..<30 {
@@ -1147,11 +1172,11 @@ class ExamTree :NSObject{
             "Main gauche",
             "Main droite",
             "Rachis cervical","Rachis cervicodorsal","os propre du nez","Rachis lombaire"
-            ].sort()
+            ].sorted()
         
         return Examen(intitule: "(région anatomique)", type: .datastr, tag: "dataStrregionAnat")
     }
-    static func Accompagnant(intitule: String = "Accompagnant")-> Examen {
+    static func Accompagnant(_ intitule: String = "Accompagnant")-> Examen {
         //static var :Examen {
         
         Donnees.selectiontextDict["dataStrAccompagnant"]=[
@@ -1160,7 +1185,7 @@ class ExamTree :NSObject{
         
         return Examen(intitule: "Accompagnant", type: .datastr, tag: "dataStrAccompagnant")
     }
-    static func saO2(intitule: String = "saO2")-> Examen {
+    static func saO2(_ intitule: String = "saO2")-> Examen {
         //static var :Examen {
         
         Donnees.selectiontextDict["dataStrsaO2"]=[""]
@@ -1171,7 +1196,7 @@ class ExamTree :NSObject{
         return Examen(intitule: intitule, type: .datastr, tag: "dataStrsaO2")
     }
     
-    static func debutDouleur(intitule: String )-> Examen {
+    static func debutDouleur(_ intitule: String )-> Examen {
         Donnees.selectiontextDict["dataStrdebutDouleur"]=[
             "Franche et brutale en coups de poignard","d'évolution progressive, insidieuse",
         ]

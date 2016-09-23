@@ -9,17 +9,17 @@
 import UIKit
 import DropDown
 protocol ajoutPatientDelegate {
-    func patientAdded(sender:AjoutPatientViewController, patient:patients.patient)
+    func patientAdded(_ sender:AjoutPatientViewController, patient:patients.patient)
 }
 
 class AjoutPatientViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet weak var actionButtonItem: UIBarButtonItem!
 let dropdown = DropDown()
-    @IBAction func ActionButtonAction(sender: AnyObject) {
+    @IBAction func ActionButtonAction(_ sender: AnyObject) {
         
         dropdown.anchorView=actionButtonItem
         
-        dropdown.dataSource=["Main","pied","Cheville","coude","tete"].sort()
+        dropdown.dataSource=["Main","pied","Cheville","coude","tete"].sorted()
         
         dropdown.show()
     }
@@ -44,7 +44,7 @@ let dropdown = DropDown()
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AjoutPatientViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
     }
    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
@@ -62,27 +62,27 @@ let dropdown = DropDown()
             var unAge = Int(age.text!)
             if unAge==nil {unAge=0}
             if hommeFemme.selectedSegmentIndex==0 {val = true}
-            let patient1 =  patients.patient(nomPrenom: "\(nomFamille.text!.uppercaseString)",
+            let patient1 =  patients.patient(nomPrenom: "\(nomFamille.text!.uppercased())",
                                              age: unAge!,
                                              localisation: "",
                                              motif: "", masculin: val )
             del.patientAdded(self, patient: patient1)
         }
     }
-    @IBAction func ajoutPatientViewButtonAction(sender: UIButton) {
+    @IBAction func ajoutPatientViewButtonAction(_ sender: UIButton) {
         ajoutPatient()
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
 
     }
-    @IBAction func ajoutPatientTabBarButtonAction(sender: UIBarButtonItem) {
+    @IBAction func ajoutPatientTabBarButtonAction(_ sender: UIBarButtonItem) {
         ajoutPatient()
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
 
     }
 
-    @IBAction func AjoutPatientAction(sender: UIButton) {
+    @IBAction func AjoutPatientAction(_ sender: UIButton) {
         ajoutPatient()
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     /*
     // MARK: - Navigation

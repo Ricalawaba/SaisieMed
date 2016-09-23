@@ -38,7 +38,7 @@ extension ExamTree {
             Check("Etat veineux satisfaisant"),
             Examen(intitule: "Mollets", datastr: [
                 "Mollets souples et indolore","Dimininution du ballant du mollet à gauche","Diminution du ballant du mollet à droite"
-                ].sort() ),
+                ].sorted() ),
             Check("Homans positif"),
             Check("Homans négatif"),
             Check("Douleur localisée oedématié"),
@@ -102,7 +102,7 @@ extension ExamTree {
                 "Souffle holodiastolique",
                 "Souffle télésystolique",
                 "Souffle télédiastolique",
-                ].sort() ),
+                ].sorted() ),
             Examen(intitule: "intensité souffle", datastr: [
                 "1/6",
                 "2/6",
@@ -110,14 +110,14 @@ extension ExamTree {
                 "4/6",
                 "5/6",
                 "6/6",
-                ].sort() ),
+                ].sorted() ),
             Examen(intitule: "foyer auscultatoire", datastr: [
                 "Foyer aortique",
                 "Foyer mitral",
                 "Foyer tricuspidien",
                 "Foyer pulmonaire",
                 
-                ].sort() ),
+                ].sorted() ),
             Examen(intitule: "Irradiation", datastr: [
                 "sans irradiation",
                 "irradiation carotidienne",
@@ -125,7 +125,7 @@ extension ExamTree {
                 "irradiation bord gauche du sternum",
                 "irradiation axillaire",
                 "",
-                ].sort() ),
+                ].sorted() ),
 
             
             OuiNon("Souffle carotidien"),
@@ -142,9 +142,9 @@ extension ExamTree {
         let cattypeDouleurThoracique = categorieExamen.Categorie(nom:"typeDouleurThoracique",namedImage: "cardio2_icon.png",showNom: false)
         cattypeDouleurThoracique.formatPreString=""
         let examCattypeDouleurThoracique   : [Examen] = [
-            Examen(intitule: "loc. douleur thoracique", datastr: ["épigastrique","basithoracique","latérothoracique","rétrosternale haute","précordiale","antérieure","postérieure"].sort() ),
+            Examen(intitule: "loc. douleur thoracique", datastr: ["épigastrique","basithoracique","latérothoracique","rétrosternale haute","précordiale","antérieure","postérieure"].sorted() ),
             
-            Examen(intitule: "type douleur thoracique", datastr: ["en barre","en étau","en coup de poignard","en pointe","type brulure","type oppression"].sort() ),
+            Examen(intitule: "type douleur thoracique", datastr: ["en barre","en étau","en coup de poignard","en pointe","type brulure","type oppression"].sorted() ),
             typeDouleur.asExamen(),
             Check("isolée, sans irradiation \"coronarienne\""),
             Check("Irradiation membre supérieur gauche"),
@@ -172,7 +172,7 @@ extension ExamTree {
             OuiNon("Palpitations"),
             OuiNon("Dyspnée"),
             OuiNon("Dyspnée de décubitus (orthopnée)"),
-            Examen(intitule: "Classification NYHA ", datastr: ["NYHA 1 (Aucune gène fonctionnelle)","NYHA 2 (gène à l'effort seulement)","NYHA 3 (gène à l'effort modérée)","NYHA 4 (gène au moindre effort)"].sort() ),
+            Examen(intitule: "Classification NYHA ", datastr: ["NYHA 1 (Aucune gène fonctionnelle)","NYHA 2 (gène à l'effort seulement)","NYHA 3 (gène à l'effort modérée)","NYHA 4 (gène au moindre effort)"].sorted() ),
             OuiNon("Claudication intermittente"),
             Examen(intitule: "toux", datastr:
                 [ "Pas de toux","toux productive","toux irritative","toux rauque","toux quinteuse","toux dyspnéisante"

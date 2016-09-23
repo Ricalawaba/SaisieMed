@@ -10,31 +10,31 @@ import UIKit
 
 class dateDureeViewController: UIViewController {
     var delegate:dateSelectedDelegate?
-    var date=NSDate() {
+    var date=Date() {
         didSet {
             dateHeureDatePicker.date=self.date
         }
     }
-    @IBAction func jourheureAction(sender: UIButton) {
+    @IBAction func jourheureAction(_ sender: UIButton) {
         self.date=dateHeureDatePicker.date
         returnDate("dd/MM/yyyy (HH:mm)")
 
     }
     
-    @IBAction func anneeAction(sender: UIButton) {
+    @IBAction func anneeAction(_ sender: UIButton) {
         self.date=dateDatePicker.date
         returnDate("yyyy")
     }
 
-    @IBAction func dateHeureChanger(sender: UIDatePicker) {
+    @IBAction func dateHeureChanger(_ sender: UIDatePicker) {
         dateDatePicker.date=sender.date
     }
-    @IBAction func moisAction(sender: UIButton) {
+    @IBAction func moisAction(_ sender: UIButton) {
         self.date=dateDatePicker.date
         returnDate()
     }
     
-    @IBAction func jourAction(sender: UIButton) {
+    @IBAction func jourAction(_ sender: UIButton) {
 
 
         self.date=dateDatePicker.date
@@ -44,16 +44,16 @@ class dateDureeViewController: UIViewController {
     @IBOutlet weak var dateHeureDatePicker: UIDatePicker!
     @IBOutlet weak var dateDatePicker: UIDatePicker!
     
-    @IBAction func qqMinutesActionButton(sender: UIButton) {
+    @IBAction func qqMinutesActionButton(_ sender: UIButton) {
         returnString("quelques minutes")
     }
-    @IBAction func qqHeuresActionButton(sender: UIButton) {
+    @IBAction func qqHeuresActionButton(_ sender: UIButton) {
         returnString("quelques heures")
     }
-    @IBAction func qqJoursActionButton(sender: UIButton) {
+    @IBAction func qqJoursActionButton(_ sender: UIButton) {
         returnString("quelques jours")
     }
-    @IBAction func qqSemainesActionButton(sender: UIButton) {
+    @IBAction func qqSemainesActionButton(_ sender: UIButton) {
         returnString("quelques semaines")
     }
     
@@ -67,29 +67,29 @@ class dateDureeViewController: UIViewController {
     //    }
 
     }
-    func returnString(str:String) {
+    func returnString(_ str:String) {
         if let del=delegate  {
             del.dateSelected(self, text: str, date: self.date)
             
         }
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func returnDate(format: String="MMMM yyyy"){
+    func returnDate(_ format: String="MMMM yyyy"){
         if let del=delegate  {
-            let dateFormatter=NSDateFormatter()
+            let dateFormatter=DateFormatter()
             //dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
             //dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
             // dateFormatter.locale = NSLocale.currentLocale()
             dateFormatter.dateFormat=format
-            let strDate = dateFormatter.stringFromDate(self.date)
+            let strDate = dateFormatter.string(from: self.date)
             del.dateSelected(self, text: strDate, date: self.date)
             
         }
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
         
     }
 

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol saisiePancarteDelegate {
-    func pancarteSelected(sender:pancarteViewController, pancarteStr:String)
+    func pancarteSelected(_ sender:pancarteViewController, pancarteStr:String)
     
 }
 private var kAssociationKeyNextField: UInt8 = 0
@@ -36,7 +36,7 @@ class pancarteViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var sao2Label: UITextField!
     @IBOutlet weak var fcLabel: UITextField!
     @IBOutlet weak var taDiasLabel: UITextField!
-    @IBAction func addPancarteButtonAction(sender: UIButton) {
+    @IBAction func addPancarteButtonAction(_ sender: UIButton) {
       //  let cat: categorieExamen.Categorie = ExamTree.Pancarte
         var retValueString = ""
         if !(taSystLabel.text?.isEmpty)! {
@@ -57,19 +57,19 @@ class pancarteViewController: UIViewController,UITextFieldDelegate {
         if !(fRespLabel.text?.isEmpty)! {
             retValueString += " Fr. Resp: \(fRespLabel.text!) "
         }
-        let dateFormatter=NSDateFormatter()
+        let dateFormatter=DateFormatter()
         //dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
         //dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
         // dateFormatter.locale = NSLocale.currentLocale()
         dateFormatter.dateFormat="dd/MM - kk:mm"
-        let strDate = dateFormatter.stringFromDate(NSDate())
+        let strDate = dateFormatter.string(from: Date())
        retValueString = "(\(strDate )) " + retValueString
         
         if let del=delegate {
             del.pancarteSelected(self, pancarteStr: retValueString)
             
         }
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
 
         
     }
@@ -101,7 +101,7 @@ class pancarteViewController: UIViewController,UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.nextField?.becomeFirstResponder()
         return true
     }

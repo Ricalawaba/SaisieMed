@@ -10,10 +10,10 @@ import UIKit
 //import AssetsLibrary
 import MobileCoreServices
 protocol imageSelectedDelegate {
-    func imageSelected(sender:UIView,image:UIImage, url: String)
+    func imageSelected(_ sender:UIView,image:UIImage, url: String)
     
 }
-func randomStringWithLength (len : Int) -> NSString {
+func randomStringWithLength (_ len : Int) -> NSString {
     
     let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     
@@ -22,7 +22,7 @@ func randomStringWithLength (len : Int) -> NSString {
     //for ( var i=0;i<len; i++  ){
         let length = UInt32 (letters.length)
         let rand = arc4random_uniform(length)
-        randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
+        randomString.appendFormat("%C", letters.character(at: Int(rand)))
     }
     
     return randomString
@@ -31,7 +31,7 @@ func randomStringWithLength (len : Int) -> NSString {
 
 class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
-    @IBAction func viewDocumentButtonAction(sender: UIButton) {
+    @IBAction func viewDocumentButtonAction(_ sender: UIButton) {
 //        if let del=self.delegate  {
 //            del.imageSelected(self, image: loadImageFromPath(examen.value)! , url: examen.value)
 //        }
@@ -40,11 +40,11 @@ class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegat
         imagePicker.delegate=self
 
 
-        imagePicker.sourceType = .SavedPhotosAlbum
+        imagePicker.sourceType = .savedPhotosAlbum
         imagePicker.mediaTypes = [kUTTypeImage as String]
         imagePicker.allowsEditing = false
         
-        UIApplication.sharedApplication().keyWindow?.rootViewController!.presentViewController(imagePicker, animated: true, completion: nil)
+        UIApplication.shared.keyWindow?.rootViewController!.present(imagePicker, animated: true, completion: nil)
 
 //        let svc =  UIApplication.sharedApplication().keyWindow?.rootViewController!.storyboard?.instantiateViewControllerWithIdentifier("pluginFormID") as! pluginFormViewController
 //        let aview = svc.view
@@ -55,16 +55,16 @@ class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegat
     @IBOutlet weak var imageLabel: UILabel!
     
     @IBOutlet weak var theImageView: UIImageView!
-    @IBAction func selectImageAction(sender: UIButton) {
+    @IBAction func selectImageAction(_ sender: UIButton) {
        // imagePicker.cameraCaptureMode = .Photo
         
         imagePicker = UIImagePickerController()
         imagePicker.delegate=self
-        imagePicker.sourceType = .Camera
+        imagePicker.sourceType = .camera
         imagePicker.showsCameraControls=true
         imagePicker.allowsEditing = false
         
-        UIApplication.sharedApplication().keyWindow?.rootViewController!.presentViewController(imagePicker, animated: true, completion: nil)
+        UIApplication.shared.keyWindow?.rootViewController!.present(imagePicker, animated: true, completion: nil)
     }
     var examen:Examen! = nil {
         didSet {
@@ -82,14 +82,14 @@ class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegat
     }
     var delegate:imageSelectedDelegate?
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     // MARK: - UIImagePickerControllerDelegate Methods
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
       let quelleImage="UIImagePickerControllerOriginalImage"
        // if picker.sourceType == .Camera { quelleImage="UIImagePickerControllerEditedImage"}
         if let pickedImage = info[quelleImage] as? UIImage {
@@ -105,24 +105,24 @@ class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegat
                     }
          }
         
-                UIApplication.sharedApplication().keyWindow?.rootViewController!.dismissViewControllerAnimated(true, completion: nil)
+                UIApplication.shared.keyWindow?.rootViewController!.dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         //imageLabel.text="(image)"
-          UIApplication.sharedApplication().keyWindow?.rootViewController!.dismissViewControllerAnimated(true, completion: nil)
+          UIApplication.shared.keyWindow?.rootViewController!.dismiss(animated: true, completion: nil)
     }
-    func saveImage (image: UIImage, path: String ) -> Bool{
+    func saveImage (_ image: UIImage, path: String ) -> Bool{
         
         //let pngImageData = UIImagePNGRepresentation(image)
         let jpgImageData = UIImageJPEGRepresentation(image, 1.0)   // if you want to save as JPEG
-        let result = jpgImageData!.writeToFile(path, atomically: true)
+        let result = (try? jpgImageData!.write(to: URL(fileURLWithPath: path), options: [.atomic])) != nil
         
         return result
         
     }
     
-    func loadImageFromPath(path: String) -> UIImage? {
+    func loadImageFromPath(_ path: String) -> UIImage? {
         
         let image = UIImage(contentsOfFile: path)
         
