@@ -52,7 +52,7 @@ class selectionTexteTableViewController: UITableViewController, UISearchBarDeleg
             if (text != nil) {del.textSelected(self, text: text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))}
             
         }
-        self.navigationController?.popViewController(animated: true)
+        _=self.navigationController?.popViewController(animated: true)
 
     }
     // MARK: UISearchBarDelegate

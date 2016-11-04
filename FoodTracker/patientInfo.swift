@@ -58,8 +58,12 @@ class patients :  NSObject,NSCoding {
         var motif : String {
             get {
                 if examen.categories.count == 0 { return ""}
+                if examen.categories[0].examens[4].categorie != nil {
+                    
+                
                 return examen.categories[0].examens[4].categorie!.UIString()
-
+                }
+                return ""
             }
             set {
                examen.categories[0].examens[4].value=newValue
@@ -105,24 +109,29 @@ class patients :  NSObject,NSCoding {
                     
                     let medTraitant=cat.examens[5].value
                     if !medTraitant.isEmpty { AdminStr += "<li><u>Médecin traitant:</u> \(medTraitant)" }
-                    
-                    let modevie=cat.examens[7].categorie!.formattedDetaiString()
-                    if !modevie.isEmpty {
-                        AdminStr += "<li><u>Mode de vie:</u> \(modevie)"
+                    if let modcat=cat.examens[7].categorie {
+                        let modevie=modcat.formattedDetaiString()
+                        if !modevie.isEmpty {
+                            AdminStr += "<li><u>Mode de vie:</u> \(modevie)"
+                        }
+   
                     }
-                    let modeentree=cat.examens[6].categorie!.formattedDetaiString()
+                    if let modcat=cat.examens[6].categorie {
+                    let modeentree=modcat.formattedDetaiString()
                     if !modeentree.isEmpty {
                         AdminStr += "<li><u>Mode d'entrée:</u> \(modeentree)"
+                    }
                     }
                     let connuProfession=cat.examens[8].value
                     if !connuProfession.isEmpty {
                         AdminStr += "<li><u>Profession:</u> \(connuProfession)"
                     }
-                    let connuClinique=cat.examens[9].categorie!.formattedDetaiString()
+                    if let modcat=cat.examens[9].categorie {
+                    let connuClinique=modcat.formattedDetaiString()
                     if !connuClinique.isEmpty {
                         AdminStr += "<li><u>Connu de la clinique:</u> \(connuClinique)"
                     }
-                    
+                    }
                     retStr += AdminStr
                 } else {
                     let detailstr = cat.formattedDetaiString()

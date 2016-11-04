@@ -72,7 +72,7 @@ class dateDureeViewController: UIViewController {
             del.dateSelected(self, text: str, date: self.date)
             
         }
-        self.navigationController?.popViewController(animated: true)
+        _=self.navigationController?.popViewController(animated: true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -89,7 +89,7 @@ class dateDureeViewController: UIViewController {
             del.dateSelected(self, text: strDate, date: self.date)
             
         }
-        self.navigationController?.popViewController(animated: true)
+        _=self.navigationController?.popViewController(animated: true)
         
     }
 

@@ -31,7 +31,7 @@ class imageDocumentViewController: UIViewController {
         if let del=delegate {
             del.selectionDone(self,mapImg: imageMapped!, fulltext: fullString)
         }
-        self.navigationController?.popViewController(animated: true)
+        _=self.navigationController?.popViewController(animated: true)
     }
     func getFullResult() -> String {
         var fullString=""

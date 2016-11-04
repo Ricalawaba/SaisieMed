@@ -40,7 +40,7 @@ class SaisieNombreViewController: UIViewController,UIPickerViewDelegate, UIPicke
             del.nombreSelected(self,numberStr: value)
             
         }
-         self.navigationController?.popViewController(animated: true)
+         _=self.navigationController?.popViewController(animated: true)
     }
     
 

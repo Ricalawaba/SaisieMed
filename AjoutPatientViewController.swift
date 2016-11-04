@@ -21,7 +21,7 @@ let dropdown = DropDown()
         
         dropdown.dataSource=["Main","pied","Cheville","coude","tete"].sorted()
         
-        dropdown.show()
+        _ = dropdown.show()
     }
   //  @IBOutlet weak var motif: UITextField!
     @IBOutlet weak var hommeFemme: UISegmentedControl!
@@ -71,18 +71,18 @@ let dropdown = DropDown()
     }
     @IBAction func ajoutPatientViewButtonAction(_ sender: UIButton) {
         ajoutPatient()
-        self.navigationController?.popViewController(animated: true)
+        _=self.navigationController?.popViewController(animated: true)
 
     }
     @IBAction func ajoutPatientTabBarButtonAction(_ sender: UIBarButtonItem) {
         ajoutPatient()
-        self.navigationController?.popViewController(animated: true)
+        _=self.navigationController?.popViewController(animated: true)
 
     }
 
     @IBAction func AjoutPatientAction(_ sender: UIButton) {
         ajoutPatient()
-        self.navigationController?.popViewController(animated: true)
+        _=self.navigationController?.popViewController(animated: true)
     }
     /*
     // MARK: - Navigation

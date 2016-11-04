@@ -42,7 +42,7 @@ class pickSelectTableViewCell: UITableViewCell ,UITextFieldDelegate,UIPickerView
             
         }
         
-        dropdown.show()
+        _=dropdown.show()
     }
     @IBAction func tapTextField(_ sender: UITextField) {
 //                var dd:[String]=[]

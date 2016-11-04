@@ -99,7 +99,7 @@ class imageSelectTableViewCell: UITableViewCell , UIImagePickerControllerDelegat
             examen.value=fileName
             examen.tag="image"
             theImageView.image=pickedImage
-            saveImage(pickedImage, path: imagePath)
+            _=saveImage(pickedImage, path: imagePath)
                     if let del=self.delegate  {
                         del.imageSelected(self, image: pickedImage , url: fileName)
                     }

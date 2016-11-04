@@ -64,7 +64,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
             
         }
         
-        dropdown.show()
+        _=dropdown.show()
         
         // categorie.examens.append(ExamTree.libre)
         
@@ -328,7 +328,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
                 
             }
             
-            dropdown.show()
+            _=dropdown.show()
 
         }
         
@@ -589,7 +589,7 @@ saisieNombreDelegate,imageSelectedDelegate,saisiePancarteDelegate{
     @IBAction func EnregistrerModif(_ sender: UIBarButtonItem) {
         
         
-        self.navigationController?.popViewController(animated: true)
+        _=self.navigationController?.popViewController(animated: true)
         /* let parent = self.parentViewController as! saisieTableViewController
          parent.tableView.reloadData()*/
         

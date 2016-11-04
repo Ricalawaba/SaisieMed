@@ -46,7 +46,7 @@ class selectDateViewController: UIViewController {
             del.dateSelected(self, text: strDate, date: self.date)
             
         }
-        self.navigationController?.popViewController(animated: true)
+        _=self.navigationController?.popViewController(animated: true)
         
     }
 

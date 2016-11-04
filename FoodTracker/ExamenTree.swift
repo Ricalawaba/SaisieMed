@@ -316,14 +316,22 @@ class ExamTree :NSObject{
             
             OuiNon("Céphallée"),
             OuiNon("Troubles sensoriels"),
+            OuiNon("Assymétrie faciale"),
+            OuiNon("Troubles du langage"),
             OuiNon("Vertiges"),
+            OuiNon("Désorientation temporospatiale"),
             
             OuiNon("Douleur abdominale"),
             OuiNon("Nausée"),
             OuiNon("Vomissements"),
             OuiNon("Diarrhée"),
+            OuiNon("Anorexie"),
+            OuiNon("Perte pondérale"),
+            OuiNon("Prise pondérale"),
             
+            OuiNon("Oedemes périphériques"),
             OuiNon("Anxiété"),
+            OuiNon("Troubles du sommeil"),
             
             
             

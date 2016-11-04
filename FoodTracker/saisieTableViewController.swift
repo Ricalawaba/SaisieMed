@@ -66,7 +66,7 @@ class saisieTableViewController: UITableViewController {
             }
         }
         
-        dropdown.show()
+        _=dropdown.show()
     }
     
     

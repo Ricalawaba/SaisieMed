@@ -21,7 +21,7 @@ class selectNumberViewController: UIViewController {
         if let del=delegate  {
             del.numberSelected(self, number: numberResult)
         }
-        self.navigationController?.popViewController(animated: true)
+        _=self.navigationController?.popViewController(animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

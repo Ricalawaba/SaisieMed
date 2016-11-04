@@ -54,6 +54,7 @@ extension ExamTree {
         Examen(intitule: "QRS (ms)", type:  .donnee ),
         Examen(intitule: "aQRS", type:  .donnee ),
         Examen(intitule: "QT", type:  .donnee ),
+        Examen(intitule: "QT théorique", type:  .donnee ),
         Examen(intitule: "QTc", type:  .donnee )
     ]
     catECG1.examens = examcatECG1
@@ -87,7 +88,15 @@ extension ExamTree {
         Examen(intitule: "Libre", type:  .reponsecourte,tag: "libre" ),
         Examen(intitule: "QRS fins", type: .check),
         
+        Examen(intitule: "Croissance R normale en précordial V1rS,V6qR", type: .check),
+         Examen(intitule: "Décroissance S normale à partir de V2", type: .check),
         Examen(intitule: "QRS Larges", type: .check),
+        Examen(intitule: "HVG  (SV1>23)", type: .check),
+        Examen(intitule: "HVG  (SV2>25)", type: .check),
+        Examen(intitule: "HVG  (RV5>33)", type: .check),
+        Examen(intitule: "HVG  (R+S>35)", type: .check),
+
+
         Examen(intitule: "HVG  (RD1+SD3>25)", type: .check),
         Examen(intitule: "HVG Cornell (RV1+SV3>28H,21F)", type: .check),
         Examen(intitule: "Pas d'hypertrophie ventriculaire", type: .check),
@@ -107,6 +116,12 @@ extension ExamTree {
         Examen(intitule: "Libre", type:  .reponsecourte ,tag: "libre"),
         Examen(intitule: "ST isoélectrique", type: .check),
         Examen(intitule: "ST sus-décalé", type: .donnee),
+        Examen(intitule: "Aspect de repolarisation 'masculine'", type: .check),
+        Examen(intitule: "(T amples <75% QRS , sus dec precordial gauche, croissance R normale, pas d'ondes Q, V1 Normal)", type: .check),
+        Examen(intitule: "Aspect de repolarisation 'précoce'", type: .check),
+        Examen(intitule: "Crochetage de R de V4 a V6 (Ondes J), ST en hamac précordiales moyenne", type: .check),
+
+
         Examen(intitule: "ST sous-decalé", type: .donnee),
         Examen(intitule: "Discordance de repolarisation 'approprié'", type: .check),
         ]
@@ -116,7 +131,8 @@ extension ExamTree {
     let examCatECG5 : [Examen] = [
         Examen(intitule: "Libre", type:  .reponsecourte,tag: "libre" ),
         Examen(intitule: "Ondes T normales", type: .check),
-        Examen(intitule: "Ondes T aplatis", type: .donnee),
+        Examen(intitule: "Ondes T amples (>2/3 QRS)", type: .donnee),
+        Examen(intitule: "Ondes T aplatis (<10% R)", type: .donnee),
         Examen(intitule: "Ondes T pointues assymétriques", type: .donnee),
         Examen(intitule: "Ondes T négative", type: .donnee),
         Examen(intitule: "Ondes U", type: .ouinon),

@@ -69,7 +69,7 @@ class pancarteViewController: UIViewController,UITextFieldDelegate {
             del.pancarteSelected(self, pancarteStr: retValueString)
             
         }
-        self.navigationController?.popViewController(animated: true)
+        _=self.navigationController?.popViewController(animated: true)
 
         
     }

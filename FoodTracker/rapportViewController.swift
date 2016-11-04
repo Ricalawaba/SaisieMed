@@ -59,7 +59,7 @@ class rapportViewController: UIViewController ,MFMailComposeViewControllerDelega
         present(email, animated: true, completion: nil)
     }
     @IBAction func done(_ sender: UIBarButtonItem) {
-        self.navigationController?.popViewController(animated: true)
+        _=self.navigationController?.popViewController(animated: true)
     }
     @IBOutlet weak var webView: UIWebView!
     var patient=patients.patient()
